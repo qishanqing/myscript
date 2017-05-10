@@ -1,0 +1,178 @@
+#!/bin/bash
+set -ex
+
+die() {
+    (
+        echo $(date):  Error: "$@"
+        echo
+    ) |
+        (
+            flock /home/qishanqing/system-config/logs/cmdb.err.lock tee -a /home/qishanqing/system-config/logs/cmdb.err.txt
+        )
+    exit -1
+}
+
+hint() {
+	read -p "$@"
+#	请按‘回车’继续.. "
+}
+
+inport_source() {
+	#Trunk路径
+	SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
+	#Branch路径
+	SVN_Branch=https://192.168.0.220/svn/tech/Branch/
+	#Version路径
+	BaseLine=https://192.168.0.220/svn/tech/Version/
+	TIME_DIR=`date '+%Y%m%d'`
+	Level_1=`date '+%Y'`
+	Level_2=`date '+%Y%m'`
+	TIME_DIR_CLOSE=`date '+%Y%m%d%H%M'`
+	#TIME_DIR=20170426
+	move_dir=Closed/--close+
+	Trunk_name=${SVN_Trunk}$P1
+	branch_name=${SVN_Branch}${TIME_DIR:+$P5}-$P2/Develop/$P1
+	source_name=${SVN_Branch}$P1
+	dest_name=${SVN_Branch}$move_dir${TIME_DIR_CLOSE}-$P1
+	branch=`echo $branch_name | awk -F '/'  '{print $7}'`
+	access=${TIME_DIR}-$P2
+}
+
+cmdb-mysql() {
+    (
+        set +x
+        if mysql -u root --password=$(cat /home/qishanqing/.ssh/mysql-cmdb.pass) cmdb -h 192.168.0.232 -e "$@" > /tmp/cmdb.db.$$ 2>&1; then
+            cat /tmp/cmdb.db.$$
+            rm -f /tmp/cmdb.db.$$
+        elif grep 'Duplicate entry' /tmp/cmdb.db.$$; then
+            rm -f /tmp/cmdb.db.$$
+        else
+            die "sql error input cmdb info"
+        fi
+    )
+
+}
+
+svn-connt() {
+    (   set +x 
+        if ping -c 5 192.168.0.220 >/dev/null;then
+            (
+	    if test -z $P3;then
+                cat << EOF
+
+[tech:/Branch/${branch}]
+@admin=rw
+*=
+EOF
+else
+                cat << EOF
+
+[tech:/Branch/${branch}]
+$P3=rw
+@admin=rw
+*=
+EOF
+fi
+            ) | cat  >> /mnt/svn/authz.conf || echo "access add error"
+        fi 
+    )
+}
+
+check-acces (){
+	grep -c $access] /mnt/svn/authz.conf | 
+	while read num;do
+		if [ $num -eq 0 ]
+		then
+			echo "access authz no add,ready to go "
+
+		else
+			echo "access authz added"
+			return 1
+		fi
+	done
+}
+
+#cmdb-mysql "insert into users values('$user',encrypt('$passwd'));"
+
+addbranch() {
+	hint "如下前两个参数必须输入，以空格区分"
+	hint "请输入新建分支的主干路径/分支名称/权限人员/scm/定义分支日期: " P1 P2 P3 P4 P5
+	inport_source
+	#:'
+	echo ${branch_name} >> /home/svnmodify/add_branch.log
+	if [ -z $P1  ] || [ -z $P2  ];then
+		echo -e "\033[31m ---------------SVN新建分支须输入两个参数--------------- \033[0m"
+		echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
+		echo -e "\033[37m 2. 输入项目名称 \033[0m"
+	else
+		svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"
+	fi
+	cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${P4:-qishanqing}');"
+	#'
+	echo "$branch_name"
+	check-acces
+	svn-connt
+}
+
+addtrunk() {
+	hint "如下前两个参数必须输入，以空格区分"
+	hint "请输入copy的分支路径/主干项目路径/scm: " P1 P2 P3
+	inport_source
+	if [ -z $P1  ] || [ -z $P2  ];then
+		echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
+		echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
+		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
+	else
+		svn copy ${source_name} ${SVN_Trunk}$P2/ --parents --username builder --password ant@ -m "新建项目主干分支"
+	fi
+	echo "新建项目主干路径: ${SVN_Trunk}$P2/${source_name##*/}"
+}
+
+createbaselines() {
+	inport_source
+	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
+	if [ -e $baselinedir ];then
+		svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
+		echo "新建主干基线: $baselinedir"
+	else
+		svn rm $baselinedir --username builder --password ant@ -m "需新建基线，删除旧基线"
+		svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
+		echo "新建主干基线: $baselinedir"
+	fi
+}
+
+delbranch() {
+	hint "请输入一个要删除的分支名称: " P1 P2 
+	inport_source
+	echo ${source_name} >> /home/svnmodify/del_branch.log
+	if [ -z $P1  ];then
+		echo -e "\033[31m ---------------SVN移动分支须输入分支名称--------------- \033[0m"
+		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
+	else
+		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
+	fi
+	cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$P1%';"
+}
+
+export -f addbranch
+export -f delbranch
+export -f inport_source
+export -f cmdb-mysql
+export -f svn-connt
+export -f check-acces
+export -f addtrunk
+export -f createbaselines
+
+PS3="Select a option (1-5): "
+select i in addbranch delbranch addtrunk createbaselines exit 
+do
+	case $i in
+		addbranch) addbranch;;
+		delbranch) delbranch;;
+		addtrunk)  addtrunk;;
+		createbaselines)  createbaselines;;
+		*) exit;;
+	esac
+done
+
+#set +x
