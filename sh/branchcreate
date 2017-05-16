@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -xe
 
 die() {
     (
@@ -13,7 +13,8 @@ die() {
 }
 
 hint() {
-	read -p "$@"
+	P1=$P1	
+	read -p  "$@"
 #	请按‘回车’继续.. "
 }
 
@@ -31,11 +32,11 @@ inport_source() {
 	#TIME_DIR=20170426
 	move_dir=Closed/--close+
 	Trunk_name=${SVN_Trunk}$P1
-	branch_name=${SVN_Branch}${TIME_DIR:+$P5}-$P2/Develop/$P1
+	branch_name=${SVN_Branch}${P4:-$TIME_DIR}-$P2/Develop/$P1
 	source_name=${SVN_Branch}$P1
 	dest_name=${SVN_Branch}$move_dir${TIME_DIR_CLOSE}-$P1
 	branch=`echo $branch_name | awk -F '/'  '{print $7}'`
-	access=${TIME_DIR}-$P2
+	access=${P4:-$TIME_DIR}-$P2
 }
 
 cmdb-mysql() {
@@ -95,8 +96,7 @@ check-acces (){
 #cmdb-mysql "insert into users values('$user',encrypt('$passwd'));"
 
 addbranch() {
-	hint "如下前两个参数必须输入，以空格区分"
-	hint "请输入新建分支的主干路径/分支名称/权限人员/scm/定义分支日期: " P1 P2 P3 P4 P5
+	hint "请输入新建分支的主干路径/分支名称/权限人员/定义分支日期/scm: " P1 P2 P3 P4 P5
 	inport_source
 	#:'
 	echo ${branch_name} >> /home/svnmodify/add_branch.log
@@ -107,7 +107,7 @@ addbranch() {
 	else
 		svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"
 	fi
-	cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${P4:-qishanqing}');"
+	cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${P5:-qishanqing}');"
 	#'
 	echo "$branch_name"
 	check-acces
@@ -115,7 +115,6 @@ addbranch() {
 }
 
 addtrunk() {
-	hint "如下前两个参数必须输入，以空格区分"
 	hint "请输入copy的分支路径/主干项目路径/scm: " P1 P2 P3
 	inport_source
 	if [ -z $P1  ] || [ -z $P2  ];then
@@ -128,21 +127,22 @@ addtrunk() {
 	echo "新建项目主干路径: ${SVN_Trunk}$P2/${source_name##*/}"
 }
 
+createtrunk() {
+	hint "请输入主干项目路径: " P1 
+	inport_source
+	svn mkdir ${SVN_Trunk}$P1 --username builder --password ant@ -m "新建项目主干分支"
+	echo "新建项目主干路径: ${SVN_Trunk}$P1"
+}
 createbaselines() {
 	inport_source
 	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
-	if [ -e $baselinedir ];then
-		svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
-		echo "新建主干基线: $baselinedir"
-	else
-		svn rm $baselinedir --username builder --password ant@ -m "需新建基线，删除旧基线"
-		svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
-		echo "新建主干基线: $baselinedir"
-	fi
+	#svn rm $baselinedir --username builder --password ant@ -m "需新建基线，删除旧基线"
+	svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
+	echo "新建主干基线: $baselinedir"
 }
 
-delbranch() {
-	hint "请输入一个要删除的分支名称: " P1 P2 
+function delbranch() {
+	hint "请输入一个要删除的分支名称: " P1 P2
 	inport_source
 	echo ${source_name} >> /home/svnmodify/del_branch.log
 	if [ -z $P1  ];then
@@ -152,6 +152,7 @@ delbranch() {
 		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
 	fi
 	cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$P1%';"
+	echo ${source_name}
 }
 
 export -f addbranch
@@ -161,15 +162,17 @@ export -f cmdb-mysql
 export -f svn-connt
 export -f check-acces
 export -f addtrunk
+export -f createtrunk
 export -f createbaselines
 
-PS3="Select a option (1-5): "
-select i in addbranch delbranch addtrunk createbaselines exit 
+PS3="Select a option (1-6): "
+select i in addbranch delbranch addtrunk createtrunk createbaselines exit 
 do
 	case $i in
 		addbranch) addbranch;;
 		delbranch) delbranch;;
 		addtrunk)  addtrunk;;
+		createtrunk)  createtrunk;;
 		createbaselines)  createbaselines;;
 		*) exit;;
 	esac
