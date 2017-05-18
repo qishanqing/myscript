@@ -153,6 +153,19 @@ function delbranch() {
 	fi
 }
 
+(
+P=$1
+P1=${P##*/}
+if [ -z $P1 ];then
+	echo
+else
+	inport_source
+	svn  move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
+	cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$P1%';"
+	echo ${source_name}
+fi
+) | 2>&1 tee -a /tmp/test.log
+
 export -f addbranch
 export -f delbranch
 export -f inport_source
