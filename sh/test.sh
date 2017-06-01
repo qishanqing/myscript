@@ -1,6 +1,6 @@
 #!/bin/bash
 
-:'
+:<<!
 while [ $# -ne 0 ]
 do
 	echo $1
@@ -8,7 +8,7 @@ do
 done
 
 eval echo \$$#
-'
+
 PS3="Select a script language (1-4): "
 select i in perl php python shell exit
 do
@@ -20,3 +20,19 @@ do
 		exit) exit;;
 	esac
 done
+
+s=$(
+c=(qi test wan hai)
+for x in ${c[@]};do
+	echo $x=rw
+done
+)
+	cat <<ee
+[tech:/Branch/${br}]
+$s
+@admin=rw
+*=
+ee
+!
+echo this is test >>/tmp/test.log
+

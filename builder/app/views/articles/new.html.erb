@@ -1,0 +1,74 @@
+<% if @error %>
+<div id='error_explanation'> <%= @error%>
+</div>
+<% end %>
+
+<%= javascript_tag "window.onload = builder_onload" %>
+
+<%
+   def default_checked(name, val, default)
+   if params[name] == val || default
+   'checked'
+   else
+   ''
+   end
+   end
+   %>
+<form method="post" id="vmlinux" action="/start">
+  <label>公司邮箱</label><br>
+  <%= email_field_tag "user_email", params[:user_email] %><br>
+
+  <label>公司域密码（不是邮箱密码，是共享目录密码，可在 http://password.smartisan.cn/ 修改，忘记密码请联系IT）</label><br>
+  <%= password_field_tag "user_password", params[:user_password] %><br>
+
+  <label>产品名称</label><br>
+<%= params[:product_name] = "t1" unless params[:product_name]; nil %>
+<%= radio_button_tag "product_name", "bono", params[:product_name] == "bono" %>bono&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "phoenix", params[:product_name] == "phoenix" %>phoenix&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "surabaya", params[:product_name] == "surabaya" %>surabaya+colombo&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "t1", params[:product_name] == "t1" %>t1&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "t2", params[:product_name] == "t2" %>t2&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "u1", params[:product_name] == "u1" %>u1&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "u1_indonesia", params[:product_name] == "u1_indonesia" %>u1_indonesia&nbsp;&nbsp;
+<label>分支</label><br>
+  <div id="build_branches">
+    <input type="radio" name="branch" value="dev" checked>主线
+    <input type="radio" name="branch" value="mol">mol
+  </div>
+
+  <label>Build设备</label><br>
+  <div id="build_configs">
+    <%= hidden_field_tag "total_devices", "2" %>
+    <%= check_box_tag "build_device1", "icesky_msm8992" %>icesky_msm8992
+    <%= check_box_tag "build_device2", "icesky_msm8994" %>icesky_msm8994
+  </div>
+
+  <label>Build类型</label><br>
+  <%= check_box_tag "build_variant2", "user", params[:build_variant2] == 'user' %> user(出货版本) <br/>
+  <%= check_box_tag "build_variant3", "userdebug", params[:build_variant3] == 'userdebug' %> userdebug <br/>
+  <%= check_box_tag "build_variant4", "eng", params[:build_variant4] == 'eng' %> eng <br/>
+
+  <label>Ota</label><br>
+  <%= params[:ota] = 'none' unless params[:ota]; nil %>
+  <%= radio_button_tag "ota", "none", params[:ota] == 'none' %> 不需要OTA包 <br/>
+  <%= radio_button_tag "ota", "full", params[:ota] == 'full' %> 只要全包OTA <br/>
+  <%= radio_button_tag "ota", "roll", params[:ota] == 'roll' %> 差分OTA（包含全包和增量包）<br/>
+  <%= radio_button_tag "ota", "pub", params[:ota] == 'pub' %> 向后OTA（用于发布版本验证） <br/>
+  <p/>
+
+  <input type="submit" value="Submit">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>"/>
+	 <br>
+	 <label>编译完成后发送通知邮件人员名单（公司邮箱，以空格分隔，可不填）</label><br>
+  <%= text_area_tag "extra_mails", params[:extra_mails] %>
+
+  <label>编译描述（会出现在编译完成通知邮件中）</label><br>
+  <%= text_area_tag "build_mail_description", params[:build_mail_description] %>
+
+  <label>CM高级选项</label><br>
+  <%= check_box_tag "daily_build", "true", params[:daily_build] == 'true' %>创建为Daily Build任务<br/>
+  <%= check_box_tag "do_not_start", "true", params[:do_not_start] == 'true' %>不要马上启动任务，CM需要改一下配置
+
+</form>
