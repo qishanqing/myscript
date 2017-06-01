@@ -104,14 +104,28 @@ else
                 cat << EOF
 
 [tech:/Branch/${br}]
-$users=rw
+$users
 @admin=rw
 *=
 EOF
 fi
-            ) | cat  >> /svn/authz.conf || echo "access add error"
+            ) | cat  >> /mnt/svn/authz.conf || echo "access add error"
         fi 
     )
+}
+
+function check-acces () {
+	grep -c $access] /mnt/svn/authz.conf | 
+	while read num;do
+		if [ $num -eq 0 ]
+		then
+			echo "access authz no add,ready to go "
+			svn-connt
+
+		else
+			echo "access authz added"
+		fi
+	done
 }
 
 function cmdb-mysql() {
@@ -127,33 +141,20 @@ function cmdb-mysql() {
     )
 }
 
-function check-acces () {
-	grep -c $access] /svn/authz.conf | 
-	while read num;do
-		if [ $num -eq 0 ]
-		then
-			echo "access authz no add,ready to go "
-
+function addbranch() {
+	for trunk in ${trunks[@]};do
+		if [ -z $trunk  ] || [ -z $branch  ];then
+			echo -e "\033[31m ---------------SVN新建分支须输入两个参数--------------- \033[0m"
+			echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
+			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
-			echo "access authz added"
-			return 1
+			inport_source
+			echo ${branch_name} >> /home/svnmodify/add_branch.log
+			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"
+			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${email%@*}');"
+			check-acces
 		fi
 	done
-}
-
-function addbranch() {
-	inport_source
-	echo ${branch_name} >> /home/svnmodify/add_branch.log
-	if [ -z $trunk  ] || [ -z $branch  ];then
-		echo -e "\033[31m ---------------SVN新建分支须输入两个参数--------------- \033[0m"
-		echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
-		echo -e "\033[37m 2. 输入项目名称 \033[0m"
-	else
-		svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"
-		cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${email%@*}');"
-		check-acces
-		svn-connt
-	fi
 }
 
 function addtrunk() {
@@ -193,6 +194,13 @@ function delbranch() {
 		echo ${source_name}
 	fi
 }
+
+trunks=$(
+$trunk
+for y in $trunk;do
+	 echo $y
+done
+)
 
 addbranch
 

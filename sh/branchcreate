@@ -85,10 +85,9 @@ check-acces (){
 		if [ $num -eq 0 ]
 		then
 			echo "access authz no add,ready to go "
-
+			svn-connt
 		else
 			echo "access authz added"
-			return 1
 		fi
 	done
 }
@@ -108,7 +107,6 @@ addbranch() {
 		cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${P5:-qishanqing}');"
 		echo "$branch_name"
 		check-acces
-		svn-connt
 	fi
 }
 
@@ -128,7 +126,7 @@ addtrunk() {
 createtrunk() {
 	hint "请输入主干项目路径: " P1 
 	inport_source
-	svn mkdir ${SVN_Trunk}$P1 --username builder --password ant@ -m "新建项目主干分支"
+	svn mkdir ${Trunk_name} --username builder --password ant@ -m "新建项目主干分支"
 	echo "新建项目主干路径: ${SVN_Trunk}$P1"
 }
 createbaselines() {
