@@ -9,6 +9,7 @@ class BuilderController < ApplicationController
   end
   def new
 	  user = params[:user]
+	  types = params[:types]
 	  email = params[:email]
 	  branch = params[:branch]
 	  riqi = params[:riqi]
@@ -31,8 +32,8 @@ class BuilderController < ApplicationController
 			  "-t", trunk, \
 			  "-e", email, \
 			  "-b", branch, \
+			  "-T", types, \
 			  "-d", riqi
-		#   `. web-branchcreate.sh "-u" "#{user}" "-e" "#{email}" "-t" "#{trunk}" "-b" "#{branch}" "-d" "#{riqi}"`
 	  end
   end
 end

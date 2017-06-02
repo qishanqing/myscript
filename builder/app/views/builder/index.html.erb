@@ -10,6 +10,11 @@
 	<label>公司邮箱</label><br>
 	<%= email_field_tag "email", params[:email] %><br><br>
 
+	<label>分支类型</label><br>
+	<%= params[:types] = "add" unless params[:type]; nil %>
+	<%= radio_button_tag "types", "add", params[:types] == "add" %>新建&nbsp;&nbsp;
+	<%= radio_button_tag "types", "del", params[:types] == "del" %>删除&nbsp;&nbsp;<br><br>
+
 	<label>项目主干相对路径:</label><br>
 	<%= text_area_tag "trunk", params[:trunk]  %><br>
 

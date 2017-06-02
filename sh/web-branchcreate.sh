@@ -16,12 +16,13 @@ hint() {
 	read -p  "$@"
 }
 
-TEMP=$(getopt -o u:e:t:b:d:h --long user:,email:,trunk:,branch:,riqi:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o u:e:t:b:d:T:h --long types:,user:,email:,trunk:,branch:,riqi:,help -n $(basename -- $0) -- "$@")
 user=
 email=
 trunk=
 branch=
 riqi=
+types=
 eval set -- "$TEMP"
 while true;do
     case "$1" in
@@ -43,6 +44,10 @@ while true;do
             ;;
         -d|--riqi)
             riqi=$2
+            shift 2
+	    ;;
+        -T|--types)
+            types=$2
             shift 2
 	    ;;
         -h|--help)
@@ -75,8 +80,8 @@ function inport_source() {
 	move_dir=Closed/--close+
 	Trunk_name=${SVN_Trunk}$trunk
 	branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/$trunk
-	source_name=${SVN_Branch}$trunk
-	dest_name=${SVN_Branch}$move_dir${TIME_DIR_CLOSE}-$trunk
+	source_name=${SVN_Branch}$branch
+	dest_name=${SVN_Branch}$move_dir${TIME_DIR_CLOSE}-$branch
 	br=`echo $branch_name | awk -F '/'  '{print $7}'`
 	access=${riqi:-$TIME_DIR}-$branch
 
@@ -149,8 +154,8 @@ function addbranch() {
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
 			inport_source
-			echo ${branch_name} >> /home/svnmodify/add_branch.log
 			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"
+			echo ${branch_name} >> /home/svnmodify/add_branch.log
 			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${email%@*}');"
 			check-acces
 		fi
@@ -158,12 +163,12 @@ function addbranch() {
 }
 
 function addtrunk() {
-	inport_source
 	if [ -z $branch  ] || [ -z $trunk  ];then
 		echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
 		echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
+		inport_source
 		svn copy ${source_name} ${SVN_Trunk}$trunk/ --parents --username builder --password ant@ -m "新建项目主干分支"
 		echo "新建项目主干路径: ${SVN_Trunk}$trunk/${source_name##*/}"
 	fi
@@ -183,15 +188,14 @@ function createbaselines() {
 }
 
 function delbranch() {
-	inport_source
-	echo ${source_name} >> /home/svnmodify/del_branch.log
 	if [ -z $branch  ];then
 		echo -e "\033[31m ---------------SVN移动分支须输入分支名称--------------- \033[0m"
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
+		inport_source
 		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
+		echo ${source_name} >> /home/svnmodify/del_branch.log
 		cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
-		echo ${source_name}
 	fi
 }
 
@@ -202,6 +206,11 @@ for y in $trunk;do
 done
 )
 
-addbranch
+if test $types = add;then
+	addbranch
+else
+	delbranch
+fi
+
 
 

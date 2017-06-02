@@ -96,28 +96,28 @@ check-acces (){
 
 addbranch() {
 	hint "请输入新建分支的主干路径/分支名称/权限人员/定义分支日期/scm: " P1 P2 P3 P4 P5
-	inport_source
-	echo ${branch_name} >> /home/svnmodify/add_branch.log
 	if [ -z $P1  ] || [ -z $P2  ];then
 		echo -e "\033[31m ---------------SVN新建分支须输入两个参数--------------- \033[0m"
 		echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
 		echo -e "\033[37m 2. 输入项目名称 \033[0m"
 	else
+		inport_source
 		svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"
+		echo ${branch_name} >> /home/svnmodify/add_branch.log
 		cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${P5:-qishanqing}');"
-		echo "$branch_name"
 		check-acces
+		echo "$branch_name"
 	fi
 }
 
 addtrunk() {
 	hint "请输入copy的分支路径/主干项目路径/scm: " P1 P2 P3
-	inport_source
 	if [ -z $P1  ] || [ -z $P2  ];then
 		echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
 		echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
+		inport_source
 		svn copy ${source_name} ${SVN_Trunk}$P2/ --parents --username builder --password ant@ -m "新建项目主干分支"
 		echo "新建项目主干路径: ${SVN_Trunk}$P2/${source_name##*/}"
 	fi
@@ -139,14 +139,14 @@ createbaselines() {
 
 function delbranch() {
 	hint "请输入一个要删除的分支名称: " P1 P2
-	inport_source
-	echo ${source_name} >> /home/svnmodify/del_branch.log
 	if [ -z $P1  ];then
 		echo -e "\033[31m ---------------SVN移动分支须输入分支名称--------------- \033[0m"
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
+		inport_source
 		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
 		cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$P1%';"
+		echo ${source_name} >> /home/svnmodify/del_branch.log
 		echo ${source_name}
 	fi
 }
@@ -157,10 +157,7 @@ P1=${P##*/}
 if [ -z $P1 ];then
 	echo
 else
-	inport_source
-	svn  move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
-	cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$P1%';"
-	echo ${source_name}
+	delbranch
 fi
 ) | 2>&1 tee -a /tmp/test.log
 
@@ -187,4 +184,3 @@ do
 	esac
 done
 
-#set +x
