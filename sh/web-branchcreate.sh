@@ -66,6 +66,8 @@ while true;do
     esac
 done
 
+export SMARTCM_EXTRA_MAIL=$email
+
 function inport_source() {
 	#Trunk路径
 	SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
@@ -158,6 +160,13 @@ function addbranch() {
 			echo ${branch_name} >> /home/svnmodify/add_branch.log
 			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${email%@*}');"
 			check-acces
+(
+cat << mail
+			新建分支如下：
+			${branch_name}
+			添加权限人员:$user
+mail
+) | mails-cm -i "svnbranch-add from $email" || true
 		fi
 	done
 }
@@ -196,6 +205,13 @@ function delbranch() {
 		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
 		echo ${source_name} >> /home/svnmodify/del_branch.log
 		cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
+(
+cat << mail
+		删除分支如下:
+		${source_name}
+mail
+) | mails-cm -i "svnbranch-del from $email" || true
+
 	fi
 }
 

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+set -e
+
+cm_mails=qishanqing@dafy.com
+
+if test "$SMARTCM_EXTRA_MAIL"; then
+	cm_mails="$cm_mails $SMARTCM_EXTRA_MAIL"
+fi
+
+
+## start code-generator "^\\s *#\\s *"
+# generate-getopts  iinput
+## end code-generator
+## start generated code
+input=false
+OPTIND=1
+while getopts 'i' opt; do
+	case "$opt" in
+		i)    input=true;;
+		*)    echo Usage Error; exit 2;;
+	esac
+done
+shift $(($OPTIND - 1))
+
+## end generated code
+
+if test "$input" = true; then
+	cat
+else
+	echo
+fi | /bin/mailx -S from=qishanqing@dafy.com  -S smtp=localhost:25 -s "$*" $cm_mails ||  true
+
+
