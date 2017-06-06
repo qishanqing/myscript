@@ -33,6 +33,24 @@ $s
 @admin=rw
 *=
 ee
+(
+cat << mail
+新建分支:test
+mail
+) | mails-cm  "svnadminBuilder request from 18310287801@163.com"
 !
-echo this is test >>/tmp/test.log
-
+echo pid is $$
+die() {
+	(
+	echo "$@"
+	if test output.$$;then
+		echo 
+		cat output.$$
+	fi
+	) | mails-cm -i "svn branch create failed"
+	kill $$
+	exit -1
+}
+(
+svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"  >output.$$ 2>&1
+) || die "no reason to failed"

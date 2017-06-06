@@ -20,9 +20,10 @@ hint() {
 
 set -x
 
-TEMP=$(getopt -o u:e:t:b:d:T:h --long types:,user:,email:,trunk:,branch:,riqi:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o u:e:E:t:b:d:T:h --long types:,user:,email:,extra_mails:,trunk:,branch:,riqi:,help -n $(basename -- $0) -- "$@")
 user=
 email=
+extra_mails=
 trunk=
 branch=
 riqi=
@@ -36,6 +37,10 @@ while true;do
 	    ;;
         -e|--email)
             email=$2
+            shift 2
+            ;;
+        -E|--extra_mails)
+            extra_mails=$2
             shift 2
             ;;
         -t|--trunk)
@@ -70,7 +75,7 @@ while true;do
     esac
 done
 
-export SMARTCM_EXTRA_MAIL=$email
+export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 
 function inport_source() {
 	#Trunk路径
@@ -169,9 +174,10 @@ function addbranch() {
 cat << mail
 			新建分支如下：
 			${branch_name}
+
 			添加权限人员:$user
 mail
-) | mails-cm -i "svnbranch-add from $email" || true
+) | mails-cm -i "svnbranch-add from svn branch create web" || true
 		fi
 	done
 }
@@ -216,7 +222,7 @@ cat << mail
 		删除分支如下:
 		${source_name}
 mail
-) | mails-cm -i "svnbranch-del from $email" || true
+) | mails-cm -i "svnbranch-del from svn branch create web" || true
 
 	fi
 }
