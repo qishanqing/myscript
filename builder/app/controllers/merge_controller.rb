@@ -2,18 +2,16 @@
 require 'rubygems'
 
 $LOAD_PATH << ( Rails.root + 'app/controllers')
-
-class BuilderController < ApplicationController
+class MergeController < ApplicationController
 	http_basic_authenticate_with name: "admin", password: "123456", except: [:index]
   def index
   end
   def new
-	  user = params[:user]
+	  task = params[:task]
 	  types = params[:types]
 	  email = params[:email]
 	  extra_mails = params[:extra_mails]
 	  branch = params[:branch]
-	  riqi = params[:riqi]
 	  trunk = params[:trunk]
 	  
 	  result = nil
@@ -28,14 +26,13 @@ class BuilderController < ApplicationController
 	  if not result then
 		  render 'index'
 	  else
-		  system  "web-branchcreate.sh", \
-			  "-u", user, \
+		  system  "svn-merged.sh", \
+			  "-k", task, \
 			  "-t", trunk, \
 			  "-e", email, \
 			  "-E", extra_mails, \
 			  "-b", branch, \
-			  "-T", types, \
-			  "-d", riqi
-	  end
+			  "-T", types
+	 end
   end
 end

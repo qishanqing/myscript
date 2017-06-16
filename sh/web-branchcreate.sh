@@ -172,10 +172,11 @@ function addbranch() {
 			check-acces
 (
 cat << mail
-			新建分支如下：
+			新建分支如下:
+
 			${branch_name}
 
-			添加权限人员:$user
+			添加权限人员: $user
 mail
 ) | mails-cm -i "svnbranch-add from svn branch create web" || true
 		fi
@@ -219,7 +220,8 @@ function delbranch() {
 		cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (
 cat << mail
-		删除分支如下:
+		关闭分支如下:
+
 		${source_name}
 mail
 ) | mails-cm -i "svnbranch-del from svn branch create web" || true
@@ -239,6 +241,3 @@ if test $types = add;then
 else
 	delbranch
 fi
-
-
-

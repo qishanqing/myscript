@@ -5,31 +5,27 @@
 
 <%= javascript_tag "window.onload = builder_onload" %>
 
-<h1 style="text-align:center">svn branch create</h1>
-<form method="post" id="vmlinux" action="/start">
+<h1 style="text-align:center">svn merge web</h1>
+<form method="post" id="vmlinux" action="/merge/new">
 	<label>公司邮箱</label><br>
 	<%= email_field_tag "email", params[:email] %><br><br>
 
 	<label>分支类型</label><br>
 	<%= params[:types] = "add" unless params[:type]; nil %>
-	<%= radio_button_tag "types", "add", params[:types] == "add" %>新建&nbsp;&nbsp;
-	<%= radio_button_tag "types", "del", params[:types] == "del" %>删除&nbsp;&nbsp;<br><br>
+	<%= radio_button_tag "types", "add", params[:types] == "add" %>合并主干&nbsp;&nbsp;
+	<%= radio_button_tag "types", "del", params[:types] == "del" %>合并分支&nbsp;&nbsp;<br><br>
 
-	<label>项目主干相对路径:</label><br>
-	<%= text_area_tag "trunk", params[:trunk]  %><br>
+	<label>项目主干路径:</label><br>
+	<%= url_field_tag "trunk", params[:trunk] %><br>
 
 	<label>分支名称:</label><br>
-	<%= text_area_tag "branch", params[:branch] %><br>
+	<%= url_field_tag "branch", params[:branch] %><br>
 
-	<label>权限人员:</label><br>
-	<%= text_area_tag "user", params[:user] %><br>
+	<label>合并工单:</label><br>
+	<%= text_area_tag "task", params[:task] %><br>
 
 	<label>创建完成后发送通知邮件人员名单(公司邮箱，以空格分隔，可不填)</label><br>
 	<%= text_area_tag "extra_mails", params[:extra_mails] %><br>
-
-	<label>特殊分支日期(格式参照 20170601 可不填)</label><br>
-	<%= text_area_tag "riqi", params[:riqi] %><br>
-
 	 <input type="submit" value="Submit">
 	 <input name="authenticity_token"
 	 	type="hidden"
