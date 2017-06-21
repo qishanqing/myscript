@@ -70,7 +70,7 @@ done
 Basetrunk=/home/qishanqing/workspace/code/Trunk/
 Basetrunkcode=$Basetrunk${trunk#*Trunk/}
 Basebranch=/home/qishanqing/workspace/code/Branch/
-Basebranchcode=$Basebranch${branch#*branch/}
+Basebranchcode=$Basebranch${branch#*Branch/}
 
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 
@@ -81,10 +81,18 @@ function svn_from_tb_merged() {
 	svn revert --depth=infinity .
 	svn cleanup .
 	svn up .
-	if ! `svn merge --dry-run $trunk $branch . | grep 'conflicts'`;then
-		svn merge $trunk $branch
+	reversion=`svn log  | grep -C  3 "${branch#*tech/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
+	st=`svn merge --dry-run $trunk@$reversion $branch . | grep 'conflicts'`
+	echo $st
+	if ! test -e $st;then
+		if  [ ! -z  $reversion ];then
+			svn merge $trunk@$reversion $branch
+		else
+			reversion=`svn log --stop-on-copy $branch | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
+			svn merge $trunk@$reversion $branch
+		fi
 		svn ci --username builder --password ant@ -m "$task
-Merged code  for ${branch#*tech/}"
+#Merged code  for ${branch#*tech/}" --username qishanqing --password q372232
 	fi || 2>&1 >~/tmp/merged/output.$$ | die "Svn merged conflicts the reasons for failure are as follows"
 	rm -f ~/tmp/merged/output.$$
 	) | mails-cm -i "code merged from ${branch#*tech/}" || true
@@ -92,14 +100,22 @@ Merged code  for ${branch#*tech/}"
 
 function svn_from_bt_merged() {
 	(
+	set -x 
 	cd $Basebranchcode
-	svn cleanup&&svn up .
-	if ! `svn merge --dry-run  $branch $trunk . | grep 'conflicts'`;then
-		svn merge $branch $trunk
-		svn ci -m "Merged code  for ${Trunk#*tech/}"
-	fi || >~/tmp/merged/output.$$ 2>&1 | die "Svn merged conflicts the reasons for failure are as follows"
-	rm -f ~/tmp/merged/output.$$
-	) | mails-cm -i "code merged from ${Trunk#*tech/}" || true
+	svn st | grep ^? | xargs rm -rf 
+	svn revert --depth=infinity .
+	svn cleanup .
+	svn up .
+	svn mergeinfo $trunk --show-revs eligible | while read rev
+	do
+		if ! `svn merge --dry-run -c $rev $trunk | egrep -e "conflicts|树冲突"`;then
+			svn merge -c $rev $trunk .
+			svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232
+		else 
+			die "Svn merged conflicts the $rev from ${trunk#*tech/}"
+		fi | mails-cm -i "code merged success from ${trunk#*tech/}" || true
+	done
+	)
 }
 
 if test $types = add;then
@@ -114,8 +130,8 @@ else
 	else
 		(
 		cd $Basebranch
-		svn co $branch
-		svn_from_bt_merged
+		svn co ${branch%/Develop*}
 		)
+		svn_from_bt_merged
 	fi
 fi
