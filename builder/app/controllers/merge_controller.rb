@@ -8,6 +8,7 @@ class MergeController < ApplicationController
   end
   def new
 	  task = params[:task]
+	  rev = params[:rev]
 	  types = params[:types]
 	  email = params[:email]
 	  extra_mails = params[:extra_mails]
@@ -17,7 +18,7 @@ class MergeController < ApplicationController
 	  result = nil
 	  if email.blank? then
 		  @error = "用户邮箱不能为空"
-	  elsif trunk.blank? or branch.blank? then
+	  elsif branch.blank? then
 		  @error = "相对主干路径、分支名不能为空"
 	  else
 		  result = true
@@ -28,6 +29,7 @@ class MergeController < ApplicationController
 	  else
 		  system  "svn-merged.sh", \
 			  "-k", task, \
+			  "-R", rev, \
 			  "-t", trunk, \
 			  "-e", email, \
 			  "-E", extra_mails, \
