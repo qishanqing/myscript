@@ -18,7 +18,7 @@ hint() {
 	read -p  "$@"
 }
 
-set -x
+#set -x
 
 TEMP=$(getopt -o u:e:E:t:b:d:T:h --long types:,user:,email:,extra_mails:,trunk:,branch:,riqi:,help -n $(basename -- $0) -- "$@")
 user=

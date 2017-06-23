@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -x
 
 echo pid is $$
 die() {
@@ -76,13 +76,6 @@ if test -z $trunk;then
 	trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g'`
 fi
 
-branchs=$(
-$branch
-for y in $branch;do
-	echo $y
-done
-)
-
 function Basecode() {
 	Basetrunk=/home/qishanqing/workspace/code/Trunk/
 	Basetrunkcode=$Basetrunk${trunk#*Trunk/}
@@ -93,8 +86,14 @@ function Basecode() {
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 export -f Basecode
 
+branchs=$(
+$branch
+for y in $branch;do
+	echo $y
+done
+)
+
 function svn_from_tb_merged() {
-	for branch in ${branchs[@]};do
 		(
 		set -x
 		cd $Basetrunkcode
@@ -109,7 +108,7 @@ function svn_from_tb_merged() {
 			if [ -z $st ];then
 				svn merge $branch@$revision $branch
 			else
-				die "Svn merged conflicts the $rev from ${trunk#*tech/}"
+				die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
 			fi
 		svn ci --username builder --password ant@ -m "$task
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password q372232
@@ -120,7 +119,7 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 				if [ -z $st ];then
 					svn merge $branch@$revision $branch
 				else
-					die "Svn merged conflicts the $rev from ${trunk#*tech/}"
+					die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
 				fi
 			fi
 		svn ci --username builder --password ant@ -m "$task
@@ -128,11 +127,9 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 		fi || 2>&1 >~/tmp/merged/output.$$ | die "Svn merged conflicts the reasons for failure are as follows"
 		rm -f ~/tmp/merged/output.$$
 		) | mails-cm -i "code merged from ${branch#*tech/}" || true
-	done
 }
 
 function svn_from_bt_merged() {
-	for branch in ${branchs[@]};do
 		(
 		set -x
 		cd $Basebranchcode
@@ -141,54 +138,100 @@ function svn_from_bt_merged() {
 		svn revert --depth=infinity .
 		svn up .
 		if [ -n $rev ];then
-			if [[ "$rev" =~ ':' ]];then
-				st=`svn merge --dry-run -r $rev $trunk | egrep -e 'conflicts|树冲突'`
-				if test -z "$st" ;then
+			if [[ "$rev" =~ ":" ]];then
+				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				if test -z $stu;then
 					svn merge -r $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success from ${trunk#*tech/}" || true
 				else
-					die "Svn merged conflicts the $rev from ${trunk#*tech/}"
+					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
 			else
-				st=`svn merge --dry-run -c $rev $trunk | egrep -e "conflicts|树冲突"`
-				if [ -z $st ];then
+				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				if [ -z $stu ];then
 					svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success from ${trunk#*tech/}" || true
 				else
-					die "Svn merged conflicts the $rev from ${trunk#*tech/}"
+					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
 			fi
 		else
 			svn mergeinfo $trunk --show-revs eligible | while read rev
-			do
-				if ! `svn merge --dry-run -c $rev $trunk | egrep -e "conflicts|树冲突"`;then
+			do	
+				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				if [ -z $stu ];then
 					svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success from ${trunk#*tech/}" || true
 				else 
-					die "Svn merged conflicts the $rev from ${trunk#*tech/}"
+					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
 			done
 		fi
 		)
-	done
 }
 
-Basecode
+function svn_dt_merged() {
+		(
+		cd $Basetrunkcode
+		svn cleanup .
+		svn st | grep ^? | xargs rm -rf 
+		svn revert --depth=infinity .
+		svn up .
+		revision=`svn log -l 2 | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		if [ -z $rev ];then
+			svn merge -r HEAD:$revision .
+			svn ci -m "版本回退"
+		else
+			svm merge -r HEAD:$rev .
+			svn ci -m "版本回退"
+		fi | mails-cm -i "已回退版本" || true
+		)
+}
+
+function svn_db_merged() {
+		(
+		cd $Basebranchcode
+		svn cleanup .
+		svn st | grep ^? | xargs rm -rf 
+		svn revert --depth=infinity .
+		svn up .
+		revision=`svn log -l 2 | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		if [ -z $rev ];then
+			svn merge -r HEAD:$revision .
+			svn ci -m "版本回退"
+		else
+			svm merge -r HEAD:$rev .
+			svn ci -m "版本回退"
+		fi | mails-cm -i "已回退版本" || true
+		)
+}
 
 if test $types = add;then
-	if test -d $Basetrunkcode;then
-		svn_from_tb_merged
-	else
-		die "Trunk project code no found"
-	fi
+	for branch in ${branchs[@]};do
+		Basecode
+		if test -d $Basetrunkcode;then
+			svn_from_tb_merged
+		else
+			die "Trunk project code no found"
+		fi
+	done
+elif test $types = del;then
+	for branch in ${branchs[@]};do
+		Basecode
+		if test -d $Basebranchcode;then
+			svn_from_bt_merged
+		else
+			(
+			cd $Basebranch
+			svn co ${branch%/Develop*}
+			)
+			svn_from_bt_merged
+		fi
+	done
+elif test $types = dt;then
+	Basecode
+	svn_dt_merged
 else
-	if test -d $Basebranchcode;then
-		svn_from_bt_merged
-	else
-		(
-		cd $Basebranch
-		svn co ${branch%/Develop*}
-		)
-		svn_from_bt_merged
-	fi
+	Basecode
+	svn_db_merged
 fi
