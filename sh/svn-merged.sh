@@ -11,6 +11,7 @@ die() {
 		cat ~/tmp/merged/output.$$
 	fi
 	) | mails-cm -i "svn merged faild"
+	rm -f ~/tmp/merged/output.$$
 	kill $$
 	exit -1
 }
@@ -72,11 +73,11 @@ while true;do
     esac
 done
 
-if test -z $trunk;then
-	trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g'`
-fi
-
 function Basecode() {
+	if test -z $trunk;then
+		trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g'`
+	fi
+	svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
 	Basetrunk=/home/qishanqing/workspace/code/Trunk/
 	Basetrunkcode=$Basetrunk${trunk#*Trunk/}
 	Basebranch=/home/qishanqing/workspace/code/Branch/
@@ -125,7 +126,6 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 		svn ci --username builder --password ant@ -m "$task
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password q372232
 		fi || 2>&1 >~/tmp/merged/output.$$ | die "Svn merged conflicts the reasons for failure are as follows"
-		rm -f ~/tmp/merged/output.$$
 		) | mails-cm -i "code merged from ${branch#*tech/}" || true
 }
 
@@ -142,7 +142,7 @@ function svn_from_bt_merged() {
 				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if test -z $stu;then
 					svn merge -r $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success from ${trunk#*tech/}" || true
+					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
@@ -150,7 +150,7 @@ function svn_from_bt_merged() {
 				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if [ -z $stu ];then
 					svn merge -c $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success from ${trunk#*tech/}" || true
+					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
@@ -161,7 +161,7 @@ function svn_from_bt_merged() {
 				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if [ -z $stu ];then
 					svn merge -c $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success from ${trunk#*tech/}" || true
+					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else 
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
