@@ -78,10 +78,19 @@ function Basecode() {
 		trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g'`
 	fi
 	svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
+	rm -f ~/tmp/merged/output.$$
 	Basetrunk=/home/qishanqing/workspace/code/Trunk/
 	Basetrunkcode=$Basetrunk${trunk#*Trunk/}
 	Basebranch=/home/qishanqing/workspace/code/Branch/
 	Basebranchcode=$Basebranch${branch#*Branch/}
+}
+
+clean_workspace() {
+		svn cleanup .
+		svn st | grep ^? | xargs rm -rf 
+		svn revert --depth=infinity .
+		svn up .
+
 }
 
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
@@ -98,10 +107,7 @@ function svn_from_tb_merged() {
 		(
 		set -x
 		cd $Basetrunkcode
-		svn cleanup .
-		svn st | grep ^? | xargs rm -rf 
-		svn revert --depth=infinity .
-		svn up .
+		clean_workspace
 		revision=`svn log  | grep -C  3 "${branch#*tech/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 		if  [ ! -z  $revision ];then
@@ -133,10 +139,7 @@ function svn_from_bt_merged() {
 		(
 		set -x
 		cd $Basebranchcode
-		svn cleanup .
-		svn st | grep ^? | xargs rm -rf 
-		svn revert --depth=infinity .
-		svn up .
+		clean_workspace
 		if [ -n $rev ];then
 			if [[ "$rev" =~ ":" ]];then
 				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突'`
@@ -173,10 +176,7 @@ function svn_from_bt_merged() {
 function svn_dt_merged() {
 		(
 		cd $Basetrunkcode
-		svn cleanup .
-		svn st | grep ^? | xargs rm -rf 
-		svn revert --depth=infinity .
-		svn up .
+		clean_workspace
 		revision=`svn log -l 2 | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
@@ -191,10 +191,7 @@ function svn_dt_merged() {
 function svn_db_merged() {
 		(
 		cd $Basebranchcode
-		svn cleanup .
-		svn st | grep ^? | xargs rm -rf 
-		svn revert --depth=infinity .
-		svn up .
+		clean_workspace
 		revision=`svn log -l 2 | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
