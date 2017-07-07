@@ -15,7 +15,7 @@ function h5_access() {
 			echo -e  "$u: 你没有权限提交此文件(common/config.json/localcache.json/staticGuidePage.htm),具体详情请咨询陈杭征" 1>&2
 			exit 1
 		fi
-	done || 2>&1 tee -a ~/tmp/test.log
+	done || 2>&1 tee -a ~/tmp/svn_pro_commit.log
 }
 
 h5_access

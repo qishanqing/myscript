@@ -4,7 +4,7 @@ require 'rubygems'
 $LOAD_PATH << ( Rails.root + 'app/controllers')
 
 class BuilderController < ApplicationController
-	http_basic_authenticate_with name: "admin", password: "123456", except: [:index]
+	http_basic_authenticate_with name: "admin", password: "qsq", except: [:index]
   def index
   end
   def new

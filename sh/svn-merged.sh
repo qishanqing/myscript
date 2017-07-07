@@ -113,7 +113,7 @@ function svn_from_tb_merged() {
 		if  [ ! -z  $revision ];then
 			st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 			if [ -z $st ];then
-				svn merge $branch@$revision $branch
+				timeout 20 svn merge $branch@$revision $branch
 			else
 				die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
 			fi
@@ -124,7 +124,7 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 			if [ ! -z  $revision ];then
 				st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
-					svn merge $branch@$revision $branch
+					timeout 20 svn merge $branch@$revision $branch
 				else
 					die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
 				fi
@@ -144,7 +144,7 @@ function svn_from_bt_merged() {
 			if [[ "$rev" =~ ":" ]];then
 				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if test -z $stu;then
-					svn merge -r $rev $trunk .
+					timeout 20 svn merge -r $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
@@ -152,7 +152,7 @@ function svn_from_bt_merged() {
 			else
 				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if [ -z $stu ];then
-					svn merge -c $rev $trunk .
+					timeout 20 svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
@@ -163,7 +163,7 @@ function svn_from_bt_merged() {
 			do	
 				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if [ -z $stu ];then
-					svn merge -c $rev $trunk .
+					timeout 20 svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password q372232 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else 
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"

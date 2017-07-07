@@ -8,7 +8,7 @@
 <h1 style="text-align:center">svn branch create</h1>
 <form method="post" id="vmlinux" action="/start">
 	<label>公司邮箱</label><br>
-	<%= email_field_tag "email", params[:email] %><br><br>
+	<%= email_field_tag "email", params[:email],:value =>"qishanqing@dafy.com" %><br><br>
 
 	<label>分支类型</label><br>
 	<%= params[:types] = "add" unless params[:type]; nil %>
@@ -16,7 +16,7 @@
 	<%= radio_button_tag "types", "del", params[:types] == "del" %>删除&nbsp;&nbsp;<br><br>
 
 	<label>项目主干相对路径:</label><br>
-	<%= text_area_tag "trunk", params[:trunk]  %><br>
+	<%= text_area_tag "trunk", params[:trunk],:cols =>60 %><br>
 
 	<label>分支名称:</label><br>
 	<%= text_area_tag "branch", params[:branch] %><br>
