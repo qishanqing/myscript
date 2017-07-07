@@ -10,6 +10,7 @@ die() {
 		cat output.$$
 	fi
     ) | mails-cm -i "svn branch create failed"
+    rm -rf output.$$
     kill $$
     exit -1
 }
@@ -18,7 +19,7 @@ hint() {
 	read -p  "$@"
 }
 
-#set -x
+set -x
 
 TEMP=$(getopt -o u:e:E:t:b:d:T:h --long types:,user:,email:,extra_mails:,trunk:,branch:,riqi:,help -n $(basename -- $0) -- "$@")
 user=
@@ -139,7 +140,11 @@ function check-acces () {
 			svn-connt
 
 		else
-			echo "access authz added"
+			if [[ `sed "/$access]/,/^[ \t]*$/!d;/$access]/d;/^[ \t]*$/d" /mnt/svn/authz.conf` =~ "$users" ]];then
+				echo "access authz added"
+			else
+				sed -i "`grep -n $access /mnt/svn/authz.conf | awk -F ':' '{print $1}'`a $users"  /mnt/svn/authz.conf
+			fi                              
 		fi
 	done
 }
@@ -166,7 +171,6 @@ function addbranch() {
 		else
 			inport_source
 			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
-			rm -f output.$$
 			echo ${branch_name} >> /home/svnmodify/add_branch.log
 			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${email%@*}');"
 			check-acces
@@ -215,7 +219,6 @@ function delbranch() {
 	else
 		inport_source
 		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限" >output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
-		rm -f output.$$
 		echo ${source_name} >> /home/svnmodify/del_branch.log
 		cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (

@@ -111,7 +111,7 @@ function svn_from_tb_merged() {
 		revision=`svn log  | grep -C  3 "${branch#*tech/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 		if  [ ! -z  $revision ];then
-			st=`svn merge --dry-run $branch@$revision $branch . | egrep -e 'conflicts|树冲突'`
+			st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 			if [ -z $st ];then
 				svn merge $branch@$revision $branch
 			else
@@ -122,7 +122,7 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 		else
 			revision=`svn log --stop-on-copy $branch | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
 			if [ ! -z  $revision ];then
-				st=`svn merge --dry-run $branch@$revision $branch . | egrep -e 'conflicts|树冲突'`
+				st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
 					svn merge $branch@$revision $branch
 				else

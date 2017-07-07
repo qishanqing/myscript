@@ -13,16 +13,16 @@ logger = logging.getLogger(__file__)
 
 
 def get_jenkins_instance():
-    jenkins_url = "http://jenkins.example.com"
-    jenkins_username = "username"
-    jenkins_password = "password"
-    return Jenkins(jenkins_url, username=jenkins_username, password=jenkins_password)
+	jenkins_url = "http://192.168.0.232:8080/"
+    	jenkins_username = "qishanqing"
+    	jenkins_password = "3de7e0a51203ea88896766710f842ddb"
+    	return Jenkins(jenkins_url, username=jenkins_username, password=jenkins_password)
 
 
 def clean_workspace():
     jenkins_instance = get_jenkins_instance()
 
-    jenkins_workspace_path = "/opt/JENKINS_HOME/workspace/"
+    jenkins_workspace_path = "/root/.jenkins/jobs/"
 
     for dirpath, dirnames, filenames in os.walk(jenkins_workspace_path):
         if dirpath == jenkins_workspace_path:
