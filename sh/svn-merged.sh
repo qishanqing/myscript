@@ -113,7 +113,7 @@ function svn_from_tb_merged() {
 		if  [ ! -z  $revision ];then
 			st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 			if [ -z $st ];then
-				timeout 20 svn merge $branch@$revision $branch
+				echo tc|svn merge $branch@$revision $branch
 			else
 				die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
 			fi
@@ -124,7 +124,7 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 			if [ ! -z  $revision ];then
 				st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
-					timeout 20 svn merge $branch@$revision $branch
+					echo tc|svn merge $branch@$revision $branch
 				else
 					die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
 				fi
@@ -177,14 +177,14 @@ function svn_dt_merged() {
 		(
 		cd $Basetrunkcode
 		clean_workspace
-		revision=`svn log -l 2 | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
 			svn ci -m "版本回退"
 		else
 			svm merge -r HEAD:$rev .
 			svn ci -m "版本回退"
-		fi | mails-cm -i "已回退版本" || true
+		fi | mails-cm -i "已回退前一个版本" || true
 		)
 }
 
@@ -192,14 +192,14 @@ function svn_db_merged() {
 		(
 		cd $Basebranchcode
 		clean_workspace
-		revision=`svn log -l 2 | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
 			svn ci -m "版本回退"
 		else
 			svm merge -r HEAD:$rev .
 			svn ci -m "版本回退"
-		fi | mails-cm -i "已回退版本" || true
+		fi | mails-cm -i "已回退前一个版本" || true
 		)
 }
 

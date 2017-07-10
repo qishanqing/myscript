@@ -1,0 +1,40 @@
+<% if @error %>
+<div id='error_explanation'> <%= @error%>
+</div>
+<% end %>
+
+<%= javascript_tag "window.onload = builder_onload" %>
+
+<h1 style="text-align:center">Jenkins Auto Web</h1>
+<form method="post" id="vmlinux" action="/jenkins/new">
+	<label>公司邮箱</label><br>
+	<%= email_field_tag "email", params[:email],:value =>"qishanqing@dafy.com" %><br><br>
+	
+	<label>项目类型</label><br>
+	<%#= params[:types] = "add" unless params[:type]; nil %>
+        <%= radio_button_tag "types", "add", params[:types] == "add" %>新建项目&nbsp;&nbsp;
+	<%= radio_button_tag "types", "del", params[:types] == "del" %>删除项目&nbsp;&nbsp;<br><br>
+
+	<label>新建jenkins项目名称</label><br>
+	<%= text_area_tag "add", params[:add],:cols =>30 %><br>
+
+	<label>复制已存在项目名称</label><br>
+	<%= text_area_tag "copy", params[:copy],:cols =>30 %><br>
+
+	<label>删除jenkins项目名称</label><br>
+	<%= text_area_tag "del", params[:del],:cols =>30 %><br>
+
+	<label>僵尸job清理</label><br>
+	<%#= params[:num] = "zombie" unless params[:num]; nil %>
+	<%= radio_button_tag "num", "zombie", params[:num] == "zombie" %>从未运行job&nbsp;&nbsp;
+	<%= radio_button_tag "num", "1年", params[:num] == "1年" %>1年以上&nbsp;&nbsp;
+	<%= radio_button_tag "num", "1月", params[:num] == "1月" %>1月以上&nbsp;&nbsp;
+	<%= radio_button_tag "num", "3月", params[:num] == "3月" %>3月以上&nbsp;&nbsp;
+	<%= radio_button_tag "num", "6月", params[:num] == "6月" %>半年以上&nbsp;&nbsp;<br><br>
+
+	<label>创建完成后发送通知邮件人员名单(公司邮箱，以空格分隔，可不填)</label><br>
+	<%= text_area_tag "extra_mails", params[:extra_mails] %><br>
+	 <input type="submit" value="Submit">
+	 <input name="authenticity_token"
+	 	type="hidden"
+		value="<%= form_authenticity_token %>"/>
