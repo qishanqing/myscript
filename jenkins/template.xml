@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.7.1">
   <actions/>
-  <description></description>
+  <description>构建10环境Web项目</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <jenkins.model.BuildDiscarderProperty>
@@ -14,7 +14,14 @@
     </jenkins.model.BuildDiscarderProperty>
   </properties>
   <scm class="hudson.scm.SubversionSCM" plugin="subversion@1.54">
-    <locations/>
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://192.168.0.220/svn/tech/Branch/20170710-批量修改三方限额/Develop/基础业务/三方网关/GatewayBusiness</remote>
+        <local>.</local>
+        <depthOption>infinity</depthOption>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
     <excludedRegions></excludedRegions>
     <includedRegions></includedRegions>
     <excludedUsers></excludedUsers>
@@ -31,13 +38,14 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
-    <groupId>com.dafy.stage</groupId>
-    <artifactId>cmsStageManager</artifactId>
+    <groupId>com.dafy.accountbusiness</groupId>
+    <artifactId>GatewayBusiness</artifactId>
   </rootModule>
   <goals>clean -Pprod package  -U -Dmaven.test.skip=true</goals>
+  <defaultGoals>install</defaultGoals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
-  <ignoreUpstremChanges>true</ignoreUpstremChanges>
+  <ignoreUpstremChanges>false</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
   <fingerprintingDisabled>false</fingerprintingDisabled>
@@ -55,13 +63,19 @@
   <prebuilders/>
   <postbuilders>
     <hudson.tasks.Shell>
-      <command></command>
+      <command>warname=`/bin/ls ${WORKSPACE}/target |grep war |awk -F &quot;.&quot; &apos;{print $1}&apos; |awk -F &quot;-&quot; &apos;{print $1}&apos;`
+label=`/bin/echo ${SVN_URL} |awk -F &quot;/&quot; &apos;{print $NF}&apos;`
+/bin/rm -rf /deploy/$label/$warname
+/bin/mkdir -p /deploy/${label}/${warname}
+/usr/bin/unzip -o ${WORKSPACE}/target/${warname}*.war -d /deploy/${label}/${warname}
+/rsync_push/rsync.sh ${label} ${warname} 10
+</command>
     </hudson.tasks.Shell>
   </postbuilders>
   <runPostStepsIfResult>
-    <name>FAILURE</name>
-    <ordinal>2</ordinal>
-    <color>RED</color>
+    <name>SUCCESS</name>
+    <ordinal>0</ordinal>
+    <color>BLUE</color>
     <completeBuild>true</completeBuild>
   </runPostStepsIfResult>
 </maven2-moduleset>

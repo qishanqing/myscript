@@ -28,7 +28,7 @@ class BuilderController < ApplicationController
 	  if not result then
 		  render 'index'
 	  else
-		  system  "web-branchcreate.sh", \
+		  system  "svn-branchcreate.sh", \
 			  "-u", user, \
 			  "-t", trunk, \
 			  "-e", email, \

@@ -10,7 +10,7 @@ die() {
 		echo
 		cat ~/tmp/jenkins/output.$$
 	fi
-	) | mails-cm -i "jenkins do faild"
+	) | mails-cm -i "jenkins auto web do failed"
 	rm -f ~/tmp/jenkins/output.$$
 	kill $$
 	exit -1
