@@ -61,8 +61,7 @@ export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 
 clean-jenkins-workspace() {
 	(
-	cd /root/.jenkins/jobs/
-	rm -rf $x | echo $x > ~/tmp/output.$$
+	echo 372233| sudo rm -rf /root/.jenkins/jobs/$x | echo $x >> ~/tmp/output.$$
 	)
 	java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ delete-job $x
 }
@@ -75,6 +74,7 @@ jenkins-clean-never-run () {
 			clean-jenkins-workspace
 		fi
 	done
+	break
 }
 
 jenkins-job-add() {
@@ -90,6 +90,7 @@ jenkins-job-del() {
 }
 
 job-info() {
+(
 cat << EOF
 此次清理jenkins项目如下:
 
@@ -98,6 +99,7 @@ cat << EOF
 清理后剩余jenkins项目： `java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ list-jobs | wc -l`
 	
 EOF
+) | mails-cm -i "jenkinszombie已清理" || true
 }
 
 jenkins-clean-range-run () {
@@ -105,6 +107,9 @@ jenkins-clean-range-run () {
 	for x in $j;do
 		c=`curl --user qishanqing:372233 --silent -f  http://192.168.0.232:8080/job/$x/lastBuild/ | xargs -d ">" -n1 | grep "启动时间"`
 		case "$num" in
+			zombie)
+			jenkins-clean-never-run
+			;;
 			1月)
 			if [[ "$c" =~ [0-9]" 年" ]];then
 				clean-jenkins-workspace
@@ -145,6 +150,10 @@ jenkins-clean-range-run () {
 				continue
 			fi
 			;;
+			--)
+			shift
+			break
+			;;
 			*)
 			echo "Input Error!"
 			;;
@@ -156,9 +165,6 @@ if test $types = add;then
 	jenkins-job-add
 elif test $types = del;then
 	jenkins-job-del
-elif test $num = zombie;then
-	jenkins-clean-never-run
-	job-info
 else
 	jenkins-clean-range-run
 	job-info
