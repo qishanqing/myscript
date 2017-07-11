@@ -1,0 +1,79 @@
+<% if @error %>
+<div id='error_explanation'> <%= @error%>
+</div>
+<% end %>
+
+<%= javascript_tag "window.onload = builder_onload" %>
+
+<%
+   def default_checked(name, val, default)
+   if params[name] == val || default
+   'checked'
+   else
+   ''
+   end
+   end
+   %>
+<form method="post" id="vmlinux" action="/start">
+  <label>公司邮箱</label>
+  <%= email_field_tag "user_email", params[:user_email] %>
+
+  <label>公司域密码（不是邮箱密码，是共享目录密码，可在 http://password.smartisan.cn/ 修改，忘记密码请联系IT）</label>
+  <%= password_field_tag "user_password", params[:user_password] %>
+
+  <label>产品名称</label>
+<%= params[:product_name] = "t1" unless params[:product_name]; nil %>
+<%= radio_button_tag "product_name", "odin", params[:product_name] == "odin" %>odin&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "playground", params[:product_name] == "playground" %>playground&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "surabaya", params[:product_name] == "surabaya" %>surabaya+colombo&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "t1", params[:product_name] == "t1" %>t1&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "t2", params[:product_name] == "t2" %>t2&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "T2M", params[:product_name] == "T2M" %>T2M&nbsp;&nbsp;
+<%= radio_button_tag "product_name", "u1", params[:product_name] == "u1" %>u1&nbsp;&nbsp;
+  <label>分支</label>
+  <div id="build_branches">
+    <input type="radio" name="branch" value="dev" checked>主线
+    <input type="radio" name="branch" value="mol">mol
+  </div>
+
+  <label>Build设备</label>
+  <div id="build_configs">
+    <%= hidden_field_tag "total_devices", "2" %>
+    <%= check_box_tag "build_device1", "icesky_msm8992" %>icesky_msm8992
+    <%= check_box_tag "build_device2", "icesky_msm8994" %>icesky_msm8994
+  </div>
+
+  <label>Build类型</label>
+  <%= check_box_tag "build_variant2", "SA+user", params[:build_variant2] == 'SA+user' %> SA+user(旧Key签名的user版本) <br/>
+  <%= check_box_tag "build_variant3", "userdebug", params[:build_variant3] == 'userdebug' %> userdebug(旧Key签名的userdebug版本) <br/>
+  <%= check_box_tag "build_variant4", "eng", params[:build_variant4] == 'eng' %> eng <br/>
+  <%= check_box_tag "build_variant1", "SEKSA+user", params[:build_variant1] == 'SEKSA+user' %> SEKSA+user（出货版本，加上security boot、正式apk签名Key等开关） <br/>
+  <%= check_box_tag "build_variant5", "SE+eng", params[:build_variant5] == 'SE+eng' %> SE+eng（工厂版本，加上security boot开关） <br/>
+  <%= check_box_tag "build_variant6", "K+userdebug", params[:build_variant6] == 'K+userdebug' %> K+userdebug（正式APK签名Key的userdebug版本） <br/>
+  <%= check_box_tag "build_variant7", "KSA+user", params[:build_variant7] == 'KSA+user' %> KSA+user（正式APK签名Key的user版本） <br/>
+  <%= check_box_tag "build_variant8", "SE+userdebug", params[:build_variant8] == 'SE+userdebug' %> SE+userdebug (加上security boot开关，旧Key签名的userdebug版本)<br/>
+  <%= check_box_tag "build_variant9", "SEK+userdebug", params[:build_variant9] == 'SEK+userdebug' %> SEK+userdebug (加上security boot开关，正式APK签名Key的userdebug版本)<br/>
+
+  <label>Ota</label>
+  <%= params[:ota] = 'none' unless params[:ota]; nil %>
+  <%= radio_button_tag "ota", "none", params[:ota] == 'none' %> 不需要OTA包 <br/>
+  <%= radio_button_tag "ota", "full", params[:ota] == 'full' %> 只要全包OTA <br/>
+  <%= radio_button_tag "ota", "diff", params[:ota] == 'diff' %> 差分OTA（包含全包和增量包）<br/>
+  <p/>
+
+  <input type="submit" value="Submit">
+  <input name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>"/>
+
+  <label>编译完成后发送通知邮件人员名单（公司邮箱，以空格分隔，可不填）</label>
+  <%= text_area_tag "extra_mails", params[:extra_mails] %>
+
+  <label>编译描述（会出现在编译完成通知邮件中）</label>
+  <%= text_area_tag "build_mail_description", params[:build_mail_description] %>
+
+  <label>CM高级选项</label>
+  <%= check_box_tag "daily_build", "true", params[:daily_build] == 'true' %>创建为Daily Build任务<br/>
+  <%= check_box_tag "do_not_start", "true", params[:do_not_start] == 'true' %>不要马上启动任务，CM需要改一下配置
+
+</form>
