@@ -1,6 +1,20 @@
 #!/bin/bash
 
-set -x
+set -ex
+
+echo pid is $$
+die() {
+	(
+	echo "$@"
+	if test -e ~/tmp/jenkins/output.$$;then
+		echo
+		cat ~/tmp/jenkins/output.$$
+	fi
+	) | mails-cm -i "jenkins do faild"
+	rm -f ~/tmp/jenkins/output.$$
+	kill $$
+	exit -1
+}
 
 TEMP=$(getopt -o a:d:n:c:T:e:E:h --long types:,email:,extra_mails:,add:,copy:,del:,num:,help -n $(basename -- $0) -- "$@")
 add=
@@ -61,7 +75,7 @@ export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 
 clean-jenkins-workspace() {
 	(
-	echo 372233| sudo rm -rf /root/.jenkins/jobs/$x | echo $x >> ~/tmp/output.$$
+	echo 372233| sudo rm -rf /root/.jenkins/jobs/$x | echo $x >> ~/tmp/jenkins/output.$$
 	)
 	java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ delete-job $x
 }
@@ -78,15 +92,17 @@ jenkins-clean-never-run () {
 }
 
 jenkins-job-add() {
+	(
         if test -z "$copy";then
-		cat ~/myscript/jenkins/template.xml | java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ create-job "$add" 
+		cat ~/myscript/jenkins/template.xml | java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ create-job "$add"
 	else
 		java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ copy-job "$copy" "$add"
 	fi
+	) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job add failed"
 }
 
 jenkins-job-del() {
-	java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ delete-job $del
+	java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
 }
 
 job-info() {
@@ -94,12 +110,13 @@ job-info() {
 cat << EOF
 此次清理jenkins项目如下:
 
-`cat ~/tmp/output.$$`
+`cat ~/tmp/jenkins/output.$$`
 
 清理后剩余jenkins项目： `java -jar   ~/myscript/jenkins/jenkins-cli.jar -s http://192.168.0.232:8080/ list-jobs | wc -l`
 	
 EOF
 ) | mails-cm -i "jenkinszombie已清理" || true
+rm -rf ~/tmp/jenkins/output.$$
 }
 
 jenkins-clean-range-run () {
