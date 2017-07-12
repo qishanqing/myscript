@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x 
+#set -x 
 
 . ~/myscript/product-config/svn/h5
 
@@ -12,10 +12,10 @@ function h5_access() {
 
 	for p in ${h5_project[@]};do
 		if [[  `$SVNLOOK changed $REPOS -t $TXN` =~ "$p" ]];then
-			echo -e  "$u: 你没有权限提交此文件(common/config.json/localcache.json/staticGuidePage.htm),具体详情请咨询陈杭征" 1>&2
+			echo -e  "you have no access modify this files(common/config.json/localcache.json/staticGuidePage.htm),owner is chenhangzheng" 1>&2
 			exit 1
 		fi
-	done || 2>&1 tee -a ~/tmp/svn_pro_commit.log
+	done  tee -a ~/tmp/svn_pro_commit.log 2>&1
 }
 
 h5_access
