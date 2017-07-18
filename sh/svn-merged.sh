@@ -1,6 +1,5 @@
-#!/bin/bash
+ #!/bin/bash
 
-set -x
 
 echo pid is $$
 die() {
@@ -12,8 +11,8 @@ die() {
 	fi
 	) | mails-cm -i "svn merged faild"
 	rm -f ~/tmp/merged/output.$$
-	kill $$
-	exit -1
+#	kill $$
+#	exit -1
 }
 
 set -x
@@ -74,6 +73,7 @@ while true;do
 done
 
 function Basecode() {
+	unset trunk
 	if test -z $trunk;then
 		trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g'`
 	fi
@@ -209,7 +209,7 @@ if test $types = add;then
 		if test -d $Basetrunkcode;then
 			svn_from_tb_merged
 		else
-			die "Trunk project code no found"
+			die "${trunk#*Trunk/}  project code no found"
 		fi
 	done
 elif test $types = del;then
