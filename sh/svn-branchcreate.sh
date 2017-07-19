@@ -5,12 +5,12 @@ echo pid is $$
 die() {
     (
         echo "$@"
-	if test -e output.$$;then
+	if test -e ~/tmp/output.$$;then
 		echo 
-		cat output.$$
+		cat ~/tmp/output.$$
 	fi
     ) | mails-cm -i "svn branch create failed"
-    rm -rf output.$$
+    rm -rf ~/tmp/output.$$
     kill $$
     exit -1
 }
@@ -170,7 +170,8 @@ function addbranch() {
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
 			inport_source
-			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
+			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
+			rm -f ~/tmp/output.$$
 			echo ${branch_name} >> /home/svnmodify/add_branch.log
 			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${email%@*}');"
 			check-acces
@@ -218,7 +219,8 @@ function delbranch() {
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
 		inport_source
-		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限" >output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
+		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限" >~/tmp/output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
+		rm -f ~/tmp/output.$$
 		echo ${source_name} >> /home/svnmodify/del_branch.log
 		cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (
