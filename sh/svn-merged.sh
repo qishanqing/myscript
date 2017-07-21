@@ -73,7 +73,6 @@ while true;do
 done
 
 function Basecode() {
-	unset trunk
 	if test -z $trunk;then
 		trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g'`
 	fi
@@ -211,6 +210,7 @@ if test $types = add;then
 		else
 			die "${trunk#*Trunk/}  project code no found"
 		fi
+		unset trunk
 	done
 elif test $types = del;then
 	for branch in ${branchs[@]};do

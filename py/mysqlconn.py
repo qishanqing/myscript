@@ -24,5 +24,3 @@ else:
 c.close()
 conn.commit()
 conn.close()
-
-

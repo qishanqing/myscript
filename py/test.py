@@ -1,13 +1,13 @@
 # coding:utf-8
 #!/usr/bin/python
 
-import os,sys,re,string
+import os,sys,re,string,jenkins
 #print sys.argv[:]
 #c = raw_input("\n\nPress the enter key to exit: ")
 #b = os.path.dirname(os.path.dirname(__file__))
 #print "you input words is : %s " % c
 #print b
-
+"""
 class Student(object):
 	def __init__(self,name,score):
 		self.__name = name
@@ -39,6 +39,12 @@ print c
 print d
 print e
 print f
+"""
 
+jenkins_server_url='http://192.168.0.232:8080/'
+user_id='qishanqing'
+api_token='3de7e0a51203ea88896766710f842ddb'
+server='jenkins.jenkins(jenkins_server_url, username=user_id, password=api_token)'
 
-
+me = 'server.get_whoami()'
+print (me['fullName'])
