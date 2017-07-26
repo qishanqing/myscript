@@ -71,19 +71,20 @@ while true;do
 	esac
 done
 
-jenkins_url='http://192.168.0.232:8080'
-jenkins_addrs='/root/.jenkins'
+jenkins_url="http://192.168.0.232:8080"
+jenkins_addrs="/root/.jenkins"
+jenkins_cli="/home/qishanqing/myscript/jenkins/jenkins-cli.jar"
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 
 clean-jenkins-workspace() {
 	(
 	echo 372233| sudo rm -rf $jenkins_addrs/jobs/$x | echo $x >> ~/tmp/jenkins/output.$$
 	)
-	java -jar   ~/myscript/jenkins/jenkins-cli.jar -s $jenkins_url/ delete-job $x
+	java -jar   $jenkins_cli -s $jenkins_url/ delete-job $x
 }
 
 jenkins-clean-never-run () {
-	j=`java -jar   ~/myscript/jenkins/jenkins-cli.jar -s $jenkins_url/ list-jobs`
+	j=`java -jar   $jenkins_cli -s $jenkins_url/ list-jobs`
 	for x in $j;do
 		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/buildNumber`
 		if test -z "$c";then
@@ -96,15 +97,15 @@ jenkins-clean-never-run () {
 jenkins-job-add() {
 	(
         if test -z "$copy";then
-		cat ~/myscript/jenkins/template.xml | java -jar   ~/myscript/jenkins/jenkins-cli.jar -s $jenkins_url/ create-job "$add"
+		cat ~/myscript/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ create-job "$add"
 	else
-		java -jar   ~/myscript/jenkins/jenkins-cli.jar -s $jenkins_url/ copy-job "$copy" "$add"
+		java -jar   $jenkins_cli -s $jenkins_url/ copy-job "$copy" "$add"
 	fi
 	) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job add failed"
 }
 
 jenkins-job-del() {
-	java -jar   ~/myscript/jenkins/jenkins-cli.jar -s $jenkins_url/ delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
+	java -jar   $jenkins_cli -s $jenkins_url/ delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
 }
 
 job-info() {
@@ -114,7 +115,7 @@ cat << EOF
 
 `cat ~/tmp/jenkins/output.$$`
 
-清理后剩余jenkins项目： `java -jar   ~/myscript/jenkins/jenkins-cli.jar -s $jenkins_url/ list-jobs | wc -l`
+清理后剩余jenkins项目： `java -jar   $jenkins_cli -s $jenkins_url/ list-jobs | wc -l`
 	
 EOF
 ) | mails-cm -i "jenkinszombie已清理" || true
@@ -122,7 +123,7 @@ rm -rf ~/tmp/jenkins/output.$$
 }
 
 jenkins-clean-range-run () {
-	j=`java -jar   ~/myscript/jenkins/jenkins-cli.jar -s $jenkins_url/ list-jobs`
+	j=`java -jar   $jenkins_cli -s $jenkins_url/ list-jobs`
 	for x in $j;do
 		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/ | xargs -d ">" -n1 | grep "启动时间"`
 		case "$num" in

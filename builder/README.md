@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Rails 5.1.1
+
+ruby 2.4.1p111

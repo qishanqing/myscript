@@ -179,11 +179,11 @@ function svn_dt_merged() {
 		revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
-			svn ci -m "版本回退"
+			svn ci -m "版本回退至: $revision"
 		else
-			svm merge -r HEAD:$rev .
-			svn ci -m "版本回退"
-		fi | mails-cm -i "已回退前一个版本" || true
+			svn merge -r HEAD:$rev .
+			svn ci -m "版本回退至: $rev"
+		fi | mails-cm -i "已回退版本" || true
 		)
 }
 
@@ -194,11 +194,11 @@ function svn_db_merged() {
 		revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
-			svn ci -m "版本回退"
+			svn ci -m "版本回退: $revision"
 		else
-			svm merge -r HEAD:$rev .
-			svn ci -m "版本回退"
-		fi | mails-cm -i "已回退前一个版本" || true
+			svn merge -r HEAD:$rev .
+			svn ci -m "版本回退: $rev"
+		fi | mails-cm -i "已回退版本" || true
 		)
 }
 

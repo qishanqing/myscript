@@ -53,17 +53,18 @@ class JKUL:
 
 	def get_jenkin_access(self):
 		try:
-			data = urllib.urlencode(values)
-			request = urllib2.Request(url,data)
+			#data = urllib.urlencode(values)
+			#request = urllib2.Request(url,data)
+			request = urllib2.Request(url)
 			response = urllib2.urlopen(request)
-			format  = "\n"+self.tool.replace(response.read())+"\n"
+			format  = "\n"+Tool().replace(response.read())+"\n"
 			return format
 		except urllib2.URLError, e:
 			if hasattr(e,"reason"):
 				print u"连接失败,错误原因",e.reason
 				return None
-print u"请输入帖子代号"
-url = "http://192.168.0.232:8080/login"
-values = {"username":"qishanqing","password":"372233"}
+#url = "http://192.168.0.232:8080/login"
+#values = {"username":"qishanqing","password":"372233"}
+url = "http://www.sina.com.cn"
 jkul = JKUL(url)
 print jkul.get_jenkin_access()
