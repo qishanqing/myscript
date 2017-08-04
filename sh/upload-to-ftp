@@ -1,0 +1,66 @@
+#!/bin/bash
+set -x
+
+## start code-generator "^\\s *#\\s *"
+# generate-getopt d:dir
+## end code-generator
+## start generated code
+TEMP=$(getopt -o d: --long "dir:"  -n $(basename $0) -- "$@")
+dir=
+eval set -- "$TEMP"
+while true; do
+    case "$1" in
+        -d|--dir)
+            dir=$2
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            die "internal error"
+            ;;
+    esac
+done
+
+## end generated code
+
+if test $# = 0 -o -z "$dir"; then
+    mails-cm -i "Error: Usage $(basename $0) -d dir ftp-urls..."
+fi
+
+filename=$(basename "$dir")
+name=$(dirname "$dir")/$(echo -n "$filename" | perl -npe 's,\.\d+\.tmp$,,').zip
+if test -f "$dir"; then
+    name=$dir
+fi
+
+(
+
+#    md5sum "$name" > "$name".md5
+#    ls -l "$name" > "$name".size
+
+    for ftp in "$@"; do
+        ftp_dir=$(echo "$ftp" | perl -npe 's,.*?//.*?/,,')
+        if test "$SMARTCM_TEST_FTP"; then
+            ftp_dir=$ftp_dir/debug-ftp-upload
+        fi
+        ftp_host=$(echo "$ftp" | perl -npe 's,^(.*?//.*?/).*,$1,')
+        for (( n = 0; n < 20; n++ )); do
+
+            if time lftp -c "connect $ftp_host;
+                set ssl:verify-certificate no;
+                $(if test "$ftp_dir"; then echo "mkdir -p $ftp_dir || echo true; cd $ftp_dir;"; fi)
+		put '${name}'";then
+		break
+            fi
+
+            if test "$n" = 19; then
+                mails-cm "Upload $name to $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
+            fi
+
+            sleep 30
+        done 2>&1 | tee ~/tmp/$filename.${ftp_host//\//%}.log&
+    done
+) > ~/tmp/$filename.ftp.log 2>&1 &

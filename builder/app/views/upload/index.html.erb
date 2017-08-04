@@ -1,0 +1,13 @@
+<% if @error %>
+<div id='error_explanation'> <%= @error%>
+</div>
+<% end %>
+
+<%= javascript_tag "window.onload = builder_onload" %>
+<h1>File Upload</h1>
+<form method="post" id="vmlinux" action="/upload/new">
+<%= form_for :upload  do |f| %>
+	<label>upload_file</label><br><br>
+	<%= f.file_field :uploadFile  %><br>
+	<%= f.submit "Upload" %>
+<% end %>
