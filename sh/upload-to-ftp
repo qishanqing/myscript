@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 
 ## start code-generator "^\\s *#\\s *"
 # generate-getopt d:dir
@@ -57,7 +57,7 @@ fi
             fi
 
             if test "$n" = 19; then
-                mails-cm "Upload $name to $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
+                mails-cm -i "Upload $name to $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
             fi
 
             sleep 30

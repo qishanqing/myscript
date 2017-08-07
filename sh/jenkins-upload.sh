@@ -1,25 +1,22 @@
 #!/bin/bash
-set -x
+#set -x
 
 DT=`date '+%Y%m%dT%H%M%S'`
 
-clean_workspace() {
-                svn cleanup .
-                svn st | grep ^? | xargs rm -rf
-                svn revert --depth=infinity .
-                svn up .
-
-}
+rm -rf upload
 
 find -maxdepth 2 -name *.war -print | while read filename
-do
-	cp -rf $filename .
+do	
+	mkdir -p upload
+	cp -rf $filename upload/
 	filename=${filename##*/}
 	file="${filename%%.*}-$DT"
-	unzip -oq $filename -d upload
-	mv upload dev-$file
-	zip -r dev-$file.zip dev-$file
+	unzip -oq upload/$filename -d upload/dev-$file
+	(
+	cd upload
+	zip -r dev-$file.zip dev-$file/*
 	upload-to-ftp -d dev-$file.zip ftp://www:0lHtrr@192.168.0.51/
+	)
 done
 
 
