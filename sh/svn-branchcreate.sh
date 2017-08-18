@@ -126,13 +126,13 @@ $users
 *=
 EOF
 fi
-            ) | cat  >> /mnt/svn/authz.conf || echo "access add error"
+            ) | ssh root@192.168.0.220 "cat  >> /svn/authz.conf" || echo "access add error"
         fi 
     )
 }
 
 function check-acces () {
-	grep -c $access] /mnt/svn/authz.conf | 
+	ssh root@192.168.0.220 "grep -c $access] /svn/authz.conf" | 
 	while read num;do
 		if [ $num -eq 0 ]
 		then
@@ -140,11 +140,7 @@ function check-acces () {
 			svn-connt
 
 		else
-			if [[ `sed "/$access]/,/^[ \t]*$/!d;/$access]/d;/^[ \t]*$/d" /mnt/svn/authz.conf` =~ "$users" ]];then
-				echo "access authz added"
-			else
-				sed -i "`grep -n $access /mnt/svn/authz.conf | awk -F ':' '{print $1}'`a $users"  /mnt/svn/authz.conf
-			fi                              
+			echo "access authz added"
 		fi
 	done
 }
