@@ -8,10 +8,12 @@ changed=`$SVNLOOK changed $REPOS -t $TXN`
 
 function h5_access() {
 	if ! [[ "${h5_author[@]}" =~ "$author" ]];then
-		if [[  "${h5_project[@]}" =~ "$changed" ]];then
-			echo -e  "\n$author: you have no access modify this files(common/config.json/localcache.json/staticGuidePage.htm),owner is chenhangzheng team" 1>&2
-			exit 1
-		fi
+		for p in "${h5_project[@]}";do
+			if [[  "$changed" =~ "$p" ]];then
+				echo -e  "\n$author: you have no access modify this files(common/config.json/localcache.json/staticGuidePage.htm),owner is chenhangzheng team" 1>&2
+				exit 1
+			fi
+		done
 	else
 		return 0
 	fi >>~/tmp/svn_pro_commit.log
@@ -19,10 +21,12 @@ function h5_access() {
 
 function mallStage_access() {
 	if ! [[ "${mallStage_author[@]}" =~ "$author" ]];then
-			if [[  "${mallStage_project[@]}" =~ "$changed" ]];then
+		for p in ""${mallStage_project[@]}"";do
+			if [[  "$changed" =~ "$p" ]];then
 				echo -e  "\n$author: you have no access modify this files(mallStage),owner is wanghaitao team" 1>&2
 				exit 1
 			fi
+		done
 	else
 		return 0
 	fi >>~/tmp/svn_pro_commit.log
