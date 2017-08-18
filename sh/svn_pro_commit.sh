@@ -7,41 +7,31 @@ author=`$SVNLOOK author $REPOS -t $TXN`
 changed=`$SVNLOOK changed $REPOS -t $TXN`
 
 function h5_access() {
-	for u in ${h5_author[@]};do
-		if [[ "$author" =~ "$u" ]];then
-			return 0
-		else
-			for p in ${h5_project[@]};do
-				if [[  "$changed" =~ "$p" ]];then
-					echo -e  "$author: you have no access modify this files(common/config.json/localcache.json/staticGuidePage.htm),owner is chenhangzheng team" 1>&2
-					exit 1
-				fi
-			done
+	if ! [[ "${h5_author[@]}" =~ "$author" ]];then
+		if [[  "${h5_project[@]}" =~ "$changed" ]];then
+			echo -e  "\n$author: you have no access modify this files(common/config.json/localcache.json/staticGuidePage.htm),owner is chenhangzheng team" 1>&2
+			exit 1
 		fi
-	done >> ~/tmp/svn_pro_commit.log 2>&1
+	else
+		return 0
+	fi >>~/tmp/svn_pro_commit.log
 }
 
 function mallStage_access() {
-	for u in ${mallStage_author[@]};do
-		if [[ "$author" =~ "$u" ]];then
-			return 0
-		else
-			for p in ${mallStage_project[@]};do
-				if [[  "$changed" =~ "$p" ]];then
-					echo -e  "$author: you have no access modify this files(mallStage),owner is wanghaitao team" 1>&2
-					exit 1
-				fi
-			done
-		fi
-	done >> ~/tmp/svn_pro_commit.log 2>&1
+	if ! [[ "${mallStage_author[@]}" =~ "$author" ]];then
+			if [[  "${mallStage_project[@]}" =~ "$changed" ]];then
+				echo -e  "\n$author: you have no access modify this files(mallStage),owner is wanghaitao team" 1>&2
+				exit 1
+			fi
+	else
+		return 0
+	fi >>~/tmp/svn_pro_commit.log
 }
 
 function admin_group() {
-        for u in ${admin[@]};do
-                if [[ "$author" =~ "$u" ]];then
-                        exit
-                fi
-        done
+	if [[ "${admin[@]}" =~ "$author" ]];then
+		exit 0
+        fi
 }
 
 admin_group
