@@ -74,13 +74,13 @@ $P3=rw
 *=
 EOF
 fi
-            ) | cat  >> /mnt/svn/authz.conf || echo "access add error"
+            ) | ssh root@192.168.0.220 "cat  >> /svn/authz.conf" || echo "access add error"
         fi 
     )
 }
 
 check-acces (){
-	grep -c $access] /mnt/svn/authz.conf | 
+	ssh root@192.168.0.220 "grep -c $access] /svn/authz.conf" |
 	while read num;do
 		if [ $num -eq 0 ]
 		then
