@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set +x
 
 DT=`date '+%Y%m%dT%H%M%S'`
 
@@ -9,7 +9,7 @@ function exclue() {
 
 rm -rf upload
 
-find -maxdepth 2 -name *.war -print | while read filename
+find -maxdepth 2 -name *.war -print -o -maxdepth 3 -name *.war -print | while read filename
 do	
 	mkdir -p upload
 	cp -rf $filename upload/
@@ -23,6 +23,3 @@ do
 	upload-to-ftp -d dev-$file.zip ftp://www:0lHtrr@192.168.0.51/
 	)
 done
-
-
-

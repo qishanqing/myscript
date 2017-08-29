@@ -1,20 +1,22 @@
 #!/bin/bash
-#set -x
+set +x
+
+export BUILD_ID=dontkillme
 
 DT=`date '+%Y%m%dT%H%M%S'`
 
-function exclue() {
-	cat /rsync_push/exclude_dir/22/$JOB_NAME | xargs -i  rm -f {}
-}
-
 rm -rf upload
 
-find -maxdepth 2 -name *.war -print | while read filename
+find -maxdepth 2 -name *.war -print -o -maxdepth 3 -name '*.war' -print | while read filename
 do	
 	mkdir -p upload
 	cp -rf $filename upload/
 	filename=${filename##*/}
-	file="${filename%%.*}-$DT"
+	if [[ "$filename" =~ '-' ]];then
+		file="${filename%%-*}-$DT"
+	else
+		file="${filename%%.*}-$DT"
+	fi
 	unzip -oq upload/$filename -d upload/dev-$file
 	(
 	cd upload
@@ -22,6 +24,3 @@ do
 	upload-to-ftp -d dev-$file.zip ftp://www:0lHtrr@192.168.0.51/
 	)
 done
-
-
-
