@@ -1,5 +1,4 @@
- #!/bin/bash
-
+#!/bin/bash
 
 echo pid is $$
 die() {
@@ -102,6 +101,29 @@ for y in $branch;do
 done
 )
 
+function svn_conflict_files(){
+		(
+		filenames=`svn st | grep ^C | awk '{print $2}'`
+		for filename in $filenames;do
+			svn resolve --accept=theirs-conflict $filename
+		done
+		)
+}
+
+function svn_conflict_trees(){
+		(
+		filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
+		filenames1=`svn st| grep ^! | awk '{print $3}'`
+		for filename in $filenames $filenames1;do
+			if [[ "$filename" =~ "@" ]];then
+				svn resolve --accept=working $filename@
+			else
+				svn resolve --accept=working $filename
+			fi
+		done
+		)
+}
+
 function svn_from_tb_merged() {
 		(
 		set -x
@@ -112,26 +134,42 @@ function svn_from_tb_merged() {
 		if  [ ! -z  $revision ];then
 			st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 			if [ -z $st ];then
-				echo tc|svn merge $branch@$revision $branch
+				svn merge $branch@$revision $branch
 			else
-				die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
+				echo p | svn merge $branch@$revision $branch
+				svn_conflict_files
+				svn_conflict_trees
 			fi
 		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233
+Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233 ||  
+				(
+				svn_conflict_files
+				svn_conflict_trees
+		svn ci -m "$task
+Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233 
+				)
 		else
 			revision=`svn log --stop-on-copy $branch | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
 			if [ ! -z  $revision ];then
 				st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
-					echo tc|svn merge $branch@$revision $branch
+					svn merge $branch@$revision $branch
 				else
-					die "Svn merged conflicts the $revision-$head from ${branch#*tech/}"
+					echo p | svn merge $branch@$revision $branch
+					svn_conflict_files
+					svn_conflict_trees
 				fi
 			fi
 		svn ci -m "$task
+Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233 || 
+				(
+				svn_conflict_files
+				svn_conflict_trees
+		svn ci -m "$task
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233
-		fi || 2>&1 >~/tmp/merged/output.$$ | die "Svn merged conflicts the reasons for failure are as follows"
-		) | mails-cm -i "code merged from ${branch#*tech/}" || true
+				) 2>&1 >~/tmp/merged/output.$$ | die "Svn merged conflicts the reasons for failure are as follows"
+		fi
+			) | mails-cm -i "code merged from ${branch#*tech/}" || true
 }
 
 function svn_from_bt_merged() {

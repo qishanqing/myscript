@@ -1,18 +1,19 @@
 #!/usr/bin/python
 
-import os,string
-'''
-cout = 0
+import os,string,BaseHTTPServer
 
-for i in range(1,10):
-	for j in range(1,10):
-		for k in range(1,5):
-			if i!=j and i!=k and j!=k:
-				print "zhong shu shi : %d" % cout
-				print i*100+j*10+k
-				cout += 1
-'''
+def __init__(self):
+	self.path = path
 
-for i in range(1,9):
-	for j in range(1,9):
+def handle_file(full_path):
+	try:
+		with open(full_path,'rb') as reader:
+			content = reader.read()
+		self.send_content(content)
+	except IOError as msg:
+		msg = "'{0}' cannot be read: {1}".format(path,msg)
+		self.handle_error(msg)
+path = "/home/qishanqing"
+full_path = os.getcwd()
 
+print handle_file(full_path)
