@@ -114,7 +114,7 @@ function svn_conflict_trees(){
 		(
 		filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
 		filenames1=`svn st| grep ^! | awk '{print $3}'`
-		for filename in $filenames $filenames1;do
+		for filename in "$filenames $filenames1";do
 			if [[ "$filename" =~ "@" ]];then
 				svn resolve --accept=working $filename@
 			else
@@ -167,7 +167,7 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 				svn_conflict_trees
 		svn ci -m "$task
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233
-				) 2>&1 >~/tmp/merged/output.$$ | die "Svn merged conflicts the reasons for failure are as follows"
+				)
 		fi
 			) | mails-cm -i "code merged from ${branch#*tech/}" || true
 }
