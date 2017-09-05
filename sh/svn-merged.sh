@@ -109,7 +109,7 @@ function svn_conflict_files(){
 		done
 		)
 }
-
+svn_
 function svn_conflict_trees(){
 		(
 		filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
