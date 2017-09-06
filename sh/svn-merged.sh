@@ -116,9 +116,9 @@ function svn_conflict_trees(){
 		filenames1=`svn st| grep ^! | awk '{print $3}'`
 		for filename in "$filenames $filenames1";do
 			if [[ "$filename" =~ "@" ]];then
-				svn resolve --accept=working $filename@
+				svn resolve --accept=theirs-conflict $filename@
 			else
-				svn resolve --accept=working $filename
+				svn resolve --accept=theirs-conflict $filename
 			fi
 		done
 		)
