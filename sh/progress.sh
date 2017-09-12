@@ -1,4 +1,7 @@
 #!/bin/bash
+set +x
+script_dir=$(dirname $(readlink -f $0 ))
+
 i=0;
 str=""
 arr=("|" "/" "-" "\\")

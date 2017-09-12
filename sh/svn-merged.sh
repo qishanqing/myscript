@@ -103,22 +103,26 @@ done
 
 function svn_conflict_files(){
 		(
-		filenames=`svn st | grep ^C | awk '{print $2}'`
+		local filenames=`svn st | grep ^C | awk '{print $2}'`
 		for filename in $filenames;do
+		    if [[ "$filename" =~ "@" ]];then
+			svn resolve --accept=theirs-conflict $filename@
+		    else
 			svn resolve --accept=theirs-conflict $filename
+		    fi 
 		done
 		)
 }
-svn_
+
 function svn_conflict_trees(){
 		(
-		filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
-		filenames1=`svn st| grep ^! | awk '{print $3}'`
-		for filename in "$filenames $filenames1";do
+		local filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
+		local filenames1=`svn st| grep ^! | awk '{print $3}'`
+		for filename in $filenames $filenames1;do
 			if [[ "$filename" =~ "@" ]];then
-				svn resolve --accept=theirs-conflict $filename@
+			    svn resolve --accept=working $filename@
 			else
-				svn resolve --accept=theirs-conflict $filename
+			    svn resolve --accept=working $filename
 			fi
 		done
 		)
@@ -129,7 +133,7 @@ function svn_from_tb_merged() {
 		set -x
 		cd $Basetrunkcode
 		clean_workspace
-		revision=`svn log  | grep -C  3 "${branch#*tech/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		local revision=`svn log  | grep -C  3 "${branch#*tech/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 		if  [ ! -z  $revision ];then
 			st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
@@ -149,7 +153,7 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233 
 				)
 		else
-			revision=`svn log --stop-on-copy $branch | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
+			local revision=`svn log --stop-on-copy $branch | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
 			if [ ! -z  $revision ];then
 				st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
@@ -214,7 +218,7 @@ function svn_dt_merged() {
 		(
 		cd $Basetrunkcode
 		clean_workspace
-		revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
+		local revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
 			svn ci -m "版本回退至: $revision"
@@ -229,7 +233,7 @@ function svn_db_merged() {
 		(
 		cd $Basebranchcode
 		clean_workspace
-		revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
+		local revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
 		if [ -z $rev ];then
 			svn merge -r HEAD:$revision .
 			svn ci -m "版本回退: $revision"
