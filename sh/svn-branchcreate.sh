@@ -239,6 +239,12 @@ done
 
 if test $types = add;then
 	addbranch
+elif test $types = del;then
+    delbranch
+elif test $types = cl;then
+    createbaselines
+elif test $types = ct;then
+    createtrunk
 else
-	delbranch
+    addtrunk
 fi

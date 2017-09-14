@@ -101,6 +101,8 @@ for y in $branch;do
 done
 )
 
+
+
 function svn_conflict_files(){
 		(
 		local filenames=`svn st | grep ^C | awk '{print $2}'`
@@ -119,13 +121,24 @@ function svn_conflict_trees(){
 		local filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
 		local filenames1=`svn st| grep ^! | awk '{print $3}'`
 		for filename in $filenames $filenames1;do
-			if [[ "$filename" =~ "@" ]];then
+		    	if [[ "$filename" =~ "@" ]];then
 			    svn resolve --accept=working $filename@
 			else
 			    svn resolve --accept=working $filename
 			fi
-		done
-		)
+			echo $filename >> ~/tmp/project_list.txt
+		done 
+		) |
+		    (
+			rm -rf ~/tmp/conflict/*
+			mkdir -p ~/tmp/conflict
+			svn co $branch ~/tmp/conflict/$branch
+			cd ~/tmp/conflict/$branch
+			for x in `cat ~/tmp/project_list.txt`;do
+			    cp-with-dir-struct $Basetrunkcode $x
+			done
+			echo > ~/tmp/project_list.txt
+		    ) 
 }
 
 function svn_from_tb_merged() {
