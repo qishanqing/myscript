@@ -131,7 +131,7 @@ function svn_conflict_trees(){
 		) |
 		    (
 			rm -rf ~/tmp/conflict/*
-			mkdir -p ~/tmp/conflict
+			mkdir -p ~/tmp/conflict || true
 			svn co $branch ~/tmp/conflict/$branch
 			cd ~/tmp/conflict/$branch
 			for x in `cat ~/tmp/project_list.txt`;do
