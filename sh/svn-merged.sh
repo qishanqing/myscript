@@ -127,19 +127,25 @@ function svn_conflict_trees(){
 			    svn resolve --accept=working $filename
 			fi
 			echo $filename >> ~/tmp/project_list.txt
-		done 
-		) |
-		    (
+		done
+		if test -z `cat ~/tmp/project_list.txt`;then
+		    return 0
+		else
+                    (
+			set -x
 			rm -rf ~/tmp/conflict/*
 			mkdir -p ~/tmp/conflict || true
-			svn co $branch ~/tmp/conflict/$branch
-			cd ~/tmp/conflict/$branch
+			svn co $branch ~/tmp/conflict/${branch#*Develop/}  > /dev/null
+			cd ~/tmp/conflict/${branch/Develop/}
 			for x in `cat ~/tmp/project_list.txt`;do
 			    cp-with-dir-struct $Basetrunkcode $x
 			done
 			echo > ~/tmp/project_list.txt
-		    ) 
+		    )
+		fi
+		)
 }
+
 
 function svn_from_tb_merged() {
 		(

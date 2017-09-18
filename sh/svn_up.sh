@@ -1,7 +1,26 @@
 #!/bin/bash
 
-set -x
-cd ~/workspace/code/Trunk/
-svn cleanup .
-svn revert --depth=infinity .
-svn up 催收 分期商城 辅助业务 公共 基础业务 老系统 内部业务 平台架构 前端业务 生活营销 事事分期 数据报表 外部业务 鑫诚达 >~/tmp/svnup/svn_up.log 2>&1 
+function SVN_Trunk_up() {
+    (
+	cd ~/workspace/code/Trunk/
+	svn cleanup .
+	svn st | grep ^? | xargs rm -rf
+	svn revert --depth=infinity .
+	svn up . 
+    ) >~/tmp/logs/svnup/svn_trunk_up.log 2>&1
+}
+
+function SVN_Branch_up(){
+    (
+	cd ~/workspace/code/Branch
+	svn cleanup .
+	svn st | grep ^? | xargs rm -rf
+	svn revert --depth=infinity .
+	svn up . 
+    ) >~/tmp/logs/svnup/svn_branch_up.log 2>&1
+}
+
+export SVN_Trunk_up
+export SVN_Branch_up
+
+SVN_Trunk_up
