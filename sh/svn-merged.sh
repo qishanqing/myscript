@@ -135,8 +135,8 @@ function svn_conflict_trees(){
 			set -x
 			rm -rf ~/tmp/conflict/*
 			mkdir -p ~/tmp/conflict || true
-			svn co $branch ~/tmp/conflict/${branch#*Develop/}  > /dev/null
-			cd ~/tmp/conflict/${branch/Develop/}
+			svn co $branch ~/tmp/conflict/$branch  > /dev/null
+			cd ~/tmp/conflict/$branch
 			for x in `cat ~/tmp/project_list.txt`;do
 			    cp-with-dir-struct $Basetrunkcode $x
 			done

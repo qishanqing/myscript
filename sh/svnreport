@@ -1,0 +1,42 @@
+#!/bin/bash
+set -x
+
+. /home/qishanqing/myscript/sh/svn_up.sh
+
+# This is a script that help you get your team member's productivity
+# by analyzing his/her code commiting in SVN repository, for the day before
+#
+# You can get a rough num for comparing between team members by using it in the way below
+# ./svn_ana.sh SVN_ACCOUNT_NAME | wc -l
+#
+
+if test "$BUILD_ID" != dontkillme; then
+    dontkillme
+fi
+
+today=`date +%Y-%m-%d`
+yesterday=`date -d '-1 day'  +%Y-%m-%d`
+statsvn_dir="/home/qishanqing/myscript/jenkins/statsvn.jar"
+svn_dir="/home/qishanqing/workspace/code/Branch"
+log_file="/home/qishanqing/tmp/report/log/svn_$today.log"
+svn_report_dir="/home/qishanqing/tmp/report/$today/"
+svn_branch_url="https://192.168.0.220/svn/tech/Branch"
+
+function SVNReport () {
+#		SVN_Branch_up
+		svn log -v  --xml -r {$yesterday}:{$today} > $log_file
+		java -jar $statsvn_dir $log_file .  -output-dir $svn_report_dir
+}
+
+if [ ! -d $svn_report_dir ];then
+    mkdir -p $svn_report_dir
+    if [ ! -f $log_file ];then
+	    touch $log_file
+    fi
+    SVNReport
+else
+    SVNReport
+fi
+
+#SVN_Trunk_up
+
