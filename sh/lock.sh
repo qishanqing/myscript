@@ -1,14 +1,24 @@
 #!/bin/bash
+set -x
+:<<EOF
 
-b0=$(basename $0)
-(
-	set -x
-	exec 4> ~/tmp/$b0.lock
-	flock 4
-	#flock ~/tmp/$b0.lock
-	for x in `seq 5`;do
-		sleep 2
-		echo $x
-	done
-)
+#if [ "$#" -lt 1 ];then
+if [ "$#" != 1 ];then
+    "Error: Usage '$1' not exist!"
+    exit 1
+fi
+EOF
+
+function locked-echo () {
+    (
+	exec 9> ~/tmp/logs/$0.lock
+	flock 9
+	echo "$@"
+    )
+}
+
+export -f locked-echo
+
+locked-echo
+
 

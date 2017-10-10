@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ~/myscript/sh/cmdb
+
 echo pid is $$
 die() {
 	(
@@ -12,6 +14,14 @@ die() {
 	rm -f ~/tmp/merged/output.$$
 #	kill $$
 #	exit -1
+}
+
+function locked-echo() {
+    (
+	exec 9> ~/tmp/logs/svnmerge.lock
+	flock 9
+	echo "$@"
+    )
 }
 
 set -x
@@ -93,6 +103,7 @@ clean_workspace() {
 
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 export -f Basecode
+export -f locked-echo
 
 branchs=$(
 $branch
@@ -100,8 +111,6 @@ for y in $branch;do
 	echo $y
 done
 )
-
-
 
 function svn_conflict_files(){
 		(
@@ -145,7 +154,6 @@ function svn_conflict_trees(){
 		fi
 		)
 }
-
 
 function svn_from_tb_merged() {
 		(
@@ -192,7 +200,8 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233
 				)
 		fi
-			) | mails-cm -i "code merged from ${branch#*tech/}" || true
+		cmdb-mysql "insert into merge(branch_name,task,branch_date) values ('$branch','$task',now());"
+		) | mails-cm -i "code merged from ${branch#*tech/}" || true
 }
 
 function svn_from_bt_merged() {
@@ -262,6 +271,8 @@ function svn_db_merged() {
 		fi | mails-cm -i "已回退版本" || true
 		)
 }
+
+locked-echo
 
 if test $types = add;then
 	for branch in ${branchs[@]};do

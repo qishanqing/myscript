@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+. ~/myscript/sh/cmdb
+
 echo pid is $$
 die() {
     (
@@ -76,13 +78,12 @@ while true;do
     esac
 done
 
-export SMARTCM_EXTRA_MAIL="$email $extra_mails"
-
 function inport_source() {
 	#Trunk路径
 	SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
 	#Branch路径
 	SVN_Branch=https://192.168.0.220/svn/tech/Branch/
+	Closed_Branch=https://192.168.0.220/svn/tech/
 	#Version路径
 	BaseLine=https://192.168.0.220/svn/tech/Version/
 	TIME_DIR=`date '+%Y%m%d'`
@@ -93,7 +94,7 @@ function inport_source() {
 	Trunk_name=${SVN_Trunk}$trunk
 	branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/$trunk
 	source_name=${SVN_Branch}$branch
-	dest_name=${SVN_Branch}$move_dir${TIME_DIR_CLOSE}-$branch
+	dest_name=${Closed_Branch}$move_dir${TIME_DIR_CLOSE}-$branch
 	br=`echo $branch_name | awk -F '/'  '{print $7}'`
 	access=${riqi:-$TIME_DIR}-$branch
 
@@ -105,6 +106,18 @@ for x in $user;do
 	echo $x=rw
 done
 )
+
+if [[ ! -z "$user" ]];then
+    if ! [[ "$user" =~ "@" ]];then
+	e=$(
+	for x in "$user";do
+	    echo $x@dafy.com
+	done
+	 )
+    fi
+fi
+
+export SMARTCM_EXTRA_MAIL="$email $extra_mails $e"
 
 function svn-connt() {
     ( 
@@ -143,19 +156,6 @@ function check-acces () {
 			echo "access authz added"
 		fi
 	done
-}
-
-function cmdb-mysql() {
-    (
-        if mysql -u root --password=$(cat /home/qishanqing/.ssh/mysql-cmdb.pass) cmdb -h 192.168.0.232 -e "$@" > /tmp/cmdb.db.$$ 2>&1; then
-            cat /tmp/cmdb.db.$$
-            rm -f /tmp/cmdb.db.$$
-        elif grep 'Duplicate entry' /tmp/cmdb.db.$$; then
-            rm -f /tmp/cmdb.db.$$
-        else
-		die "sql error input cmdb info"
-        fi
-    )
 }
 
 function addbranch() {
@@ -238,7 +238,7 @@ done
 )
 
 if test $types = add;then
-	addbranch
+    addbranch
 elif test $types = del;then
     delbranch
 elif test $types = cl;then

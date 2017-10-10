@@ -23,6 +23,7 @@ inport_source() {
 	SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
 	#Branch路径
 	SVN_Branch=https://192.168.0.220/svn/tech/Branch/
+	Closed_Branch=https://192.168.0.220/svn/tech/
 	#Version路径
 	BaseLine=https://192.168.0.220/svn/tech/Version/
 	TIME_DIR=`date '+%Y%m%d'`
@@ -34,7 +35,7 @@ inport_source() {
 	Trunk_name=${SVN_Trunk}$P1
 	branch_name=${SVN_Branch}${P4:-$TIME_DIR}-$P2/Develop/$P1
 	source_name=${SVN_Branch}$P1
-	dest_name=${SVN_Branch}$move_dir${TIME_DIR_CLOSE}-$P1
+	dest_name=${Closed_Branch}$move_dir${TIME_DIR_CLOSE}-$P1
 	branch=`echo $branch_name | awk -F '/'  '{print $7}'`
 	access=${P4:-$TIME_DIR}-$P2
 }

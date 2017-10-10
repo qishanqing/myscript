@@ -63,14 +63,15 @@ class JKUL:
 			if hasattr(e,"reason"):
 				print u"连接失败,错误原因",e.reason
 				return None
-url = "http://192.168.0.232:8080/login"
-r = request.get(url,auth=('qishanqing','372233'))
-c = r.status_code
-format  = "\n"+Tool().replace(c)+"\n"
-print format
-r.text
+#url = "http://192.168.0.232:8080/login"
+url = "http://192.168.0.221/zentao/my-dynamic-thismonth-action_asc-280-20-7.html"
+#r = request.get(url,auth=('qishanqing','372233'))
+#c = r.status_code
+#format  = "\n"+Tool().replace(c)+"\n"
+#print format
+#r.text
 
 #values = {"username":"qishanqing","password":"372233"}
 #url = "http://www.sina.com.cn"
-#jkul = JKUL(url)
-#print jkul.get_jenkin_access()
+jkul = JKUL(url)
+print jkul.get_jenkin_access()

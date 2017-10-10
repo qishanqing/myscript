@@ -17,16 +17,32 @@ fi
 today=`date +%Y-%m-%d`
 yesterday=`date -d '-1 day'  +%Y-%m-%d`
 statsvn_dir="/home/qishanqing/myscript/jenkins/statsvn.jar"
-svn_dir="/home/qishanqing/workspace/code/Branch"
 log_file="/home/qishanqing/tmp/report/log/svn_$today.log"
 svn_report_dir="/home/qishanqing/tmp/report/$today/"
 svn_branch_url="https://192.168.0.220/svn/tech/Branch"
+base_code="/home/qishanqing/workspace/code/re"
+rev=`svn log -l 1 $svn_branch_url -r {$yesterday}:HEAD | grep ^r | awk -F '|' '{print$1}'`
+head=`svn log -l 1 $svn_branch_url | grep ^r | awk -F '|' '{print$1}'`
+r=`echo ${rev#*r}`
+
 
 function SVNReport () {
-#		SVN_Branch_up
-		svn log -v  --xml -r {$yesterday}:{$today} > $log_file
-		java -jar $statsvn_dir $log_file .  -output-dir $svn_report_dir
+    (
+	SVN_Branch_up
+	cd $branch_code
+	svn log -v  --xml -r {$yesterday}:{$today} > $log_file
+	java -jar $statsvn_dir $log_file .  -output-dir $svn_report_dir
+    )
 }
+
+function rsync() {
+    (
+	cd $base_code
+	 git svn clone -r${r}:HEAD --no-metadata $svn_branch_url
+	 sub=`git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done`
+         echo $sub
+    )
+ }
 
 if [ ! -d $svn_report_dir ];then
     mkdir -p $svn_report_dir
@@ -34,9 +50,11 @@ if [ ! -d $svn_report_dir ];then
 	    touch $log_file
     fi
     SVNReport
+    rsync
 else
     SVNReport
-fi
+    rsync
+fi >~/tmp/logs/svnreport.log
 
-#SVN_Trunk_up
+
 

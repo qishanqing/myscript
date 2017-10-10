@@ -1,8 +1,10 @@
 #!/bin/bash
 
+trunk_code="/home/qishanqing/workspace/code/Trunk/"
+branch_code="/home/qishanqing/workspace/code/Branch/"
 function SVN_Trunk_up() {
     (
-	cd /home/qishanqing/workspace/code/Trunk/
+	cd $trunk_code
 	svn cleanup .
 	svn st | grep ^? | xargs rm -rf
 	svn revert --depth=infinity .
@@ -12,7 +14,7 @@ function SVN_Trunk_up() {
 
 function SVN_Branch_up(){
     (
-	cd /home/qishanqing/workspace/code/Branch
+	cd $branch_code
 	svn cleanup .
 	svn st | grep ^? | xargs rm -rf
 	svn revert --depth=infinity .
@@ -23,4 +25,5 @@ function SVN_Branch_up(){
 export SVN_Trunk_up
 export SVN_Branch_up
 
-
+SVN_Trunk_up
+SVN_Branch_up
