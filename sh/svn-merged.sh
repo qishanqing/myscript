@@ -114,32 +114,55 @@ done
 
 function svn_conflict_files(){
 		(
-		local filenames=`svn st | grep ^C | awk '{print $2}'`
-		for filename in $filenames;do
-		    if [[ "$filename" =~ "@" ]];then
-			svn resolve --accept=theirs-conflict $filename@
+		    local filenames=`svn st | grep ^C | awk '{print $2}'`
+		    if [ -z $filenames ];then
+			return 0
 		    else
-			svn resolve --accept=theirs-conflict $filename
-		    fi 
-		done
+			for filename in $filenames;do
+			    if [[ "$filename" =~ "@" ]];then
+				svn resolve --accept=theirs-conflict $filename@
+			    else
+				svn resolve --accept=theirs-conflict $filename
+			    fi 
+			done
+		    fi
 		)
+}
+
+function mvn_check(){
+    if [ -f pom.xml ];then
+	mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails-cm -i "项目编译状态 ${branch#*Branch/}" || true
+	mvn clean > /dev/null
+    elif [ -f ../pom.xml ];then
+	(
+	    cd ../
+	    mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails-cm -i "项目编译状态 ${branch#*Branch/}" || true
+	    mvn clean > /dev/null
+	)
+    else
+	echo 
+	echo "------------------------------"
+	echo "此项目不是maven架构"
+	echo "------------------------------"
+	echo 
+    fi
 }
 
 function svn_conflict_trees(){
 		(
 		local filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
 		local filenames1=`svn st| grep ^! | awk '{print $3}'`
-		for filename in $filenames $filenames1;do
+		if [ -z $filenames ] && [ -z $filenames1 ];then
+		    return 0
+		else
+		    for filename in $filenames $filenames1;do
 		    	if [[ "$filename" =~ "@" ]];then
 			    svn resolve --accept=working $filename@
 			else
 			    svn resolve --accept=working $filename
 			fi
 			echo $filename >> ~/tmp/project_list.txt
-		done
-		if test -z `cat ~/tmp/project_list.txt`;then
-		    return 0
-		else
+		    done
                     (
 			set -x
 			rm -rf ~/tmp/conflict/*
@@ -152,7 +175,8 @@ function svn_conflict_trees(){
 			echo > ~/tmp/project_list.txt
 		    )
 		fi
-		)
+		) 
+		mvn_check && svn st | grep "^?" | awk '{print $2}' | xargs  svn add >/dev/null 2>&1
 }
 
 function svn_from_tb_merged() {
@@ -200,8 +224,8 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233
 				)
 		fi
-		cmdb-mysql "insert into merge(branch_name,task,branch_date) values ('$branch','$task',now());"
-		) | mails-cm -i "code merged from ${branch#*tech/}" || true
+		cmdb-mysql "insert into merge(branch_name,task,branch_date,path) values ('$branch','$task',now(),'${branch#*Develop/}');"
+		) | mails-cm -i "code merged from ${branch#*Branch/}" || true
 }
 
 function svn_from_bt_merged() {

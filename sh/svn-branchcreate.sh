@@ -110,9 +110,9 @@ done
 if [[ ! -z "$user" ]];then
     if ! [[ "$user" =~ "@" ]];then
 	e=$(
-	for x in "$user";do
-	    echo $x@dafy.com
-	done
+	    for x in $user;do
+		echo $x@dafy.com
+	    done
 	 )
     fi
 fi
@@ -159,13 +159,14 @@ function check-acces () {
 }
 
 function addbranch() {
-	for trunk in ${trunks[@]};do
+    for trunk in ${trunks[@]};do
 		if [ -z $trunk  ] || [ -z $branch  ];then
 			echo -e "\033[31m ---------------SVN新建分支须输入两个参数--------------- \033[0m"
 			echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
-			inport_source
+		        inport_source
+#			svn list $branch_name >/dev/null 2>&1 | mails-cm -i "分支已存在" && exit 1
 			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/output.$$
 			echo ${branch_name} >> /home/svnmodify/add_branch.log
@@ -191,20 +192,21 @@ function addtrunk() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
-		svn copy ${source_name} ${SVN_Trunk}$trunk/ --parents --username builder --password ant@ -m "新建项目主干分支"
-		echo "新建项目主干路径: ${SVN_Trunk}$trunk/${source_name##*/}"
+#		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails-cm -i "主干已存在";exit 1;fi 
+		svn copy ${source_name} ${Trunk_name} --parents --username builder --password ant@ -m "新建项目主干分支"
+		echo "新建项目主干路径: ${Trunk_name}${source_name##*/}"
 	fi
 }
 
 function createtrunk() {
-	inport_source
-	svn mkdir ${SVN_Trunk}$branch --username builder --password ant@ -m "新建项目主干分支"
-	echo "新建项目主干路径: ${SVN_Trunk}$branch"
+        inport_source
+#	svn list ${Trunk_name}  >/dev/null 2>&1 | mails-cm -i "主干已存在" && exit 1
+	svn mkdir ${Trunk_name} --username builder --password ant@ -m "新建项目主干分支"
+	echo "新建项目主干路径: ${Trunk_name}"
 }
 function createbaselines() {
 	inport_source
 	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
-	#svn rm $baselinedir --username builder --password ant@ -m "需新建基线，删除旧基线"
 	svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
 	echo "新建主干基线: $baselinedir"
 }

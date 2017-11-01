@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
  
-import urllib,urllib2,re
+import re
 import requests
 #处理页面标签类
 class Tool:
@@ -27,51 +27,45 @@ class Tool:
     blank_two = re.compile('\r')  
     blank_three = re.compile(' ')  
     def replace(self,x):
-        x = re.sub(self.removeImg,"",x)
-        x = re.sub(self.removeAddr,"",x)
-        x = re.sub(self.replaceLine,"\n",x)
-        x = re.sub(self.replaceTD,"\t",x)
-        x = re.sub(self.replacePara,"\n    ",x)
-        x = re.sub(self.replaceBR,"\n",x)
-        x = re.sub(self.removeExtraTag,"",x)
+        x =  str(x)
+        x = re.sub(self.removeImg,'',x)
+        x = re.sub(self.removeAddr,'',x)
+        x = re.sub(self.replaceLine,'\n',x)
+        x = re.sub(self.replaceTD,'\t',x)
+        x = re.sub(self.replacePara,'\n    ',x)
+        x = re.sub(self.replaceBR,'\n',x)
+        x = re.sub(self.removeExtraTag,'',x)
 
-#        x = re.sub(self.blank_line,"",x)
-    	x = re.sub(self.blank_line_1,'',x)  
-   	x = re.sub(self.blank_kon,'',x)  
-	x = re.sub(self.blank_one,'',x)  
-    	x = re.sub(self.blank_two,'',x)  
-    	x = re.sub(self.blank_three,'',x)  
+        x = re.sub(self.blank_line,'',x)
+        x = re.sub(self.blank_line_1,'',x)
+        x = re.sub(self.blank_kon,'',x)
+        x = re.sub(self.blank_one,'',x)
+        x = re.sub(self.blank_two,'',x)
+        x = re.sub(self.blank_three,'',x)  
         #strip()将前后多余内容删除
         return x.strip()
 
 class JKUL:
 	def __init__(self,url):
-		self.url = url
-        #默认的标题，如果没有成功获取到标题的话则会用这个标题
-	        self.defaultTitle = u"jenkins网页"
-		self.tool = Tool()  
+            self.url = url
+            self.defaultTitle = u"jenkins网页"
+            self.tool = Tool()  
 
 	def get_jenkin_access(self):
 		try:
-			#data = urllib.urlencode(values)
-			#request = urllib2.Request(url,data)
-			request = urllib2.Request(url)
-			response = urllib2.urlopen(request)
-			format  = "\n"+Tool().replace(response.read())+"\n"
-			return format
-		except urllib2.URLError, e:
-			if hasattr(e,"reason"):
-				print u"连接失败,错误原因",e.reason
-				return None
-#url = "http://192.168.0.232:8080/login"
-url = "http://192.168.0.221/zentao/my-dynamic-thismonth-action_asc-280-20-7.html"
-#r = request.get(url,auth=('qishanqing','372233'))
-#c = r.status_code
-#format  = "\n"+Tool().replace(c)+"\n"
-#print format
-#r.text
-
+                    r = requests.get(url,auth=('qishanqing','372233'))
+                    c = r.status_code
+                    format  = "\n"+Tool().replace(c)+"\n"
+                    return format
+		except  Exception:
+                    return None
+url = "http://192.168.0.232:8080/login"
+r = requests.get(url,auth=('qishanqing','372233'))
+c = r.text
+format  = "\n"+Tool().replace(c)+"\n"
+print (format)
+ 
 #values = {"username":"qishanqing","password":"372233"}
 #url = "http://www.sina.com.cn"
-jkul = JKUL(url)
-print jkul.get_jenkin_access()
+#jkul = JKUL(url)
+#print jkul.get_jenkin_access()
