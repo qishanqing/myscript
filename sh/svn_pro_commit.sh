@@ -32,6 +32,19 @@ function mallStage_access() {
 	fi >>~/tmp/svn_pro_commit.log
 }
 
+function DFLib_access() {
+	if ! [[ "${DFLib_author[@]}" =~ "$author" ]];then
+		for p in ""${DFLib_project[@]}"";do
+			if [[  "$changed" =~ "$p" ]];then
+				echo -e  "\n$author: you have no access modify this files(DFLib),owner is lijinming and leiwanda" 1>&2
+				exit 1
+			fi
+		done
+	else
+		return 0
+	fi >>~/tmp/svn_pro_commit.log
+}
+
 function admin_group() {
 	if [[ "${admin[@]}" =~ "$author" ]];then
 		exit 0
@@ -41,3 +54,4 @@ function admin_group() {
 admin_group
 h5_access
 mallStage_access
+DFLib_access
