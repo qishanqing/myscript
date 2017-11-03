@@ -16,7 +16,7 @@ function h5_access() {
 		done
 	else
 		return 0
-	fi >>~/tmp/svn_pro_commit.log
+	fi >>~/tmp/logs/svn_pro_commit.log
 }
 
 function mallStage_access() {
@@ -29,7 +29,7 @@ function mallStage_access() {
 		done
 	else
 		return 0
-	fi >>~/tmp/svn_pro_commit.log
+	fi >>~/tmp/logs/svn_pro_commit.log
 }
 
 function DFLib_access() {
@@ -42,7 +42,7 @@ function DFLib_access() {
 		done
 	else
 		return 0
-	fi >>~/tmp/svn_pro_commit.log
+	fi >>~/tmp/logs/svn_pro_commit.log
 }
 
 function admin_group() {
