@@ -3,7 +3,27 @@ Rails.application.routes.draw do
   get 'articles/index'
   get 'jenkins/index'
   get 'upload/index'
-  #resources :articles
+
+
+  get    'help'   => 'static_pages#help'
+  get    'about'   => 'static_pages#about'
+  get    'contact' => 'static_pages#contact'
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :users
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :microposts,          only: [:create, :destroy]
+  resources :relationships,       only: [:create, :destroy]
+
   resources :builder
   resources :articles
   resources :merge
@@ -17,5 +37,5 @@ Rails.application.routes.draw do
   match '/upload/new', to: 'upload#new', via: 'post'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root  'builder#index'
+  root  'static_pages#home'
 end
