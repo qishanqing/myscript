@@ -1,3 +1,4 @@
+require 'mail'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -9,24 +10,28 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  config.force_ssl = false
+  
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
+  host = '192.168.0.232:3000'
+#  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+#  config.action_mailer.default_options = { from: 'qishanqing@dafy.com' }
+#  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.delivery_method = :test
-  host = 'localhost:3000' 
-  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
-  config.action_mailer.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    :address => "smtp.qiye.163.com",
-    :port => "25",
-    :domain => "qiye.163.com"
-    :authentication => :login,
-    :user_name => "qishanqing@dafy.com",
-    :password => "xsPPka27DfhSypNJ"
-  }
+#  config.action_mailer.smtp_settings = {
+#    :address => "smtp.qiye.163.com",
+#    :port => "25",
+#    :authentication => "login",
+#    :user_name => "qishanqing@dafy.com",
+#    :password => "xsPPka27DfhSypNJ",
+#    :enable_starttls_auto => true
+#  }
   
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
