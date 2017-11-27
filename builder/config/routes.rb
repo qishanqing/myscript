@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
-  get 'merge/index'
   get 'articles/index'
   get 'upload/index'
 
@@ -11,6 +10,8 @@ Rails.application.routes.draw do
   get    'contact' => 'static_pages#contact'
   get    'signup'  => 'users#new'
   get     'jenkins' => 'jenkins#index'
+  get     'builder' => 'builder#index'
+  get     'merge' => 'merge#index'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
@@ -30,10 +31,10 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
 
-  resources :builder
+#  resources :builder
   resources :articles
-  resources :merge
-  resources :jenkins
+#  resources :merge
+#  resources :jenkins
   resources :upload
 
   match '/start',  to: 'builder#new',            via: 'post'
