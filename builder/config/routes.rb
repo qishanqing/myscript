@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   get 'password_resets/new'
-
   get 'password_resets/edit'
-
   get 'merge/index'
   get 'articles/index'
-  get 'jenkins/index'
   get 'upload/index'
 
 
@@ -13,6 +10,7 @@ Rails.application.routes.draw do
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
   get    'signup'  => 'users#new'
+  get     'jenkins' => 'jenkins#index'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'

@@ -3,7 +3,12 @@ require 'rubygems'
 
 $LOAD_PATH << ( Rails.root + 'app/controllers')
 class JenkinsController < ApplicationController
-	http_basic_authenticate_with name: "admin", password: "qsq", except: [:index]
+
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :following, :followers]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: [:destroy]
+  
   def index
   end
   def new
