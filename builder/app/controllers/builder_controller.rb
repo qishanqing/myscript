@@ -22,14 +22,13 @@ class BuilderController < ApplicationController
 #	  return nil
  # end
   def new
-	  @user = params[:user]
+	  @author = params[:author]
 	  @types = params[:types]
 	  @email = params[:email]
 	  @extra_mails = params[:extra_mails]
 	  @branch = params[:branch]
 	  @riqi = params[:riqi]
 	  @trunk = params[:trunk]
-	  
 	  result = nil
 	  if @email.blank? then
 	    @error = "用户邮箱不能为空"
@@ -48,7 +47,7 @@ class BuilderController < ApplicationController
 		  render 'index'
 	  else
 		  system  "svn-branchcreate.sh", \
-			  "-u", @user, \
+			  "-a", @author, \
 			  "-t", @trunk, \
 			  "-e", @email, \
 			  "-E", @extra_mails, \
