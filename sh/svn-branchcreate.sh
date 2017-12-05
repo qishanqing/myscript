@@ -23,19 +23,24 @@ hint() {
 
 set -x
 
-TEMP=$(getopt -o u:e:E:t:b:d:T:h --long types:,user:,email:,extra_mails:,trunk:,branch:,riqi:,help -n $(basename -- $0) -- "$@")
-user=
+TEMP=$(getopt -o a:e:E:t:b:d:T:o:h --long types:,author:,email:,extra_mails:,trunk:,branch:,riqi:,owner:,help -n $(basename -- $0) -- "$@")
+author=
 email=
 extra_mails=
 trunk=
 branch=
 riqi=
 types=
+owner=
 eval set -- "$TEMP"
 while true;do
     case "$1" in
-        -u|--user)
-            user=$2
+        -a|--author)
+            author=$2
+            shift 2
+	    ;;
+        -o|--owner)
+            owner=$2
             shift 2
 	    ;;
         -e|--email)
@@ -93,6 +98,7 @@ function inport_source() {
 	move_dir=Closed/--close+
 	Trunk_name=${SVN_Trunk}$trunk
 	branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/$trunk
+	branch_name1=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Develop/}
 	source_name=${SVN_Branch}$branch
 	dest_name=${Closed_Branch}$move_dir${TIME_DIR_CLOSE}-$branch
 	br=`echo $branch_name | awk -F '/'  '{print $7}'`
@@ -100,30 +106,30 @@ function inport_source() {
 
 }
 
-users=$(
-$user
-for x in $user;do
+authors=$(
+$author
+for x in $author;do
 	echo $x=rw
 done
 )
 
-if [[ ! -z "$user" ]];then
-    if ! [[ "$user" =~ "@" ]];then
+if [[ ! -z "$author" ]];then
+    if ! [[ "$author" =~ "@" ]];then
 	e=$(
-	    for x in $user;do
+	    for x in $author;do
 		echo $x@dafy.com
 	    done
 	 )
     fi
 fi
 
-export SMARTCM_EXTRA_MAIL="$email $extra_mails $e"
+export SMARTCM_EXTRA_MAIL="$email $extra_mails $e $owner"
 
 function svn-connt() {
     ( 
         if ping -c 5 192.168.0.220 >/dev/null;then
             (
-	    if test -z "$users";then
+	    if test -z "$authors";then
                 cat << EOF
 
 [tech:/Branch/${br}]
@@ -134,7 +140,7 @@ else
                 cat << EOF
 
 [tech:/Branch/${br}]
-$users
+$authors
 @admin=rw
 *=
 EOF
@@ -178,7 +184,7 @@ cat << mail
 
 			${branch_name}
 
-			添加权限人员: $user
+			添加权限人员: $author
 mail
 ) | mails-cm -i "svnbranch-add from svn branch create web" || true
 		fi
@@ -198,12 +204,27 @@ function addtrunk() {
 	fi
 }
 
+function b-to-b() {
+	if [ -z $branch  ] || [ -z $trunk  ];then
+		echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
+		echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
+		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
+	else
+		inport_source
+		svn copy $trunk ${branch_name1} --parents --username builder --password ant@ -m "新建项目开发分支"
+		echo "新建项目开发分支: ${branch_name1}"
+		cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$trunk', '$branch_name1',now(),'${email%@*}');"
+		check-acces
+	fi
+}
+
 function createtrunk() {
         inport_source
 #	svn list ${Trunk_name}  >/dev/null 2>&1 | mails-cm -i "主干已存在" && exit 1
 	svn mkdir ${Trunk_name} --username builder --password ant@ -m "新建项目主干分支"
 	echo "新建项目主干路径: ${Trunk_name}"
 }
+
 function createbaselines() {
 	inport_source
 	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
@@ -247,6 +268,8 @@ elif test $types = cl;then
     createbaselines
 elif test $types = ct;then
     createtrunk
+elif test $types = cbb;then
+    b-to-b
 else
     addtrunk
 fi

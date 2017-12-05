@@ -26,7 +26,7 @@ function locked-echo() {
 
 set -x
 
-TEMP=$(getopt -o k:e:E:t:b:T:R:h --long rev:,types:,task:,email:,extra_mails:,trunk:,branch:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o k:e:E:t:b:T:R:o:h --long rev:,types:,task:,email:,extra_mails:,trunk:,branch:,owner:,help -n $(basename -- $0) -- "$@")
 rev=
 email=
 extra_mails=
@@ -34,11 +34,16 @@ trunk=
 branch=
 task=
 types=
+owner=
 eval set -- "$TEMP"
 while true;do
     case "$1" in
         -k|--task)
             task=$2
+            shift 2
+            ;;
+        -o|--owner)
+            owner=$2
             shift 2
             ;;
         -R|--rev)
@@ -101,7 +106,7 @@ clean_workspace() {
 
 }
 
-export SMARTCM_EXTRA_MAIL="$email $extra_mails"
+export SMARTCM_EXTRA_MAIL="$email $extra_mails $owner"
 export -f Basecode
 export -f locked-echo
 

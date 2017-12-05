@@ -29,6 +29,8 @@ class BuilderController < ApplicationController
 	  @branch = params[:branch]
 	  @riqi = params[:riqi]
 	  @trunk = params[:trunk]
+          @owner = current_user.email
+        
 	  result = nil
 	  if @email.blank? then
 	    @error = "用户邮箱不能为空"
@@ -53,7 +55,8 @@ class BuilderController < ApplicationController
 			  "-E", @extra_mails, \
 			  "-b", @branch, \
 			  "-T", @types, \
-			  "-d", @riqi
+			  "-d", @riqi, \
+                          "-o", @owner
 	  end
   end
 end
