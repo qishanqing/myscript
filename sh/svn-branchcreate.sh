@@ -23,7 +23,7 @@ hint() {
 
 set -x
 
-TEMP=$(getopt -o a:e:E:t:b:d:T:o:h --long types:,author:,email:,extra_mails:,trunk:,branch:,riqi:,owner:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o a:e:E:t:b:d:T:o:k:h --long types:,author:,email:,extra_mails:,trunk:,branch:,riqi:,owner:,task:,help -n $(basename -- $0) -- "$@")
 author=
 email=
 extra_mails=
@@ -31,6 +31,7 @@ trunk=
 branch=
 riqi=
 types=
+task=
 owner=
 eval set -- "$TEMP"
 while true;do
@@ -65,6 +66,10 @@ while true;do
 	    ;;
         -T|--types)
             types=$2
+            shift 2
+	    ;;
+        -k|--task)
+            task=$2
             shift 2
 	    ;;
         -h|--help)
@@ -176,7 +181,7 @@ function addbranch() {
 			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/output.$$
 			echo ${branch_name} >> /home/svnmodify/add_branch.log
-			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${email%@*}');"
+			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task) values ('$Trunk_name', '$branch_name',now(),'${owner%@*}','$task');"
 			check-acces
 (
 cat << mail
@@ -213,7 +218,7 @@ function b-to-b() {
 		inport_source
 		svn copy $trunk ${branch_name1} --parents --username builder --password ant@ -m "新建项目开发分支"
 		echo "新建项目开发分支: ${branch_name1}"
-		cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$trunk', '$branch_name1',now(),'${email%@*}');"
+		cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task');"
 		check-acces
 	fi
 }

@@ -29,6 +29,7 @@ class BuilderController < ApplicationController
 	  @branch = params[:branch]
 	  @riqi = params[:riqi]
 	  @trunk = params[:trunk]
+	  @task = params[:task]
           @owner = current_user.email
         
 	  result = nil
@@ -37,6 +38,7 @@ class BuilderController < ApplicationController
 #          elsif params[:types] == "cl" or params[:types] == "cr" then
 #            @trunk.blank = true and @branch.blank = true
 #            render 'builder/create'
+
 	  elsif @trunk.blank? or @branch.blank? then
 		  @error = "相对主干路径、分支名不能为空"
 #	  elsif mails_format_errors then
@@ -56,6 +58,7 @@ class BuilderController < ApplicationController
 			  "-b", @branch, \
 			  "-T", @types, \
 			  "-d", @riqi, \
+			  "-k", @task, \
                           "-o", @owner
 	  end
   end

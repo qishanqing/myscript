@@ -229,7 +229,7 @@ Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing
 Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233
 				)
 		fi
-		cmdb-mysql "insert into merge(branch_name,task,branch_date,path) values ('$branch','$task',now(),'${branch#*Develop/}');"
+		cmdb-mysql "insert into merge(branch_name,task,branch_date,path,owner) values ('$branch','$task',now(),'${branch#*Develop/}','${owner%@*}');"
 		) | mails-cm -i "code merged from ${branch#*Branch/}" || true
 }
 
