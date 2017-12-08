@@ -24,7 +24,6 @@ class BuilderController < ApplicationController
   def new
 	  @author = params[:author]
 	  @types = params[:types]
-	  @email = params[:email]
 	  @extra_mails = params[:extra_mails]
 	  @branch = params[:branch]
 	  @riqi = params[:riqi]
@@ -33,13 +32,7 @@ class BuilderController < ApplicationController
           @owner = current_user.email
         
 	  result = nil
-	  if @email.blank? then
-	    @error = "用户邮箱不能为空"
-#          elsif params[:types] == "cl" or params[:types] == "cr" then
-#            @trunk.blank = true and @branch.blank = true
-#            render 'builder/create'
-
-	  elsif @trunk.blank? or @branch.blank? then
+	  if @trunk.blank? or @branch.blank? then
 		  @error = "相对主干路径、分支名不能为空"
 #	  elsif mails_format_errors then
 #		  @error = "通知邮件收件人格式不正确：" + mails_format_errors(extra_mails)
@@ -53,7 +46,6 @@ class BuilderController < ApplicationController
 		  system  "svn-branchcreate.sh", \
 			  "-a", @author, \
 			  "-t", @trunk, \
-			  "-e", @email, \
 			  "-E", @extra_mails, \
 			  "-b", @branch, \
 			  "-T", @types, \

@@ -15,16 +15,13 @@ class MergeController < ApplicationController
 	  task = params[:task]
 	  rev = params[:rev]
 	  types = params[:types]
-	  email = params[:email]
 	  extra_mails = params[:extra_mails]
 	  branch = params[:branch]
 	  trunk = params[:trunk]
           owner = current_user.email
 	  
 	  result = nil
-	  if email.blank? then
-		  @error = "用户邮箱不能为空"
-	  elsif branch.blank? then
+	  if branch.blank? then
 		  @error = "相对主干路径、分支名不能为空"
 	  else
 		  result = true
@@ -37,7 +34,6 @@ class MergeController < ApplicationController
 			  "-k", task, \
 			  "-R", rev, \
 			  "-t", trunk, \
-			  "-e", email, \
 			  "-E", extra_mails, \
 			  "-b", branch, \
 			  "-T", types, \

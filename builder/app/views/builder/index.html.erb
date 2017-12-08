@@ -7,14 +7,12 @@
 
 <h1 style="text-align:center">svn branch create</h1>
 <form method="post" id="vmlinux" action="/start">
-	<label>公司邮箱</label><br>
-	<%= email_field_tag "email", params[:email],:value =>"qishanqing@dafy.com",:cols =>60 %><br><br>
-
 	<label>分支类型</label><br>
 	<%= params[:types] = "add" unless params[:type]; nil %>
 	<%= radio_button_tag "types", "add", params[:types] == "add" %>新建分支&nbsp;&nbsp;
-	<%= radio_button_tag "types", "del", params[:types] == "del" %>删除分支&nbsp;&nbsp;
+	<%= radio_button_tag "types", "del", params[:types] == "del" %>关闭分支&nbsp;&nbsp;
 	<%= radio_button_tag "types", "cbb", params[:types] == "cbb" %>新建分支(从分支)&nbsp;&nbsp;
+	<%= radio_button_tag "types", "pl", params[:types] == "pl" %>项目查询&nbsp;&nbsp;
 	<%= radio_button_tag "types", "at", params[:types] == "at" %>新增主干&nbsp;&nbsp;
 	<%= radio_button_tag "types", "ct", params[:types] == "ct" %>新建主干&nbsp;&nbsp;
 	<%= radio_button_tag "types", "cl", params[:types] == "cl" %>新建基线&nbsp;&nbsp;<br><br>

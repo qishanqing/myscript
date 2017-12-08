@@ -230,6 +230,11 @@ function createtrunk() {
 	echo "新建项目主干路径: ${Trunk_name}"
 }
 
+function projectlists() {
+        inport_source
+	svn list $trunk | indent-clipboard - | mails-cm -i "$trunk------项目列表如下" || true
+}
+
 function createbaselines() {
 	inport_source
 	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
@@ -275,6 +280,8 @@ elif test $types = ct;then
     createtrunk
 elif test $types = cbb;then
     b-to-b
+elif test $types = pl;then
+    projectlists
 else
     addtrunk
 fi

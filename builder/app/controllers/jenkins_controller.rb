@@ -15,16 +15,13 @@ class JenkinsController < ApplicationController
 	  add = params[:add]
 	  del = params[:del]
 	  copy = params[:copy]
-	  email = params[:email]
 	  extra_mails = params[:extra_mails]
 	  num = params[:num]
 	  types = params[:types]
 	  
 	  result = nil
 
-	  if email.blank? then
-		  @error = "用户邮箱不能为空"
-	  elsif types == 'add' and add.blank? then
+	  if types == 'add' and add.blank? then
 		  @error = "新增项目名称不能为空"
 	  elsif types == 'del' and del.blank? then
 		  @error = "删除项目名称不能为空"
@@ -42,7 +39,6 @@ class JenkinsController < ApplicationController
 			  "-T", types, \
 			  "-n", num, \
 			  "-c", copy, \
-			  "-e", email, \
 			  "-E", extra_mails
 	  elsif not types.blank? then
 		  system  "jenkins.sh", \
@@ -50,7 +46,6 @@ class JenkinsController < ApplicationController
 			  "-d", del, \
 			  "-T", types, \
 			  "-c", copy, \
-			  "-e", email, \
 			  "-E", extra_mails
 	  else
 		  system  "jenkins.sh", \
@@ -58,7 +53,6 @@ class JenkinsController < ApplicationController
 			  "-d", del, \
 			  "-n", num, \
 			  "-c", copy, \
-			  "-e", email, \
 			  "-E", extra_mails
 	  end
   end

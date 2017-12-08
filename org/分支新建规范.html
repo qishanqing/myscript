@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>分支创建指南</title>
+<!-- 2017-12-08 五 11:48 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">分支创建指南</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 功能介绍</a>
+<ul>
+<li><a href="#sec-1-1">1.1. 全局注意事项</a></li>
+<li><a href="#sec-1-2">1.2. 新分支创建</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. 从主干拉取代码</a></li>
+<li><a href="#sec-1-2-2">1.2.2. 从分支获取代码</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3. 关闭分支</a></li>
+<li><a href="#sec-1-4">1.4. 项目查询</a></li>
+<li><a href="#sec-1-5">1.5. 新建主干项目</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1. 从已有分支获取代码创建主干新项目</a></li>
+<li><a href="#sec-1-5-2">1.5.2. 创建主干空项目</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6. 新建基线</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 功能介绍</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 全局注意事项</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+以下各项功能除必要参数外，其他都不需要填写
+</p>
+
+<p>
+以下所有参数输入 <b>首尾绝对</b> 不能出现空格 
+</p>
+
+<p>
+只针对分支创建、分支关闭和项目查询提供邮件服务
+</p>
+
+<p>
+统一由cm创建的分支格式组成部分为
+</p>
+<pre class="example">
+https://192.168.0.220/svn/tech/Branch/20171206-终端数据扩容(分支名称)/Develop/外部业务/P2P/P2PManager(项目主干相对路径),说明此分支的主干路径为https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/P2PManager
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 新分支创建</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 从主干拉取代码</h4>
+<div class="outline-text-4" id="text-1-2-1">
+</div><ol class="org-ol"><li><a id="sec-1-2-1-1" name="sec-1-2-1-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-2-1-1">
+<p>
+<b>分支类型选择</b>-&gt;新建分支（默认）
+</p>
+
+<p>
+<b>项目主干相对路径</b>:
+如主干项目路径为：
+</p>
+<pre class="example">
+https:///svn/tech/Trunk/基础业务/用户中心/UserBusiness 参数只需要写  基础业务/用户中心/UserSite
+</pre>
+
+<p>
+<b>分支名称</b>:
+同 <b>特殊分支日期</b> 组合为名称如 <b>20171206-终端数据扩容</b> 这里只需要输入 <b>终端数据扩容</b>    默认时间为当日
+</p>
+
+<p>
+<b>权限人员</b>:
+svn账户名
+</p>
+
+<p>
+<b>禅道工单</b>:
+输入禅道地址，用于数据库后台记录（可以为空）
+</p>
+
+<p>
+<b>特殊分支日期*：
+用于已有分支名 如 *20171201-商城资金方</b> 下添加新项目，需填写对应的分支日期，对应 <i><b>分支名称</b></i> 组合
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-1-2" name="sec-1-2-1-2"></a>此功能注意事项<br  /><div class="outline-text-5" id="text-1-2-1-2">
+<p>
+如需一个分支下添加很多项目, <b>主干项目路径</b> 可以输入多个，用空格隔开（空格数量随意），但是首尾也同样 <b>绝对</b> 不能出现空格
+</p>
+
+<p>
+权限人员可以输入多个，用空格隔开（空格数量随意），但是首尾也同样 <b>绝对</b> 不能出现空格,默认添加的权限人员都会发送邮件，发送的收件人组合为 <b>svn账户名@dafy.com</b>
+</p>
+</div>
+</li></ol>
+</div>
+
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 从分支获取代码</h4>
+<div class="outline-text-4" id="text-1-2-2">
+</div><ol class="org-ol"><li><a id="sec-1-2-2-1" name="sec-1-2-2-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-2-2-1">
+<p>
+<b>分支类型选择</b>-&gt;新建分支(从分支)
+</p>
+
+<p>
+<b>项目主干相对路径</b>:
+输入分支全路径 如
+</p>
+<pre class="example">
+https://192.168.0.220/svn/tech/Branch/20171206-Boss后台达飞Z切换中间人/Develop/外部业务/P2P/P2PManager
+</pre>
+
+
+<p>
+<b>分支名称</b>:
+同 <b>特殊分支日期</b> 组合为名称如 <b>20171206-终端数据扩容</b> 这里只需要输入 <i><b>终端数据扩容</b></i>    默认时间为当日
+</p>
+
+<p>
+<b>权限人员</b>:
+svn账户名
+</p>
+
+<p>
+<b>特殊分支日期</b>:
+用于已有分支名 如 <b>20171206-终端数据扩容</b> 下添加新项目，需填写对应的分支日期，对应 <i><b>分支名称</b></i> 组合
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 关闭分支</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><ol class="org-ol"><li><a id="sec-1-3-0-1" name="sec-1-3-0-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-3-0-1">
+<p>
+<b>分支类型选择</b>-&gt;关闭分支
+</p>
+
+<p>
+<b>项目主干相对路径</b>:
+随意输入,但是不允许为空
+</p>
+
+<p>
+<b>分支名称</b>:
+只输入分支名称如 <b>20171206-终端数据扩容</b> (一次性关闭此分支下的所有项目)
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 项目查询</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><ol class="org-ol"><li><a id="sec-1-4-0-1" name="sec-1-4-0-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-4-0-1">
+<p>
+<b>分支类型选择</b>-&gt;项目查询
+</p>
+
+<p>
+<b>项目主干相对路径</b>:
+输入你想要查询的svn项目路径，主干路径和分支路径不限，如下图
+</p>
+<pre class="example">
+https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/Business  或者 https://192.168.0.220/svn/tech/Branch/20171207-修改金财动力报表/Develop/外部业务/P2P/Business/FDPReport
+</pre>
+
+<p>
+<b>分支名称</b>:
+随意输入,但是不允许为空
+</p>
+</div>
+</li></ol>
+</div>
+
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 新建主干项目</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 从已有分支获取代码创建主干新项目</h4>
+<div class="outline-text-4" id="text-1-5-1">
+</div><ol class="org-ol"><li><a id="sec-1-5-1-1" name="sec-1-5-1-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-5-1-1">
+<p>
+<b>分支类型选择</b>-&gt;新增主干
+</p>
+
+<p>
+<b>项目主干相对路径</b>:
+从已有分支输入主干相对路径,如果分支为
+</p>
+<pre class="example">
+https://192.168.0.220/svn/tech/Branch/20171206-Boss后台达飞Z切换中间人/Develop/外部业务/P2P/P2PManager，只需输入Develop/后面的部分 外部业务/P2P/P2PManager
+</pre>
+
+<p>
+<b>分支名称</b>:
+</p>
+<pre class="example">
+如分支名称为https://192.168.0.220/svn/tech/Branch/20171206-Boss后台达飞Z切换中间人/Develop/外部业务/P2P/P2PManager，只需输入Branch/后面的部分 20171206-Boss后台达飞Z切换中间人/Develop/外部业务/P2P/P2PManager
+</pre>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> 创建主干空项目</h4>
+<div class="outline-text-4" id="text-1-5-2">
+</div><ol class="org-ol"><li><a id="sec-1-5-2-1" name="sec-1-5-2-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-5-2-1">
+<p>
+<b>分支类型选择</b>-&gt;新建主干
+</p>
+
+<p>
+<b>项目主干相对路径</b>:
+</p>
+<pre class="example">
+如在主干路径https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/P2PManager下创建新项目test，需输入 外部业务/P2P/P2PManager/test,外部业务/P2P/P2PManager主干相对路径需已存在
+</pre>
+
+<p>
+<b>分支名称</b>:
+随意输入,但是不允许为空
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-5-2-2" name="sec-1-5-2-2"></a>此功能注意事项<br  /><div class="outline-text-5" id="text-1-5-2-2">
+<p>
+主干新项目不存在需要创建新分支的，先进行此项操作，然后再进行新分支创建
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 新建基线</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-12-08 五 11:48</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
