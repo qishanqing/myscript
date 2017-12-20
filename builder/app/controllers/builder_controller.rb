@@ -36,6 +36,8 @@ class BuilderController < ApplicationController
 		  @error = "相对主干路径、分支名不能为空"
 #	  elsif mails_format_errors then
 #		  @error = "通知邮件收件人格式不正确：" + mails_format_errors(extra_mails)
+	  elsif @types == 'add' and @task.blank?  then
+		  @error = "请输入工单链接"
 	  else
 		  result = true
 	  end

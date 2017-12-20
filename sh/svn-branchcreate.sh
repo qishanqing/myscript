@@ -102,7 +102,7 @@ function inport_source() {
 	TIME_DIR_CLOSE=`date '+%Y%m%d%H%M'`
 	move_dir=Closed/--close+
 	Trunk_name=${SVN_Trunk}$trunk
-	branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/$trunk
+	branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Trunk/}
 	branch_name1=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Develop/}
 	source_name=${SVN_Branch}$branch
 	dest_name=${Closed_Branch}$move_dir${TIME_DIR_CLOSE}-$branch
@@ -178,10 +178,10 @@ function addbranch() {
 		else
 		        inport_source
 #			svn list $branch_name >/dev/null 2>&1 | mails-cm -i "分支已存在" && exit 1
-			svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
+			svn copy ${trunk} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/output.$$
 			echo ${branch_name} >> /home/svnmodify/add_branch.log
-			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task) values ('$Trunk_name', '$branch_name',now(),'${owner%@*}','$task');"
+			cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task');"
 			check-acces
 (
 cat << mail
@@ -204,8 +204,8 @@ function addtrunk() {
 	else
 		inport_source
 #		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails-cm -i "主干已存在";exit 1;fi 
-		svn copy ${source_name} ${Trunk_name} --parents --username builder --password ant@ -m "新建项目主干分支"
-		echo "新建项目主干路径: ${Trunk_name}${source_name##*/}"
+		svn copy ${branch} ${trunk} --parents --username builder --password ant@ -m "新建项目主干分支"
+		echo "新建项目主干路径: ${trunk}                       "
 	fi
 }
 
@@ -226,8 +226,8 @@ function b-to-b() {
 function createtrunk() {
         inport_source
 #	svn list ${Trunk_name}  >/dev/null 2>&1 | mails-cm -i "主干已存在" && exit 1
-	svn mkdir ${Trunk_name} --username builder --password ant@ -m "新建项目主干分支"
-	echo "新建项目主干路径: ${Trunk_name}"
+	svn mkdir ${trunk} --parents --username builder --password ant@ -m "新建项目主干分支"
+	echo "新建项目主干路径: ${trunk}"
 }
 
 function projectlists() {
