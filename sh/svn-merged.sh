@@ -94,6 +94,8 @@ function Basecode() {
 	rm -f ~/tmp/merged/output.$$
 	Basetrunk=/home/qishanqing/workspace/code/Trunk/
 	Basetrunkcode=$Basetrunk${trunk#*Trunk/}
+	Base_gray_trunk=/home/qishanqing/workspace/code/Gray_Trunk/
+	Base_gray_trunkcode=$Base_gray_trunk${trunk#*Trunk/}
 	Basebranch=/home/qishanqing/workspace/code/Branch/
 	Basebranchcode=$Basebranch${branch#*Branch/}
 }
