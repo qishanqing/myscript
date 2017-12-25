@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
@@ -18,7 +19,8 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@dafy.com/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false },
+                    inclusion: { in: ['qishanqing@dafy.com','yujigang@dafy.com','anliguo@dafy.com','wangyang02@dafy.com'], message:'你没有权限注册'}
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
