@@ -49,7 +49,7 @@ function DFLib_access() {
 function Tag_delete() {
 	if ! [[ "${admin[@]}" =~ "$author" ]];then
 		for p in "${admin_project[@]}";do
-			if [[  "$changed" =~ "$p" ]];then
+			if [[  "$del" =~ "$p" ]];then
 				echo -e  "\n$author: you(all developer) have no access delete Tag" 1>&2
 				exit 1
 			fi
