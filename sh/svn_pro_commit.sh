@@ -50,7 +50,7 @@ function Tag_delete() {
 	if ! [[ "${admin[@]}" =~ "$author" ]];then
 		for p in "${admin_project[@]}";do
 			if [[  "$changed" =~ "$p" ]];then
-				echo -e  "\n$author: you have no access modify this files(DFLib),owner is lijinming and leiwanda" 1>&2
+				echo -e  "\n$author: you(all developer) have no access delete Tag" 1>&2
 				exit 1
 			fi
 		done
