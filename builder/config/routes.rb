@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'dev_helpers/index'
+
+  get 'dev_helpers/new'
+
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'articles/index'
