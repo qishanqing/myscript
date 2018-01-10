@@ -1,14 +1,23 @@
 #!/bin/bash
+
+source cmdb
+source svn.sh
+
 set +x
 
 export BUILD_ID=dontkillme
 
 DT=`date '+%Y%m%dT%H%M%S'`
+branch=$SVN_URL
+version=$SVN_REVISION
+job_name=$JOB_URL
+owner=$BUILD_USER_ID
 
-rm -rf upload
 
-find -maxdepth 2 -name *.war -print -o -maxdepth 3 -name '*.war' -print | while read filename
-do	
+function upload_version () {
+    rm -rf upload
+    find -maxdepth 2 -name *.war -print -o -maxdepth 3 -name '*.war' -print | while read filename
+    do	
 	mkdir -p upload
 	cp -rf $filename upload/
 	filename=${filename##*/}
@@ -17,10 +26,16 @@ do
 	else
 		file="${filename%%.*}-$DT"
 	fi
-	unzip -oq upload/$filename -d upload/dev-$file
+	file=dev-$file
+	createtag
+	unzip -oq upload/$filename -d upload/$file
 	(
 	cd upload
-	zip -r dev-$file.zip dev-$file/*
-	upload-to-ftp -d dev-$file.zip ftp://www:0lHtrr@192.168.0.51/
+	zip -r $file.zip $file/*
+	upload-to-ftp -d $file.zip ftp://www:0lHtrr@192.168.0.51/
 	)
-done
+    done
+}
+
+upload_version
+

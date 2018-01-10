@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'dev_helpers/index'
 
-  get 'dev_helpers/new'
 
   get 'password_resets/new'
   get 'password_resets/edit'
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
   get     'jenkins' => 'jenkins#index'
   get     'builder' => 'builder#index'
   get     'merge' => 'merge#index'
+  get    'dev_helpers' => 'dev_helpers#index'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
@@ -44,6 +43,7 @@ Rails.application.routes.draw do
   match '/start',  to: 'builder#new',            via: 'post'
   match '/articles/submit',  to: 'articles#submit',            via: 'post'
   match '/merge/new',  to: 'merge#new',            via: 'post'
+  match '/dev_helpers/new',  to: 'dev_helpers#new',            via: 'post'
   match '/jenkins/new',  to: 'jenkins#new',            via: 'post'
   match '/upload/new', to: 'upload#new', via: 'post'
 

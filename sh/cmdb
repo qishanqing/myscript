@@ -12,19 +12,18 @@ die() {
     exit -1
 }
 
-cmdb-mysql() {
+function cmdb_mysql() {
     (
         set +x
-        if mysql -u root --password=$(cat /home/qishanqing/.ssh/mysql-cmdb.pass) cmdb -h 192.168.0.232 -e "$@" > /tmp/cmdb.db.$$ 2>&1; then
-            cat /tmp/cmdb.db.$$
-            rm -f /tmp/cmdb.db.$$
-        elif grep 'Duplicate entry' /tmp/cmdb.db.$$; then
-            rm -f /tmp/cmdb.db.$$
+        if mysql -u root --password=$(cat /home/qishanqing/.ssh/mysql-cmdb.pass) cmdb -h 192.168.0.232 -e "$@" > ~/tmp/cmdb.db.$$ 2>&1; then
+            cat ~/tmp/cmdb.db.$$
+            rm -f ~/tmp/cmdb.db.$$
+        elif grep 'Duplicate entry' ~/tmp/cmdb.db.$$; then
+            rm -f ~/tmp/cmdb.db.$$
         else
             die "sql error input cmdb info"
         fi
     )
 
 }
-
-export -f cmdb-mysql
+export -f cmdb_mysql
