@@ -10,7 +10,7 @@ export BUILD_ID=dontkillme
 DT=`date '+%Y%m%dT%H%M%S'`
 branch=$SVN_URL
 version=$SVN_REVISION
-job_name=$JOB_URL
+job_name=$BUILD_URL
 owner=$BUILD_USER_ID
 
 

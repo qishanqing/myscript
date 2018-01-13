@@ -180,12 +180,17 @@ function createtag() {
 		    cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file');"  
 		    echo "新建tag: ${tag_name}"
 		fi
-		if test ! -z "$ftp_name";then
-		    if [ `echo "$ftp_name" | wc -l` -ge 2 ];then
-			echo "此次代码更新没有变化,基于现在最新的分支版本已有 $ftp_name"
-			exit 0
-		    else
-			cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file' where version='$head' and branch_name='$branch';"
+		if test "$SKIP_FTP_VERSION" = true;then
+		    echo "一个分支多个项目,不再检查上传的ftp版本"
+		    return 0
+		else
+		    if test ! -z "$ftp_name";then
+			if [ `echo "$ftp_name" | wc -l` -ge 2 ];then
+			    echo "此次代码更新没有变化,基于现在最新的分支版本已有 $ftp_name"
+			    exit 0
+			else
+			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file' where version='$head' and branch_name='$branch';"
+			fi
 		    fi
 		fi
 	    else

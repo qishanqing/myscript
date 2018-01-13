@@ -87,10 +87,23 @@ while true;do
 done
 
 function Basecode() {
-	if test -z $trunk;then
-		trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g'`
+	if [[ "$branch" =~ Tag ]];then
+	    tag1=$branch
+	    tag3=${branch#*tech/}
+	    local branch=${branch%/[0-9]*}
+	    tag=$branch
+	    svn log -l 1 $tag1  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
+	else
+	    svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
+	    
 	fi
-	svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
+	
+        if test -z $trunk;then
+	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
+	    tag2=`echo $tag | perl -npe 's,Tag,Branch,g'`
+	fi
+	
+	
 	rm -f ~/tmp/merged/output.$$
 	Basetrunk=/home/qishanqing/workspace/code/Trunk/
 	Basetrunkcode=$Basetrunk${trunk#*Trunk/}
@@ -191,48 +204,68 @@ function svn_from_tb_merged() {
 		set -x
 		cd $Basetrunkcode
 		clean_workspace
-		local revision=`svn log  | grep -C  3 "${branch#*tech/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
-		head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
+		
+		if [[ "$branch" =~ Tag ]];then
+		    local revision=`svn log | grep -w "${tag#*Tag/}"  | head -n 1 | awk -F "_" '{print $2}'`
+		    local revision=${revision%*:}
+		    
+		    if [ -z $revision ];then
+			local revision=`svn log | grep -C  3 "${tag#*Tag/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		    fi
+		    
+		    head=`svn log -l 2 $tag1 | grep ^r | tail -n 1 |awk -F '|' '{print$1}'`
+		    branch=$tag2
+		else
+		    local revision=`svn log  | grep -C  3 "${branch#*Branch/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		    
+		    if [ -z $revision ];then
+			local revision=`svn log | grep -w "${branch#*Branch/}"  | head -n 1 | awk -F "_" '{print $2}'`
+			local revision=${revision%*:}
+		    fi
+		    
+		    head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
+		fi
+				
 		if  [ ! -z  $revision ];then
-			st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
+			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
 			if [ -z $st ];then
-				svn merge $branch@$revision $branch
+				svn merge $branch@$revision $branch@$head
 			else
-				echo p | svn merge $branch@$revision $branch
+				echo p | svn merge $branch@$revision $branch@$head
 				svn_conflict_files
 				svn_conflict_trees
 			fi
 		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233 ||  
+Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username qishanqing --password 372233 ||  
 				(
 				svn_conflict_files
 				svn_conflict_trees
 		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233 
+Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username qishanqing --password 372233 
 				)
 		else
-			local revision=`svn log --stop-on-copy $branch | tail -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		        local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
 			if [ ! -z  $revision ];then
-				st=`svn merge --dry-run $branch@$revision $branch . | grep -Ei 'conflicts|树冲突'`
+				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
-					svn merge $branch@$revision $branch
+					svn merge $branch@$revision $branch@$head
 				else
-					echo p | svn merge $branch@$revision $branch
+					echo p | svn merge $branch@$revision $branch@$head
 					svn_conflict_files
 					svn_conflict_trees
 				fi
 			fi
 		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233 || 
+Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username qishanqing --password 372233 || 
 				(
 				svn_conflict_files
 				svn_conflict_trees
 		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${branch#*tech/}" --username qishanqing --password 372233
+Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username qishanqing --password 372233
 				)
 		fi
 		cmdb-mysql "insert into merge(branch_name,task,branch_date,path,owner) values ('$branch','$task',now(),'${branch#*Develop/}','${owner%@*}');"
-		) | mails-cm -i "code merged from ${branch#*Branch/}" || true
+		) | mails-cm -i "code merged from  ${branch#*tech/}" || true
 }
 
 function svn_from_bt_merged() {
