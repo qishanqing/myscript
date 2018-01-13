@@ -90,6 +90,7 @@ function Basecode() {
 	if [[ "$branch" =~ Tag ]];then
 	    tag1=$branch
 	    tag3=${branch#*tech/}
+	    tag4=${branch#*Tag/}
 	    local branch=${branch%/[0-9]*}
 	    tag=$branch
 	    svn log -l 1 $tag1  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
@@ -206,21 +207,21 @@ function svn_from_tb_merged() {
 		clean_workspace
 		
 		if [[ "$branch" =~ Tag ]];then
-		    local revision=`svn log | grep -w "${tag#*Tag/}"  | head -n 1 | awk -F "_" '{print $2}'`
+		    local revision=`svn log | grep -w "${tag#*Tag/}"  | head -n 1 | awk -F "_" '{print $NF}'`
 		    local revision=${revision%*:}
 		    
-		    if [ -z $revision ];then
+		    if ! [[ "$revision" =~ ^[0-9] ]];then
 			local revision=`svn log | grep -C  3 "${tag#*Tag/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		    fi
 		    
 		    head=`svn log -l 2 $tag1 | grep ^r | tail -n 1 |awk -F '|' '{print$1}'`
 		    branch=$tag2
 		else
-		    local revision=`svn log  | grep -C  3 "${branch#*Branch/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
+		    local revision=`svn log  | grep -w "${branch#*Branch/}"  | head -n 1 | awk -F "_" '{print $NF}'`
+		    local revision=${revision%*:}
 		    
-		    if [ -z $revision ];then
-			local revision=`svn log | grep -w "${branch#*Branch/}"  | head -n 1 | awk -F "_" '{print $2}'`
-			local revision=${revision%*:}
+		    if ! [[ "$revision" =~ ^[0-9] ]];then
+			local revision=`svn log | grep -C  3 "${branch#*Branch/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		    fi
 		    
 		    head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
