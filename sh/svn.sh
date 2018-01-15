@@ -131,8 +131,8 @@ function b_to_b() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
-		svn copy $trunk ${branch_name1} --parents --username builder --password ant@ -m "新建项目开发分支"
-		echo "新建项目开发分支: ${branch_name1}"
+		svn copy $trunk ${branch_name1} --parents --username builder --password ant@ -m "新建主干项目"
+		echo "新建主干项目: ${branch_name1}"
 		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task');"
 		check_acces
 	fi

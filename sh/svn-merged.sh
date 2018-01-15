@@ -246,6 +246,11 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username q
 				)
 		else
 		        local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
+
+			if [ -z "$revisioon" ];then
+			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
+			fi
+			
 			if [ ! -z  $revision ];then
 				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
