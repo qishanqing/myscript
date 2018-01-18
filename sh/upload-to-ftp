@@ -29,7 +29,7 @@ done
 ## end generated code
 
 if test $# = 0 -o -z "$dir"; then
-    mails-cm -i "Error: Usage $(basename $0) -d dir ftp-urls..."
+    mails_cm -i "Error: Usage $(basename $0) -d dir ftp-urls..."
 fi
 
 filename=$(basename "$dir")
@@ -59,7 +59,7 @@ fi
             fi
 
             if test "$n" = 19; then
-                mails-cm -i "Upload $name to $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
+                mails_cm -i "Upload $name to $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
             fi
 
             sleep 30

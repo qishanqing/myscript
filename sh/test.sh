@@ -37,7 +37,7 @@ ee
 cat << mail
 新建分支:test
 mail
-) | mails-cm  "svnadminBuilder request from 18310287801@163.com"
+) | mails_cm  "svnadminBuilder request from 18310287801@163.com"
 !
 echo pid is $$
 die() {
@@ -47,7 +47,7 @@ die() {
 		echo 
 		cat output.$$
 	fi
-	) | mails-cm -i "svn branch create failed"
+	) | mails_cm -i "svn branch create failed"
 	kill $$
 	exit -1
 }

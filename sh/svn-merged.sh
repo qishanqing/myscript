@@ -10,7 +10,7 @@ die() {
 		echo
 		cat ~/tmp/merged/output.$$
 	fi
-	) | mails-cm -i "svn merged faild"
+	) | mails_cm -i "svn merged faild"
 	rm -f ~/tmp/merged/output.$$
 #	kill $$
 #	exit -1
@@ -152,12 +152,12 @@ function svn_conflict_files(){
 
 function mvn_check(){
     if [ -f pom.xml ];then
-	mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails-cm -i "项目编译状态 ${branch#*Branch/}" || true
+	mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
 	mvn clean > /dev/null
     elif [ -f ../pom.xml ];then
 	(
 	    cd ../
-	    mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails-cm -i "项目编译状态 ${branch#*Branch/}" || true
+	    mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
 	    mvn clean > /dev/null
 	)
     else
@@ -245,10 +245,12 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username q
 Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username qishanqing --password 372233 
 				)
 		else
-		        local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
-
-			if [ -z "$revisioon" ];then
+			if [ -z "$revision" ];then
+		            local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
+			elif [ -z "$revision" ];then
 			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
+			else
+			    echo "可能是copy to 项目，需要手动合并"
 			fi
 			
 			if [ ! -z  $revision ];then
@@ -271,7 +273,7 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username q
 				)
 		fi
 		cmdb-mysql "insert into merge(branch_name,task,branch_date,path,owner) values ('$branch','$task',now(),'${branch#*Develop/}','${owner%@*}');"
-		) | mails-cm -i "code merged from  ${branch#*tech/}" || true
+		) | mails_cm -i "code merged from  ${branch#*tech/}" || true
 }
 
 function svn_from_bt_merged() {
@@ -284,7 +286,7 @@ function svn_from_bt_merged() {
 				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if test -z $stu;then
 					timeout 20 svn merge -r $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password 372233 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
+					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password 372233 | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
@@ -292,7 +294,7 @@ function svn_from_bt_merged() {
 				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if [ -z $stu ];then
 					timeout 20 svn merge -c $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password 372233 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
+					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password 372233 | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
@@ -303,7 +305,7 @@ function svn_from_bt_merged() {
 				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
 				if [ -z $stu ];then
 					timeout 20 svn merge -c $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password 372233 | mails-cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
+					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}" --username qishanqing --password 372233 | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else 
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
@@ -323,7 +325,7 @@ function svn_dt_merged() {
 		else
 			svn merge -r HEAD:$rev .
 			svn ci -m "版本回退至: $rev"
-		fi | mails-cm -i "已回退版本" || true
+		fi | mails_cm -i "已回退版本" || true
 		)
 }
 
@@ -338,7 +340,7 @@ function svn_db_merged() {
 		else
 			svn merge -r HEAD:$rev .
 			svn ci -m "版本回退: $rev"
-		fi | mails-cm -i "已回退版本" || true
+		fi | mails_cm -i "已回退版本" || true
 		)
 }
 

@@ -10,7 +10,7 @@ die() {
 	    echo
 	    cat ~/tmp/output.$$
 	fi
-    ) | mails-cm -i "svn create failed"
+    ) | mails_cm -i "svn create failed"
     rm -rf ~/tmp/output.$$
     kill $$
     exit -1
@@ -90,7 +90,7 @@ function addbranch() {
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
 		        inport_source
-#			svn list $branch_name >/dev/null 2>&1 | mails-cm -i "分支已存在" && exit 1
+#			svn list $branch_name >/dev/null 2>&1 | mails_cm -i "分支已存在" && exit 1
 			svn copy ${trunk} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/output.$$
 			echo ${branch_name} >> /home/svnmodify/add_branch.log
@@ -106,7 +106,7 @@ cat << mail
 
 			添加权限人员: $author
 mail
-) | mails-cm -i "svnbranch-add from svn branch create web" || true
+) | mails_cm -i "svnbranch-add from svn branch create web" || true
 		fi
 	done
 }
@@ -118,9 +118,9 @@ function addtrunk() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
-#		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails-cm -i "主干已存在";exit 1;fi 
-		svn copy ${branch} ${trunk} --parents --username builder --password ant@ -m "新建项目主干分支"
-		echo "新建项目主干路径: ${trunk}                       "
+#		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails_cm -i "主干已存在";exit 1;fi 
+		svn copy ${branch} ${trunk} --parents --username builder --password ant@ -m "新建主干项目"
+		echo "新建主干项目路径: ${trunk}                       "
 	fi
 }
 
@@ -140,15 +140,15 @@ function b_to_b() {
 
 function createtrunk() {
         inport_source
-#	svn list ${Trunk_name}  >/dev/null 2>&1 | mails-cm -i "主干已存在" && exit 1
-	svn mkdir ${trunk} --parents --username builder --password ant@ -m "新建项目主干分支"
-	echo "新建项目主干路径: ${trunk}"
+#	svn list ${Trunk_name}  >/dev/null 2>&1 | mails_cm -i "主干已存在" && exit 1
+	svn mkdir ${trunk} --parents --username builder --password ant@ -m "新建主干项目"
+	echo "新建主干项目路径: ${trunk}"
 }
 
 function projectlists() {
         inport_source
 	svn log -l 1 ${trunk:-$branch}  >~/tmp/merged/output.$$ 2>&1 || die "${trunk:-$branch}-----请输入具体svn——url"
-	svn list ${trunk:-$branch} | indent-clipboard - | mails-cm -i "${trunk:-$branch}------项目列表如下" || true
+	svn list ${trunk:-$branch} | indent-clipboard - | mails_cm -i "${trunk:-$branch}------项目列表如下" || true
 }
 
 function createbaselines() {
@@ -222,7 +222,7 @@ function createtag1() {
 	    ftp_name=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 	    if test ! -z "$st";then
 		if [ `echo "$st" | wc -l` -ge 2 ];then
-		    echo "基于现在最新的分支版本已有 $st" | mails-cm -i "create tag success"
+		    echo "基于现在最新的分支版本已有 $st" | mails_cm -i "create tag success"
 		fi
 	    else
 		svn copy ${branch} ${tag_name}  --parents --username builder --password ant@ -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}"
@@ -233,7 +233,7 @@ function createtag1() {
 
 		${tag_name}
 EOF
-) | mails-cm -i "create tag success" 
+) | mails_cm -i "create tag success" 
 	    fi
 	else
 	    die "注意分支首尾不能有空格，其次只提供针对分支创建tag功能，请输入正确的分支名"
@@ -242,7 +242,7 @@ EOF
 }
 
 function seach_tag_ftp(){
-    echo "此功能还未完善" | mails-cm -i "敬请期待......"
+    echo "此功能还未完善" | mails_cm -i "敬请期待......"
 }
 
 function delbranch() {
@@ -261,7 +261,7 @@ cat << mail
 
 		${source_name}
 mail
-) | mails-cm -i "svnbranch-del from svn branch create web" || true
+) | mails_cm -i "svnbranch-del from svn branch create web" || true
 
 	fi
 }

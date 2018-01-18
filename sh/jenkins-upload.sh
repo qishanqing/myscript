@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source cmdb
-source svn.sh
+source /home/qishanqing/myscript/sh/cmdb
+source /home/qishanqing/myscript/sh/svn.sh
 
 set +x
 

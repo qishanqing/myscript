@@ -10,7 +10,7 @@ die() {
 		echo
 		cat ~/tmp/jenkins/output.$$
 	fi
-	) | mails-cm -i "jenkins auto web do failed"
+	) | mails_cm -i "jenkins auto web do failed"
 	rm -f ~/tmp/jenkins/output.$$
 	kill $$
 	exit -1
@@ -118,7 +118,7 @@ cat << EOF
 清理后剩余jenkins项目： `java -jar   $jenkins_cli -s $jenkins_url/ list-jobs | wc -l`
 	
 EOF
-) | mails-cm -i "jenkinszombie已清理" || true
+) | mails_cm -i "jenkinszombie已清理" || true
 rm -rf ~/tmp/jenkins/output.$$
 }
 
