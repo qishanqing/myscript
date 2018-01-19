@@ -210,7 +210,7 @@ function svn_from_tb_merged() {
 		    local revision=`svn log | grep -w "${tag#*Tag/}"  | head -n 1 | awk -F "_" '{print $NF}'`
 		    local revision=${revision%*:}
 		    
-		    if ! [[ "$revision" =~ ^[0-9] ]];then
+		    if ! [[ "$revision" =~ ^[0-9]{5,} ]];then
 			local revision=`svn log | grep -C  3 "${tag#*Tag/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		    fi
 		    
@@ -220,7 +220,7 @@ function svn_from_tb_merged() {
 		    local revision=`svn log  | grep -w "${branch#*Branch/}"  | head -n 1 | awk -F "_" '{print $NF}'`
 		    local revision=${revision%*:}
 		    
-		    if ! [[ "$revision" =~ ^[0-9] ]];then
+		    if ! [[ "$revision" =~ ^[0-9]{5,} ]];then
 			local revision=`svn log | grep -C  3 "${branch#*Branch/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
 		    fi
 		    
