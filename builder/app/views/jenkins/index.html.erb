@@ -10,9 +10,10 @@
 	<label>项目类型</label><br>
 	<%#= params[:types] = "add" unless params[:type]; nil %>
         <%= radio_button_tag "types", "add", params[:types] == "add" %>新建项目&nbsp;&nbsp;
+        <%= radio_button_tag "types", "bu", params[:types] == "bu" %>执行项目&nbsp;&nbsp;
 	<%= radio_button_tag "types", "del", params[:types] == "del" %>删除项目&nbsp;&nbsp;<br><br>
 
-	<label>新建jenkins项目名称</label><br>
+	<label>jenkins项目名称</label><br>
 	<%= text_area_tag "add", params[:add],:class =>"test",:cols =>30 %><br>
 
 	<label>复制已存在项目名称</label><br>

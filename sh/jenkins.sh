@@ -71,7 +71,7 @@ while true;do
 	esac
 done
 
-jenkins_url="http://192.168.0.232:8080"
+jenkins_url="http://192.168.0.231:8080"
 jenkins_addrs="/root/.jenkins"
 jenkins_cli="/home/qishanqing/myscript/jenkins/jenkins-cli.jar"
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
@@ -102,6 +102,12 @@ jenkins-job-add() {
 		java -jar   $jenkins_cli -s $jenkins_url/ copy-job "$copy" "$add"
 	fi
 	) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job add failed"
+}
+
+jenkins-job-build() {
+	(
+		java -jar   $jenkins_cli -s $jenkins_url/ build "$add" || true
+	) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job build failed"
 }
 
 jenkins-job-del() {
@@ -185,6 +191,8 @@ if test $types = add;then
 	jenkins-job-add
 elif test $types = del;then
 	jenkins-job-del
+elif test $types = bu;then
+	jenkins-job-build
 else
 	jenkins-clean-range-run
 	job-info
