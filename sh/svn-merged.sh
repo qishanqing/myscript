@@ -150,15 +150,26 @@ function svn_conflict_files(){
 		)
 }
 
+function build_error_check() {
+    mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - >  ~/tmp/merged/mvn-build.log
+    local status=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
+	    
+    if [ ! -z "$status" ];then
+	echo ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
+    else
+	exit 0
+    fi
+
+    mvn clean > /dev/null
+}
+
 function mvn_check(){
     if [ -f pom.xml ];then
-	mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
-	mvn clean > /dev/null
+	build_error_check
     elif [ -f ../pom.xml ];then
 	(
 	    cd ../
-	    mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
-	    mvn clean > /dev/null
+	    build_error_check
 	)
     else
 	echo 
@@ -247,11 +258,11 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" --username q
 		else
 			if [ -z "$revision" ];then
 		            local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
-			elif [ -z "$revision" ];then
+		    	fi
+
+		    	if [ -z "$revision" ];then
 			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
-			else
-			    echo "可能是copy to 项目，需要手动合并"
-			fi
+		    	fi
 			
 			if [ ! -z  $revision ];then
 				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
