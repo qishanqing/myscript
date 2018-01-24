@@ -3,7 +3,7 @@ require 'rubygems'
 
 $LOAD_PATH << ( Rails.root + 'app/controllers')
 class JenkinsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token, only: [:new]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
                                         :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
