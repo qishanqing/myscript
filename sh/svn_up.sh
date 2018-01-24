@@ -38,5 +38,5 @@ export SVN_Branch_up
 export SVN_Gray_Trunk_up
 
 SVN_Trunk_up
-SVN_Gray_Trunk_up
+#SVN_Gray_Trunk_up
 #SVN_Branch_up

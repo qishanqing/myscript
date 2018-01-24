@@ -93,7 +93,6 @@ function addbranch() {
 #			svn list $branch_name >/dev/null 2>&1 | mails_cm -i "分支已存在" && exit 1
 			svn copy ${trunk} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/output.$$
-			echo ${branch_name} >> /home/svnmodify/add_branch.log
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
 			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head');"
