@@ -155,7 +155,7 @@ function build_error_check() {
     local status=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
 	    
     if [ ! -z "$status" ];then
-	echo ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
+	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
     else
 	exit 0
     fi
