@@ -19,7 +19,6 @@ class MergeController < ApplicationController
 	  extra_mails = params[:extra_mails]
 	  branch = params[:branch]
 	  trunk = params[:trunk]
-          owner = current_user.email
 	  
 	  result = nil
 	  if branch.blank? then
@@ -37,8 +36,7 @@ class MergeController < ApplicationController
 			  "-t", trunk, \
 			  "-E", extra_mails, \
 			  "-b", branch, \
-			  "-T", types, \
-                          "-o", owner
+			  "-T", types
 	 end
   end
 end
