@@ -2,6 +2,7 @@
 #!/bin/bash
 
 set +x
+export LANG=zh_CN.UTF-8
 
 die() {
     (
@@ -91,7 +92,7 @@ function addbranch() {
 		else
 		        inport_source
 #			svn list $branch_name >/dev/null 2>&1 | mails_cm -i "分支已存在" && exit 1
-			svn copy ${trunk} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
+			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/output.$$
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
@@ -118,7 +119,7 @@ function addtrunk() {
 	else
 		inport_source
 #		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails_cm -i "主干已存在";exit 1;fi 
-		svn copy ${branch} ${trunk} --parents --username builder --password ant@ -m "新建主干项目"
+		svn copy ${branch} ${trunk} --parents -m "新建主干项目"
 		echo "新建主干项目路径: ${trunk}                       "
 	fi
 }
@@ -130,7 +131,7 @@ function b_to_b() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
-		svn copy $trunk ${branch_name1} --parents --username builder --password ant@ -m "新建主干项目"
+		svn copy $trunk ${branch_name1} --parents -m "新建主干项目"
 		echo "新建主干项目: ${branch_name1}"
 		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task');"
 		check_acces
@@ -140,7 +141,7 @@ function b_to_b() {
 function createtrunk() {
         inport_source
 #	svn list ${Trunk_name}  >/dev/null 2>&1 | mails_cm -i "主干已存在" && exit 1
-	svn mkdir ${trunk} --parents --username builder --password ant@ -m "新建主干项目"
+	svn mkdir ${trunk} --parents  -m "新建主干项目"
 	echo "新建主干项目路径: ${trunk}"
 }
 
@@ -153,7 +154,7 @@ function projectlists() {
 function createbaselines() {
 	inport_source
 	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
-	svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
+	svn copy ${SVN_Trunk} $baselinedir  --parents -m "因主干更新，新建基线"
 	echo "新建主干基线: $baselinedir"
 }
 
@@ -175,7 +176,7 @@ function createtag() {
 			echo "此次代码更新没有变化,基于现在最新的分支版本已有 $st"
 		    fi   
 		else
-		    svn copy ${branch} ${tag_name}  --parents --username builder --password ant@ -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}"
+		    svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}"
 		    cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file');"  
 		    echo "新建tag: ${tag_name}"
 		fi
@@ -224,7 +225,7 @@ function createtag1() {
 		    echo "基于现在最新的分支版本已有 $st" | mails_cm -i "create tag success"
 		fi
 	    else
-		svn copy ${branch} ${tag_name}  --parents --username builder --password ant@ -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}"
+		svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}"
 		cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${email%@*:-qishanqing}','${version:-$head}','$job_name','$file');"
 (
 		cat <<EOF
@@ -250,7 +251,7 @@ function delbranch() {
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
 		inport_source
-		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限" >~/tmp/output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
+		svn move ${source_name} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >~/tmp/output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
 		rm -f ~/tmp/output.$$
 		echo ${source_name} >> /home/svnmodify/del_branch.log
 		cmdb_mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
