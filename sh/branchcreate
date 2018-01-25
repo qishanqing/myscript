@@ -103,7 +103,7 @@ addbranch() {
 		echo -e "\033[37m 2. 输入项目名称 \033[0m"
 	else
 		inport_source
-		svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"
+		svn copy ${Trunk_name} ${branch_name}   -m "新建项目开发分支"
 		echo ${branch_name} >> /home/svnmodify/add_branch.log
 		cmdb-mysql "insert into scm(scm_trunk,scm_branch,scm_date,scm_description) values ('$Trunk_name', '$branch_name',now(),'${P5:-qishanqing}');"
 		check-acces
@@ -119,7 +119,7 @@ addtrunk() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
-		svn copy ${source_name} ${SVN_Trunk}$P2/ --parents --username builder --password ant@ -m "新建项目主干分支"
+		svn copy ${source_name} ${SVN_Trunk}$P2/   -m "新建项目主干分支"
 		echo "新建项目主干路径: ${SVN_Trunk}$P2/${source_name##*/}"
 	fi
 }
@@ -127,14 +127,13 @@ addtrunk() {
 createtrunk() {
 	hint "请输入主干项目路径: " P1 
 	inport_source
-	svn mkdir ${Trunk_name} --username builder --password ant@ -m "新建项目主干分支"
+	svn mkdir ${Trunk_name} -m "新建项目主干分支"
 	echo "新建项目主干路径: ${SVN_Trunk}$P1"
 }
 createbaselines() {
 	inport_source
 	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
-	#svn rm $baselinedir --username builder --password ant@ -m "需新建基线，删除旧基线"
-	svn copy ${SVN_Trunk} $baselinedir  --parents --username builder --password ant@ -m "因主干更新，新建基线"
+	svn copy ${SVN_Trunk} $baselinedir  -m "因主干更新，新建基线"
 	echo "新建主干基线: $baselinedir"
 }
 
@@ -145,7 +144,7 @@ function delbranch() {
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
 		inport_source
-		svn move ${source_name} ${dest_name} --username builder --password ant@ -m "分支合并至主干后，关闭分支收回权限"
+		svn move ${source_name} ${dest_name} -m "分支合并至主干后，关闭分支收回权限"
 		cmdb-mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$P1%';"
 		echo ${source_name} >> /home/svnmodify/del_branch.log
 		echo ${source_name}
