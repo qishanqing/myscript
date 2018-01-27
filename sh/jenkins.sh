@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#set -e
+#mkdir -p ~/tmp/$(basename $0)
+#cd ~/tmp/$(basename $0)
+#JENKINS_BUILDER_NOW=$(now.)
+
+source /home/qishanqing/myscript/sh/cmdb
 set -x
 
 echo pid is $$
@@ -7,11 +13,25 @@ die() {
 	(
 	echo "$@"
 	if test -e ~/tmp/jenkins/output.$$;then
-		echo
-		cat ~/tmp/jenkins/output.$$
+		Error=`cat ~/tmp/jenkins/output.$$`
+		echo $Error		
 	fi
 	) | mails_cm -i "jenkins auto web do failed"
 	rm -f ~/tmp/jenkins/output.$$
+	kill $$
+	exit -1
+}
+
+die1() {
+	(
+	echo "$@"
+	if test -e ~/tmp/jenkins/output.$$;then
+		Error=`cat ~/tmp/jenkins/output.$$`
+		echo $Error		
+	fi
+	) | mails_cm -i "jenkins auto web do failed"
+	rm -f ~/tmp/jenkins/output.$$
+	cmdb_mysql "update svn set"
 	kill $$
 	exit -1
 }
@@ -84,7 +104,8 @@ clean-jenkins-workspace() {
 }
 
 jenkins-clean-never-run () {
-	j=`java -jar   $jenkins_cli -s $jenkins_url/ list-jobs`
+    j=`java -jar   $jenkins_cli -s $jenkins_url/ list-jobs`
+    export j
 	for x in $j;do
 		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/buildNumber`
 		if test -z "$c";then
@@ -105,13 +126,73 @@ jenkins-job-add() {
 }
 
 jenkins-job-build() {
-	(
-		java -jar   $jenkins_cli -s $jenkins_url/ build "$add" || true
-	) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job build failed"
+        (
+	        get-job-info
+		java -jar   $jenkins_cli -s $jenkins_url/ build "$add"
+	) 
 }
 
 jenkins-job-del() {
 	java -jar   $jenkins_cli -s $jenkins_url/ delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
+}
+
+function get-build-description() {
+    echo owner: ${extra_mails%@*}
+    echo
+    echo
+    echo branch: $del
+}
+
+function output-manifest.xml-from-template() {
+    template="/home/qishanqing/myscript/jenkins/template.xml"
+    
+    export assignedNode=$(
+	echo "build2||build1||master"
+	   )
+    if [ -z $build_command ];then
+	build_command="source /home/qishanqing/myscript/sh/jenkins-upload.sh"
+    fi
+
+    svnurl=$del
+    
+#    if [ -z $svnurl ];then
+#	die "请输入需要编译的svn路径"
+#    fi
+
+    export svnurl
+    export build_description=$(get-build-description)
+    export build_command
+
+    cat $template | perl -npe '                                                                                                                                                                
+        s,%description%,<![CDATA[$ENV{build_description}]]>,g;                                                                                                                                
+        s,%svnurl%,<![CDATA[$ENV{svnurl}]]>,g;                                                                                                                                       
+        s,%command%,<![CDATA[$ENV{build_command}]]>,g;                                                                                                                                      
+    '
+}
+
+get-job-info() {
+    if [ -z $add ];then
+	die "项目名称不能为空"
+    else
+	java -jar   $jenkins_cli -s $jenkins_url/ get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------项目不存在，马上为你新建"
+    fi
+    
+
+    if [ ! -s ~/tmp/jenkins/template.xml ];then
+	output-manifest.xml-from-template >  ~/tmp/jenkins/template.xml
+	cat ~/tmp/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ create-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job create failed"
+    fi
+
+    branch_name=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
+    if [ -e ~/tmp/logs/task_id.log ];then
+  	echo $copy > ~/tmp/logs/task_id.log
+    else
+	(
+	    cd ~/tmp/logs
+      	    touch task_id.log
+       	    echo $copy > ~/tmp/logs/task_id.log
+	)
+    fi
 }
 
 job-info() {
