@@ -118,7 +118,7 @@ function addtrunk() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
-#		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails_cm -i "主干已存在";exit 1;fi 
+#		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails_cm -i "主干已存在";exit -1;fi 
 		svn copy ${branch} ${trunk} --parents -m "新建主干项目"
 		echo "新建主干项目路径: ${trunk}                       "
 	fi
@@ -171,14 +171,16 @@ function createtag() {
 		tag_name=$tag_name/${TIME_DIR}_${version:-$head}
 		st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 		ftp_name=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$head' and branch_name='$branch';"`
+		info="此次代码更新没有变化"
+		info1="新建tag"
 		if test ! -z "$st";then
 		    if [ `echo "$st" | wc -l` -ge 2 ];then
-			echo "此次代码更新没有变化,基于现在最新的分支版本已有 $st"
+			echo "$info,基于现在最新的分支版本已有 $st"
 		    fi   
 		else
 		    svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}"
-		    cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file');"  
-		    echo "新建tag: ${tag_name}"
+		    cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"  
+		    echo "$info1: ${tag_name}"
 		fi
 		if test "$SKIP_FTP_VERSION" = true;then
 		    echo "一个分支多个项目,不再检查上传的ftp版本"
@@ -186,20 +188,21 @@ function createtag() {
 		else
 		    if test ! -z "$ftp_name";then
 			if [ `echo "$ftp_name" | wc -l` -ge 2 ];then
-			    echo "此次代码更新没有变化,基于现在最新的分支版本已有 $ftp_name"
+			    echo "$info,基于现在最新的分支版本已有 $ftp_name"
+			    cmdb_mysql "update svn set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
 			    exit 0
 			else
-			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0' where task_id='${task_id:-0}';"
 			fi
 		    fi
 		fi
 	    else
-		echo "现在支持分支自动打tag，请切换至对应分支试试吧"
+		echo "现在支持分支自动打tag，请切换至对应分支"
+		exit 0
 		ftp_name1=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE tag_name='$branch';"`
 		if test ! -z "$ftp_name1";then
 		    if [ `echo "$ftp_name1" | wc -l` -ge 2 ];then
 			echo "基于本次的tag版本已有 $ftp_name1"
-			exit 0
 		    else
 			cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file' where tag_name='$branch';"
 		    fi

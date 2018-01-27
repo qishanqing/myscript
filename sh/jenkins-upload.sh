@@ -13,6 +13,13 @@ version=$SVN_REVISION
 job_name=$BUILD_URL
 owner=$BUILD_USER_ID
 
+if [ -e /home/qishanqing/tmp/logs/task_id.log ];then
+    task_id=`cat /home/qishanqing/tmp/logs/task_id.log`
+    rm -f /home/qishanqing/tmp/logs/task_id.log
+    export task_id
+fi
+
+
 
 function upload_version () {
     rm -rf upload

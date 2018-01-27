@@ -202,13 +202,25 @@ function svn_conflict_trees(){
 			svn co $branch ~/tmp/conflict/$branch  > /dev/null
 			cd ~/tmp/conflict/$branch
 			for x in `cat ~/tmp/project_list.txt`;do
-			    cp-with-dir-struct $Basetrunkcode $x
+			    cp-with-dir-struct $Basetrunkcode $x > /dev/null
 			done
 			echo > ~/tmp/project_list.txt
 		    )
 		fi
 		) 
 		mvn_check && svn st | grep "^?" | awk '{print $2}' | xargs  svn add >/dev/null 2>&1
+}
+
+function commit() {
+    info=`svn st | wc -l`
+    task_id=`cmdb_mysql "SELECT task_id FROM svn WHERE tag_name='${tag3:-$branch}';"`
+    if [ $info -eq 0 ];then
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','code合并内容为空','${task_id:-0}');"
+	exit 0
+    fi
+   
+    svn ci -m "$task
+Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" | cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
 }
 
 function svn_from_tb_merged() {
@@ -247,19 +259,21 @@ function svn_from_tb_merged() {
 				svn_conflict_files
 				svn_conflict_trees
 			fi
-		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" ||  
+			commit ||
 				(
 				svn_conflict_files
 				svn_conflict_trees
-		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}"
+				commit
 				)
 		else
 			if [ -z "$revision" ];then
 		            local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
 		    	fi
 
+			if [ -z "$revision" ];then
+		            local revision=`svn log --search "新建分支项目" "${branch}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
+		    	fi
+			
 		    	if [ -z "$revision" ];then
 			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
 		    	fi
@@ -274,16 +288,13 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}"
 					svn_conflict_trees
 				fi
 			fi
-		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}"  || 
+			commit || 
 				(
 				svn_conflict_files
 				svn_conflict_trees
-		svn ci -m "$task
-Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" 
+				commit
 				)
 		fi
-		cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner) values ('$branch','$task',now(),'${branch#*Develop/}','${owner%@*}');"
 		) | mails_cm -i "code merged from  ${branch#*tech/}" || true
 }
 
