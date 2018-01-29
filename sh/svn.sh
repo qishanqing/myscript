@@ -166,7 +166,7 @@ function createtag() {
 	    inport_source
 	    head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 	    head=${head#r*}
-	    if [[ $branch =~ Branch ]];then
+	    if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]];then
 		tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
 		tag_name=$tag_name/${TIME_DIR}_${version:-$head}
 		st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
@@ -216,7 +216,7 @@ function createtag1() {
 	inport_source
 	head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 	head=${head#r*}
-	if [[ $branch =~ Branch ]];then
+	if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]];then
 	    svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "$branch-----分支名输入错误或者分支已关闭"
 	    tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
 	    tag_name=$tag_name/${TIME_DIR}_${version:-$head}
@@ -237,7 +237,7 @@ EOF
 ) | mails_cm -i "create tag success" 
 	    fi
 	else
-	    die "注意分支首尾不能有空格，其次只提供针对分支创建tag功能，请输入正确的分支名"
+	    die "注意分支首尾不能有空格，其次只提供针对分支创建tag功能，请输入肉眼可辨并且正确的分支名"
 	fi
     done
 }
