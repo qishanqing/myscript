@@ -39,7 +39,7 @@ function upload_version () {
 	(
 	cd upload
 	zip -r $file.zip $file/*
-	upload-to-ftp -d $file.zip ftp://www:0lHtrr@192.168.0.51/
+	upload-to-ftp -d $file.zip ftp://www:0lHtrr@192.168.0.51/ && echo "已上传"
 	)
     done
 }
