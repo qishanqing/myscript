@@ -157,6 +157,10 @@ function build_error_check() {
     if [ ! -z "$status" ];then
 	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译状态 ${branch#*Branch/}" || true
     else
+	echo 
+	echo "-----------------------------"
+	echo "编译失败,可能是合并有问题"
+	echo "-----------------------------"
 	exit 0
     fi
 
@@ -213,14 +217,19 @@ function svn_conflict_trees(){
 
 function commit() {
     info=`svn st | wc -l`
-    task_id=`cmdb_mysql "SELECT task_id FROM svn WHERE tag_name='${tag3:-$branch}';"`
+    if [ -z $tag1 ];then
+	task_id=`cmdb_mysql "SELECT task_id FROM svn WHERE branch_name='$branch'and version='$head';"`
+    else
+	task_id=`cmdb_mysql "SELECT task_id FROM svn WHERE tag_name='${tag1}';"`
+    fi
+	
     if [ $info -eq 0 ];then
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','code合并内容为空','${task_id:-0}');"
 	exit 0
     fi
    
     svn ci -m "$task
-Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" | cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
+Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
 }
 
 function svn_from_tb_merged() {
