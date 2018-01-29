@@ -103,6 +103,7 @@ clean-jenkins-workspace() {
 	java -jar   $jenkins_cli -s $jenkins_url/ delete-job $x
 }
 
+
 jenkins-clean-never-run () {
     j=`java -jar   $jenkins_cli -s $jenkins_url/ list-jobs`
     export j
