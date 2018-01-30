@@ -185,15 +185,8 @@ get-job-info() {
     fi
 
     branch_name=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
-    if [ -e ~/tmp/logs/task_id.log ];then
-  	echo $copy > ~/tmp/logs/task_id.log
-    else
-	(
-	    cd ~/tmp/logs
-      	    touch task_id.log
-       	    echo $copy > ~/tmp/logs/task_id.log
-	)
-    fi
+    touch /mnt/svn/qsq-do-not-del-me/task_id.log || true
+    echo $copy > /mnt/svn/qsq-do-not-del-me/task_id.log
 }
 
 job-info() {
@@ -206,7 +199,9 @@ cat << EOF
 清理后剩余jenkins项目： `java -jar   $jenkins_cli -s $jenkins_url/ list-jobs | wc -l`
 	
 EOF
-) | mails_cm -i "jenkinszombie已清理" || true
+) | mail
+
+  s_cm -i "jenkinszombie已清理" || true
 rm -rf ~/tmp/jenkins/output.$$
 }
 
