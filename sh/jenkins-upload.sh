@@ -13,9 +13,9 @@ version=$SVN_REVISION
 job_name=$BUILD_URL
 owner=$BUILD_USER_ID
 
-if [ -e /home/qishanqing/tmp/logs/task_id.log ];then
-    task_id=`cat /home/qishanqing/tmp/logs/task_id.log`
-    rm -f /home/qishanqing/tmp/logs/task_id.log
+if [ -e /mnt/svn/qsq-do-not-del-me/task_id.log ];then
+    task_id=`cat /mnt/svn/qsq-do-not-del-me/task_id.log`
+    rm -f /mnt/svn/qsq-do-not-del-me/task_id.log
     export task_id
 fi
 
@@ -39,7 +39,8 @@ function upload_version () {
 	(
 	cd upload
 	zip -r $file.zip $file/*
-	upload-to-ftp -d $file.zip ftp://www:0lHtrr@192.168.0.51/ && echo "上传成功"
+#	upload-to-ftp -d $file.zip ftp://www:0lHtrr@192.168.0.51/ && echo "上传成功"
+	mv $file.zip /mnt/svn/ && echo "上传成功"
 	)
     done
 }
