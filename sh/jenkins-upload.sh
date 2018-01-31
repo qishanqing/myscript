@@ -3,7 +3,7 @@
 source /home/qishanqing/myscript/sh/cmdb
 source /home/qishanqing/myscript/sh/svn.sh
 
-set -x
+set +x
 
 export BUILD_ID=dontkillme
 
@@ -37,8 +37,8 @@ function upload_version () {
 	createtag
 	unzip -oq upload/$filename -d upload/$file
 	(
-	cd upload
-	zip -r $file.zip $file/*
+cd upload
+zip -r $file.zip $file/*
 	mv $file.zip /mnt/svn/ && echo "上传成功"
 	)
     done
