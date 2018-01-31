@@ -3,7 +3,7 @@
 source /home/qishanqing/myscript/sh/cmdb
 source /home/qishanqing/myscript/sh/svn.sh
 
-set +x
+set -x
 
 export BUILD_ID=dontkillme
 
@@ -39,7 +39,6 @@ function upload_version () {
 	(
 	cd upload
 	zip -r $file.zip $file/*
-#	upload-to-ftp -d $file.zip ftp://www:0lHtrr@192.168.0.51/ && echo "上传成功"
 	mv $file.zip /mnt/svn/ && echo "上传成功"
 	)
     done

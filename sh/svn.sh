@@ -191,7 +191,7 @@ function createtag() {
 			    cmdb_mysql "update svn set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
 			    exit 0
 			else
-			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0' where task_id='${task_id:-0}';"
+			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-0}' where version='$head' and branch_name='$branch';"
 			fi
 		    fi
 		fi

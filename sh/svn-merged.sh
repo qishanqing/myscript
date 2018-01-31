@@ -155,13 +155,13 @@ function build_error_check() {
     local status=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
 	    
     if [ ! -z "$status" ];then
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功 ${branch#*Branch/}" || true
+	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
     else
 	echo 
 	echo "-----------------------------"
 	echo "编译失败,可能是合并有问题"
 	echo "-----------------------------"
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译失败 ${branch#*Branch/}" || true
+	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译失败------${tag3:-${branch#*tech/}}" || true
 	exit 0
     fi
 
@@ -207,7 +207,10 @@ function svn_conflict_trees(){
 			svn co $branch ~/tmp/conflict/$branch  > /dev/null
 			cd ~/tmp/conflict/$branch
 			for x in `cat ~/tmp/project_list.txt`;do
-			    cp-with-dir-struct $Basetrunkcode $x > /dev/null
+			    cp-with-dir-struct $Basetrunkcode $x > /dev/null ||
+				(
+				    cd $Basetrunkcode && svn rm $x
+				)
 			done
 			echo > ~/tmp/project_list.txt
 		    )
