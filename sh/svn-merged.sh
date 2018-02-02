@@ -153,15 +153,17 @@ function svn_conflict_files(){
 function build_error_check() {
     mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - >  ~/tmp/merged/mvn-build.log
     local status=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
+    info3="编译失败,可能是合并有问题"
 	    
     if [ ! -z "$status" ];then
 	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
     else
 	echo 
 	echo "-----------------------------"
-	echo "编译失败,可能是合并有问题"
+	echo "$info3"
 	echo "-----------------------------"
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译失败------${tag3:-${branch#*tech/}}" || true
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','$info3','${task_id:-0}');"	
+	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
 	exit 0
     fi
 
@@ -198,7 +200,7 @@ function svn_conflict_trees(){
 			else
 			    svn resolve --accept=working $filename
 			fi
-			echo $filename >> ~/tmp/project_list.txt
+			echo $filename > ~/tmp/project_list.txt
 		    done
                     (
 			set -x
@@ -212,7 +214,6 @@ function svn_conflict_trees(){
 				    cd $Basetrunkcode && svn rm $x
 				)
 			done
-			echo > ~/tmp/project_list.txt
 		    )
 		fi
 		) 
@@ -379,15 +380,28 @@ function svn_db_merged() {
 		)
 }
 
+function project_merge_create () {
+    info2="根据分支已新建主干项目"
+    (
+	local Basetrunkcode=${dirname $Basetrunkcode}
+	cd $Basetrunkcode
+	clean_workspace
+    )
+    svn list $trunk ||
+	(
+	    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
+	)   
+}
+
 locked-echo
 
 if test $types = add;then
 	for branch in ${branchs[@]};do
 		Basecode
 		if test -d $Basetrunkcode;then
-			svn_from_tb_merged
+		    svn_from_tb_merged
 		else
-			die "${trunk#*Trunk/}  project code no found"
+		    project_merge_create | mails_cm -i  "${trunk#*Trunk/}------$info2"
 		fi
 		unset trunk
 	done
