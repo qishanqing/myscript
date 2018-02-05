@@ -13,13 +13,11 @@ version=$SVN_REVISION
 job_name=$BUILD_URL
 owner=$BUILD_USER_ID
 
-if [ -e /mnt/svn/qsq-do-not-del-me/task_id.log ];then
-    task_id=`cat /mnt/svn/qsq-do-not-del-me/task_id.log`
-    rm -f /mnt/svn/qsq-do-not-del-me/task_id.log
+if [ -r /mnt/svn/task_id.log ];then
+    task_id=`cat /mnt/svn/task_id.log`
+    rm -f /mnt/svn/task_id.log
     export task_id
 fi
-
-
 
 function upload_version () {
     rm -rf upload

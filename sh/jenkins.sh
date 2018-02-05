@@ -185,8 +185,10 @@ get-job-info() {
     fi
 
     branch_name=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
-    touch /mnt/svn/qsq-do-not-del-me/task_id.log || true
-    echo $copy > /mnt/svn/qsq-do-not-del-me/task_id.log
+    if [ ! -z $copy ];then
+	touch /mnt/svn/task_id.log
+	echo $copy > /mnt/svn/task_id.log || true
+    fi
 }
 
 job-info() {

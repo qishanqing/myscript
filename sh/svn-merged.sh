@@ -200,7 +200,7 @@ function svn_conflict_trees(){
 			else
 			    svn resolve --accept=working $filename
 			fi
-			echo $filename > ~/tmp/project_list.txt
+			echo $filename >> ~/tmp/project_list.txt
 		    done
                     (
 			set -x
@@ -211,9 +211,10 @@ function svn_conflict_trees(){
 			for x in `cat ~/tmp/project_list.txt`;do
 			    cp-with-dir-struct $Basetrunkcode $x > /dev/null ||
 				(
-				    cd $Basetrunkcode && svn rm $x
+				    cd $Basetrunkcode && svn rm $x || true
 				)
 			done
+			echo > ~/tmp/project_list.txt
 		    )
 		fi
 		) 
