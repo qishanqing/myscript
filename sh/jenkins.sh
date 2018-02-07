@@ -3,12 +3,17 @@
 #set -e
 #mkdir -p ~/tmp/$(basename $0)
 #cd ~/tmp/$(basename $0)
-#JENKINS_BUILDER_NOW=$(now.)
+JENKINS_BUILDER_NOW=$(now.)
 
 source /home/qishanqing/myscript/sh/cmdb
-set -x
+source /home/qishanqing/myscript/sh/svn.sh
 
 echo pid is $$
+
+set -x
+
+locked
+
 die() {
 	(
 	echo "$@"
@@ -19,21 +24,7 @@ die() {
 	) | mails_cm -i "jenkins auto web do failed"
 	rm -f ~/tmp/jenkins/output.$$
 	kill $$
-	exit -1
-}
-
-die1() {
-	(
-	echo "$@"
-	if test -e ~/tmp/jenkins/output.$$;then
-		Error=`cat ~/tmp/jenkins/output.$$`
-		echo $Error		
-	fi
-	) | mails_cm -i "jenkins auto web do failed"
-	rm -f ~/tmp/jenkins/output.$$
-	cmdb_mysql "update svn set"
-	kill $$
-	exit -1
+	exit 1
 }
 
 TEMP=$(getopt -o a:d:n:c:T:e:E:h --long types:,email:,extra_mails:,add:,copy:,del:,num:,help -n $(basename -- $0) -- "$@")
@@ -138,13 +129,13 @@ jenkins-job-del() {
 }
 
 function get-build-description() {
-    echo owner: ${extra_mails%@*}
-    echo
-    echo
+    echo Jenkins Auto Web Create
+    echo 
     echo branch: $del
 }
 
 function output-manifest.xml-from-template() {
+    svnurl=$1
     template="/home/qishanqing/myscript/jenkins/template.xml"
     
     export assignedNode=$(
@@ -153,13 +144,7 @@ function output-manifest.xml-from-template() {
     if [ -z $build_command ];then
 	build_command="source /home/qishanqing/myscript/sh/jenkins-upload.sh"
     fi
-
-    svnurl=$del
     
-#    if [ -z $svnurl ];then
-#	die "请输入需要编译的svn路径"
-#    fi
-
     export svnurl
     export build_description=$(get-build-description)
     export build_command
@@ -177,14 +162,30 @@ get-job-info() {
     else
 	java -jar   $jenkins_cli -s $jenkins_url/ get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------项目不存在，马上为你新建"
     fi
-    
 
     if [ ! -s ~/tmp/jenkins/template.xml ];then
-	output-manifest.xml-from-template >  ~/tmp/jenkins/template.xml
-	cat ~/tmp/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ create-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job create failed"
+	if [ ! -z $del ];then
+	    svn list $del >&/dev/null || die "分支不存在或者已关闭"
+	    output-manifest.xml-from-template $del >  ~/tmp/jenkins/template.xml
+	    cat ~/tmp/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ create-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job create failed"
+	else
+	    echo "请输入需要构建的svnurl"
+	    exit 0
+	fi
+    else
+	if [ ! -z $del ];then
+	    branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
+	    svn list $branch >&/dev/null || die "分支不存在或者已关闭,需要更新"
+	    if [ ! $del = $branch ];then
+		svn list $del >&/dev/null || die "分支输入错误或者已关闭"
+		output-manifest.xml-from-template $del >  ~/tmp/jenkins/template.xml
+		cat ~/tmp/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ update-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job update failed"
+	    else
+		return 0
+	    fi  
+	fi
     fi
 
-    branch_name=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
     if [ ! -z $copy ];then
 	touch /mnt/svn/task_id.log
 	echo $copy > /mnt/svn/task_id.log || true
@@ -192,8 +193,8 @@ get-job-info() {
 }
 
 job-info() {
-(
-cat << EOF
+    (
+	cat << EOF
 此次清理jenkins项目如下:
 
 `cat ~/tmp/jenkins/output.$$`
@@ -201,10 +202,10 @@ cat << EOF
 清理后剩余jenkins项目： `java -jar   $jenkins_cli -s $jenkins_url/ list-jobs | wc -l`
 	
 EOF
-) | mail
+    ) | mail
 
-  s_cm -i "jenkinszombie已清理" || true
-rm -rf ~/tmp/jenkins/output.$$
+    mails_cm -i "jenkinszombie已清理" || true
+    rm -rf ~/tmp/jenkins/output.$$
 }
 
 jenkins-clean-range-run () {

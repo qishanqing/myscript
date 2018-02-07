@@ -383,13 +383,10 @@ function svn_db_merged() {
 
 function project_merge_create () {
     info2="根据分支已新建主干项目"
-    (
-	local Basetrunkcode=${dirname $Basetrunkcode}
-	cd $Basetrunkcode
-	clean_workspace
-    )
+    export info2
     svn list $trunk ||
 	(
+	    set -x
 	    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
 	)   
 }
@@ -402,7 +399,7 @@ if test $types = add;then
 		if test -d $Basetrunkcode;then
 		    svn_from_tb_merged
 		else
-		    project_merge_create | mails_cm -i  "${trunk#*Trunk/}------$info2"
+		    project_merge_create | mails_cm "${trunk#*Trunk/}------$info2"
 		fi
 		unset trunk
 	done
