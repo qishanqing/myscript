@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if test -e ~/.config/system-config/jenkins-server; then
+    JENKINS_SERVER=$(cat ~/.config/system-config/jenkins-server)
+else
+    JENKINS_SERVER=http://build:8080/
+fi
+
+if which jenkins-cli >/dev/null 2>&1; then
+    jenkins-cli -i ~/.ssh/id_rsa_nopass -s "${JENKINS_SERVER}" "$@"
+else
+    JENKINS_LIB=~/myscript/jenkins
+
+    # Check local environment first for override
+    if [ "$JENKINS_URL" = "" ]
+    then
+        # Check global configuration first
+        if [ -f /etc/jenkins/cli.conf ]
+        then
+            . /etc/jenkins/cli.conf
+        fi
+
+        # Override with local user configuration
+        if [ -f ${HOME}/.jenkins/cli.conf ]
+        then
+	    . ${HOME}/.jenkins/cli.conf
+        fi
+    fi
+
+    # If URL is set then export for Java process
+    if [ "$JENKINS_URL" != "" ]
+    then
+	export JENKINS_URL
+    fi
+
+    java -jar ${JENKINS_LIB}/jenkins-cli.jar -s "${JENKINS_SERVER}" "$@"
+
+fi

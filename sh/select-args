@@ -1,0 +1,30 @@
+#!/bin/bash
+
+prompt="Please enter your selection"
+order=
+TEMP=$(getopt -o op:i: --long prompt:init: -n $(basename $0) -- "$@")
+eval set -- "$TEMP"
+while true; do
+    case "$1" in
+        -o)
+            order=-o
+            shift
+            ;;
+        -p|--prompt)
+            prompt=$2
+            shift 2
+            ;;
+        -i|--init)
+            export ORIGINAL_MATCHER=$2
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            die "internal error"
+            ;;
+    esac
+done
+select-output-line $order -p "$prompt" -- bash -c 'for x in "$@"; do echo "$x"; done' true "$@"

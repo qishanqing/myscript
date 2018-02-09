@@ -135,36 +135,53 @@ done
 
 function svn_conflict_files(){
 		(
-		    local filenames=`svn st | grep ^C | awk '{print $2}'`
-		    if [ -z $filenames ];then
+		    cfilenames=`svn st | grep ^C | awk '{print $2}'`
+		    if [ -z $cfilenames ];then
 			return 0
 		    else
-			for filename in $filenames;do
-			    if [[ "$filename" =~ "@" ]];then
-				svn resolve --accept=theirs-conflict $filename@
+			for cfilename in $cfilenames;do
+			    if [[ "$cfilename" =~ "@" ]];then
+				svn resolve --accept=theirs-conflict $cfilename@
 			    else
-				svn resolve --accept=theirs-conflict $filename
+				svn resolve --accept=theirs-conflict $cfilename
 			    fi 
+			    echo $cfilename >> ~/tmp/merged/files_conflict_list.txt
 			done
 		    fi
 		)
 }
 
-function build_error_check() {
-    mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - >  ~/tmp/merged/mvn-build.log
-    local status=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
-    info3="编译失败,可能是合并有问题"
-	    
-    if [ ! -z "$status" ];then
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
+function build_error_skip() {
+    if [ ! -z $errors ];then
+	(
+	    cd ~/tmp/conflict/$branch
+	    for file in `cat ~/tmp/merged/files_conflict_list.txt`;do
+		if [[ $errors =~ $file ]];then
+		    cp-with-dir-struct $Basetrunkcode $file > /dev/null
+		fi
+	    done
+	    echo > ~/tmp/merged/files_conflict_list.txt
+	)
     else
 	echo 
 	echo "-----------------------------"
 	echo "$info3"
 	echo "-----------------------------"
-	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','$info3','${task_id:-0}');"	
+#	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info3','${task_id:-0}');"
 	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
-	exit 0
+    fi   
+}
+
+function build_error_check() {
+    mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - >  ~/tmp/merged/mvn-build.log
+    succcess=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
+    errors=`cat ~/tmp/merged/mvn-build.log | grep ERROR.*Trunk | awk -F " " '{print $2}' | awk -F ":" '{print $1}' | sort -u`
+    info3="合并成功,项目编译失败"
+	    
+    if [ ! -z "$success" ];then
+	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
+    else
+	build_error_skip
     fi
 
     mvn clean > /dev/null
@@ -189,18 +206,18 @@ function mvn_check(){
 
 function svn_conflict_trees(){
 		(
-		local filenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
-		local filenames1=`svn st| grep ^! | awk '{print $3}'`
-		if [ -z $filenames ] && [ -z $filenames1 ];then
+		tfilenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
+		tfilenames1=`svn st| grep ^! | awk '{print $3}'`
+		if [ -z $tfilenames ] && [ -z $tfilenames1 ];then
 		    return 0
 		else
-		    for filename in $filenames $filenames1;do
+		    for filename in $tfilenames $tfilenames1;do
 		    	if [[ "$filename" =~ "@" ]];then
 			    svn resolve --accept=working $filename@
 			else
 			    svn resolve --accept=working $filename
 			fi
-			echo $filename >> ~/tmp/project_list.txt
+			echo $filename >> ~/tmp/merged/tree_conflict_list.txt
 		    done
                     (
 			set -x
@@ -214,7 +231,7 @@ function svn_conflict_trees(){
 				    cd $Basetrunkcode && svn rm $x || true
 				)
 			done
-			echo > ~/tmp/project_list.txt
+			echo > ~/tmp/merged/tree_conflict_list.txt
 		    )
 		fi
 		) 

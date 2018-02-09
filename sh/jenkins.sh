@@ -1,12 +1,7 @@
 #!/bin/bash
 
-#set -e
-#mkdir -p ~/tmp/$(basename $0)
-#cd ~/tmp/$(basename $0)
-JENKINS_BUILDER_NOW=$(now.)
-
-source /home/qishanqing/myscript/sh/cmdb
-source /home/qishanqing/myscript/sh/svn.sh
+source ~/myscript/sh/svn.sh
+source ~/myscript/sh/jc
 
 echo pid is $$
 
@@ -22,10 +17,13 @@ die() {
 		echo $Error		
 	fi
 	) | mails_cm -i "jenkins auto web do failed"
+	rm -f /mnt/svn/task_id.log
 	rm -f ~/tmp/jenkins/output.$$
 	kill $$
 	exit 1
 }
+
+jenkins_url="http://build:8080"
 
 TEMP=$(getopt -o a:d:n:c:T:e:E:h --long types:,email:,extra_mails:,add:,copy:,del:,num:,help -n $(basename -- $0) -- "$@")
 add=
@@ -82,37 +80,31 @@ while true;do
 	esac
 done
 
-jenkins_url="http://192.168.0.231:8080"
-jenkins_addrs="/root/.jenkins"
-jenkins_cli="/home/qishanqing/myscript/jenkins/jenkins-cli.jar"
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 
 clean-jenkins-workspace() {
-	(
-	echo 372233| sudo rm -rf $jenkins_addrs/jobs/$x | echo $x >> ~/tmp/jenkins/output.$$
-	)
-	java -jar   $jenkins_cli -s $jenkins_url/ delete-job $x
+    jc delete-job $x
 }
 
 
 jenkins-clean-never-run () {
-    j=`java -jar   $jenkins_cli -s $jenkins_url/ list-jobs`
-    export j
-	for x in $j;do
-		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/buildNumber`
-		if test -z "$c";then
-			clean-jenkins-workspace
-		fi
-	done
-	break
+    j=`jc list-jobs`
+    for x in $j;do
+	c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/buildNumber`
+	if [ -z "$c" ];then
+	    echo $c >>~/tmp/jenkins/output.$$
+	    clean-jenkins-workspace
+	fi
+    done
+    break
 }
 
 jenkins-job-add() {
 	(
         if test -z "$copy";then
-		cat ~/myscript/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ create-job "$add"
+		cat ~/myscript/jenkins/template.xml | jc create-job "$add"
 	else
-		java -jar   $jenkins_cli -s $jenkins_url/ copy-job "$copy" "$add"
+		jc copy-job "$copy" "$add"
 	fi
 	) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job add failed"
 }
@@ -120,12 +112,12 @@ jenkins-job-add() {
 jenkins-job-build() {
         (
 	        get-job-info
-		java -jar   $jenkins_cli -s $jenkins_url/ build "$add"
+		jc build "$add"
 	) 
 }
 
 jenkins-job-del() {
-	java -jar   $jenkins_cli -s $jenkins_url/ delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
+	jc delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
 }
 
 function get-build-description() {
@@ -160,14 +152,19 @@ get-job-info() {
     if [ -z $add ];then
 	die "项目名称不能为空"
     else
-	java -jar   $jenkins_cli -s $jenkins_url/ get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------项目不存在，马上为你新建"
+	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------项目不存在，马上为你新建"
     fi
 
+    if [ ! -z $copy ];then
+	touch /mnt/svn/task_id.log
+	echo $copy > /mnt/svn/task_id.log || true
+    fi
+    
     if [ ! -s ~/tmp/jenkins/template.xml ];then
 	if [ ! -z $del ];then
 	    svn list $del >&/dev/null || die "分支不存在或者已关闭"
 	    output-manifest.xml-from-template $del >  ~/tmp/jenkins/template.xml
-	    cat ~/tmp/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ create-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job create failed"
+	    cat ~/tmp/jenkins/template.xml | jc create-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job create failed"
 	else
 	    echo "请输入需要构建的svnurl"
 	    exit 0
@@ -179,17 +176,13 @@ get-job-info() {
 	    if [ ! $del = $branch ];then
 		svn list $del >&/dev/null || die "分支输入错误或者已关闭"
 		output-manifest.xml-from-template $del >  ~/tmp/jenkins/template.xml
-		cat ~/tmp/jenkins/template.xml | java -jar   $jenkins_cli -s $jenkins_url/ update-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job update failed"
+		cat ~/tmp/jenkins/template.xml | jc update-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job update failed"
 	    else
 		return 0
 	    fi  
 	fi
     fi
 
-    if [ ! -z $copy ];then
-	touch /mnt/svn/task_id.log
-	echo $copy > /mnt/svn/task_id.log || true
-    fi
 }
 
 job-info() {
@@ -199,17 +192,17 @@ job-info() {
 
 `cat ~/tmp/jenkins/output.$$`
 
-清理后剩余jenkins项目： `java -jar   $jenkins_cli -s $jenkins_url/ list-jobs | wc -l`
+清理后剩余jenkins项目： `jc list-jobs | wc -l`
 	
 EOF
     ) | mail
 
     mails_cm -i "jenkinszombie已清理" || true
-    rm -rf ~/tmp/jenkins/output.$$
+    rm -f ~/tmp/jenkins/output.$$
 }
 
 jenkins-clean-range-run () {
-	j=`java -jar   $jenkins_cli -s $jenkins_url/ list-jobs`
+	j=`jc list-jobs`
 	for x in $j;do
 		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/ | xargs -d ">" -n1 | grep "启动时间"`
 		case "$num" in
