@@ -174,7 +174,7 @@ function build_error_skip() {
 
 function build_error_check() {
     mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - >  ~/tmp/merged/mvn-build.log
-    succcess=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
+    success=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
     errors=`cat ~/tmp/merged/mvn-build.log | grep ERROR.*Trunk | awk -F " " '{print $2}' | awk -F ":" '{print $1}' | sort -u`
     info3="合并成功,项目编译失败"
 	    
