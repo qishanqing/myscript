@@ -7,12 +7,12 @@ export LANG=zh_CN.UTF-8
 die() {
     (
 	echo "$@"
-	if test -e ~/tmp/output.$$;then
+	if test -e ~/tmp/logs/output.$$;then
 	    echo
-	    cat ~/tmp/output.$$
+	    cat ~/tmp/logs/output.$$
 	fi
     ) | mails_cm -i "svn create failed"
-    rm -rf ~/tmp/output.$$
+    rm -rf ~/tmp/logs/output.$$
     kill $$
     exit -1
 }
@@ -92,23 +92,27 @@ function addbranch() {
 		else
 		        inport_source
 #			svn list $branch_name >/dev/null 2>&1 | mails_cm -i "分支已存在" && exit 1
-			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >~/tmp/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
-			rm -f ~/tmp/output.$$
+			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >~/tmp/logs/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
+			rm -f ~/tmp/logs/output.$$
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
 			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head');"
 			check_acces
-(
-cat << mail
-			新建分支如下:
+			echo ${branch_name} >>~/tmp/logs/branchs.log
+		fi
+    done
+    
+    (
+	cat << mail
+新建分支如下:
+				
+`cat ~/tmp/logs/branchs.log`
 
-			${branch_name}
-
-			添加权限人员: $author
+`echo` 				
+添加权限人员: $author
 mail
 ) | mails_cm -i "svnbranch-add from svn branch create web" || true
-		fi
-	done
+echo >~/tmp/logs/branchs.log
 }
 
 function addtrunk() {
@@ -252,9 +256,8 @@ function delbranch() {
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
 		inport_source
-		svn move ${source_name} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >~/tmp/output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
-		rm -f ~/tmp/output.$$
-		echo ${source_name} >> /home/svnmodify/del_branch.log
+		svn move ${source_name} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >~/tmp/logs/output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
+		rm -f ~/tmp/logs/output.$$
 		cmdb_mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (
 cat << mail

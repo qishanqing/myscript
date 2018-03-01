@@ -152,7 +152,7 @@ get-job-info() {
     if [ -z $add ];then
 	die "项目名称不能为空"
     else
-	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------项目不存在，马上为你新建"
+	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------项目不存在，马上为你新建,确保输入正确的分支参数,否则创建失败"
     fi
 
     if [ ! -z $copy ];then
