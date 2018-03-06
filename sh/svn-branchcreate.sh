@@ -114,6 +114,8 @@ elif test $types = pl;then
     projectlists
 elif test $types = tag;then
     createtag1
+elif test $types = st;then
+    seach_tag_ftp
 else
     addtrunk
 fi

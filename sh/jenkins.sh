@@ -25,7 +25,7 @@ die() {
 
 jenkins_url="http://build:8080"
 
-TEMP=$(getopt -o a:d:n:c:T:e:E:h --long types:,email:,extra_mails:,add:,copy:,del:,num:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o a:d:n:c:T:e:E:C:h --long types:,email:,extra_mails:,add:,copy:,del:,num:,command:,help -n $(basename -- $0) -- "$@")
 add=
 email=
 extra_mails=
@@ -33,6 +33,7 @@ del=
 num=
 copy=
 types=
+command=
 eval set -- "$TEMP"
 while true;do
 	case "$1" in
@@ -62,6 +63,10 @@ while true;do
 		;;
 		-E|--extra_mails)
 		extra_mails=$2
+		shift 2
+		;;
+		-C|--command)
+		command=$2
 		shift 2
 		;;
 		-h|--help)
@@ -124,10 +129,13 @@ function get-build-description() {
     echo Jenkins Auto Web Create
     echo 
     echo branch: $del
+    echo
+    echo creator: ${extra_mails%@*}
 }
 
 function output-manifest.xml-from-template() {
     svnurl=$1
+    build_command=$2
     template="/home/qishanqing/myscript/jenkins/template.xml"
     
     export assignedNode=$(
@@ -152,7 +160,7 @@ get-job-info() {
     if [ -z $add ];then
 	die "项目名称不能为空"
     else
-	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------项目不存在，马上为你新建,确保输入正确的分支参数,否则创建失败"
+	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,否则创建失败"
     fi
 
     if [ ! -z $copy ];then
@@ -170,12 +178,12 @@ get-job-info() {
 	    exit 0
 	fi
     else
-	if [ ! -z $del ];then
+	if [ ! -z $del ] || [ ! -z $command ];then
 	    branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
 	    svn list $branch >&/dev/null || die "分支不存在或者已关闭,需要更新"
 	    if [ ! $del = $branch ];then
 		svn list $del >&/dev/null || die "分支输入错误或者已关闭"
-		output-manifest.xml-from-template $del >  ~/tmp/jenkins/template.xml
+		output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml
 		cat ~/tmp/jenkins/template.xml | jc update-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job update failed"
 	    else
 		return 0

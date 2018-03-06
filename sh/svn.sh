@@ -13,6 +13,7 @@ die() {
 	fi
     ) | mails_cm -i "svn create failed"
     rm -rf ~/tmp/logs/output.$$
+    echo >~/tmp/logs/branchs.log
     kill $$
     exit -1
 }
@@ -91,12 +92,12 @@ function addbranch() {
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
 		        inport_source
-#			svn list $branch_name >/dev/null 2>&1 | mails_cm -i "分支已存在" && exit 1
-			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >~/tmp/logs/output.$$ 2>&1 || die "Svn branch create the reasons for failure are as follows"
+			svn list $branch_name >& /dev/null && mails_cm -i "已存在分支---$branch_name" && exit 1
+			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >& ~/tmp/logs/output.$$ || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/logs/output.$$
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
-			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head');"
+			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
 			check_acces
 			echo ${branch_name} >>~/tmp/logs/branchs.log
 		fi
@@ -122,7 +123,7 @@ function addtrunk() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
-#		svn list ${Trunk_name}${source_name##*/} >/dev/null 2>&1 || if ! [ '$?' -eq 0 ];then return 0;else  mails_cm -i "主干已存在";exit -1;fi 
+		svn list ${Trunk_name}${source_name##*/} >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}${source_name##*/}" && exit 1 
 		svn copy ${branch} ${trunk} --parents -m "新建主干项目"
 		echo "新建主干项目路径: ${trunk}                       "
 	fi
@@ -135,23 +136,23 @@ function b_to_b() {
 		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
 	else
 		inport_source
+		svn list ${branch_name1} >& /dev/null  && mails_cm -i "已存在主干项目---$branch_name1" && exit 1
 		svn copy $trunk ${branch_name1} --parents -m "新建主干项目"
-		echo "新建主干项目: ${branch_name1}"
-		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task');"
+		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task','$author');"
 		check_acces
 	fi
 }
 
 function createtrunk() {
         inport_source
-#	svn list ${Trunk_name}  >/dev/null 2>&1 | mails_cm -i "主干已存在" && exit 1
+	svn list ${Trunk_name}  >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}" && exit 1
 	svn mkdir ${trunk} --parents  -m "新建主干项目"
 	echo "新建主干项目路径: ${trunk}"
 }
 
 function projectlists() {
         inport_source
-	svn log -l 1 ${trunk:-$branch}  >~/tmp/merged/output.$$ 2>&1 || die "${trunk:-$branch}-----请输入具体svn——url"
+	svn log -l 1 ${trunk:-$branch}  >& ~/tmp/merged/output.$$ || die "${trunk:-$branch}-----请输入具体svn——url"
 	svn list ${trunk:-$branch} | indent-clipboard - | mails_cm -i "${trunk:-$branch}------项目列表如下" || true
 }
 
@@ -182,7 +183,12 @@ function createtag() {
 			echo "$info,基于现在最新的分支版本已有 $st"
 		    fi   
 		else
-		    svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"  
+		    svn list ${tag_name} >& /dev/null || t=1
+		    if test $t = 1;then
+			svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"
+		    else
+			cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"
+		    fi
 		    echo "$info1: ${tag_name}"
 		fi
 		if test "$SKIP_FTP_VERSION" = true;then
@@ -247,7 +253,14 @@ EOF
 }
 
 function seach_tag_ftp(){
-    echo "此功能还未完善" | mails_cm -i "敬请期待......"
+    id=`cmdb_mysql "SELECT id FROM svn WHERE ftp_version_name LIKE '%$trunk%';"`
+    if test ! -z "$id";then
+	if [ `echo "$id" | wc -l` -ge 2 ];then
+	    id=`echo $id | xargs -n 1 | grep -v ^id`
+	    cmdb_mysql "DELETE FROM svn WHERE id = '$id';"
+	    echo "已删除上传版本数据svn表id=$id" | mails_cm -i "数据库版本删除"
+	fi
+    fi
 }
 
 function delbranch() {
@@ -256,7 +269,7 @@ function delbranch() {
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
 		inport_source
-		svn move ${source_name} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >~/tmp/logs/output.$$ 2>&1 || die "Svn branch delete the reasons for failure are as follows"
+		svn move ${source_name} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
 		rm -f ~/tmp/logs/output.$$
 		cmdb_mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (

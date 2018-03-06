@@ -160,7 +160,7 @@ function build_error_skip() {
 		    cp-with-dir-struct $Basetrunkcode $file > /dev/null
 		fi
 	    done
-	    echo > ~/tmp/merged/files_conflict_list.txt
+	    echo >~/tmp/merged/files_conflict_list.txt
 	)
     else
 	echo 
@@ -176,10 +176,11 @@ function build_error_check() {
     mvn clean -Pprod package  -U -Dmaven.test.skip=true | indent-clipboard - >  ~/tmp/merged/mvn-build.log
     success=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
     errors=`cat ~/tmp/merged/mvn-build.log | grep ERROR.*Trunk | awk -F " " '{print $2}' | awk -F ":" '{print $1}' | sort -u`
-    info3="合并成功,项目编译失败"
+    info3="合并成功,项目编译失败,冲突文件已替换"
 	    
     if [ ! -z "$success" ];then
 	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
+	echo >~/tmp/merged/files_conflict_list.txt
     else
 	build_error_skip
     fi
@@ -252,7 +253,11 @@ function commit() {
     fi
    
     svn ci -m "$task
-Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
+Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $errors ];then
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
+    else
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info3','${task_id:-0}');"
+    fi	
 }
 
 function svn_from_tb_merged() {
@@ -404,8 +409,9 @@ function project_merge_create () {
     svn list $trunk ||
 	(
 	    set -x
-	    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
-	)   
+	    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
+	    cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
+	)
 }
 
 locked-echo
@@ -416,7 +422,7 @@ if test $types = add;then
 		if test -d $Basetrunkcode;then
 		    svn_from_tb_merged
 		else
-		    project_merge_create | mails_cm "${trunk#*Trunk/}------$info2"
+		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
 		fi
 		unset trunk
 	done
