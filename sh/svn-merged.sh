@@ -157,7 +157,7 @@ function build_error_skip() {
 	    cd ~/tmp/conflict/$branch
 	    for file in `cat ~/tmp/merged/files_conflict_list.txt`;do
 		if [[ $errors =~ $file ]];then
-		    cp-with-dir-struct $Basetrunkcode $file > /dev/null
+		    cp-with-dir-struct $Basetrunkcode $file
 		fi
 	    done
 	    echo >~/tmp/merged/files_conflict_list.txt
@@ -226,17 +226,17 @@ function svn_conflict_trees(){
 			mkdir -p ~/tmp/conflict || true
 			svn co $branch ~/tmp/conflict/$branch  > /dev/null
 			cd ~/tmp/conflict/$branch
-			for x in `cat ~/tmp/project_list.txt`;do
-			    cp-with-dir-struct $Basetrunkcode $x > /dev/null ||
+			for x in `cat ~/tmp/merged/tree_conflict_list.txt`;do
+			    cp-with-dir-struct $Basetrunkcode $x ||
 				(
-				    cd $Basetrunkcode && svn rm $x || true
+				cd $Basetrunkcode && svn rm $x						    
 				)
 			done
 			echo > ~/tmp/merged/tree_conflict_list.txt
 		    )
 		fi
 		) 
-		mvn_check && svn st | grep "^?" | awk '{print $2}' | xargs  svn add >/dev/null 2>&1
+		mvn_check && svn st | grep "^?" | awk '{print $2}' | xargs  svn add >& /dev/null
 }
 
 function commit() {
@@ -409,8 +409,7 @@ function project_merge_create () {
     svn list $trunk ||
 	(
 	    set -x
-	    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
-	    cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
+	    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
 	)
 }
 

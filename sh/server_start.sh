@@ -1,6 +1,6 @@
 #!/bin/bash
 export BUILD_ID=dontkillme
-. ~/myscript/sh/server
+. /home/qishanqing/myscript/sh/server
 
 (
 	set -x

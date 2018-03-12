@@ -237,7 +237,12 @@ function createtag1() {
 		    echo "基于现在最新的分支版本已有 $st" | mails_cm -i "create tag success"
 		fi
 	    else
-		svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${email%@*:-qishanqing}','${version:-$head}','$job_name','$file');"
+		svn list ${tag_name} >& /dev/null || t=1
+		if test $t = 1;then
+		    svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${email%@*:-qishanqing}','${version:-$head}','$job_name','$file');" 
+		else
+		    cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${email%@*:-qishanqing}','${version:-$head}','$job_name','$file');"
+		fi
 (
 		cat <<EOF
 		新建tag如下:

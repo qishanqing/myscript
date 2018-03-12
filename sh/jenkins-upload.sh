@@ -13,15 +13,16 @@ version=$SVN_REVISION
 job_name=$BUILD_URL
 owner=$BUILD_USER_ID
 
-if [ -r /mnt/svn/task_id.log ];then
-    task_id=`cat /mnt/svn/task_id.log`
+if [ -f /mnt/svn/task_id.log ];then
+    task_id=`cat /mnt/svn/task_id.log || true`
     rm -f /mnt/svn/task_id.log
     export task_id
 fi
 
 function upload_version () {
     rm -rf upload
-    find -maxdepth 2 -name *.war -print -o -maxdepth 3 -name '*.war' -print | while read filename
+#    find -maxdepth 2 -name '*.jar' -print -o -maxdepth 3 -name '*.jar' -print >& /dev/null  && echo 请让对应开发人员修改pom配置编译为war格式,不支持jar格式上传 && exit 1
+    find -maxdepth 3 -name *.war -print | while read filename
     do	
 	mkdir -p upload
 	cp -rf $filename upload/

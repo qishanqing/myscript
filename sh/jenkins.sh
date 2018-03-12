@@ -160,11 +160,12 @@ get-job-info() {
     if [ -z $add ];then
 	die "项目名称不能为空"
     else
-	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,否则创建失败"
+	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,否则创建失败,如非必要请尽量使用已存在的项目部署"
     fi
 
     if [ ! -z $copy ];then
 	touch /mnt/svn/task_id.log
+	chmod 777 /mnt/svn/task_id.log
 	echo $copy > /mnt/svn/task_id.log || true
     fi
     
