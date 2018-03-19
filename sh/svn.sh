@@ -175,13 +175,13 @@ function createtag() {
 		tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
 		tag_name=$tag_name/${TIME_DIR}_${version:-$head}
 		st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
-		c=`echo "$st" | grep ^h`
+		#c=`echo "$st" | grep ^h`
 		ftp_name=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 		info="此次代码更新没有变化"
 		info1="新建tag"
 		if test ! -z "$st";then
 		    if [ `echo "$st" | wc -l` -ge 2 ];then
-			echo "$info,基于现在最新的分支版本已有tag: $c"
+			echo "$info,基于现在最新的分支版本已有$st"
 		    fi   
 		else
 		    svn list ${tag_name} >& /dev/null || t=1
