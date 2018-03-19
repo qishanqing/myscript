@@ -181,9 +181,8 @@ get-job-info() {
     else
 	if [ ! -z $del ] || [ ! -z $command ];then
 	    branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
-	    svn list $branch >&/dev/null || die "分支不存在或者已关闭,需要更新"
+	    svn list $del >&/dev/null || die "分支输入错误或者已关闭"
 	    if [ ! $del = $branch ];then
-		svn list $del >&/dev/null || die "分支输入错误或者已关闭"
 		output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml
 		cat ~/tmp/jenkins/template.xml | jc update-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job update failed"
 	    else

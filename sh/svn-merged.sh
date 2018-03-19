@@ -136,7 +136,7 @@ done
 function svn_conflict_files(){
 		(
 		    cfilenames=`svn st | grep ^C | awk '{print $2}'`
-		    if [ -z $cfilenames ];then
+		    if [ -z "$cfilenames" ];then
 			return 0
 		    else
 			for cfilename in $cfilenames;do
@@ -152,12 +152,12 @@ function svn_conflict_files(){
 }
 
 function build_error_skip() {
-    if [ ! -z $errors ];then
+    if [ ! -z "$errors" ];then
 	(
 	    cd ~/tmp/conflict/$branch
 	    for file in `cat ~/tmp/merged/files_conflict_list.txt`;do
-		if [[ $errors =~ $file ]];then
-		    cp-with-dir-struct $Basetrunkcode $file
+		if [[ "$errors" =~ "$file" ]];then
+		    cp-with-dir-struct $Basetrunkcode $file >& /dev/null
 		fi
 	    done
 	    echo >~/tmp/merged/files_conflict_list.txt
@@ -209,7 +209,7 @@ function svn_conflict_trees(){
 		(
 		tfilenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
 		tfilenames1=`svn st| grep ^! | awk '{print $3}'`
-		if [ -z $tfilenames ] && [ -z $tfilenames1 ];then
+		if [ -z "$tfilenames" ] && [ -z "$tfilenames1" ];then
 		    return 0
 		else
 		    for filename in $tfilenames $tfilenames1;do
@@ -227,7 +227,7 @@ function svn_conflict_trees(){
 			svn co $branch ~/tmp/conflict/$branch  > /dev/null
 			cd ~/tmp/conflict/$branch
 			for x in `cat ~/tmp/merged/tree_conflict_list.txt`;do
-			    cp-with-dir-struct $Basetrunkcode $x ||
+			    cp-with-dir-struct $Basetrunkcode $x >& /dev/null ||
 				(
 				cd $Basetrunkcode && svn rm $x						    
 				)
@@ -287,9 +287,9 @@ function svn_from_tb_merged() {
 		    head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 		fi
 				
-		if  [ ! -z  $revision ];then
+		if  [ ! -z  "$revision" ];then
 			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
-			if [ -z $st ];then
+			if [ -z "$st" ];then
 				svn merge $branch@$revision $branch@$head
 			else
 				echo p | svn merge $branch@$revision $branch@$head
@@ -315,7 +315,7 @@ function svn_from_tb_merged() {
 			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r | awk -F '|' '{print$1}'`
 		    	fi
 			
-			if [ ! -z  $revision ];then
+			if [ ! -z  "$revision" ];then
 				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
 					svn merge $branch@$revision $branch@$head
