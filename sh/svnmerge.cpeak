@@ -13,7 +13,8 @@ die() {
 	) | mails_cm -i "svn merged faild"
 	rm -f ~/tmp/merged/output.$$
 #	kill $$
-#	exit 1
+	echo "cpeak"
+	exit 1
 }
 
 function locked-echo() {
@@ -24,7 +25,7 @@ function locked-echo() {
     )
 }
 
-set -x
+set -xe
 
 TEMP=$(getopt -o k:e:E:t:b:T:R:o:h --long rev:,types:,task:,email:,extra_mails:,trunk:,branch:,owner:,help -n $(basename -- $0) -- "$@")
 rev=
@@ -247,12 +248,12 @@ function commit() {
     else
 	task_id=`cmdb_mysql "SELECT task_id FROM svn WHERE tag_name='${tag1}';"`
     fi
-	
+
     if [ $info -eq 0 ];then
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','code合并内容为空','${task_id:-0}');"
-	exit 1
+	exit 2;
     fi
-    
+   
     svn ci -m "$task
 Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $errors ];then
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
@@ -261,17 +262,8 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $
     fi	
 }
 
-function reverse_merge () {
-    h=${head#r*}
-    r=${revision#r*}
-    if [ $r -gt $h ];then
-	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','2','反向合并','${task_id:-0}');"
-	exit 0
-    fi
-}
-
 function svn_from_tb_merged() {
-		(
+		#(
 		set -x
 		cd $Basetrunkcode
 		clean_workspace
@@ -298,7 +290,7 @@ function svn_from_tb_merged() {
 		fi
 				
 		if  [ ! -z  "$revision" ];then
-		        reverse_merge
+		exit 125
 			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
 			if [ -z "$st" ];then
 				svn merge $branch@$revision $branch@$head
@@ -307,6 +299,7 @@ function svn_from_tb_merged() {
 				svn_conflict_files
 				svn_conflict_trees
 			fi
+
 			commit ||
 				(
 				svn_conflict_files
@@ -327,7 +320,6 @@ function svn_from_tb_merged() {
 		    	fi
 			
 			if [ ! -z  "$revision" ];then
-			        reverse_merge
 				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
 				if [ -z $st ];then
 					svn merge $branch@$revision $branch@$head
@@ -344,7 +336,7 @@ function svn_from_tb_merged() {
 				commit
 				)
 		fi
-		) | mails_cm -i "code merged from  ${branch#*tech/}" || true
+		#) | mails_cm -i "code merged from  ${branch#*tech/}" || true
 }
 
 function svn_from_bt_merged() {
@@ -367,7 +359,7 @@ function svn_from_bt_merged() {
 					timeout 20 svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 				else
-					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
+				    die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
 			fi
 		else
@@ -418,8 +410,8 @@ function svn_db_merged() {
 function project_merge_create () {
     info2="根据分支已新建主干项目"
     export info2
-    svn list $trunk ||  cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
-    svn list $trunk ||  svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
+    svn list $trunk || cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
+    svn list $trunk || svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
 }
 
 locked-echo
@@ -432,7 +424,7 @@ if test $types = add;then
 		else
 		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
 		fi
-		unset trunk
+#		unset trunk
 	done
 elif test $types = del;then
 	for branch in ${branchs[@]};do
@@ -454,3 +446,4 @@ else
 	Basecode
 	svn_db_merged
 fi
+ 

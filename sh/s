@@ -13,7 +13,13 @@ die() {
 	) | mails_cm -i "svn merged faild"
 	rm -f ~/tmp/merged/output.$$
 #	kill $$
-#	exit 1
+	Exit_Status_Code 1
+}
+
+function Exit_Status_Code () {
+    n=$1
+    cat ~/tmp/merged/merge_mail_info.log | mails_cm -i "code merged from  ${tag3:-branch#*tech/}" || true
+    echo > ~/tmp/merged/merge_mail_info.log && exit $1
 }
 
 function locked-echo() {
@@ -250,9 +256,9 @@ function commit() {
 	
     if [ $info -eq 0 ];then
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','code合并内容为空','${task_id:-0}');"
-	exit 1
+	Exit_Status_Code 2
     fi
-    
+   
     svn ci -m "$task
 Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $errors ];then
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
@@ -263,10 +269,9 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $
 
 function reverse_merge () {
     h=${head#r*}
-    r=${revision#r*}
-    if [ $r -gt $h ];then
+    if [ $revision -gt $h ];then
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','2','反向合并','${task_id:-0}');"
-	exit 0
+	Exit_Status_Code 3
     fi
 }
 
@@ -344,7 +349,7 @@ function svn_from_tb_merged() {
 				commit
 				)
 		fi
-		) | mails_cm -i "code merged from  ${branch#*tech/}" || true
+		) > ~/tmp/merged/merge_mail_info.log
 }
 
 function svn_from_bt_merged() {
@@ -432,7 +437,7 @@ if test $types = add;then
 		else
 		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
 		fi
-		unset trunk
+#		unset trunk
 	done
 elif test $types = del;then
 	for branch in ${branchs[@]};do

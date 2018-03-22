@@ -4,6 +4,7 @@ source ~/myscript/sh/svn.sh
 source ~/myscript/sh/jc
 
 echo pid is $$
+JENKINS_TIME=`now.`
 
 set -x
 
@@ -131,6 +132,8 @@ function get-build-description() {
     echo branch: $del
     echo
     echo creator: ${extra_mails%@*}
+    echo
+    echo update_time: $JENKINS_TIME
 }
 
 function output-manifest.xml-from-template() {
@@ -172,8 +175,7 @@ get-job-info() {
     if [ ! -s ~/tmp/jenkins/template.xml ];then
 	if [ ! -z $del ];then
 	    svn list $del >&/dev/null || die "分支不存在或者已关闭"
-	    output-manifest.xml-from-template $del >  ~/tmp/jenkins/template.xml
-	    cat ~/tmp/jenkins/template.xml | jc create-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job create failed"
+	    jc-create-job $add
 	else
 	    echo "请输入需要构建的svnurl"
 	    exit 0
@@ -183,8 +185,7 @@ get-job-info() {
 	    branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
 	    svn list $del >&/dev/null || die "分支输入错误或者已关闭"
 	    if [ ! $del = $branch ];then
-		output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml
-		cat ~/tmp/jenkins/template.xml | jc update-job $add >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job update failed"
+		jc-create-job
 	    else
 		return 0
 	    fi  
@@ -192,6 +193,15 @@ get-job-info() {
     fi
 
 }
+
+function jc-create-job () {
+    output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml
+    for n in $(seq 1 10);do
+	cat ~/tmp/jenkins/template.xml | jc create-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
+	cat ~/tmp/jenkins/template.xml | jc update-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
+	sleep 1
+    done
+    }  
 
 job-info() {
     (
