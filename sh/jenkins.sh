@@ -163,7 +163,7 @@ get-job-info() {
     if [ -z $add ];then
 	die "项目名称不能为空"
     else
-	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,否则创建失败,如非必要请尽量使用已存在的项目部署"
+	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,job项目名称为连续的,不包含非法字符串,否则创建失败,如非必要请尽量使用已存在的项目部署"
     fi
 
     if [ ! -z $copy ];then
@@ -173,18 +173,18 @@ get-job-info() {
     fi
     
     if [ ! -s ~/tmp/jenkins/template.xml ];then
-	if [ ! -z $del ];then
-	    svn list $del >&/dev/null || die "分支不存在或者已关闭"
+	if [ ! -z "$del" ];then
+	    svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
 	    jc-create-job $add
 	else
 	    echo "请输入需要构建的svnurl"
 	    exit 0
 	fi
     else
-	if [ ! -z $del ] || [ ! -z $command ];then
+	if [ ! -z "$del" ] || [ ! -z "$command" ];then
 	    branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
-	    svn list $del >&/dev/null || die "分支输入错误或者已关闭"
-	    if [ ! $del = $branch ];then
+	    svn list "$del" >&/dev/null || die "分支输入错误或者已关闭"
+	    if [[ ! $branch =~ $del ]];then
 		jc-create-job
 	    else
 		return 0
@@ -201,7 +201,7 @@ function jc-create-job () {
 	cat ~/tmp/jenkins/template.xml | jc update-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
 	sleep 1
     done
-    }  
+}  
 
 job-info() {
     (

@@ -68,5 +68,5 @@ function admin_group() {
 admin_group
 h5_access
 mallStage_access
-Tag_delete
+#Tag_delete
 #DFLib_access

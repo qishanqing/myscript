@@ -19,6 +19,10 @@ if [ -f /mnt/svn/task_id.log ];then
     export task_id
 fi
 
+function remove_files () {
+    find $file/ -name 'constants.properties' | xargs -i rm -f {}
+}
+
 function upload_version () {
     rm -rf upload
 #    find -maxdepth 2 -name '*.jar' -print -o -maxdepth 3 -name '*.jar' -print >& /dev/null  && echo 请让对应开发人员修改pom配置编译为war格式,不支持jar格式上传 && exit 1

@@ -19,14 +19,14 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: '192.168.0.232:3000', protocol: 'http' }
+  config.action_mailer.default_url_options = { host: '192.168.0.231:3000', protocol: 'http' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.qiye.163.com",
-    :port => "25",
+    :address => "smtp.exmail.qq.com",
+    :port => '587',
     :authentication => "login",
     :user_name => "qishanqing@dafy.com",
-    :password => "xsPPka27DfhSypNJ",
+    :password => "Qsq_372233",
     :enable_starttls_auto => true
   }
   

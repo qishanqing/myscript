@@ -201,6 +201,7 @@ function createtag() {
 			    echo "$info,基于现在最新的分支版本已有 $ftp_name"
 			    cmdb_mysql "update svn set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
 			    exit 0
+
 			else
 			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-0}' where version='$head' and branch_name='$branch';"
 			fi
@@ -208,7 +209,7 @@ function createtag() {
 		fi
 	    else
 		echo "现在支持分支自动打tag，请切换至对应分支"
-		exit 0
+		exit 1
 		ftp_name1=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE tag_name='$branch';"`
 		if test ! -z "$ftp_name1";then
 		    if [ `echo "$ftp_name1" | wc -l` -ge 2 ];then
@@ -289,6 +290,13 @@ mail
 	fi
 }
 
+function clean_workspace() {
+    svn cleanup .
+    svn st | grep ^? | xargs rm -rf
+    svn revert -R .
+    svn up .
+}
+
 function locked() {
     (
 	exec 9> ~/tmp/logs/svn.lock
@@ -311,3 +319,4 @@ export -f projectlists
 export -f delbranch
 export -f createtag
 export -f createtag1
+export -f clean_workspace

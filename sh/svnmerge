@@ -1,6 +1,7 @@
 #!/bin/bash
 
 . ~/myscript/sh/cmdb
+. ~/myscript/sh/svn.sh
 
 echo pid is $$
 die() {
@@ -108,25 +109,18 @@ function Basecode() {
 	fi
 	
         if test -z $trunk;then
-	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
+	    #	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
+	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Release_Trunk,g;s,Tag/.*/Develop,Release_Trunk,g;s,Tag/.*?/,Release_Trunk/,g'`
 	fi
 	
 	
 	rm -f ~/tmp/merged/output.$$
-	Basetrunk=/home/qishanqing/workspace/code/Trunk/
+	Basetrunk=/home/qishanqing/workspace/code/Release_Trunk/
 	Basetrunkcode=$Basetrunk${trunk#*Trunk/}
 	Base_gray_trunk=/home/qishanqing/workspace/code/Gray_Trunk/
 	Base_gray_trunkcode=$Base_gray_trunk${trunk#*Trunk/}
 	Basebranch=/home/qishanqing/workspace/code/Branch/
 	Basebranchcode=$Basebranch${branch#*Branch/}
-}
-
-clean_workspace() {
-		svn cleanup .
-		svn st | grep ^? | xargs rm -rf 
-		svn revert --depth=infinity .
-		svn up .
-
 }
 
 export SMARTCM_EXTRA_MAIL="$email $extra_mails $owner"
@@ -146,6 +140,7 @@ function svn_conflict_files(){
 		    if [ -z "$cfilenames" ];then
 			return 0
 		    else
+			Exit_Status_Code 5
 			for cfilename in $cfilenames;do
 			    if [[ "$cfilename" =~ "@" ]];then
 				svn resolve --accept=theirs-conflict $cfilename@
@@ -174,7 +169,7 @@ function build_error_skip() {
 	echo "-----------------------------"
 	echo "$info3"
 	echo "-----------------------------"
-#	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info3','${task_id:-0}');"
+#	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','$info3','${task_id:-0}');"
 	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
     fi   
 }
@@ -212,6 +207,20 @@ function mvn_check(){
     fi
 }
 
+function checkout_branch_code () {
+    #set -x
+    #rm -rf ~/tmp/conflict/*
+    mkdir -p ~/tmp/conflict || true
+
+    if [ -d ~/tmp/conflict/$branch ];then
+	cd ~/tmp/conflict/$branch
+	clean_workspace
+    else
+	svn co $branch ~/tmp/conflict/$branch  > /dev/null
+	cd ~/tmp/conflict/$branch
+    fi
+}
+
 function svn_conflict_trees(){
 		(
 		tfilenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
@@ -228,11 +237,8 @@ function svn_conflict_trees(){
 			echo $filename >> ~/tmp/merged/tree_conflict_list.txt
 		    done
                     (
-			set -x
-			rm -rf ~/tmp/conflict/*
-			mkdir -p ~/tmp/conflict || true
-			svn co $branch ~/tmp/conflict/$branch  > /dev/null
-			cd ~/tmp/conflict/$branch
+			checkout_branch_code
+			
 			for x in `cat ~/tmp/merged/tree_conflict_list.txt`;do
 			    cp-with-dir-struct $Basetrunkcode $x >& /dev/null ||
 				(
@@ -255,23 +261,40 @@ function commit() {
     fi
 	
     if [ $info -eq 0 ];then
-	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','code合并内容为空','${task_id:-0}');"
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','1','code合并内容为空','${task_id:-0}');"
 	Exit_Status_Code 2
     fi
-   
+
+    svn st | awk '{print $2}' | grep '^[a-zA-Z]' > ~/tmp/merged/merge_files_info.log
+
+    if [[ $PWD =~ CloudLoanH5Client ]];then
+	js_files_cover
+    fi
+    
     svn ci -m "$task
 Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $errors ];then
-	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','success','${task_id:-0}');"
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','success','${task_id:-0}');"
     else
-	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info3','${task_id:-0}');"
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','$info3','${task_id:-0}');"
     fi	
+}
+
+function js_files_cover () {
+	    (
+		checkout_branch_code
+		cat ~/tmp/merged/merge_files_info.log | while read file;do
+		    if [[ "$file" =~ .js$ ]];then
+			cp-with-dir-struct $Basetrunkcode $file >& /dev/null
+		    fi
+		done
+	    )
 }
 
 function reverse_merge () {
     h=${head#r*}
     r=${revision#r*}
     if [ $r -gt $h ];then
-	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','2','反向合并','${task_id:-0}');"
+	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','2','反向合并','${task_id:-0}');"
 	Exit_Status_Code 3
     fi
 }
@@ -424,8 +447,8 @@ function svn_db_merged() {
 function project_merge_create () {
     info2="根据分支已新建主干项目"
     export info2
-    svn list $trunk ||  cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
-    svn list $trunk ||  svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
+    svn list "$trunk" ||  cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','$info2','${task_id:-0}');"
+    svn list "$trunk" ||  svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
 }
 
 locked-echo
