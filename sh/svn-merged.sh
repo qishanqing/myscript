@@ -254,7 +254,7 @@ function commit() {
 	
     if [ $info -eq 0 ];then
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','1','code合并内容为空','${task_id:-0}');"
-	exit 1
+	exit 0
     fi
 
     svn st | awk '{print $2}' | grep '^[a-zA-Z]' > ~/tmp/merged/merge_files_info.log
@@ -345,6 +345,10 @@ function svn_from_tb_merged() {
 			
 		    	if [ -z "$revision" ];then
 			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+		    	fi
+			
+		    	if [ -z "$revision" ];then
+			    local revision=`svn log --search "新建项目主干分支" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
 		    	fi
 			
 			if [ ! -z  "$revision" ];then
@@ -445,7 +449,7 @@ function project_merge_create () {
 
 locked-echo
 
-if test $types = add;then
+if test "$types" = add;then
 	for branch in ${branchs[@]};do
 		Basecode
 		if test -d $Basetrunkcode;then
@@ -455,7 +459,7 @@ if test $types = add;then
 		fi
 		unset trunk
 	done
-elif test $types = del;then
+elif test "$types" = del;then
 	for branch in ${branchs[@]};do
 		Basecode
 		if test -d $Basebranchcode;then
@@ -468,10 +472,12 @@ elif test $types = del;then
 			svn_from_bt_merged
 		fi
 	done
-elif test $types = dt;then
-	Basecode
-	svn_dt_merged
+elif test "$types" = dt;then
+        Basecode
+        svn_dt_merged
+elif test "$types" = db;then
+        Basecode
+        svn_db_merged
 else
-	Basecode
-	svn_db_merged
+        echo
 fi

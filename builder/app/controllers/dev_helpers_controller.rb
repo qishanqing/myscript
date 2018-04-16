@@ -4,6 +4,9 @@ class DevHelpersController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   def new
     @types = params[:types]
     @extra_mails = params[:extra_mails]

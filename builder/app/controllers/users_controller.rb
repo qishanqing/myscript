@@ -10,8 +10,9 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
+#    @user = User.find(params[:id])
+    #    @microposts = @user.microposts.paginate(page: params[:page])
+    render(json: Api::V1::UserSerializer.new(user).to_json)
 
   end
 

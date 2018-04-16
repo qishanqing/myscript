@@ -171,17 +171,20 @@ get-job-info() {
 	chmod 777 /mnt/svn/task_id.log
 	echo $copy > /mnt/svn/task_id.log || true
     fi
+
+    if [ -z "$del" ];then
+	die "请输入需要构建的分支名"
+    elif [[ "$del" =~ % ]];then
+	die "请输入肉眼可辨并且正确的分支名"
+    else
+	echo
+    fi
     
     if [ ! -s ~/tmp/jenkins/template.xml ];then
-	if [ ! -z "$del" ];then
-	    svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
-	    jc-create-job $add
-	else
-	    echo "请输入需要构建的svnurl"
-	    exit 0
-	fi
+	svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
+	jc-create-job $add
     else
-	if [ ! -z "$del" ] || [ ! -z "$command" ];then
+	if [ ! -z "$command" ];then
 	    branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
 	    svn list "$del" >&/dev/null || die "分支输入错误或者已关闭"
 	    if [[ ! $branch =~ $del ]];then
@@ -191,7 +194,6 @@ get-job-info() {
 	    fi  
 	fi
     fi
-
 }
 
 function jc-create-job () {
