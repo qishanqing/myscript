@@ -320,7 +320,7 @@ function svn_from_tb_merged() {
 				
 		if  [ ! -z  "$revision" ];then
 		        reverse_merge
-			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
+			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
 			if [ -z "$st" ];then
 				svn merge $branch@$revision $branch@$head
 			else
@@ -353,7 +353,7 @@ function svn_from_tb_merged() {
 			
 			if [ ! -z  "$revision" ];then
 			        reverse_merge
-				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
+				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
 				if [ -z $st ];then
 					svn merge $branch@$revision $branch@$head
 				else
@@ -379,7 +379,7 @@ function svn_from_bt_merged() {
 		clean_workspace
 		if [ -n $rev ];then
 			if [[ "$rev" =~ ":" ]];then
-				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
 				if test -z $stu;then
 					timeout 20 svn merge -r $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
@@ -387,7 +387,7 @@ function svn_from_bt_merged() {
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
 			else
-				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
 				if [ -z $stu ];then
 					timeout 20 svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
@@ -398,7 +398,7 @@ function svn_from_bt_merged() {
 		else
 			svn mergeinfo $trunk --show-revs eligible | while read rev
 			do	
-				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
 				if [ -z $stu ];then
 					timeout 20 svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
@@ -458,6 +458,10 @@ if test "$types" = add;then
 		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
 		fi
 		unset trunk
+		unset tag1
+		unset tag2
+		unset tag3
+		unset tag4
 	done
 elif test "$types" = del;then
 	for branch in ${branchs[@]};do

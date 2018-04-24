@@ -4,6 +4,9 @@
 . ~/myscript/sh/svn.sh
 
 echo pid is $$
+#export TOP_PID=$$
+#trap 'exit 1' TERM
+
 die() {
 	(
 	echo "$@"
@@ -18,8 +21,7 @@ die() {
 }
 
 function Exit_Status_Code () {
-    n=$1
-    cat ~/tmp/merged/merge_mail_info.log | mails_cm -i "code merged from  ${tag3:-branch#*tech/}" || true
+    cat ~/tmp/merged/merge_mail_info.log | mails_cm -i "code merged from  ${tag3:-${branch#*tech/}}" || true
     echo > ~/tmp/merged/merge_mail_info.log && exit $1
 }
 
@@ -135,22 +137,16 @@ done
 )
 
 function svn_conflict_files(){
-		(
 		    cfilenames=`svn st | grep ^C | awk '{print $2}'`
 		    if [ -z "$cfilenames" ];then
 			return 0
 		    else
-			Exit_Status_Code 5
 			for cfilename in $cfilenames;do
-			    if [[ "$cfilename" =~ "@" ]];then
-				svn resolve --accept=theirs-conflict $cfilename@
-			    else
-				svn resolve --accept=theirs-conflict $cfilename
-			    fi 
-			    echo $cfilename >> ~/tmp/merged/files_conflict_list.txt
+			    conflict_fils_path=/mnt/svn/conflict/$(now.)/$tag4/
+			    cp-with-dir-struct $conflict_fils_path $cfilename >& /dev/null
 			done
+			Exit_Status_Code 5
 		    fi
-		)
 }
 
 function build_error_skip() {
@@ -170,7 +166,7 @@ function build_error_skip() {
 	echo "$info3"
 	echo "-----------------------------"
 #	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','$info3','${task_id:-0}');"
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
+#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
     fi   
 }
 
@@ -276,7 +272,7 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','success','${task_id:-0}');"
     else
 	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','$info3','${task_id:-0}');"
-    fi	
+    fi	&& echo > ~/tmp/merged/merge_mail_info.log
 }
 
 function js_files_cover () {
@@ -328,7 +324,7 @@ function svn_from_tb_merged() {
 				
 		if  [ ! -z  "$revision" ];then
 		        reverse_merge
-			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
+			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
 			if [ -z "$st" ];then
 				svn merge $branch@$revision $branch@$head
 			else
@@ -357,8 +353,8 @@ function svn_from_tb_merged() {
 			
 			if [ ! -z  "$revision" ];then
 			        reverse_merge
-				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突'`
-				if [ -z $st ];then
+				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
+				if [ -z "$st" ];then
 					svn merge $branch@$revision $branch@$head
 				else
 					echo p | svn merge $branch@$revision $branch@$head
@@ -383,7 +379,7 @@ function svn_from_bt_merged() {
 		clean_workspace
 		if [ -n $rev ];then
 			if [[ "$rev" =~ ":" ]];then
-				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
 				if test -z $stu;then
 					timeout 20 svn merge -r $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
@@ -391,7 +387,7 @@ function svn_from_bt_merged() {
 					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 				fi
 			else
-				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
 				if [ -z $stu ];then
 					timeout 20 svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
@@ -402,7 +398,7 @@ function svn_from_bt_merged() {
 		else
 			svn mergeinfo $trunk --show-revs eligible | while read rev
 			do	
-				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突'`
+				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
 				if [ -z $stu ];then
 					timeout 20 svn merge -c $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
