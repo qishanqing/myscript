@@ -335,39 +335,39 @@ function svn_from_tb_merged() {
 				commit
 				)
 		else
-			if [ -z "$revision" ];then
+		    if [ -z "$revision" ];then
 		            local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    	fi
-
-			if [ -z "$revision" ];then
-		            local revision=`svn log --search "新建分支项目" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    	fi
-			
-		    	if [ -z "$revision" ];then
-			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    	fi
-			
-		    	if [ -z "$revision" ];then
-			    local revision=`svn log --search "新建项目主干分支" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    	fi
-			
-			if [ ! -z  "$revision" ];then
-			        reverse_merge
-				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
-				if [ -z $st ];then
-					svn merge $branch@$revision $branch@$head
-				else
-					echo p | svn merge $branch@$revision $branch@$head
-					svn_conflict_files
-					svn_conflict_trees
+			    if [ -z "$revision" ];then
+				local revision=`svn log --search "新建分支项目" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+				if [ -z "$revision" ];then
+				    local revision=`svn log --search "$rev" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+		    		    if [ -z "$revision" ];then
+					local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+		    			if [ -z "$revision" ];then
+					    local revision=`svn log --search "新建项目主干分支" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+		    			fi
+				    fi
 				fi
+			    fi
+		    fi
+			
+		    if [ ! -z  "$revision" ];then
+			reverse_merge
+			st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
+			if [ -z $st ];then
+			    svn merge $branch@$revision $branch@$head
+			else
+			    echo p | svn merge $branch@$revision $branch@$head
+			    svn_conflict_files
+			    svn_conflict_trees
 			fi
-			commit || 
-				(
-				svn_conflict_files
-				svn_conflict_trees
-				commit
-				)
+		    fi
+		    commit || 
+			(
+			    svn_conflict_files
+			    svn_conflict_trees
+			    commit
+			)
 		fi
 		) | mails_cm -i "code merged from  ${branch#*tech/}" || true
 }
