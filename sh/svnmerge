@@ -188,7 +188,7 @@ function build_error_check() {
     info3="合并成功,项目编译失败,冲突文件已替换"
 	    
     if [ ! -z "$success" ];then
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
+#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
 	echo >~/tmp/merged/files_conflict_list.txt
     else
 	build_error_skip
@@ -268,7 +268,12 @@ function commit() {
     fi
 	
     if [ $info -eq 0 ];then
-	Exit_Status_Code 2
+	local st=`cmdb_mysql "SELECT * FROM auto_merge WHERE branch_name='${tag1:-$branch}' and STATUS='0';"`
+	if [ -z "$st" ];then
+	    Exit_Status_Code 2
+	else
+	    Exit_Status_Code 0
+	fi
     fi
 
     svn st | awk '{print $2}' | grep '^[a-zA-Z]' > ~/tmp/merged/merge_files_info.log
@@ -466,7 +471,6 @@ if test $types = add;then
 		else
 		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
 		fi
-#		unset trunk
 	done
 elif test $types = del;then
 	for branch in ${branchs[@]};do

@@ -12,6 +12,7 @@ branch=$SVN_URL
 version=$SVN_REVISION
 job_name=$BUILD_URL
 owner=$BUILD_USER_ID
+jb=$JOB_NAME
 
 if [ -f /mnt/svn/task_id.log ];then
     task_id=`cat /mnt/svn/task_id.log || true`

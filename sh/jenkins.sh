@@ -1,7 +1,8 @@
 #!/bin/bash
 
-source ~/myscript/sh/svn.sh
 source ~/myscript/sh/jc
+source ~/myscript/sh/cmdb
+source ~/myscript/sh/svn.sh
 
 echo pid is $$
 JENKINS_TIME=`now.`
@@ -11,19 +12,30 @@ set -x
 locked
 
 die() {
-	(
+    (
 	echo "$@"
+	error_message=`echo "$@"`
 	if test -e ~/tmp/jenkins/output.$$;then
-		Error=`cat ~/tmp/jenkins/output.$$`
-		echo $Error		
+	    Error=`cat ~/tmp/jenkins/output.$$`
+	    echo $Error		
 	fi
-	) | mails_cm -i "jenkins auto web do failed"
-	rm -f /mnt/svn/task_id.log
-	rm -f ~/tmp/jenkins/output.$$
-	kill $$
-	exit 1
+    ) | mails_cm -i "jenkins auto web do failed" || true
+    cmdb_mysql "update track set status='1',remarks='分支不存在或者已关闭' where task_id='$copy' and job_name='$add' and branch_name='$del';"
+    rm -f /mnt/svn/task_id.log
+    rm -f ~/tmp/jenkins/output.$$
+    kill $$
+    exit 1
 }
 
+message_track() {
+    (
+	cd /home/qishanqing/workspace/code/Release_Trunk
+	head=`svn log -l 1 $del | grep ^r | awk -F '|' '{print$1}'`
+	head=${head#r*}
+	cmdb_mysql "insert into track(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$del','',now(),'${owner:-qishanqing}','$head','$add','','${copy}','','');"
+    )
+}
+    
 jenkins_url="http://build:8080"
 
 TEMP=$(getopt -o a:d:n:c:T:e:E:C:h --long types:,email:,extra_mails:,add:,copy:,del:,num:,command:,help -n $(basename -- $0) -- "$@")
@@ -92,7 +104,6 @@ clean-jenkins-workspace() {
     jc delete-job $x
 }
 
-
 jenkins-clean-never-run () {
     j=`jc list-jobs`
     for x in $j;do
@@ -116,9 +127,10 @@ jenkins-job-add() {
 }
 
 jenkins-job-build() {
-        (
-	        get-job-info
-		jc build "$add"
+    (
+	message_track
+	get-job-info
+	jc build "$add"
 	) 
 }
 
@@ -163,36 +175,31 @@ get-job-info() {
     if [ -z $add ];then
 	die "项目名称不能为空"
     else
-	jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,job项目名称为连续的,不包含非法字符串,否则创建失败,如非必要请尽量使用已存在的项目部署"
-    fi
+	if [ ! -z $copy ];then
+	    touch /mnt/svn/task_id.log
+	    chmod 777 /mnt/svn/task_id.log
+	    echo $copy > /mnt/svn/task_id.log || true
+	fi
 
-    if [ ! -z $copy ];then
-	touch /mnt/svn/task_id.log
-	chmod 777 /mnt/svn/task_id.log
-	echo $copy > /mnt/svn/task_id.log || true
-    fi
-
-    if [ -z "$del" ];then
-	die "请输入需要构建的分支名"
-    elif [[ "$del" =~ % ]];then
-	die "请输入肉眼可辨并且正确的分支名"
-    else
-	echo
+	if [ -z "$del" ];then
+	    die "请输入需要构建的分支名"
+	elif [[ "$del" =~ % ]];then
+	    die "请输入肉眼可辨并且正确的分支名"
+	else
+	    svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
+	    jc get-job $add >~/tmp/jenkins/template.xml || mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,job项目名称为连续的,不包含非法字符串,否则创建失败,如非必要请尽量使用已存在的项目部署"
+	fi
     fi
     
     if [ ! -s ~/tmp/jenkins/template.xml ];then
-	svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
 	jc-create-job $add
     else
-	if [ ! -z "$command" ];then
-	    branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
-	    svn list "$del" >&/dev/null || die "分支输入错误或者已关闭"
-	    if [[ ! $branch =~ $del ]];then
-		jc-create-job
-	    else
-		return 0
-	    fi  
-	fi
+	branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
+	if [[ ! $branch =~ $del ]];then
+	    jc-create-job
+	else
+	    return 0
+	fi  
     fi
 }
 
@@ -281,12 +288,12 @@ jenkins-clean-range-run () {
 }
 
 if test $types = add;then
-	jenkins-job-add
+    jenkins-job-add
 elif test $types = del;then
-	jenkins-job-del
+    jenkins-job-del
 elif test $types = bu;then
-	jenkins-job-build
+    jenkins-job-build
 else
-	jenkins-clean-range-run
-	job-info
+    jenkins-clean-range-run
+    job-info
 fi
