@@ -169,6 +169,7 @@ function createtag() {
 	    echo -e "\033[31m ---------------SVN新建tag须输入分支名--------------- \033\|                                                                               [0m"
 	else
 	    inport_source
+	    test=$copy
 	    head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 	    head=${head#r*}
 	    if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]];then
@@ -186,9 +187,9 @@ function createtag() {
 		else
 		    svn list ${tag_name} >& /dev/null || t=1
 		    if test $t = 1;then
-			svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "update svn set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
+			svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
 		    else
-			cmdb_mysql "update svn set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
+			cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
 		    fi
 		    echo "$info1: ${tag_name}"
 		fi
@@ -199,13 +200,13 @@ function createtag() {
 		    if test ! -z "$ftp_name";then
 			if [ `echo "$ftp_name" | wc -l` -ge 2 ];then
 			    echo "$info,基于现在最新的分支版本已有 $ftp_name"
-#			    cmdb_mysql "update svn set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
-			    cmdb_mysql "update svn set task_id='${task_id:-0}',status='1',remarks='$info'  where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update svn set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update track set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
 			    exit 0
 
 			else
-#			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-0}' where version='$head' and branch_name='$branch';"
 			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-0}' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update track set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-0}' where version='$head' and branch_name='$branch';"
 			fi
 		    fi
 		fi

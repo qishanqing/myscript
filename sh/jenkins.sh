@@ -20,7 +20,7 @@ die() {
 	    echo $Error		
 	fi
     ) | mails_cm -i "jenkins auto web do failed" || true
-    cmdb_mysql "update svn set status='1',remarks='分支不存在或者已关闭' where task_id='$copy' and job_name='$add' and branch_name='$del';"
+    cmdb_mysql "update track set status='1',remarks='分支不存在或者已关闭' where task_id='$copy' and job_name='$add' and branch_name='$del';"
     rm -f /mnt/svn/task_id.log
     rm -f ~/tmp/jenkins/output.$$
     kill $$
@@ -32,7 +32,7 @@ message_track() {
 	cd /home/qishanqing/workspace/code/Release_Trunk
 	head=`svn log -l 1 $del | grep ^r | awk -F '|' '{print$1}'`
 	head=${head#r*}
-	cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$del','',now(),'${owner:-qishanqing}','$head','$add','','${copy}','','');"
+	cmdb_mysql "insert into track(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$del','',now(),'${owner:-qishanqing}','$head','$add','','${copy}','','');"
     )
 }
     
