@@ -162,7 +162,7 @@ function build_error_skip() {
 	echo "$info3"
 	echo "-----------------------------"
 #	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info3','${task_id:-0}');"
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
+#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
     fi   
 }
 
@@ -173,7 +173,7 @@ function build_error_check() {
     info3="合并成功,项目编译失败,冲突文件已替换"
 	    
     if [ ! -z "$success" ];then
-	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
+#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
 	echo >~/tmp/merged/files_conflict_list.txt
     else
 	build_error_skip
