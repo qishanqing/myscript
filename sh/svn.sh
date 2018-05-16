@@ -25,6 +25,7 @@ hint() {
 function inport_source() {
 	#Trunk路径
 	SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
+	Release_Trunk=https://192.168.0.220/svn/tech/Release_Trunk/
 	#Branch路径
 	SVN_Branch=https://192.168.0.220/svn/tech/Branch/
 	Closed_Branch=https://192.168.0.220/svn/tech/
@@ -300,6 +301,46 @@ function clean_workspace() {
     svn up .
 }
 
+function release_merge_fix() {
+    svn list $branch >& /dev/null ||  die1 "Release_merge---预合并分支不存在或者已关闭"
+    
+    if [[ $branch =~ Branch ]];then
+	project_path=${branch#*Develop/}
+	local head=$(svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}')
+    elif [[ $branch =~ Tag ]];then
+	die1 "请输入预合并上线分支名"
+	project_path=${branch#*Develop/}
+	project_path=${project_path%/*}
+	local head=$(svn log -l 2 $tag1 | grep ^r[0-9] | tail -n 1 |awk -F '|' '{print$1}')
+    elif [[ $branch =~ % ]];then
+	die1 "请输入肉眼可辨并且正确的分支名"
+    else
+	die1 "请输入预合并上线分支名"
+    fi
+
+    (
+	cd /home/qishanqing/workspace/code/Release_Trunk/$project_path
+	clean_workspace
+    ) && (
+	checkout_branch_code && for file in "$files";do
+	    cp-with-dir-struct /home/qishanqing/workspace/code/Release_Trunk/$project_path $file
+	done
+	svn ci -m "${message:-预上线合并分支冲突文件替换---${TIME_DIR}_${head}}"
+    )
+}
+
+function checkout_branch_code () {    
+    mkdir -p ~/tmp/conflict || true
+    
+    if [ -d ~/tmp/conflict/$branch ];then
+	cd ~/tmp/conflict/$branch
+	clean_workspace
+    else
+	svn co $branch ~/tmp/conflict/$branch  > /dev/null
+	cd ~/tmp/conflict/$branch
+    fi
+}
+	
 function locked() {
     (
 	exec 9> ~/tmp/logs/svn.lock
@@ -308,7 +349,8 @@ function locked() {
     )
 }
 
-
+export -f checkout_branch_code
+export -f release_merge_fix
 export -f locked
 export -f inport_source
 export -f svn_connt

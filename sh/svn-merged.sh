@@ -199,20 +199,6 @@ function mvn_check(){
     fi
 }
 
-function checkout_branch_code () {    
-    #set -x
-    #rm -rf ~/tmp/conflict/*
-    mkdir -p ~/tmp/conflict || true
-    
-    if [ -d ~/tmp/conflict/$branch ];then
-	cd ~/tmp/conflict/$branch
-	clean_workspace
-    else
-	svn co $branch ~/tmp/conflict/$branch  > /dev/null
-	cd ~/tmp/conflict/$branch
-    fi
-}
- 
 function svn_conflict_trees(){
 		(
 		tfilenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
