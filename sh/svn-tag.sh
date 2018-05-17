@@ -58,6 +58,8 @@ done
 export SMARTCM_EXTRA_MAIL="$extra_mails $email"
 export LANG=zh_CN.UTF-8
 
+branch=$(echo $branch | perl -npe 's,\r, ,g')
+
 if test $types = tag;then
     createtag1
 elif test $types = bl;then

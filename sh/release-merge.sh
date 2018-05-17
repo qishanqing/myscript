@@ -76,6 +76,9 @@ done
 export SMARTCM_EXTRA_MAIL="$extra_mails $email"
 export LANG=zh_CN.UTF-8
 
+files=$(echo $files | perl -npe 's,\r, ,g')
+branch=$(echo $branch | perl -npe 's,\r,,g')
+
 if test $types = cf;then
     release_merge_fix
 elif test $types = bl;then

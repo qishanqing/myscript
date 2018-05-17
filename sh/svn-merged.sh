@@ -1,4 +1,4 @@
-#!/bin/bash
+o#!/bin/bash
 
 . ~/myscript/sh/cmdb
 . ~/myscript/sh/svn.sh
@@ -87,6 +87,9 @@ while true;do
     esac
 done
 
+branch=$(echo $branch | perl -npe 's,\r, ,g')
+task=$(echo $task | perl -npe 's,\r,,g')
+
 function Basecode() {
 	if [[ "$branch" =~ Tag ]];then
 	    tag1=$branch
@@ -105,8 +108,7 @@ function Basecode() {
         if test -z $trunk;then
 	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
 	fi
-	
-	
+		
 	rm -f ~/tmp/merged/output.$$
 	Basetrunk=/home/qishanqing/workspace/code/Trunk/
 	Basetrunkcode=$Basetrunk${trunk#*Trunk/}

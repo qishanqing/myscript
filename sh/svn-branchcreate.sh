@@ -73,6 +73,13 @@ while true;do
     esac
 done
 
+trunk=$(echo $trunk | perl -npe 's,\r, ,g')
+branch=$(echo $branch | perl -npe 's,\r,,g')
+riqi=$(echo $riqi | perl -npe 's,\r,,g')
+author=$(echo $author | perl -npe 's,\r, ,g')
+task=$(echo $task | perl -npe 's,\r, ,g')
+extra_mails=$(echo $extra_mails | perl -npe 's,\r, ,g')
+
 authors=$(
 $author
 for x in $author;do
@@ -94,10 +101,10 @@ export SMARTCM_EXTRA_MAIL="$email $extra_mails $e $owner"
 export LANG=zh_CN.UTF-8
 
 trunks=$(
-$trunk
-for y in $trunk;do
-	 echo $y
-done
+    $trunk
+    for y in $trunk;do
+	echo $y
+    done
 )
 
 if test $types = add;then
