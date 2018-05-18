@@ -194,7 +194,7 @@ get-job-info() {
     if [ ! -s ~/tmp/jenkins/template.xml ];then
 	jc-create-job $add
     else
-	branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,;s,</.*?>,,'`
+	branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,g;s,</.*?>,,g;s, ,,g'`
 	if [[ ! $branch =~ $del ]];then
 	    jc-create-job
 	else

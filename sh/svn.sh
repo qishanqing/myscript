@@ -25,7 +25,7 @@ hint() {
 function inport_source() {
 	#Trunk路径
 	SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
-	Release_Trunk=https://192.168.0.220/svn/tech/Release_Trunk/
+	Release_Trunk=/home/qishanqing/workspace/code/Release_Trunk
 	#Branch路径
 	SVN_Branch=https://192.168.0.220/svn/tech/Branch/
 	Closed_Branch=https://192.168.0.220/svn/tech/
@@ -303,12 +303,15 @@ function clean_workspace() {
 
 function release_merge_fix() {
     svn list $branch >& /dev/null ||  die1 "Release_merge---预合并分支不存在或者已关闭"
+    inport_source
     
     if [[ $branch =~ Branch ]];then
+	project_branch=${branch#*tech/}
 	project_path=${branch#*Develop/}
 	local head=$(svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}')
     elif [[ $branch =~ Tag ]];then
-	die1 "请输入预合并上线分支名"
+#	die1 "请输入预合并上线分支名"
+	project_branch=${branch#*tech/}
 	project_path=${branch#*Develop/}
 	project_path=${project_path%/*}
 	local head=$(svn log -l 2 $tag1 | grep ^r[0-9] | tail -n 1 |awk -F '|' '{print$1}')
@@ -319,13 +322,15 @@ function release_merge_fix() {
     fi
 
     (
-	cd /home/qishanqing/workspace/code/Release_Trunk/$project_path
+	cd $Release_Trunk/$project_path
 	clean_workspace
     ) && (
 	checkout_branch_code && for file in "$files";do
-	    cp-with-dir-struct /home/qishanqing/workspace/code/Release_Trunk/$project_path $file
+	    cp-with-dir-struct $Release_Trunk/$project_path $file
 	done
-	svn ci -m "${message:-预上线合并分支冲突文件替换---${TIME_DIR}_${head}}"
+
+	cd $Release_Trunk/$project_path
+	svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}"
     )
 }
 

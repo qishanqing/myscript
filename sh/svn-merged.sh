@@ -1,4 +1,4 @@
-o#!/bin/bash
+#!/bin/bash
 
 . ~/myscript/sh/cmdb
 . ~/myscript/sh/svn.sh
@@ -328,7 +328,9 @@ function svn_from_tb_merged() {
 			    if [ -z "$revision" ];then
 				local revision=`svn log --search "新建分支项目" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
 				if [ -z "$revision" ];then
-				    local revision=`svn log --search "$rev" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+				    if [ ! -z "$rev" ];then
+					local revision=`svn log --search "$rev" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+				    fi
 		    		    if [ -z "$revision" ];then
 					local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
 		    			if [ -z "$revision" ];then
