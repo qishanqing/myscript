@@ -173,7 +173,7 @@ function createtag() {
 	    test=$copy
 	    head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 	    head=${head#r*}
-	    if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]];then
+	    if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]] || [[ $branch =~ Release_Trunk ]];then
 		tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
 		tag_name=$tag_name/${TIME_DIR}_${version:-$head}
 		st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
@@ -330,7 +330,13 @@ function release_merge_fix() {
 	done
 
 	cd $Release_Trunk/$project_path
-	svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}"
+	local info=`svn st | wc -l`
+
+        if [ ! $info -eq 0 ];then
+	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}" && echo $files | mails_cm -i "${m预上线合并分支冲突文件替换---$project_branch}"
+	else
+	    die1 "请检查输入文件路径是否正确"
+	fi
     )
 }
 
