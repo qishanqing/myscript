@@ -306,12 +306,10 @@ function release_merge_fix() {
     inport_source
     
     if [[ $branch =~ Branch ]];then
-	project_branch=${branch#*tech/}
 	project_path=${branch#*Develop/}
 	local head=$(svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}')
     elif [[ $branch =~ Tag ]];then
 #	die1 "请输入预合并上线分支名"
-	project_branch=${branch#*tech/}
 	project_path=${branch#*Develop/}
 	project_path=${project_path%/*}
 	local head=$(svn log -l 2 $tag1 | grep ^r[0-9] | tail -n 1 |awk -F '|' '{print$1}')
@@ -320,6 +318,10 @@ function release_merge_fix() {
     else
 	die1 "请输入预合并上线分支名"
     fi
+
+    project_branch=${branch#*tech/}
+    project_branch=$(echo $project_branch | perl -npe 's,/Develop/,---,g')
+    
 
     (
 	cd $Release_Trunk/$project_path
@@ -333,7 +335,8 @@ function release_merge_fix() {
 	local info=`svn st | wc -l`
 
         if [ ! $info -eq 0 ];then
-	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}" && echo $files | mails_cm -i "${m预上线合并分支冲突文件替换---$project_branch}"
+	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}---$email" && echo $files | mails_cm -i "预上线合并分支冲突文件替换"	    
+	    cmdb_mysql "insert into auto_merge_replace(branch_name,date,message,files,email,extra_mails,owner) values ('$branch',now(),'$message','$files','$email','${extra_mails}',$owner)";
 	else
 	    die1 "请检查输入文件路径是否正确"
 	fi

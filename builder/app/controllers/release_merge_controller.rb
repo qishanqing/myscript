@@ -1,6 +1,12 @@
 # coding: utf-8
 class ReleaseMergeController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:new]
+
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :following, :followers]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: [:destroy]
+
   def index
   end
 
@@ -14,6 +20,7 @@ class ReleaseMergeController < ApplicationController
     @branch = params[:branch]
     @message = params[:message]
     @files = params[:files]
+    @owner = current_user.email
 
     result = nil
     if @branch.blank? or @files.blank? then
@@ -31,6 +38,7 @@ class ReleaseMergeController < ApplicationController
               "-b", @branch, \
               "-f", @files, \
               "-T", @types, \
+              "-o", @owner, \
               "-m", @message
     end
   end

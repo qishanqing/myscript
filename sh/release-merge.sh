@@ -23,13 +23,14 @@ die1() {
 
 locked
 
-TEMP=$(getopt -o E:e:b:T:m:f:h --long types:,extra_mails:,email:,branch:,message:,files:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o E:e:b:T:m:f:o:h --long types:,extra_mails:,email:,branch:,message:,files:,owner:,help -n $(basename -- $0) -- "$@")
 extra_mails=
 email=
 branch=
 files=
 types=
 message=
+owner=
 eval set -- "$TEMP"
 while true;do
     case "$1" in
@@ -55,6 +56,10 @@ while true;do
 	    ;;
         -m|--message)
             message=$2
+            shift 2
+	    ;;
+        -o|--owner)
+            owner=$2
             shift 2
 	    ;;
         -h|--help)
