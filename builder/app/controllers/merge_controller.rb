@@ -30,7 +30,7 @@ class MergeController < ApplicationController
 	  if not result then
 		  render 'index'
 	  else
-		  system  "svn-merged.sh", \
+		  system  "svn_merged", \
 			  "-k", task, \
 			  "-R", rev, \
 			  "-t", trunk, \

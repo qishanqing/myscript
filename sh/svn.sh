@@ -336,7 +336,7 @@ function release_merge_fix() {
 
         if [ ! $info -eq 0 ];then
 	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}---$email" && echo $files | mails_cm -i "预上线合并分支冲突文件替换"	    
-	    cmdb_mysql "insert into auto_merge_replace(branch_name,date,message,files,email,extra_mails,owner) values ('$branch',now(),'$message','$files','$email','${extra_mails}',$owner)";
+	    cmdb_mysql "insert into auto_merge_replace(branch_name,date,message,files,email,extra_mails,owner) values ('$branch',now(),'$message','$files','$email','${extra_mails}','$owner')";
 	else
 	    die1 "请检查输入文件路径是否正确"
 	fi
