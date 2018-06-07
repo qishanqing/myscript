@@ -1,7 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.17">
   <actions/>
-  <description>%description%</description>
+  <description>Jenkins Auto Web Create&#xd;
+&#xd;
+branch: https://192.168.0.220/svn/tech/Branch/20180606-苏宁订单退货流程优化/Develop/分期商城/分期商城3.0/MallRefundBusiness&#xd;
+&#xd;
+creator:&#xd;
+&#xd;
+update_time: 2018-06-07-13.42.57</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <jenkins.model.BuildDiscarderProperty>
@@ -16,7 +22,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="subversion@2.9">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>%svnurl%</remote>
+        <remote>https://192.168.0.220/svn/tech/Branch/20180606-苏宁订单退货流程优化/Develop/分期商城/分期商城3.0/MallRefundBusiness</remote>
         <credentialsId>b5ef5c85-6a9d-4cf8-89bc-fa16ff19efd4</credentialsId>
         <local>.</local>
         <depthOption>infinity</depthOption>
@@ -32,7 +38,7 @@
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
-  <assignedNode>bulid1||build2||master</assignedNode>
+  <assignedNode>build2</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -40,8 +46,8 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
-    <groupId>com.dafy.life.mobilecarriers</groupId>
-    <artifactId>MobileCarriersBusiness</artifactId>
+    <groupId>com.dafy.mall</groupId>
+    <artifactId>MallRefundBusiness</artifactId>
   </rootModule>
   <goals>clean -Pprod package  -U -Dmaven.test.skip=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
@@ -66,12 +72,14 @@
   </buildWrappers>
   <prebuilders>
     <hudson.tasks.Shell>
-      <command>%command1%</command>
+      <command>ssh qishanqing@192.168.0.231 &lt;&lt; !
+pre-svnmerge -b $SVN_URL -T add -E qishanqing@dafy.com
+!</command>
     </hudson.tasks.Shell>
   </prebuilders>
   <postbuilders>
     <hudson.tasks.Shell>
-      <command>%command%</command>
+      <command>source /home/qishanqing/myscript/sh/jenkins-upload.sh</command>
     </hudson.tasks.Shell>
   </postbuilders>
   <runPostStepsIfResult>

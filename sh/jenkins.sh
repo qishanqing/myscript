@@ -159,15 +159,19 @@ function output-manifest.xml-from-template() {
     if [ -z $build_command ];then
 	build_command="source /home/qishanqing/myscript/sh/jenkins-upload.sh"
     fi
+
+    pre_build_command="echo just test"
     
     export svnurl
     export build_description=$(get-build-description)
     export build_command
+    export pre_build_command
 
     cat $template | perl -npe '                                                                                                                                                                
         s,%description%,<![CDATA[$ENV{build_description}]]>,g;                                                                                                                                
         s,%svnurl%,<![CDATA[$ENV{svnurl}]]>,g;                                                                                                                                       
         s,%command%,<![CDATA[$ENV{build_command}]]>,g;                                                                                                                                      
+        s,%command1%,<![CDATA[$ENV{pre_build_command}]]>,g;                                                                                                                                      
     '
 }
 
