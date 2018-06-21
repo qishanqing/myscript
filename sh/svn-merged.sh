@@ -99,8 +99,10 @@ function Exit_Status_Code () {
 	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','分支不存在或者已关闭','1')";
     elif [ "$1" == 2 ];then
 	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','code合并内容为空','2')";
+	echo code合并内容为空 | mails_cm -i "svn trunk-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
     elif [ "$1" == 3 ];then
 	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','反向合并,主干已合并较新分支','3')";
+	echo 反向合并,主干已合并较新的tag或分支 | mails_cm -i "svn trunk-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
     elif [ "$1" == 4 ];then
 	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','不支持分支预合并','4')";
     elif [ "$1" == 5 ];then
@@ -137,6 +139,7 @@ function Basecode() {
 	
         if test -z $trunk;then
 	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
+	    svn list $trunk || project=1
 	fi
 	
 	
@@ -472,8 +475,7 @@ function svn_db_merged() {
 function project_merge_create () {
     info2="根据分支已新建主干项目"
     export info2
-    svn list "$trunk" ||  cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0')";
-    svn list "$trunk" ||  svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
+    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0')";
 }
 
 locked-echo
@@ -481,10 +483,16 @@ locked-echo
 if test $types = add;then
 	for branch in ${branchs[@]};do
 		Basecode
-		if test -d $Basetrunkcode;then
+		if [ -z "$project" ];then
+		    if [ ! -d "$Basetrunkcode" ];then
+			(
+			    cd ../
+			    svn up .
+			)
+		    fi
 		    svn_from_tb_merged
 		else
-		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
+		    project_merge_create && echo svn trunk-merged | mails_cm -i "${info2}------${trunk}"
 		fi
 	done
 elif test $types = del;then

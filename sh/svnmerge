@@ -68,8 +68,6 @@ while true;do
 done
 
 export SMARTCM_EXTRA_MAIL="$email $extra_mails $owner"
-export -f Basecode
-export -f locked-echo
 
 branch=$(echo $branch | perl -npe 's,\r, ,g')
 task=$(echo $task | perl -npe 's,\r,,g')
@@ -117,7 +115,7 @@ function Exit_Status_Code () {
     echo > ~/tmp/merged/merge_mail_info.log && exit $1
 }
 
-function locked-echo() {
+locked-echo() {
     (
 	exec 9> ~/tmp/logs/svnmerge.lock
 	flock 9
@@ -125,7 +123,7 @@ function locked-echo() {
     )
 }
 
-function Basecode() {
+Basecode() {
 	if [[ "$branch" =~ Tag ]];then
 	    tag1=$branch
 	    tag3=${branch#*tech/}
@@ -143,6 +141,7 @@ function Basecode() {
         if test -z $trunk;then
 	    #	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
 	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Release_Trunk,g;s,Tag/.*/Develop,Release_Trunk,g;s,Tag/.*?/,Release_Trunk/,g'`
+	    svn list $trunk || project=1
 	fi
 	
 	
@@ -464,8 +463,7 @@ function svn_db_merged() {
 function project_merge_create () {
     info2="根据分支已新建主干项目"
     export info2
-    svn list "$trunk" ||  cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0')";
-    svn list "$trunk" ||  svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
+    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0')";
 }
 
 locked-echo
@@ -473,16 +471,22 @@ locked-echo
 if test $types = add;then
 	for branch in ${branchs[@]};do
 		Basecode
-		if test -d $Basetrunkcode;then
+		if [ -z "$project" ];then
+		    if [ ! -d "$Basetrunkcode" ];then
+			(
+			    cd ../
+			    svn up .
+			)
+		    fi
 		    svn_from_tb_merged
 		else
-		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
+		    project_merge_create && echo svn release-trunk-merged | mails_cm -i "${info2}------${trunk}"
 		fi
 	done
 elif test $types = del;then
 	for branch in ${branchs[@]};do
 		Basecode
-		if test -d $Basebranchcode;then
+		if [ -z "$project" ];then
 			svn_from_bt_merged
 		else
 			(

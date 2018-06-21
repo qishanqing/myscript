@@ -13,9 +13,8 @@ branch_code="/home/qishanqing/workspace/code/Branch/"
 
 function SVN_Trunk_up() {
     (
-	svn copy https://192.168.0.220/svn/tech/Trunk https://192.168.0.220/svn/tech/Backup/Trunk/"$BACKUP_TIME" --parents  -m "备份trunk代码------$BACKUP_TIME"
 	cd $trunk_code
-	Trunk_Merge && clean_workspace
+	clean_workspace
     ) >/home/qishanqing/tmp/logs/svnup/svn_trunk_up.log 2>&1
 }
 
@@ -29,7 +28,6 @@ function Trunk_Merge() {
 
 function SVN_Release_Trunk_up() {
     (
-	svn move https://192.168.0.220/svn/tech/Release_Trunk https://192.168.0.220/svn/tech/Backup/Release_Trunk/$BACKUP_TIME --parents  -m "备份release_trunk代码------$BACKUP_TIME" && svn copy https://192.168.0.220/svn/tech/Trunk https://192.168.0.220/svn/tech/Release_Trunk --parents  -m "同步主干代码------$BACKUP_TIME "
 	cd $release_trunk_code
 	clean_workspace
     ) >& /home/qishanqing/tmp/logs/svnup/svn_release_trunk_up.log

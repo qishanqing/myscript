@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 set +x
@@ -28,19 +27,19 @@ function inport_source() {
 	Release_Trunk=/home/qishanqing/workspace/code/Release_Trunk
 	#Branch路径
 	SVN_Branch=https://192.168.0.220/svn/tech/Branch/
-	Closed_Branch=https://192.168.0.220/svn/tech/
+	Closed_Branch=https://192.168.0.220/svn/tech/Closed/
 	#Version路径
 	BaseLine=https://192.168.0.220/svn/tech/Version/
 	TIME_DIR=`date '+%Y%m%d'`
 	Level_1=`date '+%Y'`
 	Level_2=`date '+%Y%m'`
 	TIME_DIR_CLOSE=`date '+%Y%m%d%H%M'`
-	move_dir=Closed/--close+
+	move_dir=Closed
 	Trunk_name=${SVN_Trunk}$trunk
 	branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Trunk/}
 	branch_name1=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Develop/}
 	source_name=${SVN_Branch}$branch
-	dest_name=${Closed_Branch}$move_dir${TIME_DIR_CLOSE}-$branch
+	dest_name=${Closed_Branch}
 	br=`echo $branch_name | awk -F '/'  '{print $7}'`
 	access=${riqi:-$TIME_DIR}-$branch
 
@@ -280,7 +279,7 @@ function delbranch() {
 		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
 		inport_source
-		svn move ${source_name} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
+		svn move ${branch} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
 		rm -f ~/tmp/logs/output.$$
 		cmdb_mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (
@@ -335,7 +334,7 @@ function release_merge_fix() {
 	local info=`svn st | wc -l`
 
         if [ ! $info -eq 0 ];then
-	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}---$email" && echo $files | mails_cm -i "预上线合并分支冲突文件替换"	    
+	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}---$email" && echo $files | mails_cm -i "$branch---预上线合并分支冲突文件已替换"	    
 	    cmdb_mysql "insert into auto_merge_replace(branch_name,date,message,files,email,extra_mails,owner) values ('$branch',now(),'$message','$files','$email','${extra_mails}','$owner')";
 	else
 	    die1 "请检查输入文件路径是否正确"

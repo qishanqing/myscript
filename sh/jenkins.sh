@@ -160,7 +160,9 @@ function output-manifest.xml-from-template() {
 	build_command="source /home/qishanqing/myscript/sh/jenkins-upload.sh"
     fi
 
-    pre_build_command="echo just test"
+    pre_build_command="ssh qishanqing@192.168.0.231 << !
+pre-svnmerge -b $del -T add
+!"
     
     export svnurl
     export build_description=$(get-build-description)

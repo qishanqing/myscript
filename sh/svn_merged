@@ -106,6 +106,7 @@ function Basecode() {
     
     if test -z $trunk;then
 	trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag,Trunk,g;s,Release_Trunk,Trunk,g'`
+	svn list $trunk || project=1
     fi
     
     rm -f ~/tmp/merged/output.$$
@@ -432,8 +433,7 @@ function svn_db_merged() {
 function project_merge_create () {
     info2="根据分支已新建主干项目"
     export info2
-    svn list "$trunk" ||  cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
-    svn list "$trunk" ||  svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目"
+    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','${owner%@*}','0','$info2','${task_id:-0}');"
 }
 
 locked-echo
@@ -441,10 +441,16 @@ locked-echo
 if test "$types" = add;then
 	for branch in ${branchs[@]};do
 		Basecode
-		if test -d $Basetrunkcode;then
+		if [ -z "$project" ];then
+		    if [ ! -d "$Basetrunkcode" ];then
+			(
+			    cd ../
+			    svn up .
+			)
+		    fi
 		    svn_from_tb_merged
 		else
-		    project_merge_create | mails_cm "${trunk#*Trunk/}------${info2}"
+		    project_merge_create && mails_cm "${info2}------${trunk}"
 		fi
 		unset trunk
 		unset tag1
