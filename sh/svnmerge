@@ -94,8 +94,8 @@ die() {
 
 function Exit_Status_Code () {
     if [ "$1" == 1 ];then
-	echo 分支不存在或者已关闭 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
-	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','分支不存在或者已关闭','1')";
+	echo 对应分支不存在或者已关闭 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
+	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','对应分支不存在或者已关闭','1')";
     elif [ "$1" == 2 ];then
 	echo code合并内容为空 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
 	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','code合并内容为空','2')";

@@ -97,7 +97,7 @@ function addbranch() {
 			rm -f ~/tmp/logs/output.$$
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
-			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
+			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
 			check_acces
 			echo ${branch_name} >>~/tmp/logs/branchs.log
 		fi
@@ -138,7 +138,7 @@ function b_to_b() {
 		inport_source
 		svn list ${branch_name1} >& /dev/null  && mails_cm -i "已存在主干项目---$branch_name1" && exit 1
 		svn copy $trunk ${branch_name1} --parents -m "新建主干项目"
-		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task','$author');"
+		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
 		check_acces
 	fi
 }
@@ -274,23 +274,57 @@ function seach_tag_ftp(){
 }
 
 function delbranch() {
+    for branch in ${branchs[@]};do
 	if [ -z $branch  ];then
-		echo -e "\033[31m ---------------SVN移动分支须输入分支名称--------------- \033[0m"
-		echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
+	    echo -e "\033[31m ---------------SVN移动分支须输入分支名称--------------- \033[0m"
+	    echo -e "\033[37m 1. 输入Branch之后的项目路径,例如：20160524-消息中心改造 \033[0m"
 	else
-		inport_source
-		svn move ${branch} ${dest_name} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
-		rm -f ~/tmp/logs/output.$$
-		cmdb_mysql "update scm set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
+	    inport_source
+	    branch1=${branch#*Branch/}
+	    st=$(cmdb_mysql "SELECT scm_branch FROM scm WHERE scm_branch LIKE '%${branch1%%/*}%';")
+	    if test ! -z "$st";then
+		if [ `echo "$st" | wc -l` -gt 2 ];then
+		    svn move ${branch} ${dest_name}${branch1} --parents -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
+		else
+		    svn move ${branch%/Develop*} ${dest_name}${branch1%%/*} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
+		fi
+	    fi
+		    
+	    rm -f ~/tmp/logs/output.$$
+	    cmdb_mysql "DELETE FROM scm WHERE scm_branch='$branch';" && cmdb_mysql "update scm_backup set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (
 cat << mail
 		关闭分支如下:
 
-		${source_name}
+		${branch}
 mail
 ) | mails_cm -i "svnbranch-del from svn branch create web" || true
 
 	fi
+    done
+}
+
+function del_db_branch () {
+    set +x
+    local branchname=`cmdb_mysql "SELECT scm_branch FROM scm;"`
+    echo $branchname | xargs -n 1 | grep ^h > ~/tmp/logs/branch.log
+    for branch in `cat ~/tmp/logs/branch.log`;do
+	log=`(svn log  -r {$riqi}:HEAD -l 1 -q --stop-on-copy  $branch | grep ^r[0-9] |  awk -F '|' '{print$1}' ;) >&~/tmp/logs/error.log`
+	log=$(cat ~/tmp/logs/error.log)
+	if [[  "找不到路径" =~ "$log" ]];then
+	    echo $branch >> ~/tmp/logs/pre-del-branchs.log
+	elif ! [[ "$log" =~ ^r[0-9]{5,} ]];then
+	    echo $branch >> ~/tmp/logs/deled-branchs.log
+	else
+	    echo $branch >> ~/tmp/logs/uses-branchs.log
+	fi
+    done
+    
+    (
+	mkdir -p ~/tmp/logs/`date '+%Y%m%d'` || true
+	mv ~/tmp/logs/pre-del-branchs.log  ~/tmp/logs/date '+%Y%m%d'/pre-del-branchs.log
+	mv ~/tmp/logs/deled-branchs.log  ~/tmp/logs/date '+%Y%m%d'/deled-branchs.log
+    )
 }
 
 function clean_workspace() {
@@ -378,3 +412,4 @@ export -f delbranch
 export -f createtag
 export -f createtag1
 export -f clean_workspace
+export -f del_db_branch

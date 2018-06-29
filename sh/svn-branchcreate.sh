@@ -105,7 +105,14 @@ trunks=$(
     for y in $trunk;do
 	echo $y
     done
-)
+      )
+
+branchs=$(
+    $branch
+    for b in $branch;do
+	echo $b
+    done
+      )
 
 if test $types = add;then
     addbranch
@@ -123,6 +130,8 @@ elif test $types = tag;then
     createtag1
 elif test $types = st;then
     seach_tag_ftp
+elif test $types = pd;then
+    del_db_branch
 else
     addtrunk
 fi
