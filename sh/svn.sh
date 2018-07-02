@@ -288,10 +288,12 @@ function delbranch() {
 		else
 		    svn move ${branch%/Develop*} ${dest_name}${branch1%%/*} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
 		fi
+		cmdb_mysql "DELETE FROM scm WHERE scm_branch='$branch';" && cmdb_mysql "update scm_backup set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
+	    else
+		svn move ${branch%/Develop*} ${dest_name}${branch1%%/*} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
+		cmdb_mysql "insert into scm_backup (scm_branch,scm_del_date,owner,scm_del) values ('$branch_name',now(),'${owner%@*}','0');"
 	    fi
-		    
 	    rm -f ~/tmp/logs/output.$$
-	    cmdb_mysql "DELETE FROM scm WHERE scm_branch='$branch';" && cmdb_mysql "update scm_backup set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 (
 cat << mail
 		关闭分支如下:
