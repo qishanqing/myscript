@@ -78,7 +78,7 @@ while true;do
     esac
 done
 
-export SMARTCM_EXTRA_MAIL="$extra_mails $email"
+export SMARTCM_EXTRA_MAIL="$extra_mails $email $owner"
 export LANG=zh_CN.UTF-8
 
 files=$(echo $files | perl -npe 's,\r, ,g')

@@ -124,8 +124,7 @@ function addtrunk() {
 	else
 		inport_source
 		svn list ${Trunk_name}${source_name##*/} >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}${source_name##*/}" && exit 1 
-		svn copy ${branch} ${trunk} --parents -m "新建主干项目"
-		echo "新建主干项目路径: ${trunk}                       "
+		svn copy ${branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch',now(),'${owner%@*}','$task','$author');" 
 	fi
 }
 
@@ -146,8 +145,7 @@ function b_to_b() {
 function createtrunk() {
         inport_source
 	svn list ${Trunk_name}  >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}" && exit 1
-	svn mkdir ${trunk} --parents  -m "新建主干项目"
-	echo "新建主干项目路径: ${trunk}"
+	svn mkdir ${trunk} --parents  -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_date,owner,task,access) values ('$trunk',now(),'${owner%@*}','$task','$author');"
 }
 
 function projectlists() {

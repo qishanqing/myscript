@@ -96,17 +96,17 @@ die() {
 
 function Exit_Status_Code () {
     if [ "$1" == 1 ];then
-	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','分支不存在或者已关闭','1')";
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','分支不存在或者已关闭','1');"
     elif [ "$1" == 2 ];then
-	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','code合并内容为空','2')";
-	echo code合并内容为空 | mails_cm -i "svn trunk-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','code合并内容为空','2');"
     elif [ "$1" == 3 ];then
-	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','反向合并,主干已合并较新分支','3')";
-	echo 反向合并,主干已合并较新的tag或分支 | mails_cm -i "svn trunk-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','反向合并,主干已合并较新分支','3');"
     elif [ "$1" == 4 ];then
-	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','不支持分支预合并','4')";
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','不支持分支预合并','4');"
     elif [ "$1" == 5 ];then
 	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','$cfilenames','${rev:-0}','合并冲突','5')";
+    elif [ "$1" == 6 ];then
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','请基于主干base新建分支重新修改提交上线','6')";
     else
 	echo
     fi
@@ -286,7 +286,11 @@ function commit() {
     if [ $info -eq 0 ];then
 	local st=`cmdb_mysql "SELECT * FROM auto_trunk_merge WHERE branch_name='${tag1:-$branch}' and STATUS='0';"`
 	if [ -z "$st" ];then
-	    Exit_Status_Code 2
+	    if [ ! -z "$st2" ];then
+		Exit_Status_Code 6
+	    else
+		Exit_Status_Code 2
+	    fi
 	else
 	    Exit_Status_Code 0
 	fi
@@ -300,9 +304,9 @@ function commit() {
     
     svn ci -m "$task
 Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $errors ];then
-	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','success','0')";
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','success','0');"
     else
-	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info3','0')";
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info3','0');"
     fi	&& echo > ~/tmp/merged/merge_mail_info.log
 }
 
@@ -356,7 +360,7 @@ function svn_from_tb_merged() {
 				
 		if  [ ! -z  "$revision" ];then
 		        reverse_merge
-			st=`svn merge --dry-run $branch@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
+			st=$((svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突' ;) 2> ~/tmp/logs/merge/no-output.log)
 			if [ -z "$st" ];then
 				svn merge $branch@$revision $branch@$head
 			else
@@ -385,7 +389,13 @@ function svn_from_tb_merged() {
 			
 			if [ ! -z  "$revision" ];then
 			        reverse_merge
-				st=`svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突'`
+				st=$((svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突' ;) 2> ~/tmp/logs/merge/no-output.log)
+				st2=$(grep -r "找不到路径" ~/tmp/logs/merge/no-output.log)
+
+		    		if [ ! -z "$st2" ];then
+				    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+		    		fi
+				
 				if [ -z "$st" ];then
 					svn merge $branch@$revision $branch@$head
 				else
@@ -475,7 +485,7 @@ function svn_db_merged() {
 function project_merge_create () {
     info2="根据分支已新建主干项目"
     export info2
-    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0')";
+    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0');" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '${tag2:-$branch}',now(),'${owner%@*}','$task','$author');"
 }
 
 locked-echo
@@ -486,8 +496,8 @@ if test $types = add;then
 		if [ -z "$project" ];then
 		    if [ ! -d "$Basetrunkcode" ];then
 			(
-			    cd ../
-			    svn up .
+			    cd `dirname $Basetrunkcode`
+			    svn revert -R . && svn up .
 			)
 		    fi
 		    svn_from_tb_merged
@@ -502,8 +512,8 @@ elif test $types = del;then
 			svn_from_bt_merged
 		else
 			(
-			cd $Basebranch
-			svn co ${branch%/Develop*}
+			    cd $Basebranch
+			    svn co ${branch%/Develop*}
 			)
 			svn_from_bt_merged
 		fi

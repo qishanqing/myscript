@@ -25,7 +25,7 @@ die() {
     rm -f ~/tmp/jenkins/output.$$
     kill $$
     exit 1
-}
+ }
 
 message_track() {
     (
@@ -303,3 +303,5 @@ else
     jenkins-clean-range-run
     job-info
 fi
+
+rm -f ~/tmp/jenkins/output.$$
