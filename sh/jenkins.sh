@@ -216,6 +216,7 @@ function jc-create-job () {
 	cat ~/tmp/jenkins/template.xml | jc update-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
 	sleep 1
     done
+#    webhook http://192.168.0.231:8080/job/$add ${2:+} $owner || true
 }  
 
 job-info() {

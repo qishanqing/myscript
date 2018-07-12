@@ -102,7 +102,7 @@ function Exit_Status_Code () {
     elif [ "$1" == 3 ];then
 	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','反向合并,主干已合并较新分支','3');"
     elif [ "$1" == 4 ];then
-	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','不支持分支预合并','4');"
+	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','工作空间代码未同步','4');"
     elif [ "$1" == 5 ];then
 	cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','$cfilenames','${rev:-0}','合并冲突','5')";
     elif [ "$1" == 6 ];then
@@ -139,7 +139,9 @@ function Basecode() {
 	
         if test -z $trunk;then
 	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
+	    trunk2=`echo $branch | perl -npe 's,Branch/.*/Develop,Release_Trunk,g;s,Tag/.*/Develop,Release_Trunk,g;s,Tag/.*?/,Release_Trunk/,g'`
 	    svn list $trunk || project=1
+	    svn list $trunk2 || project2=1
 	fi
 	
 	
@@ -485,7 +487,7 @@ function svn_db_merged() {
 function project_merge_create () {
     info2="根据分支已新建主干项目"
     export info2
-    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0');" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '${tag2:-$branch}',now(),'${owner%@*}','$task','$author');"
+    svn copy ${tag2:-$branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_trunk_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','$info2','0');" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '${tag2:-$branch}',now(),'${owner%@*}','$task','$author');" 
 }
 
 locked-echo
@@ -496,13 +498,26 @@ if test $types = add;then
 		if [ -z "$project" ];then
 		    if [ ! -d "$Basetrunkcode" ];then
 			(
-			    cd `dirname $Basetrunkcode`
-			    svn revert -R . && svn up .
+			    local trunk1=${trunk#*Trunk/}
+			    local trunk_code_path=$(dirname $Basetrunkcode)
+			    local Basetrunkcode1=$Basetrunk${trunk1%%/*}
+			    if [ -d "$trunk_code_path" ];then
+				cd $trunk_code_path
+			    elif [ -d "Basetrunkcode1" ];then
+				cd $Basetrunkcode1
+			    else
+				Exit_Status_Code 4
+			    fi				
+			    svn up .			
 			)
 		    fi
 		    svn_from_tb_merged
 		else
 		    project_merge_create && echo svn trunk-merged | mails_cm -i "${info2}------${trunk}"
+		    if [ ! -z "$project2" ];then
+			svn copy ${tag2:-$branch} ${trunk2} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','根据分支已新建release主干项目','0')";
+		    fi
+			
 		fi
 	done
 elif test $types = del;then

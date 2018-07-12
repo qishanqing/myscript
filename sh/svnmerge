@@ -103,8 +103,8 @@ function Exit_Status_Code () {
 	echo 反向合并,主干已合并较新的tag或分支 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
 	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','反向合并,主干已合并较新分支','3')";
     elif [ "$1" == 4 ];then
-	echo 请提供对应tag,不支持分支预合并 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
-	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','不支持分支预合并','4')";
+	echo 工作空间代码未同步,请通知配管进行代码同步 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
+	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','工作空间代码未同步','4')";
     elif [ "$1" == 5 ];then
 	cat ~/tmp/merged/merge_mail_info.log | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
 	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','$cfilenames','${rev:-0}','合并冲突','5')";
@@ -487,13 +487,23 @@ if test $types = add;then
 		if [ -z "$project" ];then
 		    if [ ! -d "$Basetrunkcode" ];then
 			(
-			    cd `dirname $Basetrunkcode`
-			    svn revert -R . && svn up .
+			    local trunk1=${trunk#*Trunk/}
+			    local trunk_code_path=$(dirname $Basetrunkcode)
+			    local Basetrunkcode1=$Basetrunk${trunk1%%/*}
+			    if [ -d "$trunk_code_path" ];then
+				cd $trunk_code_path
+			    elif [ -d "Basetrunkcode1" ];then
+				cd $Basetrunkcode1
+			    else
+				Exit_Status_Code 4
+			    fi				
+			    svn up .			
 			)
 		    fi
 		    svn_from_tb_merged
 		else
-		    project_merge_create && echo svn release-trunk-merged | mails_cm -i "${info2}------${trunk}"
+#	     	    project_merge_create && echo svn release-trunk-merged | mails_cm -i "${info2}------${trunk}"
+		    Exit_Status_Code 0
 		fi
 	done
 elif test $types = del;then

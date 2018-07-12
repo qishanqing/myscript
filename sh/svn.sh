@@ -98,6 +98,7 @@ function addbranch() {
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
 			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
+			webhook "$branch_name" "$task" "${owner%%@*}" || true
 			check_acces
 			echo ${branch_name} >>~/tmp/logs/branchs.log
 		fi
@@ -159,6 +160,17 @@ function createbaselines() {
 	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
 	svn copy ${SVN_Trunk} $baselinedir  --parents -m "因主干更新，新建基线"
 	echo "新建主干基线: $baselinedir"
+}
+
+function webhook () {
+    curl -v 'https://oapi.dingtalk.com/robot/send?access_token=a745251c1548d4cb2defe83206e69cc2c799d09cfb60a87b3d599abded335194' \
+	 -H 'Content-Type: application/json' \
+	 -d '
+     	 {"msgtype": "markdown",
+	 	     "markdown": {"title":"配管通知",
+		     "text":"## 新建分支如下  \n 分支名称:'$1'  \n 禅道工单链接:'$2'  \n 创建人:'$3'  \n '$(now.)'"
+		     		  },
+           }'
 }
 
 function createtag() {
@@ -234,10 +246,11 @@ function createtag1() {
 	    tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
 	    tag_name=$tag_name/${TIME_DIR}_${version:-$head}
 	    st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
+	    tag_stat=$(echo "基于现在最新的分支版本已有 $st")
 	    ftp_name=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 	    if test ! -z "$st";then
 		if [ `echo "$st" | wc -l` -ge 2 ];then
-		    echo "基于现在最新的分支版本已有 $st" | mails_cm -i "create tag success"
+		    echo "$tag_stat" | mails_cm -i "create tag success"
 		fi
 	    else
 		svn list ${tag_name} >& /dev/null || t=1
@@ -413,3 +426,4 @@ export -f createtag
 export -f createtag1
 export -f clean_workspace
 export -f del_db_branch
+export -f webhook
