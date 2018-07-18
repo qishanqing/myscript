@@ -98,7 +98,7 @@ function addbranch() {
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
 			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
-			webhook "$branch_name" "$task" "${owner%%@*}" || true
+			webhook "$branch_name" "$task" "${owner%%@*}" "$trunk" || true
 			check_acces
 			echo ${branch_name} >>~/tmp/logs/branchs.log
 		fi
@@ -168,7 +168,7 @@ function webhook () {
 	 -d '
      	 {"msgtype": "markdown",
 	 	     "markdown": {"title":"配管通知",
-		     "text":"## 新建分支如下  \n 分支名称:'$1'  \n 禅道工单链接:'$2'  \n 创建人:'$3'  \n '$(now.)'"
+		     "text":"## 新建分支如下  \n 分支名称:'$1'  \n 分支对应主干路径:'$4'  \n 禅道工单链接:'$2'  \n 创建人:'$3'  \n '$(now.)'"
 		     		  },
            }'
 }
@@ -355,7 +355,7 @@ function release_merge_fix() {
 	project_path=${branch#*Develop/}
 	local head=$(svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}')
     elif [[ $branch =~ Tag ]];then
-#	die1 "请输入预合并上线分支名"
+	die1 "请输入预合并上线分支名,由于输入tag时效性,不支持tag对应文件替换"
 	project_path=${branch#*Develop/}
 	project_path=${project_path%/*}
 	local head=$(svn log -l 2 $tag1 | grep ^r[0-9] | tail -n 1 |awk -F '|' '{print$1}')

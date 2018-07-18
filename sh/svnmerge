@@ -487,9 +487,9 @@ if test $types = add;then
 		if [ -z "$project" ];then
 		    if [ ! -d "$Basetrunkcode" ];then
 			(
-			    local trunk1=${trunk#*Trunk/}
-			    local trunk_code_path=$(dirname $Basetrunkcode)
-			    local Basetrunkcode1=$Basetrunk${trunk1%%/*}
+			    trunk1=${trunk#*Trunk/}
+			    trunk_code_path=$(dirname $Basetrunkcode)
+			    Basetrunkcode1=$Basetrunk${trunk1%%/*}
 			    if [ -d "$trunk_code_path" ];then
 				cd $trunk_code_path
 			    elif [ -d "Basetrunkcode1" ];then
