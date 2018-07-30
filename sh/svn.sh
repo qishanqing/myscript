@@ -144,9 +144,11 @@ function b_to_b() {
 }
 
 function createtrunk() {
+    for trunk in ${trunks[@]};do
         inport_source
 	svn list ${Trunk_name}  >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}" && exit 1
 	svn mkdir ${trunk} --parents  -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_date,owner,task,access) values ('$trunk',now(),'${owner%@*}','$task','$author');"
+    done
 }
 
 function projectlists() {
@@ -201,6 +203,7 @@ function createtag() {
 		    else
 			cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
 		    fi
+		    svn list ${tag_name} >& /dev/null || exit 2
 		    echo "$info1: ${tag_name}"
 		fi
 		if test "$SKIP_FTP_VERSION" = true;then
