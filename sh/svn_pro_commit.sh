@@ -20,6 +20,32 @@ function h5_access() {
 	fi >>~/tmp/logs/svn_pro_commit.log
 }
 
+function android_access() {
+	if ! [[ "${Android_author[@]}" =~ "$author" ]];then
+		for p in "${Android_project[@]}";do
+			if [[  "$changed" =~ "$p" ]];then
+				echo -e  "\n$author: you have no access modify this project(MobileWallet/Android/ZiRu),owner is zhaojianxin" 1>&2
+				exit 1
+			fi
+		done
+	else
+		return 0
+	fi >>~/tmp/logs/svn_pro_commit.log
+}
+
+function ios_access() {
+	if ! [[ "${Ios_author[@]}" =~ "$author" ]];then
+		for p in "${Ios_project[@]}";do
+			if [[  "$changed" =~ "$p" ]];then
+				echo -e  "\n$author: you have no access modify this project(MobileWallet/IOS/ZiRu),owner is zhaojianxin" 1>&2
+				exit 1
+			fi
+		done
+	else
+		return 0
+	fi >>~/tmp/logs/svn_pro_commit.log
+}
+
 function mallStage_access() {
 	if ! [[ "${mallStage_author[@]}" =~ "$author" ]];then
 		for p in ""${mallStage_project[@]}"";do
@@ -37,7 +63,7 @@ function DFLib_access() {
 	if ! [[ "${DFLib_author[@]}" =~ "$author" ]];then
 		for p in ""${DFLib_project[@]}"";do
 			if [[  "$changed" =~ "$p" ]];then
-				echo -e  "\n$author: you have no access modify this files(DFLib),owner is lijinming and leiwanda" 1>&2
+				echo -e  "\n$author: you have no access modify this project(DFLib),owner is lijinming and leiwanda" 1>&2
 				exit 1
 			fi
 		done
@@ -68,5 +94,7 @@ function admin_group() {
 admin_group
 h5_access
 mallStage_access
+android_access
+ios_access
 #Tag_delete
 #DFLib_access
