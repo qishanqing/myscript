@@ -310,7 +310,11 @@ function reverse_merge () {
 function svn_from_tb_merged() {
     #		(
 		cd $Basetrunkcode
-		clean_workspace
+		clean_workspace ||
+		    (
+			cd ../
+			clean_workspace
+		    )
 
 		if [[ "$branch" =~ Tag ]];then
 		    local revision=`svn log | grep -w "${tag#*Tag/}"  | head -n 1 | awk -F "_" '{print $NF}'`

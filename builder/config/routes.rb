@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-#  root 'static_pages#help'
+  root 'static_pages#help'
 
   get 'release_merge/index'
 
