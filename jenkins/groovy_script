@@ -1,0 +1,37 @@
+##官方文档
+https://wiki.jenkins.io/display/JENKINS/Jenkins+Script+Console
+
+## 查看node磁盘
+for (node in jenkins.model.Jenkins.instance.nodes) {
+    computer = node.toComputer()
+    if (node.toComputer().online) {
+        size = hudson.node_monitors.DiskSpaceMonitor.DESCRIPTOR.get(computer).size
+        roundedSize = size / (1024 * 1024 * 1024) as int
+        println("node: " + node.getDisplayName() + ", free space: " + roundedSize + "GB")
+    }
+}
+
+## Delete workspace for all disabled jobs
+
+## 清理部分已经长时间未构建的 Job
+import hudson.model.AbstractProject
+
+int days = 30
+Date xDaysAgo = new Date(((long) new Date().time - (1000L * 60 * 60 * 24 * days)))
+
+jenkins = jenkins.model.Jenkins.instance
+jobs = jenkins.items.findAll { job ->
+    (job instanceof AbstractProject && job.disabled && (job.lastSuccessfulBuild?.time?.before(xDaysAgo) || job.lastSuccessfulBuild == null))
+}
+
+int count = 0
+jobs.each { job ->
+    println "Deleting ${job.name}. It's lastSuccessfulBuild is ${job.lastSuccessfulBuild?.time}"
+    job.delete()
+    count++
+}
+
+println "\nDeleted ${count} jobs.\n"
+
+
+

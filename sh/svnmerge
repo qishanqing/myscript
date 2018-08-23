@@ -496,13 +496,13 @@ if test $types = add;then
 			    Basetrunkcode1=$Basetrunk${trunk1%%/*}
 			    if [ -d "$trunk_code_path" ];then
 				cd $trunk_code_path
-			    elif [ -d "Basetrunkcode1" ];then
+			    elif [ -d "$Basetrunkcode1" ];then
 				cd $Basetrunkcode1
 			    else
 				Exit_Status_Code 4
 			    fi				
 			    svn up .			
-			)
+			) || Exit_Status_Code 4
 		    fi
 		    svn_from_tb_merged
 		else
