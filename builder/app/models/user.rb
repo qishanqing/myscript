@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
   
   validates :name,  presence: true, length: { maximum: 50 }
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@dafy.com/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@daf[\w]+.com/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false },
-                    inclusion: { in: ['hanyunfeng@dafy.com','qishanqing@dafy.com','yujigang@dafy.com','wangyang02@dafy.com','liuzijie@dafy.com','liusen@dafy.com','yangguang@dafy.com','weishaolong@dafy.com','pankun@dafy.com','xiaojian@dafy.com','zhangjunjie@dafy.com','jinshaofei@dafy.com','jinagzhenhui@dafy.com','yanghaizhu@dafy.com','lihaihan@dafy.com','liuxuxing@dafy.com','xizhixing@dafy.com','songxinyu@dafy.com','tangchuanjin@dafy.com','lideyao@dafy.com','leiwanda@dafy.com','heweiming@dafy.com','yanhai@dafy.com','muxiaoyu@dafy.com','guojinlong@dafy.com','wangrongjiu@dafy.com','chenhongan@dafy.com','niutieliang@dafy.com','qiyongliang@dafy.com','zhangjiawen@dafy.com','renshibo@dafy.com','chenxiguang@dafy.com','wangkai@dafy.com'], message:'你没有权限注册'}
+                    inclusion: { in: ['hanyunfeng@dafy.com','qishanqing@dafy.com','yujigang@dafy.com','wangyang02@dafy.com','liuzijie@dafy.com','liusen@dafy.com','yangguang@dafy.com','weishaolong@dafy.com','pankun@dafy.com','xiaojian@dafy.com','zhangjunjie@dafy.com','jinshaofei@dafy.com','jinagzhenhui@dafy.com','yanghaizhu@dafy.com','lihaihan@dafy.com','liuxuxing@dafy.com','xizhixing@dafy.com','songxinyu@dafy.com','tangchuanjin@dafy.com','lideyao@dafy.com','leiwanda@dafy.com','heweiming@dafy.com','yanhai@dafy.com','muxiaoyu@dafy.com','guojinlong@dafy.com','wangrongjiu@dafy.com','chenhongan@dafy.com','niutieliang@dafypower.com','qiyongliang@dafy.com','zhangjiawen@dafy.com','renshibo@dafy.com','chenxiguang@dafy.com','wangkai@dafy.com'], message:'你没有权限注册'}
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
