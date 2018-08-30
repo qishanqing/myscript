@@ -263,7 +263,7 @@ function svn_conflict_trees(){
 		    )
 		fi
 		) 
-		mvn_check && svn st | grep "^?" | awk '{print $2}' | xargs  svn add >& /dev/null
+	#	mvn_check && svn st | grep "^?" | awk '{print $2}' | xargs  svn add >& /dev/null
 }
 
 function commit() {
@@ -416,7 +416,7 @@ function svn_from_bt_merged() {
 		clean_workspace
 		if [ -n $rev ];then
 			if [[ "$rev" =~ ":" ]];then
-				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
+k				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
 				if test -z $stu;then
 					timeout 20 svn merge -r $rev $trunk .
 					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true

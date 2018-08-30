@@ -20,8 +20,12 @@ if [ -f /mnt/svn/task_id.log ];then
     export task_id
 fi
 
-function remove_files () {
-    find $file/ -name 'constants.properties' | xargs -i rm -f {}
+function replace_files () {
+    #    find $file/ -name 'WEB-INF/classes/servicebus.xml' | xargs -i rm -f {}
+    if [ -f $file/WEB-INF/classes/servicebus.xml ];then
+	sed -i '/\"PoolPreparedStatements\"/{s/true/false/g}' $file/WEB-INF/classes/servicebus.xml
+	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $file/WEB-INF/classes/servicebus.xml
+    fi
 }
 
 function upload_version () {
@@ -41,9 +45,9 @@ function upload_version () {
 	createtag
 	unzip -oq upload/$filename -d upload/$file
 	(
-	cd upload
-	zip -r $file.zip $file/*
-	mv $file.zip /mnt/svn/ && echo "上传成功"
+	    cd upload
+	    replace_files && zip -r $file.zip $file/*
+	    mv $file.zip /mnt/svn/ && echo "上传成功"
 	)
     done
 }

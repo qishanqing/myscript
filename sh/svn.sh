@@ -213,8 +213,8 @@ function createtag() {
 		    if test ! -z "$ftp_name";then
 			if [ `echo "$ftp_name" | wc -l` -ge 2 ];then
 			    echo "$info,基于现在最新的分支版本已有 $ftp_name"
-			    cmdb_mysql "update svn set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
-			    cmdb_mysql "update track set task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update svn set job_name='$job_name',task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update track set job_name='$job_name',task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
 			    exit 0
 
 			else
@@ -387,7 +387,7 @@ function release_merge_fix() {
 	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}---$email" && echo $files | mails_cm -i "$branch---预上线合并分支冲突文件已替换"	    
 	    cmdb_mysql "insert into auto_merge_replace(branch_name,date,message,files,email,extra_mails,owner) values ('$branch',now(),'$message','$files','$email','${extra_mails}','$owner')";
 	else
-	    die1 "请检查输入文件路径是否正确"
+		die1 "请检查输入文件路径是否正确(或者再次尝试,有可能是工作空间被锁定)"
 	fi
     )
 }
