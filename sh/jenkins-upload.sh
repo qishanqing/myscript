@@ -22,9 +22,16 @@ fi
 
 function replace_files () {
     #    find $file/ -name 'WEB-INF/classes/servicebus.xml' | xargs -i rm -f {}
-    if [ -f $file/WEB-INF/classes/servicebus.xml ];then
-	sed -i '/\"PoolPreparedStatements\"/{s/true/false/g}' $file/WEB-INF/classes/servicebus.xml
-	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $file/WEB-INF/classes/servicebus.xml
+    fils_name="upload/$file/WEB-INF/classes/servicebus.xml"
+    if [ -f "$fils_name" ];then
+	p=$(cat $fils_name | grep PoolPreparedStatements | grep true)
+	t=$(cat $fils_name | grep TestOnBorrow | grep false)
+	if [ ! -z "$p" ] || [ ! -z "$t" ];then
+	    echo "请正确修改servicebus.xml参数PoolPreparedStatements和TestOnBorrow值"
+	    exit
+	fi
+	sed -i '/\"PoolPreparedStatements\"/{s/true/false/g}' $fils_name
+	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $fils_name
     fi
 }
 
@@ -42,11 +49,11 @@ function upload_version () {
 		file="${filename%%.*}-$DT"
 	fi
 	file=dev-$file
-	createtag
+	replace_files && createtag
 	unzip -oq upload/$filename -d upload/$file
 	(
 	    cd upload
-	    replace_files && zip -r $file.zip $file/*
+	    zip -r $file.zip $file/*
 	    mv $file.zip /mnt/svn/ && echo "上传成功"
 	)
     done
