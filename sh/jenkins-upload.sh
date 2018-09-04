@@ -27,11 +27,40 @@ function replace_files () {
 	p=$(cat $fils_name | grep PoolPreparedStatements | grep true)
 	t=$(cat $fils_name | grep TestOnBorrow | grep false)
 	if [ ! -z "$p" ] || [ ! -z "$t" ];then
-	    echo "请正确修改servicebus.xml参数PoolPreparedStatements和TestOnBorrow值"
-	    exit
+	    echo
+	    echo "请正确修改servicebus.xml参数PoolPreparedStatements为false和TestOnBorrow值为true"
+	    echo 
+	    exit 1
 	fi
 	sed -i '/\"PoolPreparedStatements\"/{s/true/false/g}' $fils_name
 	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $fils_name
+    fi
+}
+
+function cdo_framework_check() {
+    cdo_path="upload/$file/WEB-INF/lib"
+    cdo_name=$(basename $(find -name cdoframework*.jar))
+    cdo_name1=${cdo_name%.*}
+    cdo_version=${cdo_name1#*-}
+    cdo_level=8.3.9
+    st=$([[ "$cdo_version" > "$cdo_level" ]] && echo d || echo x)
+
+    if [ -f $cdo_path/$cdo_name ];then
+	if [ "$cdo_version" == "$cdo_level" ];then
+	    return 0
+	elif [ "$st" == d ];then
+	    return 0
+	elif [ "$st" == x ];then
+	    echo
+	    echo 
+	    echo  "cdo框架版本小于: $cdo_level,请更新"
+	    echo
+	    echo
+	    exit 1
+	else
+	    pass
+	    echo "cdo框架版本正确"
+	fi
     fi
 }
 
@@ -49,13 +78,13 @@ function upload_version () {
 		file="${filename%%.*}-$DT"
 	fi
 	file=dev-$file
-	replace_files && createtag
-	unzip -oq upload/$filename -d upload/$file
-	(
-	    cd upload
-	    zip -r $file.zip $file/*
-	    mv $file.zip /mnt/svn/ && echo "上传成功"
-	)
+	unzip -oq upload/$filename -d upload/$file	
+	cdo_framework_check && replace_files && createtag &&
+	    (
+		cd upload
+		zip -r $file.zip $file/*
+		mv $file.zip /mnt/svn/ && echo "上传成功"
+	    )
     done
 }
 
