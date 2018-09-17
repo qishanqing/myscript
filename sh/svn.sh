@@ -185,8 +185,8 @@ function createtag() {
 	    head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 	    head=${head#r*}
 	    if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]] || [[ $branch =~ Release_Trunk ]];then
-		tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
-		tag_name=$tag_name/${TIME_DIR}_${version:-$head}
+		tag_name1=`echo $branch | perl -npe 's,Branch,Tag,g'`
+		tag_name=$tag_name1/${TIME_DIR}_${version:-$head}
 		st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 		ftp_name=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 		info="此次代码更新没有变化"
@@ -198,13 +198,18 @@ function createtag() {
 		    fi   
 		else
 		    svn list ${tag_name} >& /dev/null || t=1
+		    o=$(svn log -l 1 -v $tag_name1 | grep 新建tag)
+		    p=$(svn log -r ${o#*_}:${version:-$head} -v $branch)
 		    if [ "$t" == 1 ];then
-			svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
+			svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,upstream_version) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0','$p','${o#*_}');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
 		    else
-			cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
+			cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,upstream_version) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0','$p','${o#*_}');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
 		    fi
 		    svn list ${tag_name} >& /dev/null || exit 2
 		    echo "$info1: ${tag_name}"
+		    echo
+		    echo 
+		    echo "此次变更具体文件信息如下: $p"
 		fi
 		if test "$SKIP_FTP_VERSION" = true;then
 		    echo "一个分支多个项目,不再检查上传的ftp版本"
