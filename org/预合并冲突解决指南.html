@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>预合并冲突解决指南</title>
+<!-- 2018-06-29 五 13:43 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">预合并冲突解决指南</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 功能介绍</a>
+<ul>
+<li><a href="#sec-1-1">1.1. 全局注意事项</a></li>
+<li><a href="#sec-1-2">1.2. 预合并冲突</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. 必要参数</a></li>
+<li><a href="#sec-1-2-2">1.2.2. 此功能注意事项</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3. 预合并失败错误定位</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1. code合并为空</a></li>
+<li><a href="#sec-1-3-2">1.3.2. 反向合并,主干已合并较新分支</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4. 不是以上原因的预合并失败请发送邮件至 qishanqing@dafy.com</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 功能介绍</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 全局注意事项</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+以下各项功能除必要参数外，其他可视情况填写
+</p>
+
+<p>
+<b>以下功能只针对预合并上线已合并其他上线代码依旧报文件合并冲突问题,从提供的Tag替换对应release_trunk对应文件,已达到解决文件冲突问题</b>
+</p>
+
+<p>
+如果收到创建失败邮件提醒，请删除首位空格后重新尝试
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 预合并冲突</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 必要参数</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+<b>创建类型</b>-&gt;冲突文件替换（默认）
+</p>
+
+<p>
+<b>预上线合并Tag名称</b>
+输入具体对应Tag名称
+</p>
+<pre class="example">
+https://192.168.0.220/svn/tech/Tag/20180605-前端商品服务/Develop/分期商城/分期商城3.0/MallBusiness/20180608_269880
+</pre>
+
+<p>
+<b>预合并上线冲突文件</b>
+预上线如有文件冲突opss会提示冲突文件,可直接复制文件写入
+</p>
+
+<p>
+<b>提交日志信息</b>
+输入release_trunk提交日志,以便后续能快速准确的回溯,默认提交日志格式为 <b>预上线合并分支冲突文件替换&#x2014;分支信息如(Tag/20180509-易宝网关/Develop/基础业务/三方网关/AccountGateway155/20180522_256151)</b> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 此功能注意事项</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+<b>预上线合并Tag名称</b> 只能输入一个Tag
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 预合并失败错误定位</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+预合并除了以上文件冲突,其他情况参考如下状况
+</p>
+</div>
+
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> code合并为空</h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div><ol class="org-ol"><li><a id="sec-1-3-1-1" name="sec-1-3-1-1"></a>新建分支后没有提交代码直接打tag上线<br  /></li>
+<li><a id="sec-1-3-1-2" name="sec-1-3-1-2"></a>copy to 项目(在配置管理已开分支下并不包含某项目,由开发本人复制主干代码到如下分支)<br  /></li></ol>
+</div>
+
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 反向合并,主干已合并较新分支</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+根据字面理解即可，表示此次上线tag对应的项目已合并有比此次上线版本更新的版本
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 不是以上原因的预合并失败请发送邮件至 qishanqing@dafy.com</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2018-06-29 五 13:43</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
