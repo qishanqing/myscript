@@ -12,7 +12,15 @@ class BuilderController < ApplicationController
   
   def index
   end
-  
+#  def mails_format_errors(extra_mails)
+#	  extra_mails.split(' ').each { |mail|
+#		  name = mail.sub(/@dafy.com/,'')
+#		  if not name.match(/^[a-z0-9\.]+$/i) then
+#			  return "#{mail} is not correct dafy email"
+#		  end
+#	  }
+#	  return nil
+ # end
   def new
 	  @author = params[:author]
 	  @types = params[:types]
