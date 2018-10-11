@@ -146,34 +146,46 @@ function get-build-description() {
     echo creator: ${extra_mails%@*}
     echo
     echo update_time: $JENKINS_TIME
+    echo
+    echo project_type: $project_type
 }
 
 function output-manifest.xml-from-template() {
     svnurl=$1
     build_command=$2
-    template="/home/qishanqing/myscript/jenkins/template.xml"
+    if [ "$project_type" == JAVA ];then
+	template="/home/qishanqing/myscript/jenkins/template.xml"
     
-    export assignedNode=$(
-	echo "build2||build1||master"
-	   )
-    if [ -z $build_command ];then
-	build_command="source /home/qishanqing/myscript/sh/jenkins-upload.sh"
-    fi
+	export assignedNode=$(
+	    echo "build2||build1||master"
+	       )
+	if [ -z $build_command ];then
+	    build_command="source /home/qishanqing/myscript/sh/jenkins-upload.sh"
+	fi
 
-    pre_build_command="ssh qishanqing@192.168.0.231 << !
+	pre_build_command="ssh qishanqing@192.168.0.231 << !
 pre-svnmerge -b $del -T add
 !"
+    elif [ "$project_type" == Android ];then
+	template="/home/qishanqing/myscript/jenkins/template_android.xml"
+
+	if [ -z $build_command ];then
+	    build_command="source /home/qishanqing/myscript/sh/jenkins-upload-android.sh"
+	fi
+    else
+	pass
+    fi
     
     export svnurl
     export build_description=$(get-build-description)
     export build_command
     export pre_build_command
-
+    
     cat $template | perl -npe '                                                                                                                                                                
-        s,%description%,<![CDATA[$ENV{build_description}]]>,g;                                                                                                                                
-        s,%svnurl%,<![CDATA[$ENV{svnurl}]]>,g;                                                                                                                                       
-        s,%command%,<![CDATA[$ENV{build_command}]]>,g;                                                                                                                                      
-        s,%command1%,<![CDATA[$ENV{pre_build_command}]]>,g;                                                                                                                                      
+            s,%description%,<![CDATA[$ENV{build_description}]]>,g;
+            s,%svnurl%,<![CDATA[$ENV{svnurl}]]>,g;                                                                                                                       
+            s,%command%,<![CDATA[$ENV{build_command}]]>,g;
+            s,%command1%,<![CDATA[$ENV{pre_build_command}]]>,g;                                                                                                                                      
     '
 }
 
@@ -191,8 +203,13 @@ get-job-info() {
 	    die "请输入需要构建的分支名"
 	elif [[ "$del" =~ % ]];then
 	    die "请输入肉眼可辨并且正确的分支名"
+	elif [[ "$del" =~ Android ]];then
+	    project_type=Android
+	elif [[ "$del" =~ IOS ]];then
+	    project_type=IOS
 	else
 	    svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
+	    project_type=JAVA
 	    jc get-job $add >~/tmp/jenkins/template.xml #|| mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,job项目名称为连续的,不包含非法字符串,否则创建失败,如非必要请尽量使用已存在的项目部署"
 	fi
     fi
@@ -211,6 +228,7 @@ get-job-info() {
 
 function jc-create-job () {
     output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml
+    
     for n in $(seq 1 10);do
 	cat ~/tmp/jenkins/template.xml | jc create-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
 	cat ~/tmp/jenkins/template.xml | jc update-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
