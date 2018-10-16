@@ -32,7 +32,7 @@
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
-  <assignedNode>老master</assignedNode>
+  <assignedNode>android || build3</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -41,7 +41,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>%command%</command>
+      <command>%command1%</command>
     </hudson.tasks.Shell>
     <hudson.plugins.gradle.Gradle plugin="gradle@1.29">
       <switches>clean assembleRelease</switches>
@@ -57,6 +57,9 @@
       <projectProperties></projectProperties>
       <passAllAsProjectProperties>false</passAllAsProjectProperties>
     </hudson.plugins.gradle.Gradle>
+    <hudson.tasks.Shell>
+      <command>%command%</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>

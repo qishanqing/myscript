@@ -170,8 +170,10 @@ pre-svnmerge -b $del -T add
 	template="/home/qishanqing/myscript/jenkins/template_android.xml"
 
 	if [ -z $build_command ];then
-	    build_command="source /home/qishanqing/myscript/sh/jenkins-upload-android.sh"
+	    build_command="source /home/jenkins/myscript/sh/jenkins-upload-android.sh"
 	fi
+
+	pre_build_command="cp -f /home/jenkins/myscript/android/local.properties ."
     else
 	pass
     fi

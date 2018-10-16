@@ -198,7 +198,7 @@ function createtag() {
 		    fi   
 		else
 		    svn list ${tag_name} >& /dev/null || t=1
-		    o=$(svn log -l 1 -v $tag_name1 | grep 新建tag)
+		    o=$(svn log -l 1 -v $tag_name1 | grep 新建tag) || true
 		    o=${o#*_}
 		    o=$(($o+1))
 		    p=$(svn log -r $o:${version:-$head} -v $branch)

@@ -21,4 +21,3 @@ if [ -f /mnt/svn/task_id.log ];then
 fi
 
 createtag
-cp -f /mnt/svn/local.properties .
