@@ -28,7 +28,7 @@ function upload_android_version () {
     find -name *.apk -print | while read filename;do
 	file=$(basename $filename)
 	file=${file%.*}
-	file=$file_$version
+	file=${file}_${version}
 	createtag
 	cp $filename $path/$file.apk && echo "上传成功"
     done

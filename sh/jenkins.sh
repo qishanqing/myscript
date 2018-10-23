@@ -258,7 +258,7 @@ EOF
 jenkins-clean-range-run () {
 	j=`jc list-jobs`
 	for x in $j;do
-		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/ | xargs -d ">" -n1 | grep "启动时间"`
+		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/ | xargs -d ">" -n1 | grep -Ei "启动时间|Started [0-9]"`
 		case "$num" in
 			zombie)
 			jenkins-clean-never-run
@@ -266,9 +266,9 @@ jenkins-clean-range-run () {
 			1月)
 			if [[ "$c" =~ [0-9]" 年" ]];then
 				clean-jenkins-workspace
-			elif [[ "$c" =~ [1-9]" 月" ]];then
+			elif [[ "$c" =~ [1-9]" mo" ]];then
 				clean-jenkins-workspace
-			elif [[ "$c" =~ 1[0-2]" 月" ]];then
+			elif [[ "$c" =~ 1[0-2]" mo" ]];then
 				clean-jenkins-workspace
 			else
 				continue
