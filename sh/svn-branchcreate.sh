@@ -8,7 +8,7 @@ echo pid is $$
 
 set -x
 
-TEMP=$(getopt -o a:e:E:t:b:d:T:o:k:h --long types:,author:,email:,extra_mails:,trunk:,branch:,riqi:,owner:,task:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o a:c:e:E:t:b:d:T:o:k:h --long types:,author:,creator:,email:,extra_mails:,trunk:,branch:,riqi:,owner:,task:,help -n $(basename -- $0) -- "$@")
 author=
 email=
 extra_mails=
@@ -18,6 +18,7 @@ riqi=
 types=
 task=
 owner=
+creator=
 eval set -- "$TEMP"
 while true;do
     case "$1" in
@@ -27,6 +28,10 @@ while true;do
 	    ;;
         -o|--owner)
             owner=$2
+            shift 2
+	    ;;
+        -c|--creator)
+            creator=$2
             shift 2
 	    ;;
         -e|--email)

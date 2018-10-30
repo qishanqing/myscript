@@ -10,6 +10,20 @@ set -x
 
 locked
 
+die2() {
+    (
+	echo "$@"
+	if test -e ~/tmp/logs/output.$$;then
+	    echo
+	    cat ~/tmp/logs/output.$$
+	fi
+    ) | mails_cm -i "svn create failed"
+    rm -rf ~/tmp/logs/output.$$
+    echo >~/tmp/logs/branchs.log
+    kill $$
+    exit -1
+}
+
 TEMP=$(getopt -o E:e:b:T:m:h --long types:,extra_mails:,email:,branch:,message:,help -n $(basename -- $0) -- "$@")
 extra_mails=
 email=

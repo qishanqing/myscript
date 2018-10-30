@@ -8,8 +8,12 @@ die() {
 	echo "$@"
 	if test -e ~/tmp/logs/output.$$;then
 	    echo
+	    ms=$(cat ~/tmp/logs/output.$$)
 	    cat ~/tmp/logs/output.$$
+	else
+	    ms="分支已存在"
 	fi
+	cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access,status,message) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author','1','$ms');"
     ) | mails_cm -i "svn create failed"
     rm -rf ~/tmp/logs/output.$$
     echo >~/tmp/logs/branchs.log
@@ -92,7 +96,7 @@ function addbranch() {
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
 		        inport_source
-			svn list $branch_name >& /dev/null && mails_cm -i "已存在分支---$branch_name" && exit 1
+			svn list $branch_name >& /dev/null && die "已存在分支---$branch_name"
 			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >& ~/tmp/logs/output.$$ || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/logs/output.$$
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
@@ -153,7 +157,7 @@ function createtrunk() {
 
 function projectlists() {
         inport_source
-	svn log -l 1 ${trunk:-$branch}  >& ~/tmp/merged/output.$$ || die "${trunk:-$branch}-----请输入具体svn——url"
+	svn log -l 1 ${trunk:-$branch}  >& ~/tmp/merged/output.$$ || die2 "${trunk:-$branch}-----请输入具体svn——url"
 	svn list ${trunk:-$branch} | indent-clipboard - | mails_cm -i "${trunk:-$branch}------项目列表如下" || true
 }
 
@@ -252,7 +256,7 @@ function createtag1() {
 	head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 	head=${head#r*}
 	if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]];then
-	    svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "$branch-----分支名输入错误或者分支已关闭,如分支确定能用,请注意分支首尾不能有空格回车之类的,用鼠标确定具体格式"
+	    svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die2 "$branch-----分支名输入错误或者分支已关闭,如分支确定能用,请注意分支首尾不能有空格回车之类的,用鼠标确定具体格式"
 	    tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
 	    tag_name=$tag_name/${TIME_DIR}_${version:-$head}
 	    st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
@@ -278,7 +282,7 @@ EOF
 ) | mails_cm -i "create tag success" 
 	    fi
 	else
-	    die "注意分支首尾不能有空格，其次只提供针对分支创建tag功能，请输入肉眼可辨并且正确的分支名"
+	    die2 "注意分支首尾不能有空格，其次只提供针对分支创建tag功能，请输入肉眼可辨并且正确的分支名"
 	fi
     done
 }

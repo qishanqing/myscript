@@ -4,12 +4,11 @@ require 'rubygems'
 $LOAD_PATH << ( Rails.root + 'app/controllers')
 
 class BuilderController < ApplicationController
-
+  skip_before_action :verify_authenticity_token, only: [:new]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
                                         :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy]
-  
   def index
   end
 #  def mails_format_errors(extra_mails)
@@ -29,15 +28,14 @@ class BuilderController < ApplicationController
 	  @riqi = params[:riqi]
 	  @trunk = params[:trunk]
 	  @task = params[:task]
-          @owner = current_user.email
         
 	  result = nil
 	  if @trunk.blank? or @branch.blank? then
 		  @error = "相对主干路径、分支名不能为空"
 #	  elsif mails_format_errors then
 #		  @error = "通知邮件收件人格式不正确：" + mails_format_errors(extra_mails)
-	  elsif @types == 'add' and @task.blank?  then
-		  @error = "请输入工单链接"
+#	  elsif @types == 'add' and @task.blank?  then
+          #		  @error = "请输入工单链接"
 	  else
 		  result = true
 	  end
@@ -52,8 +50,7 @@ class BuilderController < ApplicationController
 			  "-b", @branch, \
 			  "-T", @types, \
 			  "-d", @riqi, \
-			  "-k", @task, \
-                          "-o", @owner
+			  "-k", @task
 	  end
   end
 end
