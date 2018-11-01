@@ -25,7 +25,7 @@ function replace_files () {
     fils_name="upload/$file/WEB-INF/classes/servicebus.xml"
     if [ -f "$fils_name" ];then
 	p=$(cat $fils_name | grep PoolPreparedStatements | grep true)
-	t=$(cat $fils_name | grep TestOnBorrow | grep false)
+#	t=$(cat $fils_name | grep TestOnBorrow | grep false)
 	if [ ! -z "$p" ] || [ ! -z "$t" ];then
 	    echo
 	    echo "请正确修改servicebus.xml参数PoolPreparedStatements为false和TestOnBorrow值为true"
@@ -33,7 +33,7 @@ function replace_files () {
 	    exit 1
 	fi
 	sed -i '/\"PoolPreparedStatements\"/{s/true/false/g}' $fils_name
-	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $fils_name
+#	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $fils_name
     fi
 }
 
