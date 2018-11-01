@@ -10,8 +10,10 @@ die() {
 	    echo
 	    ms=$(cat ~/tmp/logs/output.$$)
 	    cat ~/tmp/logs/output.$$
-	else
+	elif [ "$b" == 1 ];then
 	    ms="分支已存在"
+	else
+	    ms="格式不正确"
 	fi
 	cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access,status,message) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author','1','$ms');"
     ) | mails_cm -i "svn create failed"
@@ -96,7 +98,7 @@ function addbranch() {
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
 		        inport_source
-			svn list $branch_name >& /dev/null && die "已存在分支---$branch_name"
+			svn list $branch_name >& /dev/null && b=1 && die "已存在分支---$branch_name"
 			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >& ~/tmp/logs/output.$$ || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/logs/output.$$
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`

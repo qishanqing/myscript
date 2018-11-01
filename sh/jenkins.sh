@@ -174,6 +174,37 @@ pre-svnmerge -b $del -T add
 	fi
 
 	pre_build_command="cp -f /home/jenkins/myscript/android/local.properties ."
+    elif [ "$project_type" == IOS ];then
+	template="/home/qishanqing/myscript/jenkins/template_ios.xml"
+
+	if [[ "$del" =~ "IOS/DFXZS" ]];then 
+	    build_command="
+cp -f  ~/jenkis/yundai_template/* .
+mv project.pbxproj TestForm.xcodeproj/
+bash ipa_build.sh
+	    	"
+	elif [[ "$del" =~ "IOS/DFSC" ]];then
+	    build_command="
+cp -f  ~/jenkis/feiyugo_template/* .
+mv project.pbxproj DaFyMoblie1.0/Card2Card.xcodeproj/
+bash ipa_build.sh
+"
+	elif [[ "$del" =~ "IOS/DafyFinance_ShangRao" ]];then
+	    build_command="
+cp -f  ~/jenkis/ddlt_template/* .
+mv project.pbxproj TestForm.xcodeproj/
+bash ipa_build.sh
+	    	"
+	elif [[ "$del" =~ "IOS/DFCloudLoan_3.0" ]];then
+	    build_command="
+cp -f  ~/jenkis/xiaozhushou_template/* .
+mv project.pbxproj Card2Card/Card2Card.xcodeproj/project.pbxproj
+bash ipa_build.sh
+	    	"
+	else
+	    echo "新项目未配置对应签名证书"
+	fi
+	pre_build_command="source /home/qishanqing/myscript/sh/jenkins-upload-ios.sh"
     else
 	pass
     fi
