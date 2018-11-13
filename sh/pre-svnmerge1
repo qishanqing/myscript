@@ -312,11 +312,16 @@ function reverse_merge () {
 
 	if [ $r -eq $h ];then
 	    c1=
-	    if [ ! -z $c ];then
+	fi
+
+	if [ $r -lt $h ];then
+	    if [ ! -z "$c" ];then
 		r1=$(svn log --search "-$r" $trunk1 |  grep ^r[0-9] | awk -F '|' '{print$1}')
 		r1=${r1#r*}
-		r1=$(($r1+1))
-		c=$(svn log -v -r $r1:HEAD $trunk1 | grep ' M' | awk '{print $2}')
+		if [ ! -z "$r1" ];then
+		    r1=$(($r1+1))
+		    c=$(svn log -v -r $r1:HEAD $trunk1 | grep ' M' | awk '{print $2}')
+		fi
 	    fi
 	fi
 	

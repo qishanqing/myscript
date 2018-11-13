@@ -12,6 +12,8 @@ die() {
 	    cat ~/tmp/logs/output.$$
 	elif [ "$b" == 1 ];then
 	    ms="分支已存在"
+	elif [ "$trunk_status" == 0 ];then
+	    ms="opss上线主干被锁定，不允许新建分支，请上线完成合并主干后新建"
 	else
 	    ms="格式不正确"
 	fi
@@ -39,6 +41,7 @@ function inport_source() {
 	TIME_DIR=`date '+%Y%m%d'`
 	Level_1=`date '+%Y'`
 	Level_2=`date '+%Y%m'`
+	Level_3=`date '+%Y-%m-%d'`
 	TIME_DIR_CLOSE=`date '+%Y%m%d%H%M'`
 	move_dir=Closed
 	Trunk_name=${SVN_Trunk}$trunk
@@ -97,16 +100,22 @@ function addbranch() {
 			echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
-		        inport_source
+		    inport_source
+		    trunk_status=$(curl -s -q -d "myapp=$trunk" http://192.168.0.22:8000/appcenter/app_lock_info/)
+		    local st=$(cmdb_mysql "SELECT scm_trunk FROM scm_trunk WHERE scm_date LIKE '%$Level_3%' and scm_trunk='$trunk';")
+		    if [ "$trunk_status" == 1 ] || [ "$trunk_status" == 5 ] || [ ! -z "$st" ];then
 			svn list $branch_name >& /dev/null && b=1 && die "已存在分支---$branch_name"
 			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >& ~/tmp/logs/output.$$ || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/logs/output.$$
 			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
 			local head=${head#r*}
-			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
+			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access,status) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author','0');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access,status) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author','0');"
 			webhook "$branch_name" "$task" "${owner%%@*}" "$trunk" || true
 			check_acces
 			echo ${branch_name} >>~/tmp/logs/branchs.log
+		    else
+			die "opss上线主干被锁定，不允许新建分支，请上线完成合并主干后新建"
+		    fi
 		fi
     done
     
@@ -144,7 +153,7 @@ function b_to_b() {
 		inport_source
 		svn list ${branch_name1} >& /dev/null  && mails_cm -i "已存在主干项目---$branch_name1" && exit 1
 		svn copy $trunk ${branch_name1} --parents -m "新建主干项目"
-		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
+		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,access,status) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task','$author','0');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access,status) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author','0');"
 		check_acces
 	fi
 }
@@ -152,8 +161,19 @@ function b_to_b() {
 function createtrunk() {
     for trunk in ${trunks[@]};do
         inport_source
-	svn list ${Trunk_name}  >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}" && exit 1
-	svn mkdir ${trunk} --parents  -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_date,owner,task,access) values ('$trunk',now(),'${owner%@*}','$task','$author');"
+	local st=$(cmdb_mysql "SELECT scm_trunk FROM scm_trunk WHERE scm_trunk='$trunk'")
+	svn list ${trunk}  >& /dev/null &&
+	    (
+		if [ ! -z "$st" ];then
+		    if [ `echo "$st" | wc -l` -ge 2 ];then
+			cmdb_mysql "update scm_trunk set message='主干已存在',owner='${owner%@*}',status='1' where scm_trunk='$trunk';"
+		    fi
+		else
+		    cmdb_mysql "insert into scm_trunk(scm_trunk,scm_date,owner,task,access,status,message) values ('$trunk',now(),'${owner%@*}','$task','$author','2','主干已存在');"
+		fi
+		mails_cm -i "已存在主干---${trunk}"
+	    ) && exit 1
+	svn mkdir ${trunk} --parents  -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_date,owner,task,access,status) values ('$trunk',now(),'${owner%@*}','$task','$author','0');"
     done
 }
 

@@ -112,8 +112,8 @@ function Exit_Status_Code () {
 	echo 获取分支对应节点后合并失败，请基于主干base新建分支重新修改提交上线 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
 	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','请基于主干base新建分支重新修改提交上线','6')";
     elif [ "$1" == 7 ];then
-	echo 主干代码有修改，请及时合并其他上线分支代码 | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
-	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','主干代码有修改，请及时合并其他上线分支代码','7')";
+	echo -e "主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致！！ \n 冲突文件如下： \n \n $pt" | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
+	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致','7')";
     else
 	echo
     fi
@@ -325,14 +325,25 @@ function reverse_merge () {
     else
 	c=$(svn log -v -r $r:HEAD $trunk1 | grep ' M' | awk '{print $2}')
 	c1=$(svn log -v -r $r:$head ${tag2:-$branch} | grep ' M' | awk '{print $2}')
+	pt=$(svn log -v -r $r:HEAD $trunk1)
 
 	if [ $r -eq $h ];then
 	    c1=
-	    if [ ! -z $c ];then
-		r1=$(svn log --search "-$r" $trunk1 |  grep ^r[0-9] | awk -F '|' '{print$1}')
+	fi
+
+	if [ $r -lt $h ];then
+	    if [ ! -z "$c" ];then
+#		r1=$(svn log --search "-$r" $trunk1 |  grep ^r[0-9] | awk -F '|' '{print$1}')
+		r1=$(svn log --search "${tag#*Tag/}" $trunk1 |  head -n 2 | grep ^r | awk -F '|' '{print$1}')
 		r1=${r1#r*}
-		r1=$(($r1+1))
-		c=$(svn log -v -r $r1:HEAD $trunk1 | grep ' M' | awk '{print $2}')
+		if [ ! -z "$r1" ];then
+		    r1=$(($r1+1))
+		    c=$(svn log -v -r $r1:HEAD $trunk1 | grep ' M' | awk '{print $2}')
+		    pt=$(svn log -v -r $r1:HEAD $trunk1)
+		else
+		    c=
+		    pt=
+		fi
 	    fi
 	fi
 	

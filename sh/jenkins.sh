@@ -204,7 +204,7 @@ bash ipa_build.sh
 	else
 	    echo "新项目未配置对应签名证书"
 	fi
-	pre_build_command="source /home/qishanqing/myscript/sh/jenkins-upload-ios.sh"
+	pre_build_command="source ~/myscript/sh/jenkins-upload-ios.sh"
     else
 	pass
     fi
