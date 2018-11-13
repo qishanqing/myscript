@@ -28,7 +28,8 @@ function replace_files () {
 #	t=$(cat $fils_name | grep TestOnBorrow | grep false)
 	if [ ! -z "$p" ] || [ ! -z "$t" ];then
 	    echo
-	    echo "请正确修改servicebus.xml参数PoolPreparedStatements为false和TestOnBorrow值为true"
+#	    echo "请正确修改servicebus.xml参数PoolPreparedStatements为false和TestOnBorrow值为true"
+	    echo "请正确修改servicebus.xml参数PoolPreparedStatements"
 	    echo 
 	    exit 1
 	fi
