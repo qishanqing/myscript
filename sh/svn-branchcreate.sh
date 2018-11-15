@@ -96,7 +96,7 @@ if [[ ! -z "$author" ]];then
     if ! [[ "$author" =~ "@" ]];then
 	e=$(
 	    for x in $author;do
-		echo $x@dafy.com
+		echo $x@srdafy.com
 	    done
 	 )
     fi
