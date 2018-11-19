@@ -7,7 +7,7 @@ set +x
 
 export BUILD_ID=dontkillme
 
-DT=`date '+%Y%m%d'`
+DT=`date '+%Y%m%d%H%M%S'`
 branch=$SVN_URL
 version=$SVN_REVISION
 job_name=$BUILD_URL
@@ -22,15 +22,15 @@ if [ -f /mnt/svn/task_id.log ];then
 fi
 
 function upload_android_version () {
-    local path=/mnt/svn/ANDROID/$DT
-    mkdir -p $path || true
+#    local path=/mnt/svn/ANDROID/$DT
+#    mkdir -p $path || true
     
     find -name *.apk -print | while read filename;do
 	file=$(basename $filename)
 	file=${file%.*}
-	file=${file}_${version}
+	file=${file}_${version}_${DT}
 	createtag
-	cp $filename $path/$file.apk && echo "上传成功"
+	~/ossutil cp $filename oss://dafyfiletest/ANDROID_VERSION/$file && echo "上传成功"
     done
 }
 
