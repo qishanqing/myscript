@@ -54,7 +54,7 @@ function cdo_framework_check() {
     cdo_name=$(basename $(find -name cdoframework*.jar))
     cdo_name1=${cdo_name%.*}
     cdo_version=${cdo_name1#*-}
-    cdo_level=8.4.7
+   cdo_level=8.5.6.1
     st=$([[ "$cdo_version" > "$cdo_level" ]] && echo d || echo x)
 
     if [ -f $cdo_path/$cdo_name ];then

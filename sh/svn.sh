@@ -22,7 +22,7 @@ die() {
     rm -rf ~/tmp/logs/output.$$
     echo >~/tmp/logs/branchs.log
     kill $$
-    exit -1
+    continue
 }
 
 hint() {
