@@ -54,8 +54,8 @@ function cdo_framework_check() {
     cdo_name=$(basename $(find -name cdoframework*.jar))
     cdo_name1=${cdo_name%.*}
     cdo_version=${cdo_name1#*-}
-   cdo_level=8.5.6.1
-    st=$([[ "$cdo_version" > "$cdo_level" ]] && echo d || echo x)
+    cdo_level=8.5.6.1
+    local st=$([[ "$cdo_version" > "$cdo_level" ]] && echo d || echo x)
 
     if [ -f $cdo_path/$cdo_name ];then
 	if [ "$cdo_version" == "$cdo_level" ];then
@@ -70,9 +70,74 @@ function cdo_framework_check() {
 	    echo
 	    exit 1
 	else
-	    pass
 	    echo "cdo框架版本正确"
 	fi
+    fi
+}
+
+function pool_version_check() {
+    pool_name=$(basename $(find . -name "commons-pool2*.jar"))
+    pool_name1=${pool_name%.*}
+    pool_version=${pool_name1#*commons-pool2-}
+    pool_level=2.4.2
+    local st=$([[ "$pool_version" > "$pool_level" ]] && echo a || echo b)
+    
+
+    if [ -f $cdo_path/$pool_name ];then
+	if [ "$pool_version" == "$pool_level" ];then
+	    return 0
+	elif [ "$st" == a ];then
+	    return 0
+	elif [ "$st" == b ];then
+	    echo
+	    echo 
+	    echo  "commons-pool2*版本小于: $pool_level,请更新"
+	    echo
+	    echo
+	    exit 1
+	else
+	    echo "commons-pool2版本正确"
+	fi
+    else
+	    echo
+	    echo 
+	    echo  "未检测到: commons-pool2-$pool_level.jar及以上版本，请增加后部署编译"
+	    echo
+	    echo
+	    exit 1
+    fi
+}
+
+function dbcp_version_check() {
+    dbcp_name=$(basename $(find . -name "commons-dbcp2*.jar"))
+    dbcp_name1=${dbcp_name%.*}
+    dbcp_version=${dbcp_name1#*commons-dbcp2-}
+    dbcp_level=2.4.0
+    local st=$([[ "$dbcp_version" > "$dbcp_level" ]] && echo a || echo b)
+    
+
+    if [ -f $cdo_path/$dbcp_name ];then
+	if [ "$dbcp_version" == "$dbcp_level" ];then
+	    return 0
+	elif [ "$st" == a ];then
+	    return 0
+	elif [ "$st" == b ];then
+	    echo
+	    echo 
+	    echo  "commons-dbcp2版本小于: $dbcp_level,请更新"
+	    echo
+	    echo
+	    exit 1
+	else
+	    echo "commons-dbcp2版本正确"
+	fi
+    else
+	    echo
+	    echo 
+	    echo  "未检测到: commons-dbcp2-$dbcp_level.jar及以上版本，请增加后部署编译"
+	    echo
+	    echo
+	    exit 1
     fi
 }
 
@@ -91,7 +156,7 @@ function upload_version () {
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	
-	cdo_framework_check && replace_files && createtag &&
+	cdo_framework_check && pool_version_check && dbcp_version_check&& replace_files && createtag &&
 	    (
 		cd upload
 		zip -r $file.zip $file/*

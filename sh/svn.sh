@@ -21,7 +21,7 @@ die() {
     ) | mails_cm -i "svn create failed"
     rm -rf ~/tmp/logs/output.$$
     echo >~/tmp/logs/branchs.log
-    kill $$
+#    kill $$
     continue
 }
 
