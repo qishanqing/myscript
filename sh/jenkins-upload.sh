@@ -24,6 +24,15 @@ function replace_files () {
     #    find $file/ -name 'WEB-INF/classes/servicebus.xml' | xargs -i rm -f {}
     fils_name="upload/$file/WEB-INF/classes/servicebus.xml"
     if [ -f "$fils_name" ];then
+	for x in `cat $fils_name | awk -F'"' '/Property/{a=$6}/MinIdle/{print a}'`;do
+	    if [ ! "$x" -ge 10 ];then
+		echo
+		echo "请正确设置servicebus.xml参数MinIdle大于等于10"
+		echo
+		exit 1
+	    fi
+	done
+		
 	p=$(cat $fils_name | grep PoolPreparedStatements | grep true)
 	t=$(cat $fils_name | grep TestOnBorrow | grep true)
 	tw=$(cat $fils_name | grep TestWhileIdle | grep false)
