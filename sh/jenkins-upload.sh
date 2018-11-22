@@ -72,6 +72,7 @@ function cdo_framework_check() {
 	else
 	    echo "cdo框架版本正确"
 	fi
+	pool_version_check && dbcp_version_check
     fi
 }
 
@@ -156,7 +157,7 @@ function upload_version () {
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	
-	cdo_framework_check && pool_version_check && dbcp_version_check&& replace_files && createtag &&
+	cdo_framework_check && replace_files && createtag &&
 	    (
 		cd upload
 		zip -r $file.zip $file/*

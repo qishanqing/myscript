@@ -114,7 +114,7 @@ function addbranch() {
 			check_acces
 			echo ${branch_name} >>~/tmp/logs/branchs.log
 		    else
-			die "opss上线主干被锁定，不允许新建分支，请上线完成合并主干后新建"
+			die "$trunk------opss上线主干被锁定，不允许新建分支，请上线完成合并主干后新建"
 		    fi
 		fi
     done
