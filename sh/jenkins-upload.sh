@@ -25,7 +25,7 @@ function replace_files () {
     fils_name="upload/$file/WEB-INF/classes/servicebus.xml"
     if [ -f "$fils_name" ];then
 	for x in `cat $fils_name | awk -F'"' '/Property/{a=$6}/MinIdle/{print a}'`;do
-	    if [ ! "$x" -ge 10 ];then
+	    if [ ! "$x" -ge 5 ];then
 		echo
 		echo "请正确设置servicebus.xml参数MinIdle大于等于10"
 		echo
