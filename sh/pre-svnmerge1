@@ -304,11 +304,13 @@ function reverse_merge () {
     r=${revision#r*}
     h=$(echo $h | perl -npe 's,\r, ,g')
     r=$(echo $r | perl -npe 's,\r, ,g')
+    cc=()
     if [ $r -gt $h ];then
 	Exit_Status_Code 3
     else
 	c=$(svn log -v -r $r:HEAD $trunk1 | grep ' M' | awk '{print $2}')
 	c1=$(svn log -v -r $r:$head ${tag2:-$branch} | grep ' M' | awk '{print $2}')
+	pt=$(svn log -v -r $r:HEAD $trunk1)
 
 	if [ $r -eq $h ];then
 	    c1=
@@ -316,11 +318,15 @@ function reverse_merge () {
 
 	if [ $r -lt $h ];then
 	    if [ ! -z "$c" ];then
-		r1=$(svn log --search "-$r" $trunk1 |  grep ^r[0-9] | awk -F '|' '{print$1}')
+		r1=$(svn log --search "${tag#*Tag/}" $trunk1 |  head -n 2 | grep ^r | awk -F '|' '{print$1}')
 		r1=${r1#r*}
 		if [ ! -z "$r1" ];then
 		    r1=$(($r1+1))
 		    c=$(svn log -v -r $r1:HEAD $trunk1 | grep ' M' | awk '{print $2}')
+		    pt=$(svn log -v -r $r1:HEAD $trunk1)
+		else
+		    c=
+		    pt=
 		fi
 	    fi
 	fi
@@ -331,11 +337,12 @@ function reverse_merge () {
 	else
 	    for y in $c;do
 		if [[ ! "$c1" =~ "${y#*$p/}" ]]; then
-		    echo "主干代码有修改，请及时合并其他上线分支代码"
-		    exit
-		    Exit_Status_Code 7
+		    cc[${#cc[*]}]=$y
 		fi
 	    done
+	    if [ ! -z "${#cc[@]}" ];then
+		Exit_Status_Code 7
+	    fi
 	fi
     fi
 }

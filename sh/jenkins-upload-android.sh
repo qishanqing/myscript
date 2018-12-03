@@ -30,7 +30,7 @@ function upload_android_version () {
 	file=${file%.*}
 	file=${file}_${version}_${DT}
 	createtag
-	~/ossutil cp $filename oss://dafyfiletest/ANDROID_VERSION/$file.apk -r >/dev/null && echo "版本$file.apk------上传成功"
+	~/ossutil cp $filename oss://dafyfiletest/ANDROID_VERSION/$file.apk -r >/dev/null && echo "http://dafyfiletest.oss-cn-beijing.aliyuncs.com/ANDROID_VERSION/$file.apk------上传成功"
     done
 }
 

@@ -30,7 +30,7 @@ function upload_ios_version () {
 	file=${file%.*}
 	file=${file}_${version}_${DT}
 	createtag
-	~/ossutil cp $filename oss://dafyfiletest/MACOS_VERSION/$file.ipa -r >/dev/null && echo "版本$file.ipa------上传成功"
+	~/ossutil cp $filename oss://dafyfiletest/MACOS_VERSION/$file.ipa -r >/dev/null && echo "http://dafyfiletest.oss-cn-beijing.aliyuncs.com/MACOS_VERSION/$file.ipa------上传成功"
     done
 }
 

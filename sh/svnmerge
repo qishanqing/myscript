@@ -113,7 +113,7 @@ function Exit_Status_Code () {
 	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','请基于主干base新建分支重新修改提交上线','6')";
     elif [ "$1" == 7 ];then
 	echo -e "主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致！！ \n 冲突文件如下： \n \n $pt" | mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
-	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致','7')";
+	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status,message) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致','7','$pt')";
     else
 	echo
     fi
@@ -320,6 +320,7 @@ function reverse_merge () {
     r=${revision#r*}
     h=$(echo $h | perl -npe 's,\r, ,g')
     r=$(echo $r | perl -npe 's,\r, ,g')
+    cc=()
     if [ $r -gt $h ];then
 	Exit_Status_Code 3
     else
@@ -353,6 +354,7 @@ function reverse_merge () {
 	else
 	    for y in $c;do
 		if [[ ! "$c1" =~ "${y#*$p/}" ]]; then
+		    cc[${#cc[*]}]=$y
 		    Exit_Status_Code 7
 		fi
 	    done

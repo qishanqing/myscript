@@ -345,6 +345,8 @@ function svn_from_tb_merged() {
 			echo
 			echo
 			echo "------pre-merge is ok------"
+			#			cmdb_mysql "insert into pre_merge(job_name,date,status) values ('$BUILD_URL',now(),'0');"
+#			echo 0 >  /mnt/svn/pre_merge_status.log
 			echo
 			echo
 			exit 0
@@ -354,6 +356,8 @@ function svn_from_tb_merged() {
 			echo
 			echo
 			echo '------pre-merge is fails------'
+#			echo 1 >  /mnt/svn/pre_merge_status.log
+#			cmdb_mysql "insert into pre_merge(job_name,date,status) values ('$BUILD_URL',now(),'1');"
 			echo
 			echo
 			exit 0
@@ -388,6 +392,8 @@ function svn_from_tb_merged() {
 			    echo
 			    echo
 			    echo "======pre-merge is ok======"
+#			    cmdb_mysql "insert into pre_merge(job_name,date,status) values ('$BUILD_URL',now(),'0');"
+#			    echo 0 >  /mnt/svn/pre_merge_status.log
 			    echo
 			    echo
 			    exit 0
@@ -396,6 +402,8 @@ function svn_from_tb_merged() {
 			    echo
 			    echo
 			    echo '======pre-merge is fails======'
+#			    echo 1 >  /mnt/svn/pre_merge_status.log
+#			    cmdb_mysql "insert into pre_merge(job_name,date,status) values ('$BUILD_URL',now(),'1');"
 			    echo
 			    echo
 			    exit 0

@@ -321,6 +321,7 @@ function seach_tag_ftp(){
 }
 
 function delbranch() {
+    branchs=$1
     for branch in ${branchs[@]};do
 	if [ -z $branch  ];then
 	    echo -e "\033[31m ---------------SVN移动分支须输入分支名称--------------- \033[0m"
