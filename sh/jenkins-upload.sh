@@ -85,6 +85,32 @@ function cdo_framework_check() {
     fi
 }
 
+function mysql_version_check() {
+    mysql_path="upload/$file/WEB-INF/lib"
+    mysql_name=$(basename $(find -name mysql-connector-java*.jar))
+    mysql_name1=${mysql_name%.*}
+    mysql_version=${mysql_name1##*-}
+    mysql_level=5.1.47
+    local st=$([[ "$mysql_version" > "$mysql_level" ]] && echo d || echo x)
+
+    if [ -f $mysql_path/$mysql_name ];then
+	if [ "$mysql_version" == "$mysql_level" ];then
+	    return 0
+	elif [ "$st" == d ];then
+	    return 0
+	elif [ "$st" == x ];then
+	    echo
+	    echo 
+	    echo  "mysql版本小于: $mysql_level,请更新"
+	    echo
+	    echo
+	    exit 1
+	else
+	    echo "mysql版本正确"
+	fi
+    fi
+}
+
 function pool_version_check() {
     pool_name=$(basename $(find . -name "commons-pool2*.jar"))
     pool_name1=${pool_name%.*}
@@ -166,7 +192,7 @@ function upload_version () {
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	
-	cdo_framework_check && replace_files && createtag &&
+	cdo_framework_check && mysql_version_check && replace_files && createtag &&
 	    (
 		cd upload
 		zip -r $file.zip $file/*
