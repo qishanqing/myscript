@@ -143,9 +143,11 @@ function dfs_version_check() {
 		echo
 		exit 1
 	    else
-		echo "dfsecurity---jar包未发现"
-		exit 1
+		echo ""
 	    fi
+	else
+		echo "安全加固jar包dfsecurity未发现,请配置后编译部署"
+		exit 1	    
 	fi
     )
 }
