@@ -74,7 +74,7 @@ function cdo_framework_check() {
 	elif [ "$st" == x ];then
 	    echo
 	    echo 
-	    echo  "cdo框架版本小于: $cdo_level,请更新"
+	    echo  "cdo框架jar包版本小于: $cdo_level,请更新"
 	    echo
 	    echo
 	    exit 1
@@ -101,14 +101,53 @@ function mysql_version_check() {
 	elif [ "$st" == x ];then
 	    echo
 	    echo 
-	    echo  "mysql版本小于: $mysql_level,请更新"
+	    echo  "mysql的jar包版本小于: $mysql_level,请更新"
 	    echo
 	    echo
 	    exit 1
 	else
-	    echo "mysql版本正确"
+	    echo "mysql的jar包版本正确"
 	fi
     fi
+}
+
+function dfs_version_check() {
+
+    for y in $(cat /home/qishanqing/myscript/product-config/dafy_dfs_project);do
+	if [[ "${branch##*/}" == "$y" ]];then
+	    local e=1
+	fi
+    done
+
+    (
+    if [ ! "$e" == 1 ];then
+	exit 0
+    fi
+    
+    dfs_path="upload/$file/WEB-INF/lib"
+    dfs_name=$(basename $(find -name dfsecurity-*.jar))
+    dfs_version=$(echo $dfs_name | awk -F '-' '{print $2}')
+    dfs_level=1.0.9.9.1
+    local st=$([[ "$dfs_version" > "$dfs_level" ]] && echo d || echo x)
+
+    if [ -f $dfs_path/$dfs_name ];then
+	if [ "$dfs_version" == "$dfs_level" ];then
+	    return 0
+	elif [ "$st" == d ];then
+	    return 0
+	elif [ "$st" == x ];then
+	    echo
+	    echo 
+	    echo  "dfsecurity的jar包版本小于: $dfs_level,请更新"
+	    echo
+	    echo
+	    exit 1
+	else
+	    echo "dfsecurity---jar包未发现"
+	    exit 1
+	fi
+    fi
+    )
 }
 
 function pool_version_check() {
@@ -127,12 +166,12 @@ function pool_version_check() {
 	elif [ "$st" == b ];then
 	    echo
 	    echo 
-	    echo  "commons-pool2*版本小于: $pool_level,请更新"
+	    echo  "commons-pool2*的jar包版本小于: $pool_level,请更新"
 	    echo
 	    echo
 	    exit 1
 	else
-	    echo "commons-pool2版本正确"
+	    echo "commons-pool2的jar包版本正确"
 	fi
     else
 	    echo
@@ -160,12 +199,12 @@ function dbcp_version_check() {
 	elif [ "$st" == b ];then
 	    echo
 	    echo 
-	    echo  "commons-dbcp2版本小于: $dbcp_level,请更新"
+	    echo  "commons-dbcp2的jar包版本小于: $dbcp_level,请更新"
 	    echo
 	    echo
 	    exit 1
 	else
-	    echo "commons-dbcp2版本正确"
+	    echo "commons-dbcp2的jar包版本正确"
 	fi
     else
 	    echo
@@ -192,7 +231,7 @@ function upload_version () {
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	
-	cdo_framework_check && mysql_version_check && replace_files && createtag &&
+	dfs_version_check && cdo_framework_check && mysql_version_check && replace_files && createtag &&
 	    (
 		cd upload
 		zip -r $file.zip $file/*
@@ -202,4 +241,3 @@ function upload_version () {
 }
 
 upload_version
-
