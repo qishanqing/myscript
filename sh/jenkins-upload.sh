@@ -113,40 +113,40 @@ function mysql_version_check() {
 
 function dfs_version_check() {
 
-    for y in $(cat /home/qishanqing/myscript/product-config/dafy_dfs_project);do
-	if [[ "${branch##*/}" == "$y" ]];then
-	    local e=1
-	fi
-    done
+#    for y in $(cat /home/qishanqing/myscript/product-config/dafy_dfs_project);do
+    if [[ "$(cat /home/qishanqing/myscript/product-config/dafy_dfs_project)" =~ "${branch##*/}" ]];then
+	local e=1
+    fi
+#    done
 
     (
-    if [ ! "$e" == 1 ];then
-	exit 0
-    fi
-    
-    dfs_path="upload/$file/WEB-INF/lib"
-    dfs_name=$(basename $(find -name dfsecurity-*.jar))
-    dfs_version=$(echo $dfs_name | awk -F '-' '{print $2}')
-    dfs_level=1.0.9.9.1
-    local st=$([[ "$dfs_version" > "$dfs_level" ]] && echo d || echo x)
-
-    if [ -f $dfs_path/$dfs_name ];then
-	if [ "$dfs_version" == "$dfs_level" ];then
-	    return 0
-	elif [ "$st" == d ];then
-	    return 0
-	elif [ "$st" == x ];then
-	    echo
-	    echo 
-	    echo  "dfsecurity的jar包版本小于: $dfs_level,请更新"
-	    echo
-	    echo
-	    exit 1
-	else
-	    echo "dfsecurity---jar包未发现"
-	    exit 1
+	if [ ! "$e" == 1 ];then
+	    exit 0
 	fi
-    fi
+    
+	dfs_path="upload/$file/WEB-INF/lib"
+	dfs_name=$(basename $(find -name dfsecurity-*.jar))
+	dfs_version=$(echo $dfs_name | awk -F '-' '{print $2}')
+	dfs_level=1.0.9.9.1
+	local st=$([[ "$dfs_version" > "$dfs_level" ]] && echo d || echo x)
+	
+	if [ -f $dfs_path/$dfs_name ];then
+	    if [ "$dfs_version" == "$dfs_level" ];then
+		return 0
+	    elif [ "$st" == d ];then
+		return 0
+	    elif [ "$st" == x ];then
+		echo
+		echo 
+		echo  "dfsecurity的jar包版本小于: $dfs_level,请更新"
+		echo
+		echo
+		exit 1
+	    else
+		echo "dfsecurity---jar包未发现"
+		exit 1
+	    fi
+	fi
     )
 }
 
