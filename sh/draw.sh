@@ -60,8 +60,8 @@ DrawBorder()
   for ((i = 0; i < mapWidth + 2; i++)) 
   do
     ((y = i * 2 + marginLeft + 1)) 
-    echo -ne "\033[${mapTop};${y}H=="  #绘制上边框 
-    echo -ne "\033[${x1};${y}H=="    #绘制下边框 
+    echo -ne "\033[${mapTop};${y}H++"  #绘制上边框 
+    echo -ne "\033[${x1};${y}H++"    #绘制下边框 
   done
   echo -ne "\033[0m"
 } 

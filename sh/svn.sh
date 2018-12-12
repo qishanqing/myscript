@@ -50,6 +50,7 @@ function inport_source() {
 	source_name=${SVN_Branch}$branch
 	dest_name=${Closed_Branch}
 	br=`echo $branch_name | awk -F '/'  '{print $7}'`
+	br1=`echo $branch | awk -F '/'  '{print $7}'`
 	access=${riqi:-$TIME_DIR}-$branch
 
 }
@@ -140,7 +141,7 @@ function addtrunk() {
 	else
 		inport_source
 		svn list ${Trunk_name}${source_name##*/} >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}${source_name##*/}" && exit 1 
-		svn copy ${branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch',now(),'${owner%@*}','$task','$author');" 
+		svn copy ${branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch',now(),'${owner%@*}','$task','$author');" && cmdb_mysql "insert into svn_trunk_info(Trunk,date,app_name) values ('$trunk',now(),'$task');"
 	fi
 }
 
@@ -173,7 +174,7 @@ function createtrunk() {
 		fi
 		mails_cm -i "已存在主干---${trunk}"
 	    ) && exit 1
-	svn mkdir ${trunk} --parents  -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_date,owner,task,access,status) values ('$trunk',now(),'${owner%@*}','$task','$author','0');"
+	svn mkdir ${trunk} --parents  -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_date,owner,task,access,status) values ('$trunk',now(),'${owner%@*}','$task','$author','0');"  && cmdb_mysql "insert into svn_trunk_info(Trunk,date,app_name) values ('$trunk',now(),'$task');"
     done
 }
 
@@ -321,7 +322,10 @@ function seach_tag_ftp(){
 }
 
 function delbranch() {
-    branchs=$1
+    if [ ! -z "$1" ];then
+	branchs=$1
+    fi
+    
     for branch in ${branchs[@]};do
 	if [ -z $branch  ];then
 	    echo -e "\033[31m ---------------SVN移动分支须输入分支名称--------------- \033[0m"
@@ -332,13 +336,13 @@ function delbranch() {
 	    st=$(cmdb_mysql "SELECT scm_branch FROM scm WHERE scm_branch LIKE '%${branch1%%/*}%';")
 	    if test ! -z "$st";then
 		if [ `echo "$st" | wc -l` -gt 2 ];then
-		    svn move ${branch} ${dest_name}${branch1} --parents -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
+		    svn move ${branch} ${dest_name}${branch1} --parents -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$ && echo "$br1" >> ~/tmp/logs/auto-deleted-branchs.log || die "Svn branch delete the reasons for failure are as follows"
 		else
-		    svn move ${branch%/Develop*} ${dest_name}${branch1%%/*} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
+		    svn move ${branch%/Develop*} ${dest_name}${branch1%%/*} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$ && echo "$br1" >> ~/tmp/logs/auto-deleted-branchs.log || die "Svn branch delete the reasons for failure are as follows"
 		fi
 		cmdb_mysql "DELETE FROM scm WHERE scm_branch='$branch';" && cmdb_mysql "update scm_backup set scm_del = 0,scm_del_date=now() WHERE scm_branch like '%$branch%';"
 	    else
-		svn move ${branch%/Develop*} ${dest_name}${branch1%%/*} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$  || die "Svn branch delete the reasons for failure are as follows"
+		svn move ${branch%/Develop*} ${dest_name}${branch1%%/*} -m "分支合并至主干后，关闭分支收回权限" >& ~/tmp/logs/output.$$ && echo "$br1" >> ~/tmp/logs/auto-deleted-branchs.log || die "Svn branch delete the reasons for failure are as follows"
 		cmdb_mysql "insert into scm_backup (scm_branch,scm_del_date,owner,scm_del) values ('$branch_name',now(),'${owner%@*}','0');"
 	    fi
 	    rm -f ~/tmp/logs/output.$$

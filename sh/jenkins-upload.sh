@@ -143,11 +143,15 @@ function dfs_version_check() {
 		echo
 		exit 1
 	    else
-		echo ""
+		echo
 	    fi
 	else
-		echo "安全加固jar包dfsecurity未发现,请配置后编译部署"
-		exit 1	    
+	    echo
+	    echo
+	    echo "此项目安全加固jar包dfsecurity未发现,请配置不小于此版本---$dfs_level---后编译部署"
+	    echo
+	    echo
+	    exit 1	    
 	fi
     )
 }
