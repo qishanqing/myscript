@@ -402,8 +402,6 @@ function release_merge_fix() {
 	local head=$(svn log -l 2 $tag1 | grep ^r[0-9] | tail -n 1 |awk -F '|' '{print$1}')
     elif [[ $branch =~ % ]];then
 	die1 "请输入肉眼可辨并且正确的分支名"
-    else
-	die1 "请输入预合并上线分支名"
     fi
 
     project_branch=${branch#*tech/}

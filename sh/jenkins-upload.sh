@@ -113,8 +113,8 @@ function mysql_version_check() {
 
 function dfs_version_check() {
 
-#    for y in $(cat /home/qishanqing/myscript/product-config/dafy_dfs_project);do
-    if [[ "$(cat /home/qishanqing/myscript/product-config/dafy_dfs_project)" =~ "${branch##*/}" ]];then
+    #    for y in $(cat /home/qishanqing/myscript/product-config/dafy_dfs_project);do
+    if [ `cat /home/qishanqing/myscript/product-config/dafy_dfs_project | grep -w "${branch##*/}"` ];then
 	local e=1
     fi
 #    done
