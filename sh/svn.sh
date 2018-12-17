@@ -102,9 +102,9 @@ function addbranch() {
 			echo -e "\033[37m 2. 输入项目名称 \033[0m"
 		else
 		    inport_source
-		    trunk_status=$(curl -s -q -d "myapp=$trunk" http://192.168.0.22:8000/appcenter/app_lock_info/)
-		    local st=$(cmdb_mysql "SELECT scm_trunk FROM scm_trunk WHERE scm_date LIKE '%$Level_3%' and scm_trunk='$trunk';")
-		    if [ "$trunk_status" == 1 ] || [ "$trunk_status" == 5 ] || [ ! -z "$st" ];then
+#		    trunk_status=$(curl -s -q -d "myapp=$trunk" http://192.168.0.22:8000/appcenter/app_lock_info/)
+#		    local st=$(cmdb_mysql "SELECT scm_trunk FROM scm_trunk WHERE scm_date LIKE '%$Level_3%' and scm_trunk='$trunk';")
+#		    if [ "$trunk_status" == 1 ] || [ "$trunk_status" == 5 ] || [ ! -z "$st" ];then
 			svn list $branch_name >& /dev/null && b=1 && die "已存在分支---$branch_name"
 			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >& ~/tmp/logs/output.$$ || die "Svn branch create the reasons for failure are as follows"
 			rm -f ~/tmp/logs/output.$$
@@ -114,9 +114,9 @@ function addbranch() {
 			webhook "$branch_name" "$task" "${owner%%@*}" "$trunk" || true
 			check_acces
 			echo ${branch_name} >>~/tmp/logs/branchs.log
-		    else
-			die "$trunk------opss上线主干被锁定，不允许新建分支，请上线完成合并主干后新建"
-		    fi
+#		    else
+#			die "$trunk------opss上线主干被锁定，不允许新建分支，请上线完成合并主干后新建"
+#		    fi
 		fi
     done
     
