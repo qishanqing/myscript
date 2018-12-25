@@ -80,6 +80,20 @@ fi
     )
 }
 
+function add_author () {
+    svn list $branch >& /dev/null || b=1
+    if [ "$b" == 1 ];then
+	echo "$branch" | mails_cm -i "不存在此分支"
+	exit
+    fi
+    
+    inport_source
+    authors=($authors)
+    for x in  "${authors[@]}";do
+	ssh root@192.168.0.220 "sed -i -e '/"$br1"\]/{n;s|$|\n"$x"|}' /svn/authz.conf"
+    done    
+}
+
 function check_acces () {
 	ssh root@192.168.0.220 "grep -c $access] /svn/authz.conf" | 
 	while read num;do
@@ -87,7 +101,6 @@ function check_acces () {
 		then
 			echo "access authz no add,ready to go "
 			svn_connt
-
 		else
 			echo "access authz added"
 		fi
@@ -466,3 +479,4 @@ export -f createtag1
 export -f clean_workspace
 export -f del_db_branch
 export -f webhook
+export -f add_author

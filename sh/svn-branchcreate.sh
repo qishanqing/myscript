@@ -121,6 +121,8 @@ branchs=$(
 
 if test $types = add;then
     addbranch
+elif test $types = aa;then
+    add_author
 elif test $types = del;then
     delbranch
 elif test $types = cl;then
