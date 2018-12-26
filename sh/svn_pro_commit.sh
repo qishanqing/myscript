@@ -11,7 +11,7 @@ function h5_access() {
 	if ! [[ "${h5_author[@]}" =~ "$author" ]];then
 		for p in "${h5_project[@]}";do
 			if [[  "$changed" =~ "$p" ]];then
-				echo -e  "\n$author: you have no access modify this files(common/config.json/localcache.json/staticGuidePage.htm),owner is chenhangzheng team" 1>&2
+				echo -e  "\n$author: you have no access modify this files(common/config.json/localcache.json/staticGuidePage.htm),owner is leiwanda team" 1>&2
 				exit 1
 			fi
 		done
