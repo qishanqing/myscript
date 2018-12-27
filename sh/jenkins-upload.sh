@@ -42,13 +42,13 @@ function replace_files () {
 	np1=$(cat $fils_name | grep NumTestsPerEvictionRun | wc -l)
 	me=$(cat $fils_name | grep MinEvictableIdleTimeMillis | grep 600000 | wc -l)
 	me1=$(cat $fils_name | grep MinEvictableIdleTimeMillis | wc -l)	
-	if [ ! -z "$p" ] || [ ! -z "$tw" ] || [ ! -z "$t" ] || [ ! "$pp" -eq "$pp1" ] || [ ! "$np" -eq "$np1" ] || [ ! "$me" -eq "$me1" ];then
+	if [ ! -z "$p" ] || [ ! -z "$tw" ] || [ ! -z "$t" ] || [ ! "$pp" -eq "$pp1" ] || [ ! "$me" -eq "$me1" ];then
 	    echo
 	    echo "请正确修改servicebus.xml参数TestOnBorrow值为false"
 	    echo "请正确修改servicebus.xml参数PoolPreparedStatements为false"
 	    echo "请正确修改servicebus.xml参数TestWhileIdle为true"
 	    echo "请正确修改servicebus.xml参数TimeBetweenEvictionRunsMillis--Value数值为1000"
-	    echo "请正确修改servicebus.xml参数NumTestsPerEvictionRun--Value数值为5"
+#	    echo "请正确修改servicebus.xml参数NumTestsPerEvictionRun--Value数值为5"
 	    echo "请正确修改servicebus.xml参数MinEvictableIdleTimeMillis--Value数值为600000"
 	    echo 
 	    exit 1
