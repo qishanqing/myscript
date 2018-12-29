@@ -229,6 +229,8 @@ function createtag() {
 		tag_name=$tag_name1/${TIME_DIR}_${version:-$head}
 		st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 		ftp_name=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$head' and branch_name='$branch';"`
+		task_id=`cmdb_mysql "SELECT task_id FROM track WHERE job_name='$jb' and version='$head' order by id desc limit 1;"`
+		task_id=`echo $task_id | awk -F ' ' '{print $2}'`
 		info="此次代码更新没有变化"
 		info1="新建tag"
 		if test ! -z "$st";then

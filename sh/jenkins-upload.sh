@@ -14,12 +14,6 @@ job_name=$BUILD_URL
 owner=$BUILD_USER_ID
 jb=$JOB_NAME
 
-if [ -f /mnt/svn/task_id.log ];then
-    task_id=`cat /mnt/svn/task_id.log || true`
-    rm -f /mnt/svn/task_id.log
-    export task_id
-fi
-
 function replace_files () {
     #    find $file/ -name 'WEB-INF/classes/servicebus.xml' | xargs -i rm -f {}
     fils_name="upload/$file/WEB-INF/classes/servicebus.xml"

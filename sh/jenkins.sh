@@ -226,12 +226,6 @@ get-job-info() {
     if [ -z $add ];then
 	die "项目名称不能为空"
     else
-	if [ ! -z $copy ];then
-	    touch /mnt/svn/task_id.log
-	    chmod 777 /mnt/svn/task_id.log
-	    echo $copy > /mnt/svn/task_id.log || true
-	fi
-
 	if [ -z "$del" ];then
 	    die "请输入需要构建的分支名"
 	elif [[ "$del" =~ % ]];then
