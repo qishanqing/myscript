@@ -329,7 +329,7 @@ function reverse_merge () {
 	pt=$(svn log -v -r $r:HEAD $trunk1)
 
 	if [ $r -eq $h ];then
-	    Exit_Status_Code 2
+	    return 0
 	fi
 
 	if [ $r -lt $h ];then
