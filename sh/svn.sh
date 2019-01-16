@@ -80,17 +80,38 @@ fi
     )
 }
 
-function add_author () {
+function check_branch () {
     svn list $branch >& /dev/null || b=1
-    if [ "$b" == 1 ];then
+    inport_source
+    authors=($authors)
+    if [[ ! "$branch" =~ "https://192.168.0.220/svn/tech/Branch" ]];then
+	return
+    elif [ "$b" == 1 ];then
 	echo "$branch" | mails_cm -i "不存在此分支"
 	exit
     fi
-    
-    inport_source
-    authors=($authors)
+}
+
+function del_author () {
+    check_branch
+    for x in "${authors[@]}";do
+	local lineNum=$(ssh root@192.168.0.220 "sed  -n '/"$br1"\]/=' /svn/authz.conf")
+	local line=$(ssh root@192.168.0.220 "sed  -n '/"$br1"\]/,/\[/p' /svn/authz.conf | grep -nm1  $x")
+	if [ ! -z "$line" ];then
+	    let line=${line%:*}
+	    let result=$lineNum+$line-1
+	    ssh root@192.168.0.220 "sed  -i '"$result"d'  /svn/authz.conf"
+    	fi
+    done			    
+}
+
+function add_author () {
+    check_branch
     for x in  "${authors[@]}";do
-	ssh root@192.168.0.220 "sed -i -e '/"$br1"\]/{n;s|$|\n"$x"|}' /svn/authz.conf"
+	local line=$(ssh root@192.168.0.220 "sed  -n '/"${br1:-$br}"\]/,/\[/p' /svn/authz.conf | grep -nm1  $x")
+	if [ -z "$line" ];then
+	    ssh root@192.168.0.220 "sed -i -e '/"${br1:-$br}"\]/{n;s|$|\n"$x"|}' /svn/authz.conf"
+	fi
     done    
 }
 
@@ -102,7 +123,8 @@ function check_acces () {
 			echo "access authz no add,ready to go "
 			svn_connt
 		else
-			echo "access authz added"
+		    add_author
+#			echo "access authz added"
 		fi
 	done
 }
@@ -132,7 +154,8 @@ function addbranch() {
 #		    fi
 		fi
     done
-    
+:<<EOF    
+
     (
 	cat << mail
 新建分支如下:
@@ -144,6 +167,7 @@ function addbranch() {
 mail
 ) | mails_cm -i "svnbranch-add from svn branch create web" || true
 echo >~/tmp/logs/branchs.log
+EOF
 }
 
 function addtrunk() {
@@ -482,3 +506,4 @@ export -f clean_workspace
 export -f del_db_branch
 export -f webhook
 export -f add_author
+export -f del_author
