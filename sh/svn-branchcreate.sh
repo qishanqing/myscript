@@ -81,6 +81,7 @@ done
 trunk=$(echo $trunk | perl -npe 's,\r, ,g')
 branch=$(echo $branch | perl -npe 's,\r,,g')
 riqi=$(echo $riqi | perl -npe 's,\r,,g')
+author=$(echo $author | perl -npe 's.,. .g')
 author=$(echo $author | perl -npe 's,\r, ,g')
 task=$(echo $task | perl -npe 's,\r, ,g')
 extra_mails=$(echo $extra_mails | perl -npe 's,\r, ,g')
