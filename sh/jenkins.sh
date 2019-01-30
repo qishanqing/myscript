@@ -205,8 +205,9 @@ bash ipa_build.sh
 	    echo "新项目未配置对应签名证书"
 	fi
 	pre_build_command="source ~/myscript/sh/jenkins-upload-ios.sh"
-    else
-	pass
+    elif [ "$project_type" == GIT ];then
+	template="/home/qishanqing/myscript/jenkins/template_git.xml"
+	build_command="source /home/qishanqing/myscript/sh/jenkins-upload-git.sh"
     fi
     
     export svnurl
@@ -234,17 +235,28 @@ get-job-info() {
 	    project_type=Android
 	elif [[ "$del" =~ IOS ]];then
 	    project_type=IOS
+	elif [[ "$del" =~ git ]];then
+	    project_type=GIT
 	else
-	    svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
 	    project_type=JAVA
-	    jc get-job $add >~/tmp/jenkins/template.xml #|| mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,job项目名称为连续的,不包含非法字符串,否则创建失败,如非必要请尽量使用已存在的项目部署"
 	fi
+
+	if [ ! "$project_type" = GIT ];then
+            svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
+	fi
+	
+	jc get-job $add >~/tmp/jenkins/template.xml.$$ #|| mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,job项目名称为连续的,不包含非法字符串,否则创建失败,如非必要请尽量使用已存在的项目部署"
     fi
     
-    if [ ! -s ~/tmp/jenkins/template.xml ];then
+    if [ ! -s ~/tmp/jenkins/template.xml.$$ ];then
 	jc-create-job $add
     else
-	branch=`cat ~/tmp/jenkins/template.xml | grep remote | perl -npe 's,<.*?>,,g;s,</.*?>,,g;s, ,,g'`
+	if [ ! "project_type" = git ];then  
+	    branch=`cat ~/tmp/jenkins/template.xml.$$ | grep remote | perl -npe 's,<.*?>,,g;s,</.*?>,,g;s, ,,g'`
+	else
+	    branch=`cat ~/tmp/jenkins/template.xml.$$ | grep url | perl -npe 's,<.*?>,,g;s,</.*?>,,g;s, ,,g'`
+	fi
+	
 	if [[ ! $branch =~ $del ]];then
 	    jc-create-job
 	else
@@ -254,11 +266,11 @@ get-job-info() {
 }
 
 function jc-create-job () {
-    output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml
+    output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml.$$
     
     for n in $(seq 1 10);do
-	cat ~/tmp/jenkins/template.xml | jc create-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
-	cat ~/tmp/jenkins/template.xml | jc update-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
+	cat ~/tmp/jenkins/template.xml.$$ | jc create-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
+	cat ~/tmp/jenkins/template.xml.$$ | jc update-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
 	sleep 1
     done
 #    webhook http://192.168.0.231:8080/job/$add ${2:+} $owner || true

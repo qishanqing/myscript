@@ -349,6 +349,19 @@ EOF
     done
 }
 
+check_version () {
+    st=`cmdb_mysql "SELECT version FROM svn WHERE version='$version';"`
+    if test ! -z "$st";then
+	if [ `echo "$st" | wc -l` -ge 2 ];then
+	    c=`echo $st | awk -F " " '{print $2}'`
+	    echo "此次代码更新没有变化,版本号为: $c"
+	    exit 0
+	fi
+    else
+	cmdb_mysql "insert into svn(branch_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages) values ('$repo',now(),'${owner:-qishanqing}','${version}','$job_name','$file','${task_id:-0}','git项目','0','$branch');"
+    fi
+}  
+
 function seach_tag_ftp(){
     id=`cmdb_mysql "SELECT id FROM svn WHERE ftp_version_name LIKE '%$trunk%';"`
     if test ! -z "$id";then
@@ -507,3 +520,4 @@ export -f del_db_branch
 export -f webhook
 export -f add_author
 export -f del_author
+export -f check_version
