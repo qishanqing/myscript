@@ -131,6 +131,7 @@ jenkins-job-build() {
 	message_track
 	get-job-info
 	jc build "$add"
+	rm -f ~/tmp/jenkins/template.xml.$$ || true
 	) 
 }
 
