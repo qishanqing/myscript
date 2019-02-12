@@ -1,11 +1,13 @@
 #!/bin/bash
-#set -x 
+set +x 
 
 . ~/myscript/product-config/svn/h5
 
 author=`$SVNLOOK author $REPOS -t $TXN`
 changed=`$SVNLOOK changed $REPOS -t $TXN`
 del=`$SVNLOOK changed $REPOS -t $TXN | grep "^D"`
+log=`$SVNLOOK log -t "$TXN" "$REPOS"`
+form=`echo $log | grep \'`
 
 function h5_access() {
 	if ! [[ "${h5_author[@]}" =~ "$author" ]];then
@@ -72,6 +74,13 @@ function DFLib_access() {
 	fi >>~/tmp/logs/svn_pro_commit.log
 }
 
+function log_form_check() {
+	if ! [ -z "$form" ];then
+		echo -e "\nLog message cann't use sigle quote mark---'!" 1>&2
+		exit 1
+	fi
+}
+
 function Tag_delete() {
 	if ! [[ "${admin[@]}" =~ "$author" ]];then
 		for p in "${admin_project[@]}";do
@@ -91,6 +100,7 @@ function admin_group() {
         fi
 }
 
+log_form_check
 admin_group
 h5_access
 mallStage_access
