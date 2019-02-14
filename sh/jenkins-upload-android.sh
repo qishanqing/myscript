@@ -22,8 +22,8 @@ if [ -f /mnt/svn/task_id.log ];then
 fi
 
 function upload_android_version () {
-#    local path=/mnt/svn/ANDROID/$DT
-#    mkdir -p $path || true
+    #    local path=/mnt/svn/ANDROID/$DT
+    #    mkdir -p $path || true
     
     find -name *.apk -print | while read filename;do
 	file=$(basename $filename)

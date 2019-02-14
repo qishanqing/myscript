@@ -16,7 +16,7 @@ export LANG=zh_CN.UTF-8
 cm_emails=qishanqing@srdafy.com
 
 if test "$SMARTCM_EXTRA_MAIL"; then
-	cm_emails="$cm_emails $SMARTCM_EXTRA_MAIL"
+    cm_emails="$cm_emails $SMARTCM_EXTRA_MAIL"
 fi
 
 
@@ -27,19 +27,19 @@ fi
 input=false
 OPTIND=1
 while getopts 'i' opt; do
-	case "$opt" in
-		i)    input=true;;
-		*)    echo Usage Error; exit 2;;
-	esac
+    case "$opt" in
+	i)    input=true;;
+	*)    echo Usage Error; exit 2;;
+    esac
 done
 shift $(($OPTIND - 1))
 
 ## end generated code
 
 if test "$input" = true; then
-	cat
+    cat
 else
-	echo
+    echo
 fi | /bin/mailx -S from=scm@srdafy.com  -S smtp=localhost:25 -s "$*" $cm_emails ||  true
 
 

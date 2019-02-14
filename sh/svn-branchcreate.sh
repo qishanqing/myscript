@@ -87,11 +87,11 @@ task=$(echo $task | perl -npe 's,\r, ,g')
 extra_mails=$(echo $extra_mails | perl -npe 's,\r, ,g')
 
 authors=$(
-$author
-for x in $author;do
+    $author
+    for x in $author;do
 	echo $x=rw
-done
-)
+    done
+       )
 
 if [[ ! -z "$author" ]];then
     if ! [[ "$author" =~ "@" ]];then
@@ -118,7 +118,7 @@ branchs=$(
     for b in $branch;do
 	echo $b
     done
-      )
+       )
 
 if test $types = add;then
     addbranch

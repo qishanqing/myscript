@@ -28,26 +28,26 @@ hint() {
 }
 
 function inport_source() {
-	#Trunk路径
-	SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
-	Release_Trunk=/home/qishanqing/workspace/code/Release_Trunk
-	#Branch路径
-	SVN_Branch=https://192.168.0.220/svn/tech/Branch/
-	Closed_Branch=https://192.168.0.220/svn/tech/Closed/
-	#Version路径
-	BaseLine=https://192.168.0.220/svn/tech/Version/
-	TIME_DIR=`date '+%Y%m%d'`
-	Level_1=`date '+%Y'`
-	Level_2=`date '+%Y%m'`
-	TIME_DIR_CLOSE=`date '+%Y%m%d%H%M'`
-	move_dir=Closed
-	Trunk_name=${SVN_Trunk}$trunk
-	branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Trunk/}
-	branch_name1=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Develop/}
-	source_name=${SVN_Branch}$branch
-	dest_name=${Closed_Branch}
-	br=`echo $branch_name | awk -F '/'  '{print $7}'`
-	access=${riqi:-$TIME_DIR}-$branch
+    #Trunk路径
+    SVN_Trunk=https://192.168.0.220/svn/tech/Trunk/
+    Release_Trunk=/home/qishanqing/workspace/code/Release_Trunk
+    #Branch路径
+    SVN_Branch=https://192.168.0.220/svn/tech/Branch/
+    Closed_Branch=https://192.168.0.220/svn/tech/Closed/
+    #Version路径
+    BaseLine=https://192.168.0.220/svn/tech/Version/
+    TIME_DIR=`date '+%Y%m%d'`
+    Level_1=`date '+%Y'`
+    Level_2=`date '+%Y%m'`
+    TIME_DIR_CLOSE=`date '+%Y%m%d%H%M'`
+    move_dir=Closed
+    Trunk_name=${SVN_Trunk}$trunk
+    branch_name=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Trunk/}
+    branch_name1=${SVN_Branch}${riqi:-$TIME_DIR}-$branch/Develop/${trunk#*Develop/}
+    source_name=${SVN_Branch}$branch
+    dest_name=${Closed_Branch}
+    br=`echo $branch_name | awk -F '/'  '{print $7}'`
+    access=${riqi:-$TIME_DIR}-$branch
 
 }
 
@@ -55,59 +55,59 @@ function svn_connt() {
     ( 
         if ping -c 5 192.168.0.220 >/dev/null;then
             (
-	    if test -z "$authors";then
-                cat << EOF
+		if test -z "$authors";then
+                    cat << EOF
 
 [tech:/Branch/${br}]
 @admin=rw
 *=
 EOF
-else
-                cat << EOF
+		else
+                    cat << EOF
 
 [tech:/Branch/${br}]
 $authors
 @admin=rw
 *=
 EOF
-fi
+		fi
             ) | ssh root@192.168.0.220 "cat  >> /svn/authz.conf" || echo "access add error"
         fi 
     )
 }
 
 function check_acces () {
-	ssh root@192.168.0.220 "grep -c $access] /svn/authz.conf" | 
+    ssh root@192.168.0.220 "grep -c $access] /svn/authz.conf" | 
 	while read num;do
-		if [ $num -eq 0 ]
-		then
-			echo "access authz no add,ready to go "
-			svn_connt
+	    if [ $num -eq 0 ]
+	    then
+		echo "access authz no add,ready to go "
+		svn_connt
 
-		else
-			echo "access authz added"
-		fi
+	    else
+		echo "access authz added"
+	    fi
 	done
 }
 
 function addbranch() {
     for trunk in ${trunks[@]};do
-		if [ -z $trunk  ] || [ -z $branch  ];then
-			echo -e "\033[31m ---------------SVN新建分支须输入两个参数--------------- \033[0m"
-			echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
-			echo -e "\033[37m 2. 输入项目名称 \033[0m"
-		else
-		        inport_source
-			svn list $branch_name >& /dev/null && b=1 && die "已存在分支---$branch_name"
-			svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >& ~/tmp/logs/output.$$ || die "Svn branch create the reasons for failure are as follows"
-			rm -f ~/tmp/logs/output.$$
-			local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
-			local head=${head#r*}
-			cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
-			webhook "$branch_name" "$task" "${owner%%@*}" "$trunk" || true
-			check_acces
-			echo ${branch_name} >>~/tmp/logs/branchs.log
-		fi
+	if [ -z $trunk  ] || [ -z $branch  ];then
+	    echo -e "\033[31m ---------------SVN新建分支须输入两个参数--------------- \033[0m"
+	    echo -e "\033[37m 1. 输入Trunk之后的项目路径 \033[0m"
+	    echo -e "\033[37m 2. 输入项目名称 \033[0m"
+	else
+	    inport_source
+	    svn list $branch_name >& /dev/null && b=1 && die "已存在分支---$branch_name"
+	    svn copy ${trunk} ${branch_name} --parents  -m "新建项目开发分支" >& ~/tmp/logs/output.$$ || die "Svn branch create the reasons for failure are as follows"
+	    rm -f ~/tmp/logs/output.$$
+	    local head=`svn log -l 1 $branch_name | grep ^r | awk -F '|' '{print$1}'`
+	    local head=${head#r*}
+	    cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
+	    webhook "$branch_name" "$task" "${owner%%@*}" "$trunk" || true
+	    check_acces
+	    echo ${branch_name} >>~/tmp/logs/branchs.log
+	fi
     done
     
     (
@@ -119,34 +119,34 @@ function addbranch() {
 `echo` 				
 添加权限人员: $author
 mail
-) | mails_cm -i "svnbranch-add from svn branch create web" || true
-echo >~/tmp/logs/branchs.log
+    ) | mails_cm -i "svnbranch-add from svn branch create web" || true
+    echo >~/tmp/logs/branchs.log
 }
 
 function addtrunk() {
-	if [ -z $branch  ] || [ -z $trunk  ];then
-		echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
-		echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
-		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
-	else
-		inport_source
-		svn list ${Trunk_name}${source_name##*/} >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}${source_name##*/}" && exit 1 
-		svn copy ${branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch',now(),'${owner%@*}','$task','$author');" 
-	fi
+    if [ -z $branch  ] || [ -z $trunk  ];then
+	echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
+	echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
+	echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
+    else
+	inport_source
+	svn list ${Trunk_name}${source_name##*/} >& /dev/null && mails_cm -i "已存在主干---${Trunk_name}${source_name##*/}" && exit 1 
+	svn copy ${branch} ${trunk} --parents -m "新建主干项目" && cmdb_mysql "insert into scm_trunk(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch',now(),'${owner%@*}','$task','$author');" 
+    fi
 }
 
 function b_to_b() {
-	if [ -z $branch  ] || [ -z $trunk  ];then
-		echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
-		echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
-		echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
-	else
-		inport_source
-		svn list ${branch_name1} >& /dev/null  && mails_cm -i "已存在主干项目---$branch_name1" && exit 1
-		svn copy $trunk ${branch_name1} --parents -m "新建主干项目"
-		cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
-		check_acces
-	fi
+    if [ -z $branch  ] || [ -z $trunk  ];then
+	echo -e "\033[31m ---------------SVN新建主干须输入两个参数--------------- \033[0m"
+	echo -e "\033[37m 1. 输入Brunk之后的项目路径 \033[0m"
+	echo -e "\033[37m 2. 输入Trunk之后的项目路径 \033[0m"
+    else
+	inport_source
+	svn list ${branch_name1} >& /dev/null  && mails_cm -i "已存在主干项目---$branch_name1" && exit 1
+	svn copy $trunk ${branch_name1} --parents -m "新建主干项目"
+	cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,access) values ('$trunk', '$branch_name1',now(),'${owner%@*}','$task','$author');" && cmdb_mysql "insert into scm_backup(scm_trunk,scm_branch,scm_date,owner,task,version,access) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author');"
+	check_acces
+    fi
 }
 
 function createtrunk() {
@@ -158,16 +158,16 @@ function createtrunk() {
 }
 
 function projectlists() {
-        inport_source
-	svn log -l 1 ${trunk:-$branch}  >& ~/tmp/merged/output.$$ || die2 "${trunk:-$branch}-----请输入具体svn——url"
-	svn list ${trunk:-$branch} | indent-clipboard - | mails_cm -i "${trunk:-$branch}------项目列表如下" || true
+    inport_source
+    svn log -l 1 ${trunk:-$branch}  >& ~/tmp/merged/output.$$ || die2 "${trunk:-$branch}-----请输入具体svn——url"
+    svn list ${trunk:-$branch} | indent-clipboard - | mails_cm -i "${trunk:-$branch}------项目列表如下" || true
 }
 
 function createbaselines() {
-	inport_source
-	baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
-	svn copy ${SVN_Trunk} $baselinedir  --parents -m "因主干更新，新建基线"
-	echo "新建主干基线: $baselinedir"
+    inport_source
+    baselinedir=${BaseLine}${Level_1}/${Level_2}/${TIME_DIR}-1
+    svn copy ${SVN_Trunk} $baselinedir  --parents -m "因主干更新，新建基线"
+    echo "新建主干基线: $baselinedir"
 }
 
 function webhook () {
@@ -178,7 +178,7 @@ function webhook () {
 	 	     "markdown": {"title":"配管通知",
 		     "text":"## 新建分支如下  \n 分支名称:'$1'  \n 分支对应主干路径:'$4'  \n 禅道工单链接:'$2'  \n 创建人:'$3'  \n '$(now.)'"
 		     		  },
-           }'
+         }'
 }
 
 function createtag() {
@@ -275,13 +275,13 @@ function createtag1() {
 		else
 		    cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name) values ('$branch', '$tag_name',now(),'${email%@*:-qishanqing}','${version:-$head}','$job_name','$file');"
 		fi
-(
-		cat <<EOF
+		(
+		    cat <<EOF
 		新建tag如下:
 
 		${tag_name}
 EOF
-) | mails_cm -i "create tag success" 
+		) | mails_cm -i "create tag success" 
 	    fi
 	else
 	    die2 "注意分支首尾不能有空格，其次只提供针对分支创建tag功能，请输入肉眼可辨并且正确的分支名"
@@ -321,13 +321,13 @@ function delbranch() {
 		cmdb_mysql "insert into scm_backup (scm_branch,scm_del_date,owner,scm_del) values ('$branch_name',now(),'${owner%@*}','0');"
 	    fi
 	    rm -f ~/tmp/logs/output.$$
-(
-cat << mail
+	    (
+		cat << mail
 		关闭分支如下:
 
 		${branch}
 mail
-) | mails_cm -i "svnbranch-del from svn branch create web" || true
+	    ) | mails_cm -i "svnbranch-del from svn branch create web" || true
 
 	fi
     done
@@ -400,7 +400,7 @@ function release_merge_fix() {
 	    svn ci -m "${message:-预上线合并分支冲突文件替换---$project_branch}---$email" && echo $files | mails_cm -i "$branch---预上线合并分支冲突文件已替换"	    
 	    cmdb_mysql "insert into auto_merge_replace(branch_name,date,message,files,email,extra_mails,owner) values ('$branch',now(),'$message','$files','$email','${extra_mails}','$owner')";
 	else
-		die1 "请检查输入文件路径是否正确(或者再次尝试,有可能是工作空间被锁定)"
+	    die1 "请检查输入文件路径是否正确(或者再次尝试,有可能是工作空间被锁定)"
 	fi
     )
 }
@@ -416,7 +416,7 @@ function checkout_branch_code () {
 	cd ~/tmp/conflict/$branch
     fi
 }
-	
+
 function locked() {
     (
 	exec 9> ~/tmp/logs/svn.lock

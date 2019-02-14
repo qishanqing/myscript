@@ -24,18 +24,18 @@ function upload_version () {
 	cp -rf $filename upload/
 	filename=${filename##*/}
 	if [[ "$filename" =~ '-' ]];then
-		file="${filename%%-*}-$DT"
+	    file="${filename%%-*}-$DT"
 	else
-		file="${filename%%.*}-$DT"
+	    file="${filename%%.*}-$DT"
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file
 	check_version &&
-	(
-	    cd upload
-	    zip -r $file.zip $file/*
-	    mv $file.zip /mnt/svn/ && echo "上传成功"
-	)
+	    (
+		cd upload
+		zip -r $file.zip $file/*
+		mv $file.zip /mnt/svn/ && echo "上传成功"
+	    )
     done
 }
 

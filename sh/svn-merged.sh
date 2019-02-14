@@ -82,16 +82,16 @@ branchs=$(
        )
 
 die() {
-	(
+    (
 	echo "$@"
 	if test -e ~/tmp/merged/output.$$;then
-		echo
-		cat ~/tmp/merged/output.$$
+	    echo
+	    cat ~/tmp/merged/output.$$
 	fi
-	)
-	rm -f ~/tmp/merged/output.$$
-#	kill $$
-	Exit_Status_Code 1
+    )
+    rm -f ~/tmp/merged/output.$$
+    #	kill $$
+    Exit_Status_Code 1
 }
 
 function Exit_Status_Code () {
@@ -123,52 +123,52 @@ function locked-echo() {
 }
 
 function Basecode() {
-	if [[ "$branch" =~ Tag ]];then
-	    tag1=$branch
-	    tag3=${branch#*tech/}
-	    tag4=${branch#*Tag/}
-	    local branch=${branch%/[0-9]*}
-	    tag=$branch
-	    tag2=`echo $tag | perl -npe 's,Tag,Branch,g'`
-	    svn log -l 1 $tag1  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
-	    svn log -l 1 $tag2  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
-	else
-	    svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
-	    
-	fi
+    if [[ "$branch" =~ Tag ]];then
+	tag1=$branch
+	tag3=${branch#*tech/}
+	tag4=${branch#*Tag/}
+	local branch=${branch%/[0-9]*}
+	tag=$branch
+	tag2=`echo $tag | perl -npe 's,Tag,Branch,g'`
+	svn log -l 1 $tag1  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
+	svn log -l 1 $tag2  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
+    else
+	svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die "分支名输入错误或者分支已关闭"
 	
-        if test -z $trunk;then
-	    trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
-	    trunk2=`echo $branch | perl -npe 's,Branch/.*/Develop,Release_Trunk,g;s,Tag/.*/Develop,Release_Trunk,g;s,Tag/.*?/,Release_Trunk/,g'`
-	    svn list $trunk || project=1
-	    svn list $trunk2 || project2=1
-	fi
-	
-	
-	rm -f ~/tmp/merged/output.$$
-	Basetrunk=/home/qishanqing/workspace/code/Trunk/
-	Basetrunkcode=$Basetrunk${trunk#*Trunk/}
-	Base_gray_trunk=/home/qishanqing/workspace/code/Gray_Trunk/
-	Base_gray_trunkcode=$Base_gray_trunk${trunk#*Trunk/}
-	Basebranch=/home/qishanqing/workspace/code/Branch/
-	Basebranchcode=$Basebranch${branch#*Branch/}
+    fi
+    
+    if test -z $trunk;then
+	trunk=`echo $branch | perl -npe 's,Branch/.*/Develop,Trunk,g;s,Tag/.*/Develop,Trunk,g;s,Tag/.*?/,Trunk/,g'`
+	trunk2=`echo $branch | perl -npe 's,Branch/.*/Develop,Release_Trunk,g;s,Tag/.*/Develop,Release_Trunk,g;s,Tag/.*?/,Release_Trunk/,g'`
+	svn list $trunk || project=1
+	svn list $trunk2 || project2=1
+    fi
+    
+    
+    rm -f ~/tmp/merged/output.$$
+    Basetrunk=/home/qishanqing/workspace/code/Trunk/
+    Basetrunkcode=$Basetrunk${trunk#*Trunk/}
+    Base_gray_trunk=/home/qishanqing/workspace/code/Gray_Trunk/
+    Base_gray_trunkcode=$Base_gray_trunk${trunk#*Trunk/}
+    Basebranch=/home/qishanqing/workspace/code/Branch/
+    Basebranchcode=$Basebranch${branch#*Branch/}
 }
 
 
 function svn_conflict_files(){
-		    cfilenames=`svn st | grep ^C | awk '{print $2}'`
-		    if [ -z "$cfilenames" ];then
-			return 0
-		    else
-			for cfilename in $cfilenames;do
-			    if [[ "$cfilename" =~ "@" ]];then
-				svn resolve --accept=theirs-conflict $cfilename@
-			    else
-				svn resolve --accept=theirs-conflict $cfilename
-			    fi 
-			    echo $cfilename >> ~/tmp/merged/files_conflict_list.txt
-			done
-		    fi
+    cfilenames=`svn st | grep ^C | awk '{print $2}'`
+    if [ -z "$cfilenames" ];then
+	return 0
+    else
+	for cfilename in $cfilenames;do
+	    if [[ "$cfilename" =~ "@" ]];then
+		svn resolve --accept=theirs-conflict $cfilename@
+	    else
+		svn resolve --accept=theirs-conflict $cfilename
+	    fi 
+	    echo $cfilename >> ~/tmp/merged/files_conflict_list.txt
+	done
+    fi
 }
 
 function build_error_skip() {
@@ -187,8 +187,8 @@ function build_error_skip() {
 	echo "-----------------------------"
 	echo "$info3"
 	echo "-----------------------------"
-#	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','$info3','${task_id:-0}');"
-#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
+	#	cmdb_mysql "insert into merge(branch_name,task,branch_date,path,owner,status,remarks,task_id) values ('${tag1:-$branch}','$task',now(),'${branch#*Develop/}','release','0','$info3','${task_id:-0}');"
+	#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "$info3------${tag3:-${branch#*tech/}}" || true
     fi   
 }
 
@@ -197,9 +197,9 @@ function build_error_check() {
     success=`cat ~/tmp/merged/mvn-build.log | grep "BUILD SUCCESS"`
     errors=`cat ~/tmp/merged/mvn-build.log | grep ERROR.*Trunk | awk -F " " '{print $2}' | awk -F ":" '{print $1}' | sort -u`
     info3="合并成功,项目编译失败,冲突文件已替换"
-	    
+    
     if [ ! -z "$success" ];then
-#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
+	#	cat ~/tmp/merged/mvn-build.log | mails_cm -i "项目编译成功------${tag3:-${branch#*tech/}}" || true
 	echo >~/tmp/merged/files_conflict_list.txt
     else
 	build_error_skip
@@ -240,41 +240,41 @@ function checkout_branch_code () {
 }
 
 function svn_conflict_trees(){
-		(
-		tfilenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
-		tfilenames1=`svn st| grep ^! | awk '{print $3}'`
-		if [ -z "$tfilenames" ] && [ -z "$tfilenames1" ];then
-		    return 0
+    (
+	tfilenames=`svn st | egrep "^[ ]" | grep C | awk '{print $2}'`
+	tfilenames1=`svn st| grep ^! | awk '{print $3}'`
+	if [ -z "$tfilenames" ] && [ -z "$tfilenames1" ];then
+	    return 0
+	else
+	    for filename in $tfilenames $tfilenames1;do
+		if [[ "$filename" =~ "@" ]];then
+		    svn resolve --accept=working $filename@
 		else
-		    for filename in $tfilenames $tfilenames1;do
-		    	if [[ "$filename" =~ "@" ]];then
-			    svn resolve --accept=working $filename@
-			else
-			    svn resolve --accept=working $filename
-			fi
-			echo $filename >> ~/tmp/merged/tree_conflict_list.txt
-		    done
-                    (
-			checkout_branch_code
-			
-			for x in `cat ~/tmp/merged/tree_conflict_list.txt`;do
-			    cp-with-dir-struct $Basetrunkcode $x >& /dev/null ||
-				(
-				    cd $Basetrunkcode && svn rm $x						    
-				)
-			done
-			for y in `cat ~/tmp/merged/files_conflict_list.txt`;do
-			    cp-with-dir-struct $Basetrunkcode $y >& /dev/null ||
-				(
-				    cd $Basetrunkcode && svn rm $y						    
-				)
-			done
-			echo > ~/tmp/merged/tree_conflict_list.txt
-			echo > ~/tmp/merged/files_conflict_list.txt
-		    )
+		    svn resolve --accept=working $filename
 		fi
-		) 
-		svn st | grep "^?" | awk '{print $2}' | xargs  svn add >& /dev/null
+		echo $filename >> ~/tmp/merged/tree_conflict_list.txt
+	    done
+            (
+		checkout_branch_code
+		
+		for x in `cat ~/tmp/merged/tree_conflict_list.txt`;do
+		    cp-with-dir-struct $Basetrunkcode $x >& /dev/null ||
+			(
+			    cd $Basetrunkcode && svn rm $x						    
+			)
+		done
+		for y in `cat ~/tmp/merged/files_conflict_list.txt`;do
+		    cp-with-dir-struct $Basetrunkcode $y >& /dev/null ||
+			(
+			    cd $Basetrunkcode && svn rm $y						    
+			)
+		done
+		echo > ~/tmp/merged/tree_conflict_list.txt
+		echo > ~/tmp/merged/files_conflict_list.txt
+	    )
+	fi
+    ) 
+    svn st | grep "^?" | awk '{print $2}' | xargs  svn add >& /dev/null
 }
 
 function commit() {
@@ -284,7 +284,7 @@ function commit() {
     else
 	task_id=`cmdb_mysql "SELECT task_id FROM svn WHERE tag_name='${tag1}';"`
     fi
-	
+    
     if [ $info -eq 0 ];then
 	local st=`cmdb_mysql "SELECT * FROM auto_trunk_merge WHERE branch_name='${tag1:-$branch}' and STATUS='0';"`
 	if [ -z "$st" ];then
@@ -313,14 +313,14 @@ Merged revision(s) $revision-$head  from ${tag3:-${branch#*tech/}}" && if [ -z $
 }
 
 function js_files_cover () {
-	    (
-		checkout_branch_code
-		cat ~/tmp/merged/merge_files_info.log | while read file;do
-		    if [[ "$file" =~ .js$ ]];then
-			cp-with-dir-struct $Basetrunkcode $file >& /dev/null
-		    fi
-		done
-	    )
+    (
+	checkout_branch_code
+	cat ~/tmp/merged/merge_files_info.log | while read file;do
+	    if [[ "$file" =~ .js$ ]];then
+		cp-with-dir-struct $Basetrunkcode $file >& /dev/null
+	    fi
+	done
+    )
 }
 
 function reverse_merge () {
@@ -332,156 +332,156 @@ function reverse_merge () {
 }
 
 function svn_from_tb_merged() {
+    (
+	set -x
+	cd $Basetrunkcode
+	clean_workspace
+	
+	if [[ "$branch" =~ Tag ]];then
+	    local revision=`svn log | grep -w "${tag#*Tag/}"  | head -n 1 | awk -F "_" '{print $NF}'`
+	    local revision=${revision%*:}
+	    
+	    if ! [[ "$revision" =~ ^[0-9]{5,} ]];then
+		local revision=`svn log | grep -C  3 "${tag#*Tag/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
+	    fi
+	    
+	    #head=`svn log -l 2 $tag1 | grep ^r[0-9] | tail -n 1 |awk -F '|' '{print$1}'`
+	    head=$(echo ${tag1##*_})
+	    branch=$tag2
+	else
+	    Exit_Status_Code 4
+	    local revision=`svn log  | grep -w "${branch#*Branch/}"  | head -n 1 | awk -F "_" '{print $NF}'`
+	    local revision=${revision%*:}
+	    
+	    if ! [[ "$revision" =~ ^[0-9]{5,} ]];then
+		local revision=`svn log | grep -C  3 "${branch#*Branch/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
+	    fi
+	    
+	    head=`svn log -l 1 $branch | grep ^r[0-9] | awk -F '|' '{print$1}'`
+	fi
+	
+	if  [ ! -z  "$revision" ];then
+	    reverse_merge
+	    st=$((svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突' ;) 2> ~/tmp/logs/merge/no-output.log)
+	    if [ -z "$st" ];then
+		svn merge $branch@$revision $branch@$head
+	    else
+		echo p | svn merge $branch@$revision $branch@$head
+		svn_conflict_files
+		svn_conflict_trees
+	    fi
+	    commit ||
 		(
-		set -x
-		cd $Basetrunkcode
-		clean_workspace
+		    svn_conflict_files
+		    svn_conflict_trees
+		    commit
+		)
+	else
+	    if [ -z "$revision" ];then
+		local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+	    fi
+
+	    if [ -z "$revision" ];then
+		local revision=`svn log --search "新建分支项目" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+	    fi
+	    
+	    if [ -z "$revision" ];then
+		local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+	    fi
+	    
+	    if [ ! -z  "$revision" ];then
+		reverse_merge
+		st=$((svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突' ;) 2> ~/tmp/logs/merge/no-output.log)
+		st2=$(grep -r "找不到路径" ~/tmp/logs/merge/no-output.log)
+
+		if [ ! -z "$st2" ];then
+		    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
+		fi
 		
-		if [[ "$branch" =~ Tag ]];then
-		    local revision=`svn log | grep -w "${tag#*Tag/}"  | head -n 1 | awk -F "_" '{print $NF}'`
-		    local revision=${revision%*:}
-		    
-		    if ! [[ "$revision" =~ ^[0-9]{5,} ]];then
-			local revision=`svn log | grep -C  3 "${tag#*Tag/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
-		    fi
-		    
-		    #head=`svn log -l 2 $tag1 | grep ^r[0-9] | tail -n 1 |awk -F '|' '{print$1}'`
-		    head=$(echo ${tag1##*_})
-		    branch=$tag2
+		if [ -z "$st" ];then
+		    svn merge $branch@$revision $branch@$head
 		else
-		    Exit_Status_Code 4
-		    local revision=`svn log  | grep -w "${branch#*Branch/}"  | head -n 1 | awk -F "_" '{print $NF}'`
-		    local revision=${revision%*:}
-		    
-		    if ! [[ "$revision" =~ ^[0-9]{5,} ]];then
-			local revision=`svn log | grep -C  3 "${branch#*Branch/}" | head -n 4 | grep ^r | awk -F '|' '{print$1}'`
-		    fi
-		    
-		    head=`svn log -l 1 $branch | grep ^r[0-9] | awk -F '|' '{print$1}'`
+		    echo p | svn merge $branch@$revision $branch@$head
+		    svn_conflict_files
+		    svn_conflict_trees
 		fi
-				
-		if  [ ! -z  "$revision" ];then
-		        reverse_merge
-			st=$((svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突' ;) 2> ~/tmp/logs/merge/no-output.log)
-			if [ -z "$st" ];then
-				svn merge $branch@$revision $branch@$head
-			else
-				echo p | svn merge $branch@$revision $branch@$head
-				svn_conflict_files
-				svn_conflict_trees
-			fi
-			commit ||
-				(
-				svn_conflict_files
-				svn_conflict_trees
-				commit
-				)
-		else
-			if [ -z "$revision" ];then
-		            local revision=`svn log --search "新建项目开发分支" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    	fi
-
-			if [ -z "$revision" ];then
-		            local revision=`svn log --search "新建分支项目" "${branch}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    	fi
-			
-		    	if [ -z "$revision" ];then
-			    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    	fi
-			
-			if [ ! -z  "$revision" ];then
-			        reverse_merge
-				st=$((svn merge --dry-run ${branch}@$revision $branch@$head . | grep -Ei 'conflicts|树冲突|正文冲突' ;) 2> ~/tmp/logs/merge/no-output.log)
-				st2=$(grep -r "找不到路径" ~/tmp/logs/merge/no-output.log)
-
-		    		if [ ! -z "$st2" ];then
-				    local revision=`svn log --search "新建主干项目" "${trunk}" | head -n 2 | grep ^r[0-9] | awk -F '|' '{print$1}'`
-		    		fi
-				
-				if [ -z "$st" ];then
-					svn merge $branch@$revision $branch@$head
-				else
-					echo p | svn merge $branch@$revision $branch@$head
-					svn_conflict_files
-					svn_conflict_trees
-				fi
-			fi
-			commit || 
-				(
-				svn_conflict_files
-				svn_conflict_trees
-				commit
-				)
-		fi
-		) > ~/tmp/merged/merge_mail_info.log
+	    fi
+	    commit || 
+		(
+		    svn_conflict_files
+		    svn_conflict_trees
+		    commit
+		)
+	fi
+    ) > ~/tmp/merged/merge_mail_info.log
 }
 
 function svn_from_bt_merged() {
-		(
-		set -x
-		cd $Basebranchcode
-		clean_workspace
-		if [ -n $rev ];then
-			if [[ "$rev" =~ ":" ]];then
-				stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
-				if test -z $stu;then
-					timeout 20 svn merge -r $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
-				else
-					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
-				fi
-			else
-				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
-				if [ -z $stu ];then
-					timeout 20 svn merge -c $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
-				else
-					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
-				fi
-			fi
+    (
+	set -x
+	cd $Basebranchcode
+	clean_workspace
+	if [ -n $rev ];then
+	    if [[ "$rev" =~ ":" ]];then
+		stu=`svn merge --dry-run -r $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
+		if test -z $stu;then
+		    timeout 20 svn merge -r $rev $trunk .
+		    svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
 		else
-			svn mergeinfo $trunk --show-revs eligible | while read rev
-			do	
-				stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
-				if [ -z $stu ];then
-					timeout 20 svn merge -c $rev $trunk .
-					svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
-				else 
-					die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
-				fi
-			done
+		    die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
 		fi
-		)
+	    else
+		stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
+		if [ -z $stu ];then
+		    timeout 20 svn merge -c $rev $trunk .
+		    svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
+		else
+		    die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
+		fi
+	    fi
+	else
+	    svn mergeinfo $trunk --show-revs eligible | while read rev
+	    do	
+		stu=`svn merge --dry-run -c $rev $trunk . | egrep -e 'conflicts|树冲突|正文冲突'`
+		if [ -z $stu ];then
+		    timeout 20 svn merge -c $rev $trunk .
+		    svn ci -m "Merged revision(s) $rev  from  ${trunk#*tech/}"  | mails_cm -i "code merged success `basename $PWD` from ${trunk#*tech/}" || true
+		else 
+		    die "Svn merged conflicts the $rev in ${branch#*tech/} from ${trunk#*tech/}"
+		fi
+	    done
+	fi
+    )
 }
 
 function svn_dt_merged() {
-		(
-		cd $Basetrunkcode
-		clean_workspace
-		local revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
-		if [ -z $rev ];then
-			svn merge -r HEAD:$revision .
-			svn ci -m "版本回退至: $revision"
-		else
-			svn merge -r HEAD:$rev .
-			svn ci -m "版本回退至: $rev"
-		fi | mails_cm -i "已回退版本" || true
-		)
+    (
+	cd $Basetrunkcode
+	clean_workspace
+	local revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
+	if [ -z $rev ];then
+	    svn merge -r HEAD:$revision .
+	    svn ci -m "版本回退至: $revision"
+	else
+	    svn merge -r HEAD:$rev .
+	    svn ci -m "版本回退至: $rev"
+	fi | mails_cm -i "已回退版本" || true
+    )
 }
 
 function svn_db_merged() {
-		(
-		cd $Basebranchcode
-		clean_workspace
-		local revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
-		if [ -z $rev ];then
-			svn merge -r HEAD:$revision .
-			svn ci -m "版本回退: $revision"
-		else
-			svn merge -r HEAD:$rev .
-			svn ci -m "版本回退: $rev"
-		fi | mails_cm -i "已回退版本" || true
-		)
+    (
+	cd $Basebranchcode
+	clean_workspace
+	local revision=`svn log -l 2 | grep ^r | tail -n 1 | awk -F '|' '{print$1}'`
+	if [ -z $rev ];then
+	    svn merge -r HEAD:$revision .
+	    svn ci -m "版本回退: $revision"
+	else
+	    svn merge -r HEAD:$rev .
+	    svn ci -m "版本回退: $rev"
+	fi | mails_cm -i "已回退版本" || true
+    )
 }
 
 function project_merge_create () {
@@ -493,50 +493,50 @@ function project_merge_create () {
 locked-echo
 
 if test $types = add;then
-	for branch in ${branchs[@]};do
-		Basecode
-		if [ -z "$project" ];then
-		    if [ ! -d "$Basetrunkcode" ];then
-			(
-			    trunk1=${trunk#*Trunk/}
-			    trunk_code_path=$(dirname $Basetrunkcode)
-			    Basetrunkcode1=$Basetrunk${trunk1%%/*}
-			    if [ -d "$trunk_code_path" ];then
-				cd $trunk_code_path
-			    elif [ -d "$Basetrunkcode1" ];then
-				cd $Basetrunkcode1
-			    else
-				Exit_Status_Code 4
-			    fi				
-			    svn up .			
-			) || Exit_Status_Code 4
-		    fi
-		    svn_from_tb_merged
-		else
-		    project_merge_create && echo svn trunk-merged | mails_cm -i "${info2}------${trunk}"
-		    if [ ! -z "$project2" ];then
-			svn copy ${tag2:-$branch} ${trunk2} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','根据分支已新建release主干项目','0')";
-		    fi
-			
-		fi
-	done
+    for branch in ${branchs[@]};do
+	Basecode
+	if [ -z "$project" ];then
+	    if [ ! -d "$Basetrunkcode" ];then
+		(
+		    trunk1=${trunk#*Trunk/}
+		    trunk_code_path=$(dirname $Basetrunkcode)
+		    Basetrunkcode1=$Basetrunk${trunk1%%/*}
+		    if [ -d "$trunk_code_path" ];then
+			cd $trunk_code_path
+		    elif [ -d "$Basetrunkcode1" ];then
+			cd $Basetrunkcode1
+		    else
+			Exit_Status_Code 4
+		    fi				
+		    svn up .			
+		) || Exit_Status_Code 4
+	    fi
+	    svn_from_tb_merged
+	else
+	    project_merge_create && echo svn trunk-merged | mails_cm -i "${info2}------${trunk}"
+	    if [ ! -z "$project2" ];then
+		svn copy ${tag2:-$branch} ${trunk2} --parents -m "新建主干项目" && cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','根据分支已新建release主干项目','0')";
+	    fi
+	    
+	fi
+    done
 elif test $types = del;then
-	for branch in ${branchs[@]};do
-		Basecode
-		if test -d $Basebranchcode;then
-			svn_from_bt_merged
-		else
-			(
-			    cd $Basebranch
-			    svn co ${branch%/Develop*}
-			)
-			svn_from_bt_merged
-		fi
-	done
+    for branch in ${branchs[@]};do
+	Basecode
+	if test -d $Basebranchcode;then
+	    svn_from_bt_merged
+	else
+	    (
+		cd $Basebranch
+		svn co ${branch%/Develop*}
+	    )
+	    svn_from_bt_merged
+	fi
+    done
 elif test $types = dt;then
-	Basecode
-	svn_dt_merged
+    Basecode
+    svn_dt_merged
 else
-	Basecode
-	svn_db_merged
+    Basecode
+    svn_db_merged
 fi

@@ -22,8 +22,8 @@ if [ -f /mnt/svn/task_id.log ];then
 fi
 
 function upload_ios_version () {
-#    local path=/mnt/svn/IOS/$DT
-#    mkdir -p $path || true
+    #    local path=/mnt/svn/IOS/$DT
+    #    mkdir -p $path || true
     
     find api -name *.ipa -print | while read filename;do
 	file=$(basename $filename)

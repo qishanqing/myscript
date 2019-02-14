@@ -279,50 +279,50 @@ menu2(){
 	    (9) 内核调优
 	    (0) 返回上一级菜单
 EOF
-	    read -p "Please enter your Choice[0-9]: " input2
-	    case "$input2" in
-		0)
-		    clear
-		    break
-		    ;;
-		1)
-		    addUser
-		    ;;
-		2)
-		    configYum
-		    ;;
-		3)
-		    initI18n
-		    ;;
-		4)
-		    initFirewall
-		    ;;
-		5)
-		    initService
-		    ;;
-		6)
-		    initSsh
-		    ;;
-		7)
-		    syncSysTime
-		    ;;
-		8)
-		    initLimits
-		    ;;
-		9)
-		    initSysctl
-		    ;;
-		*) echo "----------------------------------"
-		   echo "|          Warning!!!            |"
-		   echo "|   Please Enter Right Choice!   |"
-		   echo "----------------------------------"
-		   for i in `seq -w 3 -1 1`
-		   do
-		       echo -ne "\b\b$i";
-		       sleep 1;
-		   done
-		   clear
-	    esac
+	read -p "Please enter your Choice[0-9]: " input2
+	case "$input2" in
+	    0)
+		clear
+		break
+		;;
+	    1)
+		addUser
+		;;
+	    2)
+		configYum
+		;;
+	    3)
+		initI18n
+		;;
+	    4)
+		initFirewall
+		;;
+	    5)
+		initService
+		;;
+	    6)
+		initSsh
+		;;
+	    7)
+		syncSysTime
+		;;
+	    8)
+		initLimits
+		;;
+	    9)
+		initSysctl
+		;;
+	    *) echo "----------------------------------"
+	       echo "|          Warning!!!            |"
+	       echo "|   Please Enter Right Choice!   |"
+	       echo "----------------------------------"
+	       for i in `seq -w 3 -1 1`
+	       do
+		   echo -ne "\b\b$i";
+		   sleep 1;
+	       done
+	       clear
+	esac
     done
 }
 #initTools
@@ -348,39 +348,39 @@ do
 				    (2) 自定义优化
 				    (3) 退出
 EOF
-				    #choice
-				    read -p "Please enter your choice[0-3]: " input1
+    #choice
+    read -p "Please enter your choice[0-3]: " input1
 
-				    case "$input1" in
-					1)
-					    addUser
-					    configYum
-					    initI18n
-					    initFirewall
-					    initService
-					    initSsh
-					    syncSysTime
-					    initLimits
-					    initSysctl
-					    ;;
+    case "$input1" in
+	1)
+	    addUser
+	    configYum
+	    initI18n
+	    initFirewall
+	    initService
+	    initSsh
+	    syncSysTime
+	    initLimits
+	    initSysctl
+	    ;;
 
-					2)
-					    menu2
-					    ;;
-					3)
-					    clear
-					    break
-					    ;;
-					*)
-					    echo "----------------------------------"
-					    echo "|          Warning!!!            |"
-					    echo "|   Please Enter Right Choice!   |"
-					    echo "----------------------------------"
-					    for i in `seq -w 3 -1 1`
-					    do
-						echo -ne "\b\b$i";
-						sleep 1;
-					    done
-					    clear
-				    esac
+	2)
+	    menu2
+	    ;;
+	3)
+	    clear
+	    break
+	    ;;
+	*)
+	    echo "----------------------------------"
+	    echo "|          Warning!!!            |"
+	    echo "|   Please Enter Right Choice!   |"
+	    echo "----------------------------------"
+	    for i in `seq -w 3 -1 1`
+	    do
+		echo -ne "\b\b$i";
+		sleep 1;
+	    done
+	    clear
+    esac
 done

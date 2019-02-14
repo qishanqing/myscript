@@ -10,9 +10,9 @@ uname="builder"
 password="ant@"
 
 if [ $# -lt 1 ];then
-	echo Usage: -bash ACCOUNT
-	echo -e "Where ACCOUNT is the SVN acconut name you want to analyze"
-	exit -1
+    echo Usage: -bash ACCOUNT
+    echo -e "Where ACCOUNT is the SVN acconut name you want to analyze"
+    exit -1
 fi
 
 user=$1
@@ -22,16 +22,16 @@ svn_branch_url="https://192.168.0.220/svn/tech/Branch"
 revisions=$(svn log $svn_branch_url -r{$today}:{$yesterday} --username $uname --password $password |grep $user'\ '|awk '{print $1}')
 lastrev=init
 for rawrev in $revisions;do
-	rev=$(echo $rawrev|tr -d r)
-	rev2=`expr $rev - 1`
-	if [ "$lastrev" = "init" ]; then
-	    lastrev=$rev
-	fi
-	
-	dummy=$(echo $revisions|grep $rev2)
-	if [ $? -eq 0 ];then
-	    continue
-	fi
-	svn diff -r$rev2:$lastrev --username $uname --password $password
-	lastrev=init
+    rev=$(echo $rawrev|tr -d r)
+    rev2=`expr $rev - 1`
+    if [ "$lastrev" = "init" ]; then
+	lastrev=$rev
+    fi
+    
+    dummy=$(echo $revisions|grep $rev2)
+    if [ $? -eq 0 ];then
+	continue
+    fi
+    svn diff -r$rev2:$lastrev --username $uname --password $password
+    lastrev=init
 done

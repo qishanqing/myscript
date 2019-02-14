@@ -26,7 +26,7 @@ function replace_files () {
 		exit 1
 	    fi
 	done
-		
+	
 	p=$(cat $fils_name | grep PoolPreparedStatements | grep true)
 	t=$(cat $fils_name | grep TestOnBorrow | grep true)
 	tw=$(cat $fils_name | grep TestWhileIdle | grep false)
@@ -42,13 +42,13 @@ function replace_files () {
 	    echo "请正确修改servicebus.xml参数PoolPreparedStatements为false"
 	    echo "请正确修改servicebus.xml参数TestWhileIdle为true"
 	    echo "请正确修改servicebus.xml参数TimeBetweenEvictionRunsMillis--Value数值为1000"
-#	    echo "请正确修改servicebus.xml参数NumTestsPerEvictionRun--Value数值为5"
+	    #	    echo "请正确修改servicebus.xml参数NumTestsPerEvictionRun--Value数值为5"
 	    echo "请正确修改servicebus.xml参数MinEvictableIdleTimeMillis--Value数值为600000"
 	    echo 
 	    exit 1
 	fi
 	sed -i '/\"PoolPreparedStatements\"/{s/true/false/g}' $fils_name
-#	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $fils_name
+	#	sed -i '/\"TestOnBorrow\"/{s/false/true/g}' $fils_name
     fi
 }
 
@@ -111,13 +111,13 @@ function dfs_version_check() {
     if [ `cat /home/qishanqing/myscript/product-config/dafy_dfs_project | grep -w "${branch##*/}"` ];then
 	local e=1
     fi
-#    done
+    #    done
 
     (
 	if [ ! "$e" == 1 ];then
 	    exit 0
 	fi
-    
+	
 	dfs_path="upload/$file/WEB-INF/lib"
 	dfs_name=$(basename $(find -name dfsecurity-*.jar))
 	dfs_version=$(echo $dfs_name | awk -F '-' '{print $2}')
@@ -174,12 +174,12 @@ function pool_version_check() {
 	    echo "commons-pool2的jar包版本正确"
 	fi
     else
-	    echo
-	    echo 
-	    echo  "未检测到: commons-pool2-$pool_level.jar及以上版本，请增加后部署编译"
-	    echo
-	    echo
-	    exit 1
+	echo
+	echo 
+	echo  "未检测到: commons-pool2-$pool_level.jar及以上版本，请增加后部署编译"
+	echo
+	echo
+	exit 1
     fi
 }
 
@@ -207,27 +207,27 @@ function dbcp_version_check() {
 	    echo "commons-dbcp2的jar包版本正确"
 	fi
     else
-	    echo
-	    echo 
-	    echo  "未检测到: commons-dbcp2-$dbcp_level.jar及以上版本，请增加后部署编译"
-	    echo
-	    echo
-	    exit 1
+	echo
+	echo 
+	echo  "未检测到: commons-dbcp2-$dbcp_level.jar及以上版本，请增加后部署编译"
+	echo
+	echo
+	exit 1
     fi
 }
 
 function upload_version () {
     rm -rf upload
-#    find -maxdepth 2 -name '*.jar' -print -o -maxdepth 3 -name '*.jar' -print >& /dev/null  && echo 请让对应开发人员修改pom配置编译为war格式,不支持jar格式上传 && exit 1
+    #    find -maxdepth 2 -name '*.jar' -print -o -maxdepth 3 -name '*.jar' -print >& /dev/null  && echo 请让对应开发人员修改pom配置编译为war格式,不支持jar格式上传 && exit 1
     find -maxdepth 3 -name *.war -print | while read filename
     do	
 	mkdir -p upload
 	cp -rf $filename upload/
 	filename=${filename##*/}
 	if [[ "$filename" =~ '-' ]];then
-		file="${filename%%-*}-$DT"
+	    file="${filename%%-*}-$DT"
 	else
-		file="${filename%%.*}-$DT"
+	    file="${filename%%.*}-$DT"
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	

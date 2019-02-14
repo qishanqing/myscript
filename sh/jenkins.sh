@@ -25,7 +25,7 @@ die() {
     rm -f ~/tmp/jenkins/output.$$
     kill $$
     exit 1
- }
+}
 
 message_track() {
     (
@@ -35,7 +35,7 @@ message_track() {
 	cmdb_mysql "insert into track(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status) values ('$del','',now(),'${owner:-qishanqing}','$head','$add','','${copy}','','');"
     )
 }
-    
+
 jenkins_url="http://build:8080"
 
 TEMP=$(getopt -o a:d:n:c:T:e:E:C:h --long types:,email:,extra_mails:,add:,copy:,del:,num:,command:,help -n $(basename -- $0) -- "$@")
@@ -49,53 +49,53 @@ types=
 command=
 eval set -- "$TEMP"
 while true;do
-	case "$1" in
-		-a|--add)
-		add=$2
-		shift 2
-		;;
-		-d|--del)
-		del=$2
-		shift 2
-		;;
-		-n|--num)
-		num=$2
-		shift 2
-		;;
-		-c|--copy)
-		copy=$2
-		shift 2
-		;;
-		-T|--types)
-		types=$2
-		shift 2
-		;;
-		-e|--email)
-		email=$2
-		shift 2
-		;;
-		-E|--extra_mails)
-		extra_mails=$2
-		shift 2
-		;;
-		-C|--command)
-		command=$2
-		shift 2
-		;;
-		-h|--help)
-		set +x
-		echo Function for jenkins jobs
-		exit
-		shift
-		;;
-		--)
-		shift
-		break
-		;;
-		*)
-		die "internal error"
-		;;
-	esac
+    case "$1" in
+	-a|--add)
+	    add=$2
+	    shift 2
+	    ;;
+	-d|--del)
+	    del=$2
+	    shift 2
+	    ;;
+	-n|--num)
+	    num=$2
+	    shift 2
+	    ;;
+	-c|--copy)
+	    copy=$2
+	    shift 2
+	    ;;
+	-T|--types)
+	    types=$2
+	    shift 2
+	    ;;
+	-e|--email)
+	    email=$2
+	    shift 2
+	    ;;
+	-E|--extra_mails)
+	    extra_mails=$2
+	    shift 2
+	    ;;
+	-C|--command)
+	    command=$2
+	    shift 2
+	    ;;
+	-h|--help)
+	    set +x
+	    echo Function for jenkins jobs
+	    exit
+	    shift
+	    ;;
+	--)
+	    shift
+	    break
+	    ;;
+	*)
+	    die "internal error"
+	    ;;
+    esac
 done
 
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
@@ -117,13 +117,13 @@ jenkins-clean-never-run () {
 }
 
 jenkins-job-add() {
-	(
+    (
         if test -z "$copy";then
-		cat ~/myscript/jenkins/template.xml | jc create-job "$add"
+	    cat ~/myscript/jenkins/template.xml | jc create-job "$add"
 	else
-		jc copy-job "$copy" "$add"
+	    jc copy-job "$copy" "$add"
 	fi
-	) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job add failed"
+    ) >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job add failed"
 }
 
 jenkins-job-build() {
@@ -132,11 +132,11 @@ jenkins-job-build() {
 	get-job-info
 	jc build "$add"
 	rm -f ~/tmp/jenkins/template.xml.$$ || true
-	) 
+    ) 
 }
 
 jenkins-job-del() {
-	jc delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
+    jc delete-job $del  >~/tmp/jenkins/output.$$ 2>&1 || die "jenkins job del failed"
 }
 
 function get-build-description() {
@@ -156,7 +156,7 @@ function output-manifest.xml-from-template() {
     build_command=$2
     if [ "$project_type" == JAVA ];then
 	template="/home/qishanqing/myscript/jenkins/template.xml"
-    
+	
 	export assignedNode=$(
 	    echo "build2||build1||master"
 	       )
@@ -274,7 +274,7 @@ function jc-create-job () {
 	cat ~/tmp/jenkins/template.xml.$$ | jc update-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
 	sleep 1
     done
-#    webhook http://192.168.0.231:8080/job/$add ${2:+} $owner || true
+    #    webhook http://192.168.0.231:8080/job/$add ${2:+} $owner || true
 }  
 
 job-info() {
@@ -294,62 +294,62 @@ EOF
 }
 
 jenkins-clean-range-run () {
-	j=`jc list-jobs`
-	for x in $j;do
-		c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/ | xargs -d ">" -n1 | grep -Ei "启动时间|Started [0-9]"`
-		case "$num" in
-			zombie)
-			jenkins-clean-never-run
-			;;
-			1月)
-			if [[ "$c" =~ [0-9]" 年" ]];then
-				clean-jenkins-workspace
-			elif [[ "$c" =~ [1-9]" mo" ]];then
-				clean-jenkins-workspace
-			elif [[ "$c" =~ 1[0-2]" mo" ]];then
-				clean-jenkins-workspace
-			else
-				continue
-			fi
-			;;
-			3月)
-			if [[ "$c" =~ [0-9]" 年" ]];then
-				clean-jenkins-workspace
-			elif [[ "$c" =~ [3-9]" 月" ]];then
-				clean-jenkins-workspace
-			elif [[ "$c" =~ 1[0-2]" 月" ]];then
-				clean-jenkins-workspace
-			else
-				continue
-			fi
-			;;
-			6月)
-			if [[ "$c" =~ [0-9]" 年" ]];then
-				clean-jenkins-workspace
-			elif [[ "$c" =~ [6-9]" 月" ]];then
-				clean-jenkins-workspace
-			elif [[ "$c" =~ 1[0-2]" 月" ]];then
-				clean-jenkins-workspace
-			else
-				continue
-			fi
-			;;
-			1年)
-			if [[ "$c" =~ [0-9]" 年" ]];then
-				clean-jenkins-workspace
-			else
-				continue
-			fi
-			;;
-			--)
-			shift
-			break
-			;;
-			*)
-			echo "Input Error!"
-			;;
-		esac
-	done
+    j=`jc list-jobs`
+    for x in $j;do
+	c=`curl --user qishanqing:372233 --silent -f  $jenkins_url/job/$x/lastBuild/ | xargs -d ">" -n1 | grep -Ei "启动时间|Started [0-9]"`
+	case "$num" in
+	    zombie)
+		jenkins-clean-never-run
+		;;
+	    1月)
+		if [[ "$c" =~ [0-9]" 年" ]];then
+		    clean-jenkins-workspace
+		elif [[ "$c" =~ [1-9]" mo" ]];then
+		    clean-jenkins-workspace
+		elif [[ "$c" =~ 1[0-2]" mo" ]];then
+		    clean-jenkins-workspace
+		else
+		    continue
+		fi
+		;;
+	    3月)
+		if [[ "$c" =~ [0-9]" 年" ]];then
+		    clean-jenkins-workspace
+		elif [[ "$c" =~ [3-9]" 月" ]];then
+		    clean-jenkins-workspace
+		elif [[ "$c" =~ 1[0-2]" 月" ]];then
+		    clean-jenkins-workspace
+		else
+		    continue
+		fi
+		;;
+	    6月)
+		if [[ "$c" =~ [0-9]" 年" ]];then
+		    clean-jenkins-workspace
+		elif [[ "$c" =~ [6-9]" 月" ]];then
+		    clean-jenkins-workspace
+		elif [[ "$c" =~ 1[0-2]" 月" ]];then
+		    clean-jenkins-workspace
+		else
+		    continue
+		fi
+		;;
+	    1年)
+		if [[ "$c" =~ [0-9]" 年" ]];then
+		    clean-jenkins-workspace
+		else
+		    continue
+		fi
+		;;
+	    --)
+		shift
+		break
+		;;
+	    *)
+		echo "Input Error!"
+		;;
+	esac
+    done
 }
 
 if test $types = add;then
