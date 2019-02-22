@@ -18,6 +18,7 @@ class JenkinsController < ApplicationController
 	  extra_mails = params[:extra_mails]
 	  num = params[:num]
 	  types = params[:types]
+          command = params[:command]
 	  
 	  result = nil
 
@@ -39,13 +40,15 @@ class JenkinsController < ApplicationController
 			  "-T", types, \
 			  "-n", num, \
 			  "-c", copy, \
+			  "-C", command, \
 			  "-E", extra_mails
 	  elsif not types.blank? then
 		  system  "jenkins.sh", \
 			  "-a", add, \
 			  "-d", del, \
-			  "-T", types, \
+ 			  "-T", types, \
 			  "-c", copy, \
+			  "-C", command, \
 			  "-E", extra_mails
 	  else
 		  system  "jenkins.sh", \
@@ -53,6 +56,7 @@ class JenkinsController < ApplicationController
 			  "-d", del, \
 			  "-n", num, \
 			  "-c", copy, \
+			  "-C", command, \
 			  "-E", extra_mails
 	  end
   end

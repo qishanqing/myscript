@@ -18,11 +18,12 @@
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
         <url>%svnurl%</url>
+        <credentialsId>c18f6f17-8a1b-4f49-b40f-9fb59b6a98c8</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/master</name>
+        <name>*/%branch%</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -37,8 +38,8 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
-    <groupId>DEPOSLendBusiness</groupId>
-    <artifactId>DEPOSLendBusiness</artifactId>
+    <groupId>com.dafyjk</groupId>
+    <artifactId>limit</artifactId>
   </rootModule>
   <goals>clean -Pprod package  -U -Dmaven.test.skip=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>

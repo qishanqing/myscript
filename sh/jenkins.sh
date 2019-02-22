@@ -158,7 +158,7 @@ function get-git-project-build-description() {
     echo 
     echo repo: $del
     echo
-    echo branch:${GIT_BRANCH:-master}
+    echo branch:${command:-master}
     echo
     echo creator: ${extra_mails%@*}
     echo
@@ -169,7 +169,7 @@ function get-git-project-build-description() {
 
 function output-manifest.xml-from-template() {
     svnurl=$1
-    build_command=$2
+#    build_command=$2
     if [ "$project_type" == JAVA ];then
 	template="/home/qishanqing/myscript/jenkins/template.xml"
 	
@@ -225,6 +225,7 @@ bash ipa_build.sh
     elif [ "$project_type" == GIT ];then
 	template="/home/qishanqing/myscript/jenkins/template_git.xml"
 	build_command="source /home/qishanqing/myscript/sh/jenkins-upload-git.sh"
+	branch=${command:-master}
     fi
     
     export svnurl
@@ -232,11 +233,13 @@ bash ipa_build.sh
     export build_description1=$(get-git-project-build-description)
     export build_command
     export pre_build_command
+    export branch
     
     cat $template | perl -npe '                                                                                                                                                                
             s,%description%,<![CDATA[$ENV{build_description}]]>,g;
             s,%description1%,<![CDATA[$ENV{build_description1}]]>,g;
             s,%svnurl%,<![CDATA[$ENV{svnurl}]]>,g;                                                                                                                       
+            s,%branch%,<![CDATA[$ENV{branch}]]>,g;
             s,%command%,<![CDATA[$ENV{build_command}]]>,g;
             s,%command1%,<![CDATA[$ENV{pre_build_command}]]>,g;                                                                                                                                      
     '
@@ -285,7 +288,7 @@ get-job-info() {
 }
 
 function jc-create-job () {
-    output-manifest.xml-from-template $del $command >  ~/tmp/jenkins/template.xml.$$
+    output-manifest.xml-from-template $del >  ~/tmp/jenkins/template.xml.$$
     
     for n in $(seq 1 10);do
 	cat ~/tmp/jenkins/template.xml.$$ | jc create-job $add >& ~/tmp/jenkins/output.$$ &&  break || true
