@@ -98,6 +98,8 @@ while true;do
     esac
 done
 
+del=$(echo $del | perl -npe 's,\r,,g')
+
 export SMARTCM_EXTRA_MAIL="$email $extra_mails"
 
 clean-jenkins-workspace() {
@@ -143,6 +145,20 @@ function get-build-description() {
     echo Jenkins Auto Web Create
     echo 
     echo branch: $del
+    echo
+    echo creator: ${extra_mails%@*}
+    echo
+    echo update_time: $JENKINS_TIME
+    echo
+    echo project_type: $project_type
+}
+
+function get-git-project-build-description() {
+    echo Jenkins Auto Web Create
+    echo 
+    echo repo: $del
+    echo
+    echo branch:${GIT_BRANCH:-master}
     echo
     echo creator: ${extra_mails%@*}
     echo
@@ -213,11 +229,13 @@ bash ipa_build.sh
     
     export svnurl
     export build_description=$(get-build-description)
+    export build_description1=$(get-git-project-build-description)
     export build_command
     export pre_build_command
     
     cat $template | perl -npe '                                                                                                                                                                
             s,%description%,<![CDATA[$ENV{build_description}]]>,g;
+            s,%description1%,<![CDATA[$ENV{build_description1}]]>,g;
             s,%svnurl%,<![CDATA[$ENV{svnurl}]]>,g;                                                                                                                       
             s,%command%,<![CDATA[$ENV{build_command}]]>,g;
             s,%command1%,<![CDATA[$ENV{pre_build_command}]]>,g;                                                                                                                                      

@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 set +x
 export LANG=zh_CN.UTF-8
@@ -18,7 +18,7 @@ die() {
 	    ms="格式不正确"
 	fi
 	cmdb_mysql "insert into scm(scm_trunk,scm_branch,scm_date,owner,task,version,access,status,message) values ('$trunk', '$branch_name',now(),'${owner%@*}','$task','$head','$author','1','$ms');"
-    ) | mails_cm -i "svn create failed"
+    )
     rm -rf ~/tmp/logs/output.$$
     echo >~/tmp/logs/branchs.log
     #    kill $$
@@ -111,6 +111,7 @@ function add_author () {
 	local line=$(ssh root@192.168.0.220 "sed  -n '/"${br1:-$br}"\]/,/\[/p' /svn/authz.conf | grep -nm1  $x")
 	if [ -z "$line" ];then
 	    ssh root@192.168.0.220 "sed -i -e '/"${br1:-$br}"\]/{n;s|$|\n"$x"|}' /svn/authz.conf"
+	    cmdb_mysql "UPDATE scm set access= CONCAT(access,' ${x%=*}'),scm_date=now(),status='2' WHERE scm_branch='$branch';"
 	fi
     done    
 }
@@ -123,6 +124,7 @@ function check_acces () {
 		echo "access authz no add,ready to go "
 		svn_connt
 	    else
+		ret=0
 		add_author
 		#			echo "access authz added"
 	    fi
@@ -278,7 +280,8 @@ function createtag() {
 		    echo "$info1: ${tag_name}"
 		    echo
 		    echo 
-		    echo "此次变更具体文件信息如下: $p"
+		    echo "此次变更具体文件信息如下: "
+		    echo "$p"
 		fi
 		if test "$SKIP_FTP_VERSION" = true;then
 		    echo "一个分支多个项目,不再检查上传的ftp版本"
@@ -352,14 +355,17 @@ EOF
 
 check_version () {
     st=`cmdb_mysql "SELECT version FROM svn WHERE version='$version';"`
+    st1=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$version';"`
     if test ! -z "$st";then
 	if [ `echo "$st" | wc -l` -ge 2 ];then
 	    c=`echo $st | awk -F " " '{print $2}'`
-	    echo "此次代码更新没有变化,版本号为: $c"
+	    echo "此次代码更新没有变化,基于现在最新版本已有 $st1"
+	    echo "此次代码更新没有变化,版本号为 $st"
+	    cmdb_mysql "update svn set job_name='$job_name',task_id='${task_id:-0}',status='1',tag_date=now() where version='$version';"
 	    exit 0
 	fi
     else
-	cmdb_mysql "insert into svn(branch_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages) values ('$repo',now(),'${owner:-qishanqing}','${version}','$job_name','$file','${task_id:-0}','git项目','0','$branch');"
+	cmdb_mysql "insert into svn(branch_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,type) values ('$repo',now(),'${owner:-qishanqing}','${version}','$job_name','$file','${task_id:-0}','git','0','$branch','9');"
     fi
 }  
 
