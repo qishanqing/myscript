@@ -273,7 +273,7 @@ get-job-info() {
     if [ ! -s ~/tmp/jenkins/template.xml.$$ ];then
 	jc-create-job $add
     else
-	if [ ! "project_type" = git ];then  
+	if [ ! "$project_type" = GIT ];then  
 	    branch=`cat ~/tmp/jenkins/template.xml.$$ | grep remote | perl -npe 's,<.*?>,,g;s,</.*?>,,g;s, ,,g'`
 	else
 	    branch=`cat ~/tmp/jenkins/template.xml.$$ | grep url | perl -npe 's,<.*?>,,g;s,</.*?>,,g;s, ,,g'`
@@ -325,9 +325,9 @@ jenkins-clean-range-run () {
 	    1月)
 		if [[ "$c" =~ [0-9]" 年" ]];then
 		    clean-jenkins-workspace
-		elif [[ "$c" =~ [1-9]" mo" ]];then
+		elif [[ "$c" =~ [1-9]" 月" ]];then
 		    clean-jenkins-workspace
-		elif [[ "$c" =~ 1[0-2]" mo" ]];then
+		elif [[ "$c" =~ 1[0-2]" 月" ]];then
 		    clean-jenkins-workspace
 		else
 		    continue
