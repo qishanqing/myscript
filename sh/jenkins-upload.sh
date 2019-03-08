@@ -105,6 +105,28 @@ function mysql_version_check() {
     fi
 }
 
+function fastjson_version_check() {
+    fastjson_path="upload/$file/WEB-INF/lib"
+    fastjson_name=$(basename $(find -name fastjson-*.jar))
+    fastjson_name1=${fastjson_name%.*}
+    fastjson_version=${fastjsonl_name1##*-}
+    fastjson_level=1.2.31
+    local st=$([[ "$fastjson_version" > "$fastjson_level" ]] && echo d || echo x)
+
+    if [ "$st" == x ];then
+            echo
+            echo
+            echo  "fastjson的jar包版本小于等于: $fastjson_level,请更新"
+            echo
+            echo
+            exit 1
+    elif [ "$st" == d ];then
+            echo "fastjson的jar包版本正确"
+	    return 0
+       
+    fi
+}
+
 function dfs_version_check() {
 
     #    for y in $(cat /home/qishanqing/myscript/product-config/dafy_dfs_project);do
@@ -231,7 +253,7 @@ function upload_version () {
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	
-	dfs_version_check && cdo_framework_check && mysql_version_check && replace_files && createtag &&
+	dfs_version_check && cdo_framework_check && mysql_version_check && fastjson_version_check && replace_files && createtag &&
 	    (
 		cd upload
 		zip -r $file.zip $file/*
