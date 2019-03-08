@@ -116,7 +116,7 @@ function fastjson_version_check() {
     if [ "$st" == x ];then
             echo
             echo
-            echo  "fastjson的jar包版本小于等于: $fastjson_level,请更新"
+            echo  "fastjson的jar包版本小于等于: $fastjson_level,请升级高于$fastjson_level的版本"
             echo
             echo
             exit 1
