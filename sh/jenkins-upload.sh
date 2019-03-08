@@ -109,7 +109,7 @@ function fastjson_version_check() {
     fastjson_path="upload/$file/WEB-INF/lib"
     fastjson_name=$(basename $(find -name fastjson-*.jar))
     fastjson_name1=${fastjson_name%.*}
-    fastjson_version=${fastjsonl_name1##*-}
+    fastjson_version=${fastjson_name1##*-}
     fastjson_level=1.2.31
     local st=$([[ "$fastjson_version" > "$fastjson_level" ]] && echo d || echo x)
 
