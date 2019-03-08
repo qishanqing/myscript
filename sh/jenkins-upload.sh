@@ -3,7 +3,7 @@
 source /home/qishanqing/myscript/sh/cmdb
 source /home/qishanqing/myscript/sh/svn.sh
 
-set +x
+set -x
 
 export BUILD_ID=dontkillme
 

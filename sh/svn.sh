@@ -254,6 +254,8 @@ function createtag() {
 		ftp_name=`cmdb_mysql "SELECT ftp_version_name FROM svn WHERE version='$head' and branch_name='$branch';"`
 		task_id=`cmdb_mysql "SELECT task_id FROM track WHERE job_name='$jb' and version='$head' order by id desc limit 1;"`
 		task_id=`echo $task_id | awk -F ' ' '{print $2}'`
+                task_id1=`cmdb_mysql "SELECT task_id FROM track WHERE  branch_name='$branch' order by id desc limit 1;"`
+                task_id1=`echo $task_id1 | awk -F ' ' '{print $2}'`
 		info="此次代码更新没有变化"
 		info1="新建tag"
 		if test ! -z "$st";then
@@ -290,13 +292,13 @@ function createtag() {
 		    if test ! -z "$ftp_name";then
 			if [ `echo "$ftp_name" | wc -l` -ge 2 ];then
 			    echo "$info,基于现在最新的分支版本已有 $ftp_name"
-			    cmdb_mysql "update svn set job_name='$job_name',task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
-			    cmdb_mysql "update track set job_name='$job_name',task_id='${task_id:-0}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update svn set job_name='$job_name',task_id='${task_id:-$task_id1}',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update track set job_name='$job_name',status='1',remarks='$info' where version='$head' and branch_name='$branch';"
 			    exit 0
 
 			else
-			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-0}' where version='$head' and branch_name='$branch';"
-			    cmdb_mysql "update track set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-0}' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update track set job_name='$job_name',ftp_version_name='$file',status='0' where version='$head' and branch_name='$branch';"
+			    cmdb_mysql "update svn set job_name='$job_name',ftp_version_name='$file',status='0',task_id='${task_id:-$task_id1}' where version='$head' and branch_name='$branch';"
 			fi
 		    fi
 		fi
