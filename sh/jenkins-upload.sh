@@ -3,7 +3,7 @@
 source /home/qishanqing/myscript/sh/cmdb
 source /home/qishanqing/myscript/sh/svn.sh
 
-set -x
+set +
 
 export BUILD_ID=dontkillme
 
@@ -112,18 +112,15 @@ function fastjson_version_check() {
     fastjson_version=${fastjson_name1##*-}
     fastjson_level=1.2.31
     local st=$([[ "$fastjson_version" > "$fastjson_level" ]] && echo d || echo x)
-
-    if [ "$st" == x ];then
+    if [ -f $fastjson_path/$fastjson_name ];then
+	if [ "$st" == x ];then
             echo
             echo
             echo  "fastjson的jar包版本小于等于: $fastjson_level,请升级高于$fastjson_level的版本"
             echo
             echo
             exit 1
-    elif [ "$st" == d ];then
-            echo "fastjson的jar包版本正确"
-	    return 0
-       
+	fi
     fi
 }
 
