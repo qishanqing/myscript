@@ -270,13 +270,13 @@ function createtag() {
 			o=${o#*_}
 			o=$(($o+1))
 		    else
-			o=$(svn log --search "新建项目开发分支"  $branch | grep ^r[0-9] | awk -F '|' '{print$1}')
+			o=$(svn log --search "新建项目开发分支"  $branch | grep ^r[0-9] | awk -F '|' '{print$1}') || true
 		    fi
-		    p=$(svn log -r $o:${version:-$head} -v $branch)
+		    p=$(svn log -r $o:${version:-$head} -v $branch) || true
 		    if [ "$t" == 1 ];then
-			svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,upstream_version) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0','$p','${o#*_}');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
+			svn copy ${branch} ${tag_name}  --parents -m "${message:-新建tag---${TIME_DIR}_${version:-$head}}" && cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,upstream_version) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-$task_id1}','$info1','0','$p','${o#*_}');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
 		    else
-			cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,upstream_version) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-0}','$info1','0','$p','${o#*_}');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
+			cmdb_mysql "insert into svn(branch_name,tag_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,upstream_version) values ('$branch', '$tag_name',now(),'${owner:-qishanqing}','${version:-$head}','$job_name','$file','${task_id:-$task_id1}','$info1','0','$p','${o#*_}');"  && cmdb_mysql "update track set tag_name='$tag_name',job_name='$job_name',ftp_version_name='$file',remarks='$info1' where job_name='$jb' and version='$head';"
 		    fi
 		    svn list ${tag_name} >& /dev/null || exit 2
 		    echo "$info1: ${tag_name}"
