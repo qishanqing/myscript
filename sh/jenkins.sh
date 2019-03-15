@@ -226,6 +226,9 @@ bash ipa_build.sh
 	template="/home/qishanqing/myscript/jenkins/template_git.xml"
 	build_command="source /home/qishanqing/myscript/sh/jenkins-upload-git.sh"
 	branch=${command:-master}
+    elif [ "$project_type" == Web ];then
+	template="/home/qishanqing/myscript/jenkins/template_web.xml"
+	build_command="source /home/qishanqing/myscript/sh/jenkins-upload-web.sh"
     fi
     
     export svnurl
@@ -259,6 +262,8 @@ get-job-info() {
 	    project_type=IOS
 	elif [[ "$del" =~ git ]];then
 	    project_type=GIT
+	elif [[ "$del" =~ "$(cat /home/qishanqing/myscript/product-config/dafy_static_project)" ]];then
+	    project_type=Web
 	else
 	    project_type=JAVA
 	fi

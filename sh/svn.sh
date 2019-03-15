@@ -367,7 +367,7 @@ check_version () {
 	    exit 0
 	fi
     else
-	cmdb_mysql "insert into svn(branch_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,type) values ('$repo',now(),'${owner:-qishanqing}','${version}','$job_name','$file','${task_id:-0}','git','0','$branch','9');"
+	cmdb_mysql "insert into svn(branch_name,tag_date,owner,version,job_name,ftp_version_name,task_id,remarks,status,messages,type) values ('$repo',now(),'${owner:-qishanqing}','${version}','$job_name','$file','${task_id:-0}','git','0','$branch','GIT');"
     fi
 }  
 

@@ -1,13 +1,20 @@
 #!/bin/bash
 
+set -ex
+
 git-push() {
     ret=$( git status -s | wc -l )
     if ! [ -z "$ret" ];then
 	git status -s | git add .
-	git commit -m "${1:-update info}"
+	git commit -m "${message:-update info}"
+	git push -f 
     fi
 }
 
-export -f git-push
+cd ~/.jenkins
+type=$([[ git log &>/dev/null ]] && echo git || echo null )
+if [ "$type" = git ];then
+    git-push
+fi
 
-git-push
+export -f git-push
