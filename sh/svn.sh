@@ -106,14 +106,16 @@ function del_author () {
 }
 
 function add_author () {
-    check_branch
-    for x in  "${authors[@]}";do
-	local line=$(ssh root@192.168.0.220 "sed  -n '/"${br1:-$br}"\]/,/\[/p' /svn/authz.conf | grep -nm1  $x")
-	if [ -z "$line" ];then
-	    ssh root@192.168.0.220 "sed -i -e '/"${br1:-$br}"\]/{n;s|$|\n"$x"|}' /svn/authz.conf"
-	    cmdb_mysql "UPDATE scm set access= CONCAT(access,' ${x%=*}'),scm_date=now(),status='2' WHERE scm_branch='$branch';"
-	fi
-    done    
+    for branch in ${branchs[@]};do
+	check_branch
+	for x in  "${authors[@]}";do
+	    local line=$(ssh root@192.168.0.220 "sed  -n '/"${br1:-$br}"\]/,/\[/p' /svn/authz.conf | grep -nm1  $x")
+	    if [ -z "$line" ];then
+		ssh root@192.168.0.220 "sed -i -e '/"${br1:-$br}"\]/{n;s|$|\n"$x"|}' /svn/authz.conf"
+		cmdb_mysql "UPDATE scm set access= CONCAT(access,' ${x%=*}'),scm_date=now(),status='2' WHERE scm_branch='$branch';"
+	    fi
+	done
+    done
 }
 
 function check_acces () {
