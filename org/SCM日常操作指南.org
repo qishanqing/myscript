@@ -1,0 +1,37 @@
+** 日常错误解析
+*** jenkins编译错误
+**** prm调用jenkins未正常编译
+分支输入错误
+
+jenkins服务接口未启动（服务器重启时） 
+
+**** jenkins项目编译成功prm显示失败
+项目应用名称跟编译war包名称不相符（开发人员pom文件修改）
+
+jenkins编译人为取消（重新编译）
+
+项目分支配置不正确，没有war生成（开发人员pom文件修改）
+
+*** 预上线合并冲突
+提示冲突根据文档进行解决,如确实感觉解决比较麻烦，推荐重新开分支的基础上进行代码提交
+
+#+BEGIN_SRC 
+http://192.168.0.223/pages/viewpage.action?pageId=15040710
+#+END_SRC
+
+*** jenkins编译预检查各jar包版本
+登录192.168.0.231 
+
+su - qishanqing账户 
+
+cd myscript 
+
+vim sh/jenkins-upload.sh
+#+OPTIONS: ^:nil
+
+修改对应xxx_level=xxx，比如cdo框架需要9.0以上版本，修改对应cdo_level=9.0，保存退出 
+
+运行命令 git commit -am "update version_check" && git push
+
+运行命令jc build scm-deploy(各个编译服务器编译命令更新)
+

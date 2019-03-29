@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>分支创建指南</title>
-<!-- 2018-02-09 五 18:09 -->
+<!-- 2019-03-28 四 14:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -98,10 +98,6 @@ The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
 General Public License (GNU GPL) as published by the Free Software
 Foundation, either version 3 of the License, or (at your option)
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
 any later version.  The code is distributed WITHOUT ANY WARRANTY;
 without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
@@ -155,15 +151,20 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-1-3">1.3. 关闭分支</a></li>
-<li><a href="#sec-1-4">1.4. 项目查询</a></li>
-<li><a href="#sec-1-5">1.5. 新建主干项目</a>
+<li><a href="#sec-1-4">1.4. 分支权限添加</a>
 <ul>
-<li><a href="#sec-1-5-1">1.5.1. 从已有分支获取代码创建主干新项目</a></li>
-<li><a href="#sec-1-5-2">1.5.2. 创建主干空项目</a></li>
+<li><a href="#sec-1-4-1">1.4.1. 必要参数</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-6">1.6. 新建基线</a></li>
-<li><a href="#sec-1-7">1.7. 服务启动</a></li>
+<li><a href="#sec-1-5">1.5. 项目查询</a></li>
+<li><a href="#sec-1-6">1.6. 新建主干项目</a>
+<ul>
+<li><a href="#sec-1-6-1">1.6.1. 从已有分支获取代码创建主干新项目</a></li>
+<li><a href="#sec-1-6-2">1.6.2. 创建主干空项目</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-7">1.7. 新建基线</a></li>
+<li><a href="#sec-1-8">1.8. 服务启动</a></li>
 </ul>
 </li>
 </ul>
@@ -303,16 +304,53 @@ svn账户名
 
 <p>
 <b>分支名称</b>:
-只输入分支名称如 <b>20171206-终端数据扩容</b> (一次性关闭此分支下的所有项目)
+分支名称全路径，如 
 </p>
+<pre class="example">
+https://192.168.0.220/svn/tech/Branch/20190327-大额借款反欺诈调整/Develop/外部业务/P2P/Business/BorrowBusiness2
+</pre>
 </div>
 </li></ol>
 </div>
 
+
 <div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 项目查询</h3>
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 分支权限添加</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><ol class="org-ol"><li><a id="sec-1-4-0-1" name="sec-1-4-0-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-4-0-1">
+</div><div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 必要参数</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+<b>分支类型选择</b>-&gt;分支权限添加
+</p>
+
+<p>
+<b>项目主干路径</b>:
+ 随意输入,但是不允许为空
+</p>
+
+<p>
+<b>分支名称</b>
+分支名称全路径，如 
+</p>
+<pre class="example">
+https://192.168.0.220/svn/tech/Branch/20190327-大额借款反欺诈调整/Develop/外部业务/P2P/Business/BorrowBusiness2
+</pre>
+
+
+<p>
+<b>权限人员</b>:
+svn账户名（多人空格隔开）
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 项目查询</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><ol class="org-ol"><li><a id="sec-1-5-0-1" name="sec-1-5-0-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-5-0-1">
 <p>
 <b>分支类型选择</b>-&gt;项目查询
 </p>
@@ -322,6 +360,10 @@ svn账户名
 输入你想要查询的svn项目路径，主干路径和分支路径不限，如下图
 </p>
 <pre class="example">
+https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/Business  或者 https://192.168.0.220/svn/tech/Branch/20171207-修改金财动力报表/Develop/外部业务/P2P/Business/FDPReport
+</pre>
+
+<p>
 <b>分支名称</b>:
 随意输入,但是不允许为空
 </p>
@@ -330,13 +372,13 @@ svn账户名
 </div>
 
 
-<div id="outline-container-sec-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 新建主干项目</h3>
-<div class="outline-text-3" id="text-1-5">
-</div><div id="outline-container-sec-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 从已有分支获取代码创建主干新项目</h4>
-<div class="outline-text-4" id="text-1-5-1">
-</div><ol class="org-ol"><li><a id="sec-1-5-1-1" name="sec-1-5-1-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-5-1-1">
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 新建主干项目</h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-sec-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> 从已有分支获取代码创建主干新项目</h4>
+<div class="outline-text-4" id="text-1-6-1">
+</div><ol class="org-ol"><li><a id="sec-1-6-1-1" name="sec-1-6-1-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-6-1-1">
 <p>
 <b>分支类型选择</b>-&gt;新增主干
 </p>
@@ -359,10 +401,10 @@ https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/xxx
 </li></ol>
 </div>
 
-<div id="outline-container-sec-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> 创建主干空项目</h4>
-<div class="outline-text-4" id="text-1-5-2">
-</div><ol class="org-ol"><li><a id="sec-1-5-2-1" name="sec-1-5-2-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-5-2-1">
+<div id="outline-container-sec-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> 创建主干空项目</h4>
+<div class="outline-text-4" id="text-1-6-2">
+</div><ol class="org-ol"><li><a id="sec-1-6-2-1" name="sec-1-6-2-1"></a>必要参数<br  /><div class="outline-text-5" id="text-1-6-2-1">
 <p>
 <b>分支类型选择</b>-&gt;新建主干
 </p>
@@ -381,7 +423,7 @@ https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/xxx
 </div>
 </li>
 
-<li><a id="sec-1-5-2-2" name="sec-1-5-2-2"></a>此功能注意事项<br  /><div class="outline-text-5" id="text-1-5-2-2">
+<li><a id="sec-1-6-2-2" name="sec-1-6-2-2"></a>此功能注意事项<br  /><div class="outline-text-5" id="text-1-6-2-2">
 <p>
 主干新项目不存在需要创建新分支的，先进行此项操作，然后再进行新分支创建
 </p>
@@ -390,13 +432,13 @@ https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/xxx
 </div>
 </div>
 
-<div id="outline-container-sec-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 新建基线</h3>
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 新建基线</h3>
 </div>
 
-<div id="outline-container-sec-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 服务启动</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> 服务启动</h3>
+<div class="outline-text-3" id="text-1-8">
 <p>
 登录192.168.0.231服务器&#x2013;&gt;切换到qishanqing账号&#x2013;&gt; cd ~/myscript/builder/ &#x2013;&gt; 执行如下语句
 <b>nohup rails s -b 192.168.0.231 -p 3000 &gt; ~/myscript/builder/log/development.log 2&gt;&amp;1 &amp;</b>  
@@ -406,8 +448,8 @@ https://192.168.0.220/svn/tech/Trunk/外部业务/P2P/xxx
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2018-02-09 五 18:09</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2019-03-28 四 14:40</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
