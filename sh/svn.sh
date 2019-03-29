@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 set +x
 export LANG=zh_CN.UTF-8
