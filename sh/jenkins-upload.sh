@@ -238,8 +238,8 @@ function dbcp_version_check() {
 function upload_version () {
     rm -rf upload
     #    find -maxdepth 2 -name '*.jar' -print -o -maxdepth 3 -name '*.jar' -print >& /dev/null  && echo 请让对应开发人员修改pom配置编译为war格式,不支持jar格式上传 && exit 1
-    find -maxdepth 3 -name *.war -print | while read filename
-    do	
+    filename=$(find -maxdepth 3 -name *.war -print)
+    if [ -f "$filename" ];then	
 	mkdir -p upload
 	cp -rf $filename upload/
 	filename=${filename##*/}
@@ -256,7 +256,11 @@ function upload_version () {
 		zip -r $file.zip $file/*
 		mv $file.zip /mnt/svn/ && echo "上传成功"
 	    )
-    done
+    else
+	echo
+	echo
+	echo 请让对应开发人员修改pom配置编译为war包格式,不支持jar包格式上传 && exit 1
+    fi
 }
 
 upload_version
