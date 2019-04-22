@@ -1,10 +1,12 @@
-xh#!/bin/bash
+#!/bin/bash
 set +x 
 
 . ~/myscript/product-config/svn/h5
 
 author=`$SVNLOOK author $REPOS -t $TXN`
 changed=`$SVNLOOK changed $REPOS -t $TXN`
+files=`$SVNLOOK changed $REPOS -t $TXN | awk '{print $2}'`
+failed=`$SVNLOOK changed $REPOS -t $TXN | awk '{print $3}'`
 del=`$SVNLOOK changed $REPOS -t $TXN | grep "^D"`
 form=`$SVNLOOK log -t "$TXN" "$REPOS" | grep \'`
 
@@ -93,6 +95,26 @@ function Tag_delete() {
     fi >>~/tmp/logs/svn_pro_commit.log
 }
 
+function file_form_check() {
+    if ! [ -z "$failed" ];then
+	echo -e "\nfiles cann't include special character'!" 1>&2
+	exit 1
+    fi
+    
+    for f in "$files";do
+	if [[ "$f" =~  ")" ]];then
+	    echo -e "\nfiles cann't include special character'!" 1>&2
+	    exit 1
+	elif [[ "$f" =~  "!" ]];then
+	    echo -e "\nfiles cann't include special character'!" 1>&2
+	    exit 1
+	elif [[ "$f" =~  " " ]];then
+	    echo -e "\nfiles cann't include special character'!" 1>&2
+	    exit 1
+	fi
+    done
+}
+
 function admin_group() {
     if [[ "${admin[@]}" =~ "$author" ]];then
 	exit 0
@@ -105,5 +127,6 @@ h5_access
 mallStage_access
 android_access
 ios_access
+file_form_check
 #Tag_delete
 #DFLib_access
