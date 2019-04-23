@@ -326,7 +326,7 @@ function createtag1() {
 	head=`svn log -l 1 $branch | grep ^r | awk -F '|' '{print$1}'`
 	head=${head#r*}
 	if [[ $branch =~ Branch ]] && [[ ! $branch =~ % ]];then
-	    svn log -l 1 $branch  >~/tmp/merged/output.$$ 2>&1 || die2 "$branch-----分支名输入错误或者分支已关闭,如分支确定能用,请注意分支首尾不能有空格回车之类的,用鼠标确定具体格式"
+	    svn log -l 1 "$branch"  >~/tmp/merged/output.$$ 2>&1 || die2 "$branch-----分支名输入错误或者分支已关闭,如分支确定能用,请确保svn---url转义后输入(主要失败原因没有转义)"
 	    tag_name=`echo $branch | perl -npe 's,Branch,Tag,g'`
 	    tag_name=$tag_name/${TIME_DIR}_${version:-$head}
 	    st=`cmdb_mysql "SELECT tag_name FROM svn WHERE version='$head' and branch_name='$branch';"`

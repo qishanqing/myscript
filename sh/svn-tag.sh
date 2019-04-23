@@ -73,6 +73,7 @@ export SMARTCM_EXTRA_MAIL="$extra_mails $email"
 export LANG=zh_CN.UTF-8
 
 branch=$(echo $branch | perl -npe 's,\r, ,g')
+branch=$(printf $(echo -n $branch | sed 's/\\/\\\\/g;s/\(%\)\([0-9a-fA-F][0-9a-fA-F]\)/\\x\2/g')"\n")
 
 if test $types = tag;then
     createtag1
