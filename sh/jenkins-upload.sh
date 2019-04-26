@@ -258,8 +258,8 @@ function upload_version () {
 	    )
     else
 	echo
-	echo
 	echo 请让对应开发人员修改pom配置编译为war包格式,不支持jar包格式上传 && exit 1
+	echo
     fi
 }
 
