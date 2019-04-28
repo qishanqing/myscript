@@ -16,13 +16,11 @@ function Uploads() {
 function Rails() {
     local affirm=`netstat -anutpl  | grep 3000`
     if test -z "$affirm";then
-	(
-	    su - qishanqing || true
+	    su - qishanqing <<EOF
+	    source /opt/servers/run.sh
 	    cd /home/qishanqing/myscript/builder
-	    nohup rails s -p 3000 >> /home/qishanqing/myscript/builder/log/development.log 2>&1 &
-	)
-
-    fi
+	    nohup rails s -b 192.168.0.231 -p 3000 >> /home/qishanqing/myscript/builder/log/development.log 2>&1 &
+EOF
 }
 
 export -f FtpServer_start

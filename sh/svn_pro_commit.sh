@@ -96,7 +96,6 @@ function Tag_delete() {
 }
 
 function file_form_check() {
-    
     for f in "$files";do
 	if ! [ -z "$failed" ] && ! [ -z "$del" ];then
 	    return 0
