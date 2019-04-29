@@ -3,7 +3,7 @@
 source /home/qishanqing/myscript/sh/cmdb
 source /home/qishanqing/myscript/sh/svn.sh
 
-set +
+set +x
 
 export BUILD_ID=dontkillme
 
@@ -237,6 +237,12 @@ function dbcp_version_check() {
 
 function upload_version () {
     rm -rf upload
+
+    if [ -z "$branch" ];then
+	branch=`cmdb_mysql "SELECT branch_name  FROM track WHERE job_name='$jb' order by id desc limit 1;"`
+	branch=`echo $branch | awk -F ' ' '{print $2}'`
+    fi
+    
     #    find -maxdepth 2 -name '*.jar' -print -o -maxdepth 3 -name '*.jar' -print >& /dev/null  && echo 请让对应开发人员修改pom配置编译为war格式,不支持jar格式上传 && exit 1
     filename=$(find -maxdepth 3 -name *.war -print)
     if [ -f "$filename" ];then	
