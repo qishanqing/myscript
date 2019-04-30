@@ -35,3 +35,23 @@ vim sh/jenkins-upload.sh
 
 运行命令jc build scm-deploy(各个编译服务器编译命令更新)
 
+*** 编译及合并各接口服务启动
+登录192.168.0.231 
+
+su - qishanqing账户 
+
+**** jenkins服务启动
+cd /home/qishanqing/myscript/jenkins 
+
+java -jar jenkins.war --httpPort=8080&
+
+**** prm调用jenkins失败服务启动
+cd myscript/builder  
+
+nohup rails s -b 192.168.0.231 -p 3000 >> /home/qishanqing/myscript/builder/log/development.log 2>&1 &
+
+source /opt/servers/run.sh
+
+
+
+
