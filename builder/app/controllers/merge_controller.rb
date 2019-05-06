@@ -13,15 +13,16 @@ class MergeController < ApplicationController
   def index
   end
   def new
-	  task = params[:task]
-	  rev = params[:rev]
-	  types = params[:types]
-	  extra_mails = params[:extra_mails]
-	  branch = params[:branch]
-	  trunk = params[:trunk]
-	  
+	  @task = params[:task]
+	  @rev = params[:rev]
+	  @types = params[:types]
+	  @extra_mails = params[:extra_mails]
+	  @branch = params[:branch]
+	  @trunk = params[:trunk]
+	  @owner = current_user.email
+          
 	  result = nil
-	  if branch.blank? then
+	  if @branch.blank? then
 		  @error = "相对主干路径、分支名不能为空"
 	  else
 		  result = true
@@ -31,12 +32,13 @@ class MergeController < ApplicationController
 		  render 'index'
 	  else
 		  system  "svn_merged", \
-			  "-k", task, \
-			  "-R", rev, \
-			  "-t", trunk, \
-			  "-E", extra_mails, \
-			  "-b", branch, \
-			  "-T", types
+			  "-k", @task, \
+			  "-o", @owner, \
+			  "-R", @rev, \
+			  "-t", @trunk, \
+			  "-E", @extra_mails, \
+			  "-b", @branch, \
+			  "-T", @types
 	 end
   end
 end

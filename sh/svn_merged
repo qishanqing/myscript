@@ -134,6 +134,8 @@ function svn_conflict_files(){
 	cfilenames=`svn st | grep ^C | awk '{print $2}'`
 	if [ -z "$cfilenames" ];then
 	    return 0
+	elif ! [ "$owner" == qishanqing@dafy.com ];then
+	    exit
 	else
 	    for cfilename in $cfilenames;do
 		if [[ "$cfilename" =~ "@" ]];then
