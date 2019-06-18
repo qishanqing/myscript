@@ -269,7 +269,7 @@ get-job-info() {
 	fi
 
 	if [ ! "$project_type" = GIT ];then
-            svn list "$del" >&/dev/null || die "分支不存在或者已关闭"
+            svn list "$del" >&/dev/null || die "$add项目录入分支$del: 分支不存在或者已关闭"
 	fi
 	
 	jc get-job $add >~/tmp/jenkins/template.xml.$$ #|| mails_cm -i "$add------不存在此jenkins项目,马上为你新建,请确保输入正确的分支参数,job项目名称为连续的,不包含非法字符串,否则创建失败,如非必要请尽量使用已存在的项目部署"

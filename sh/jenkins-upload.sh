@@ -52,78 +52,6 @@ function replace_files () {
     fi
 }
 
-function cdo_framework_check() {
-    cdo_path="upload/$file/WEB-INF/lib"
-    cdo_name=$(basename $(find -name cdoframework*.jar))
-    cdo_name1=${cdo_name%.*}
-    cdo_version=${cdo_name1#*-}
-    cdo_level=8.5.6.1
-    local st=$([[ "$cdo_version" > "$cdo_level" ]] && echo d || echo x)
-
-    if [ -f $cdo_path/$cdo_name ];then
-	if [ "$cdo_version" == "$cdo_level" ];then
-	    return 0
-	elif [ "$st" == d ];then
-	    return 0
-	elif [ "$st" == x ];then
-	    echo
-	    echo 
-	    echo  "cdo框架jar包版本小于: $cdo_level,请更新"
-	    echo
-	    echo
-	    exit 1
-	else
-	    echo "cdo框架版本正确"
-	fi
-	pool_version_check && dbcp_version_check
-    fi
-}
-
-function mysql_version_check() {
-    mysql_path="upload/$file/WEB-INF/lib"
-    mysql_name=$(basename $(find -name mysql-connector-java*.jar))
-    mysql_name1=${mysql_name%.*}
-    mysql_version=${mysql_name1##*-}
-    mysql_level=5.1.47
-    local st=$([[ "$mysql_version" > "$mysql_level" ]] && echo d || echo x)
-
-    if [ -f $mysql_path/$mysql_name ];then
-	if [ "$mysql_version" == "$mysql_level" ];then
-	    return 0
-	elif [ "$st" == d ];then
-	    return 0
-	elif [ "$st" == x ];then
-	    echo
-	    echo 
-	    echo  "mysql的jar包版本小于: $mysql_level,请更新"
-	    echo
-	    echo
-	    exit 1
-	else
-	    echo "mysql的jar包版本正确"
-	fi
-    fi
-}
-
-function fastjson_version_check() {
-    fastjson_path="upload/$file/WEB-INF/lib"
-    fastjson_name=$(basename $(find -name fastjson-*.jar))
-    fastjson_name1=${fastjson_name%.*}
-    fastjson_version=${fastjson_name1##*-}
-    fastjson_level=1.2.31
-    local st=$([[ "$fastjson_version" > "$fastjson_level" ]] && echo d || echo x)
-    if [ -f $fastjson_path/$fastjson_name ];then
-	if [ "$st" == x ];then
-            echo
-            echo
-            echo  "fastjson的jar包版本小于等于: $fastjson_level,请升级高于$fastjson_level的版本"
-            echo
-            echo
-            exit 1
-	fi
-    fi
-}
-
 function dfs_version_check() {
 
     #    for y in $(cat /home/qishanqing/myscript/product-config/dafy_dfs_project);do
@@ -155,8 +83,6 @@ function dfs_version_check() {
 		echo
 		echo
 		exit 1
-	    else
-		echo
 	    fi
 	else
 	    echo
@@ -256,7 +182,7 @@ function upload_version () {
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	
-	dfs_version_check && cdo_framework_check && mysql_version_check && fastjson_version_check && replace_files && createtag &&
+	dfs_version_check && Base_Temp 1 && Base_Temp 4 && Base_Temp 2 && replace_files && createtag &&
 	    (
 		cd upload
 		zip -r $file.zip $file/*
@@ -266,6 +192,41 @@ function upload_version () {
 	echo
 	echo 请让对应开发人员修改pom配置编译为war包格式,不支持jar包格式上传 && exit 1
 	echo
+    fi
+}
+
+function Base_Temp () {
+    target_name=$(cmdb_mysql "SELECT target_name FROM target_version_check WHERE id ='$1';")
+    target_name=$(echo $target_name | awk -F ' ' '{print $2}')
+
+    target_level=$(cmdb_mysql "SELECT target_level FROM target_version_check WHERE id ='$1';")
+    target_level=$(echo $target_level | awk -F ' ' '{print $2}')
+    
+    target_path=$(cmdb_mysql "SELECT target_path FROM target_version_check WHERE id ='$1';")
+    target_path=$(echo $target_path | awk -F ' ' '{print $2}')
+    
+    jar_path="upload/$file/WEB-INF/lib"
+    jar_name=$(basename $(find -name $target_name))
+    jar_name1=${jar_name%.*}
+    jar_version=${jar_name1##*-}
+    jar_level=${target_level}
+    local st=$([[ "$jar_version" > "$jar_level" ]] && echo d || echo x)
+    
+    if [ -f ${target_path:-$jar_path}/$jar_name ];then
+	if [ "$jar_version" == "$jar_level" ];then
+	    return 0
+	elif [ "$st" == d ];then
+	    return 0
+	elif [ "$st" == x ];then
+	    echo
+	    echo 
+	    echo  "$jar_name的版本小于: $jar_level,请更新升级"
+	    echo
+	    echo
+	    exit 1
+	fi
+    else
+	ret=$target_level
     fi
 }
 
