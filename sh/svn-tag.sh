@@ -13,12 +13,12 @@ locked
 die2() {
     (
 	echo "$@"
-	if test -e ~/tmp/logs/output.$$;then
+	if test -e ~/tmp/merged/output.$$;then
 	    echo
-	    cat ~/tmp/logs/output.$$
+	    cat ~/tmp/merged/output.$$
 	fi
     ) | mails_cm -i "svn create failed"
-    rm -rf ~/tmp/logs/output.$$
+    rm -rf ~/tmp/merged/output.$$
     echo >~/tmp/logs/branchs.log
     kill $$
     exit -1
