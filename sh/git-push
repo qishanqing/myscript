@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+if ! [ -d .git ];then
+	exit
+fi
+
+if ! [[ $(git status -s | wc -l) == 0 ]];then
+	git add . &&  git commit -m "rsync date"
+	git push -f svn master:master
+fi
+ 
