@@ -100,15 +100,15 @@ function file_form_check() {
 	if ! [ -z "$failed" ] && ! [ -z "$del" ];then
 	    return 0
 	elif ! [ -z "$failed" ];then 
-	    echo -e "\nfiles cann't include special character'!" 1>&2
+	    echo -e "\nfiles---$f--- cann't include special character'!" 1>&2
 	    exit 1
 	fi
 	
 	if [[ "$f" =~  ")" ]];then
-	    echo -e "\nfiles cann't include special character'!" 1>&2
+	    echo -e "\nfiles---$f---- cann't include special character'!" 1>&2
 	    exit 1
 	elif [[ "$f" =~  "!" ]];then
-	    echo -e "\nfiles cann't include special character'!" 1>&2
+	    echo -e "\nfiles---$f--- cann't include special character'!" 1>&2
 	    exit 1
 	fi
     done
