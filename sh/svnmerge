@@ -113,7 +113,7 @@ function Exit_Status_Code () {
 	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','','${rev:-0}','请基于主干base新建分支重新修改提交上线','6')";
     elif [ "$1" == 7 ];then
 	echo -e "主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致！！ \n 冲突文件如下： \n \n $pt" #| mails_cm -i "svn release-merged faild------code merged from  ${tag3:-${branch#*tech/}}" || true
-	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','此分支未合并文件如下:\n$cc\n主干提交log如下:\n$pt','${rev:-0}','主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致','7')";
+	cmdb_mysql "insert into auto_merge(branch_name,date,owner,message,task_id,remarks,status) values ('${tag1:-$branch}',now(),'${extra_mails}','此分支未合并文件如下:\n${cc[@]}\n主干提交log如下:\n$pt','${rev:-0}','主干代码有更新，请及时核对主干代码，确保上线分支与主干代码一致','7')";
     else
 	echo
     fi
@@ -355,10 +355,11 @@ function reverse_merge () {
 		fi
 	    done
 
-	    if [ ! "${#cc[@]}" -eq 0 ];then
-		Exit_Status_Code 7
-	    fi	
 	fi
+
+	if [ ! "${#cc[@]}" -eq 0 ];then
+	    Exit_Status_Code 7
+	fi	
     fi
 }
 
