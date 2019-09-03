@@ -6,7 +6,7 @@ if ! [ -d .git ];then
 	exit
 fi
 
-remote=$(git remote -v | grep github.com*push | awk '{print $1}')
+remote=$(git remote -v | grep github.com.*push | awk '{print $1}')
 branch=$(git branch  |  awk '{print $2}')
 message="rsync data"
 
