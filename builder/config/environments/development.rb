@@ -25,8 +25,8 @@ Rails.application.configure do
     :address => "smtp.exmail.qq.com",
     :port => '587',
     :authentication => "login",
-    :user_name => "qishanqing@srdafy.com",
-    :password => "Qinghairen_372233",
+    :user_name => "qishanqing@rongyizuo.com",
+    :password => "Qsq372233",
     :enable_starttls_auto => true
   }
   

@@ -15,12 +15,12 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   
   validates :name,  presence: true, length: { maximum: 50 }
-  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@srdaf[\w]+.com/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@rongyi[\w]+.com/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false },
-                    inclusion: { in: ['hanyunfeng@srdafy.com','qishanqing@srdafy.com','yujigang@srdafy.com','wangyang02@srdafy.com','liuzijie@srdafy.com','liusen@srdafy.com','yangguang@srdafy.com','weishaolong@srdafy.com','pankun@srdafy.com','xiaojian@srdafy.com','zhangjunjie@srdafy.com','jinshaofei@srdafy.com','jinagzhenhui@srdafy.com','yanghaizhu@srdafy.com','lihaihan@srdafy.com','liuxuxing@srdafy.com','xizhixing@srdafy.com','songxinyu@srdafy.com','tangchuanjin@srdafy.com','lideyao@srdafy.com','leiwanda@srdafy.com','heweiming@srdafy.com','yanhai@srdafy.com','muxiaoyu@srdafy.com','guojinlong@srdafy.com','wangrongjiu@srdafy.com','chenhongan@srdafy.com','niutieliang@dafypower.com','qiyongliang@srdafy.com','zhangjiawen@srdafy.com','renshibo@srdafy.com','chenxiguang@srdafy.com','wangkai@srdafy.com','ganhuaicheng@srdafy.com','yanglin@srdafy.com'], message:'你没有权限注册'}
+                    inclusion: { in: ['hanyunfeng@rongyizuo.com','qishanqing@rongyizuo.com','yujigang@rongyizuo.com','wangyang02@rongyizuo.com','liuzijie@rongyizuo.com','liusen@rongyizuo.com','yangguang@rongyizuo.com','weishaolong@rongyizuo.com','pankun@rongyizuo.com','xiaojian@rongyizuo.com','zhangjunjie@rongyizuo.com','jinshaofei@rongyizuo.com','jinagzhenhui@rongyizuo.com','yanghaizhu@rongyizuo.com','lihaihan@rongyizuo.com','liuxuxing@rongyizuo.com','xizhixing@rongyizuo.com','songxinyu@rongyizuo.com','tangchuanjin@rongyizuo.com','lideyao@rongyizuo.com','leiwanda@rongyizuo.com','heweiming@rongyizuo.com','yanhai@rongyizuo.com','muxiaoyu@rongyizuo.com','guojinlong@rongyizuo.com','wangrongjiu@rongyizuo.com','chenhongan@rongyizuo.com','niutieliang@dafypower.com','qiyongliang@rongyizuo.com','zhangjiawen@rongyizuo.com','renshibo@rongyizuo.com','chenxiguang@rongyizuo.com','wangkai@rongyizuo.com','ganhuaicheng@rongyizuo.com','yanglin@rongyizuo.com'], message:'你没有权限注册'}
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
