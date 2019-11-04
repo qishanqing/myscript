@@ -182,7 +182,7 @@ function upload_version () {
 	fi
 	file=dev-$file
 	unzip -oq upload/$filename -d upload/$file	
-	dfs_version_check && Base_Temp 1 && Base_Temp 4 && Base_Temp 2 && replace_files && createtag &&
+	Base_Temp 7 && Base_Temp 1 && Base_Temp 4 && Base_Temp 2 && replace_files && createtag &&
 	    (
 		cd upload
 		zip -r $file.zip $file/*
