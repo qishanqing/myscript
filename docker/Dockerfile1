@@ -1,0 +1,15 @@
+## 设置继承自ubuntu官方镜像
+FROM ericvh/arm64-ubuntu-dev
+
+MAINTAINER qsq
+
+ENV DEBIAN_FRONTEND noninteractive
+#RUN sudo rm -rf /var/lib/apt/lists/*
+#RUN sudo apt-get update
+
+COPY /etc/apt/sources.list /etc/apt/sources.list
+
+RUN sudo apt-get install -y vim make cmake
+
+    
+

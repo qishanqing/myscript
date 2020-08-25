@@ -230,7 +230,9 @@ function createbaselines() {
 }
 
 function webhook () {
-    curl -v 'https://oapi.dingtalk.com/robot/send?access_token=a745251c1548d4cb2defe83206e69cc2c799d09cfb60a87b3d599abded335194' \
+    token ="https://oapi.dingtalk.com/robot/send?access_token=ed711cb1fd03dd84f8161510592ff63dda7af771e5968898b6647d895ddd21c2"
+    sign = "SEC844187e419434e230d7e916f8a9a43fa187cfc8c3af5035a021aba07ae334384"
+    curl -v "https://oapi.dingtalk.com/robot/send?access_token=ed711cb1fd03dd84f8161510592ff63dda7af771e5968898b6647d895ddd21c2" \
 	 -H 'Content-Type: application/json' \
 	 -d '
      	 {"msgtype": "markdown",
