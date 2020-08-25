@@ -1,13 +1,11 @@
 #!/bin/bash
 set -e
 
-basehome=`echo ~`
-source ${basehome}/myscript/sh/mails_cm
 gitlab_backup_path=/backup/gitlab/backups
 ret=0
 
 gitlab-backup () {
-    which gitlab-rake && gitlab-rake gitlab:backup:create 2>& ${basehome}/tmp/logs/$(now.)-gitlab-backup.log
+    which gitlab-rake && gitlab-rake gitlab:backup:create >& ~/tmp/logs/$(now.)-gitlab-backup.log
     if ! [ $? == "$ret" ];then
 	echo "backup fails" | mails_cm -i "gitlab_code_backup"
     else
@@ -24,7 +22,11 @@ clean-old-version () {
 	
     num=$(ls -lrt $gitlab_backup_path | awk '{print $9}' | wc -l )
     if [ "$num" -gt 3 ];then
-	ls -lrt $gitlab_backup_path | awk '{print $9}' | head -n 2 | xargs rm -f
+	(
+	    cd $gitlab_backup_path
+	    ls -lrt | awk '{print $9}' | head -n 2 | xargs rm -f    
+	)
+	
     fi
 }
 
