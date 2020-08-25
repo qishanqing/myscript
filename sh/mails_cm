@@ -11,9 +11,9 @@ set from=qishanqing@srdafy.com smtp=smtp.qiye.163.com smtp-auth-user=qishanqing@
 ##############
 !
 set -e
-
+export MAILRC=/etc/mail.rc
 export LANG=zh_CN.UTF-8
-cm_emails=qishanqing@rongyizuo.com
+cm_emails=qishanqing@indemind.cn
 
 if test "$SMARTCM_EXTRA_MAIL"; then
     cm_emails="$cm_emails $SMARTCM_EXTRA_MAIL"
@@ -40,6 +40,6 @@ if test "$input" = true; then
     cat
 else
     echo
-fi | /bin/mailx -S from=scm@srdafy.com  -S smtp=localhost:25 -s "$*" $cm_emails ||  true
+fi | /usr/bin/mailx  -s "$*" $cm_emails ||  true
 
 
