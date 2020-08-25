@@ -38,7 +38,6 @@ ee
 新建分支:test
 mail
 ) | mails_cm  "svnadminBuilder request from 18310287801@163.com"
-!
 echo pid is $$
 die() {
     (
@@ -54,3 +53,5 @@ die() {
 (
     svn copy ${Trunk_name} ${branch_name} --parents --username builder --password ant@ -m "新建项目开发分支"  >output.$$ 2>&1
 ) || die "no reason to failed"
+
+!
