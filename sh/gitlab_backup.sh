@@ -5,7 +5,7 @@ gitlab_backup_path=/backup/gitlab/backups
 ret=0
 
 gitlab-backup () {
-    which gitlab-rake && gitlab-rake gitlab:backup:create >& ~/tmp/logs/$(now.)-gitlab-backup.log
+    which gitlab-rake && gitlab-rake gitlab:backup:create >& ~/tmp/logs/$(date +%Y-%m-%d-%H:%M)-gitlab-backup.log
     if ! [ $? == "$ret" ];then
 	echo "backup fails" | mails_cm -i "gitlab_code_backup"
     else
