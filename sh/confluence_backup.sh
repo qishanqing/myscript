@@ -1,17 +1,17 @@
 #!/bin/bash
 
-confluence-backup () {
+source /etc/profile
+
+confluence_backup () {
     docker cp  confluence:/var/atlassian/confluence/backups /backup/confluence/
 }
 
-
-confluence-upload () {
-    confluence-backup &&
+confluence_upload () {
+    confluence_backup &&
 	(
 	    cd /backup/confluence/
-	    scp -r  export  root@192.168.50.158:/backup/confluence
-	    echo "backup success" | mails_cm -i "confluence data backup"
-	) 
+	    scp -r  backups  root@192.168.50.158:/backup/confluence && echo "backup success" | mails_cm -i "confluence data backup"
+	)
 }
 
-confluence-upload
+confluence_upload

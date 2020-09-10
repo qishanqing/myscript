@@ -1,20 +1,21 @@
 #!/bin/bash
 set -e
+source /etc/profile
 
 gitlab_backup_path=/backup/gitlab/backups
 ret=0
 
-gitlab-backup () {
+gitlab_backup () {
     which gitlab-rake && gitlab-rake gitlab:backup:create >& ~/tmp/logs/$(date +%Y-%m-%d-%H:%M)-gitlab-backup.log
     if ! [ $? == "$ret" ];then
 	echo "backup fails" | mails_cm -i "gitlab_code_backup"
     else
 	echo "backup successful" | mails_cm -i "gitlab_code_backup"
-	clean-old-version
+	clean_old_version
     fi
 }
 
-clean-old-version () {
+clean_old_version () {
     if ! [ -d $gitlab_backup_path ];then
 	echo "backup path is not exist" | mails_cm -i "gitlab_backup_path"
 	return 0
@@ -30,4 +31,4 @@ clean-old-version () {
     fi
 }
 
-gitlab-backup
+gitlab_backup
