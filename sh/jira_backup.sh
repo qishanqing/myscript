@@ -15,7 +15,7 @@ jira_sys_upload () {
 }
 
 jira_data_backup () {
-    docker exec -it mysql mysqldump -ujira -pjira jira7 > /backup/jira/mysql/$(date +%Y-%m-%d-%H:%M).sql
+    docker exec -i mysql mysqldump -ujira -pjira jira7 > /backup/jira/mysql/$(date +%Y-%m-%d-%H:%M).sql
 }
 
 jira_data_upload() {
@@ -28,4 +28,4 @@ jira_data_upload() {
 }
 
 jira_sys_upload
-jira_data_backup
+jira_data_upload

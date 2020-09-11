@@ -27,3 +27,4 @@ confluence_data_upload () {
 }
 
 confluence_sys_upload
+confluence_data_upload
