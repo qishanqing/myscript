@@ -1,0 +1,98 @@
+#+TITLE: indemind-guide
+
+* 服务维护
+** 注意事项
+所有服务已设定开机自启动,如需重启请参考如下
+** gitlab代码服务器
+*** 基本信息
+服务器地址: 192.168.50.158    
+
+终端账户密码: indemind/indemind root/root@indemind
+ 
+gitlab服务账号密码: qishanqing/qsq372233
+*** gitlab服务
+启动命令: gitlab-ctl start
+** 主服务器(191)
+*** 基本信息
+服务器地址: 192.168.50.191
+
+账户: indemind
+
+密码: 372233
+*** jira服务
+启动命令: docker start jira7
+
+访问链接: http://192.168.50.191:8722
+
+培训文档: http://192.168.50.191:8090/x/NAAF
+
+管理员权限账号: qishanqing/qsq372233
+*** confluence服务
+启动命令: docker start confluence
+
+访问链接: http://192.168.50.191:8090
+
+培训文档: http://192.168.50.191:8090/x/AoAs
+*** ftp服务
+启动命令: docker start ftp
+
+服务挂载宿主机数据地址: /docker/ftp
+
+已创建账号密码: ftpuser/ftpuser@indemind  guest/guest
+
+挂载命令:sudo curlftpfs 192.168.50.191 /mnt/ftp/ -o user=ftpuser:ftpuser@indemind -o allow_other
+*** mysql服务
+**** jira服务连接
+docker mysql服务 (host=192.168.50.191)(port=8720) 数据库->jira7
+
+服务挂载宿主机数据地址: /docker/mysqletc/data
+
+账号密码: jira/jira
+**** confluence服务
+mysql本地服务端口 3306 数据库->confluence
+
+账号密码: root/123
+*** jenkins服务
+启动命令: systemctl start jenkins
+
+管理员权限账号密码: qishanqing/qsq372233
+
+** TX2服务器
+服务器地址: 192.168.50.101
+
+账号密码: nvidia/nvidia
+** 服务器备份策略
+*** jira备份
+**** 文件备份
+每天凌晨两点多随机
+
+备份路径:/backup/jira/export (gitlab服务器挂载盘)
+
+执行程序jenkins job: http://192.168.50.191:8080/view/scm/job/jira-backup/
+**** 数据库备份
+每天凌晨两点多随机
+
+备份路径:/backup/jira/mysql (gitlab服务器挂载盘)
+
+执行程序jenkins job: http://192.168.50.191:8080/view/scm/job/jira-backup/
+
+*** confluence备份
+**** 文件备份
+每周3凌晨两点多随机
+
+备份路径:/backup/confluence/backups (gitlab服务器挂载盘)
+
+执行程序jenkins job: http://192.168.50.191:8080/view/scm/job/confluence-backup/
+**** 数据库备份
+每周3凌晨两点多随机
+
+备份路径:/backup/confluence/mysql (gitlab服务器挂载盘)
+
+执行程序jenkins job: http://192.168.50.191:8080/view/scm/job/confluence-backup/
+*** gitlab备份
+每天凌晨一点,gitlab系统自带备份策略
+
+备份路径:/backup/gitlab/backups (gitlab服务器挂载盘)
+
+执行程序cron
+
