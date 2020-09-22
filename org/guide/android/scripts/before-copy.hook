@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+if test -z "$1"; then
+    die "must specify config"
+fi
+
+config=$1
+
+fastbootdir=../vendor/smartisanhw/fastboot-flash
+
+if test -d $fastbootdir; then
+    rm -f fastboot-flash
+    ln -s $fastbootdir
+fi
+
+

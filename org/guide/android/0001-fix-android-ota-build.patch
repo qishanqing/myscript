@@ -1,0 +1,36 @@
+From 894f657f15f09c97e55d8257a1418f07843c781e Mon Sep 17 00:00:00 2001
+From: Bao Haojun <baohaojun@smartisan.cn>
+Date: Tue, 26 May 2015 20:32:42 +0800
+Subject: [PATCH] fix android ota build
+
+Ticket: 0
+
+Change-Id: I339373062597935ac7b3c60967361049c8e3d6d3
+Signed-off-by: Bao Haojun <baohaojun@smartisan.cn>
+(cherry picked from commit 000abb181f4a7b5194337766a71e013ae384d593)
+(cherry picked from commit d7cfb8922ae8c8cdf2c14f280efa167bb399534b)
+(cherry picked from commit 604c419e5d3debed8e430dbea674a91b058d34ca)
+Signed-off-by: qishanqing <qishanqing@smartisan.com>
+---
+ common/scripts/Android.mk | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/common/scripts/Android.mk b/common/scripts/Android.mk
+index 60db145..94123a8 100755
+--- a/common/scripts/Android.mk
++++ b/common/scripts/Android.mk
+@@ -117,11 +117,11 @@ gensecimage_install: gensecimage_target
+ ifeq ($(USESECIMAGETOOL), true)
+ droidcore: gensecimage_target
+ otapackage: gensecimage_target
+ +target-files-package: gensecimage_target
+ else
+ droidcore: gensecimage_target gensecimage_install
+ otapackage: gensecimage_target gensecimage_install
++target-files-package: gensecimage_target gensecimage_install
+ endif
+ 
+ endif
+-- 
+2.10.1
+

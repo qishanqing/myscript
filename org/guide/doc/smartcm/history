@@ -1,0 +1,2028 @@
+cd /mnt/dailybuild/
+ll
+cd release
+ll
+cd MOL-icesky-rom_r01133.1_2.1-icesky_msm8992-user/
+ll
+cd ..
+ll
+cd MOL-icesky-rom_r01133.1_2.1-icesky_msm8992-user/
+ll
+cd /mnt/u
+cd /mnt/ubuild/
+l 
+cd ./U1/
+ls
+cd ./release-20151127/
+l 
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g/ ../test/
+cd ../test/
+l 
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g/
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g/ u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.boot?
+l 
+ls
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.boot\?/ u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.booted
+ls
+cd ./u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.booted/
+l 
+ls
+cat change.log 
+cat change.log |less
+cd ../..
+l 
+cd ./release-20151127/
+l 
+mv smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g/ ../test/
+cd ../test/
+l 
+mv smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g/ smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g.failed
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.booted/ u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.failed
+cd - 
+cd /mnt
+ll
+cd ubuild
+ll
+cd U1
+ll
+cd test
+ll
+mv smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g.failed/ ../release-20151127/
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.failed/ ../release-20151127
+ll
+cd ../..
+ll
+cd U2
+cd ..
+cd U1
+ll
+cd release-20151127/
+ll
+mv smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g.failed/ smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.failed/ u1-l-rom-msm8916_32-userdebug-20151127-032328-16g
+ll
+mv smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g/ smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g.failed
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g/ u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.failed
+ll
+mv smandroid%8939-r102119.1-msm8916_32-userdebug-20151127-035409-16g.failed/ ../test/
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-032328-16g.failed/ ../test/
+ll
+cd ..
+ll
+cd test
+ll
+cd .
+cd 
+cd wo
+ls
+cd ./u1-5.1-L-rom/
+l 
+cd .repo/released-manifests/2015-10-25/
+l 
+cd ..
+ls
+ls *u1*
+find . -name '*u1-l*'
+cd - 
+cd out/..
+repo-released-manifest-diff ./2015-11-26/manifest-u1-l-rom-msm8916_32-userdebug.xml.2015-11-26-03:29:09 .repo/manifest.xml.sync > .repo/x-change.log
+repo-released-manifest-diff .repo/released-manifests/2015-11-26/manifest-u1-l-rom-msm8916_32-userdebug.xml.2015-11-26-03:29:09 .repo/manifest.xml.sync > .repo/x-change.log
+cat .repo/x-change.log 
+cat .repo/x-change.log |less
+up /home/smartcm/jenkins/workspace/u1-5.1-L-rom/.repo/x-change.log
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e repo-released-manifest-diff
+repo-released-manifest-diff .repo/released-manifests/2015-11-26/manifest-u1-l-rom-msm8916_32-userdebug.xml.2015-11-26-03:29:09 .repo/manifest.xml.sync > .repo/x-change.log
+cat .repo/x-change.log 
+du .repo/x-change.log 
+cd ..
+cd ~
+ll
+cd jenkins/
+ll
+cd wokr
+cd workspace/
+ll
+ls
+cd ./kernel/
+ls
+cd ./arch/arm/configs/
+git log
+git log .
+git log --name-status . 
+e msm8916_defconfig 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd - 
+cd ..
+android-make msm-kernel -j 8 && android-make bootimage-nodeps showcommands
+ls
+cd ./vendor/qcom/proprietary/
+l 
+repo sync -d . 
+repo sync -d . -c
+git log .
+git log -p -2
+git revert HEAD^^..HEAD
+git log
+cd out
+cd ./target/product/msm8916_32/
+l 
+cp boot.img ~/tmp
+l boot.img 
+cd - 
+cd ..
+cd ./kernel/
+git reset --hard 
+cd ..
+repo sync -d -c -j4
+cd - 
+cd prop
+git revert HEAD^^..HEAD
+cd - 
+cd ..
+smartcm -x do-cm-build -c msm8916_32-userdebug -b -r
+cd tm
+cd out/
+l 
+cd ./*$(today--)
+l 
+cd ./u1-l-rom-msm8916_32-userdebug-20151127-032328-32g/
+up /home/smartcm/tmp/out/release-20151127/u1-l-rom-msm8916_32-userdebug-20151127-032328-32g
+ls
+cd ..
+cd prop
+git st 
+git reset --hard 
+git st 
+git push $(repo-remote) HEAD:$(repo-branch)
+git log cdd3ca5..c3a7ed8
+cd /mnt/IceSkyBuild/icesky_MOL/mol2.1_icesky-rom-r011331/release-20151127/
+ll
+ls
+rm -rf P5-1133-MOL-icesky-rom_r01133.1_2.1-icesky_msm8992-userdebug-20151127-113340-32g/
+cd /mnt/ubuild/
+l 
+cd ./test/
+l 
+mkdir u1
+mv u1/ U1
+mv release-20151127/ ./U1
+cd ./U1/release-20151127/u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/
+l 
+relative-link $PWD /mnt/ubuild/U1/release-20151127/
+cd /mnt/ubuild/U1/release-20151127/
+l 
+ls
+rm u1-l-rom-msm8916_32-userdebug-20151127-130149-32g
+cd ven pro
+git st 
+git log
+cd /mnt/ubuild/test/U1/release-20151127/
+l 
+cd u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/
+l 
+cat oem-change.log 
+cat change.log 
+cd wor
+cd ./u1-5.1-L-rom/
+l 
+df
+df -h
+ls
+repo-released-manifest-diff .repo/released-manifests/2015-11-27/manifest-u1-l-rom-msm8916_32-userdebug.xml.2015-11-27-03:43:03 .repo/manifest.xml.sync > .repo/x-change.log
+cat .repo/x-change.log
+cd system/
+cd 
+cd system-config/
+git st 
+git reset --hard 
+cd - 
+cd rom 
+repo-released-manifest-diff .repo/released-manifests/2015-11-27/manifest-u1-l-rom-msm8916_32-userdebug.xml.2015-11-27-03:43:03 .repo/manifest.xml.sync > .repo/x-change.log
+cat .repo/x-change.log 
+cat .repo/x-change.log |less
+cd /mnt/ubuild/
+l 
+relative-link ./test/U1/release-20151127/u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ test/release-20151127
+rm test/release-20151127 
+mkdir test/release-20151127
+relative-link ./test/U1/release-20151127/u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ test/release-20151127/
+ls
+cd ./test/U1/release-20151127/u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/
+l 
+relative-link $PWD /mnt/ubuild/U1/release-20151127/
+cd /mnt/ubuild/U1/release-20151127/
+l 
+cd 
+ls
+cd /mnt/ubuild
+ll
+cd U1
+ll
+cd release-201511
+cd release-20151127
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-130149-32g u1-l-rom-msm8916_32-userdebug-20151127-130149-16g
+ll
+su - zhangshuang
+ls
+rm -rf  P5-1133-sa-MOL-icesky-rom_r01133.1_2.1-icesky_msm8992-user-20151127-132815-32g/
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd u1-5.1-L-rom/
+ll
+cd flashing-files/
+ll
+ll -a
+cd .scripts/
+ll
+vim do-radio-copy 
+cd hw
+cd ..
+vim ~/.bashrc
+vim ~/system-config/.bashrc
+cd /mnt/IceSkyBuild/test/
+cp usebuild/release-20151127/ userbuild/
+cp -rf  usebuild/release-20151127/ userbuild/
+rm -rf usebuild/
+cd userbuild/release-20151127/
+ll
+rm -rf P5-1133-lcd-test%icesky-factory-20151126-icesky_msm8992-userdebug-20151127-152707-32g/
+ll
+cd ..
+ll
+cd smandroid-8976-simt/
+ll
+cd flashing-files/
+ll
+ll -a
+vim .after-copy-hook.sh 
+cd ..
+l 
+cd ./u1-5.1-L-rom/
+repo-switch -p
+cd ../u1-l-rom-build/
+repo-switch -p
+ls
+l 
+cd ..
+rm u1-l-rom-build/ -rf&
+cd ./u1-5.1-L-rom/
+l 
+ls
+git st 
+ls
+l 
+repo sync -j4 -d 
+repo sync -j4 -d -c
+android-make 
+cd /mnt/ubuild
+ll
+cd U1
+ll
+cd release-20151126
+ll
+tar czvf u1-l-rom-msm8916_32-userdebug-20151126-030538-16g.tgz ./u1-l-rom-msm8916_32-userdebug-20151126-030538-16g/
+l
+scp u1-l-rom-msm8916_32-userdebug-20151126-030538-16g.tgz zhangshuang@172.16.3.47:/home/zhangshuang
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151126-030538-16g.tgz 
+ll
+cd ..
+ll
+cd release-20151129/
+ll
+cd ..
+ll
+cd ..
+cd U2
+ll
+cd release-20151129
+ll
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151129-033905/
+ll
+cd ..
+ll
+cd release-20151128
+ll
+df
+cd 
+df -h
+ls
+cd src
+l 
+cd ./u2/
+l 
+cd out/
+du
+du -h
+cd ..
+cat <<'End'|putclip
+-c msm8952_64-userdebug 
+End
+
+smartcm -x do-cm-build -r -c msm8952_64-userdebug 
+cd ~/tmp/out/
+l 
+cd ./release-20151130/
+l 
+cd ./smandroid%8976-501-00300-dev-msm8952_64-userdebug-20151126-121306-32g/
+l 
+l build.prop 
+cd - 
+cd src
+cd ./u2/
+l 
+cat ./flashing-files/
+l 
+cd ./flashing-files/
+l 
+cat .after-copy-hook.sh 
+lftp ftp://swupload:St2015bak@172.16.21.224/
+ls
+e ./.after-copy-hook.sh 
+ls
+e ./.after-copy-hook.sh 
+ls
+git st 
+git clean -xfd
+git commit -m 'add check for build type.
+
+if manual build, do not upload to simt ftp'
+git commit -m 'add check for build type.
+
+if manual build, do not upload to simt ftp' -a
+git st 
+git log
+gerrit-push-review -R zhangshuang
+cd ..
+ll
+cd release-20151130/
+ll
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151130-030215/
+ll
+cd ../..
+ll
+cd release-20151128
+ll
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151128-050739-32g/
+ll
+rm -rf simt%8976-501-00300-dev-msm8952_64-userdebug-20151128-050739-32g.tgz 
+l
+ll > file.file
+l
+vim file.file 
+rm -rf file.file 
+ll
+ll | grep *.img > file
+vim file
+ll
+rm -rf file
+ll | grep .img > file
+vim file
+scp file zhangshuang@172.16.3.47:/home/zhangshuang
+ll
+rm -rf file 
+ll
+ls > file
+vim file
+scp file zhangshuang@172.16.3.47:/home/zhangshuang
+ll
+rm -rf file
+ll
+cd ..
+ll
+cd ..
+ll
+cd /mnt/ubuild/
+ll
+cd U1
+ll
+cd release-20151128/
+ll
+cd u1-l-rom-msm8916_32-userdebug-20151128-030333-16g/
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151128-030333-16g.tgz 
+cd ..
+ll
+cd smandroid%8939-r102119.1-msm8916_32-userdebug-20151128-033450-16g/
+ll
+su - zhangshuang
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd u1-5.1-L-rom
+ll
+cd out
+ll
+cd target/
+ll
+cd product/
+ll
+cd ../..
+cd ..
+ll
+cd ..
+ll
+cd smandroid-8976-simt/
+ll
+cd oem-release/common/build/bin
+ll
+cd oem-release/
+ll
+cd common/build/
+ll
+cd ..
+repo sync 
+repo-switch -p
+repo-switch 
+ls
+cd - 
+l 
+cd - 
+cd .repo/manifests
+l 
+cd ./smandroid/
+l 
+git st 
+cd ../simt/smandroid/
+l 
+git log .
+l 
+cd ..
+e ./8976-501-00300-dev.patch 
+cd ..
+git log smandroid/8976-501-00300-dev.xml
+git diff 3c3a4a79baa9c4941c684f5184efafc3e8de63ca smandroid/8976-501-00300-dev.xml
+git log smandroid/8976-501-00300-dev.xml
+cd ./simt/
+git log 8976-501-00300-dev.xml
+git log -p 35d10ea1cac3f327a630e6aa1b6ee416e84c2d6b -1
+git log -p 35d10ea1cac3f327a630e6aa1b6ee416e84c2d6b -3
+git st 
+git log -p 35d10ea1cac3f327a630e6aa1b6ee416e84c2d6b -3
+git st 
+git log -p 35d10ea1cac3f327a630e6aa1b6ee416e84c2d6b -3
+git diff c1002aea8bc6f42d2f33616f9bca0ec46db01d15 c1002aea8bc6f42d2f33616f9bca0ec46db01d15^ ./8976-501-00300-dev.
+git diff c1002aea8bc6f42d2f33616f9bca0ec46db01d15 c1002aea8bc6f42d2f33616f9bca0ec46db01d15^ ./8976-501-00300-dev.xml
+git diff c1002aea8bc6f42d2f33616f9bca0ec46db01d15 c1002aea8bc6f42d2f33616f9bca0ec46db01d15^ ./8976-501-00300-dev.xml > ./8976-501-00300-dev.patch
+git st 
+git diff
+git co  c1002aea8bc6f42d2f33616f9bca0ec46db01d15 ./8976-501-00300-dev.xml
+git st 
+git apply 8976-501-00300-dev.patch
+git st 
+git diff HEAD
+git add . 
+git st 
+git diff HEAD
+git commit -m 'update the patches for u1 simt manifest'
+git st 
+gerrit-push-review -R 
+gerrit-push-review -R </dev/null
+gerrit-do-review
+git st 
+cd ../..
+ll
+cd u1-5.1-L-rom/
+ll
+cd out
+ll
+cd target/product/
+ll
+ls
+cat /etc/fstab
+getclip
+cd 
+cd wor
+l 
+cd ./smandroid-8976-simt/
+l 
+cat ./flashing-files/.after-copy-hook.sh 
+lftp 'ftp://ver-test:7l2tC9Lx@ftp.smartwireless.cn/'
+lftp
+ls
+cd /mnt/ubuild/U2/release-$(today--)
+l 
+cd ./simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.12125.tmp/
+l 
+l *.tgz
+mv *.tgz ..
+cd ..
+l 
+mv simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.12125.tmp/ 
+mv simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.12125.tmp/ simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g
+cd - 
+cd wo sim
+l 
+cat ./flashing-files/.after-copy-hook.sh 
+dir=/501/release-$(today--)
+cd - 
+name=$PWD/$(echo *.tgz)
+ls -l $name
+cd - 
+lftp -c "connect ftp://ver-test:7l2tC9Lx@ftp.smartwireless.cn/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;"; fi) put '${name}'" 
+ls
+cd ./flashing-files/
+repo-branch 
+dir=/501/release-$(today--)
+lftp ftp://ver-test:7l2tC9Lx@ftp.smartwireless.cn/
+lftp
+l $name
+jobs
+cd /mnt/ubuild/U1/
+mkdir booterror
+mv release-20151201/u1-l-rom-msm8916_32-userdebug-20151201-100201-16g/ booterror/
+cd 
+cd /mnt/ubuild/U1/booterror/
+l 
+cd ./u1-l-rom-msm8916_32-userdebug-20151201-100201-16g/
+l 
+find -type f |xargs md5sum |sort -k 2 > ~/tmp/2.txt
+diff ~/tmp/2.txt ~/tmp/1.txt
+md5sum sec.dat 
+cd ../
+cd ..
+cd ./release-$(today-- -2)
+l 
+cd ./smandroid%8939-r102119.1-msm8916_32-userdebug-20151129-042051/
+cd ../
+cd ..
+ls */*/sec.dat
+md5sum */*/sec.dat
+md5sum */*/sec.dat|pn 1
+md5sum */*/sec.dat|pn 1|sort -u
+cd /mnt/ubuild/
+ll
+cd U2
+ll
+cd release-201512
+cd release-20151201/
+ll
+man lftp
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g/
+ll
+cd ..
+ll
+cd ~/jenkins/workspace/
+l
+cd u1-5.1-L-rom/
+ll
+cd flashing-files/
+ll
+vim .after-copy-hook.sh 
+cd /mnt/ubuild/
+ll
+cd U2
+ll
+cd release-20151201/
+ll
+dir=/501/release-20151201
+name=simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;"; fi) put '../${name}'.tgz"
+df -h
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;"; fi) put '${name}'.tgz"
+l 
+relative-link ./../test/U1-booterror/release-20151201/smandroid%8939-r102119.1-msm8916_32-userdebug-20151201-133614-32g/ ./release-$(today--)/
+cd /
+l 
+cd - 
+cd ./release-$(today--)
+l 
+ls
+mv ./smandroid%8939-r102119.1-msm8916_32-userdebug-20151201-094454-16g/ ../booterror/
+l 
+cd ../..
+l 
+cd /mnt/ubuild/
+ll
+cd U2
+ll
+cd release-20151201/
+ll
+rm -rf simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g
+df -h
+cd ~
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd smandroid-8976-simt/
+ll
+cd flashing-files/
+ll
+cd ..
+ll
+cd oem-release/
+ll
+cd common/build/
+ll
+cd bin
+ll
+cd asic
+ll
+cd sparse_images/
+ll
+cd ../..
+ll
+cd ..
+ll
+cd -
+cd ../../..
+cd ../..
+ll
+cd u1-5.1-L-rom/
+ll
+cd oem-release/
+ll
+cd common/build/
+ll
+cd ../..
+ll
+cd ..
+ll
+cd flashing-files/
+ll
+ll -a
+cd ..
+ll
+cd oem-release/
+ll
+cd common/build
+ll
+cd bin
+ll
+cd asics
+cd asic_8939/
+ll
+cd ..
+ll
+python update_common_info.py 
+ll
+cd bin/asic_8939/
+ll
+cd ~
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd smandroid-8976-simt/
+ll
+cd oem-release/
+ll
+cd common/build/bin/asic/
+ll
+cd ../../..
+cd ..
+ll
+cd LINUX/
+ll
+cd android/
+ll
+cd ../../../.repo/out-msm8916_32_cmcc-userdebug/
+ll
+cd target/
+ll
+cd product/
+ll
+cd msm8916_32_cmcc/
+ll
+cd ../../..
+cd ../
+cd ..
+ll
+cd oem-release/
+ll
+cd common/build
+ll
+ls
+cd ./U1/
+l 
+cd ~/jenkins/workspace/u1-5.1-L-rom/
+ll
+smartcm do-cm-build -x msm8916_32_cmcc-userdebug -r -R /tmp/
+bash ~/system-config/src/github/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug -r -R /tmp/
+bash ~/system-config/src/github/smartcm/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug -r -R /tmp/
+bash ~/system-config/src/github/smartcm/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug -r -R /tmp > log
+vim log 
+git log 
+cd flashing-files/
+git log 
+git revert b8d969142ac0e105524b40eb9cb2099802f358cc
+git status 
+python update_common_info.py 
+ll
+cd bin
+ll
+cd asic_8939/
+l
+cd ../..
+ll
+cd ..
+ll
+cd flashing-files/
+ll
+cd ..
+ll
+cd out
+ll
+cd target/
+ll
+cd common
+ll
+cd ..
+cd product/
+ll
+cd msm8916_32_cmcc/
+ll
+ll -h
+cd ../../../..
+ll
+cd flashing-files/
+ll
+rm -rf boot.img 
+ln -s ../out/target/product/msm8916_32_cmcc/boot.img
+ll
+rm -rf emmc_appsboot.mbn 
+ln -s ../out/target/product/msm8916_32_cmcc/emmc_appsboot.mbn
+rm -rf 
+ll
+ln -s ../out/target/product/msm8916_32_cmcc/persist.img
+rm -rf persist.img 
+ln -s ../out/target/product/msm8916_32_cmcc/persist.img
+rm -rf recovery.img 
+ln -s ../out/target/product/msm8916_32_cmcc/recovery.img
+ll
+cd ..
+ll
+cd oem-release/
+ll
+cd common/build
+ll
+python update_common_info.py 
+ll
+cd bin
+ll
+cd asic_8939/
+ll
+cd ../..
+ll
+diff partition_cmcc.xml partition.xml
+;q
+ll
+vim update_common_01.log 
+ll
+rm -rf update_common_01.log 
+rm -rf update_common_02.log 
+ll
+ls
+cd 
+cd wo
+l
+cd ./u1-5.1-L-rom/
+l 
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug -r
+cd ./flashing-files/
+l 
+l boot.img 
+cd ../out/target/product/
+l 
+cd - 
+ls
+l 
+cd ../oem-release/
+l 
+cd ./LINUX/android/out
+l 
+cd ..
+l 
+cd ./device/
+l 
+cd qcom/target_product/
+l 
+pcd .
+cd - 
+cd ./radio
+l 
+pcd . 
+l 
+cd - 
+cd Linu
+cd ..
+l 
+git st 
+find . -name '*.xml'
+git st 
+git st |grep partition
+cd ./common/build/bin/
+l 
+cd ..
+l 
+md5sum partition*.xml
+cd - 
+cd ../..
+cd ..
+e "/home/smartcm/jenkins/workspace/u1-5.1-L-rom/oem-release/common/tools/meta/meta_lib.py":1524
+cd ..
+smartcm -x do-cm-build -r -c msm8952_64-userdebug 
+smartcm -x do-cm-build -r -c msm8952_64-userdebug 
+l 
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug 
+ls
+cd ./flashing-files/
+l 
+cd ..
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug 
+e startcm
+e $(which startcm)
+e $(which smartcm)
+l 
+cd ../../..
+cd ..
+ll
+cd u2-8976-rom/
+ll
+cd .repo
+ll
+cd manifests
+ll
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug  -r
+vim u2-8976-501-00300-dev-rom.xml 
+cd ./oem-release/
+l 
+git st 
+git reset --hard 
+git st 
+git clean -xfd
+cd smandroid/
+ll
+e "/home/smartcm/jenkins/workspace/u1-5.1-L-rom/oem-release/common/tools/meta/meta_lib.py":1524
+git st 
+git add . 
+git commit -m 'xx'
+cd ..
+vim 8976-501-00300-dev.xml 
+cd ..
+cd simt
+ll
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug  -r
+vim 8976-501-00300-dev.xml 
+ll
+cd ./oem-release/common/
+git log
+cd ./build/
+l 
+git diff par*.xml
+git st 
+l partition*.xml
+git pull
+md5sum par*.xml
+cd ../..
+diff partition.xml partition_cmcc.xml 
+cd manifests
+ll
+git clean -xdf
+git status
+:q
+cd - 
+git checkout ./
+git status
+git pull
+cd simt
+ll
+cd ..
+abc-x grep wcnss.mbn
+vim 8976-501-00300-dev.xml 
+cd ..
+ll
+find . -name 'wcnss.mbn'
+cd ../flashing-files/
+vim u2-8976-501-00300-dev-rom.xml 
+l 
+git st 
+git diff
+cd - 
+cd ..
+cd ./oem-release/LINUX/android/out
+l 
+cd ./target/product/
+l 
+ln -s msm8916_32_cmcc/ msm8916_32
+cd - 
+cd ..
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug  -r
+git status
+git log 
+ll
+git pull
+git status
+vim u2-8976-501-00300-dev-rom.xml 
+cd ../..
+cd ./flashing-files/
+git st 
+l 
+git reset --hard 
+git st 
+git clean -xfd
+l 
+touch .link-qcom-product.sh
+e .link-qcom-product.sh 
+l 
+cd ..
+. build/envsetup.sh 
+echo $TARGET_PRODUCT 
+lunch
+echo $TARGET_PRODUCT 
+bash
+cd u1 fla
+git st 
+git add . 
+git commit -m 'add link script for product' -a
+git commit -m 'add link script for product' -a
+git commit --author='Bao Haojun <baohaojun@smartisan.com>' --amend 
+git log
+gerrit-push-review -R zhangshuang
+cd ..
+l 
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug  -r
+cd - 
+cd ../oem-release/
+git st 
+cd ../out/target/product/
+l 
+rm msm8916_32 -f
+cd -
+cd ..
+~/system-config/bin/smartcm -x do-cm-build -c msm8916_32_cmcc-userdebug  -r
+ls
+cd ../u2-8976-rom/
+l 
+cd ../
+l 
+cd ./smandroid-8976-
+cd ./smandroid-8976
+l 
+ls
+cd ./flashing-files/
+l 
+cat .after-copy-hook.sh 
+cd ../../smandroid-8976-simt/
+l 
+cd ./flashing-files/
+l 
+cat .after-copy-hook.sh 
+cd ../
+cd ..
+l 
+cat */flash*/.after*
+cat */flash*/.after*|less
+cd ..
+ll
+cd smandroid-8976-simt/
+ll
+cd flashing-files/
+ll
+ll -a
+cd ..
+l
+cd flashing-files/
+ll
+ll -a
+vim .after-copy-hook.sh 
+cd ..
+ll
+cd .repo
+ll
+cd ..
+cd flashing-files/
+ll
+git pull
+git pull smartisan simt/8976-501-00300-dev
+ll
+ll -a
+vim .after-copy-hook.sh 
+cd ..
+cd /mnt/ubuild
+ll
+cd U2
+ll
+cd release-20151
+cd release-20151202/
+ll
+mv simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.10446.tmp/ simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g
+ll
+bash -x ~/system-config/bin/smartcm -x do-cm-build -c msm8952_64-userdebug -r -R /mnt/ubuild/U2
+choosecombo 
+make -j8
+ll
+cd out
+ll
+cd target/
+ll
+cd product/msm8952_64/
+ll
+cd ./..
+cd ../..
+cd target/product/
+ll
+cd msm8952_64/
+ll
+scd ../../
+cd ../..
+ll
+cd ../..
+ll
+cd workspace/
+ll
+cd u1-test-UserRoot/
+ll
+cd build
+ll
+git status
+cd ../..
+ll
+df -h
+ll
+cd smandroid-8976-simt/
+ll
+cd flashing-files/
+ll
+ll -a
+vim .after-copy-hook.sh
+bash .after-copy-hook.sh /mnt/ubuild/U2/release-20151127/simt%8976-501-00300-dev-msm8952_64-userdebug-20151127-151735-32g
+ll
+ll -a
+vim .after-copy-hook.sh 
+cp .after-copy-hook.sh .after-copy-hook.sh.bak
+vim .after-copy-hook.sh 
+./.after-copy-hook.sh 
+vim .after-copy-hook.sh 
+ll
+cd /mnt/ubuild/
+ll
+cd U2
+ll
+cd release-20151127
+ll
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151127-151735-32g/
+ll
+lftp ver-test:7l2tC9Lx@ftp.smartwireless.cn
+cd ../..
+ll
+cd release-20151127
+ll
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151127-151735-32g/
+ll
+rm -rf simt%8976-501-00300-dev-msm8952_64-userdebug-20151127-151735-32g.tgz 
+ll
+cd ../..
+ll
+cd ..
+cd U1
+ll
+cd release-20151127/
+ll
+tar czvf u1-l-rom-msm8916_32-userdebug-20151127-130149-16g.tgz u1-l-rom-msm8916_32-userdebug-20151127-130149-16g
+ll
+ll -h
+rm -rf u1-l-rom-msm8916_32-userdebug-20151127-130149-16g
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151127-130149-16g.tgz 
+ll
+ln -s ../../test/U1/release-20151127/u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ u1-l-rom-msm8916_32-userdebug-20151127-130149-16g.tgz
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151127-130149-16g.tgz
+ll
+ln -s ../../test/U1/release-20151127/u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ u1-l-rom-msm8916_32-userdebug-20151127-130149-16g
+ll
+cd ../..
+cd test
+ll
+cd U1
+ll
+cd release-20151127/
+ll
+tar czvf u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ u1-l-rom-msm8916_32-userdebug-20151127-130149-16g.tgz
+tar czvf u1-l-rom-msm8916_32-userdebug-20151127-130149-16g.tgz ./u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/
+ll
+ll -h
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151127-130149-
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151127-130149-16g.tgz 
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ ../../../U2/release-20151127
+cd ../..
+cd ..
+ll
+cd U1
+ll
+cd release-20151127
+ll
+cd ../..
+ll
+cd U2
+ll
+cd release-2015112
+ll
+cd ~
+ll
+cd /mnt/ubuild/
+ll
+cd U2
+ll
+cd release-20151127
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ /mnt/ubuild/U1/release-20151127
+ll
+cd ../..
+cd U1
+ll
+cd release-20151127
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151127-130149-16g 
+ll
+mv u1-l-rom-msm8916_32-userdebug-20151127-130149-32g/ u1-l-rom-msm8916_32-userdebug-20151127-130149-16g
+ll
+cd ../
+cd ..
+ll
+cd test
+ll
+cd U1
+ll
+cd release-20151127/
+ll
+cd ../..
+cd ..
+ll
+cd u1
+ll
+cd U1
+ll
+cd release-201511
+cd test
+ll
+cd release-20151126
+ll
+cd ../..
+ll
+cd release-201511
+cd release-20151127
+ll
+cd ../..
+cd U2
+ll
+cd release-20151127
+ll
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151127-151735-32g/
+ll
+ll -a
+cd ~/
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd smandroid-8976-simt/
+ll
+cd flashing-files/
+ll
+vim .after-copy-hook.sh
+git status
+:q
+cd ..
+ll
+cd flashing-files/
+ll
+git status
+rm -rf .after-copy-hook.sh.bak 
+git status
+git checkout -- .after-copy-hook.sh
+git status
+cd ..
+cd ../..
+ll
+cd workspace/
+ll
+cd ..
+ll
+cd workspace/
+ll
+cd test
+ll
+cd ..
+ll
+cd /mnt/ubuild
+ll
+cd U1
+ll
+cd release-201511
+cd release-20151130
+ll
+cd u1
+cd release-20151130/
+ll
+cd u1-l-rom-msm8916_32-userdebug-20151130-115058-16g/
+ll
+rm -rf u1-l-rom-msm8916_32-userdebug-20151130-115058-16g.tgz 
+cd ..
+ll
+cd ..
+ll
+cd ..
+ll
+cd U1
+ll
+cd test
+ll
+cd ..
+ll
+cd test
+ll
+cd U1
+ll
+cd release-20151127/
+ll
+cd ..
+ll
+cd release-20151127/
+ll
+cd ../U1/release-20151127/
+ll
+cd ..
+cd ../..
+ll
+cd U1
+ll
+cd release-20151127
+ll
+cp u1-l-rom-msm8916_32-userdebug-20151127-130149-16g/ ../../test/U1/release-20151127/
+cp -r  u1-l-rom-msm8916_32-userdebug-20151127-130149-16g/ ../../test/U1/release-20151127/
+ll
+cd ../..
+ll
+cd test
+ll
+cd U1
+ll
+cd release-20151127/
+ll
+rename 's/32g/16g/' *
+
+rename 's/16g/32g/' *
+ll
+cd ..
+ll
+cd ..
+ll
+cd release-20151127/
+ll
+cd ../..
+cd ~
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd test
+l
+cd ..
+ll
+cd u1-5.1-L-rom/
+ll
+cd out
+ll
+cd target/product/
+ll
+cd msm8916_32_cmcc/
+ll
+cd ../..
+ll
+cd oem-release/
+ll
+cd common/build/
+ll
+diff partition_cmcc.xml partition.xml 
+:q
+ll
+cd ../..
+ll
+cd ..
+ll
+cd flashing-files/
+ll
+cd ../out/target/product/msm8916_32_cmcc/
+ll
+cd ..
+cd ../../..
+cd flashing-files/
+ll
+cd ../out/target/product/
+ll
+cd ../../..
+cd flashing-files/
+ll
+cd ../oem-release/common/build/bin/asic_8939/
+ll
+cd ../..
+ll
+cd ../..
+ll
+cd ..
+ll
+cd flashing-files/
+ll
+cd ..
+ll
+cd out/
+ll
+cd target/
+ll
+cd product/
+ll
+cd ../..
+cd ..
+ll
+cd flashing-files/
+ll
+repo sync -dj4
+ll
+cd ..
+ll
+cd flashing-files/
+ll
+git branch -a
+git checkout u1-l-rom
+ll
+git branch
+git pull
+ll
+cd ..
+smartcm do-cm-build -r
+git branch 
+cd flashing-files/
+ll
+cd msm8916_32
+ll
+cd ..
+ll
+cd msm8916_32_cmcc/
+ll
+cd ../..
+ll
+cd device
+ll
+cd qcom/
+ll
+cd msm8916_32_cmcc
+ll
+cd product/
+ll
+cd ..
+ll
+cd ..
+ll
+cd msm8916_32
+ll
+cd ../..
+cd qcom/
+ll
+cd msm8916_32_cmcc/
+ll
+cd ../../..
+ll
+cd flashing-files/
+ll
+git pull
+ll
+git rebase
+ll
+git pull smartisan u1-l-rom
+ll
+git rebase
+ll
+rm -rf full_flash/
+ll
+git rebase
+git pull smartisan u1-l-rom
+git rebase
+git status
+ll -a
+ll
+git clean -xdf 
+ll
+git pull smartisan u1-l-rom
+git rebase
+git checkout ./
+git status
+git log 
+git reset --hard 15c07f8f157c6e7870db3b6ac687be881e125b36
+ll
+git pull
+ll
+cd ../device/qcom/msm8916_32
+ll
+cd ..
+ll
+cd msm8916_32_cmcc
+ll
+cd ../../..
+ll
+cd flashing-files/
+ll
+cd ../device/qcom/msm8916_32_cmcc
+ll
+cd ..
+ll
+cd ../..
+ll
+cd flashing-files/
+ll
+cd ..
+ll
+cd ..
+ll
+cd smandroid-8976-simt
+ll
+cd flashing-files/
+ll
+cd ..
+ll
+grep-errors out/build.log
+ll
+my-rfa 'git log --name-status --since=1.days'
+'pengfei.guo'<pengfei.guo@sim.com>
+su - zhangshuang
+su - zhangshuang
+su - zhangshuang
+su - zhangshuang
+cd jenkins
+ll
+cd workspace/
+ll
+cd smandroid-8976-simt/
+ll
+grep-errors out/build.log
+cd ..
+ll
+rm -rf release-20151202/
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd u1-5.1-L
+ll
+cd ..
+ll
+cd u1
+cd u1-5.1-L
+ll
+cd .repo
+ll
+cd ..
+ll
+cd out
+cd /mnt/ubuild
+ll
+cd test
+ll
+cd U1-booterror/
+ll
+mv release-20151202 ../../U1/
+ll
+cd release-20151202
+ll
+mv smandroid%8939-r102119.1-msm8916_32-userdebug-20151202-040225/ ../../../U1/release-20151202/
+ll
+cd ..
+ll
+cd ../..
+ll
+cd U1
+ll
+cd release-20151202/
+ll
+cd ../..
+ll
+cd test
+ll
+cd U1
+ll
+cd ..
+ll
+cd U1-booterror/
+ll
+rm -rf release-20151202/
+cd ..
+ll
+cd ~
+ll
+cd jenkins/
+ll
+cd wokr
+cd workspace/
+ll
+cd smandroid-8976-simt/
+ll
+abc-x sync-simt-repos u2 8976-501-00300-dev
+cd /mnt/ubuild/U2
+ll
+cd release-20151201/
+l
+tar zxvf simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.tgz 
+ll
+tar zxvf simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.tgz ./simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g
+mkdir simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g
+ll
+mv simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.tgz ./simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g
+ll
+cd simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g/
+ll
+tar zxvf simt%8976-501-00300-dev-msm8952_64-userdebug-20151201-091153-32g.tgz 
+ll
+cd ..
+ll
+rm -f *
+ll
+rm -rf full_flash/
+ll
+rm -rf sparse_images/
+ll
+cd ../..
+cd ~
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd smandroid-8976-simt/
+ll
+my-rfa 'git log --name-status --since=1.days'
+cd src
+cd u1
+l 
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd smandroid-8976-simt/
+ll
+repo forall -c 'git log --name-status --since=1.days'
+repo sync -cdj4
+repo forall -c 'git log --name-status --since=1.days'
+cd ../u1-5.1-L-rom/
+l 
+cd ./vendor/smartisanhw/
+l 
+cd ..
+ll
+cd smandroid-8976
+ls
+git st 
+ls
+cd ..
+cp ~/tmp/logs/1.txt . 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e . 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+ll
+cd u2-smandroid-simt/
+ll
+cd ..
+l
+cd smandroid-8976-simt/
+ll
+cd ..
+ll
+df -h
+ll
+rm -rf smandroid-8976-simt/
+ll
+cd /mnt/ubuild/
+ll
+cd U2
+ll
+cd release-20151202
+ll
+mv simt%8976-501-00300-dev-msm8952_64-userdebug-20151202-145757-32g.91674.tmp/ simt%8976-501-00300-dev-msm8952_64-userdebug-20151202-145757-32g
+ll
+cd -
+cd release-20151202
+ll
+cd jenkins/
+ll
+cd workspace/
+ll
+cd u2-smandroid-simt/
+ll
+cd flashing-files/
+ll
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";     fi) put '../${name}'.tgz"
+dir=/501/release-20151202
+name=simt%8976-501-00300-dev-msm8952_64-userdebug-20151202-145757-32g
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";     fi) put '../${name}'.tgz"
+vim .after-copy-hook.sh 
+ll
+cd /mnt/ubuild/
+ll
+cd u2
+cd U2/
+ll
+cd release-20151202
+ll
+dir=/501/release-20151202
+name=simt%8976-501-00300-dev-msm8952_64-userdebug-20151202-145757-32g
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";     fi) put '${name}'.tgz"
+lftp -c "connect ftp://rc.yuchunxiu:simcom123@116.228.116.114; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";fi) put '${name}'.tgz"
+ll
+cd jenkins/
+ll
+cd wokr
+cd workspace/
+ll
+cd u2-smandroid-simt/
+ll
+cd .repo
+ll
+cd ..
+ll
+cd flashing-files/
+ll
+mail
+netstat -anutpl
+vim .after-copy-hook.sh 
+git log 
+git remote
+git pull smartisan simt/8976-501-00300-dev
+git log 
+git pull smartisan simt/8976-501-00300-dev
+git log 
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";     fi) put '${name}'.tgz"
+cd ../..
+ll
+u1-5.1-L-rom/
+cd u1-5.1-L-rom/
+ll
+grep-errors out/build.log
+cd ..
+ll
+cd release-20151203/
+ll
+mv simt%8976-501-00300-dev-msm8952_64-userdebug-20151203-091606-32g.68150.tmp/ simt%8976-501-00300-dev-msm8952_64-userdebug-20151203-091606-32g
+ll
+cd ~/jenkins/workspace/u2-smandroid-simt/flashing-files/
+vim .after-copy-hook.sh 
+cd -
+ll
+lftp -c "connect ftp://rc.yuchunxiu:simcom123@116.228.116.114/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";     fi) put '../${name}'.tgz"
+dir=/501/release-20151203
+name=simt%8976-501-00300-dev-msm8952_64-userdebug-20151203-091606-32g
+cd /mnt/ubuild/
+ll
+cd U2
+ll
+cd release-20151203/
+ll
+dir=/501/release-20151203
+name=simt%8976-501-00300-dev-msm8952_64-userdebug-20151203-091606-32g
+ll
+cd jenkins/workspace/u2-smandroid-simt/
+ll
+cd flashing-files/
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";     fi) put '../${name}'.tgz"
+vim .after-copy-hook.sh 
+ll
+cd /mnt/ubuild/U2
+ll
+cd release-20151203/
+ll
+cd ..
+ll
+cd release-20151202
+ll
+rm -rf simt%8976-501-00300-dev-msm8952_64-userdebug-20151202-145757-32g.tgz 
+lftp -c "connect ftp://rc.yuchunxiu:simcom123@116.228.116.114/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";     fi) put '${name}'.tgz"
+lftp -c "connect ftp://customer:HL9cBEj5@59.46.116.34:8821/; set ssl:verify-certificate no; $(if test "$dir"; then echo "mkdir -p $dir || echo true; cd $dir;";fi) put '${name}'.tgz"
+cd ..
+ll
+cd u2-smandroid-simt/
+ll
+cd .repo
+ll
+cd ..
+ll
+repo sync -cdj4
+repo forall -c 'git log --name-status --since=3.days'
+ll
+cd .repo
+ll
+cd ..
+ls
+cd src
+cd u2/
+l 
+repo sync -j4 -d 
+repo-switch -p
+repo-switch 
+repo sync -j4 -d 
+cd - 
+#for x in $(my-rfa 'pwd'); do git merge 
+repo-switch -p
+repo-switch 
+for x in $(my-rfa 'pwd'); do (cd $x; if ! git log -1 $(repo-remote)/simt/8976-501-00300-dev; exit; fi; git merge $(repo-remote)/simt/8976-501-00300-dev || start-recursive-shell merge failed); done
+for x in $(my-rfa 'pwd'); do (cd $x; if ! git log -1 $(repo-remote)/simt/8976-501-00300-dev; then exit; fi; git merge $(repo-remote)/simt/8976-501-00300-dev || start-recursive-shell merge failed); done
+my-rfa 'git merge --abort'
+repo sync -j4 -d 
+git st 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd ~/src/u2/frameworks/base/core/res/res/values-zh-rCN/strings.xml
+ps.pl merge
+git-choose-branch 
+git log -p remotes/smartisan/simt/8976-501-00300-dev ~/src/u2/frameworks/base/core/res/res/values-zh-rCN/strings.xml
+re ew ;true;git st -s |grep -e '^UU\|^AA'|pn 2|xargs bash -c 'for x in "$@"; do ew $x; done' true 
+git st 
+git diff 
+git add . 
+git st 
+git commit
+git st 
+re ew ;true;git st -s |grep -e '^UU\|^AA'|pn 2|xargs bash -c 'for x in "$@"; do ew $x; done' true 
+git st 
+git add . 
+git st 
+re ew ;true;git st -s |grep -e '^UU\|^AA'|pn 2|xargs bash -c 'for x in "$@"; do ew $x; done' true 
+git st 
+git diff
+re ew ;true;git st -s |grep -e '^UU\|^AA'|pn 2|xargs bash -c 'for x in "$@"; do ew $x; done' true 
+git st 
+git add . 
+git st 
+git reset --hard 
+git st 
+re ew ;true;git st -s |grep -e '^UU\|^AA'|pn 2|xargs bash -c 'for x in "$@"; do ew $x; done' true 
+git st 
+git log -p remotes/smartisan/simt/8976-501-00300-dev
+git log
+git st 
+git log -p remotes/smartisan/simt/8976-501-00300-dev
+git st 
+for x in $(my-rfa 'pwd'); do (cd $x; if ! git log -1 $(repo-remote)/simt/8976-501-00300-dev >/dev/null; then exit; fi; git merge $(repo-remote)/simt/8976-501-00300-dev -m "merge from simt/8976-501-00300-dev" || start-recursive-shell merge failed); done
+git st 
+cd 
+ls
+apt-get dist-upgrade 
+cd src/u2/
+l 
+my-rfa 'pwd|grep Download'
+cd ./packages/providers/DownloadProvider/
+repo-branch 
+ap /home/smartcm/src/u2/packages/providers/DownloadProvider
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e .
+up /home/smartcm/src/u2/packages/providers/DownloadProvider
+ap /home/smartcm/src/u2/packages/providers/DownloadProvider
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+rcd
+l 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd u1
+cd src/u2/
+l 
+cd bionic/
+repo-project 
+repo-project |od -c 
+cd ..
+repo-switch 
+cd ../u1
+cd ..
+l 
+mkdir u1
+cd ./u1/
+cd u2
+repo-switch -p
+cd - 
+repo init -u smartisan:qualcomm/platform/manifest.git -b refs/heads/sanfrancisco -m u2-8976-501-00300-dev-rom.xml --repo-url smartisan:/googlesource/git-repo --reference ~/src/android-mirror
+repo-switch 
+repo sync -j4 -d -c
+repo-switch -p
+cd ../
+cd ./u2/
+repo-switch -p
+my-rfa 'if test ! -d ../u1/$(ap); then ap; fi'
+my-rfa 'if test ! -d ../u1/$(ap); then ap; fi'|wc -l
+my-rfa 'pwd'
+my-rfa 'pwd'|wc -l 
+my-rfa 'if test ! -d ~/src/u1/$(ap); then ap; fi'|wc -l
+my-rfa 'if test ! -d ~/src/u1/$(ap); then ap; fi'|tee ~/tmp/1.txt
+cat ~/tmp/1.txt 
+cat ~/tmp/1.txt |grep -v packages
+cat ~/tmp/1.txt |grep -v packages|tee ~/tmp/2.txt
+for x in $(cat ~/tmp/2.txt); do mkdir ../u1/$x -p ; done
+my-rfa 'if test ! -d ~/src/u1/$(ap); then ap; fi'|tee ~/tmp/1.txt
+cat ~/tmp/1.txt 
+cat ~/tmp/1.txt |wc -l 
+cat ~/tmp/1.txt |wc -l
+for x in $(cat ~/tmp/1.txt); do d=.repo/xx/$(dirname $x); mv $x $d; done
+for x in $(cat ~/tmp/1.txt); do d=.repo/xx/$(dirname $x); mkdir -p $d; mv $x $d; done
+my-rfa 'if test ! -d ~/src/u1/$(ap); then ap; fi'|tee ~/tmp/1.txt
+repo manifest 
+repo manifest |wc -l 
+repo manifest -r |wc -l 
+cd .repo/xx/
+l 
+cd ../..
+for x in $(cat ~/tmp/1.txt); do d=.repo/xx/$(dirname $x); mkdir -p $d; mv $d/$(basename $x) $x; done
+repo manifest -r 
+cd .repo/xx/
+l 
+find . -name '.git'
+cd ../..
+for x in $(cat ~/tmp/1.txt); do d=.repo/xx/$(dirname $x); mkdir -p $d; mv $d/$(basename $x) $x; done
+cat ~/tmp/1.txt
+rm ./.repo/xx/ -rf
+cat ~/tmp/2.txt 
+repo sync -d -c -j4
+cd ./packages/apps/Bluetooth/
+git st 
+cd ..
+rm Bluetooth/ -rf
+repo sync -d -c -j4
+my-rfa 'git merge --abort'
+cd ../..
+my-rfa 'git merge --abort'
+repo sync -d -c -j4
+my-rfa 'if test ! -d ~/src/u1/$(ap); then ap; fi'|tee ~/tmp/1.txt
+cat ~/tmp/1.txt 
+cat ~/tmp/1.txt |grep -v packages/
+my-rfa 'if test -d ~/src/u1/$(ap); then echo "<project path='$(ap)' name='$(repo-project)' />"; fi'|tee ~/tmp/2.txt
+my-rfa 'if test -d ~/src/u1/$(ap); then echo "<project path=\"$(ap)\" name=\"$(repo-project)\" />"; fi'|tee ~/tmp/2.txt
+cat ~/tmp/2.txt 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e ~/tmp/2.txt 
+repo-switch -e
+my-rfa 'if test -d ~/src/u1/$(ap); then echo "<project path=\"$(ap)\" remote=\"$(repo-remote)\" name=\"$(repo-project)\" />"; fi'|tee ~/tmp/2.txt
+grep smartisanos ~/tmp/2.txt
+repo manifest -r  > .repo/manifest.sync
+cat .repo/manifest.sync 
+cat ~/tmp/1.txt 
+#for x in $(cat ~/tmp/1.txt); do perl -ne "print unless m,path=\"$x\"" -i .repo/manifest.sync; done
+mkdir .repo/tmp
+cd .repo/tmp
+git init . 
+mv ../manifest.sync  .
+git add . 
+cd -
+#for x in $(cat ~/tmp/1.txt); do perl -ne "print unless m,path=\"$x\"" -i .repo/tmp/manifest.sync; done
+for x in $(cat ~/tmp/1.txt); do perl -ne "print unless m,path=\"$x\"" -i .repo/tmp/manifest.sync; done
+for x in $(cat ~/tmp/1.txt); do perl -ne 'print unless m,path="$x",' -i .repo/tmp/manifest.sync; done
+cd tm 
+git st 
+cd - 
+for x in $(cat ~/tmp/1.txt); do perl -ne 'print unless m,path="'$x'",' -i .repo/tmp/manifest.sync; done
+cd - 
+git st 
+git diff
+git diff|grep '^-'
+git diff|grep '^-'|wc -l 
+cat ~/tmp/1.txt 
+cat ~/tmp/1.txt |wc -l 
+cd - 
+for x in $(cat ~/tmp/1.txt); do perl -ne 'print unless m,(path|name)="'$x'",' -i .repo/tmp/manifest.sync; done
+cd - 
+git diff|grep '^-'|wc -l 
+git st 
+git diff
+git st 
+git add . 
+git st 
+e manifest.sync 
+cp ../manifest.xml ./manifest.sync 
+git st 
+git add . 
+cd ..
+for x in $(cat ~/tmp/1.txt); do perl -ne 'print unless m,(path|name)="'$x'",' -i .repo/tmp/manifest.sync; done
+cd - 
+cd tmp/
+git st 
+git diff|grep '^-'|wc -l 
+git st 
+git diff
+git diff 
+git add . 
+ls
+#mv manifest.sync  ../manifests/to-simt/
+l ../manifest.xml
+mkdir ../manifests/to-simt/
+mv manifest.sync  ../manifests/to-simt/u2-8976-501-00300-dev-rom.xml
+git st 
+cd st
+rcd
+git st 
+git add . 
+git commit -m 'add manifest for u2 rom sync to simt'
+git push
+    git push origin HEAD:sanfrancisco
+git pull --rebase
+    git push origin HEAD:sanfrancisco
+repo-switch 
+repo sync -j4 -d -c 
+#my-rfa 'git push gito2:android/$(repo-project) HEAD:u2-8976-501-00300-dev-rom >/dev/null 2>&1 || pwd'
+cd ../..
+my-rfa 'git push gito2:android/$(repo-project) HEAD:u2-8976-501-00300-dev-rom >/dev/null 2>&1 || ap' | tee ~/tmp/bad.txt
+cd ./external/libcxxabi/
+my-rfa 'git push gito2:android/$(repo-project) HEAD:u2-8976-501-00300-dev-rom '
+cd - 
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom >/dev/null 2>&1 || ap' | tee ~/tmp/bad.txt
+cd - 
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom '
+cd - 
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom || ap'
+my-rfa 'repo-project'
+repo-switch -e
+cd ./external/aac/
+repo-project 
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom || ap'
+my-rfa 'set -x; git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom || ap'
+repo-project 
+my-rfa 'repo-project'
+e repo-project
+my-rfa 'repo-project'
+cd - 
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom >/dev/null 2>&1 || ap' | tee ~/tmp/bad.txt
+cd ./vendor/sim/
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom '
+repo-project 
+cd oem-re
+repo-project 
+cd flash
+l 
+git st 
+repo-project 
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom '
+cd ../oem-release/
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom '
+cd sim
+my-rfa 'git push gito2:android/$(repo-project) HEAD:refs/heads/u2-8976-501-00300-dev-rom '
+repo-switch -p
+cd poli
+l 
+git log
+cd pol
+git log
+cd wo
+cd ./u1-5.1-L-rom/
+cd ./device/qcom/sepolicy/
+rgrep '/dev/socket/scitd'
+vim common/file_contexts 
+emacs -q common/file_contexts
+git log -p -1
+git st 
+git diff
+git add . 
+git commit -m 'fix build error' -a
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+git commit --author='Bao Haojun <baohaojun@smartisan.com>' --amend 
+git push
+gerrit-push-review -R -c 
+cd u1 out
+l 
+grep-errors full-build.log.fail 
+vim full-build.log.fail +300170
+ls
+cd jenkins/workspace/u2-8976-rom/
+cd system/core/
+git log 
+git fetch ssh://qishanqing@172.16.0.9:29418/qualcomm/platform/system/core refs/changes/28/97028/2 && git cherry-pick FETCH_HEAD
+git fetch ssh://smartcm@172.16.0.9:29418/qualcomm/platform/system/core refs/changes/28/97028/2 && git cherry-pick FETCH_HEAD
+git fetch smartisan:/qualcomm/platform/system/core refs/changes/28/97028/2 && git cherry-pick FETCH_HEAD
+git status 
+vim adb/Android.mk 
+cd ../../build/
+git log 
+git fetch smartisan:/qualcomm/platform/build refs/changes/62/97062/3 && git cherry-pick FETCH_HEAD
+git log 
+ll
+cd u2-8976-rom/
+ll
+vim ~/.bash_history 
+cp ~/.bash_history > /tmp/
+cp ~/.bash_history > /tmp
+cp ~/.bash_history > /tmp/history
+cd ~
+cp .bash_history > /tmp/history
+ll
+ll -a

@@ -1,0 +1,27 @@
+# 此文件格式如下：如果烧写类型是 full-factory-normal ，则表示此文件、分区在工厂里要正常起机时需要进行烧写
+# 如果烧写类型是 full-factory-ftm ，则表示此文件、分区在工厂里要用ftm模式起机时需要进行烧写
+# 如果烧写类型为 full，则表示在公司内部进行full烧写，这种情况下，不应该烧写factory、cdt分区。
+# 如果是normal，则表示该分区不应该被重新烧写。
+# 其中 烧写类型、分区名不能为空。文件名可以为空，如为空，表示对应的分区不进行烧写。
+# 烧写类型的值必须为 full-factory-normal、full-factory-ftm、full、normal中的一个。
+
+# 烧写类型 分区名 文件名
+
+full-factory-normal CDT cdt.bin
+full-factory-normal factory factory_image_normal.img
+
+full-factory-ftm CDT cdt.bin
+full-factory-ftm factory factory_image_fac.img
+
+full CDT
+full factory factory_image_normal.img
+
+normal DDR
+normal factory
+normal CDT
+normal persist
+normal modemst1
+normal modemst2
+normal fsg
+normal fsg1
+normal fsg2

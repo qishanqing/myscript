@@ -1,0 +1,144 @@
+bash ~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-userdebug -r -R /home/share/t2/ -o
+
+repo init -u smartisan:/qualcomm/platform/manifest.git -b refs/heads/sanfrancisco -m 8992-r01115.1.xml  --repo-url smartisan:/googlesource/git-repo --reference ~/src/android-mirror/
+
+
+repo forall -c 'pwd;git log --pretty=format:"%ce-%s-%h" |grep smartisan'
+
+~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-userdebug -b -r -R /home/share/mtp/
+
+
+
+outdir=release-$(today--)/$manifest_name-$config-$epoch_date-$(
+        if test -z "$emmc_size"; then
+            echo 32g
+        else
+            echo $emmc_size
+        fi
+          )
+
+
+# ~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8994-userdebug -b -r -R /mnt/IceSkyBuild/test -t kernel=sandbox/icesky-8994-r1253-150519
+# ~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-userdebug -b -r -R /mnt/IceSkyBuild/test -t kernel=sandbox/icesky-8994-r1253-150519
+# exit
+~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-userdebug -C -b -r -R /mnt/IceSkyBuild/icesky_android-o
+
+last_release=$(cd p3; ls -t relese-$(today--)| head -n 1)
+ln -s ../../p3/rel$(today--)/$last_release $last_release-p3
+#~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-userdebug -r -R /mnt/IceSkyBuild/icesky_android  \
+#      -t "oem-release-icesky_msm8992=smandroid/8992-r01115.1"  -S 64g
+ 
+#~/system-config/bin/smartcm -x do-cm-build -c iceskd -c icesky_msm8992-userdebug -C -b -r -R /mnt/IceSkyBuild/icesky_android -o            
+#~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8994-userdebug  -b -r -R /mnt/IceSkyBuild/icesky_android -o
+~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-user -b -r -R /mnt/IceSkyBuild/icesky_android -o
+
+
+查看当前屏保的设置情况:#xset q
+xset的s参数后面可接两个数字参数，前一个即是进入屏保的秒数：
+10秒后进入屏保:#xset s 10 600
+如果想恢复默认值：
+#xset s 0 600
+取消：
+#xset s off
+dpms显示器休眠状态(与关机后的显示器同样的效果)：
+开启： 
+#xset dpms 1 1 2
+取消：
+#xset -dpms
+
+$ sudo apt-get update
+$ sudo apt-get install openjdk-7-jdk
+
+b. 更新默认的java版本
+
+$ sudo update-alternatives --config java
+$ sudo update-alternatives --config javac
+
+
+ 5. 配置git服务器的SSH无密码登录
+
+ssh-keygen -t rsa -C "XXX@smartisan.cn"   #本机生成公私钥(过程不要输入任何密码，一直回车即可)
+秘钥位于 ~/.ssh中
+
+6. 创建 ~/.ssh/config，内容如下：
+
+Host smartisan
+  Hostname 172.16.0.9
+  Port 29418
+  User xxx
+
+Host 172.16.0.9
+  User xxx
+
+
+
+qcom-base下载
+repo init -u git://codeaurora.org/platform/manifest.git -b refs/heads/release -m LA.BF64.1.2.1-05420-8x92.0.xml --repo-url smartisan:/googlesource/git-repo
+
+cd -
+/home/qsq/project/msm8992-la-1-0_amss_device/LINUX/android
+
+cp vendor/ ~/project/qcom-base/ -avl
+
+cd xxx/proprietary
+
+git init .
+
+git add -f .
+git commit -m 'from msm8996-la-2-0_amss_standard_oem_milestone r01100.1'
+
+ap /home/qsq/project/qcom-base/vendor/qcom/proprietary/
+
+git remote add s s:qualcomm/$(ap)
+git remote add s s:qualcomm/oem/adsp_proc
+git remote add s s:qualcomm/platform/vendor/proprietary
+
+
+git fetch s
+
+git remote add x s:qualcomm/platform/vendor/proprietary
+
+git fetch x
+
+git remote add z /data/mirror/qualcomm/platform/vendor/proprietary.git/
+
+git fetch x
+
+git  reset --hard   remotes/x/qualcomm/8992-r01115.1(上一次升级节点)
+
+git reflog
+
+git rm * -rf
+
+git st
+
+la
+
+git clean -xfd
+
+git reflog
+
+git co 21a84b8（自己提交的commit） -- .
+
+
+git commit -m "xxx"
+
+
+git push x HEAD:refs/heads/qualcomm/qsq-test
+
+git init .
+git add -f .
+git commit -m 'from snapdragon-high-med-2016-spf-2-0_amss_standard_oem r02000.3 '
+git fetch s
+git push s HEAD:refs/heads/smandroid/8953-r02000.3 
+
+
+
+
+my-rfa 'git push smartisan:qualcomm/$(repo-project) HEAD:refs/heads/phoenix-rom'
+my-rfa 'git push so:qualcomm/$(repo-project) HEAD:refs/heads/phoenix-rom'
+
+smartisan:/qualcomm/platform/manifest
+
+~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-user -b -r -R /mnt/IceSkyBuild/test/userbuild -S 16g -P P6-1135
+~/system-config/bin/smartcm -x do-cm-build -c full_S10-userdebug  -b -r 

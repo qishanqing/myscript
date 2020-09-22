@@ -1,0 +1,1882 @@
+
+rm static_analysis/ -rf
+ls
+cd oem
+cd - 
+cd oem-
+cd oem-re
+l 
+git remote -v 
+git push $(repo-remote) HEAD:refs/heads/backup/$(repo-upstream); git push $(repo-remote) :refs/heads/$(repo-upstream)
+cd ../
+cd oem-cm-scripts/
+git st 
+git branch -a|grep $(repo-upstream)
+git push $(repo-remote) HEAD:refs/heads/backup/$(repo-upstream); git push $(repo-remote) :refs/heads/$(repo-upstream)
+git st 
+rcd
+git st 
+git add . 
+git st 
+git commit -m 'fix 8994 xml' -a
+gerrit-push-review -R -c 
+git st 
+l 
+git st 
+cd - 
+cd ..
+my-rfa 'git clean -xfd; git reset --hard'
+git st 
+repo sync -d -j8
+cd oem-release/
+git log
+git push $(repo-remote) HEAD:smandroid/8994-r1257.1
+git push $(repo-remote) HEAD:refs/heads/smandroid/8994-r1257.1
+cd ..
+repo sync -d -j8
+ls
+cd adsp_proc/
+l 
+git branch -a
+git branch -a|grep remotes/smartisan/
+git branch -a|grep remotes/smartisan/|grep -v /.*/.*/
+git branch -a|grep remotes/smartisan/
+git branch -a|grep remotes/smartisan/|grep /.*/.*/
+git branch -a|grep remotes/smartisan/|grep -P  /.*/.*/
+git branch -a|grep remotes/smartisan/|grep '/.*/.*/'
+git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v 
+for x in $(git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v ); do y=$(basename $x); git push $(repo-remote) $x:refs/heads/backup/$y; git push $(repo-remote) :$y; done
+git branch -a
+git branch -a|grep smartisan/
+cd ..
+l 
+cd boot_images/
+l 
+for x in $(git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v ); do y=$(basename $x); git push $(repo-remote) $x:refs/heads/backup/$y; git push $(repo-remote) :$y; done
+cd ..
+ls
+cd common-git/
+l 
+git branch -a|grep smartisan/
+git branch -a|grep remotes/smartisan/|grep -v '/.*/.*/'
+for x in $(git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v ); do y=$(basename $x); git push $(repo-remote) $x:refs/heads/backup/$y; git push $(repo-remote) :$y; done
+cd ..
+l 
+cd modem_proc/
+git branch -a|grep remotes/smartisan/|grep -v '/.*/.*/'
+for x in $(git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v ); do y=$(basename $x); git push $(repo-remote) $x:refs/heads/backup/$y; git push $(repo-remote) :$y; done
+cd ..
+l 
+cd oem-cm-scripts/
+git branch -a|grep remotes/smartisan/|grep -v '/.*/.*/'
+git branch -a|grep remotes/smartisan/|grep -v remotes/smartisan/sfo-r2145134|grep -v '/.*/.*/'
+cat <<'End'|putclip
+grep -v remotes/smartisan/sfo-r2145134
+End
+
+for x in $(git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v|grep -v remotes/smartisan/sfo-r2145134 ); do y=$(basename $x); git push $(repo-remote) $x:refs/heads/backup/$y; git push $(repo-remote) :$y; done
+git branch -a|grep remotes/smartisan/|grep -v remotes/smartisan/sfo-r2145134|grep -v '/.*/.*/'
+git branch -a|grep remotes/smartisan/|grep -v '/.*/.*/'
+git branch -a
+git branch -a|grep backup/
+cd ..
+l 
+cd oem-release/
+l 
+git branch -a
+git branch -a|grep remotes/smartisan/|grep -v '/.*/.*/'
+for x in $(git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v|grep -v remotes/smartisan/sfo-r2145134 ); do y=$(basename $x); git push $(repo-remote) $x:refs/heads/backup/$y; git push $(repo-remote) :$y; done
+cd ..
+l 
+cd rpm_proc/
+git branch -a|grep remotes/smartisan/|grep -v '/.*/.*/'
+for x in $(git branch -a|grep remotes/smartisan/|grep '/.*/.*/' -v|grep -v remotes/smartisan/sfo-r2145134 ); do y=$(basename $x); git push $(repo-remote) $x:refs/heads/backup/$y; git push $(repo-remote) :$y; done
+ls
+repo-switch -p
+cd jobs
+cd oem-sfo-rom-smartcm/
+ls
+cd workspace/oem-code/
+git fetch 
+git branch -a --contains ffd816339d03a1395e23e135baae263369c178ee
+gitk-mb remotes/smartisan/sandbox/GSM-C1-Liuyuan-e3f9 remotes/smartisan/sfo-r2145134
+apt-get install gitk
+repo-project 
+cat <<'End'|putclip
+gitk-mb remotes/smartisan/sandbox/GSM-C1-Liuyuan-e3f9 remotes/smartisan/sfo-r2145134
+End
+
+git --version
+git log --name-status 
+git branch -a
+git log remotes/smartisan/qualcomm/S24326
+git log --name-status  remotes/smartisan/qualcomm/S24326 -1
+cat contents.xml 
+cat contents.xml |less
+git log --name-status  remotes/smartisan/qualcomm/S24326 -1
+git log --name-status  remotes/smartisan/qualcomm/S24326 -1 -p modem_proc/build/manifest.xml
+git log  remotes/smartisan/qualcomm/S24326 -1 -p modem_proc/build/manifest.xml
+git log  remotes/smartisan/qualcomm/S24326 -1 -p 
+cd modem_proc/build/ms/bin/AAAAANPZ/
+l 
+ls
+apt-get dist-upgrade 
+cd jobs
+l 
+cd oem-8992-r01115.1/
+l 
+cd workspace/
+l 
+find . -name 'prog*.mbn'
+find . -name 'raw*.xml'
+cd 
+ls
+df
+df -h
+cd /mnt/sfodailybuild/
+l 
+cd symbols/
+l 
+ls
+cd elf/
+l 
+ls
+du
+du -h
+ls
+cd ..
+rm elf/ -rf&
+ls
+df
+df -h
+cd /mnt/IceSkyBuild/
+l 
+cd symbols/
+l 
+cd elf/
+l 
+ls
+cd ..
+rm elf/ -rf&
+l 
+cd ..
+l 
+cd factory/
+l 
+du
+du -h
+cd ..
+l 
+df
+df -h
+ls
+cd test/
+l 
+rm release-20150* -fr
+l 
+cd symbols/
+l 
+cd ..
+l 
+ls
+cd ..
+l 
+cd sfodailybuild/
+l 
+cd test/
+l 
+rm release-20150* -rf&
+l 
+ls
+df
+rm symbols/ -rf&
+l 
+df
+ls
+df
+jbos
+jobs
+ls
+df
+df -h
+ls
+cd - 
+cd jobs
+cd icesky-rom-test-7-2-build/
+l 
+cd builds/
+l 
+cd 9/
+l 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e log 
+cd job
+l 
+cd oem-sfo-rom-smartcm/
+l 
+cd workspace/
+l 
+cd oem-code/
+l 
+ls
+cd ./common/build/
+l 
+git log -p update_common_info.py
+ls
+cd jobs
+cd icesky-rom-test-7-2-build/
+l 
+cd builds/7/
+l 
+grep-errors log
+e log 
+cd 10
+l 
+cat log 
+grep-errors log
+cd - 
+ls
+df
+df -h
+cd jobs
+l 
+ls */wor* -d
+rm factory-oem-899*/wor* -rf&
+df
+df 
+df
+df -h
+df
+ls
+ls */wor* -d
+ls
+du oem-899*1084* -hs
+rm  oem-899*1084*/wor* -rf&
+l 
+ls */wor* -d
+rm oem-8994-r*/wor* -rf&
+l 
+df
+df -h
+l 
+ls
+ls */wor* -d
+df -h
+l 
+df
+ls
+ls */wor* -d
+ls
+cd oem-sfo-rom-smartcm/
+l 
+cd workspace/
+l 
+repo-switch -p
+repo manifest -r > .repo/1.xml
+diff .repo/1.xml .repo/released-manifests/manifest-sfo-rom-oem-null.xml 
+rcd
+git pull
+cd - 
+repo-switch 
+repo sync -j8 -d -c
+repo manifest -r > .repo/2.xml
+meld .repo/2.xml .repo/1.xml
+apt-get install meld
+meld .repo/2.xml .repo/1.xml
+apt-cache search pygtk
+which python
+meld .repo/2.xml .repo/1.xml
+diff .repo/2.xml .repo/1.xml
+df
+df -h
+apt-get dist-upgrade 
+cd 
+cd wo
+cd 
+cd jobs
+l 
+cd factory-oem-8992-20150727-build-smartcm/
+cd ..
+l 
+cd 8992-factory-on-build2/
+l
+cd builds/23
+l 
+tail -n 2000 log
+cd workspace
+l 
+~/system-config/bin/smartcm -x do-cm-build -c icesky_msm8992-eng -b -r -R /mnt/IceSkyBuild/factory -S 64g
+cd /mnt/IceSkyBuild/factory/release-20150731
+l 
+su - bhj
+ls
+cd jobs
+df
+ls
+cd /var/lib/jenkins/jobs/8992-factory-on-build2/workspace/.repo/manifest.xml
+ls
+l manifest.xml
+cat manifest.xml
+cat manifest.xml|less
+ls
+cd .ssh
+cd 
+cd .sss
+cat /etc/ssh/sshd_config
+cd /Chroot/debian/
+l 
+cd home/
+ls
+cd 
+sudo chroot /Chroot/debian/
+sudo chroot /Chroot/debian/
+cd wo
+l 
+cd jobs
+cd icesky-rom-both9294-on-build2/
+l 
+cd builds/
+l 
+cd 144/
+l 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e log 
+grep-errors log 
+cd /mnt/IceSkyBuild/icesky_android/
+l 
+cd *$(today--)
+l 
+cd icesky-rom-icesky_msm8992-userdebug-20150817-000549/
+l 
+cd ..
+ls
+cd 
+id www-data 
+cat /etc/passwd|grep www
+cd /var/www/
+l 
+l /home/jenkins/.config/system-config/.bashrc-path 
+sudo su www-data 
+cd /home/
+l 
+cd jenkins/.config/
+l 
+l . 
+l .  -d
+cd 
+cd system-config/etc/path/Linux-x86_64/
+l 
+ls 
+ls |sort -n 
+cat <<'End'|putclip
+ls |sort -n 
+End
+
+up /home/jenkins/system-config/etc/path/Linux-x86_64
+mp /home/jenkins/system-config/etc/path/Linux-x86_64
+cd /mnt/IceSkyBuild/adb-root/release-20150616/icesky-rom-icesky_msm8992-userdebug-20150616-012114-32g/
+l 
+ls
+du
+du -h
+els
+du
+cd /mnt/sfodailybuild/
+rm adb-root/ -rf
+sudo rm adb-root/ -rf
+cd adb-root/
+l 
+cd mol2.0_sfo-rom_r2145134/release-20150808/MOL-sfo-rom-r2145134-2.0-msm8974sfo_lte-user-20150808-014034-32g/
+l 
+l
+sudo su www-data
+cd /mnt/IceSkyBuild/adb-root/
+sudo su www-data
+ls
+cd 
+cd jobs
+l 
+cd icesky-rom-both9294-on-build2/
+l 
+cd builds/
+l 
+cd 148/
+l 
+grep-errors log
+cd -
+cd ..
+cd ../sfo-rom-on-build4/
+l 
+cd builds/
+l 
+cd lastFailedBuild
+l
+grep-errors log
+cd - 
+cd ../..
+l 
+cd smandroid-both9294/
+l 
+cd builds/
+l 
+cd lastFailedBuild
+l 
+grep-errors log
+cd both
+l 
+cd 
+cd both
+l 
+cd builds/
+l 
+cd 153
+l 
+grep EMMC_ log
+cd ..
+l 
+cd 152/
+l 
+cd ..
+grep EMMC_ */log
+grep EMMC_ */log|grep 64
+ls
+cd ..
+ls
+cd jobs
+cd oem-sfo-rom-smartcm/
+l 
+cd workspace/
+l 
+cd oem-code/
+l 
+cd common/build/
+l 
+
+cd oem-release
+l 
+cd common/build/
+l 
+cp partition.xml partition_16g.xml
+git commit -m 'add 16g xml'
+git add . 
+git commit -m 'add 16g xml'
+gerrit-push-review -R -c baohaojun
+tcd rom-smart
+rcd rom-smart
+l 
+cp partition.xml partition_16g.xml
+git commit -m 'add 16g xml'
+git commit -m 'add 16g xml'
+git add . 
+git commit -m 'add 16g xml'
+gerrit-push-review -R -c baohaojun
+ls
+cd jobs
+l 
+grep 'He Fang' */*/log
+grep 'junkang' */*/log
+ls */*/log
+grep 'junkang' */*/log
+cd cd sfo-rom
+cd jo
+ls
+cd icesky-rom-both9294-on-build2/
+l 
+cd builds/
+l 
+ls
+cd jo
+cd oem-8992-r01115.1
+l 
+cd builds/
+l 
+cd lastFailedBuild
+l 
+tail -n 1000 log
+cd ..
+l 
+cd ls
+oem_code_dir=$PWD; find "$oem_code_dir" -name 'oem-release' -prune -o -name 'partition*.xml' -print
+find "$oem_code_dir" -name 'oem-release' -prune -o -name 'partition_*.xml' -print
+ls
+find "$oem_code_dir" -o -name 'partition_*.xml' 
+find "$oem_code_dir" -name 'partition_*.xml' 
+cd 
+ls
+cd jo both
+ls
+cd builds/
+l 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e 162/log 
+grep is-already 162/log
+less 162/log
+e 162/log 
+cd - 
+cd . relea
+cd ../*test5
+ls
+cd builds/
+l 
+cd 2/
+l 
+e log 
+cd /mnt/IceSkyBuild/test/icesky_android 
+l 
+cd *$(today--)
+l 
+rm * -rf
+cd /mnt/IceSkyBuild/test/icesky_android/*$(today--)
+l 
+cd ..
+l 
+cd - 
+rcd test .
+ls
+cd test
+cd ap
+cd -
+l 
+cd ./sa/
+l 
+cd release-20150820/
+l 
+cd jobs oem
+l 
+cd workspace/boot_images/
+l 
+rgrep E47B337D . -i
+git clean -xfd
+rgrep E47B337D . -i -I
+rgrep E47B337D . -i -I -P
+e ./core/boot/secboot3/src/boot_dload.h 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+for-code-reading 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+ls
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd jobs
+l 
+cd oem-sfo-rom-1.4
+cd oem-sfo-rom-smartcm/
+l 
+cd workspace/
+l 
+cd oem-code/boot_images/
+l 
+for-code-reading 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e . 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd - 
+cd oem sfo 1.4
+cd jobs
+l 
+cd oem-sfo-rom-mol-1.4-smartcm/
+l 
+cd - 
+cd rom-sma
+l 
+cd bo
+git st 
+git branch -a
+cd workspace/
+cd oem-code/
+git remote -v 
+l ~/src/android-mirror/qualcomm/msm8974-la-2-0-1_amss_oem_standard.git/
+git remote add 1.4 ~/src/android-mirror/qualcomm/msm8974-la-2-0-1_amss_oem_standard.git/
+git fetch 1.4
+git co mol/sfo-rom_r2145134.1.4 ./boot_images/
+git co 1.4/mol/sfo-rom_r2145134.1.4 ./boot_images/
+git st 
+git st 
+cd boot_images/
+git st . 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+ls
+cd 
+cd job 
+cd test5
+l 
+cd builds/
+l 
+cd 10/
+l 
+grep manifest_name= log
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e log
+rcd 11
+l 
+tail -f log
+get-vmlinux -b P3-factory%icesky-8992-20150727-icesky_msm8992-user-20150821-175235-32g
+cd 
+cd /mnt/IceSkyBuild/test/sa/
+l 
+rm release-20150828/ -rf
+cd jobs
+ls
+cd both
+l 
+cd builds/
+l 
+cd 196/
+l 
+grep-errors log
+ls
+ 
+cd /mnt/IceSkyBuild/icesky_android/release-20150914
+ls
+mv P4-icesky-rom-icesky_msm8992_us-user-20150914-130720-64g/
+mv P4-icesky-rom-icesky_msm8992_us-user-20150914-130720-64g/ P4-icesky-rom-icesky_msm8992_us-user-20150914-130720-64g.0
+l 
+ls
+cd P4-icesky-rom-icesky_msm8992_us-user-20150914-130720-32g/
+ls
+cd ..
+ls
+mount
+cd /mnt/dailybuild/
+l 
+cd icesky-rom-icesky_msm8992-user
+ls
+cd ..
+cd icesky-rom-icesky_msm8992-user
+ls
+cd 20150915-0236/
+ls
+cp icesky_msm8992-ota-218.zip /mnt/IceSkyBuild/test/bhj/
+mkdir /mnt/IceSkyBuild/test/bhj/
+cp icesky_msm8992-ota-218.zip /mnt/IceSkyBuild/test/bhj/
+cd ..
+cd icesky-rom-icesky_msm8992_us-userdebug/20150915-1822/
+l 
+up /mnt/dailybuild/icesky-rom-icesky_msm8992_us-userdebug/20150915-1822/icesky_msm8992_us-ota-13.zip
+ssh $REMOTEUSER
+ssh $REMOTEUSER@$REMOTEIP 
+up /mnt/dailybuild/icesky-rom-icesky_msm8992_us-userdebug/20150915-1822/icesky_msm8992_us-ota-13.zip
+ls
+cd jobs
+ls
+cd icesky-rom-test-7-2-build/
+ls
+cd builds/
+ls
+cd 36/
+ls
+grep-errors log
+cd ../..
+l 
+telnet $REMOTEIP 8087
+cd job
+ls
+cd oem-8992-r01133.1
+ls
+cd ./workspace/
+ls
+cd ./common-git/
+ls
+find . -name 'par*.xml'
+find . -name 'par*.xml'|xargs md5sum
+git log
+cd both
+l 
+cd builds/238/
+l 
+grep-errors log
+cd /mnt/IceSkyBuild/icesky_android/release-20150923/
+l
+cd P4-1133-icesky-rom-icesky_msm8992-userdebug-20150923-103939-64g/
+l 
+cd ..
+cd 
+cd job both
+l 
+cd builds/249/
+l 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e log 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd ..
+l 
+du
+sudo du
+sudo tar czfv /mnt/IceSkyBuild/test/bhj/failed-logs.tgz . 
+tar czfv /mnt/IceSkyBuild/test/bhj/failed-logs.tgz . 
+ls
+cd 
+cd /mnt/IceSkyBuild/icesky_android/
+l 
+cd - 
+cd bo log
+cd bo bu
+ls
+cd 246/
+grep-errors log 
+cd - 
+cd 247/
+grep-errors log 
+cd ..
+cd 248/
+grep-errors log 
+cd ../249/
+grep-errors log 
+cd 250
+l 
+grep-errors log 
+e log 
+dmesg 
+dmesg -T
+cd sfo jo
+ls
+cd builds/
+l 
+cd 183/
+l 
+grep-errors log
+cd - 
+apt-get update
+apt-get dist-upgrade 
+cd te 5
+l 
+cd builds/
+l 
+cd lastSuccessfulBuild
+l 
+grep nci log
+cd ..
+l 
+cd lastFailedBuild
+l 
+grep nci log
+grep nci log -i
+abc-x grep libnfc_nci_jni
+ssh-keygen -f "/home/jenkins/.ssh/known_hosts" -R 172.16.2.25
+grep '^incl.*nfc' log 
+grep '^incl.*nfc' ../lastSuccessfulBuild/log 
+grep '^incl.*nfc' ../lastSuccessfulBuild/log  -i
+grep '^incl.*nfc' log -i
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e ../lastSuccessfulBuild/log 
+grep '^incl.*nfc' ../lastSuccessfulBuild/log  -i
+grep '^incl.*nfc' log -i
+grep-errors log
+cd - 
+cd ..
+df
+df -h
+cd log
+cd job both
+cd both
+cd jobs
+l 
+cd icesky-rom-both9294-on-build2/
+l 
+cd builds/
+l
+cd lastFailedBuild
+l 
+grep-errors log
+df 
+df -h
+grep space -i log -P
+grep '\bspace\b' -i log -P
+grep-errors log
+cd ..
+l 
+cd *test5
+l 
+cd - 
+cd last fa
+ls
+grep-errors log
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e log 
+cd ..
+l 
+cd test5 bui
+cd test5
+l
+cd builds/
+l 
+cd lastUnsuccessfulBuild
+l 
+grep-errors log
+e log 
+ls
+cd jobs
+l 
+cd icesky-rom-both9294-on-build2/
+l 
+cd builds/
+l 
+cd 276/
+l 
+cat changelog.xml 
+cat changelog.xml |less
+ls
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e log 
+cd - 
+l
+cd 
+ls
+cd jobs
+ls
+df
+df -h
+ls
+mkdir oem-u2
+cd oem-u2/
+l 
+cd 
+cd -
+rmdir oem-u2
+cd 
+cd - 
+cd ..
+rmdir oem-u2
+cd 
+mkdir oem-u2
+cd oem-u2/
+git clone s:qualcomm/oem/U2
+git clone smartisan:qualcomm/oem/U2
+git clone smartisan:qualcomm/oem/u2
+ls
+mv u2/.git/ . 
+git clean -xfd
+git co -B
+./build.sh 
+./build.sh all
+find . -iname 'non*'
+git clean -xfd
+git clean -xfd
+ls
+apt-get dist-upgrade 
+apt-get update
+apt-get dist-upgrade 
+uptime
+apt-get remove cups-bsd cups-client cups-common cups-filters cups-pk-helper cups-ppdc cups --purge
+apt-get autoremove 
+apt-get dist-upgrade 
+telnet localhos 8082
+telnet localhost 8082
+telnet localhost 8080
+ps.pl jenkins
+ps.pl gerrit
+ifconfig 
+ls
+cd 
+cd - 
+cat ./build.sh 
+./build.sh rpm
+bash -x ./build.sh rpm
+cd ./rpm_proc/build/
+cat build_8976.sh 
+export BUILD_ASIC=8976
+export MSM_ID=8976
+export HAL_PLATFORM=8976
+export TARGET_FAMILY=8976
+export CHIPSET=msm8976
+export SECPOLICY=USES_SEC_POLICY_DEFAULT_SIGN
+python ./build_common.py 
+vim ./build_common.py 
+python ./build_common.py 
+vim ./build_common.py:244
+vim ./build_common.py+244
+vim ./build_common.py +244
+git log ./build_common.py
+cd ../
+cd ..
+ls
+echo $PATH
+cd /usr/local/
+sudo ln -s /pkg/* . 
+cd - 
+cd - 
+bash -x ./build.sh rpm
+python --version
+apt-get install python2.7
+cd ./rpm_proc/build/
+ls
+python ./build_common.py 
+vim ./build_common.py +244
+python ./build_common.py
+ls /pkg/Qualcomm/
+python ./build_common.py
+vim ./build_common.py +244
+e
+emacs --nw
+cd 
+cd .emacs.d/
+ls
+cd elpa/
+ls
+cd ..
+rm elpa/ -rf
+ls
+mkdir elpa
+cp ~/system-config/.emacs_d/elpa/ . -avl
+cd 
+emacs --nw
+emacs 
+ls
+cd - 
+cd comm
+cd 
+cd bui rp
+ls
+e ./build_common.py 
+emacs  ./build_common.py 
+ls
+ls /usr/local/packages/qct/software/arm/RVDS/
+cd /usr/local/
+ls
+sudo mkdir packages
+cd packages/
+cd ..
+rm packages/ -rf
+sudo rmdir packages/ 
+sudo ln -s /pkg/ packages
+cd bui rpm
+ls
+python ./build_common.py 
+ls /usr/local/packages/qct/software/arm/RVDS/5.01bld94/bin/armcc 
+/usr/local/packages/qct/software/arm/RVDS/5.01bld94/bin/armcc
+cd job
+ls
+cd oem-8992-r01133.1
+ls
+cd workspace/
+l 
+cd rpm_proc/
+git log .
+git log -p a0ebb4b437fb9e2e7901f49cd3f58a7493a5ca71
+cat ./build/setenv.sh 
+git log -p ./build/setenv.sh
+cat build/setenv.sh 
+cat build/setenv.sh |grep LIC
+git log build/setenv.sh
+git log -p build/setenv.sh
+cat build/setenv.sh 
+cat build/setenv.sh |od -c 
+git st 
+git reset --hard 
+ls
+cat build/setenv.sh 
+cd oem src
+cd oem u2
+export ARMLMD_LICENSE_FILE="/pkg/qct/software/arm/RVDS/5.01bld94/CM_server_license.dat"
+cd ./rpm_proc/build/build/
+ls
+cd ..
+ls
+./build_8976_8952.sh 
+git st 
+cat setenv.sh 
+export ARMINC=/usr/local/packages/qct/software/arm/RVDS/5.01bld94/include
+cd $ARMINC
+ls
+cd - 
+git st 
+git diff
+git st 
+git diff ./build_common.py
+git st 
+cd ..
+git st 
+git diff
+cd - 
+./build_8976_8952.sh 
+bash -x ./build_8976_8952.sh 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e ./build_common.py 
+bash -x ./build_8976_8952.sh 
+echo $ARMLMD_LICENSE_FILE 
+bash -x ./build_8976_8952.sh 
+ls ../core/bsp/rpm/build/8952/rpm.mbn 
+cd - 
+git st 
+git st |grep mbn
+cd - 
+ls
+cd ../
+ls
+cd 
+cd src/
+l 
+cd 
+python
+sudo add-apt-repository ppa:fkrull/deadsnakes-python2.7
+sudo apt-get update
+sudo apt-get install python2.7
+cd - 
+cd 
+cd src/android-mirror
+cd - 
+cd rpm
+python --version
+git st 
+git reset --hard 
+git clean -xfd
+cd ./build/
+ls
+bash -x ./build_8976_8952.sh 
+ls
+cd jobs
+ls
+cd oem-sfo-rom-mol-2.0-smartcm/
+ls
+repo-switch -p
+cd workspace/
+repo-switch -e
+ls
+cd oem-code/
+ls
+cd rpm_proc/
+git log . 
+git log -p 7a22942b65c4f04584d4b26f362cff6bca2a30be
+seq 1 10
+seq 1 10|while read x; do echo $x y;done
+git ls-remote $(repo-remote)
+git ls-remote $(repo-remote)|while read h n; do echo $h; done
+help read
+ls
+cd u1
+ls
+cd u2
+ls
+df
+df -h
+ls
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e ./build.sh 
+ls
+git log build.sh
+git log
+ls
+python --version
+git st 
+git reset --hard 
+git clean -xfd
+ls
+./build.sh rpm
+export ARMLMD_LICENSE_FILE="/pkg/qct/software/arm/RVDS/5.01bld94/CM_server_license.dat"
+./build.sh rpm
+./build.sh boot
+ls /usr/local/packages/qct/software/arm/ARMCompiler6.01u2/
+loacte ARMCompiler
+cd oem sfo
+ls
+cd boot_images/
+git log .
+git log -p 605122705df7f7c8b0c6d9844ce86083a4452493 -1
+up /var/lib/jenkins/jobs/oem-sfo-rom-mol-2.0-smartcm/workspace/oem-code/boot_images/./build/ms/setenv.sh
+cd 
+cd u2 boot
+cd u2
+cd ./boot_images/
+git log . 
+git log -p
+git log -p .
+. /var/lib/jenkins/jobs/oem-sfo-rom-mol-2.0-smartcm/workspace/oem-code/boot_images/./build/ms/setenv.sh 
+cd ..
+./build.sh boot
+cat /var/lib/jenkins/jobs/oem-sfo-rom-mol-2.0-smartcm/workspace/oem-code/boot_images/./build/ms/setenv.sh 
+sudo ln -s /pkg/qct/software/arm/RVDS/5.01bld94 /usr/local/ARM_Compiler_5
+./build.sh boot
+git st 
+./build.sh mpss
+cd ./modem_proc/
+ls
+git st 
+cd ..
+e ./build.sh 
+e 8976.gen.prod
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd '/home/jenkins/oem-u2/modem_proc/build/ms/'
+ls
+cd ../../tools/
+ls
+cd - 
+cd ../
+ls
+cd ..
+for-code-reading 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+find . -name '*build*cfg*'
+e ./build/ms/build_cfg.xml 
+cd ./build/ms/
+l 
+ls *8976*
+e build_parms_8976.gen.prod.py 
+ls
+e build_parms_8976.gps.prod.py 
+ls
+cat tcfg_8976.gen.prodq.py
+cat tcfg_8976.gen.prodq.py|less
+e ../../../build.sh 
+ls *8976.gen.prod*
+cat *8976.gen.prod*
+cat *8976.gen.prod*|less
+cat *8976.gen.prod*|grep pyc
+ls *8976.gen.prod*
+ls *8976.gen.prod*|grep pyc
+ls
+emacs . 
+ls
+emacs . 
+cd .git/..
+./build.sh mpss
+ls
+ls ~/Qualcomm/HEXAGON_Tools/
+up /home/jenkins/Qualcomm/HEXAGON_Tools/
+ssh $REMOTEIP
+cd 
+cat .bashrc-cust
+. .bashrc-cust 
+up /home/jenkins/Qualcomm/HEXAGON_Tools/
+ls
+file Install_HEXAGON_Tools_linux_6.4.05.bin 
+head Install_HEXAGON_Tools_linux_6.4.05.bin
+sh Install_HEXAGON_Tools_linux_6.4.05.bin 
+sudo jnettop 
+cd u2 oem
+ls
+jbos
+jobs
+./build.sh mpss
+kill %2
+cd /pkg/qct/software/hexagon/releases/tools/
+ls /pkg/qct/software/hexagon/releases/tools/
+mkdir -p /pkg/qct/software/hexagon/releases/
+sudo mkdir -p /pkg/qct/software/hexagon/releases/
+sudo ln -s ~/Qualcomm/HEXAGON_Tools/ /pkg/qct/software/hexagon/releases/tools
+l /pkg/qct/software/hexagon/releases/tools/
+./build.sh mpss
+cd oem job
+ls
+cd modem_proc/
+git log -p . 
+git log -p . 
+git log .
+git log -p 4657500eaa71d1473eb3c4e2f3e18ec9a18641dd -2
+export HEXAGON_ROOT=$HOME/Qualcomm/HEXAGON_Tools/
+cd -
+cd oem u2
+./build.sh mpss
+cd jobs 
+ls
+cd oem-8992-r01133.1-p
+cd oem-8992-r01133.1-p3/
+l
+cd workspace/oem-cm-scripts/
+l 
+cat build-all.sh 
+cd oem u2
+ls
+./build.sh adsp
+cat <<'End'|putclip
+export ARMLMD_LICENSE_FILE="/pkg/qct/software/arm/RVDS/5.01bld94/CM_server_license.dat"
+End
+
+cd mirr
+repo init -u scode:qualcomm/platform/manifest.git -b refs/heads/sanfrancisco -m smandroid/oem-u2.xml --repo-url scode:googlesource/git-repo 
+ssh scode
+repo init -u smartisan:qualcomm/platform/manifest.git -b refs/heads/sanfrancisco -m smandroid/oem-u2.xml --repo-url smartisan:googlesource/git-repo 
+repo sync -j4
+cd - 
+ls
+cd ..
+ls
+cd tmp/
+ls
+mkdir oem
+cd oem/
+mkdir u2
+cd u2/
+repo init -u scode:qualcomm/platform/manifest.git -b refs/heads/sanfrancisco -m smandroid/oem-u2.xml --repo-url scode:googlesource/git-repo --reference ~/src/android-mirror/
+e ~/.ssh/config
+rm .repo/ -rf
+repo init -u scode:qualcomm/platform/manifest.git -b refs/heads/sanfrancisco -m smandroid/oem-u2.xml --repo-url scode:googlesource/git-repo --reference ~/src/android-mirror/
+ssh scode
+cd 
+cd - 
+repo sync -j4
+ls
+cd ./oem-cm-scripts/
+l 
+e build-all.sh 
+cd ./../oem-code/
+l 
+e build.sh 
+ls
+e ./build.sh 
+cd ../
+e ./oem-cm-scripts/build-all.sh 
+ls
+cd oem-code/
+bash rpm_proc/build/build_8976.sh
+cd oem u2
+ls
+cat ./build.sh 
+cat ./build.sh |less
+(     cd modem_proc/build/ms;     bash build.sh 8976.grfc.prod -k; )
+(     cd modem_proc/build/ms;     bash build.sh 8976.gen.prod -k; )
+cd oem
+ls
+cd oem u2
+l
+e ../oem-cm-scripts/build-all.sh 
+../oem-cm-scripts/build-all.sh 
+cd 
+cd src/u2
+ls
+cd 
+cd src/android-mirror
+l 
+cd 
+ls
+cd u2 oem
+ls
+cd ..
+ls
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e ./oem-cm-scripts/
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd ../
+cd - 
+cd ./oem-code/
+cd ./common/build/
+l 
+python build.py --nonhlos
+e  build.py 
+ls
+ls update_common.log 
+ls *.py
+ls
+ls *.xml
+cat contents_msm8976_32bit.xml 
+cat contents_msm8976_32bit.xml |less
+cat ../../boot_images/core/storage/tools/ptool/checksparse.py 
+e ../../boot_images/core/storage/tools/ptool/checksparse.py 
+echo > ../../boot_images/core/storage/tools/ptool/checksparse.py 
+python ../../boot_images/core/storage/tools/ptool/checksparse.py
+cd - 
+python build.py --nonhlos
+cat <<'End'|putclip
+echo > ../../boot_images/core/storage/tools/ptool/checksparse.py 
+End
+
+ls
+cd ..
+cd scr
+git st 
+git diff
+git add . 
+git st 
+git commit
+git log
+gerrit-push-review -R
+gerrit-push-review -R zhangshuang
+ls
+cd ..
+l 
+find . -iname 'btfm*'
+find . -iname 'hyp*'
+find . -iname 'hyp.mbn'
+find . -iname 'rpm.mbn'
+cd oem-code/
+find . -iname 'rpm.mbn'
+find . -iname 'rpm.mbn'|xargs git st 
+ls
+cd ../oem-release/
+l 
+cd ..
+ls
+cd oem-release/
+ls
+cat > ~/tmp/1.txt
+ls
+find adsp_proc/
+find adsp_proc/ -type f
+find common/ -type f
+find boot_images/ -type f
+find debug_image/ -type f 
+find modem_proc/ -type f
+ls
+find rpm_proc/ -type f
+find trustzone_images/ -type f
+find wcnss_proc/ -type f
+ls
+git rm modem_proc/ trustzone_images/ wcnss_proc/ adsp_proc/ -rf
+l 
+du
+du .git
+du
+l 
+find debug_image/
+e lookup-closest-file 
+cd oem-co
+cat ~/tmp/1.txt 
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/sbl1.mbn
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/sbl1.mbn|xargs git st
+cat ~/tmp/1.txt 
+md5sum boot_images/core/boot/secboot3/hw/msm8976/sbl1/sbl1.mbn boot_images/build/ms/bin/EAAAANAZ/sbl1.mbn
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/sbl1.mbn|xargs md5sum
+git log --name-status ./boot_images/build/ms/bin/EAASANAZ/sbl1.mbn
+git log --name-status 
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/sbl1.mbn|xargs md5sum|sort 
+cp-with-dir-struct ../oem-release/ boot_images/build/ms/bin/EAASANAZ/sbl1.mbn 
+cd ../oem-release/boot_images/build/ms/bin/EAASANAZ/sbl1.mbn
+ls
+cd ..
+l 
+find
+find -type f
+git st 
+git add EAASANAZ/
+ls
+git rm 8974/sbl1.mbn 
+ls
+cd oem-code
+cat ~/tmp/1.txt 
+lookup-similar-file-for-another-release common/build/emmc/gpt_backup0.bin
+lookup-similar-file-for-another-release common/build/emmc/gpt_main0.bin
+lookup-similar-file-for-another-release trustzone_images/build/ms/bin/BAWAANAA/hyp.mbn
+lookup-similar-file-for-another-release trustzone_images/build/ms/bin/BAWAANAA/hyp.mbn|xargs md5sum
+ls
+cat ~/tmp/1.txt 
+lookup-similar-file-for-another-release common/build/emmc/bin/asic/NON-HLOS.bin
+lookup-similar-file-for-another-release common/build/emmc/patch0.xml
+git log common/build/patch0.xml
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/pmic.mbn
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/prog_emmc_firehose_*_lite.mbn
+git log --name-status boot_images/
+cat ~/tmp/1.txt 
+lookup-similar-file-for-another-release rpm_proc/build/ms/bin/AAAAANAAR/rpm.mbn
+lookup-similar-file-for-another-release common/tools/sectools/resources/build/fileversion2/sec.dat
+lookup-similar-file-for-another-release trustzone_images/build/ms/bin/BAWAANAA/tz.mbn
+ls
+cd ../oem-release/
+ls
+git st 
+ls
+find boot_images/ -type f
+cat ~/tmp/1.txt 
+cat ~/tmp/1.txt |grep boot
+cd - 
+git rm boot_images/build/ms/bin/8974/MPRG8974.mbn -f
+cd ../oem-code/
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/prog_emmc_firehose_*_lite.mbn
+git log ./boot_images/build/ms/bin/EAADANAZ/prog_emmc_firehose_8976_lite.mbn
+cp-with-dir-struct ../oem-release/ ./boot_images/build/ms/bin/EAADANAZ/prog_emmc_firehose_8976_lite.mbn
+cd - 
+l 
+find boot_images/build/ -type f
+git rm boot_images/build/ms/bin/EMMCBLD/8974_msimage.mbn
+cd - 
+cat ~/tmp/1.txt |grep boot
+lookup-similar-file-for-another-release boot_images/build/ms/bin/8992/pmic.mbn
+cat ~/tmp/1.txt 
+lookup-similar-file-for-another-release common/build/emmc/bin/BTFM.bin
+lookup-similar-file-for-another-release common/build/emmc/bin/asic/NON-HLOS.bin
+cp-with-dir-struct ../oem-release/ ./common/build/bin/asic/NON-HLOS.bin 
+lookup-similar-file-for-another-release trustzone_images/build/ms/bin/BAWAANAA/hyp.mbn
+lookup-similar-file-for-another-release trustzone_images/build/ms/bin/BAWAANAA/hyp.mbn|xargs md5sum
+lookup-similar-file-for-another-release trustzone_images/build/ms/bin/BAWAANAA/hyp.mbn|xargs md5sum|sort 
+cp-with-dir-struct ../oem-release/ trustzone_images/build/ms/bin/MAYAANAA/hyp.mbn 
+cd ../oem-release/
+ls
+find trustzone_images/
+find trustzone_images/ -type f
+cd - 
+cat ~/tmp/1.txt 
+getclip
+lookup-similar-file-for-another-release $(getclip)
+cp-with-dir-struct ../oem-release/ ./rpm_proc/build/ms/bin/8976/rpm.mbn
+cd ../oem-release/trustzone_images/
+ls
+find trustzone_images/ -type f
+cd ../rpm_proc/
+find ./ -type f
+git rm ./build/ms/bin/AAAAANAAR/rpm.mbn
+cd - 
+cd oem-code
+cat ~/tmp/1.txt 
+lookup-similar-file-for-another-release $(getclip)
+find . -name 'sdi*'
+lookup-similar-file-for-another-release common/tools/sectools/resources/build/fileversion2/sec.dat
+cp-with-dir-struct ../oem-release/ $(getclip)
+cd ../oem-release/common/
+find . -type f
+cp-with-dir-struct ../oem-release/ $(getclip)
+cd -code
+cp-with-dir-struct ../oem-release/ $(getclip)
+cd ../oem-release/
+find . -name 'sec.dat'
+cd - 
+cat ~/tmp/1.txt 
+cd - 
+find . -name 'tz.mbn'
+cd - 
+lookup-similar-file-for-another-release $(getclip)
+cp-with-dir-struct ../oem-release/ $(getclip)
+cd - 
+ls
+git st 
+git add . 
+git st 
+git commit -m 'update for u2'
+git st 
+ls
+git clean -xfd
+git ls-tree -r 
+git ls-tree -r HEAD
+git ls-tree -r HEAD|pn 4
+cd ..
+smartcm do-cm-build -r -c null
+cd - 
+git rm ./debug_image/build/ms/bin/AAAAANAZ/sdi.mbn
+git commit -m 'update for u2' --amend 
+cd ..
+smartcm do-cm-build -r -c null
+cd - 
+rcd -code
+find . -name 'meta_lib.py'
+cp-with-dir-struct ../oem-release/ $(getclip)
+cd - 
+git rm ./common/tools/meta/meta_lib.py
+git st 
+git add . 
+git st 
+git commit -m 'update for u2' --amend 
+cd - 
+cd ..
+smartcm do-cm-build -r -c null
+cd - 
+lookup-similar-file-for-another-release $(getclip)
+cp-with-dir-struct ../oem-release/ $(getclip)
+cd - 
+cd oem-release/
+git rm ./common/tools/meta/meta_log.py
+git st 
+git add . 
+git commit -m 'update for u2' --amend 
+cd - 
+smartcm do-cm-build -r -c null
+cat $(which smartcm)
+cat $(which smartcm)|less
+cat $(which smartcm)|grep rsync_f
+smartcm do-cm-build -r -c null
+cat $(which smartcm)|grep rsync_f
+cat $(which smartcm)|less
+cat $(which smartcm)|grep rsync_f
+which smartcm
+l $(which smartcm)
+cat ~/src/github/smartcm/smartcm
+cat ~/src/github/smartcm/smartcm|grep rsync_fai
+smartcm do-cm-build -r -c null
+cd ./oem-code/
+lookup-similar-file-for-another-release $(getclip)
+cp-with-dir-struct ../oem-release/ $(getclip)
+getclip
+ls
+find . -name '*.py'
+find . -name 'build.py'
+git st 
+rcd t1w
+ls
+rcd -release
+ls
+git st 
+git add . 
+git st 
+find . -name 'pil-*'
+git rm ./common/tools/misc/pil-splitter.py
+git rm ./common/build/update_common_info.py 
+git st 
+git rm  ./common/build/partition*.xml 
+cd - 
+find . -name 'partition.xml'
+cp-with-dir-struct ../oem-release/ $(getclip)
+cd ../oem-release/
+ls
+git st 
+git add . 
+git st 
+git commit -m 'update for u2' -a
+cd - 
+ls
+find . -name 'partition.xml'
+ls
+cd ..
+smartcm do-cm-build -r -c null
+cd oem-code/
+git st 
+cat <<'End'|putclip
+boot_images/core/storage/tools/ptool/checksparse.py 
+
+End
+
+git co boot_images/core/storage/tools/ptool/checksparse.py 
+cd ./common/build/
+python build.py --nonhlos
+git st 
+rcd -release
+git log
+git st 
+cd ..
+git st 
+repo-changes\? 
+cd oem-code/LINUX/android/out/target/product/msm8952_64/
+cd ./LINUX/android/out/
+git st 
+cd ..
+smartcm do-cm-build -r -c null
+cd oem-release/
+git log --name-status 
+l common/build/bin/asic/NON-HLOS.bin 
+find . -name 'raw*xml'
+rcd -code
+find . -name 'raw*xml'
+cd - 
+git log --name-status 
+ls
+rcd -code
+ls
+#get-visited-files bash -c 'cd common/build'
+cat <<'End'|putclip
+python build.py --nonhlos
+End
+
+get-visited-files bash -c 'cd common/build; python build.py --nonhlos'
+get-visited-files -- bash -c 'cd common/build; python build.py --nonhlos'
+cd ./oem-release-out/
+du
+du -h
+ls
+find ./boot_images/ -type f
+find ./common/ -type f
+find ./cpe_proc/ -type f
+find ./modem_proc/ -type f
+find ./trustzone_images/ -type f
+find ./wcnss_proc/ -type f
+cp-with-dir-struct ../../oem-release/ *
+cd ../../oem-release/
+ls
+git st 
+git add . 
+git st 
+ls
+git st 
+git commit -m 'add more files' -a
+ls
+cd ./common/build/
+l 
+ln -s ./build.py update_common_info.py
+ls
+git st 
+git add ./update_common_info.py 
+git st 
+git commit -m 'fix smartcm' -a
+cd -r
+cd ..
+smartcm do-cm-build -r -c null
+ls
+cd oem-cm-scripts/
+ls
+e build-all.sh 
+git st 
+git add . 
+git st
+cd ..
+cd - 
+git st 
+git commit -m 'do not build non-hlos as simt' -a
+gerrit-push-review -R zhangshuang baohaojun
+df /mnt/dailybuild/
+putclip /mnt/IceSkyBuild/U2/
+ls
+cd 
+cd job
+cd oem-U2/
+ls
+cd builds/
+l 
+cd 2/
+l 
+e log 
+grep-errors log
+cd oem-code
+cd workspace
+l 
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e oem-cm-scripts/
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+git log -p .
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+cd ./oem-cm-scripts/
+exec env ENV='' HISTFILE=/dev/null PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+git log -p .
+cat <<'End'|putclip
+export ARMLMD_LICENSE_FILE="/pkg/qct/software/arm/RVDS/5.01bld94/CM_server_license.dat"
+End
+
+git st 
+git diff
+git add . 
+git commit -m 'fix build for rpm' -a
+gerrit-push-review -R zhangshuang baohaojun
+e ./build-all.sh 
+git st 
+git diff
+git add . 
+git commit -m 'fix rpm build, do not export the build_id' -a
+gerrit-push-review -R zhangshuang baohaojun
+ls
+e ./build-all.sh 
+git st 
+git add . 
+git st 
+git commit -m 'do not keep dead code around' -a
+gerrit-push-review -R zhangshuang baohaojun
+gerrit-do-review
+cd ..
+ls
+smartcm do-cm-build -r -c null
+cd oem-release/
+git rm ./common/build/bin/asic/NON-HLOS.bin
+git st 
+git reset --hard 
+git rm ./common/build/bin/asic/NON-HLOS.bin
+git st 
+git commit -m 'do not put non-hlos.bin into oem-release, like simt'
+gerrit-push-review -R zhangshuang baohaojun
+smartcm do-cm-build -r -c null
+cd ..
+smartcm do-cm-build -r -c null
+cd u2
+ls
+cd builds/
+l 
+cd 5/
+l 
+grep-errors log
+e log:20689
+ls
+id abc
+ls
+cat /etc/rc.local 
+cat /etc/fstab
+ls
+sudo reboot
+ls
+ifconfig 
+pwd
+ls
+mount
+dmesg 
+sudo dmesg 
+cat /proc/kmsg 
+sudo cat /proc/kmsg
+sync&
+jobs
+sudo tail -f /proc/kmsg&
+ls
+mount
+ssh bsp01@localhost
+sudo cat /etc/rc.local 
+cd sfo-rom
+ls
+cd builds/
+l 
+cd lastFailedBuild
+l 
+grep-errors log
+du log 
+exec env ENV='' HISTFILE=.tramp_history PROMPT_COMMAND='' PS1=\#\$\  PS2='' PS3='' /bin/sh 
+e log 
+grep-errors log
+cd - 
+ls
+grep-errors log
+ls
+cd - 
+grep-errors log
+cd jobs
+ls
+cd oem-U2/
+l
+cd workspace/oem-release/
+git log --name-status 
+ls
+cp-with-dir-struct rpm_proc/build/ms/bin/8976/rpm.mbn xx/
+mkdir xx/
+cp-with-dir-struct rpm_proc/build/ms/bin/8976/rpm.mbn xx/
+cp-with-dir-struct xx rpm_proc/build/ms/bin/8976/rpm.mbn 
+cp  rpm_proc/build/ms/bin/8976/rpm.mbn xx
+cp  rpm_proc/build/ms/bin/8976/rpm.mbn xx -v 
+cp  rpm_proc/build/ms/bin/8976/rpm.mbn xx -v 
+cat <<'End'|putclip
+get-visited-files -- bash -c 'cd common/build; python build.py --nonhlos'
+End
+
+cd /var/lib/jenkins/jobs/U2-oem-simt/workspace/oem-release
+find . -name '.git' -prune -o -type f -print > u2.txt
+ll
+chmod 777 u2.txt 
+cd /var/lib/jenkins/jobs/oem-U2/workspace/oem-release
+find . -name '.git' -prune -o -type f -print > oem.txt
+cd common/build/lib/
+ll
+cd ../../../../oem-code/common/build/lib/
+ll
+cd cd ../../config/misc/
+cd ../../
+cd config/
+ll
+cd misc/
+ll
+cd ../oem-code/common/config/misc/
+ll
+vim fat_creation.py 
+git log fat_creation.py
+git log 
+git log fat_creation.py
+git branch -a
+git log fat_creation.py --name-status 
+cp /var/lib/jenkins/jobs/oem-U2/workspace/oem-code/common/config/misc .
+ll
+cp /var/lib/jenkins/jobs/oem-U2/workspace/oem-code/common/config/misc/fat_creation.py .
+ll
+git status 
+git add fat_creation.py 
+git commit -m "add fat_creation.py"
+git push $repo_remote HEAD:$(repo-branch)
+git branch
+ repo_remote=$(git config remote.$(repo-remote).url|perl -npe 's/-gerrit//')
+git push $repo_remote HEAD:$(repo-branch
+cd oem-u1/
+l 
+re repo init ;true;repo init -u code:/qualcomm/platform/manifest.git -b sanfrancisco -m sfo-rom.xml --repo-url code:/googlesource/git-repo --reference /data/mirror 
+ls
+repo-switch 
+find . -name '*oem*'
+ls
+cd job
+l 
+cd oem-u1-5.1L/
+l 
+cd workspace/
+l 
+cd oem-code/
+l 
+diff wcnss_proc wcnss_proc-bak  -r 
+diff wcnss_proc wcnss_proc-bak  -r |grep -v '\.pyc$|\.o$' -P
+cd wcnss_proc
+l 
+git branch -a
+git fetch 
+git branch -a
+cd ..
+git branch -a
+git log
+ls
+diff trustzone_images trustzone_images-bak 
+diff trustzone_images trustzone_images-bak  -r 
+cat <<'End'|putclip
+|grep -v '\.pyc$|\.o$' -P
+End
+
+diff trustzone_images trustzone_images-bak  -r |grep -v '\.pyc$|\.o$' -P
+ls
+re get ;get-visited-files -- bash -c 'cd common/build; python update_common_info.py --nonhlos'
+cd ./oem-release-out/
+l 
+ls
+find . -type f 
+find . -type f |wc -l 
+cd ..
+cd oem-release/
+l 
+git log --name-status 
+git log 
+git reset --hard 9d2c11f22488d17f068adbad94bebec032a4cc65
+git push $(repo-remote) HEAD:$(repo-branch) -f
+ls
+git rm * -rf
+l 
+mv ../oem-code/oem-release-out/* . -v
+l 
+rmdir ../oem-code/oem-release-out/
+ls
+git add . 
+git st -s
+git st -s|grep '^D'
+find ../oem-code/ -name 'dsp2.mbn'
+find ../oem-code/boot_images/build/ms/ -name '*.mbn'
+git st -s|grep '^D'
+find ../oem-code/boot_images/build/ms/ -name '*.mbn'
+git st -s|grep '^D'|grep boot_
+find ../oem-code/boot_images/build/ms/ -name '*.mbn'|grep MP
+git st -s|grep '^D'
+git st -s|grep '^D'|putclip
+cat <<'End'|putclip
+aoenuth aonetuh aoneuh aoneuh
+End
+
+cd ../oem-code/
+find ../oem-code/boot_images/build/ms/ -name '*.mbn'|grep MP
+find ./boot_images/build/ms/ -name '*.mbn'|grep MP
+cp-with-dir-struct ../oem-release/ ./boot_images/build/ms/bin/8936/MPRG8936.mbn
+find ./boot_images/build/ms/ -name '*.mbn'|sbl
+find ./boot_images/build/ms/ -name '*.mbn'|grep sbl
+cp-with-dir-struct ../oem-release/ ./boot_images/build/ms/bin/8936/sbl1.mbn
+find ./boot_images/build/ms/ -name '*.mbn'|grep msimage
+cp-with-dir-struct ../oem-release/ ./boot_images/build/ms/bin/EMMCBLD/8936_msimage.mbn
+find . -name 'checksparse.py'
+cp-with-dir-struct ../oem-release/ ./boot_images/core/storage/tools/ptool/checksparse.py
+find . -name 'rpm.mbn'
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'rpm.mbn')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'cmnlib.mbn')
+diff ./trustzone_images/build/ms/bin/MAXAANAA/cmnlib.mbn ./trustzone_images/build/ms/bin/MAXAANAA/signed/cmnlib.mbn
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'isdbtmm.mbn')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'keymaster.mbn')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'mc_v2.mbn')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'playready.mbn')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'tz.mbn')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'widevine.mbn')
+git st 
+git st 
+cd - 
+git st 
+git add . 
+git st 
+git commit -m 'init commit for U1 5.1L' -a
+git push $(repo-remote) HEAD:$(repo-branch) 
+git reflog 
+repo-project 
+repo-project |putclip
+cd 
+cd u1
+l 
+cd workspace/
+l 
+cd ./oem-code/
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'hyp.mbn')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'sec.dat')
+cp-with-dir-struct ../oem-release/ $(select-output-line -- find . -name 'prog_emmc_firehose_*')
+diff ./boot_images/build/ms/bin/8936/prog_emmc_firehose_8936.mbn ./boot_images/core/bsp/tools/deviceprogrammer/build/SAAAANAZ/prog_emmc_firehose_8936.mbn
+diff ./boot_images/build/ms/bin/8936/prog_emmc_firehose_8936.mbn ./boot_images/core/bsp/tools/deviceprogrammer/build/SAAAANAZ/sign/default/emmcbld/prog_emmc_firehose_8936.mbn
+cd -
+cd ./oem-release/
+git st 
+git add . 
+git st 
+git commit -m 'update for more files' -a
+git push
+git push $(repo-remote) HEAD:$(repo-branch) 
+cd ..
+l 
+~/system-config/bin/smartcm -x do-cm-build -c null -r -R /mnt/IceSkyBuild/U1/5.1L
+ll

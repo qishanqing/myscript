@@ -1,0 +1,29 @@
+diff --git a/scm-helpers/break-qcom-oem b/scm-helpers/break-qcom-oem
+index b5da46d..ad1e7e7 100755
+--- a/scm-helpers/break-qcom-oem
++++ b/scm-helpers/break-qcom-oem
+@@ -51,17 +51,21 @@ target_branch=qualcomm/$(basename $git_url)/$branch
+ 
+ cd ~/src/$(basename $git_url)
+ 
+-dirs=$(for x in */; do echo ${x%/}; done|grep -v '^LINUX$')
++
++
++rm -rf MSM89[0-41]?.*  MPSS.JO.2.0/  RPM.BF.2.2/ VIDEO.VE_ULT.3.1  TZ.BF.4.0.5/static_analysis/ ||true
++
++dirs=$(for x in */*/; do echo ${x%/}; done|grep -v 'LINUX$')
+ 
+ commit=$(git log -1 --pretty=%H HEAD)
+ 
+ for d in $dirs; do
+     echo "working with $d"
+     subtree_p=$(git subtree split -P $d $commit)
+-    git push s:$prefix/$d $subtree_p:refs/heads/$target_branch
++    git push s:$prefix/${d#*/} $subtree_p:refs/heads/$target_branch
+ done
+ 
+-subtree_p=$(git subtree split -P LINUX/android/vendor/qcom/proprietary/ HEAD)
++subtree_p=$(git subtree split -P LA.UM.5.6/LINUX/android/vendor/qcom/proprietary/ HEAD)
+ git checkout $subtree_p
+ for d in mm-camera mm-camerasdk; do
+     subtree_p=$(git subtree split -P $d HEAD)

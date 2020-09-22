@@ -1,0 +1,64 @@
+#!/bin/bash
+
+set -ex
+
+if test "$SMARTCM_SECURITY_BOOT" = true; then
+    (
+        if test "$SMARTCM_SECURITY_BOOT_TEST" != true; then
+            (
+                cd vendor/smartisan/security/security-boot
+                for x in *.gpg; do
+                    cat ~/.ssh/security-boot.key | gpg --no-tty --passphrase-fd 0 $x
+                done
+            )
+            cp vendor/smartisan/security/security-boot/* oem-release/common/sectools/resources/data_prov_assets/Signing/Local/oem_certs-key2048_exp65537/ -av
+        fi
+        sha256=$(sha256sum oem-release/common/sectools/resources/data_prov_assets/Signing/Local/oem_certs-key2048_exp65537/qpsa_rootca.cer | pn 1)
+        perl -npe "s,<value>[a-f0-9]{64}</value>,<value>$sha256</value>," -i oem-release/common/sectools/config/8953/8953_fuseblower_USER.xml
+
+        srcdir=$(lookup-file-dir .repo)
+        outputdir=$srcdir/oem-release/common/sectools
+        function signmbn() {
+            if test -z "$1"; then
+               die "must specify the mbn file"
+            fi
+            rm -f secimage_output/8953/mcfg_sw/mcfg_sw.mbn
+            python sectools.py secimage -i $1 -c ./config/8953/8953_secimage.xml -sa
+            if test -f $outputdir/secimage_output/8953/mcfg_sw/mcfg_sw.mbn; then
+                cp secimage_output/8953/mcfg_sw/mcfg_sw.mbn $1
+            else
+                die "mcfg_sw.mbn must be signed"
+            fi
+        }
+        (
+            cd $outputdir
+			python sectools.py secimage -i $srcdir/vendor/qcom/proprietary/prebuilt_HY11/target/product/msm8953_64/system/etc/firmware/a506_zap.elf -c ./config/8953/8953_secimage.xml -sa
+            python sectools.py secimage -m $srcdir/oem-release/ -c config/8953/8953_secimage.xml -sa
+            find $srcdir/oem-release -type f -name "mcfg_sw.mbn" | while read x;do
+                signmbn $x
+            done
+            python sectools.py fuseblower -e config/8953/8953_fuseblower_OEM.xml -q config/8953/8953_fuseblower_QC.xml -u config/8953/8953_fuseblower_USER.xml -g verbose -vvv
+        )
+        if test ! -d $outputdir/secimage_output; then
+            die "secimage_output is not a directory"
+        else
+            cat flashing-files/.scripts/files-signed-before-build | while read x;do
+                if test -e $x; then
+                    file=$(basename $x)
+                    if test -f "$(find $outputdir/secimage_output/8953 -type f -name $file)"; then
+                        cp $(find $outputdir/secimage_output/8953 -type f -name $file) $x
+                    elif [[ $file == "qdsp6sw.mbn" ]];then
+                        cp $outputdir/secimage_output/8953/modem/modem.mbn $x
+                    elif [[ $file == "sec.dat" ]];then
+                        cp $outputdir/common_output/v2/sec.dat $x
+                    else
+                        die "$x should be signed"
+                    fi
+                else
+                    die "$x not exist"
+                fi
+            done
+        fi
+    )
+fi
+

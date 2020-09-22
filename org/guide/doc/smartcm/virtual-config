@@ -1,0 +1,108 @@
+[project]
+	description = Rights inherited by all source code projects
+[contributor-agreement "Employee"]
+	description = Before commit code, please sign this one online.
+	agreementUrl = static/cla_employee.html
+	autoVerify = group Registered Users
+	accepted = group Registered Users
+[label "Verified"]
+	function = MaxWithBlock
+	value = -1 Fails
+	value =  0 No score
+	value = +1 Verified
+	defaultValue = 0
+[label "Code-Review"]
+	function = MaxWithBlock
+	abbreviation = R
+	copyMinScore = true
+	value = -2 Do not submit
+	value = -1 I would prefer that you did not submit this
+	value =  0 No score
+	value = +1 Looks good to me, but someone else must approve
+	value = +2 Looks good to me, approved
+	defaultValue = 0
+[access "refs/heads/simt/*"]
+	push = group Non-Interactive Users
+	create = group Non-Interactive Users
+	forgeAuthor = group Administrators
+	forgeCommitter = group Administrators
+[access "refs/heads/mtk/*"]
+	push = group Non-Interactive Users
+	create = group Non-Interactive Users
+	forgeAuthor = group Non-Interactive Users
+	forgeCommitter = group Non-Interactive Users
+        submit = deny group dev
+[access "refs/heads/smandroid/*"]
+	create = group Administrators
+	create = group Non-Interactive Users
+	forgeCommitter = group Administrators
+	forgeCommitter = group Non-Interactive Users
+        push = deny group dev
+	push = group Administrators
+	push = group Non-Interactive Users
+        submit = deny group dev
+        submit = group Administrators
+	submit = group Non-Interactive Users
+	submit = group bsp-reviewer
+[access "refs/heads/simt/*"]
+	forgeAuthor = group Non-Interactive Users
+	forgeCommitter = group Non-Interactive Users
+[access "refs/heads/mtk/*"]
+[access "refs/heads/fih/bono-rom"]
+	exclusiveGroupPermissions = push
+	push = deny group dev
+	push = +force group Administrators
+	push = group Non-Interactive Users
+	submit = group Administrators
+        submit = group Non-Interactive Users
+	submit = block group dev
+[submit]
+	action = fast forward only
+	mergeContent = false
+[access "refs/heads/fih/mol/*"]
+	submit = group Administrators
+	submit = group Non-Interactive Users
+	submit = group reviewer-mol
+	submit = block group Registered Users
+[access "refs/heads/mol/surabaya-rom_r01253.1_3.0_cta"]
+	submit = group Administrators
+	submit = group Non-Interactive Users
+	submit = group reviewer-spm
+	submit = block group reviewer
+	label-Code-Review = -2..+2 group reviewer-spm
+[access "refs/heads/mol/*"]
+	submit = deny group Registered Users
+	submit = deny group dev
+	submit = group Administrators
+	submit = group Non-Interactive Users
+	submit = group reviewer-mol
+	submit = group reviewer-spm
+	exclusiveGroupPermissions = submit
+[access "refs/heads/cta/*"]
+	create = group Administrators
+	create = group Non-Interactive Users
+	forgeAuthor = group Administrators
+	forgeAuthor = group Non-Interactive Users
+	forgeCommitter = group Administrators
+	forgeCommitter = group Non-Interactive Users
+	push = group Administrators
+	push = group Non-Interactive Users
+[access "refs/heads/factory/*"]
+	submit = group Non-Interactive Users
+	submit = group reviewer
+[access "refs/heads/factory/surabaya-8996-20160701"]
+	submit = group reviewer-spm
+	submit = block group reviewer
+	label-Code-Review = -2..+2 group reviewer-spm
+[receive]
+	requireSignedOffBy = true
+	requireChangeId = true
+[access "refs/heads/mol/sfo-rom_r2145134.2.6.0_SelfRelease"]
+	submit = group reviewer
+	submit = group user/zhangtingting (zhangtingting)
+[commentlink "changeid"]
+  match = (I[0-9a-f]{8,40})
+  link = "#/q/$1"
+[commentlink "mantis"]
+  match = "([Tt]icket:\\s*)([0-9]{1,20})"
+  link = http://mantis.smartisan.cn/view.php?id=$2
