@@ -1,0 +1,37 @@
+#+OPTIONS: toc:t  ^:nil author:nil num:2
+#+title: slam交叉编译环境搭建指南
+
+* slam交叉编译环境搭建
+** 注意事项
+- 服务器系统版本: 16.04(arm架构)
+
+- gcc/g++版本: 5.4.0
+** 安装第三方库
+
+*** 首先安装如下软件包
+#+BEGIN_SRC 
+apt-get install -y libglew-dev libboost-dev libboost-thread-dev libboost-filesystem-dev 
+libboost-all-dev libx11-dev libxmu-dev libglu1-mesa-dev libgl2ps-dev libxi-dev 
+libzip-dev libpng12-dev libcurl4-gnutls-dev libfontconfig1-dev libsqlite3-dev 
+libglew*-dev libssl-dev build-essential libgtk2.0-dev libvtk5-dev libjpeg-dev 
+libtiff5-dev libjasper-dev libopenexr-dev libtbb-dev libeigen3-dev libc6-dev-i386  autoconf automake libtool
+#+END_SRC
+*** 其次根据对照如下链接安装第三方库
+#+BEGIN_EXAMPLE
+http://192.168.50.158/VisualModule/CleaningRobotSDK/blob/develop/slam/README
+http://192.168.50.158/VisualModule/CleaningRobotSDK/blob/develop/slam/README.md
+#+END_EXAMPLE
+*** 根据文档下载代码编译安装(make install默认路径/usr/local即可)
+#+BEGIN_SRC 
+git clone https://github.com/gflags/gflags.git
+git clone https://github.com/google/glog
+git clone https://github.com/stevenlovegrove/Pangolin.git
+git clone  https://github.com/borglab/gtsam -b develop(编译安装后进入目录gtsam
+/3rdparty/Eigen,进行编译安装)
+git clone https://github.com/opencv/opencv(checout 为b38c50b3d0c31e82294315ec44b54b7ef559ef12,需要特定版本3.4.3)
+#+END_SRC
+gitlab下载项目CleaningRobotSDK,分支为devlop,进入目录third_party/yaml-cpp,编译安装此库
+
+
+*** 执行slam编译脚本build.sh
+
