@@ -1,0 +1,45 @@
+pipeline {
+    agent {
+        label 'master'
+    }
+    options { 
+	   timestamps()  //打印执行步骤的时间戳
+	}
+  
+    stages {
+        stage('checkout') {
+            steps {
+                sh 'rm -rf *'
+                git branch: 'develop', credentialsId: '909cdc70-04bc-4f1c-8f95-337267172c77', url: 'git@192.168.50.158:VisualModule/CleaningRobotSDK.git'
+                sh 'echo -n "$(date +%Y-%m-%d-%H:%M:%S)" > ~/tmp/tx2'
+                }
+            }
+        
+        stage('Build') {
+            agent {
+                docker {
+                    image 'arm64:2.0'
+                    args '-v /var/lib/jenkins/jobs:/jobs -v /root/code/cross:/cross -u root --privileged=true --entrypoint='
+                    }
+            }
+            steps {
+                sh '''
+                ( 
+                    git config --global user.email "qsq@test.com"
+                    git config --global user.name "qsq"
+                ) && cd /jobs/$JOB_NAME/workspace/
+                    . /opt/ros/kinetic/setup.bash
+                    make path_planing
+                '''
+            }
+        }
+        stage('upload') {
+            steps{
+                sh '''
+                File_Path=`cat ~/tmp/tx2`
+                find -name libINDEMIND_SLAM.so | xargs -I '{}' upload-to-ftp -d '{}' ftp://ftpuser:ftpuser@indemind@192.168.50.191/slam/$File_Path
+                '''
+            }
+        }
+    }
+}
