@@ -42,10 +42,15 @@ function generate_commits(){
 
     cp -ar $SOURCE_DIR/install/* .
     git add --all .
-    git commit -s -F $COMMIT_MSG_FILE
+
+    if [ -n `git status -s` ];then
+       git commit -s -F $COMMIT_MSG_FILE
     
-    local remote=$(git config --local --get branch.$BRANCH.remote)
-    local branch=$(git config --local --get branch.$BRANCH.merge)
+       local remote=$(git config --local --get branch.$BRANCH.remote)
+       local branch=$(git config --local --get branch.$BRANCH.merge)
+    else
+	return
+    fi
 
     if [[ "${system_platform}" =~ "x86_64" ]];then
         local branch=compile_pc
