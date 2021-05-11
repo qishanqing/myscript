@@ -43,17 +43,17 @@ function generate_commits(){
     cp -ar $SOURCE_DIR/install/* .
     git add --all .
 
-    if [ -n `git status -s` ];then
+    if ! [ -z `git status -s` ];then
        git commit -s -F $COMMIT_MSG_FILE
     
        local remote=$(git config --local --get branch.$BRANCH.remote)
        local branch=$(git config --local --get branch.$BRANCH.merge)
     else
-	return
+	exit 0
     fi
 
     if [[ "${system_platform}" =~ "x86_64" ]];then
-        local branch=compile_pc
+        local branch=compile_x64
     fi
 
     git push --no-verify $remote HEAD:$branch
@@ -76,6 +76,13 @@ function project_build(){
     popd
 }
 
+function public_project_update(){
+    pushd /usr/local/include/I18RPublicBaseTypes
+    git checkout ./ && git clean -xdf ./
+    git pull origin dev
+    popd .
+}
+
 function target_project_fetch(){
     git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $BRANCH
 }
@@ -83,6 +90,7 @@ function target_project_fetch(){
 
 init_project_env
 source_project_fetch
+public_project_update
 project_build
 target_project_fetch
 generate_message
