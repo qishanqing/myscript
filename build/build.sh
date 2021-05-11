@@ -40,6 +40,7 @@ function generate_message() {
 function generate_commits(){
     pushd  $TARGET_DIR
 
+    git rm -r *
     cp -ar $SOURCE_DIR/install/* .
     git add --all .
 
@@ -80,7 +81,7 @@ function public_project_update(){
     pushd /usr/local/include/I18RPublicBaseTypes
     git checkout ./ && git clean -xdf ./
     git pull origin dev
-    popd .
+    popd
 }
 
 function target_project_fetch(){
