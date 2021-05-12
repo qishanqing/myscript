@@ -10,7 +10,7 @@ jira_sys_upload () {
     jira_sys_backup &&
 	(
 	    cd /backup/jira/	    
-	    scp -r  export  root@192.168.50.158:/backup/jira && echo "backup sys data success" | mails_cm -i "jira sys data backup"
+	    scp -r -P222 export  root@192.168.50.158:/backup/jira && echo "backup sys data success" | mails_cm -i "jira sys data backup"
 	) 
 }
 
@@ -22,7 +22,7 @@ jira_data_upload() {
     jira_data_backup &&
 	(
 	    cd /backup/jira/
-	    scp -r  mysql  root@192.168.50.158:/backup/jira && echo "backup mysql data success" | mails_cm -i "jira mysql data backup"
+	    scp -r -P222 mysql  root@192.168.50.158:/backup/jira && echo "backup mysql data success" | mails_cm -i "jira mysql data backup"
 	) 
 	
 }
