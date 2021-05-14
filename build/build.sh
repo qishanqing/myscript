@@ -78,9 +78,10 @@ function project_build(){
 }
 
 function public_project_update(){
-    pushd /usr/local/include/I18RPublicBaseTypes
+    pushd ~/system/I18RPublicBaseTypes
     git checkout ./ && git clean -xdf ./
-    git pull origin dev
+    git pull origin develop
+    ./install.sh
     popd
 }
 
