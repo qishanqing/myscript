@@ -38,7 +38,9 @@ function generate_message() {
 function generate_commits(){
     pushd  $TARGET_DIR
 
-    git rm -r * || true
+    if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
+	git rm -r * || true
+    fi
 
     if ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
@@ -47,7 +49,9 @@ function generate_commits(){
     fi
     git add --all .
 
-    if ! [ -z `git status -s` ];then
+    add_file_list=`git status -s`
+
+    if ! [ -z "$add_file_list" ];then
        git commit -s -F $COMMIT_MSG_FILE
     
        local remote=$(git config --local --get branch.$BRANCH.remote)
