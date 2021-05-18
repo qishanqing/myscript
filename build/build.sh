@@ -38,7 +38,7 @@ function generate_message() {
 function generate_commits(){
     pushd  $TARGET_DIR
 
-    git rm -r *
+    git rm -r * || true
 
     if ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
