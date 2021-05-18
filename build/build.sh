@@ -39,8 +39,11 @@ function generate_commits(){
     pushd  $TARGET_DIR
 
     git rm -r *
-    cp -ar $SOURCE_DIR/install/* .
-    git add --all .
+
+    if ![ -z "$TARGET_PROJECT_FILE_PATH" ];then
+	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH
+	git add --all .
+    fi
 
     if ! [ -z `git status -s` ];then
        git commit -s -F $COMMIT_MSG_FILE
