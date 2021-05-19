@@ -39,10 +39,13 @@ function generate_commits(){
     pushd  $TARGET_DIR
 
     if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
-	git rm -r * || true
+        for i in $install_dir_list;do
+	    git rm -r $i || true
+        done
     fi
 
     if ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
+	mkdir -p $TARGET_PROJECT_FILE_PATH
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
     else
 	cp -ar $SOURCE_DIR/install/* .
@@ -81,6 +84,7 @@ function source_project_fetch(){
 function project_build(){
     pushd $SOURCE_DIR
     source  $BUILD_SCRIPT
+    install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     popd
 }
 
