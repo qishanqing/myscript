@@ -78,7 +78,7 @@ function check_status_code(){
 }
 
 function source_project_fetch(){
-    git clone --recursive ssh://git@${GIT_HOST}:222/${SOURCE_PROJECT} -b $BRANCH
+    git clone --recursive ssh://git@${GIT_HOST}:222/${SOURCE_PROJECT} -b $SOURCE_BRANCH
 }
 
 function project_build(){
@@ -97,7 +97,7 @@ function public_project_update(){
 }
 
 function target_project_fetch(){
-    git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $BRANCH
+    git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH
 }
 
 
