@@ -31,6 +31,7 @@ function generate_message() {
     fi
     echo "" >> $COMMIT_MSG_FILE
     echo "build_num:      $BUILD_URL" >>  $COMMIT_MSG_FILE
+    echo "Push $system_platform platform files" >>  $COMMIT_MSG_FILE
     
     
 }
@@ -104,23 +105,22 @@ source_project_fetch
 target_project_fetch
 
 if [[ "${system_platform}" =~ "x86_64" ]];then
-        docker exec -i build-x64-18.04 /bin/bash <<EOF
-        set -x
-        TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}
-        SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
-        
-        pushd ~/system/I18RPublicBaseTypes
-        git checkout ./ && git clean -xdf ./
-        git pull origin develop
-        ./install.sh
-        popd
+    docker exec -i build-x64-18.04 /bin/bash <<EOF
+    set -x
+    TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}
+    SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
+    pushd ~/system/I18RPublicBaseTypes
+    git checkout ./ && git clean -xdf ./
+    git pull origin develop
+    ./install.sh
+    popd
 
-        pushd $SOURCE_DIR
-        source /opt/ros/melodic/setup.bash
-        source  $BUILD_SCRIPT
-        install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
-        popd
-        exit
+    pushd $SOURCE_DIR
+    source /opt/ros/melodic/setup.bash > /dev/null
+    source  $BUILD_SCRIPT
+    install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
+    popd
+    exit
 EOF
 else
     public_project_update
