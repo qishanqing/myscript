@@ -16,7 +16,7 @@ init_project_env(){
 
 function prepare_env() {
     system_platform=`uname -m`
-    export COMMIT_ID_FILE=${WORKSPACE}/_last_build_id
+    export COMMIT_ID_FILE=${WORKSPACE}/_last_build_id 
     export COMMIT_MSG_FILE=${WORKSPACE}/_commit-msg
     export COMMIT_MSG_FILE_TMP=${WORKSPACE}/_commit-msg.tmp
 }
@@ -45,7 +45,7 @@ function generate_commits(){
     fi
 
     if ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
-	mkdir -p $TARGET_PROJECT_FILE_PATH
+	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
     else
 	cp -ar $SOURCE_DIR/install/* .
@@ -57,14 +57,10 @@ function generate_commits(){
     if ! [ -z "$add_file_list" ];then
        git commit -s -F $COMMIT_MSG_FILE
     
-       local remote=$(git config --local --get branch.$BRANCH.remote)
-       local branch=$(git config --local --get branch.$BRANCH.merge)
+       local remote=$(git config --local --get branch.$TARGET_BRANCH.remote)
+       local branch=$(git config --local --get branch.$TARGET_BRANCH.merge)
     else
 	exit 0
-    fi
-
-    if [[ "${system_platform}" =~ "x86_64" ]];then
-        local branch=compile_x64
     fi
 
     git push --no-verify $remote HEAD:$branch
@@ -100,14 +96,37 @@ function target_project_fetch(){
     git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH
 }
 
+export -f public_project_update
+export -f project_build
 
 init_project_env
 source_project_fetch
-public_project_update
-project_build
 target_project_fetch
+
+if [[ "${system_platform}" =~ "x86_64" ]];then
+        docker exec -i build-x64-18.04 /bin/bash <<EOF
+        set -x
+        TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}
+        SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
+        
+        pushd ~/system/I18RPublicBaseTypes
+        git checkout ./ && git clean -xdf ./
+        git pull origin develop
+        ./install.sh
+        popd
+
+        pushd $SOURCE_DIR
+        source /opt/ros/melodic/setup.bash
+        source  $BUILD_SCRIPT
+        install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
+        popd
+        exit
+EOF
+else
+    public_project_update
+    project_build
+fi
+
 generate_message
 generate_commits
-
-
 
