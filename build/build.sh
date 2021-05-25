@@ -41,7 +41,11 @@ function generate_commits(){
 
     if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
         for i in $install_dir_list;do
-	    git rm -r $i || true
+	    if ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
+		git rm -r $TARGET_PROJECT_FILE_PATH/$i || true
+	    else
+		git rm -r $i || true
+	    fi
         done
     fi
 
