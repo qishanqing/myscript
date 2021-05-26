@@ -39,6 +39,7 @@ function generate_message() {
 function generate_commits(){
     pushd  $TARGET_DIR
 
+    install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
         for i in $install_dir_list;do
 	    if ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
@@ -85,7 +86,6 @@ function source_project_fetch(){
 function project_build(){
     pushd $SOURCE_DIR
     source  $BUILD_SCRIPT
-    install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     popd
 }
 
@@ -120,9 +120,8 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     popd
 
     pushd $SOURCE_DIR
-    source /opt/ros/melodic/setup.bash > /dev/null
+    source /opt/ros/melodic/setup.bash &> /dev/null
     source  $BUILD_SCRIPT
-    install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     popd
     exit
 EOF
