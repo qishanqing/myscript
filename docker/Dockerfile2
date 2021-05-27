@@ -1,0 +1,8 @@
+FROM jenkins/jenkins:2.222.1
+
+USER root
+ARG dockerGid=999
+
+RUN echo "docker:x:${dockerGid}:jenkins" >> /etc/group
+
+USER jenkins
