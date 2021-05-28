@@ -69,7 +69,12 @@ function generate_commits(){
 	exit 0
     fi
 
-    git push --no-verify $remote HEAD:$branch
+    git push --no-verify $remote HEAD:$branch ||
+	(
+	    git checkout ./ && git clean -xdf ./
+	    git pull --rebase
+	    git push --no-verify $remote HEAD:$branch
+	)
 }
 
 function check_status_code(){
