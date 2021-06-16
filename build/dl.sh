@@ -5,11 +5,11 @@ set -ex
 PROJECTA_DIR=$WORKSPACE
 
 function project_deploy() {
-    cp -ar $PROJECTA_DIR/_build/html /Deploy/Deepleanrning/
+    cp -ar $PROJECTA_DIR/_build/html /home/jenkins/jenkins_home/Deploy/Deepleanrning/
 }
 
 
-docker exec -i build-x64-18.04 /bin/bash <<EOF
+docker exec -i depth-site /bin/bash <<EOF
        set -x
        pushd $WORKSPACE/
        make html
