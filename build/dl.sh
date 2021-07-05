@@ -5,7 +5,8 @@ set -ex
 PROJECTA_DIR=$WORKSPACE
 
 function project_deploy() {
-    cp -ar $PROJECTA_DIR/_build/html /home/jenkins/jenkins_home/Deploy/Deepleanrning/
+    rm -rf /home/jenkins/jenkins_home/Deploy/Deeplearning/*
+    cp -ar $PROJECTA_DIR/_build/html /home/jenkins/jenkins_home/Deploy/Deeplearning
 }
 
 
