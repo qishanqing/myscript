@@ -78,8 +78,8 @@ function generate_commits(){
 }
 
 function check_status_code(){
-    if [ $? -ne 0 ]; then
-        echo "status code error"
+    if test -f $WORKSPACE/result.log; then
+        echo "containge build is error"
         exit 1
     fi
 }
@@ -126,7 +126,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
 
     pushd $SOURCE_DIR
     source /opt/ros/melodic/setup.bash &> /dev/null
-    source  $BUILD_SCRIPT
+    source  $BUILD_SCRIPT || echo $? > $WORKSPACE/result.log
     popd
     exit
 EOF
@@ -135,6 +135,7 @@ else
     project_build
 fi
 
+check_status_code
 generate_message
 generate_commits
 
