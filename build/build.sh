@@ -102,6 +102,21 @@ function public_project_update(){
     popd
 }
 
+function check_code_style(){ 
+    pushd ~/system/cppreview
+    git checkout ./ && git clean -xdf ./
+    git pull
+
+    echo "check code style start"
+    echo
+    if test -f "get_variable.py";then
+	sed -r 's/\\033\[[0-9]+m//g' -i get_variable.py
+    fi
+    python3 review.py --input $SOURCE_DIR | tee ${SOURCE_PROJECT#*/}_codesytle_check.log 
+    echo "check code style end"
+    popd
+}
+
 function target_project_fetch(){
     git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH
 }
@@ -136,6 +151,7 @@ else
 fi
 
 check_status_code
+check_code_style
 generate_message
 generate_commits
 
