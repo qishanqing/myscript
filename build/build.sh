@@ -103,7 +103,7 @@ function public_project_update(){
 }
 
 function check_code_style(){ 
-    pushd ~/system/cppreview
+    pushd ~/system/cppreview || pushd /home/jenkins/jenkins_home/code/cppreview
     git checkout ./ && git clean -xdf ./
     git pull
 
@@ -113,7 +113,7 @@ function check_code_style(){
 	sed -r 's/\\033\[[0-9]+m//g' -i get_variable.py
     fi
     python3 review.py --input $SOURCE_DIR | tee ${SOURCE_PROJECT#*/}_codesytle_check.log
-    mv ${SOURCE_PROJECT#*/}_codesytle_check.log  ~/system/
+    mv ${SOURCE_PROJECT#*/}_codesytle_check.log  ~/system/ || true
     echo "check code style end"
     popd
 }
@@ -152,7 +152,7 @@ else
 fi
 
 check_status_code
-check_code_style
 generate_message
 generate_commits
+check_code_style
 
