@@ -2,6 +2,7 @@
 
 set -ex
 init_project_env(){
+    DT=`date '+%Y%m%d'`
     UserName="jenkins"
     API_TOKEN="11b65309c9835de9579d9c9038853d9eb7"
     GIT_PRIVATE_TOKEN="emEDrsaJVjxKK5gSWrf-"
@@ -113,9 +114,16 @@ function check_code_style(){
 	sed -r 's/\\033\[[0-9]+m//g' -i get_variable.py
     fi
     python3 review.py --input $SOURCE_DIR | tee ${SOURCE_PROJECT#*/}_codesytle_check.log
-    mv ${SOURCE_PROJECT#*/}_codesytle_check.log  ~/system/ || true
+    upload-files ${SOURCE_PROJECT#*/}_codesytle_check.log || true
     echo "check code style end"
     popd
+}
+
+function upload-files(){
+    files=$1
+    if tset -e "$1";then
+	upload-to-ftp -d $1 ftp://guest:guest@192.168.50.191/release/code_style_report/%DT/
+    fi
 }
 
 function target_project_fetch(){
