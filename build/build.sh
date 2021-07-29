@@ -114,7 +114,7 @@ function check_code_style(){
 	sed -r 's/\\033\[[0-9]+m//g' -i get_variable.py
     fi
     python3 review.py --input $SOURCE_DIR | tee ${SOURCE_PROJECT#*/}_codesytle_check.log
-    upload-files ${SOURCE_PROJECT#*/}_codesytle_check.log || true
+    mkdir -p /mnt/ftp/release/code_style_report/$DT && mv ${SOURCE_PROJECT#*/}_codesytle_check.log /mnt/ftp/release/code_style_report/$DT/ || true
     echo "check code style end"
     popd
 }
