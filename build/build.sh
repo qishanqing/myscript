@@ -121,7 +121,7 @@ function check_code_style(){
 
 function upload-files(){
     files=$1
-    if tset -e "$1";then
+    if test -e "$1";then
 	upload-to-ftp -d $1 ftp://guest:guest@192.168.50.191/release/code_style_report/$DT/
     fi
 }
