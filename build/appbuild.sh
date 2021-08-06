@@ -24,9 +24,10 @@ function App_project_fetch(){
 		pushd i18rmessagehandle
 		mkdir build && cd build
 		cmake ..
-		make -j4
+		make -j4 & make install
+		cp -av /mnt/ftp/release/INDEMINDAPP/conf bin/Release/
 	    )
-	cp -av CONFIG_DIR $WORK_DIR 
+	cp -av $CONFIG_DIR $WORK_DIR 
 	
     )
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
@@ -39,16 +40,18 @@ function App_project_fetch(){
     (
 	mkdir -p $DESKTOP_DIR
 	pushd $DESKTOP_DIR && rm -rf *
-	cp -av $UI_DI .
+	cp -av $UI_DIR .
     )
     popd
 }
 
 function App_install(){
     pushd $APP_WORKSPACE
-    dpkg -b . $APP_WORKSPACE/../INDEMINDAPP_$version.deb
+    chmod 755 * -R
+    dpkg -b . ~/system/INDEMINDAPP_$version.deb
+    mv ~/system/INDEMINDAPP_$version.deb /mnt/ftp/release/INDEMINDAPP/
 }
 
 init_project_env
 App_project_fetch
-#App_install
+App_install
