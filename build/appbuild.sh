@@ -26,7 +26,7 @@ function App_project_fetch(){
 		cmake ..
 		make -j4
 	    )
-	cp -av CONFIG_DIR 
+	cp -av CONFIG_DIR $WORK_DIR 
 	
     )
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
