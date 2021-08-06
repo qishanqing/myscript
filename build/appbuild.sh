@@ -10,7 +10,7 @@ init_project_env(){
     DESKTOP_DIR=$APP_WORKSPACE/home/khadas/Desktop
 }
 
-function APP_project_fetch(){
+function App_project_fetch(){
     git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rApplicationDeb.git &&
     (
 	mkdir -p $WORK_DIR
@@ -44,11 +44,11 @@ function APP_project_fetch(){
     popd
 }
 
-function APP_install(){
+function App_install(){
     pushd $APP_WORKSPACE
     dpkg -b . $APP_WORKSPACE/../INDEMINDAPP_$version.deb
 }
 
 init_project_env
 App_project_fetch
-#APP_install
+#App_install
