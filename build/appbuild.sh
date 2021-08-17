@@ -65,8 +65,10 @@ function App_install(){
 }
 
 function Version_Update(){
-   sed -i s/VERSION/"$version"/g $VERSION_FILE
-   sed -i s/PLATFORM/"$PLATFORM"/g $VERSION_FILE
+    if [ "$PLATFORM" = aarch64 ];then
+       sed -i s/VERSION/"$version"/g $VERSION_FILE
+       sed -i s/PLATFORM/arm64/g $VERSION_FILE
+    fi
 }
 
 init_project_env
