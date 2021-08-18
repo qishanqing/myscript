@@ -22,7 +22,6 @@ function App_project_fetch(){
 	git clone --recurse-submodules  ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b devel/evt3 && (
 	    pushd SmallWashingRobotSDK
 	    git submodule update --remote
-            git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
 	    cmake .. && make -j4
@@ -55,23 +54,47 @@ popd
 
 function App_install(){
     pushd $APP_WORKSPACE
-    mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
-    mv $BUILD_DIR/i18rmessagehandle $WORK_DIR
     Version_Update
-    sudo chmod 755 * -R
-    sudo chown -R khadas.khadas .
+    Add_Tag
     dpkg -b . $BUILD_DIR/INDEMINDAPP_$version.deb
     mv $BUILD_DIR/INDEMINDAPP_$version.deb /mnt/ftp/release/INDEMINDAPP/
+    popd
 }
 
 function Version_Update(){
+    mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
+    mv $BUILD_DIR/i18rmessagehandle $WORK_DIR
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
        sed -i s/PLATFORM/arm64/g $VERSION_FILE
     fi
+    sudo chmod 755 * -R
+    sudo chown -R khadas.khadas .
+}
+
+function Add_Tag(){
+    pushd $WORK_DIR/SmallWashingRobotSDK
+    git tag -a v$version -m "add tag version:$version" || (
+	git tag -d v$version
+	git tag -a v$version
+    )
+    git submodule foreach git tag -a v$version -m "add tag version:$version" || (
+	git submodule foreach git tag -d v$version
+	git submodule foreach git tag -a v$version
+    )
+    git push origin v$version
+    git submodule foreach git push origin v$version
+    git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
+    popd
+}
+
+function clean_workspace(){
+    pushd $BUILD_DIR && sudo rm -rf i18rApplicationDeb
+    popd
 }
 
 init_project_env
 App_project_fetch
 App_install
+clean_workspace
 
