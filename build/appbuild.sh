@@ -55,7 +55,6 @@ popd
 function App_install(){
     pushd $APP_WORKSPACE
     Version_Update
-    Add_Tag
     dpkg -b . $BUILD_DIR/INDEMINDAPP_$version.deb
     mv $BUILD_DIR/INDEMINDAPP_$version.deb /mnt/ftp/release/INDEMINDAPP/
     popd
@@ -68,6 +67,7 @@ function Version_Update(){
        sed -i s/VERSION/"$version"/g $VERSION_FILE
        sed -i s/PLATFORM/arm64/g $VERSION_FILE
     fi
+    Add_Tag
     sudo chmod 755 * -R
     sudo chown -R khadas.khadas .
 }
@@ -76,11 +76,11 @@ function Add_Tag(){
     pushd $WORK_DIR/SmallWashingRobotSDK
     git tag -a v$version -m "add tag version:$version" || (
 	git tag -d v$version
-	git tag -a v$version
+	git tag -a v$version -m "add tag version:$version"
     )
     git submodule foreach git tag -a v$version -m "add tag version:$version" || (
 	git submodule foreach git tag -d v$version
-	git submodule foreach git tag -a v$version
+	git submodule foreach git tag -a v$version -m "add tag version:$version"
     )
     git push origin v$version
     git submodule foreach git push origin v$version
