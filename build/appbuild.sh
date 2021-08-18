@@ -82,8 +82,8 @@ function Add_Tag(){
 	git submodule foreach git tag -d v$version
 	git submodule foreach git tag -a v$version -m "add tag version:$version"
     )
-    git push origin v$version
-    git submodule foreach git push origin v$version
+    git push origin v$version -f
+    git submodule foreach git push origin v$version -f
     git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
     popd
 }
