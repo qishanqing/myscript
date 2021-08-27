@@ -20,6 +20,10 @@ function prepare_env() {
     export COMMIT_ID_FILE=${WORKSPACE}/_last_build_id 
     export COMMIT_MSG_FILE=${WORKSPACE}/_commit-msg
     export COMMIT_MSG_FILE_TMP=${WORKSPACE}/_commit-msg.tmp
+    rm -f $COMMIT_ID_FILE
+    rm -f $COMMIT_MSG_FILE
+    rm -f $COMMIT_MSG_FILE_TMP
+    rm -f $$WORKSPACE/result.log
 }
 
 function generate_message() {
@@ -33,8 +37,6 @@ function generate_message() {
     echo "" >> $COMMIT_MSG_FILE
     echo "build_num:      $BUILD_URL" >>  $COMMIT_MSG_FILE
     echo "Push $system_platform platform files" >>  $COMMIT_MSG_FILE
-    
-    
 }
 
 function generate_commits(){
@@ -89,6 +91,14 @@ function source_project_fetch(){
     git clone ssh://git@${GIT_HOST}:222/${SOURCE_PROJECT} -b $SOURCE_BRANCH
 }
 
+function source_project_update(){
+    pushd $SOURCE_DIR
+    git checkout ./
+#    git clean -xdf ./
+    git pull --rebase
+    popd
+}
+
 function project_build(){
     pushd $SOURCE_DIR
     source  $BUILD_SCRIPT
@@ -131,12 +141,26 @@ function target_project_fetch(){
     git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH
 }
 
+function target_project_update(){
+    pushd $TARGET_DIR
+    git checkout ./
+#    git clean -xdf ./
+    git pull --rebase
+    popd
+}
+
 export -f public_project_update
 export -f project_build
 
 init_project_env
-source_project_fetch
-target_project_fetch
+
+if CLEAN_WORKSPACE=false;then
+    source_project_update
+    target_project_update
+else
+    source_project_fetch
+    target_project_fetch
+fi
 
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i build-x64-18.04 /bin/bash <<EOF
