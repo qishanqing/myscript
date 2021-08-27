@@ -154,7 +154,7 @@ export -f project_build
 
 init_project_env
 
-if CLEAN_WORKSPACE=false;then
+if $CLEAN_WORKSPACE=false;then
     source_project_update
     target_project_update
 else
