@@ -142,11 +142,8 @@ function target_project_fetch(){
 }
 
 function target_project_update(){
-    pushd $TARGET_DIR
-    git checkout ./
-#    git clean -xdf ./
-    git pull --rebase
-    popd
+    rm -rf  $TARGET_DIR
+    target_project_fetch
 }
 
 export -f public_project_update
