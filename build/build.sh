@@ -92,11 +92,14 @@ function source_project_fetch(){
 }
 
 function source_project_update(){
-    pushd $SOURCE_DIR
-    git checkout ./
-#    git clean -xdf ./
-    git pull --rebase
-    popd
+    if [ -d "$SOURCE_DIR" ];then
+	pushd $SOURCE_DIR
+	git checkout ./
+	git pull --rebase
+	popd
+    else
+	source_project_fetch
+    fi
 }
 
 function project_build(){
