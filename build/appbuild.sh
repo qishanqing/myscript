@@ -82,15 +82,15 @@ function Version_Update(){
 
 function Add_Tag(){
     pushd $WORK_DIR/SmallWashingRobotSDK
-    git tag -a r$version -m "add tag version:$version" || (
+    git tag -a r$version -m "add tag release:$version" || (
 	git tag -d r$version
-	git tag -a r$version -m "add tag version:$version"
+	git tag -a r$version -m "add tag release:$version"
     )
-    git submodule foreach git tag -a r$version -m "add tag version:$version" || (
+    git submodule foreach git tag -a r$version -m "add tag release:$version" || (
 	git submodule foreach git tag -d r$version
-	git submodule foreach git tag -a r$version -m "add tag version:$version"
+	git submodule foreach git tag -a r$version -m "add tag release:$version"
     )
-    git push origin v$version -f
+    git push origin r$version -f
     git submodule foreach git push origin r$version -f
     git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
     popd
