@@ -32,7 +32,8 @@ function App_project_fetch(){
 		pushd i18rmessagehandle
 		mkdir build && cd build
 		cmake ..
-		make -j4 & make install
+		make -j4 && make install
+		find -name env.sh | xargs -i cp {} bin/Release/application/
 		cp -av /mnt/ftp/release/INDEMINDAPP/conf ../bin/Release/
 	    )
 	cp -av $CONFIG_DIR $WORK_DIR 
@@ -70,7 +71,7 @@ function App_install(){
 
 function Version_Update(){
     mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
-    mv $BUILD_DIR/i18rmessagehandle $WORK_DIR
+    mv $BUILD_DIR/i18rmessagehandle $WORK_DIR && mv $WORK_DIR/i18rmessagehandle/bin/Release $WORK_DIR/task_manager
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
        sed -i s/PLATFORM/arm64/g $VERSION_FILE
