@@ -33,7 +33,7 @@ function App_project_fetch(){
 		mkdir build && cd build
 		cmake ..
 		make -j4 && make install
-		find -name env.sh | xargs -i cp {} bin/Release/application/
+		find -name env.sh | xargs -i cp {} ../bin/Release/application/
 		cp -av /mnt/ftp/release/INDEMINDAPP/conf ../bin/Release/
 	    )
 	cp -av $CONFIG_DIR $WORK_DIR 
