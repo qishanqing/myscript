@@ -7,7 +7,7 @@ init_project_env(){
     APP_WORKSPACE=/home/khadas/workspace/i18rApplicationDeb/work
     if [ $SWR_VERSION = EVT3 ];then
 	ios=goodmobi
-	DESKTOP_DIR=$WORK_DIR
+	DESKTOP_DIR=$APP_WORKSPACE/home/$ios/workspace
     elif [ $SWR_VERSION = EVT2 ];then
 	ios=khadas
 	DESKTOP_DIR=$APP_WORKSPACE/home/$ios/Desktop
