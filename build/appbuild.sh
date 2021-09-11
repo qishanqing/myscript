@@ -5,11 +5,18 @@ set -ex
 init_project_env(){
     BUILD_DIR=/home/khadas/workspace	
     APP_WORKSPACE=/home/khadas/workspace/i18rApplicationDeb/work
-    WORK_DIR=$APP_WORKSPACE/home/khadas/workspace
+    if [ $SWR_VERSION = EVT3 ];then
+	ios = goodmobi
+	DESKTOP_DIR=$WORK_DIR
+    elif [ $SWR_VERSION = EVT2 ];then
+	ios = khadas
+	DESKTOP_DIR=$APP_WORKSPACE/home/$ios/Desktop
+    fi
+	
+    WORK_DIR=$APP_WORKSPACE/home/$ios/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/I18R-Client
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
-    DESKTOP_DIR=$APP_WORKSPACE/home/khadas/Desktop
     PLATFORM=`uname -m`
 }
 
@@ -33,10 +40,10 @@ function App_project_fetch(){
 		mkdir build && cd build
 		cmake ..
 		make -j4 && make install
-		find -name env.sh | xargs -i cp {} ../bin/Release/application/
+		find  ../ -name env.sh | xargs -i cp {} ../bin/Release/application/
 		cp -av /mnt/ftp/release/INDEMINDAPP/conf ../bin/Release/
 	    )
-	cp -av $CONFIG_DIR $WORK_DIR 
+	cp -av $CONFIG_DIR $WORK_DIR
 	
     )
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
@@ -45,11 +52,11 @@ function App_project_fetch(){
     mkdir build && cd build
     qmake ..
     make -j4
-    cp AroundI18R-Client $UI_DIR/Client &&
+    cp AroundI18R-Client $UI_DIR/client &&
     (
 	mkdir -p $DESKTOP_DIR
-	pushd $DESKTOP_DIR && rm -rf *
-	cp -av $UI_DIR .
+	pushd $DESKTOP_DIR && rm -rf I18R-Client
+	cp -av $UI_DIR client
 )
 popd
 }
@@ -71,14 +78,14 @@ function App_install(){
 
 function Version_Update(){
     mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
-    mv $BUILD_DIR/i18rmessagehandle $WORK_DIR && mv $WORK_DIR/i18rmessagehandle/bin/Release $WORK_DIR/task_manager
+    mv $BUILD_DIR/i18rmessagehandle/bin/Release $WORK_DIR/task_manager && rm -rf $BUILD_DIR/i18rmessagehandle
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
        sed -i s/PLATFORM/arm64/g $VERSION_FILE
     fi
     Add_Tag
     sudo chmod 755 * -R
-    sudo chown -R khadas.khadas .
+    sudo chown -R $ios.$ios .
 }
 
 function Add_Tag(){
@@ -102,8 +109,11 @@ function clean_workspace(){
     popd
 }
 
+function project_conf(){
+    pass
+}
+
 init_project_env
 App_project_fetch
 App_install
 clean_workspace
-
