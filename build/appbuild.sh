@@ -3,16 +3,16 @@
 set -ex
 
 init_project_env(){
-    BUILD_DIR=/home/$ios/workspace	
-    APP_WORKSPACE=/home/$ios/workspace/i18rApplicationDeb/work
     if [ $SWR_VERSION = EVT3 ];then
 	ios=goodmobi
-	DESKTOP_DIR=$WORK_DIR
+	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/workspace
     elif [ $SWR_VERSION = EVT2 ];then
 	ios=khadas
-	DESKTOP_DIR=$APP_WORKSPACE/home/$ios/Desktop
+	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/Desktop
     fi
 	
+    BUILD_DIR=/home/$ios/workspace	
+    APP_WORKSPACE=/home/$ios/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE/home/$ios/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/I18R-Client
