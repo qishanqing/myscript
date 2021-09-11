@@ -71,8 +71,8 @@ function submodule_version_check(){
 function App_install(){
     pushd $APP_WORKSPACE
     Version_Update
-    dpkg -b . $BUILD_DIR/INDEMINDAPP_$version.deb
-    mv $BUILD_DIR/INDEMINDAPP_$version.deb /mnt/ftp/release/INDEMINDAPP/
+    dpkg -b . $BUILD_DIR/INDEMINDAPP_$ios_$version.deb
+    mv $BUILD_DIR/INDEMINDAPP_$ios_$version.deb /mnt/ftp/release/INDEMINDAPP/
     popd
 }
 
