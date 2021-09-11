@@ -3,11 +3,11 @@
 set -ex
 
 init_project_env(){
-    BUILD_DIR=/home/khadas/workspace	
-    APP_WORKSPACE=/home/khadas/workspace/i18rApplicationDeb/work
+    BUILD_DIR=/home/$ios/workspace	
+    APP_WORKSPACE=/home/$ios/workspace/i18rApplicationDeb/work
     if [ $SWR_VERSION = EVT3 ];then
 	ios=goodmobi
-	DESKTOP_DIR=$APP_WORKSPACE/home/$ios/workspace
+	DESKTOP_DIR=$WORK_DIR
     elif [ $SWR_VERSION = EVT2 ];then
 	ios=khadas
 	DESKTOP_DIR=$APP_WORKSPACE/home/$ios/Desktop
@@ -52,7 +52,7 @@ function App_project_fetch(){
     mkdir build && cd build
     qmake ..
     make -j4
-    cp AroundI18R-Client $UI_DIR/client &&
+    cp AroundI18R-Client $UI_DIR/Client &&
     (
 	mkdir -p $DESKTOP_DIR
 	pushd $DESKTOP_DIR && rm -rf I18R-Client
