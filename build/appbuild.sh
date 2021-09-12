@@ -55,8 +55,14 @@ function App_project_fetch(){
     cp AroundI18R-Client $UI_DIR/Client &&
     (
 	mkdir -p $DESKTOP_DIR
-	pushd $DESKTOP_DIR && rm -rf I18R-Client
-	cp -av $UI_DIR client
+
+	if [ $SWR_VERSION = EVT2 ];then
+	    pushd $DESKTOP_DIR && rm -rf *
+	    cp -av $UI_DIR .
+	elif [ $SWR_VERSION = EVT3 ];then
+	    pushd $DESKTOP_DIR
+	    cp -av $UI_DIR client
+	fi
 )
 popd
 }
@@ -71,8 +77,8 @@ function submodule_version_check(){
 function App_install(){
     pushd $APP_WORKSPACE
     Version_Update
-    dpkg -b . $BUILD_DIR/INDEMINDAPP_$ios_$version.deb
-    mv $BUILD_DIR/INDEMINDAPP_$ios_$version.deb /mnt/ftp/release/INDEMINDAPP/
+    dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb
+    mv $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb /mnt/ftp/release/INDEMINDAPP/
     popd
 }
 
@@ -90,16 +96,16 @@ function Version_Update(){
 
 function Add_Tag(){
     pushd $WORK_DIR/SmallWashingRobotSDK
-    git tag -a r$version -m "add tag release:$version" || (
-	git tag -d r$version
-	git tag -a r$version -m "add tag release:$version"
+    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	git tag -d r$version.$SWR_VERSION
+	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version"
     )
-    git submodule foreach git tag -a r$version -m "add tag release:$version" || (
-	git submodule foreach git tag -d r$version
-	git submodule foreach git tag -a r$version -m "add tag release:$version"
+    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	git submodule foreach git tag -d r$version.$SWR_VERSION
+	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version"
     )
-    git push origin r$version -f
-    git submodule foreach git push origin r$version -f
+    git push origin r$version.$SWR_VERSION -f
+    git submodule foreach git push origin r$version.$SWR_VERSION -f
     git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
     popd
 }
