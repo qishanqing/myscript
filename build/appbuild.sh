@@ -3,11 +3,10 @@
 set -ex
 
 init_project_env(){
+    ios=khadas
     if [ $SWR_VERSION = EVT3 ];then
-	ios=goodmobi
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/workspace
     elif [ $SWR_VERSION = EVT2 ];then
-	ios=khadas
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/Desktop
     fi
 	
@@ -57,7 +56,7 @@ function App_project_fetch(){
 	mkdir -p $DESKTOP_DIR
 
 	if [ $SWR_VERSION = EVT2 ];then
-	    pushd $DESKTOP_DIR && rm -rf *
+	    pushd $DESKTOP_DIR 
 	    cp -av $UI_DIR .
 	elif [ $SWR_VERSION = EVT3 ];then
 	    pushd $DESKTOP_DIR
