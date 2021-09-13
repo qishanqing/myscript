@@ -16,6 +16,7 @@ init_project_env(){
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/I18R-Client
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
+    I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
 }
 
@@ -29,6 +30,7 @@ function App_project_fetch(){
 	    pushd SmallWashingRobotSDK
 	    git submodule update --remote
 	    submodule_version_check
+	    i18rproject_conf_update
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
 	    cmake .. && make -j4
@@ -69,7 +71,7 @@ popd
 function submodule_version_check(){
     if ! [ -z $submodule_version ];then
 	git checkout $submodule_version
-	git submodule foreach git checkout $submodule_version
+	git submodule foreach "git checkout $submodule_version||true"
     fi
 } 
 
@@ -114,8 +116,23 @@ function clean_workspace(){
     popd
 }
 
-function project_conf(){
-    pass
+function i18rproject_conf_update(){
+    i18rconfig_project_update
+    Modules_List=(selfcalibr depth sensor marker detector navigation slam type)
+
+    for i in "${Modules_List[@]}";do
+	Files_List=`ls $I18RCONFIG_DIR/$SWR_VERSION/$i`
+	if ! [ -z "$Files_List" ];then
+	    cp -ar  $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/
+	fi
+    done
+}
+
+function i18rconfig_project_update(){
+    pushd $I18RCONFIG_DIR
+    git checkout ./ && git clean -xdf ./
+    git pull --rebase
+    popd
 }
 
 init_project_env
