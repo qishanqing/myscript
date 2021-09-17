@@ -18,7 +18,7 @@ init_project_env(){
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
-}
+ }
 
 function App_project_fetch(){
     pushd $BUILD_DIR
@@ -123,7 +123,11 @@ function i18rproject_conf_update(){
     for i in "${Modules_List[@]}";do
 	Files_List=`ls $I18RCONFIG_DIR/$SWR_VERSION/$i`
 	if ! [ -z "$Files_List" ];then
-	    cp -ar  $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/
+	    if [[ navigation =~ "$i" ]];then
+		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/share/wsbot_navigation/param/
+	    else
+		cp -ar  $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/
+	    fi
 	fi
     done
 }
