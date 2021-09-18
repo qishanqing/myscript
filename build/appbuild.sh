@@ -70,7 +70,7 @@ popd
 
 function submodule_version_check(){
     if ! [ -z $submodule_version ];then
-	git checkout $submodule_version
+	git checkout $submodule_version || true
 	git submodule foreach "git checkout $submodule_version||true"
     fi
 } 
