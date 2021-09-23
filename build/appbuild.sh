@@ -107,12 +107,12 @@ function Version_Update(){
 function Add_Tag(){
     pushd $WORK_DIR/SmallWashingRobotSDK
     git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	git tag -d r$version.$SWR_VERSION
-	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version"
+	git tag -d r$version.$SWR_VERSION || true
+	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
     )
     git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	git submodule foreach git tag -d r$version.$SWR_VERSION
-	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version"
+	git submodule foreach git tag -d r$version.$SWR_VERSION || true
+	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
     )
     git push origin r$version.$SWR_VERSION -f
     git submodule foreach git push origin r$version.$SWR_VERSION -f
