@@ -133,7 +133,7 @@ function i18rproject_conf_update(){
 	if ! [ -z "$Files_List" ];then
 	    if [[ navigation =~ "$i" ]];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/share/wsbot_navigation/param/
-	    elif [[ slam =~ "$i" ]];then
+	    elif [[ "$i" =~ slam ]] || [[ "$i" =~ depth ]];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/
 	    else
 		cp -ar  $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/
