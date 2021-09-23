@@ -4,10 +4,10 @@ set -ex
 
 init_project_env(){
     ios=khadas
-    if [ $SWR_VERSION = EVT3 ];then
-	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/workspace
-    elif [ $SWR_VERSION = EVT2 ];then
+    if [ $SWR_VERSION = EVT2 ];then
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/Desktop
+    else
+	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/workspace
     fi
 	
     BUILD_DIR=/home/$ios/workspace	
