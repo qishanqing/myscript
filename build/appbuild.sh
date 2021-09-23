@@ -30,7 +30,7 @@ function App_project_fetch(){
 	    pushd SmallWashingRobotSDK
 	    i18rconfig_project_update
 	    if  [ "$SWR_VERSION" =  ICE_EVT2 ];then
-		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitsubmodules .gitsubmodules
+		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
 	    fi
 	    git submodule update --init --recursive
 	    git submodule update --remote
