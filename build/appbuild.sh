@@ -38,7 +38,11 @@ function App_project_fetch(){
 	    i18rproject_conf_update
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
-	    cmake .. && make -j4
+	    if [ $SWR_VERSION = ICE_EVT2 ];then
+		cmake -DMBUILE_VCU=OFF  .. && make -j4
+	    else
+		cmake  .. && make -j4
+	    fi
 	)
 	git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rmessagehandle.git &&
 	    (
