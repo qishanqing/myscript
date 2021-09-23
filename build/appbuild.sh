@@ -26,8 +26,13 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone --recurse-submodules  ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b devel/evt3 && (
+	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b devel/evt3 && (
 	    pushd SmallWashingRobotSDK
+	    i18rconfig_project_update
+	    if  [ "$SWR_VERSION" =  ICE_EVT2 ];then
+		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitsubmodules .gitsubmodules
+	    fi
+	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
@@ -117,11 +122,10 @@ function clean_workspace(){
 }
 
 function i18rproject_conf_update(){
-    i18rconfig_project_update
-    Modules_List=(selfcalibr depth sensor marker detector navigation slam type)
+    local Modules_List=(selfcalibr depth sensor marker detector navigation slam type)
 
     for i in "${Modules_List[@]}";do
-	Files_List=`ls $I18RCONFIG_DIR/$SWR_VERSION/$i`
+	local Files_List=`ls $I18RCONFIG_DIR/$SWR_VERSION/$i`
 	if ! [ -z "$Files_List" ];then
 	    if [[ navigation =~ "$i" ]];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/share/wsbot_navigation/param/
