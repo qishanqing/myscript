@@ -69,7 +69,7 @@ function App_project_fetch(){
 	if [ $SWR_VERSION = EVT2 ];then
 	    pushd $DESKTOP_DIR 
 	    cp -av $UI_DIR .
-	elif [ $SWR_VERSION = EVT3 ];then
+	else
 	    pushd $DESKTOP_DIR
 	    cp -av $UI_DIR client
 	fi
