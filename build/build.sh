@@ -175,7 +175,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
 
     pushd $SOURCE_DIR
     source /opt/ros/melodic/setup.bash &> /dev/null
-    source  $BUILD_SCRIPT || echo $? > $WORKSPACE/result.log
+    bash -ex  $BUILD_SCRIPT || echo $? > $WORKSPACE/result.log
     popd
     exit
 EOF
