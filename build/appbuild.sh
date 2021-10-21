@@ -3,16 +3,23 @@
 set -ex
 
 init_project_env(){
-    ios=khadas
-    if [ $SWR_VERSION = EVT2 ];then
-	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/Desktop
+    if [ `whoami` = root ];then
+	ios=root
+	RELEASE_DIR=/root
     else
-	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/home/$ios/workspace
+	ios=khadas
+	RELEASE_DIR=/home/$ios
+    fi
+
+    if [ $SWR_VERSION = EVT2 ];then
+	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/$RELEASE_DIR/Desktop
+    else
+	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work/$RELEASE_DIR/workspace
     fi
 	
-    BUILD_DIR=/home/$ios/workspace	
-    APP_WORKSPACE=/home/$ios/workspace/i18rApplicationDeb/work
-    WORK_DIR=$APP_WORKSPACE/home/$ios/workspace
+    BUILD_DIR=$RELEASE_DIR/workspace
+    APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
+    WORK_DIR=$APP_WORKSPACE/$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/I18R-Client
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
@@ -94,7 +101,8 @@ function App_install(){
 
 function Version_Update(){
     mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
-    mv $BUILD_DIR/i18rmessagehandle/bin/Release $WORK_DIR/task_manager && rm -rf $BUILD_DIR/i18rmessagehandle
+#    mv $BUILD_DIR/i18rmessagehandle/bin/Release $WORK_DIR/task_manager && rm -rf $BUILD_DIR/i18rmessagehandle
+    Release_Version_Rule
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
        sed -i s/PLATFORM/arm64/g $VERSION_FILE
@@ -102,6 +110,19 @@ function Version_Update(){
     Add_Tag
     sudo chmod 755 * -R
     sudo chown -R $ios.$ios .
+}
+
+function Release_Version_Rule(){
+    pushd $WORK_DIR/SmallWashingRobotSDK
+    mkdir -p SDK
+    mv build SDK/bin
+    rm -rf modules/cloud || true
+    mv modules SDK
+    mv scripts SDK
+    mv  SDK $WORK_DIR
+    rm -rf $WORK_DIR/SmallWashingRobotSDK
+    mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
+    popd
 }
 
 function Add_Tag(){
