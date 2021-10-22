@@ -19,7 +19,7 @@ init_project_env(){
 	
     BUILD_DIR=$RELEASE_DIR/workspace
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
-    WORK_DIR=$APP_WORKSPACE/$RELEASE_DIR/workspace
+    WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/I18R-Client
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
@@ -113,32 +113,37 @@ function Version_Update(){
 }
 
 function Release_Version_Rule(){
-    pushd $WORK_DIR/SmallWashingRobotSDK
-    mkdir -p SDK
-    mv build SDK/bin
-    rm -rf modules/cloud || true
-    mv modules SDK
-    mv scripts SDK
-    mv  SDK $WORK_DIR
-    rm -rf $WORK_DIR/SmallWashingRobotSDK
-    mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
-    popd
+    if [ $RELEASE = true ];then
+	pushd $WORK_DIR/SmallWashingRobotSDK
+	mkdir -p SDK
+	mv build SDK
+	mv config SDK
+	mv kbcontrol SDK
+	mv modules SDK
+	mv scripts SDK
+	mv  SDK $WORK_DIR
+	rm -rf $WORK_DIR/SmallWashingRobotSDK
+	mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
+	popd
+    fi
 }
 
 function Add_Tag(){
-    pushd $WORK_DIR/SmallWashingRobotSDK
-    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	git tag -d r$version.$SWR_VERSION || true
-	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
-    )
-    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	git submodule foreach git tag -d r$version.$SWR_VERSION || true
-	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
-    )
-    git push origin r$version.$SWR_VERSION -f
-    git submodule foreach git push origin r$version.$SWR_VERSION -f
-    git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
-    popd
+    if ! [ $RELEASE = true ];then
+	pushd $WORK_DIR/SmallWashingRobotSDK
+	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	    git tag -d r$version.$SWR_VERSION || true
+	    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+	)
+	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	    git submodule foreach git tag -d r$version.$SWR_VERSION || true
+	    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+	)
+	git push origin r$version.$SWR_VERSION -f
+	git submodule foreach git push origin r$version.$SWR_VERSION -f
+	git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
+	popd
+    fi
 }
 
 function clean_workspace(){
