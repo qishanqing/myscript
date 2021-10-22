@@ -113,7 +113,7 @@ function Version_Update(){
 }
 
 function Release_Version_Rule(){
-    if [ $RELEASE = true ];then
+    if [[ $RELEASE = true ]];then
 	pushd $WORK_DIR/SmallWashingRobotSDK
 	mkdir -p SDK
 	mv build SDK
@@ -129,7 +129,7 @@ function Release_Version_Rule(){
 }
 
 function Add_Tag(){
-    if ! [ $RELEASE = true ];then
+    if ! [[ $RELEASE = true ]];then
 	pushd $WORK_DIR/SmallWashingRobotSDK
 	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
 	    git tag -d r$version.$SWR_VERSION || true
