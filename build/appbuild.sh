@@ -60,7 +60,7 @@ function App_project_fetch(){
 #		find  ../ -name env.sh | xargs -i cp {} ../bin/Release/application/
 #		cp -av /mnt/ftp/release/INDEMINDAPP/conf ../bin/Release/
 #	    )
-#	cp -av $CONFIG_DIR $WORK_DIR
+	cp -av $CONFIG_DIR $WORK_DIR
 	
     )
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
