@@ -37,7 +37,7 @@ function App_project_fetch(){
 	pushd $BUILD_DIR
 	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b devel/evt3 && (
 	    pushd SmallWashingRobotSDK
-	    git checkout -b $RELEASEA_BRANCH && git push -f origin HEAD:$RELEASEA_BRANCH
+	    git checkout -b $RELEASE_BRANCH && git push -f origin HEAD:$RELEASE_BRANCH
 	    i18rconfig_project_update
 	    if  [ "$SWR_VERSION" =  ICE_EVT2 ];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
