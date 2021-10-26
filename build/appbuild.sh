@@ -21,7 +21,7 @@ init_project_env(){
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
-    UI_DIR=/mnt/ftp/release/INDEMINDAPP/I18R-Client
+    UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
@@ -54,17 +54,6 @@ function App_project_fetch(){
 		cmake  .. && make -j4
 	    fi
 	)
-#	git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rmessagehandle.git &&
-#	    (
-#		pushd i18rmessagehandle
-#		mkdir build && cd build
-#		cmake ..
-#		make -j4 && make install
-#		find  ../ -name env.sh | xargs -i cp {} ../bin/Release/application/
-#		cp -av /mnt/ftp/release/INDEMINDAPP/conf ../bin/Release/
-#	    )
-	cp -av $CONFIG_DIR $WORK_DIR
-	
     )
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
     git checkout ./ && git clean -xdf ./
@@ -72,18 +61,11 @@ function App_project_fetch(){
     mkdir build && cd build
     qmake ..
     make -j4
-    cp AroundI18R-Client $UI_DIR/Client &&
-    (
+    cp AroundI18R-Client $UI_DIR/Client && (
 	mkdir -p $DESKTOP_DIR
-
-	if [ $SWR_VERSION = EVT2 ];then
-	    pushd $DESKTOP_DIR 
-	    cp -av $UI_DIR .
-	else
-	    pushd $DESKTOP_DIR
-	    cp -av $UI_DIR client
-	fi
-)
+	pushd $DESKTOP_DIR
+	cp -av $UI_DIR .
+    )
 popd
 }
 
