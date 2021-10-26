@@ -6,17 +6,13 @@ init_project_env(){
     if [ `whoami` = root ];then
 	ios=root
 	RELEASE_DIR=/root
+	DESKTOP_DIR=/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     else
 	ios=khadas
 	RELEASE_DIR=/home/$ios
-    fi
-
-    if [ $SWR_VERSION = EVT2 ];then
-	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/Desktop
-    else
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     fi
-	
+
     BUILD_DIR=$RELEASE_DIR/workspace
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
