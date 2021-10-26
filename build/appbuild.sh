@@ -25,6 +25,8 @@ init_project_env(){
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
+    RELEASEA_TIME=`date +%Y_%m_%d_%H_%M`
+    RELEASE_BRANCH="devel/evt3_$RELEASEA_TIME"
  }
 
 function App_project_fetch(){
@@ -35,6 +37,7 @@ function App_project_fetch(){
 	pushd $BUILD_DIR
 	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b devel/evt3 && (
 	    pushd SmallWashingRobotSDK
+	    git checkout -b $RELEASEA_BRANCH && git push -f origin HEAD:$RELEASEA_BRANCH
 	    i18rconfig_project_update
 	    if  [ "$SWR_VERSION" =  ICE_EVT2 ];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
