@@ -69,7 +69,7 @@ function ui_info(){
     ui_version_now=`git log -1 --pretty=format:"%h"`
     ui_version=`cmdb_mysql "SELECT client  FROM indemindapp where status='0'  order by id desc limit 1;"`
     ui_version=`echo $ui_version | awk -F 'client' '{print $2}'`
-    if ! [ "$ui_version_now" = "$ui_version" ];then
+    if ! [ "${ui_version_now// /}" == "${ui_version// /}" ];then
 	mkdir build && cd build
 	qmake ..
 	make -j4
