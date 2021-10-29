@@ -1,5 +1,8 @@
 #!/bin/bash
 
+project_path=$(cd `dirname $0`; pwd)
+. $project_path/../sh/cmdb
+
 set -ex
 
 init_project_env(){
@@ -21,9 +24,12 @@ init_project_env(){
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
-    RELEASEA_TIME=`date +%Y_%m_%d_%H_%M`
-    RELEASE_BRANCH="devel/evt3_$RELEASEA_TIME"
+    RELEASE_BRANCH="devel/evt3_$version"
  }
+
+function project_info_database(){
+    cmdb_mysql "insert into indemindapp(version,swr_version,submodule_version,time,indemind_release,sdk_branch,build_url,node_name) values ('${version}','${SWR_VERSION}','${submodule_version}',now(),'${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME')";
+}
 
 function App_project_fetch(){
     pushd $BUILD_DIR
@@ -31,7 +37,7 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b devel/evt3 && (
+	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b ${SDK_BRANCH:-release} && (
 	    pushd SmallWashingRobotSDK
 	    git checkout -b $RELEASE_BRANCH && git push -f origin HEAD:$RELEASE_BRANCH
 	    i18rconfig_project_update
@@ -42,6 +48,7 @@ function App_project_fetch(){
 	    git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
+	    project_info_database
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
 	    if [ $SWR_VERSION = ICE_EVT2 ];then
@@ -51,18 +58,27 @@ function App_project_fetch(){
 	    fi
 	)
     )
+    ui_info
+popd
+}
+
+function ui_info(){
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
     git checkout ./ && git clean -xdf ./
     git pull
-    mkdir build && cd build
-    qmake ..
-    make -j4
-    cp AroundI18R-Client $UI_DIR/Client && (
-	mkdir -p $DESKTOP_DIR
-	pushd $DESKTOP_DIR
-	cp -av $UI_DIR .
-    )
-popd
+    ui_version_now=`git log -1 --pretty=format:"%h"`
+    ui_version=`cmdb_mysql "SELECT client  FROM indemindapp where status='0'  order by id desc limit 1;"`
+    ui_version=`echo $ui_version | awk -F 'client' '{print $2}'`
+    if ! [ "$ui_version_now" = "$ui_version" ];then
+	mkdir build && cd build
+	qmake ..
+	make -j4
+	cp AroundI18R-Client $UI_DIR/Client && (
+	    mkdir -p $DESKTOP_DIR
+	    pushd $DESKTOP_DIR
+	    cp -av $UI_DIR .
+	)
+    fi
 }
 
 function submodule_version_check(){
@@ -123,6 +139,7 @@ function Add_Tag(){
 	git push origin r$version.$SWR_VERSION -f
 	git submodule foreach git push origin r$version.$SWR_VERSION -f
 	git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
+	cmdb_mysql "update indemindapp set status='0',tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
 	popd
     fi
 }
