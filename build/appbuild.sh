@@ -24,7 +24,7 @@ init_project_env(){
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
-    RELEASE_BRANCH="devel/evt3_$version"
+    RELEASE_BRANCH="devel/evt3_$version_$SWR_VERSION"
  }
 
 function project_info_database(){
