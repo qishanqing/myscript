@@ -48,8 +48,8 @@ function App_project_fetch(){
 	    git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
-	    project_info_database
 	    release_note
+	    project_info_database
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
 	    if [ $SWR_VERSION = ICE_EVT2 ];then
@@ -74,12 +74,13 @@ function ui_info(){
 	mkdir build && cd build
 	qmake ..
 	make -j4
-	cp AroundI18R-Client $UI_DIR/Client && (
-	    mkdir -p $DESKTOP_DIR
-	    pushd $DESKTOP_DIR
-	    cp -av $UI_DIR .
-	)
     fi
+
+    cp AroundI18R-Client $UI_DIR/Client && (
+	mkdir -p $DESKTOP_DIR
+	pushd $DESKTOP_DIR
+	cp -av $UI_DIR .
+    )
 }
 
 function submodule_version_check(){
@@ -99,12 +100,17 @@ function App_install(){
 
 function Version_Update(){
     mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
-    Release_Version_Rule
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
        sed -i s/PLATFORM/arm64/g $VERSION_FILE
     fi
+
+    if [[ $RELEASE = true ]];then
+	sed -i s/INDEMINDAPP/INDEMIND_RELEASE/g $VERSION_FILE
+    fi
+
     Add_Tag
+    Release_Version_Rule
     sudo chmod 755 * -R
     sudo chown -R $ios.$ios .
 }
@@ -126,22 +132,20 @@ function Release_Version_Rule(){
 }
 
 function Add_Tag(){
-    if ! [[ $RELEASE = true ]];then
-	pushd $WORK_DIR/SmallWashingRobotSDK
-	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	    git tag -d r$version.$SWR_VERSION || true
-	    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
-	)
-	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	    git submodule foreach git tag -d r$version.$SWR_VERSION || true
-	    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
-	)
-	git push origin r$version.$SWR_VERSION -f
-	git submodule foreach git push origin r$version.$SWR_VERSION -f
-	git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
-	cmdb_mysql "update indemindapp set status='0',tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
-	popd
-    fi
+    pushd $WORK_DIR/SmallWashingRobotSDK
+    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	git tag -d r$version.$SWR_VERSION || true
+	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+    )
+    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	git submodule foreach git tag -d r$version.$SWR_VERSION || true
+	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+    )
+    git push origin r$version.$SWR_VERSION -f
+    git submodule foreach git push origin r$version.$SWR_VERSION -f
+    git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
+    popd
+    cmdb_mysql "update indemindapp set status='0',tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
 }
 
 function clean_workspace(){
@@ -174,7 +178,7 @@ function i18rconfig_project_update(){
 }
 
 function release_note(){
-    point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' order by id desc limit 2;"`
+    point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' order by id desc limit 1;"`
     point=`echo ${point// /} |awk -F ' ' '{print $2}'`
     mkdir -p $WORK_DIR/release_commit
     git log $point.. >$WORK_DIR/release_commit/sdk.log
