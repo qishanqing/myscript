@@ -107,7 +107,7 @@ function Version_Update(){
     fi
 
     if [[ $RELEASE = true ]];then
-	sed -i s/INDEMINDAPP/INDEMIND_RELEASE/g $VERSION_FILE
+	sed -i s/INDEMINDAPP/INDEMIND/g $VERSION_FILE
     fi
 
     Add_Tag
