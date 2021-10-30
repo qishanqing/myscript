@@ -24,7 +24,7 @@ init_project_env(){
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
-    RELEASE_BRANCH="devel/evt3_$version_$SWR_VERSION"
+    RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
  }
 
 function project_info_database(){
@@ -74,9 +74,10 @@ function ui_info(){
 	mkdir build && cd build
 	qmake ..
 	make -j4
+	cp AroundI18R-Client $UI_DIR/Client
     fi
 
-    cp AroundI18R-Client $UI_DIR/Client && (
+    (
 	mkdir -p $DESKTOP_DIR
 	pushd $DESKTOP_DIR
 	cp -av $UI_DIR .
