@@ -49,6 +49,7 @@ function App_project_fetch(){
 	    submodule_version_check
 	    i18rproject_conf_update
 	    project_info_database
+	    release_note
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
 	    if [ $SWR_VERSION = ICE_EVT2 ];then
@@ -171,6 +172,14 @@ function i18rconfig_project_update(){
     git checkout ./ && git clean -xdf ./
     git pull --rebase
     popd
+}
+
+function release_note(){
+    point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' order by id desc limit 2;"`
+    point=`echo ${point// /} | awk -F 'tag_name' '{print $2}' | awk -F ' ' '{print $2}'`
+    mkdir -p $WORK_DIR/release_commit
+    git log $point.. >$WORK_DIR/release_commit/sdk.log
+    git submodule foreach git log $point.. >$WORK_DIR/release_commit/submodule.log
 }
 
 init_project_env
