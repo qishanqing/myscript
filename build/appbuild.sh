@@ -181,10 +181,10 @@ function i18rconfig_project_update(){
 function release_note(){
     point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' order by id desc limit 1;"`
     point=`echo ${point// /} |awk -F ' ' '{print $2}'`
-    release_log=${point}-r${version}.${SWR_VERSION
-    mkdir -p $WORK_DIR/$release_log
-    git log $point.. >$WORK_DIR/$release_log/sdk.log
-    git submodule foreach git log $point.. >$WORK_DIR/$release_log/submodule.log
+    release_log=${point}-r${version}.${SWR_VERSION}
+    mkdir -p $WORK_DIR/${release_log}
+    git log $point.. >$WORK_DIR/${release_log}/sdk.log
+    git submodule foreach git log $point.. >$WORK_DIR/${release_log}/submodule.log
 }
 
 init_project_env
