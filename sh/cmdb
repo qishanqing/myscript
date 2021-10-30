@@ -1,6 +1,7 @@
 #!/bin/bash
-set -x 
+set -x
 
+export MYSQL_PWD=123
 
 die() {
     (
@@ -16,8 +17,8 @@ die() {
 function cmdb_mysql() {
     (
         set +x
-	mkdir -p ~/tmp/logs && echo 123 > ~/.ssh/mysql-cmdb.pass
-        if mysql -u root --password=$(cat ~/.ssh/mysql-cmdb.pass) indemind -h 192.168.50.191 --default-character-set=utf8 -e "$@" > ~/tmp/cmdb.db.$$ 2>&1; then
+	mkdir -p ~/tmp/logs
+        if mysql -u root  indemind -h 192.168.50.191 --default-character-set=utf8 -e "$@" > ~/tmp/cmdb.db.$$ 2>&1; then
             cat ~/tmp/cmdb.db.$$
             rm -f ~/tmp/cmdb.db.$$
         elif grep 'Duplicate entry' ~/tmp/cmdb.db.$$; then

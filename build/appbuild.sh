@@ -69,7 +69,7 @@ function ui_info(){
     git pull
     ui_version_now=`git log -1 --pretty=format:"%h"`
     ui_version=`cmdb_mysql "SELECT client  FROM indemindapp where status='0'  order by id desc limit 1;"`
-    ui_version=`echo $ui_version | awk -F 'client' '{print $2}'`
+    ui_version=`echo $ui_version | awk -F ' ' '{print $2}'`
     if ! [ "${ui_version_now// /}" == "${ui_version// /}" ];then
 	mkdir build && cd build
 	qmake ..
@@ -99,7 +99,6 @@ function App_install(){
 
 function Version_Update(){
     mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
-#    mv $BUILD_DIR/i18rmessagehandle/bin/Release $WORK_DIR/task_manager && rm -rf $BUILD_DIR/i18rmessagehandle
     Release_Version_Rule
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
@@ -176,7 +175,7 @@ function i18rconfig_project_update(){
 
 function release_note(){
     point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' order by id desc limit 2;"`
-    point=`echo ${point// /} | awk -F 'tag_name' '{print $2}' | awk -F ' ' '{print $2}'`
+    point=`echo ${point// /} |awk -F ' ' '{print $2}'`
     mkdir -p $WORK_DIR/release_commit
     git log $point.. >$WORK_DIR/release_commit/sdk.log
     git submodule foreach git log $point.. >$WORK_DIR/release_commit/submodule.log
