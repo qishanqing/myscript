@@ -53,9 +53,9 @@ function App_project_fetch(){
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
 	    if [ $SWR_VERSION = ICE_EVT2 ];then
-		cmake -DMBUILD_VCU=ON  .. && make -j4
+		cmake -DMBUILD_VCU=ON -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    else
-		cmake  .. && make -j4
+		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    fi
 	)
     )
