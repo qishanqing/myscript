@@ -187,7 +187,6 @@ function release_note(){
     git submodule foreach git log $point.. >$WORK_DIR/${release_log}/submodule.log
 }
 
-init_project_env
+clean_workspace && init_project_env
 App_project_fetch
 App_install
-clean_workspace
