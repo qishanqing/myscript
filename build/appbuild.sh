@@ -95,7 +95,7 @@ function App_install(){
     pushd $APP_WORKSPACE
     Version_Update
     dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb && cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
-    mv $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb /mnt/ftp/release/INDEMINDAPP/
+    mv $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}* /mnt/ftp/release/INDEMINDAPP/
     popd
 }
 
@@ -145,12 +145,13 @@ function Add_Tag(){
     git push origin r$version.$SWR_VERSION -f
     git submodule foreach git push origin r$version.$SWR_VERSION -f
     git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
+    tar czvf $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}_git.tar.gz .git/ && rm -rf .git/
     popd
     cmdb_mysql "update indemindapp set tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
 }
 
 function clean_workspace(){
-    pushd $BUILD_DIR && sudo rm -rf i18rApplicationDeb
+    pushd $BUILD_DIR && sudo rm -rf i18rApplicationDeb INDEMINDAPP* SmallWashingRobotSDK client
     popd
 }
 
