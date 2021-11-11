@@ -133,7 +133,7 @@ function check_code_style(){
 }
 
 function clean_workspace(){
-    rm -rf $WORKSPACE
+    sudo rm -rf $WORKSPACE
 }
 
 function upload-files(){
