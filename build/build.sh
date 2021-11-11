@@ -132,6 +132,10 @@ function check_code_style(){
     popd
 }
 
+function clean_workspace(){
+    rm -rf $WORKSPACE
+}
+
 function upload-files(){
     files=$1
     if test -e "$1";then
@@ -188,4 +192,4 @@ check_status_code
 generate_message
 generate_commits
 check_code_style
-
+clean_workspace
