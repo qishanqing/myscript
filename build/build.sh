@@ -192,4 +192,7 @@ check_status_code
 generate_message
 generate_commits
 check_code_style
-clean_workspace
+
+if ! [ "$CLEAN_WORKSPACE" = false ];then
+    clean_workspace
+fi
