@@ -22,7 +22,7 @@ init_project_env(){
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
-    bug_list=/mnt/ftp/release/app_update_release
+    function_list=/mnt/ftp/release/app_update_release
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
@@ -189,7 +189,7 @@ function release_note(){
     git log $point.. >$WORK_DIR/${release_log}/sdk.log
     git submodule foreach git log $point.. >$WORK_DIR/${release_log}/submodule.log
     if [ $bug_list = true ];then
-	cp $bug_list/*  $WORK_DIR/${release_log}/
+	cp $function_list/*  $WORK_DIR/${release_log}/
     fi
 }
 
