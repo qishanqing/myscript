@@ -116,6 +116,14 @@ function public_project_update(){
     popd
 }
 
+function public_i18rutilitysubmodule_update(){
+    pushd ~/system/i18rutilitysubmodule
+    git checkout ./ && git clean -xdf ./
+    git pull origin develop
+    ./install.sh
+    popd
+}
+
 function check_code_style(){ 
     pushd ~/system/cppreview || pushd /home/jenkins/jenkins_home/code/cppreview
     git checkout ./ && git clean -xdf ./
@@ -177,6 +185,12 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     ./install.sh
     popd
 
+    pushd ~/system/i18rutilitysubmodule
+    git checkout ./ && git clean -xdf ./
+    git pull origin develop
+    ./install.sh
+    popd
+
     pushd $SOURCE_DIR
     source /opt/ros/melodic/setup.bash &> /dev/null
     bash -ex  $BUILD_SCRIPT || echo $? > $WORKSPACE/result.log
@@ -185,6 +199,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
 EOF
 else
     public_project_update
+    public_i18rutilitysubmodule_update
     project_build
 fi
 
