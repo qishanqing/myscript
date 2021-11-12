@@ -119,8 +119,8 @@ function Version_Update(){
 }
 
 function Release_Version_Rule(){
+    pushd $WORK_DIR/SmallWashingRobotSDK
     if [[ $RELEASE = true ]];then
-	pushd $WORK_DIR/SmallWashingRobotSDK
 	mkdir -p SDK
 	mv build SDK
 	mv config SDK
@@ -130,8 +130,10 @@ function Release_Version_Rule(){
 	mv  SDK $WORK_DIR
 	rm -rf $WORK_DIR/SmallWashingRobotSDK
 	mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
-	popd
+    else
+	tar czvf $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}_git.tar.gz .git/ && rm -rf .git/
     fi
+    popd
 }
 
 function Add_Tag(){
@@ -147,7 +149,6 @@ function Add_Tag(){
     git push origin r$version.$SWR_VERSION -f
     git submodule foreach git push origin r$version.$SWR_VERSION -f
     git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
-    tar czvf $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}_git.tar.gz .git/ && rm -rf .git/
     popd
     cmdb_mysql "update indemindapp set tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
 }
