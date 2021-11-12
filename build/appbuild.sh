@@ -22,9 +22,11 @@ init_project_env(){
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
     CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
+    bug_list=/mnt/ftp/release/app_update_release
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
+    mount_ftp
  }
 
 function project_info_database(){
@@ -186,6 +188,15 @@ function release_note(){
     mkdir -p $WORK_DIR/${release_log}
     git log $point.. >$WORK_DIR/${release_log}/sdk.log
     git submodule foreach git log $point.. >$WORK_DIR/${release_log}/submodule.log
+    if [ $bug_list = true ];then
+	cp $bug_list/*  $WORK_DIR/${release_log}/
+    fi
+}
+
+function mount_ftp(){
+    if ! [ -d "/mnt/ftp/release/INDEMINDAPP" ];then
+	sudo curlftpfs -o rw,allow_other ftp://guest:guest@192.168.50.191 /mnt/ftp/
+    fi
 }
 
 init_project_env
