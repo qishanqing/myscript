@@ -76,7 +76,8 @@ function ui_info(){
 	mkdir build && cd build
 	qmake ..
 	make -j4
-	cp AroundI18R-Client $UI_DIR/Client
+	cp client/client $UI_DIR/client
+	cp updater/updater $UI_DIR/updater
     fi
 
     (
