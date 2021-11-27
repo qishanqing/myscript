@@ -58,7 +58,12 @@ function App_project_fetch(){
 		cmake -DMBUILD_VCU=ON -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    else
 		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
-	    fi
+	    fi &&
+		(
+		    cd ../daemons/
+		    mkdir build && cd build
+		    cmake .. && make -j4
+		)
 	)
     )
     ui_info
@@ -190,7 +195,7 @@ function release_note(){
     mkdir -p $WORK_DIR/${release_log}
     git log $point.. >$WORK_DIR/${release_log}/sdk.log
     git submodule foreach git log $point.. >$WORK_DIR/${release_log}/submodule.log
-    if [ $bug_list = true ];then
+    if [ "$bug_list" = true ];then
 	cp $function_list/*  $WORK_DIR/${release_log}/
     fi
 }
