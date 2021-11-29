@@ -132,6 +132,7 @@ function Release_Version_Rule(){
 	mv config SDK
 	mv kbcontrol SDK
 	mv modules SDK
+	mv ota SDK
 	mv scripts SDK
 	mv  SDK $WORK_DIR
 	rm -rf $WORK_DIR/SmallWashingRobotSDK
