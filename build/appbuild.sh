@@ -194,8 +194,8 @@ function release_note(){
     point=`echo ${point// /} |awk -F ' ' '{print $2}'`
     release_log=${point}-r${version}.${SWR_VERSION}
     mkdir -p $WORK_DIR/${release_log}
-    git log $point.. >$WORK_DIR/${release_log}/sdk.log
-    git submodule foreach git log $point.. >$WORK_DIR/${release_log}/submodule.log
+    git log $point.. >$WORK_DIR/${release_log}/sdk.log ||true
+    git submodule foreach git log $point.. >$WORK_DIR/${release_log}/submodule.log || true
     if [ "$bug_list" = true ];then
 	cp $function_list/*  $WORK_DIR/${release_log}/
     fi
