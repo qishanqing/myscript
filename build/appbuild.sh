@@ -203,7 +203,7 @@ function release_note(){
 
 function mount_ftp(){
     if ! [ -d "/mnt/ftp/release/INDEMINDAPP" ];then
-	sudo curlftpfs -o rw,allow_other ftp://guest:guest@192.168.50.191 /mnt/ftp/
+	sudo curlftpfs -o rw,allow_other,nonempty ftp://guest:guest@192.168.50.191 /mnt/ftp/
     fi
 }
 
