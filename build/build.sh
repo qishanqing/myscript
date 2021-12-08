@@ -134,7 +134,7 @@ function check_code_style(){
     if test -f "get_variable.py";then
 	sed -r 's/\\033\[[0-9]+m//g' -i get_variable.py
     fi
-    python3 review.py --input $SOURCE_DIR | tee ${SOURCE_PROJECT#*/}_${system_platform}_codesytle_check.log
+    timeout 5m python3 review.py --input $SOURCE_DIR | tee ${SOURCE_PROJECT#*/}_${system_platform}_codesytle_check.log
     mkdir -p /mnt/ftp/release/code_style_report/$DT && mv ${SOURCE_PROJECT#*/}_${system_platform}_codesytle_check.log /mnt/ftp/release/code_style_report/$DT/ || true
     echo "check code style end"
     popd
