@@ -208,6 +208,6 @@ generate_message
 generate_commits
 check_code_style
 
-if ! [ "$CLEAN_WORKSPACE" = false ];then
-    clean_workspace
-fi
+#if ! [ "$CLEAN_WORKSPACE" = false ];then
+#    clean_workspace
+#fi
