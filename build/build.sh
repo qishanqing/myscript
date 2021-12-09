@@ -104,7 +104,7 @@ function source_project_update(){
 
 function project_build(){
     pushd $SOURCE_DIR
-    source  $BUILD_SCRIPT
+    .  ./$BUILD_SCRIPT
     popd
 }
 
