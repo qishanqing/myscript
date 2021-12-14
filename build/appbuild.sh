@@ -41,7 +41,13 @@ function App_project_fetch(){
 	pushd $BUILD_DIR
 	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b ${SDK_BRANCH:-release} && (
 	    pushd SmallWashingRobotSDK
-	    git checkout -b $RELEASE_BRANCH && git push -f origin HEAD:$RELEASE_BRANCH
+
+#	    if [[ $RELEASE = test ]];then
+#		pass
+#	    else
+#		git checkout -b $RELEASE_BRANCH && git push -f origin HEAD:$RELEASE_BRANCH
+	    #	    fi
+
 	    i18rconfig_project_update
 	    if  [ "$SWR_VERSION" =  ICE_EVT2 ];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
@@ -74,6 +80,8 @@ function ui_info(){
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
     git checkout ./ && git clean -xdf ./
     git pull
+#    git submodule update --init --recursive
+#    git submodule update --remote
     ui_version_now=`git log -1 --pretty=format:"%h"`
     ui_version=`cmdb_mysql "SELECT client  FROM indemindapp where status='0'  order by id desc limit 1;"`
     ui_version=`echo $ui_version | awk -F ' ' '{print $2}'`
