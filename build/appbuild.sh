@@ -26,6 +26,7 @@ init_project_env(){
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
+    ui_job_name="i18r_ui"
     mount_ftp
  }
 
@@ -76,6 +77,10 @@ function App_project_fetch(){
 popd
 }
 
+function ui_job_build(){
+    jc build $ui_job_name -s &
+}
+
 function ui_info(){
     pushd ~/system/aroundi18r-client || pushd /home/jenkins/jenkins_home/code/aroundi18r-client
     git checkout ./ && git clean -xdf ./
@@ -101,8 +106,11 @@ function ui_info(){
 }
 
 function submodule_version_check(){
-    if ! [ -z $submodule_version ];then
+    if ! [ -z $sdk_version ];then
 	git checkout $submodule_version || true
+    fi
+
+    if ! [ -z $submodule_version ];then
 	git submodule foreach "git checkout $submodule_version||true"
     fi
 } 
