@@ -106,11 +106,11 @@ function ui_info(){
 }
 
 function submodule_version_check(){
-    if ! [ -z $sdk_version ];then
+    if [[ ! -z $sdk_version ]];then
 	git checkout $submodule_version || true
     fi
 
-    if ! [ -z $submodule_version ];then
+    if [[ ! -z $submodule_version ]];then
 	git submodule foreach "git checkout $submodule_version||true"
     fi
 } 
@@ -160,19 +160,21 @@ function Release_Version_Rule(){
 }
 
 function Add_Tag(){
-    pushd $WORK_DIR/SmallWashingRobotSDK
-    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	git tag -d r$version.$SWR_VERSION || true
-	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
-    )
-    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	git submodule foreach git tag -d r$version.$SWR_VERSION || true
-	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
-    )
-    git push origin r$version.$SWR_VERSION -f
-    git submodule foreach git push origin r$version.$SWR_VERSION -f
-    git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
-    popd
+    if [[ -z $sdk_version ]] && [[ -z $submodule_version ]];then
+	pushd $WORK_DIR/SmallWashingRobotSDK
+	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	    git tag -d r$version.$SWR_VERSION || true
+	    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+	)
+	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
+	    git submodule foreach git tag -d r$version.$SWR_VERSION || true
+	    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+	)
+	git push origin r$version.$SWR_VERSION -f
+	git submodule foreach git push origin r$version.$SWR_VERSION -f
+	git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
+	popd
+    fi
     cmdb_mysql "update indemindapp set tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
 }
 
