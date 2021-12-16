@@ -21,7 +21,8 @@ init_project_env(){
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
-    TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test
+    TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test/
+    RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/
     function_list=/mnt/ftp/release/app_update_release
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
@@ -50,6 +51,7 @@ function App_project_fetch(){
 	    #	    fi
 
 	    i18rconfig_project_update
+	    ui_job_build
 	    if  [ "$SWR_VERSION" =  ICE_EVT2 ];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
 	    fi
@@ -57,7 +59,6 @@ function App_project_fetch(){
 	    git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
-	    ui_job_build
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
@@ -74,7 +75,6 @@ function App_project_fetch(){
 		)
 	)
     )
-    ui_info
 popd
 }
 
@@ -133,11 +133,12 @@ function App_install(){
     dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb && (
 	if [[ $RELEASE = test ]];then
 	    cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
+	    mv $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}* $TEST_DIR
 	else
 	    cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
+	    mv $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}* $RELEASE_DIR
 	fi
     )
-    mv $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}* /mnt/ftp/release/INDEMINDAPP/
     popd
 }
 
