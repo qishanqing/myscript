@@ -21,7 +21,7 @@ init_project_env(){
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
-    CONFIG_DIR=/mnt/ftp/release/INDEMINDAPP/test
+    TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test
     function_list=/mnt/ftp/release/app_update_release
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
@@ -130,7 +130,13 @@ function submodule_version_check(){
 function App_install(){
     pushd $APP_WORKSPACE
     Version_Update
-    dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb && cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
+    dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb && (
+	if [[ $RELEASE = test ]];then
+	    cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
+	else
+	    cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
+	fi
+    )
     mv $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}* /mnt/ftp/release/INDEMINDAPP/
     popd
 }
