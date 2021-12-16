@@ -183,7 +183,7 @@ function Release_Version_Rule(){
 
 function Add_Tag(){
     if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]];then
-	pass
+	echo "==============================================================================="
     else
 	pushd $WORK_DIR/SmallWashingRobotSDK
 	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
