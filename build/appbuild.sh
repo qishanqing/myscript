@@ -57,6 +57,7 @@ function App_project_fetch(){
 	    git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
+	    ui_job_build
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
@@ -78,7 +79,18 @@ popd
 }
 
 function ui_job_build(){
-    jc build $ui_job_name -s &
+    export PATH="$PATH:~/myscript/sh"
+    bash jc build $ui_job_name -s &
+    export JOB_PID=$!
+}
+
+function ui_update(){
+    wait $JOB_PID
+    mkdir -p $DESKTOP_DIR
+    i18rconfig_project_update
+    pushd $DESKTOP_DIR
+    cp -av $I18RCONFIG_DIR/client .
+    popd
 }
 
 function ui_info(){
@@ -107,7 +119,7 @@ function ui_info(){
 
 function submodule_version_check(){
     if [[ ! -z $sdk_version ]];then
-	git checkout $submodule_version || true
+	git checkout $sdk_version || true
     fi
 
     if [[ ! -z $submodule_version ]];then
@@ -124,6 +136,7 @@ function App_install(){
 }
 
 function Version_Update(){
+    ui_update
     mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
@@ -153,6 +166,8 @@ function Release_Version_Rule(){
 	mv  SDK $WORK_DIR
 	rm -rf $WORK_DIR/SmallWashingRobotSDK
 	mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
+    elif [[ $RELEASE = test ]];then
+	rm -rf .git/
     else
 	tar czvf $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}_git.tar.gz .git/ && rm -rf .git/
     fi
