@@ -175,7 +175,9 @@ function Release_Version_Rule(){
 }
 
 function Add_Tag(){
-    if [[ -z $sdk_version ]] && [[ -z $submodule_version ]];then
+    if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]];then
+	pass
+    else
 	pushd $WORK_DIR/SmallWashingRobotSDK
 	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
 	    git tag -d r$version.$SWR_VERSION || true
