@@ -124,7 +124,7 @@ function public_i18rutilitysubmodule_update(){
     popd
 }
 
-function check_code_style(){ 
+function check_code_style(){
     pushd ~/system/cppreview || pushd /home/jenkins/jenkins_home/code/cppreview
     git checkout ./ && git clean -xdf ./
     git pull
@@ -206,8 +206,9 @@ fi
 check_status_code
 generate_message
 generate_commits
-check_code_style
 
-#if ! [ "$CLEAN_WORKSPACE" = false ];then
-#    clean_workspace
-#fi
+if [[ $SKIP_CODE_STYLE = true ]];then
+    echo "skip check code style"
+else
+    check_code_style
+fi
