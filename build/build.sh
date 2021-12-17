@@ -12,6 +12,7 @@ init_project_env(){
     TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}
     SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
     prepare_env
+    CLONE_DEPTH="--depth=1"
 }
 
 
@@ -88,7 +89,7 @@ function check_status_code(){
 }
 
 function source_project_fetch(){
-    git clone ssh://git@${GIT_HOST}:222/${SOURCE_PROJECT} -b $SOURCE_BRANCH
+    git clone ssh://git@${GIT_HOST}:222/${SOURCE_PROJECT} -b $SOURCE_BRANCH $CLONE_DEPTH
 }
 
 function source_project_update(){
@@ -153,7 +154,7 @@ function upload-files(){
 }
 
 function target_project_fetch(){
-    git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH
+    git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH $CLONE_DEPTH
 }
 
 function target_project_update(){

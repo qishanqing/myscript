@@ -28,6 +28,7 @@ init_project_env(){
     PLATFORM=`uname -m`
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
     ui_job_name="i18r_ui"
+    CLONE_DEPTH="--depth=1"
     mount_ftp
  }
 
@@ -37,7 +38,7 @@ function project_info_database(){
 
 function App_project_fetch(){
     pushd $BUILD_DIR
-    git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rApplicationDeb.git &&
+    git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rApplicationDeb.git $CLONE_DEPTH &&
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
