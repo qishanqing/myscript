@@ -53,7 +53,7 @@ function App_project_fetch(){
 
 	    i18rconfig_project_update
 	    ui_job_build
-	    if  [ "$SWR_VERSION" =  ICE_EVT2 ];then
+	    if  [[ "$SWR_VERSION" =~  ICE_EVT ]];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
 	    fi
 	    git submodule update --init --recursive
@@ -64,7 +64,7 @@ function App_project_fetch(){
 	    project_info_database
 	    mkdir build && cd build
 	    source ../scripts/env_debug.sh
-	    if [ $SWR_VERSION = ICE_EVT2 ];then
+	    if [[ $SWR_VERSION =~ ICE_EVT ]];then
 		cmake -DMBUILD_VCU=ON -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    else
 		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
