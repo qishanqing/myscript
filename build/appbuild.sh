@@ -53,6 +53,9 @@ function App_project_fetch(){
 
 	    i18rconfig_project_update
 	    ui_job_build
+	    if  [[ "$SWR_VERSION" =~  ICE_EVT ]];then
+		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
+	    fi
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
@@ -206,11 +209,8 @@ function clean_workspace(){
 }
 
 function i18rproject_conf_update(){
-    if  [[ "$SWR_VERSION" =~  ICE_EVT ]];then
-	cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
-    fi
-
     local Modules_List=(selfcalibr depth sensor marker detector navigation slam type)
+
     for i in "${Modules_List[@]}";do
 	local Files_List=`ls $I18RCONFIG_DIR/$SWR_VERSION/$i`
 	if ! [ -z "$Files_List" ];then
