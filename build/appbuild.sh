@@ -163,10 +163,14 @@ function Version_Update(){
 
 function Release_Version_Rule(){
     pushd $WORK_DIR/SmallWashingRobotSDK
-    if [[ $RELEASE = true ]];then
+    if [[ $RELEASE = true ]] || [[ $SWR_VERSION =~ ICE_EVT ]] ;then
 	mkdir -p SDK
 	mv build SDK
 	mv config SDK
+	(
+	    cd kbcontrol
+	    rm -rf src/ example/ CMakeLists.txt include/
+	)
 	mv kbcontrol SDK
 	mv modules SDK
 	mv ota SDK
