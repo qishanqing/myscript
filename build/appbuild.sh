@@ -142,8 +142,8 @@ function Version_Update(){
        sed -i s/PLATFORM/arm64/g $VERSION_FILE
     fi
 
-    if [[ $RELEASE = true ]];then
-	sed -i s/INDEMINDAPP/INDEMIND/g $VERSION_FILE
+    if [[ $RELEASE = test ]];then
+	sed -i s/INDEMINDAPP/TESTAPP/g $VERSION_FILE
     fi
 
     Add_Tag
