@@ -45,17 +45,8 @@ function App_project_fetch(){
 	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b ${SDK_BRANCH:-release} && (
 	    pushd SmallWashingRobotSDK
 
-#	    if [[ $RELEASE = test ]];then
-#		pass
-#	    else
-#		git checkout -b $RELEASE_BRANCH && git push -f origin HEAD:$RELEASE_BRANCH
-	    #	    fi
-
 	    i18rconfig_project_update
 	    ui_job_build
-	    if  [[ "$SWR_VERSION" =~  ICE_EVT ]];then
-		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
-	    fi
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
