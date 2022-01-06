@@ -48,7 +48,7 @@ function App_project_fetch(){
 	    i18rconfig_project_update
 	    ui_job_build
 	    if [[ $gitmodules == true ]];then
-		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .
+		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
 	    fi
 	    git submodule update --init --recursive
 	    git submodule update --remote
