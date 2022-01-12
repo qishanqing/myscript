@@ -109,15 +109,16 @@ function source_project_update(){
 
 function project_build(){
     pushd $SOURCE_DIR
+    version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' and status='0' order by id desc limit 1;"`
+    version=`echo $version | awk -F ' ' '{print $2}'`
+ 
     first_commit_id_now=`git log -1 --pretty=format:"%h"`
     cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
-    version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' order by id desc limit 1;"`
-    version=`echo $version | awk -F ' ' '{print $2}'`
     if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
 	.  ./$BUILD_SCRIPT
     else
 	echo "code is not change"
-	cmdb_mysql "update prebuild set status='1' where build_url='$BUILD_URL';"
+	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
 	exit 0
     fi
     popd
