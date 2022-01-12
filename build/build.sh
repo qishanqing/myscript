@@ -1,5 +1,8 @@
 #!/bin/bash
 
+project_path=$(cd `dirname $0`; pwd)
+. $project_path/../sh/cmdb
+
 set -ex
 init_project_env(){
     DT=`date '+%Y%m%d'`
@@ -13,6 +16,7 @@ init_project_env(){
     SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
     prepare_env
     CLONE_DEPTH="--depth=1"
+    cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME')";
 }
 
 
@@ -105,7 +109,17 @@ function source_project_update(){
 
 function project_build(){
     pushd $SOURCE_DIR
-    .  ./$BUILD_SCRIPT
+    first_commit_id_now=`git log -1 --pretty=format:"%h"`
+    cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
+    version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' order by id desc limit 1;"`
+    version=`echo $version | awk -F ' ' '{print $2}'`
+    if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
+	.  ./$BUILD_SCRIPT
+    else
+	echo "code is not change"
+	cmdb_mysql "update prebuild set status='1' where build_url='$BUILD_URL';"
+	exit 0
+    fi
     popd
 }
 
@@ -207,6 +221,7 @@ fi
 check_status_code
 generate_message
 generate_commits
+cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
 
 if [[ $SKIP_CODE_STYLE = true ]];then
     echo "skip check code style"
