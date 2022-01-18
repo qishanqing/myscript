@@ -222,7 +222,10 @@ fi
 check_status_code
 generate_message
 generate_commits
-cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
+
+if ! [[ -z $first_commit_id_now ]];then
+    cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
+fi
 
 if [[ $SKIP_CODE_STYLE = true ]];then
     echo "skip check code style"
