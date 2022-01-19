@@ -22,7 +22,7 @@ init_project_env(){
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
     TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test/
-    RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/
+    FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/
     function_list=/mnt/ftp/release/app_update_release
     I18RCONFIG_DIR=~/system/i18rconfig
     PLATFORM=`uname -m`
@@ -136,7 +136,7 @@ function App_install(){
 	mv $BUILD_DIR/INDEMINDAPP_* $TEST_DIR
     else
 	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
-	mv $BUILD_DIR/INDEMINDAPP_* $RELEASE_DIR
+	mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR
     fi
     popd
 }
