@@ -124,7 +124,10 @@ function submodule_version_check(){
 
 function App_install(){
     pushd $APP_WORKSPACE
+    ui_update
     Version_Update
+    Add_Tag
+    Release_Version_Rule
     dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb && (
 	if [[ $RELEASE = test ]];then
 	    cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
@@ -138,7 +141,6 @@ function App_install(){
 }
 
 function Version_Update(){
-    ui_update
     mv $BUILD_DIR/SmallWashingRobotSDK $WORK_DIR
     if [ "$PLATFORM" = aarch64 ];then
        sed -i s/VERSION/"$version"/g $VERSION_FILE
@@ -149,10 +151,8 @@ function Version_Update(){
 	sed -i s/INDEMINDAPP/TESTAPP/g $VERSION_FILE
     fi
 
-    Add_Tag
-    Release_Version_Rule
     sudo chmod 755 * -R
-    sudo chown -R $ios.$ios .
+
 }
 
 function Release_Version_Rule(){
