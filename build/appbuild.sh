@@ -130,7 +130,7 @@ function App_install(){
     Release_Version_Rule
 
     deb_type
-    tgz_type
+#    tgz_type
     if [[ $RELEASE = test ]];then
 	cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
 	mv $BUILD_DIR/INDEMINDAPP_* $TEST_DIR
@@ -147,12 +147,12 @@ function deb_type(){
 
 function tgz_type(){
     pushd $APP_WORKSPACE$RELEASE_DIR
-    tar zcvf $BUILD_DIR/INDEMINDAPP_I18R_${SWR_VERSION}_MODULE_${version}.tgz workspace
+    tar zcvf $BUILD_DIR/INDEMINDAPP_I18R_${SWR_VERSION}_${RELEASE:-MODULE}_${version}.tgz workspace
     popd
 }
 
 function ota_update(){
-    pass
+    
 }
 
 function Version_Update(){
