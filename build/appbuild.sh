@@ -152,7 +152,7 @@ function tgz_type(){
 }
 
 function ota_update(){
-    
+    pass
 }
 
 function Version_Update(){
