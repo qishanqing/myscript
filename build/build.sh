@@ -113,14 +113,14 @@ function project_build(){
     version=`echo $version | awk -F ' ' '{print $2}'`
  
     first_commit_id_now=`git log -1 --pretty=format:"%h"`
-    cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
-    if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
+#    cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
+#    if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
 	.  ./$BUILD_SCRIPT
-    else
-	echo "code is not change"
-	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
-	exit 0
-    fi
+ #   else
+#	echo "code is not change"
+#	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
+#	exit 0
+ #   fi
     popd
 }
 
