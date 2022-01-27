@@ -1,0 +1,66 @@
+192.168.50.234   root   indemind@indemind.cn
+
+git submodule update --init --recursive
+git submodule update --remote
+
+curlftpfs -o rw,allow_other,nonempty ftp://guest:guest@192.168.50.191 /mnt/ftp/
+
+cat ~/.ssh/id_rsa.pub 
+vim ~/.gitconfig
+[credential]
+	helper = store
+
+echo "192.168.50.26   master-node build" >> /etc/hosts
+vim ~/.bashrc
+export PATH="$PATH:~/myscript/sh"
+
+
+mkdir ~/system ~/tmp /mnt/ftp /mnt/usb || true
+git config --global user.name JENKINS
+git config --global user.email jenkins@indemind.cn
+apt install bash-completion openjdk-8-jre-headless curlftpfs  ntpdate mysql-client  ntp ntpdat  -y
+
+find /usr/  -type f -exec touch {} \;（时间不同步）
+find -name .git | xargs -i rm -rf {}
+git diff r1.1.3.0.EVT3 HEAD --name-only | xargs  tar -zcvf ../u.tgz
+/etc/init.d/ntp start
+crontab -e （30 08 * * * root /usr/sbin/ntpdate 192.168.50.142）
+
+tar zcvf ice_evt3.2_1.1.5.5.tgz workspace
+
+git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule.git -b develop
+git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git -b develop
+git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig.git -b dev
+git clone ssh://git@192.168.50.191:222/sunhao/cppreview.git
+git clone ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git -b release
+git clone git@github.com:qishanqing/myscript -b indemind
+
+#swap分区添加
+dd if=/dev/zero of=swapfile bs=1M count=8000
+mkswap swapfile
+swapon swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+添加ftp挂载检查
+
+nameserver 192.168.50.191
+
+192.168.1.1
+indemind_test 372233
+
+邮箱  gitlab qsq372233
+github  qsq372232
+
+221  kahdas  jenkins@indemind
+26 191  indemind indemind@qsq
+203 196 142 
+ sed -e 's/\\033\[//g' -i get_variable.py
+
+ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1
+
+sudo route add -net 192.168.10.0 netmask 25 5.255.255.0 gw 192.168.1.253
+sudo route add -net 192.168.10.0 netmask 255.255.255.0 gw 192.168.3.1
+route -n
+
+find . -type d -empty -exec touch {}/.gitkeep \;
+
+cmdb_mysql "insert into indemindapp(version,swr_version,submodule_version,time,indemind_release,sdk_branch,build_url,node_name) values ('${version}','${SWR_VERSION}','${submodule_version}',now(),'${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME')";
