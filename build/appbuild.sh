@@ -25,6 +25,7 @@ init_project_env(){
     FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/
     function_list=/mnt/ftp/release/app_update_release
     I18RCONFIG_DIR=~/system/i18rconfig
+    I18ROTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
     ui_job_name="i18r_ui"
@@ -153,7 +154,20 @@ function tgz_type(){
 }
 
 function ota_update(){
-    pass
+    if [[ -d $I18ROTA_DIR ]];then
+	rm -rf $I18ROTA_DIR
+    fi
+
+    git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $SWR_VERSION $CLONE_DEPTH  $I18ROTA_DIR || (echo ota project update fails && exit)
+    rsync -av $WORK_DIR/* --exclude r[0-9]* $I18ROTA_DIR/ &&
+	(
+	    cd $I18ROTA_DIR/
+	    git add --all .
+	    git commit -m "update r$version.$SWR_VERSION"
+	    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version"
+	    git push origin r$version.$SWR_VERSION -f
+	    git push origin HEAD:$SWR_VERSION
+	)
 }
 
 function Version_Update(){
@@ -175,6 +189,13 @@ function Release_Version_Rule(){
     pushd $WORK_DIR/SmallWashingRobotSDK
     if [[ $RELEASE = true ]] || [[ $SWR_VERSION =~ ICE_EVT ]] ;then
 	mkdir -p SDK
+
+	if [[ $PLATFORM = aarch64 ]];then
+            find -name x64 | xargs -i rm -rf {}
+	elif [[ $PLATFORM = x86_64 ]];then
+            find -name arm64 | xargs -i rm -rf {}
+	fi
+
 	mv build SDK
 	mv config SDK
 	(
@@ -268,3 +289,7 @@ init_project_env
 clean_workspace
 App_project_fetch
 App_install
+
+if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] ;then
+    ota_update
+fi
