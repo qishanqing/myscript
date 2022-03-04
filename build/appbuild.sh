@@ -110,7 +110,7 @@ function ui_info(){
     (
 	mkdir -p $DESKTOP_DIR
 	pushd $DESKTOP_DIR
-	cp -av $UI_DIR .
+	cp -ar $UI_DIR .
     )
 }
 
@@ -159,7 +159,7 @@ function ota_update(){
     fi
 
     git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $SWR_VERSION $CLONE_DEPTH  $I18ROTA_DIR || (echo ota project update fails && exit)
-    rsync -av $WORK_DIR/* --exclude r[0-9]* $I18ROTA_DIR/ &&
+    rsync -ar $WORK_DIR/* --exclude r[0-9]* $I18ROTA_DIR/ &&
 	(
 	    cd $I18ROTA_DIR/
 	    git add --all .
