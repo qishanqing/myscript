@@ -59,7 +59,7 @@ function App_project_fetch(){
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
-	    source ../scripts/env_debug.sh
+	    source ../scripts/env_debug.sh > /dev/null
 	    if [[ $SWR_VERSION =~ ICE_EVT ]];then
 		cmake -DMBUILD_VCU=ON -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    else
@@ -86,7 +86,7 @@ function ui_update(){
     mkdir -p $DESKTOP_DIR
     i18rconfig_project_update
     pushd $DESKTOP_DIR
-    cp -av $I18RCONFIG_DIR/client .
+    cp -av $I18RCONFIG_DIR/client . > /dev/null
     popd
 }
 
