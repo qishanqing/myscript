@@ -59,7 +59,9 @@ function App_project_fetch(){
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
+	    set +x
 	    source ../scripts/env_debug.sh > /dev/null
+	    set -x
 	    if [[ $SWR_VERSION =~ ICE_EVT ]];then
 		cmake -DMBUILD_VCU=ON -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    else
@@ -187,7 +189,7 @@ function Version_Update(){
 
 function Release_Version_Rule(){
     pushd $WORK_DIR/SmallWashingRobotSDK
-    if [[ $RELEASE = true ]] || [[ $SWR_VERSION =~ ICE_EVT ]] ;then
+#    if [[ $RELEASE = true ]] || [[ $SWR_VERSION =~ ICE_EVT ]] ;then
 	mkdir -p SDK
 
 	if [[ $PLATFORM = aarch64 ]];then
@@ -209,11 +211,11 @@ function Release_Version_Rule(){
 	mv  SDK $WORK_DIR
 	rm -rf $WORK_DIR/SmallWashingRobotSDK
 	mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
-    elif [[ $RELEASE = test ]];then
-	rm -rf .git/
-    else
-	tar czvf $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}_git.tar.gz .git/ && rm -rf .git/
-    fi
+#    elif [[ $RELEASE = test ]];then
+#	rm -rf .git/
+#    else
+#	tar czvf $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}_git.tar.gz .git/ && rm -rf .git/
+#    fi
     popd
 }
 
