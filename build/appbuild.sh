@@ -56,7 +56,6 @@ function App_project_fetch(){
 	    git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
-	    release_note
 	    project_info_database
 	    mkdir build && cd build
 	    set +x
@@ -132,7 +131,7 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule
-
+    release_note
     deb_type
 #    tgz_type
     if [[ $RELEASE = test ]];then
@@ -279,6 +278,7 @@ function release_note(){
     if [ "$bug_list" = true ];then
 	cp $function_list/*  $WORK_DIR/${release_log}/
     fi
+    echo "r$version.$SWR_VERSION" | tee $WORK_DIR/version.txt
 }
 
 function mount_ftp(){
