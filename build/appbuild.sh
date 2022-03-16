@@ -130,8 +130,8 @@ function App_install(){
     ui_update
     Version_Update
     Add_Tag
-    Release_Version_Rule
     release_note
+    Release_Version_Rule
     deb_type
 #    tgz_type
     if [[ $RELEASE = test ]];then
