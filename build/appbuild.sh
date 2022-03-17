@@ -30,6 +30,7 @@ init_project_env(){
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
     ui_job_name="i18r_ui"
     CLONE_DEPTH="--depth=1"
+    ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     mount_ftp
  }
 
@@ -132,6 +133,7 @@ function App_install(){
     Add_Tag
     release_note
     Release_Version_Rule
+    encryption_project
     deb_type
 #    tgz_type
     if [[ $RELEASE = test ]];then
@@ -160,7 +162,7 @@ function ota_update(){
     fi
 
     git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $SWR_VERSION $CLONE_DEPTH  $I18ROTA_DIR || (echo ota project update fails && exit)
-    rsync -ar $WORK_DIR/* --exclude r[0-9]* $I18ROTA_DIR/ &&
+    rsync -ar $WORK_DIR/* --exclude r[0-9]* --exclude -*  $I18ROTA_DIR/ &&
 	(
 	    cd $I18ROTA_DIR/
 	    git add --all .
@@ -285,6 +287,11 @@ function mount_ftp(){
     if ! [ -d "/mnt/ftp/release/INDEMINDAPP" ];then
 	sudo curlftpfs -o rw,allow_other,nonempty ftp://guest:guest@192.168.50.191 /mnt/ftp/
     fi
+}
+
+function encryption_project(){
+    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do echo $so;done;done
+    #for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
 }
 
 init_project_env
