@@ -135,7 +135,11 @@ function App_install(){
     Release_Version_Rule
     encryption_project
     deb_type
-#    tgz_type
+
+    if [[ $RELEASE == true ]];then
+	tgz_type
+    fi
+
     if [[ $RELEASE = test ]];then
 	cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
 	mv $BUILD_DIR/INDEMINDAPP_* $TEST_DIR
@@ -190,7 +194,6 @@ function Version_Update(){
 
 function Release_Version_Rule(){
     pushd $WORK_DIR/SmallWashingRobotSDK
-#    if [[ $RELEASE = true ]] || [[ $SWR_VERSION =~ ICE_EVT ]] ;then
 	mkdir -p SDK
 
 	if [[ $PLATFORM = aarch64 ]];then
@@ -212,11 +215,6 @@ function Release_Version_Rule(){
 	mv  SDK $WORK_DIR
 	rm -rf $WORK_DIR/SmallWashingRobotSDK
 	mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
-#    elif [[ $RELEASE = test ]];then
-#	rm -rf .git/
-#    else
-#	tar czvf $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}_git.tar.gz .git/ && rm -rf .git/
-#    fi
     popd
 }
 
@@ -299,6 +297,6 @@ clean_workspace
 App_project_fetch
 App_install
 
-if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] ;then
+if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] || [[ $RELEASE == true  ]] ;then
     ota_update
 fi
