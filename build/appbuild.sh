@@ -133,11 +133,13 @@ function App_install(){
     Add_Tag
     release_note
     Release_Version_Rule
-    encryption_project
     deb_type
 
     if [[ $RELEASE == true ]];then
+	t=SIGNATURE
 	tgz_type
+	encryption_project
+	deb_type $t
     fi
 
     if [[ $RELEASE = test ]];then
@@ -151,12 +153,17 @@ function App_install(){
 }
 
 function deb_type(){
-    dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb
+    if [[ $1 == $t ]];then
+	echo "signature package is starting....."
+	dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${1}_${version}.deb
+    else
+	dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb
+    fi
 }
 
 function tgz_type(){
     pushd $APP_WORKSPACE$RELEASE_DIR
-    tar zcvf $BUILD_DIR/INDEMINDAPP_I18R_${SWR_VERSION}_${RELEASE:-MODULE}_${version}.tgz workspace
+    tar zcvf $BUILD_DIR/INDEMINDAPP_I18R_${SWR_VERSION}_MODULE_${version}.tgz workspace > /dev/null
     popd
 }
 
