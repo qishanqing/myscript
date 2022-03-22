@@ -153,11 +153,11 @@ function App_install(){
 }
 
 function deb_type(){
-    if [[ $1 == $t ]];then
+    if [[ -z $1 ]];then
+	dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb
+    else
 	echo "signature package is starting....."
 	dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${1}_${version}.deb
-    else
-	dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb
     fi
 }
 
