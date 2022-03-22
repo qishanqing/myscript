@@ -57,6 +57,7 @@ function App_project_fetch(){
 	    git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
+	    release_note
 	    project_info_database
 	    mkdir build && cd build
 	    set +x
@@ -131,7 +132,6 @@ function App_install(){
     ui_update
     Version_Update
     Add_Tag
-    release_note
     Release_Version_Rule
     deb_type
 
