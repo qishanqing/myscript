@@ -135,6 +135,10 @@ function App_install(){
     Release_Version_Rule
     deb_type
 
+    if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] || [[ $RELEASE == true  ]] ;then
+	ota_update
+    fi
+
     if [[ $RELEASE == true ]];then
 	t=SIGNATURE
 	tgz_type
@@ -295,15 +299,11 @@ function mount_ftp(){
 }
 
 function encryption_project(){
-    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do echo $so;done;done
-    #for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
+#    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do echo $so;done;done
+    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
 }
 
 init_project_env
 clean_workspace
 App_project_fetch
 App_install
-
-if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] || [[ $RELEASE == true  ]] ;then
-    ota_update
-fi
