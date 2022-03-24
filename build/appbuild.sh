@@ -21,8 +21,10 @@ init_project_env(){
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
-    TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test/
-    FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/
+    TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test
+    FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP
+    FTP_RELEASE_SIGN_DIR=$FTP_RELEASE_DIR/sign
+    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/pre_release
     function_list=/mnt/ftp/release/app_update_release
     I18RCONFIG_DIR=~/system/i18rconfig
     I18ROTA_DIR=~/system/i18rota
@@ -147,11 +149,16 @@ function App_install(){
     fi
 
     if [[ $RELEASE = test ]];then
-	cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
 	mv $BUILD_DIR/INDEMINDAPP_* $TEST_DIR
-    else
-	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
+	cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
+    elif [[ $RELEASE = true ]];then
+	mv $BUILD_DIR/INDEMINDAPP_*.tgz $FTP_RELEASE_OTA_DIR || true
+	mv $BUILD_DIR/INDEMINDAPP_*"$t"* $FTP_RELEASE_SIGN_DIR || true
 	mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR
+	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
+    else
+	mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR
+	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
     fi
     popd
 }
