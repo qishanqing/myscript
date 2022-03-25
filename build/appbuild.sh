@@ -307,7 +307,8 @@ function mount_ftp(){
 
 function encryption_project(){
 #    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do echo $so;done;done
-    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
+    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -type f -name $file | while read so; do $ENCRYPTION_TOOL $so;done;done
+    for file in `cat $I18RCONFIG_DIR/encryption.list`;do find $WORK_DIR -type l -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
 }
 
 init_project_env
