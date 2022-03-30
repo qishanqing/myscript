@@ -143,8 +143,13 @@ function App_install(){
 
     if [[ $RELEASE == true ]];then
 	t=SIGNATURE
+	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
+	tgz_release=INTG
+	tgz_full_name=INDEMINDAPP_I18R_${x}_${tgz_release}_${version}.tgz
 	tgz_type
 	encryption_project
+	SWR_VERSION_SIGN=$SWR_VERSION-SIGN
+	ota_update
 	deb_type $t
     fi
 
@@ -152,46 +157,55 @@ function App_install(){
 	mv $BUILD_DIR/INDEMINDAPP_* $TEST_DIR
 	cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-	mv $BUILD_DIR/INDEMINDAPP_*.tgz $FTP_RELEASE_OTA_DIR || true
-	mv $BUILD_DIR/INDEMINDAPP_*"$t"* $FTP_RELEASE_SIGN_DIR || true
-	mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR
+	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
+	mv $BUILD_DIR/$deb_full_sign_name $FTP_RELEASE_SIGN_DIR || true
+	mv $BUILD_DIR/$deb_full_name $FTP_RELEASE_DIR
 	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
     else
-	mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR
 	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
     fi
+    mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
     popd
 }
 
 function deb_type(){
+    deb_full_name=INDEMINDAPP_${SWR_VERSION}_${version}.deb
+    deb_full_sign_name=INDEMINDAPP_${SWR_VERSION}_${1}_${version}.deb
     if [[ -z $1 ]];then
-	dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${version}.deb
+	echo "$deb_full_name" | tee $WORK_DIR/version.txt
+	dpkg -b . $BUILD_DIR/$deb_full_name
     else
 	echo "signature package is starting....."
-	dpkg -b . $BUILD_DIR/INDEMINDAPP_${SWR_VERSION}_${1}_${version}.deb
+	echo "$deb_full_sign_name" | tee $WORK_DIR/version.txt
+	dpkg -b . $BUILD_DIR/$deb_full_sign_name
     fi
 }
 
 function tgz_type(){
     pushd $APP_WORKSPACE$RELEASE_DIR
-    tar zcvf $BUILD_DIR/INDEMINDAPP_I18R_${SWR_VERSION}_MODULE_${version}.tgz workspace > /dev/null
+    echo "$tgz_full_name" | tee $WORK_DIR/version.txt
+    tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null
     popd
 }
 
-function ota_update(){
+function ota_project_fetch(){
     if [[ -d $I18ROTA_DIR ]];then
 	rm -rf $I18ROTA_DIR
     fi
 
-    git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $SWR_VERSION $CLONE_DEPTH  $I18ROTA_DIR || (echo ota project update fails && exit)
+    git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b ${SWR_VERSION_SIGN:-$SWR_VERSION} $CLONE_DEPTH  $I18ROTA_DIR || (echo ota project update fails && exit)
+}
+
+function ota_update(){
+    ota_project_fetch
     rsync -ar $WORK_DIR/* --exclude r[0-9]* --exclude -*  $I18ROTA_DIR/ &&
 	(
 	    cd $I18ROTA_DIR/
 	    git add --all .
-	    git commit -m "update r$version.$SWR_VERSION"
-	    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version"
-	    git push origin r$version.$SWR_VERSION -f
-	    git push origin HEAD:$SWR_VERSION
+	    git commit -m "update r$version.${SWR_VERSION_SIGN:-$SWR_VERSION}"
+	    git tag -a r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
+	    git push origin r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -f
+	    git push origin HEAD:${SWR_VERSION_SIGN:-$SWR_VERSION}
 	)
 }
 
@@ -296,7 +310,6 @@ function release_note(){
     if [ "$bug_list" = true ];then
 	cp $function_list/*  $WORK_DIR/${release_log}/
     fi
-    echo "r$version.$SWR_VERSION" | tee $WORK_DIR/version.txt
 }
 
 function mount_ftp(){
@@ -312,6 +325,12 @@ function encryption_project(){
 }
 
 init_project_env
-clean_workspace
-App_project_fetch
-App_install
+
+if [[ $RELEASE = ota ]];then
+    echo ota is starting.....
+    ota_project_fetch
+else
+    clean_workspace
+    App_project_fetch
+    App_install
+fi
