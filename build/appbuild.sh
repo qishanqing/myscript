@@ -34,6 +34,8 @@ init_project_env(){
     ui_job_name="i18r_ui"
     CLONE_DEPTH="--depth=1"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
+    x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
+    tgz_release=INTG
     mount_ftp
  }
 
@@ -138,14 +140,12 @@ function App_install(){
     Release_Version_Rule
     deb_type
 
+    
     if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] || [[ $RELEASE == true  ]] ;then
 	ota_update
     fi
 
     if [[ $RELEASE == true ]];then
-	t=SIGNATURE
-	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
-	tgz_release=INTG
 	tgz_full_name=INDEMINDAPP_I18R_${x}_${tgz_release}_${version}.tgz
 	tgz_type
 	encryption_project
@@ -188,9 +188,6 @@ function ota_project_fetch(){
     fi
 
     git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b ${SWR_VERSION_SIGN:-$SWR_VERSION} $CLONE_DEPTH  $I18ROTA_DIR || (echo ota project update fails && exit)
-    last_version=`git tag --sort=taggerdate   | tail -n 1`
-    last_version=`echo $last_version | cut -d '.' -f 1-4`
-    last_version=`echo $last_version | perl -npe 's.r..g'`
 }
 
 function ota_update(){
@@ -198,17 +195,20 @@ function ota_update(){
     rsync -ar $WORK_DIR/* --exclude r[0-9]* --exclude -*  $I18ROTA_DIR/ &&
 	(
 	    cd $I18ROTA_DIR/
+	    last_tag=`git tag --sort=taggerdate | tail -n 1`
+	    last_version=`echo $last_tag | cut -d '.' -f 1-4`
+	    last_version=`echo $last_version | perl -npe 's.r..g'`
 	    git add --all .
 	    git commit -m "update r$version.${SWR_VERSION_SIGN:-$SWR_VERSION}"
 	    git tag -a r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
 	    git push origin r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -f
 	    git push origin HEAD:${SWR_VERSION_SIGN:-$SWR_VERSION}
-	    ota_update_release_name=INDEMINDAPP_I18R_${x}_${tgz_release}_$last_version_${version}.tgz
-	    echo "$ota_update_release_name" | tee $WORK_DIR/version.txt
-	    echo "" >> $WORK_DIR/version.txt
-	    echo "" >> $WORK_DIR/version.txt
-	    git diff $last_version HEAD --name-only >> $WORK_DIR/version.txt
-	    git diff $last_version HEAD --name-only | xargs  tar -zcvf $BUILD_DIR/$ota_update_release_name
+	    ota_update_release_name=INDEMINDAPP_I18R_${x}_${tgz_release}_${last_version}_${version}.tgz
+	    echo "$ota_update_release_name" | tee version.txt
+	    echo "" >> version.txt
+	    echo "" >> version.txt
+	    git diff $last_tag HEAD --name-status >> version.txt
+	    git diff $last_tag HEAD --name-only | xargs  tar -zcvf $BUILD_DIR/$ota_update_release_name
 	    mv $BUILD_DIR/$ota_update_release_name $FTP_RELEASE_OTA_DIFF_DIR
 	)
 }
@@ -269,7 +269,6 @@ function Add_Tag(){
 	)
 	git push origin r$version.$SWR_VERSION -f
 	git submodule foreach git push origin r$version.$SWR_VERSION -f
-	git remote set-url origin  http://192.168.50.191:85/AroundI18RProject/SmallWashingRobotSDK.git
 	popd
     fi
     cmdb_mysql "update indemindapp set tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
