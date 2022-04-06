@@ -146,7 +146,7 @@ function App_install(){
     fi
 
     if [[ $RELEASE == true ]];then
-	tgz_full_name=INDEMINDAPP_I18R_${x}_${tgz_release}_${version}.tgz
+	tgz_full_name=INDEMINDAPP_I18R_${x}_${tgz_release}_ALL_${version}.tgz
 	tgz_type
 	encryption_project
 	SWR_VERSION=$SWR_VERSION-SIGN
