@@ -237,7 +237,7 @@ function Release_Version_Rule(){
 	elif [[ $PLATFORM = x86_64 ]];then
             find -name arm64 | xargs -i rm -rf {}
 	fi
-	find -name CMake* | xargs  rm -rf {}
+	find -name CMake* | xargs -i rm -rf {}
 
 	mv build SDK
 	mv config SDK
