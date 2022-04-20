@@ -34,7 +34,7 @@ function prepare_env() {
 function generate_message() {
     (cd $SOURCE_DIR && (git log -1 --oneline --decorate=)) > ${COMMIT_MSG_FILE_TMP}
     echo "" >> $COMMIT_MSG_FILE_TMP
-    (cd $SOURCE_DIR && (git log -1 --name-status)) >> ${COMMIT_MSG_FILE_TMP} 
+#    (cd $SOURCE_DIR && (git log -1 --name-status)) >> ${COMMIT_MSG_FILE_TMP} 
     echo "====================================" >> $COMMIT_MSG_FILE_TMP
     if [[ -f $COMMIT_MSG_FILE_TMP ]];then
 	cat $COMMIT_MSG_FILE_TMP > $COMMIT_MSG_FILE
