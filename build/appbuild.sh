@@ -55,7 +55,6 @@ function App_project_fetch(){
 	    i18rconfig_project_update
 	    ui_job_build
 	    if [[ $gitmodules == true ]];then
-#		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/sdk/gitmodules .gitmodules
 		cp -ar /mnt/ftp/release/INDEMINDAPP/sdk/gitmodules .gitmodules
 	    fi
 	    git submodule update --init --recursive
@@ -281,7 +280,7 @@ function clean_workspace(){
 }
 
 function i18rproject_conf_update(){
-    local Modules_List=(selfcalibr depth sensor marker detector navigation slam type)
+    local Modules_List=(selfcalibr depth sensor marker detector navigation slam type sdk)
 
     for i in "${Modules_List[@]}";do
 	local Files_List=`ls $I18RCONFIG_DIR/$SWR_VERSION/$i`
@@ -290,6 +289,8 @@ function i18rproject_conf_update(){
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/share/wsbot_navigation/param/
 	    elif [[ "$i" =~ slam ]] || [[ "$i" =~ depth ]];then
 		cp -ar $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/
+	    elif [[ "$i" =~ sdk ]];then
+		 cp -ar $I18RCONFIG_DIR/$SWR_VERSION/$i/* $WORK_DIR/
 	    else
 		cp -ar  $I18RCONFIG_DIR/$SWR_VERSION/$i/* modules/$i/
 	    fi
