@@ -17,6 +17,8 @@ init_project_env(){
     prepare_env
     CLONE_DEPTH="--depth=1"
     cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME')";
+    DOCKER_CONTAINER_I18="build-x64-18.04"
+    DOCKER_CONTAINER_RUBBY="c405"
 }
 
 
@@ -191,7 +193,7 @@ else
 fi
 
 if [[ "${system_platform}" =~ "x86_64" ]];then
-    docker exec -i build-x64-18.04 /bin/bash <<EOF
+    docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
     TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}
     SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
