@@ -189,7 +189,7 @@ if [ "$CLEAN_WORKSPACE" = false ];then
     target_project_update
 else
     source_project_fetch
-    target_project_fetch
+    target_project_fetch || target_push=false
 fi
 
 if [[ "${system_platform}" =~ "x86_64" ]];then
@@ -222,6 +222,12 @@ else
 fi
 
 check_status_code
+
+if  [[ $target_push = false ]];then
+    echo "code push is empty"
+    exit 0
+fi
+
 generate_message
 generate_commits
 
