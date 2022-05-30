@@ -189,7 +189,7 @@ if [ "$CLEAN_WORKSPACE" = false ];then
     target_project_update
 else
     source_project_fetch
-    target_project_fetch || target_push=false
+    target_project_update || target_push=false
 fi
 
 if [[ "${system_platform}" =~ "x86_64" ]];then
