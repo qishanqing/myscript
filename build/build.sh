@@ -12,7 +12,7 @@ init_project_env(){
     GIT_HOST="192.168.50.191"
     CONVERT_TARGET_PROJECT=$(echo $TARGET_PROJECT|awk -F"/" '{print $1"%2F"$2}')
     SUB_PROJECT_ID=$(curl -XGET -H "Content-Type: application/json" --header "PRIVATE-TOKEN: $GIT_PRIVATE_TOKEN" "http://${GIT_HOST}:85/api/v4/projects/${CONVERT_TARGET_PROJECT}"| python -c 'import sys, json; print(json.load(sys.stdin)["id"])')
-    TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}
+    TARGET_DIR=$WORKSPACE/${TARGET_PROJECT##*/}
     SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT##*/}
     prepare_env
     CLONE_DEPTH="--depth=1"
@@ -174,8 +174,7 @@ function target_project_fetch(){
     git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH $CLONE_DEPTH
 }
 
-function target_project_update(){
-    rm -rf  $TARGET_DIR
+function target_project_update(){    rm -rf  $TARGET_DIR
     target_project_fetch || target_push=false
 }
 
@@ -195,18 +194,22 @@ fi
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
-    TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}
-    SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
-    pushd ~/system/I18RPublicBaseTypes
-    git checkout ./ && git clean -xdf ./
-    git pull origin develop
-    ./install.sh
-    popd
+    if  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_RUBBY ]];then
+    	echo "rubby project building ......"
+    elif  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_I18 ]];then
+    	TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}    
+	SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
+    	pushd ~/system/I18RPublicBaseTypes
+    	git checkout ./ && git clean -xdf ./
+    	git pull origin develop
+    	./install.sh
+    	popd
 
-    pushd ~/system/i18rutilitysubmodule
-    git checkout ./ && git clean -xdf ./
-    git pull origin develop
-    ./install.sh
+    	pushd ~/system/i18rutilitysubmodule
+    	git checkout ./ && git clean -xdf ./
+    	git pull origin develop
+   	./install.sh
+    fi
     popd
 
     pushd $SOURCE_DIR
