@@ -176,7 +176,7 @@ function target_project_fetch(){
 
 function target_project_update(){
     rm -rf  $TARGET_DIR
-    target_project_fetch
+    target_project_fetch || target_push=false
 }
 
 export -f public_project_update
