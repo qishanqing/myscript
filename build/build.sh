@@ -209,8 +209,8 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     	git checkout ./ && git clean -xdf ./
     	git pull origin develop
    	./install.sh
+    	popd
     fi
-    popd
 
     pushd $SOURCE_DIR
     source /opt/ros/melodic/setup.bash &> /dev/null
