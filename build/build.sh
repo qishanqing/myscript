@@ -30,7 +30,7 @@ function prepare_env() {
     rm -f $COMMIT_ID_FILE
     rm -f $COMMIT_MSG_FILE
     rm -f $COMMIT_MSG_FILE_TMP
-    rm -f $$WORKSPACE/result.log
+    rm -f $WORKSPACE/result.log
 }
 
 function generate_message() {
@@ -174,7 +174,8 @@ function target_project_fetch(){
     git clone ssh://git@${GIT_HOST}:222/${TARGET_PROJECT} -b $TARGET_BRANCH $CLONE_DEPTH
 }
 
-function target_project_update(){    rm -rf  $TARGET_DIR
+function target_project_update(){
+    rm -rf  $TARGET_DIR || true
     target_project_fetch || target_push=false
 }
 
@@ -238,7 +239,7 @@ if ! [[ -z $first_commit_id_now ]];then
     cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
 fi
 
-if [[ $SKIP_CODE_STYLE = true ]];then
+if [[ $SKIP_CODE_STYLE = true || $DOCKER_CONTAINER = $DOCKER_CONTAINER_RUBBY ]];then
     echo "skip check code style"
 else
     check_code_style
