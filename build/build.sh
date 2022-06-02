@@ -134,6 +134,13 @@ function public_project_update(){
     popd
 }
 
+function rubby_public_project_update(){
+    pushd ~/system/abby_msg
+    git checkout ./ && git clean -xdf ./
+    git pull origin master
+    popd
+}
+
 function public_i18rutilitysubmodule_update(){
     pushd ~/system/i18rutilitysubmodule
     git checkout ./ && git clean -xdf ./
@@ -197,6 +204,10 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     set -x
     if  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_RUBBY ]];then
     	echo "rubby project building ......"
+	pushd ~/system/abby_msg
+    	git checkout ./ && git clean -xdf ./
+    	git pull origin master
+    	popd
     elif  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_I18 ]];then
     	TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}    
 	SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
