@@ -194,6 +194,10 @@ function ota_update(){
     rsync -ar $WORK_DIR/* --exclude r[0-9]* --exclude -*  $I18ROTA_DIR/ &&
 	(
 	    cd $I18ROTA_DIR/
+	    local path_work=~/tmp
+	    local path_workspace=$path_work/workspace
+	    rm -rf  $path_workspace || true
+	    mkdir -p  $path_workspace
 	    last_tag=`git tag --sort=taggerdate | tail -n 1`
 	    last_version=`echo $last_tag | cut -d '.' -f 1-4`
 	    last_version=`echo $last_version | perl -npe 's.r..g'`
@@ -207,7 +211,14 @@ function ota_update(){
 	    echo "" >> version.txt
 	    echo "" >> version.txt
 	    git diff $last_tag HEAD --name-status >> version.txt
-	    git diff $last_tag HEAD --name-only | xargs  tar -zcvf $BUILD_DIR/$ota_update_release_name
+	    git diff $last_tag HEAD --name-only |
+		while read f;do
+		    cp --parents -av  $f $path_workspace
+		done
+	    (
+		cd $path_work
+		tar -zcvf $BUILD_DIR/$ota_update_release_name workspace/*
+	    )
 	    mv $BUILD_DIR/$ota_update_release_name $FTP_RELEASE_OTA_DIFF_DIR
 	)
 }
