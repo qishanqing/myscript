@@ -101,7 +101,7 @@ function source_project_fetch(){
 function source_project_update(){
     if [ -d "$SOURCE_DIR" ];then
 	pushd $SOURCE_DIR
-	git checkout ./
+#	git checkout ./
 	git pull --rebase
 	popd
     else
@@ -117,7 +117,7 @@ function project_build(){
     first_commit_id_now=`git log -1 --pretty=format:"%h"`
     cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
     if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
-	.  ./$BUILD_SCRIPT
+	bash -ex $BUILD_SCRIPT
     else
 	echo "code is not change"
 	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
@@ -231,6 +231,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     exit
 EOF
 else
+    
     public_project_update
     public_i18rutilitysubmodule_update
     project_build
