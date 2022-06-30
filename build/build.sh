@@ -234,10 +234,13 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     exit
 EOF
 else
-    
+    if [[ $JOB_NAME =~ rbn ]];then
+	project_build
+    else
     public_project_update
     public_i18rutilitysubmodule_update
     project_build
+    fi
 fi
 
 check_status_code
