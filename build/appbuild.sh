@@ -137,21 +137,20 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule
+    encryption_project
+    SWR_VERSION=$SWR_VERSION-SIGN
+    x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     deb_type
 
     
-    if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] || [[ $RELEASE == true  ]] ;then
-	ota_update
-    fi
+#    if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] || [[ $RELEASE == true  ]] ;then
+#	ota_update
+#    fi
 
     if [[ $RELEASE == true ]];then
 	tgz_full_name=INDEMINDAPP_I18R_${x}_${tgz_release}_ALL_${version}.tgz
 	tgz_type
-	encryption_project
-	SWR_VERSION=$SWR_VERSION-SIGN
-	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
 	ota_update
-	deb_type
     fi
 
     if [[ $RELEASE = test ]];then
