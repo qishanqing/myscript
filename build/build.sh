@@ -19,6 +19,7 @@ init_project_env(){
     cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME')";
     DOCKER_CONTAINER_I18="build-x64-18.04"
     DOCKER_CONTAINER_RUBBY="c405"
+    DOCKER_CONTAINER_RUBBY_INSIDE="c3566"
 }
 
 
@@ -205,7 +206,7 @@ fi
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
-    if  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_RUBBY ]];then
+    if  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_RUBBY ]] || [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
     	echo "rubby project building ......"
 	pushd ~/system/abby_msg
     	git checkout ./ && git clean -xdf ./
