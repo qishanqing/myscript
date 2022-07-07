@@ -40,7 +40,7 @@ init_project_env(){
  }
 
 function project_info_database(){
-    cmdb_mysql "insert into indemindapp(version,swr_version,submodule_version,time,indemind_release,sdk_branch,build_url,node_name) values ('${version}','${SWR_VERSION}','${submodule_version}',now(),'${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME')";
+    cmdb_mysql "insert into indemindapp(version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name) values ('${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME')";
 }
 
 function App_project_fetch(){
