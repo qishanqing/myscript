@@ -137,32 +137,23 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule
-    encryption_project
-    SWR_VERSION=$SWR_VERSION-SIGN
-    x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
-    deb_type
-
-    
-#    if [[  -z $sdk_version ]] && [[ -z $submodule_version ]] && [[ -z $RELEASE  ]] && [[ -z $gitmodules ]] || [[ $RELEASE == true  ]] ;then
-#	ota_update
-#    fi
-
-    if [[ $RELEASE == true ]];then
-	tgz_full_name=INDEMINDAPP_I18R_${x}_${tgz_release}_ALL_${version}.tgz
-	tgz_type
-	ota_update
-    fi
-
     if [[ $RELEASE = test ]];then
+	deb_type
 	mv $BUILD_DIR/INDEMINDAPP_* $TEST_DIR
 	cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
+	encryption_project
+	SWR_VERSION=$SWR_VERSION-SIGN
+	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
+	deb_type
+	tgz_full_name=INDEMINDAPP_I18R_${x}_${tgz_release}_ALL_${version}.tgz
+	tgz_type
+	ota_update
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
 	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
-    else
-	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
     fi
+
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
     popd
 }
