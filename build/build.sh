@@ -206,13 +206,13 @@ fi
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
-    if  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_RUBBY ]] || [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
+    if  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
     	echo "rubby project building ......"
 	pushd ~/system/abby_msg
     	git checkout ./ && git clean -xdf ./
     	git pull origin master
     	popd
-    elif  [[ $DOCKER_CONTAINER == $DOCKER_CONTAINER_I18 ]];then
+    elif  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_I18 ]];then
     	TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}    
 	SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
     	pushd ~/system/I18RPublicBaseTypes
