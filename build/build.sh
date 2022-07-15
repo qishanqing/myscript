@@ -154,7 +154,7 @@ function public_i18rutilitysubmodule_update(){
 }
 
 function check_code_style(){
-    pushd ~/system/cppreview || pushd /home/jenkins/jenkins_home/code/cppreview
+    pushd ~/system/cppreview || pushd /home/jenkins/jenkins_home/code/cppreview || pushd ~/workspace/cppreview
     git checkout ./ && git clean -xdf ./
     git pull
 
@@ -258,7 +258,7 @@ if ! [[ -z $first_commit_id_now ]];then
     cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
 fi
 
-if [[ $SKIP_CODE_STYLE = true || $DOCKER_CONTAINER = $DOCKER_CONTAINER_RUBBY ]];then
+if [[ $SKIP_CODE_STYLE = true || $DOCKER_CONTAINER = $DOCKER_CONTAINER_RUBBY || $DOCKER_CONTAINER = $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
     echo "skip check code style"
 else
     check_code_style
