@@ -207,7 +207,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
     if  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
-    	echo "rubby project building ......"
+        echo "rubby project building in ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18}......"
 	pushd ~/system/abby_msg
     	git checkout ./ && git clean -xdf ./
     	git pull origin master
