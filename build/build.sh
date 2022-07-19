@@ -206,6 +206,7 @@ fi
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
+    system_platform=`uname -m`
     if  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
         echo "rubby project building in ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18}......"
 	pushd ~/system/abby_msg
