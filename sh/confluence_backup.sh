@@ -10,7 +10,9 @@ confluence_sys_upload () {
     confluence_sys_backup &&
 	(
 	    cd /backup/confluence/
-	    scp -r -P222  backups  root@192.168.50.158:/backup/confluence && echo "backup sys data success" | mails_cm -i "confluence sys data backup"
+	    scp -r -P222  backups  root@192.168.50.158:/backup/confluence && rm -rf /backup/confluence/backups
+	    echo "backup sys data success" | mails_cm -i "confluence sys data backup"
+	    
 	)
 }
 
