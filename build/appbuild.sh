@@ -160,7 +160,7 @@ function App_install(){
     if [[ $RELEASE = test ]];then
 	deb_type
 	mv $BUILD_DIR/INDEMINDAPP_* $TEST_DIR
-	cmdb_mysql "update indemindapp set status='1' where build_url='$BUILD_URL';"
+	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 	encryption_project
 	SWR_VERSION=$SWR_VERSION-SIGN
@@ -171,7 +171,7 @@ function App_install(){
 	ota_update
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
-	cmdb_mysql "update indemindapp set status='0' where build_url='$BUILD_URL';"
+	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5' ,tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
@@ -181,13 +181,15 @@ function App_install(){
 function deb_type(){
     deb_name=INDEMINDAPP_${SWR_VERSION}_${version}.deb
     echo "$deb_name" | tee $WORK_DIR/version.txt
-    dpkg -b . $BUILD_DIR/$deb_name
+    dpkg -b . $BUILD_DIR/$deb_name && md5sum $BUILD_DIR/$deb_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
+    deb_md5=`cat $WORK_DIR/version.txt`
 }
 
 function tgz_type(){
     pushd $APP_WORKSPACE$RELEASE_DIR
     echo "$tgz_full_name" | tee $WORK_DIR/version.txt
-    tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null
+    tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
+    tgz_full_md5=`cat $WORK_DIR/version.txt`
     popd
 }
 
