@@ -171,7 +171,9 @@ function App_install(){
 	ota_update
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
-	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5', sdk_log='$sdk_log', submodule_log='$submodule_log' where build_url='$BUILD_URL';"
+	echo "$sdk_note"
+	echo "$submodule_note"
+	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5', sdk_log='$sdk_note', submodule_log='$submodule_note' where build_url='$BUILD_URL';"
     fi
 
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
@@ -335,8 +337,8 @@ function release_note(){
     mkdir -p $WORK_DIR/${release_log}
     git log $point.. .>$WORK_DIR/${release_log}/sdk.log ||true
     git submodule foreach git log $point.. .>$WORK_DIR/${release_log}/submodule.log || true
-    sdk_log=`cat $WORK_DIR/${release_log}/sdk.log`
-    submodule_log=`cat $WORK_DIR/${release_log}/submodule.log`
+    sdk_note=`cat $WORK_DIR/${release_log}/sdk.log`
+    submodule_note=`cat $WORK_DIR/${release_log}/submodule.log`
     if [ "$bug_list" = true ];then
 	cp $function_list/*  $WORK_DIR/${release_log}/
     fi
