@@ -42,9 +42,10 @@ App_install(){
 
 APP_PUSH(){
     pushd $TARGET_PROJECT
-    find -name *interface-testsuite*.deb | xargs git rm
+    find -name *interface-testsuite*.deb | xargs git rm || true
     mv ~/system/${app_name} factory_set_tools/接口测试/
-    git commit -am "${app_name}"
+    git add factory_set_tools/接口测试/${app_name}
+    git commit -m "${app_name}"
     git push
 }
 
