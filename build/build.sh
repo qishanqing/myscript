@@ -102,7 +102,7 @@ function check_status_code(){
 }
 
 function source_project_fetch(){
-    git clone ssh://git@${GIT_HOST}:222/${SOURCE_PROJECT} -b $SOURCE_BRANCH $CLONE_DEPTH
+    git clone ssh://git@${GIT_HOST}:222/${SOURCE_PROJECT} $SOURCE_PROJECT_RENAME -b $SOURCE_BRANCH $CLONE_DEPTH
 }
 
 function source_project_update(){
