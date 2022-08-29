@@ -12,8 +12,12 @@ init_project_env(){
     GIT_HOST="192.168.50.191"
     CONVERT_TARGET_PROJECT=$(echo $TARGET_PROJECT|awk -F"/" '{print $1"%2F"$2}')
     SUB_PROJECT_ID=$(curl -XGET -H "Content-Type: application/json" --header "PRIVATE-TOKEN: $GIT_PRIVATE_TOKEN" "http://${GIT_HOST}:85/api/v4/projects/${CONVERT_TARGET_PROJECT}"| python -c 'import sys, json; print(json.load(sys.stdin)["id"])') || true
+    if [ -z $SOURCE_PROJECT_RENAME ];then
+	SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT##*/}
+    else
+	SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT_RENAME}
+    fi
     TARGET_DIR=$WORKSPACE/${TARGET_PROJECT##*/}
-    SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT##*/}
     prepare_env
     CLONE_DEPTH="--depth=1"
     cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME')";
@@ -49,7 +53,6 @@ function generate_message() {
 
 function generate_commits(){
     pushd  $TARGET_DIR
-
     install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
         for i in $install_dir_list;do
