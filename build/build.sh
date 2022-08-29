@@ -123,7 +123,7 @@ function project_init_remote() {
 
 function project_build(){
     pushd $SOURCE_DIR
-    project_init_remote
+    project_init_remote || true
     version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' and status='0' order by id desc limit 1;"`
     version=`echo $version | awk -F ' ' '{print $2}'`
  
