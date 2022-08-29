@@ -116,8 +116,14 @@ function source_project_update(){
     fi
 }
 
+function project_init_remote() {
+    git submodule update --init --recursive
+    git submodule update --remote
+}
+
 function project_build(){
     pushd $SOURCE_DIR
+    project_init_remote
     version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' and status='0' order by id desc limit 1;"`
     version=`echo $version | awk -F ' ' '{print $2}'`
  
@@ -209,7 +215,6 @@ fi
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
-    system_platform=`uname -m`
     if  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
         echo "rubby project building in ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18}......"
 	pushd ~/system/abby_msg
@@ -217,8 +222,6 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     	git pull origin master
     	popd
     elif  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_I18 ]];then
-    	TARGET_DIR=$WORKSPACE/${TARGET_PROJECT#*/}    
-	SOURCE_DIR=$WORKSPACE/${SOURCE_PROJECT#*/}
     	pushd ~/system/I18RPublicBaseTypes
     	git checkout ./ && git clean -xdf ./
     	git pull origin develop
