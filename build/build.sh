@@ -24,6 +24,7 @@ init_project_env(){
     DOCKER_CONTAINER_I18="build-x64-18.04"
     DOCKER_CONTAINER_RUBBY="c405"
     DOCKER_CONTAINER_RUBBY_INSIDE="c3566"
+    EXCLUDE_PROJECT_LIST=(rbn mindos)
 }
 
 
@@ -212,29 +213,17 @@ else
     target_project_update || target_push=false
 fi
 
+if  [[ $JOB_NAME =~ "rubby" ]];then
+    echo "rubby project building in ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18}......"
+    rubby_public_project_update
+elif ! [[ $JOB_NAME =~ "${EXCLUDE_PROJECT_LIST[@]}" ]];then
+	public_project_update
+	public_i18rutilitysubmodule_update
+fi
+
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
-    if  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
-        echo "rubby project building in ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18}......"
-	pushd ~/system/abby_msg
-    	git checkout ./ && git clean -xdf ./
-    	git pull origin master
-    	popd
-    elif  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_I18 ]];then
-    	pushd ~/system/I18RPublicBaseTypes
-    	git checkout ./ && git clean -xdf ./
-    	git pull origin develop
-    	./install.sh
-    	popd
-
-    	pushd ~/system/i18rutilitysubmodule
-    	git checkout ./ && git clean -xdf ./
-    	git pull origin develop
-   	./install.sh
-    	popd
-    fi
-
     pushd $SOURCE_DIR
     source /opt/ros/melodic/setup.bash &> /dev/null
     bash -ex  $BUILD_SCRIPT || echo $? > $WORKSPACE/result.log
@@ -242,13 +231,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     exit
 EOF
 else
-    if [[ $JOB_NAME =~ rbn ]];then
-	project_build
-    else
-    public_project_update
-    public_i18rutilitysubmodule_update
     project_build
-    fi
 fi
 
 check_status_code
