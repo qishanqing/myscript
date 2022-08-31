@@ -53,6 +53,7 @@ function generate_message() {
 
 function generate_commits(){
     pushd  $TARGET_DIR
+    """
     install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
         for i in $install_dir_list;do
@@ -63,7 +64,7 @@ function generate_commits(){
 	    fi
         done
     fi
-
+"""
     if [[ "$CLEAN_TARGET_PROJECT" = "mark-check-tools" ]];then
 	find ${SOURCE_DIR}/install  -name "*.so*" | xargs -i mv {} ${TARGET_DIR}/$TARGET_PROJECT_FILE_PATH/
 	cp -ar $SOURCE_DIR/install/* .
