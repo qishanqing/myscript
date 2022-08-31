@@ -221,7 +221,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     	git checkout ./ && git clean -xdf ./
     	git pull origin master
     	popd
-    elif  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_I18 ]];then
+    elif ! [[ ${JOB_NAME} =~ "mind"  ]];then
     	pushd ~/system/I18RPublicBaseTypes
     	git checkout ./ && git clean -xdf ./
     	git pull origin develop
@@ -236,6 +236,10 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     fi
 
     pushd $SOURCE_DIR
+    (
+        git submodule update --init --recursive
+        git submodule update --remote
+    ) || true
     source /opt/ros/melodic/setup.bash &> /dev/null
     bash -ex  $BUILD_SCRIPT || echo $? > $WORKSPACE/result.log
     popd
