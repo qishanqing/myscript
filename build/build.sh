@@ -24,6 +24,15 @@ init_project_env(){
     DOCKER_CONTAINER_I18="build-x64-18.04"
     DOCKER_CONTAINER_RUBBY="c405"
     DOCKER_CONTAINER_RUBBY_INSIDE="c3566"
+    JENKINS_JOB_A="mind"
+    JENKINS_JOB_B="rbn"
+    JENKINS_JOB_C="mark-check-tools"
+    if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
+	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
+	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
+	build_version=`cat $VERSION_FILE_PATH`
+	nub=${build_version}_${BUILD_PLATFORM}
+    fi
 }
 
 
@@ -53,7 +62,8 @@ function generate_message() {
 
 function generate_commits(){
     pushd  $TARGET_DIR
-    """
+:<<EOF
+
     install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
         for i in $install_dir_list;do
@@ -64,10 +74,14 @@ function generate_commits(){
 	    fi
         done
     fi
-"""
-    if [[ "$CLEAN_TARGET_PROJECT" = "mark-check-tools" ]];then
+EOF
+    if [[ "$CLEAN_TARGET_PROJECT" = "$JENKINS_JOB_C" ]];then
 	find ${SOURCE_DIR}/install  -name "*.so*" | xargs -i mv {} ${TARGET_DIR}/$TARGET_PROJECT_FILE_PATH/
 	cp -ar $SOURCE_DIR/install/* .
+    elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_A" ]];then
+	TARGET_PROJECT_FILE_PATH="packs/${build_version}/${BUILD_PLATFORM}"
+	mkdir -p $TARGET_PROJECT_FILE_PATH || true
+	cp -ar $SOURCE_DIR/package/*  $TARGET_PROJECT_FILE_PATH/
     elif ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
@@ -131,7 +145,7 @@ function project_build(){
     first_commit_id_now=`git log -1 --pretty=format:"%h"`
     cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
     if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
-	bash -ex $BUILD_SCRIPT
+	bash -ex $BUILD_SCRIPT $nub
     else
 	echo "code is not change"
 	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
@@ -222,7 +236,9 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     	git checkout ./ && git clean -xdf ./
     	git pull origin master
     	popd
-    elif ! [[ ${JOB_NAME} =~ "mind"  ]];then
+    elif [[ ${JOB_NAME} =~ "$JENKINS_JOB_A"  ]];then
+        echo "-------------------------------------"
+    else
     	pushd ~/system/I18RPublicBaseTypes
     	git checkout ./ && git clean -xdf ./
     	git pull origin develop
@@ -242,12 +258,12 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
         git submodule update --remote
     ) || true
     source /opt/ros/melodic/setup.bash &> /dev/null
-    bash -ex  $BUILD_SCRIPT || echo $? > $WORKSPACE/result.log
+    bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
     popd
     exit
 EOF
 else
-    if [[ $JOB_NAME =~ rbn ]];then
+    if [[ $JOB_NAME =~ $JENKINS_JOB_B ]] || [[ $JOB_NAME =~ $JENKINS_JOB_A ]] ;then
 	project_build
     else
     public_project_update
