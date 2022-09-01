@@ -19,12 +19,18 @@ init_project_env()
 tgz_install()
 {
     tgz_file_name="i18r-tools-14-${build_version}-`date +%Y-%m-%d`.tgz"
-    tgz_file_path="~/tmp/$tgz_file_name"
     sed -i s/"$version"/"$build_version"/g $file
-    tar zcvf "$tgz_file_name" * && mv $tgz_file_path $ftp_upload_path
+    tar zcvf "$tgz_file_name" * && mv $tgz_file_name $ftp_upload_path
+}
+
+version_push()
+{
+    git add $file
+    git commit -m "update version $build_version"
+    git push origin HEAD:${GIT_BRANCH#*/}
 }
 
 init_project_env
 increment_version $version
 tgz_install
-
+version_push
