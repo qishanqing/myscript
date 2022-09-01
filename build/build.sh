@@ -107,6 +107,19 @@ EOF
 	    git pull --rebase
 	    git push --no-verify $remote HEAD:$branch
 	)
+    if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
+	generate_tag
+    fi
+}
+
+generate_tag()
+{
+    git tag -a $build_version -m "add $build_version tag" ||
+	(
+	    git tag -d $build_version || true
+	    git tag -a $build_version -m "add $build_version tag" || true
+	)
+    git push  $remote $build_version -f
 }
 
 function check_status_code(){
