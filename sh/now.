@@ -2,11 +2,24 @@
 
 export LANG=zh_CN.UTF-8
 
-date +%Y-%m-%d-%H:%M:%S "$@" |tr -d \\n|
-    if test $(basename $0) = now; then
-        cat
-    else
-        perl -npe 's,:,.,g'
-    fi
+YMDHMS()
+{
+    date +%Y-%m-%d-%H:%M:%S "$@" |tr -d \\n|
+	if test $(basename $0) = now; then
+            cat
+	else
+            perl -npe 's,:,.,g'
+	fi
     echo -e
-
+}
+    
+YMD()
+{
+    date +%Y-%m-%d "$@" |tr -d \\n|
+	if test $(basename $0) = now; then
+            cat
+	else
+            perl -npe 's,:,.,g'
+	fi
+    echo -e
+}
