@@ -7,19 +7,24 @@ project_path=$(cd `dirname $0`; pwd)
 
 init_project_env()
 {
-    file=`find -name AuthorizationInformation.xml`
-    version=`$file | xargs grep -i "<version>"`
-    version=`echo $version | perl -npe "s,<.*?>,,g"`
+    file="生产工具/config/AuthorizationInformation.xml"
+    chmod a+x $file
+    version=`grep -i "<version>" $file | perl -npe "s,<.*?>,,g"`
+#    version=`echo $version | sed s/[[:space:]]//g`
+    version=`echo ${version#*V}`
     ftp_upload_path="/mnt/ftp/release/INDEMINDAPP/product_tools/"
-}
 
-increment_version $version
+}
 
 tgz_install()
 {
-    tgz_file_path_name="~/tmp/i18r-tools-14-${build_version}-YMD.tgz"
+    tgz_file_name="i18r-tools-14-${build_version}-`date +%Y-%m-%d`.tgz"
+    tgz_file_path="~/tmp/$tgz_file_name"
     sed -i s/"$version"/"$build_version"/g $file
-    tar zcvf $tgz_file_path_name * && mv $tgz_file_path_name $ftp_upload_path
+    tar zcvf "$tgz_file_name" * && mv $tgz_file_path $ftp_upload_path
 }
 
+init_project_env
+increment_version $version
 tgz_install
+
