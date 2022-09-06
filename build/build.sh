@@ -108,7 +108,9 @@ EOF
 	    git push --no-verify $remote HEAD:$branch
 	)
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
+	pushd $SOURCE_DIR
 	generate_tag
+	popd
     fi
 }
 
