@@ -10,9 +10,16 @@ init_project_env(){
     trigger="$WORKSPACE/pack.sh"
     SOURCE_DIR="$WORKSPACE/release/i18r_robot_check"
     PACKAGE="A311D-interface-testsuite"
-    version="1.0-${BUILD_NUMBER}"
+    file="version.xml"
+    chmod a+x $file
+    hw_version=`grep -i "<version>" $file | perl -npe "s,<.*?>,,g"`
+    hw_version=`echo ${hw_version} | sed s/[[:space:]]//g`
+    version="${hw_version}-${BUILD_NUMBER}"
     app_name="a311D-interface-testsuite_${version}_arm64.deb"
     TARGET_PROJECT="~/system/product_tools_group"
+    tgz_file="i18r_robot_check"
+    tgz_file_name="${tgz_file}-`date +%Y-%m-%d-%H-%M-%S`.tgz"
+    ftp_upload_path="/mnt/ftp/release/INDEMINDAPP/i18r-robot-check/"
 }
 
 project_update() {
@@ -49,7 +56,17 @@ APP_PUSH(){
     git push
 }
 
+tag_install()
+{
+    pushd ~/tmp/
+    mkdir -p ${tgz_file}
+    cp -av $WORKSPACE/* ${tgz_file}/
+    tar zcvf "$tgz_file_name" $tgz_file && mv $tgz_file_name $ftp_upload_path
+    popd
+}
+
 init_project_env
+tag_install
 project_update
 prebuild
 App_install

@@ -19,7 +19,7 @@ init_project_env()
 
 tgz_install()
 {
-    tgz_file_name="i18r-tools-14-${version}-`date +%Y-%m-%d`.tgz"
+    tgz_file_name="i18r-tools-14-${version}-`date +%Y-%m-%d-%H-%M-%S`.tgz"
 #    sed -i s/"$version"/"$build_version"/g $file
     tar zcvf "$tgz_file_name" * && mv $tgz_file_name $ftp_upload_path
     git_log=`git log -1`
