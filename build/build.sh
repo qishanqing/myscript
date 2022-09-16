@@ -24,6 +24,7 @@ init_project_env(){
     DOCKER_CONTAINER_I18="build-x64-18.04"
     DOCKER_CONTAINER_RUBBY="c405"
     DOCKER_CONTAINER_RUBBY_INSIDE="c3566"
+    DOCKER_CONTAINER_JAVA="node"
     JENKINS_JOB_A="mind"
     JENKINS_JOB_B="rbn"
     JENKINS_JOB_C="mark-check-tools"
@@ -128,6 +129,9 @@ function check_status_code(){
     if test -f $WORKSPACE/result.log; then
         echo "containge build is error"
         exit 1
+    elif  [[ $target_push = false ]];then
+	echo "code push is empty"
+	exit 0
     fi
 }
 
@@ -239,7 +243,7 @@ if [ "$CLEAN_WORKSPACE" = false ];then
     target_project_update
 else
     source_project_fetch
-    target_project_update || target_push=false
+    target_project_update
 fi
 
 if [[ "${system_platform}" =~ "x86_64" ]];then
@@ -251,7 +255,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
     	git checkout ./ && git clean -xdf ./
     	git pull origin master
     	popd
-    elif [[ ${JOB_NAME} =~ "$JENKINS_JOB_A"  ]];then
+    elif [[ ${JOB_NAME} =~ "$JENKINS_JOB_A"  ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_JAVA ]];then
         echo "-------------------------------------"
     else
     	pushd ~/system/I18RPublicBaseTypes
@@ -288,12 +292,6 @@ else
 fi
 
 check_status_code
-
-if  [[ $target_push = false ]];then
-    echo "code push is empty"
-    exit 0
-fi
-
 generate_message
 generate_commits
 
