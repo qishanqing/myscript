@@ -28,6 +28,8 @@ init_project_env(){
     JENKINS_JOB_A="mind"
     JENKINS_JOB_B="rbn"
     JENKINS_JOB_C="mark-check-tools"
+    JENKINS_JOB_D="java"
+    JENKINS_JOB_E="nodejs"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
 	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
@@ -83,6 +85,18 @@ EOF
 	TARGET_PROJECT_FILE_PATH="packs/${build_version}/${BUILD_PLATFORM}"
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/package/*  $TARGET_PROJECT_FILE_PATH/
+    elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_D" ]];then
+	(
+	    cd $SOURCE_DIR
+	    project_module=`git grep "<module>.*</module>"`
+	    project_module=${project_module#*>}
+	    project_module=${project_module%%<*}
+	    target_path_file=`find -name ${project_module}*.jar | grep -v sources`
+	    target_path_file="${target_path_file#*/}"
+	    cp -ar ${SOURCE_DIR}/${target_path_file} $TARGET_DIR
+	)
+    elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_E" ]];then
+	cp -ar ${SOURCE_DIR}/dist .
     elif ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
