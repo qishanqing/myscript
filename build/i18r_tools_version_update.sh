@@ -12,6 +12,9 @@ init_project_env()
     chmod a+x $file
     version=`grep -i "<version>" $file | perl -npe "s,<.*?>,,g"`
     version=`echo $version | sed s/[[:space:]]//g`
+    hw_version=`find -name a*.deb`
+    hw_version=${hw_version%-*}
+    hw_version=${hw_version##*_}
 #    version=`echo ${version#*V}`
     ftp_upload_path="/mnt/ftp/release/INDEMINDAPP/product_tools/"
 
@@ -19,7 +22,7 @@ init_project_env()
 
 tgz_install()
 {
-    tgz_file_name="i18r-tools-14-${version}-`date +%Y-%m-%d-%H-%M-%S`.tgz"
+    tgz_file_name="i18r-tools-14-${version}_${hw_version}-`date +%Y-%m-%d-%H-%M-%S`.tgz"
 #    sed -i s/"$version"/"$build_version"/g $file
     tar zcvf "$tgz_file_name" * && mv $tgz_file_name $ftp_upload_path
     git_log=`git log -1`
