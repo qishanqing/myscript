@@ -48,6 +48,7 @@ function prepare_env() {
     rm -f $COMMIT_MSG_FILE
     rm -f $COMMIT_MSG_FILE_TMP
     rm -f $WORKSPACE/result.log
+    rm -f $WORKSPACE/no_code_change.log
 }
 
 function generate_message() {
@@ -86,17 +87,20 @@ EOF
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/package/*  $TARGET_PROJECT_FILE_PATH/
     elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_D" ]];then
-	(
-	    cd $SOURCE_DIR
-	    project_module=`git grep "<module>.*</module>"`
-	    project_module=${project_module#*>}
-	    project_module=${project_module%%<*}
-	    target_path_file=`find -name ${project_module}*.jar | grep -v sources`
-	    target_path_file="${target_path_file#*/}"
-	    cp -ar ${SOURCE_DIR}/${target_path_file} $TARGET_DIR
-	)
+	pushd $SOURCE_DIR
+	project_module=`git grep "<module>.*</module>"`
+	project_module=${project_module#*>}
+	project_module=${project_module%%<*}
+	target_path_file=`find -name ${project_module}*.jar | grep -v sources`
+	target_file="${target_path_file##*/}"
+	target_path_file="${target_path_file#*/}"
+	cp -ar ${SOURCE_DIR}/${target_path_file} $TARGET_DIR
+	popd
+	
+	deploy_project ${SOURCE_DIR}/${target_path_file}
     elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_E" ]];then
 	cp -ar ${SOURCE_DIR}/dist .
+	deploy_project ${SOURCE_DIR}/dist
     elif ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
@@ -127,6 +131,20 @@ EOF
 	generate_tag
 	popd
     fi
+    popd
+}
+
+deploy_project()
+{
+    target_server_name="indemind@192.168.50.44"
+    if [ -f $1 ];then
+	pid=`ssh -t indemind@192.168.50.44 ps -ef | grep gateway-service-0.0.1-SNAPSHOT.jar | grep -v grep | awk -F " " '{print $2}'`
+	scp $1 ${target_server_name}:${TARGET_PROJECT_FILE_PATH}/
+	ssh -t indemind@192.168.50.44 $(kill -9 $pid && nohup java -jar -Dprofile=test -Dspring.profiles.active=test ${TARGET_PROJECT_FILE_PATH}/$target_file &)
+    elif [ -d $1 ];then
+	scp -r $1 ${target_server_name}:${TARGET_PROJECT_FILE_PATH}/
+    fi
+    echo "deploy server is ok"
 }
 
 generate_tag()
@@ -169,15 +187,21 @@ function project_init_remote() {
     git submodule update --remote
 }
 
+insert_db()
+{
+	pushd $SOURCE_DIR
+	version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' and status='0' order by id desc limit 1;"`
+	version=`echo $version | awk -F ' ' '{print $2}'`
+ 
+	first_commit_id_now=`git log -1 --pretty=format:"%h"`
+	cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
+	popd
+}
+
 function project_build(){
     pushd $SOURCE_DIR
     project_init_remote || true
-    version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' and status='0' order by id desc limit 1;"`
-    version=`echo $version | awk -F ' ' '{print $2}'`
- 
-    first_commit_id_now=`git log -1 --pretty=format:"%h"`
-    cmdb_mysql "update prebuild set first_commit_id='$first_commit_id_now' where build_url='$BUILD_URL';"
-    if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
+    if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
 	bash -ex $BUILD_SCRIPT $nub
     else
 	echo "code is not change"
@@ -260,6 +284,8 @@ else
     target_project_update
 fi
 
+insert_db
+
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
@@ -290,11 +316,20 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
         git submodule update --init --recursive
         git submodule update --remote
     ) || true
-    source /opt/ros/melodic/setup.bash &> /dev/null
-    bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
+    if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
+       source /opt/ros/melodic/setup.bash &> /dev/null
+       bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
+    else
+	echo  > $WORKSPACE/no_code_change.log
+    fi
     popd
     exit
 EOF
+    if [[ -f $WORKSPACE/no_code_change.log ]];then
+    echo "code is not change"
+    cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
+    exit
+    fi
 else
     if [[ $JOB_NAME =~ $JENKINS_JOB_B ]] || [[ $JOB_NAME =~ $JENKINS_JOB_A ]] ;then
 	project_build
