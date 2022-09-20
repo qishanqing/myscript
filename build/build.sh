@@ -138,6 +138,7 @@ deploy_project()
 {
     target_server_name="indemind@192.168.50.44"
     if [ -f $1 ];then
+	set -x
 	pid=`ssh -t indemind@192.168.50.44 ps -ef | grep gateway-service-0.0.1-SNAPSHOT.jar | grep -v grep | awk -F " " '{print $2}'`
 	scp $1 ${target_server_name}:${TARGET_PROJECT_FILE_PATH}/
 	ssh -t indemind@192.168.50.44 $(kill -9 $pid && nohup java -jar -Dprofile=test -Dspring.profiles.active=test ${TARGET_PROJECT_FILE_PATH}/$target_file &)
@@ -190,7 +191,7 @@ function project_init_remote() {
 insert_db()
 {
 	pushd $SOURCE_DIR
-	version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' and status='0' order by id desc limit 1;"`
+	version=`cmdb_mysql "SELECT first_commit_id FROM prebuild where source_project='$SOURCE_PROJECT' and source_branch='$SOURCE_BRANCH' and target_project='$TARGET_PROJECT' and target_branch='$TARGET_BRANCH' and status='0' and job_name='$JOB_NAME' order by id desc limit 1;"`
 	version=`echo $version | awk -F ' ' '{print $2}'`
  
 	first_commit_id_now=`git log -1 --pretty=format:"%h"`
@@ -316,7 +317,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
         git submodule update --init --recursive
         git submodule update --remote
     ) || true
-    if ! [ "${first_commit_id_now// /}" == "${version// /}" ];then
+    if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
        source /opt/ros/melodic/setup.bash &> /dev/null
        bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
     else
