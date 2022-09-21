@@ -96,11 +96,13 @@ EOF
 	target_path_file="${target_path_file#*/}"
 	cp -ar ${SOURCE_DIR}/${target_path_file} $TARGET_DIR
 	popd
-	
-	deploy_project ${SOURCE_DIR}/${target_path_file}
+
+	sync_files="${SOURCE_DIR}/${target_path_file}"
+	deploy_project $sync_files
     elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_E" ]];then
-	cp -ar ${SOURCE_DIR}/dist .
-	deploy_project ${SOURCE_DIR}/dist
+	sync_files="${SOURCE_DIR}/dist/*"
+	cp -ar $sync_files .
+	deploy_project $sync_files
     elif ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
@@ -136,14 +138,25 @@ EOF
 
 deploy_project()
 {
-    target_server_name="indemind@192.168.50.44"
-    if [ -f $1 ];then
-	set -x
-	pid=`ssh -t indemind@192.168.50.44 ps -ef | grep gateway-service-0.0.1-SNAPSHOT.jar | grep -v grep | awk -F " " '{print $2}'`
-	scp $1 ${target_server_name}:${TARGET_PROJECT_FILE_PATH}/
-	ssh -t indemind@192.168.50.44 $(kill -9 $pid && nohup java -jar -Dprofile=test -Dspring.profiles.active=test ${TARGET_PROJECT_FILE_PATH}/$target_file &)
-    elif [ -d $1 ];then
-	scp -r $1 ${target_server_name}:${TARGET_PROJECT_FILE_PATH}/
+    test_server="indemind@192.168.50.44"
+    product_server="root@120.48.170.107"
+
+    if [ "$SOURCE_BRANCH" = test ];then
+	deploy_project_server=$test_server
+    elif [ "$SOURCE_BRANCH" = master ];then
+	deploy_project_server=$product_server
+    fi
+    
+    if [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_D" ]];then
+	pid=`ssh -t $deploy_project_server ps -ef | grep $target_file | grep -v grep | awk -F " " '{print $2}'`
+	scp $sync_files ${deploy_project_server}:${TARGET_PROJECT_FILE_PATH}/
+	ssh ${deploy_project_server} <<remoteserver
+	    set -x
+	    kill -9 $pid 
+	    nohup java -jar -Dprofile=test -Dspring.profiles.active=test ${TARGET_PROJECT_FILE_PATH}/${target_file} >${TARGET_PROJECT_FILE_PATH}/deploy.log 2>&1 &
+remoteserver
+    elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_E" ]];then
+	scp  -r $sync_files ${deploy_project_server}:${TARGET_PROJECT_FILE_PATH}
     fi
     echo "deploy server is ok"
 }
