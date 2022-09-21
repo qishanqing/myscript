@@ -52,7 +52,12 @@ function prepare_env() {
 }
 
 function generate_message() {
-    (cd $SOURCE_DIR && (git log -1 --oneline --decorate=)) > ${COMMIT_MSG_FILE_TMP}
+    if [[ $JOB_NAME =~ $JENKINS_JOB_A ]];then
+	(cd $SOURCE_DIR && (echo "release ${build_version}")) > ${COMMIT_MSG_FILE_TMP}
+    else
+	(cd $SOURCE_DIR && (git log -1 --oneline --decorate=)) > ${COMMIT_MSG_FILE_TMP}
+    fi
+
     echo "" >> $COMMIT_MSG_FILE_TMP
 #    (cd $SOURCE_DIR && (git log -1 --name-status)) >> ${COMMIT_MSG_FILE_TMP} 
     echo "====================================" >> $COMMIT_MSG_FILE_TMP
