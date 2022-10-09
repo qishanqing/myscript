@@ -2,6 +2,7 @@
 
 project_path=$(cd `dirname $0`; pwd)
 . $project_path/../sh/cmdb
+. $project_path/../sh/version-update.sh
 
 set -ex
 
@@ -39,25 +40,6 @@ init_project_env(){
     tgz_release=INTG
     mount_ftp
     check_paremter_is_right
-}
-
-function check(){
-    local a="$1"
-    printf "%d" "$a" &>/dev/null && echo "integer" && return
-    printf "%d" "$(echo $a|sed 's/^[+-]\?0\+//')" &>/dev/null && echo "integer" && return
-    printf "%d" "$(echo $a|sed 's/\.//g')" &>/dev/null && echo "vb" && return
-    printf "%f" "$a" &>/dev/null && echo "number" && return
-    [ ${#a} -eq 1 ] && echo "char" && return
-    echo "string"
-}
-
-check_paremter_is_right(){
-    if  [[ $(check "$version") == vb ]] || [[ $(check "$version") == integer ]] ;then
-	echo "check paremter is done"
-    else
-	echo "please input version number"
-	exit 1
-    fi
 }
 
 function project_info_database(){
@@ -301,7 +283,7 @@ function Add_Tag(){
 }
 
 function clean_workspace(){
-    pushd $BUILD_DIR && sudo rm -rf i18rApplicationDeb INDEMINDAPP* SmallWashingRobotSDK client
+    pushd $BUILD_DIR && sudo rm -rf i18rApplicationDeb INDEMINDAPP* SmallWashingRobotSDK client RUBBYAPP*
     popd
 }
 
