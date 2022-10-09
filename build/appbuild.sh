@@ -27,6 +27,7 @@ init_project_env(){
     FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/pre_release
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
+    appname=i18r
     I18RCONFIG_DIR=~/system/i18rconfig
     I18ROTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
@@ -60,7 +61,7 @@ check_paremter_is_right(){
 }
 
 function project_info_database(){
-    cmdb_mysql "insert into indemindapp(version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name) values ('${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME')";
+    cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name) values ('$appname','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME')";
 }
 
 function App_project_fetch(){
