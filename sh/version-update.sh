@@ -175,16 +175,27 @@ function ui_info(){
 
 function ui_job_build(){
     export PATH="$PATH:~/myscript/sh"
-    bash jc build $ui_job_name -s &
+    if ! [[ -z $1 ]];then
+	bash jc build $ui_job_name -p SOURCE_BRANCH=$1 -p TARGET_BRANCH= -s &
+    else
+	bash jc build $ui_job_name -s &
+    fi
     export JOB_PID=$!
 }
 
 function ui_update(){
     wait $JOB_PID
     mkdir -p $DESKTOP_DIR
+    local client_name=`ls  -t   /mnt/ftp/release/INDEMINDAPP/product_tools/client* | head -1`
     config_project_update
     pushd $DESKTOP_DIR
-    cp -av $CONFIG_DIR/client . > /dev/null
+    if ! [[ -z ${UI_BRANCH} ]];then
+	cp -av ${client_name} .
+	tar zxvf ${client_name##*/}
+	rm -rf ${client_name##*/}
+    else
+	cp -av $CONFIG_DIR/client . > /dev/null
+    fi
     popd
 }
 

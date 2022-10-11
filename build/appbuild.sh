@@ -53,7 +53,7 @@ function App_project_fetch(){
 	    pushd $sourcename
 
 	    config_project_update
-	    ui_job_build
+	    ui_job_build ${UI_BRANCH}
 	    if [[ $gitmodules == true ]];then
 		cp -ar /mnt/ftp/release/INDEMINDAPP/sdk/gitmodules .gitmodules
 	    fi
