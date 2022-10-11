@@ -182,7 +182,7 @@ function ui_job_build(){
 function ui_update(){
     wait $JOB_PID
     mkdir -p $DESKTOP_DIR
-    i18rconfig_project_update
+    config_project_update
     pushd $DESKTOP_DIR
     cp -av $CONFIG_DIR/client . > /dev/null
     popd
@@ -217,7 +217,7 @@ function ota_update(){
 	    git tag -a r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
 	    git push origin r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -f
 	    git push origin HEAD:${SWR_VERSION_SIGN:-$SWR_VERSION}
-	    ota_update_release_name=INDEMINDAPP_I18R_${x}_${tgz_release}_${last_version}_${version}.tgz
+	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${last_version}_${version}.tgz
 	    echo "$ota_update_release_name" | tee version.txt
 	    echo "" >> version.txt
 	    echo "" >> version.txt
