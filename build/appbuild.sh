@@ -97,7 +97,7 @@ function App_install(){
 	SWR_VERSION=$SWR_VERSION-SIGN
 	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
 	deb_type
-	tgz_full_name=INDEMINDAPP_${sourcename}_${x}_${tgz_release}_ALL_${version}.tgz
+	tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_ALL_${version}.tgz
 	tgz_type
 	ota_update
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
