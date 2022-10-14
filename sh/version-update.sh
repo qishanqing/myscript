@@ -77,7 +77,7 @@ function clean_workspace(){
 }
 
 function config_project_update(){
-    pushd $CONFIG_DIR
+    pushd $CONFIG_DIR || $CONFIG_REMOTE
     git checkout ./ && git clean -xdf ./
     git pull --rebase
     popd
@@ -245,7 +245,7 @@ function ota_update(){
 	)
 }
 
-function project_conf_update(){
+function i18rproject_conf_update(){
     local Modules_List=(selfcalibr depth sensor marker detector navigation slam type sdk)
 
     for i in "${Modules_List[@]}";do

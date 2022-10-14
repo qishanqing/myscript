@@ -60,7 +60,7 @@ function App_project_fetch(){
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
-	    project_conf_update
+	    i18rproject_conf_update
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
@@ -112,7 +112,7 @@ function App_install(){
 }
 
 function Release_Version_Rule(){
-    pushd $WORK_DIR/SmallWashingRobotSDK
+    pushd $WORK_DIR/$sourcename
 	mkdir -p SDK
 
 	if [[ $PLATFORM = aarch64 ]];then
@@ -133,8 +133,8 @@ function Release_Version_Rule(){
 	mv ota SDK
 	mv scripts SDK
 	mv  SDK $WORK_DIR
-	rm -rf $WORK_DIR/SmallWashingRobotSDK
-	mv $WORK_DIR/SDK $WORK_DIR/SmallWashingRobotSDK
+	rm -rf $WORK_DIR/$sourcename
+	mv $WORK_DIR/SDK $WORK_DIR/$sourcename
     popd
 }
 

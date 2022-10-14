@@ -17,24 +17,27 @@ init_project_env(){
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     fi
 
+    appname=RANDY
+    sourcename="randy_server"
     BUILD_DIR=$RELEASE_DIR/workspace
-    appname=RUBBY
-    sourcename=abby_demo
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
-    UI_DIR=/mnt/ftp/release/$appname/client
-    TEST_DIR=/mnt/ftp/release/$appname/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/$appname
+    UI_DIR=/mnt/ftp/release/${appname}/client
+    TEST_DIR=/mnt/ftp/release/${appname}/test
+    FTP_RELEASE_DIR=/mnt/ftp/release/${appname}
     FTP_RELEASE_SIGN_DIR=$FTP_RELEASE_DIR/sign
     FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/pre_release
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
-    CONFIG_DIR=~/system/i18rconfig
+    CONFIG_DIR=~/system/randy_config
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git -b master $CLONE_DEPTH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
+    ui_job_name="randy_ui"
     CLONE_DEPTH="--depth=1"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
+    x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     mount_ftp
     check_paremter_is_right
@@ -46,17 +49,30 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone ssh://git@192.168.50.191:222/abby/integration/abby_demo.git -b ${SDK_BRANCH:-master} && (
-	    pushd abby_demo
+	git clone ssh://git@192.168.50.191:222/airbus/source/randy_server.git -b ${SDK_BRANCH:-master} && (
+	    pushd $sourcename
 
+	    config_project_update
+	    ui_job_build ${UI_BRANCH}
 	    if [[ $gitmodules == true ]];then
 		cp -ar /mnt/ftp/release/${appname}/sdk/gitmodules .gitmodules
 	    fi
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
+	    #project_conf_update
 	    release_note
 	    project_info_database
+	    mkdir build && cd build
+	    set +x
+	    source ../scripts/env_debug.sh > /dev/null
+	    set -x
+		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
+		(
+		    cd ../daemons/
+		    mkdir build && cd build
+		    cmake .. && make -j4
+		)
 	)
     )
 popd
@@ -64,17 +80,19 @@ popd
 
 function App_install(){
     pushd $APP_WORKSPACE
+    ui_update
     Version_Update
     Add_Tag
     Release_Version_Rule
     if [[ $RELEASE = test ]];then
 	deb_type
-	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR
+	mv $BUILD_DIR/INDEMINDAPP_${appname}* $TEST_DIR
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 	SWR_VERSION=$SWR_VERSION-SIGN
 	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
 	deb_type
+	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
 	echo "$sdk_note"
 	echo "$submodule_note"
