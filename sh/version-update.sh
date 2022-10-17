@@ -77,10 +77,14 @@ function clean_workspace(){
 }
 
 function config_project_update(){
-    pushd $CONFIG_DIR || $CONFIG_REMOTE
-    git checkout ./ && git clean -xdf ./
-    git pull --rebase
-    popd
+    if  [[ -d $CONFIG_DIR ]];then
+	pushd $CONFIG_DIR
+	git checkout ./ && git clean -xdf ./
+	git pull --rebase
+	popd
+    else
+	$CONFIG_REMOTE
+    fi
 }
 
 function mount_ftp(){

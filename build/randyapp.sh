@@ -64,15 +64,8 @@ function App_project_fetch(){
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
-	    set +x
-	    source ../scripts/env_debug.sh > /dev/null
 	    set -x
 		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
-		(
-		    cd ../daemons/
-		    mkdir build && cd build
-		    cmake .. && make -j4
-		)
 	)
     )
 popd
