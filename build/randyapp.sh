@@ -31,7 +31,6 @@ init_project_env(){
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/randy_config
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git -b master $CLONE_DEPTH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     ui_job_name="randy_ui"
@@ -39,6 +38,7 @@ init_project_env(){
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git -b dev $CLONE_DEPTH"
     mount_ftp
     check_paremter_is_right
 }
