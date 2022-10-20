@@ -36,6 +36,7 @@ init_project_env(){
     CLONE_DEPTH="--depth=1"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     tgz_release=INTG
+    trash_dir=/mnt/ftp/Trash
     mount_ftp
     check_paremter_is_right
 }
@@ -69,7 +70,10 @@ function App_install(){
     Release_Version_Rule
     if [[ $RELEASE = test ]];then
 	deb_type
-	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR
+	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
+	    (
+		mv $TEST_DIR/${deb_name} ${trash_dir}
+	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 	SWR_VERSION=$SWR_VERSION-SIGN
