@@ -38,7 +38,7 @@ init_project_env(){
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git -b dev $CLONE_DEPTH"
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git  $CLONE_DEPTH"
     mount_ftp
     check_paremter_is_right
 }
@@ -60,12 +60,12 @@ function App_project_fetch(){
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
-	    #project_conf_update
+	    i18rproject_conf_update
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
 	    set -x
-		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
+	    cmake -DMBUILD_DETECTOR=OFF -DMBUILD_DETECTOR_SIMULATOR=ON SERVER_VERSION:STRIONG=${version} .. && make -j4
 	)
     )
 popd
@@ -79,7 +79,10 @@ function App_install(){
     Release_Version_Rule
     if [[ $RELEASE = test ]];then
 	deb_type
-	mv $BUILD_DIR/INDEMINDAPP_${appname}* $TEST_DIR
+	mv $BUILD_DIR/INDEMINDAPP_${appname}* $TEST_DIR ||
+	    (
+		mv $TEST_DIR/${deb_name} ${trash_dir}
+	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 	SWR_VERSION=$SWR_VERSION-SIGN

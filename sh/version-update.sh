@@ -83,7 +83,11 @@ function config_project_update(){
 	git pull --rebase
 	popd
     else
-	$CONFIG_REMOTE
+	(
+	    set -x
+	    cd ~/system/
+	    $CONFIG_REMOTE
+	) && wait
     fi
 }
 
