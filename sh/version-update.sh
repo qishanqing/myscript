@@ -260,13 +260,13 @@ function i18rproject_conf_update(){
 	local Files_List=`ls $CONFIG_DIR/$SWR_VERSION/$i`
 	if ! [ -z "$Files_List" ];then
 	    if [[ navigation =~ "$i" ]];then
-		cp -ar $CONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/share/wsbot_navigation/param/
+		cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. modules/$i/arm64/share/wsbot_navigation/param/
 	    elif [[ "$i" =~ slam ]] || [[ "$i" =~ depth ]];then
-		cp -ar $CONFIG_DIR/$SWR_VERSION/$i/* modules/$i/arm64/
+		cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. modules/$i/arm64/
 	    elif [[ "$i" =~ sdk ]];then
-		 cp -ar $CONFIG_DIR/$SWR_VERSION/$i/* $WORK_DIR/
+		 cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. $WORK_DIR/
 	    else
-		cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/* modules/$i/
+		cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. modules/$i/
 	    fi
 	fi
     done

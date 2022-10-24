@@ -86,11 +86,11 @@ function generate_commits(){
 
     if [[ "$CLEAN_TARGET_PROJECT" = "$JENKINS_JOB_C" ]];then
 	find ${SOURCE_DIR}/install  -name "*.so*" | xargs -i mv {} ${TARGET_DIR}/$TARGET_PROJECT_FILE_PATH/
-	cp -ar $SOURCE_DIR/install/* .
+	cp -ar $SOURCE_DIR/install/. .
     elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_A" ]];then
 	TARGET_PROJECT_FILE_PATH="packs/${build_version}/${BUILD_PLATFORM}"
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
-	cp -ar $SOURCE_DIR/package/*  $TARGET_PROJECT_FILE_PATH/
+	cp -ar $SOURCE_DIR/package/.  $TARGET_PROJECT_FILE_PATH/
     elif [[ "$CLEAN_TARGET_PROJECT" =~ "$JENKINS_JOB_D" ]];then
 	pushd $SOURCE_DIR
 	project_module=`git grep "<module>.*</module>"`
