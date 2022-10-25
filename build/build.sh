@@ -110,9 +110,9 @@ function generate_commits(){
 	deploy_project $sync_files
     elif ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
-	cp -ar $SOURCE_DIR/install/* $TARGET_PROJECT_FILE_PATH/
+	cp -ar $SOURCE_DIR/install/. $TARGET_PROJECT_FILE_PATH/
     else
-	cp -ar $SOURCE_DIR/install/* .
+	cp -ar $SOURCE_DIR/install/. .
     fi
     git add --all .
 

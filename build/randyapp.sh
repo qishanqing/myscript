@@ -65,6 +65,7 @@ function App_project_fetch(){
 	    project_info_database
 	    mkdir build && cd build
 	    set -x
+	    source ../scripts/env_debug.sh > /dev/null
 	    cmake -DMBUILD_DETECTOR=OFF -DMBUILD_DETECTOR_SIMULATOR=ON SERVER_VERSION:STRIONG=${version} .. && make -j4
 	)
     )
