@@ -272,3 +272,23 @@ function i18rproject_conf_update(){
     done
 }
 
+
+function randyproject_conf_update(){
+    local Modules_List=(selfcalibr depth sensor marker detector navigation slam type sdk)
+
+    for i in "${Modules_List[@]}";do
+	local Files_List=`ls $CONFIG_DIR/$SWR_VERSION/$i`
+	if ! [ -z "$Files_List" ];then
+	    if [[ navigation =~ "$i" ]];then
+		cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. modules/$i/arm64/share/wsbot_navigation/param/
+	    elif [[ "$i" =~ slam ]] || [[ "$i" =~ depth ]];then
+		cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. modules/$i/arm64/
+	    elif [[ "$i" =~ sdk ]];then
+		 cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. $WORK_DIR/
+	    else
+		cp -ar  $CONFIG_DIR/$SWR_VERSION/$i/. modules/$i/arm64/
+	    fi
+	fi
+    done
+}
+

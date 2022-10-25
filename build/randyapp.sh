@@ -60,7 +60,7 @@ function App_project_fetch(){
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
-	    i18rproject_conf_update
+	    randyproject_conf_update
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
