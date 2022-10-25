@@ -222,6 +222,8 @@ function project_build(){
     project_init_remote || true
     if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
 	bash -ex $BUILD_SCRIPT $nub
+    elif [ "$KEEP_BUILD" = true ];then
+	bash -ex $BUILD_SCRIPT $nub
     else
 	echo "code is not change"
 	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
@@ -336,6 +338,9 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
         git submodule update --remote
     ) || true
     if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
+       source /opt/ros/melodic/setup.bash &> /dev/null
+       bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
+    elif [ "$KEEP_BUILD" = true ];then
        source /opt/ros/melodic/setup.bash &> /dev/null
        bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
     else
