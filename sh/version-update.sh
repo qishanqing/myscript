@@ -194,7 +194,7 @@ function ui_job_build(){
 function ui_update(){
     wait $JOB_PID
     mkdir -p $DESKTOP_DIR
-    local client_name=`ls  -t   /mnt/ftp/release/INDEMINDAPP/product_tools/client* | head -1`
+    local client_name=`ls  -t  /mnt/ftp/release/INDEMINDAPP/product_tools/${appname}-client* | head -1`
     config_project_update
     pushd $DESKTOP_DIR
     if ! [[ -z ${UI_BRANCH} ]];then
