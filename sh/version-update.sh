@@ -185,7 +185,8 @@ function ui_job_build(){
 }
 
 function ui_update(){
-    fg && mkdir -p $DESKTOP_DIR
+    fg || true
+    mkdir -p $DESKTOP_DIR
     local client_name=`ls  -t  /mnt/ftp/release/INDEMINDAPP/product_tools/${appname}-client* | head -1`
     config_project_update
     pushd $DESKTOP_DIR
