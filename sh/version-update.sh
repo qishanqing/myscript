@@ -182,12 +182,10 @@ function ui_job_build(){
     else
 	bash jc build $ui_job_name -s &
     fi
-    export JOB_PID=$!
 }
 
 function ui_update(){
-    wait $JOB_PID
-    mkdir -p $DESKTOP_DIR
+    fg && mkdir -p $DESKTOP_DIR
     local client_name=`ls  -t  /mnt/ftp/release/INDEMINDAPP/product_tools/${appname}-client* | head -1`
     config_project_update
     pushd $DESKTOP_DIR
