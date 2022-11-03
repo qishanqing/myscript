@@ -40,7 +40,7 @@ init_project_env(){
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig -b dev $CLONE_DEPTH"
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b dev $CLONE_DEPTH"
     mount_ftp
     check_paremter_is_right
 }

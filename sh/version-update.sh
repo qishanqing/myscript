@@ -78,16 +78,10 @@ function clean_workspace(){
 
 function config_project_update(){
     if  [[ -d $CONFIG_DIR ]];then
-	pushd $CONFIG_DIR
-	git checkout ./ && git clean -xdf ./
-	git pull --rebase
-	popd
+	rm -rf $CONFIG_DIR
+	$CONFIG_REMOTE
     else
-	(
-	    set -x
-	    cd ~/system/
-	    $CONFIG_REMOTE
-	) && wait
+	$CONFIG_REMOTE
     fi
 }
 

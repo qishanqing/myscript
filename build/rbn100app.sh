@@ -31,6 +31,7 @@ init_project_env(){
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b rbn100-dev $CLONE_DEPTH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     CLONE_DEPTH="--depth=1"
@@ -53,9 +54,15 @@ function App_project_fetch(){
 	    if [[ $gitmodules == true ]];then
 		cp -ar /mnt/ftp/release/${appname}/sdk/gitmodules .gitmodules
 	    fi
+	    config_project_updat
+	    ui_job_build ${UI_BRANCH}
+	    if [[ $gitmodules == true ]];then
+		cp -ar /mnt/ftp/release/${appname}/sdk/gitmodules .gitmodules
+	    fi
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
+	    randyproject_conf_update
 	    release_note
 	    project_info_database
 	)
@@ -65,6 +72,7 @@ popd
 
 function App_install(){
     pushd $APP_WORKSPACE
+    ui_update
     Version_Update
     Add_Tag
     Release_Version_Rule

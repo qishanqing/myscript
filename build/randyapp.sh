@@ -38,7 +38,7 @@ init_project_env(){
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git  $CLONE_DEPTH"
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git $CONFIG_DIR $CLONE_DEPTH"
     mount_ftp
     check_paremter_is_right
 }

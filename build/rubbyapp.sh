@@ -31,6 +31,7 @@ init_project_env(){
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b rubby-dev $CLONE_DEPTH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     CLONE_DEPTH="--depth=1"
