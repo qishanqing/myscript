@@ -23,9 +23,9 @@ init_project_env(){
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
     TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP
+    FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/fresh_version
     FTP_RELEASE_SIGN_DIR=$FTP_RELEASE_DIR/sign
-    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/pre_release
+    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/ota_full_version
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
     appname=I18R

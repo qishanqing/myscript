@@ -25,9 +25,9 @@ init_project_env(){
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/$appname/client
     TEST_DIR=/mnt/ftp/release/$appname/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/$appname
+    FTP_RELEASE_DIR=/mnt/ftp/release/$appname/fresh_version
     FTP_RELEASE_SIGN_DIR=$FTP_RELEASE_DIR/sign
-    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/pre_release
+    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/ota_full_version
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
@@ -77,8 +77,6 @@ function App_install(){
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-	SWR_VERSION=$SWR_VERSION-SIGN
-	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
 	deb_type
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
 	echo "$sdk_note"

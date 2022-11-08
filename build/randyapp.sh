@@ -25,9 +25,9 @@ init_project_env(){
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
     UI_DIR=/mnt/ftp/release/${appname}/client
     TEST_DIR=/mnt/ftp/release/${appname}/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/${appname}
+    FTP_RELEASE_DIR=/mnt/ftp/release/${appname}/fresh_version
     FTP_RELEASE_SIGN_DIR=$FTP_RELEASE_DIR/sign
-    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/pre_release
+    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/ota_full_version
     FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/randy_config
