@@ -1,9 +1,10 @@
 #!/bin/bash
 set -ex
 
-TEMP=$(getopt -o m:d:c:h --long ms:,dlocal:,dcar:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o m:d:c:a:h --long ms:,ai:,dlocal:,dcar:,help -n $(basename -- $0) -- "$@")
 ms=
 pl=
+ai=
 eval set -- "$TEMP"
 while true;do
     case "$1" in
@@ -13,6 +14,10 @@ while true;do
 	    ;;
 	-d|--dlocal)
 	    dlocal=deploy
+	    shift
+	    ;;
+	-a|--ai)
+	    ai=true
 	    shift
 	    ;;
 	-c|--dcar)
@@ -60,6 +65,8 @@ deploy_car() {
 
 if ! [ -z $ms ];then
     mind_os
+elif [ $ai = true  ];then
+    $FUNCTION_INSTALL
 elif [ $dlocal = build  ];then
     deploy_myscript
 elif [ $dcar = build ];then
