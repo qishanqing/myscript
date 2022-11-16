@@ -13,7 +13,7 @@ increment_version ()
     part[CNTR]=${new}
   done
   new="${part[*]}"
-  build_version=`echo -e "${new// /.}" | perl -npe "s,00,,g"`
+  trigger_version=`echo -e "${new// /.}.0" | perl -npe "s,00,,g"`
 }
 
 increment_version1 ()
@@ -125,13 +125,19 @@ function submodule_version_check(){
 
 function Version_Update(){
     mv $BUILD_DIR/$sourcename $WORK_DIR
+
+    sed -i s/VERSION/"$version"/g $VERSION_FILE
+    sed -i s/appname/"$appname"/g $VERSION_FILE
+    sed -i s/SWR_VERSION/"$SWR_VERSION"/g $VERSION_FILE
+    sed -i s/RELEASE/"${RELEASE}"/g $VERSION_FILE
     if [ "$PLATFORM" = aarch64 ];then
-       sed -i s/VERSION/"$version"/g $VERSION_FILE
-       sed -i s/PLATFORM/arm64/g $VERSION_FILE
+	sed -i s/PLATFORM/arm64/g $VERSION_FILE
+    else
+	sed -i s/PLATFORM/amd64/g $VERSION_FILE
     fi
-    
+
     if [[ $RELEASE = test ]];then
-	sed -i s/INDEMINDAPP/TESTAPP/g $VERSION_FILE
+       sed -i s/INDEMINDAPP/TESTAPP/g $VERSION_FILE
     fi
     sudo chmod 755 * -R
 }
@@ -285,3 +291,30 @@ function randyproject_conf_update(){
     done
 }
 
+function get-job-info() {
+    jc get-job $JOB_NAME > $template
+}
+
+function output-manifest.xml-from-template() {
+    increment_version ${version%.*}
+    get-job-info
+    sed -i "s#$version#$trigger_version#g" $template
+}
+
+function jc-update-job() {
+    template="/root/tmp/logs/$JOB_NAME.xml"
+    output-manifest.xml-from-template
+
+
+    for n in $(seq 1 10);do
+	cat $template | jc update-job $JOB_NAME >& ~/tmp/logs/output.$$ &&  break || true
+	sleep 1
+    done
+}
+
+function is-trigger-job(){
+    if [ $BUILD_CAUSE = TIMERTRIGGER ];then
+        export PATH="$PATH:~/myscript/sh"
+	jc-update-job && version=$trigger_version
+    fi
+}

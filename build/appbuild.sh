@@ -41,6 +41,7 @@ init_project_env(){
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b dev $CLONE_DEPTH"
+    is-trigger-job
     mount_ftp
     check_paremter_is_right
 }

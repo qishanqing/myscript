@@ -38,6 +38,7 @@ init_project_env(){
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
+    is-trigger-job
     mount_ftp
     check_paremter_is_right
 }
