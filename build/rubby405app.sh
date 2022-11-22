@@ -70,7 +70,11 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule
+    config_project_update
     if [[ $RELEASE = test ]];then
+	encryption_project
+	SWR_VERSION=$SWR_VERSION-SIGN
+	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
 	deb_type
 	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
 	    (
