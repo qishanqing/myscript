@@ -32,10 +32,10 @@ init_project_env(){
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
     ui_job_name="rbn100_ui"
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b rbn100-dev $CLONE_DEPTH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     CLONE_DEPTH="--depth=1"
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b rbn100-dev $CLONE_DEPTH"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
