@@ -99,9 +99,7 @@ function App_install(){
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-	encryption_project
-	SWR_VERSION=$SWR_VERSION-SIGN
-	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
+	is-sign-task
 	deb_type
 	tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_ALL_${version}.tgz
 	tgz_type

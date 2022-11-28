@@ -318,3 +318,11 @@ function is-trigger-job(){
 	jc-update-job && version=$trigger_version
     fi
 }
+
+function is-sign-task(){
+    if [ $SIGN = true ];then
+	SWR_VERSION=$SWR_VERSION-SIGN
+	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
+	encryption_project
+    fi
+}
