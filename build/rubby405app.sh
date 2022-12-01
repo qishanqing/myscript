@@ -69,7 +69,7 @@ function App_install(){
     pushd $APP_WORKSPACE
     Version_Update
     Add_Tag
-    Release_Version_Rule
+    Release_Version_Rule_all
     config_project_update
     is-sign-task
     if [[ $RELEASE = test ]];then
@@ -88,17 +88,6 @@ function App_install(){
     fi
 
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
-    popd
-}
-
-function Release_Version_Rule(){
-    pushd $WORK_DIR/$sourcename
-	if [[ $PLATFORM = aarch64 ]];then
-            find -name x64 | xargs -i rm -rf {}
-	elif [[ $PLATFORM = x86_64 ]];then
-            find -name arm64 | xargs -i rm -rf {}
-	fi
-	find -name .git | xargs -i rm -rf {}
     popd
 }
 

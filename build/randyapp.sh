@@ -78,14 +78,14 @@ function App_install(){
     ui_update
     Version_Update
     Add_Tag
-    Release_Version_Rule
+    Release_Version_Rule_all
     if [[ $RELEASE = test ]];then
 	deb_type
 	mv $BUILD_DIR/INDEMINDAPP_${appname}* $TEST_DIR ||
 	    (
 		mv $TEST_DIR/${deb_name} ${trash_dir}
 	    )
-	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
+	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';",
     elif [[ $RELEASE = true ]];then
 #	SWR_VERSION=$SWR_VERSION-SIGN
 #	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
@@ -98,17 +98,6 @@ function App_install(){
     fi
 
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
-    popd
-}
-
-function Release_Version_Rule(){
-    pushd $WORK_DIR/$sourcename
-	if [[ $PLATFORM = aarch64 ]];then
-            find -name x64 | xargs -i rm -rf {}
-	elif [[ $PLATFORM = x86_64 ]];then
-            find -name arm64 | xargs -i rm -rf {}
-	fi
-	find -name .git | xargs -i rm -rf {}
     popd
 }
 
