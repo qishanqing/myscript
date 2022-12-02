@@ -68,7 +68,7 @@ function App_project_fetch(){
 	    project_info_database
 	    mkdir build && cd build
 	    set +x
-	    source ../scripts/env_debug.sh > /dev/null
+#	    source ../scripts/env_debug.sh > /dev/null
 	    set -x
 	    if [[ $SWR_VERSION =~ ICE_EVT ]] || [[ $SWR_VERSION =~ DVT ]] || [[ $SWR_VERSION =~ PVT ]] || [[ $SWR_VERSION =~ MP ]];then
 		cmake -DMBUILD_VCU=ON -D SERVER_VERSION:STRIONG=${version} .. && make -j4
