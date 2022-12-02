@@ -52,7 +52,7 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone ssh://git@192.168.50.191:222/parker.git -b ${SDK_BRANCH:-release} && (
+	git clone ssh://git@192.168.50.191:222/parker.git -b ${SDK_BRANCH:-master} && (
 	    pushd $sourcename
 
 	    config_project_update
