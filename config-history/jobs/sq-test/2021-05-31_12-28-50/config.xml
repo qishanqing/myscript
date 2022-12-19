@@ -1,0 +1,74 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.39">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.7.0"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@1.7.0">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description>slam模块编译动态库</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>5</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.80">
+    <script>pipeline {
+    agent {
+        label &apos;tx2&apos;
+    }
+    options { 
+	   timestamps()  //打印执行步骤的时间戳
+	}
+    stages {
+        stage(&apos;rundataset&apos;) {
+            steps {
+
+                sh &apos;&apos;&apos;
+					ROOT_DIR=&quot;/mnt/guest/slam_data&quot;
+					SLAM_TEST_DIR=&quot;/home/nvidia/.jenkins/workspace/slam/slam/sample&quot;
+					CONFIG_FILE=&quot;MODULE.yaml&quot;
+
+					if [ ! -d $ROOT_DIR ];then
+						echo &quot;dataset root directory is not exists, please check!&quot;
+						exit 1
+					else
+						database_yaml=$(find $ROOT_DIR -name $CONFIG_FILE -print)
+						for yaml in $database_yaml
+						do
+							yaml_dir=$(dirname $yaml)
+							echo &quot;Running SLAM dataset...&quot;
+							${SLAM_TEST_DIR}/SLAM_Test $yaml_dir $yaml
+						done
+					fi
+                &apos;&apos;&apos;
+                }
+            }
+        
+        stage(&apos;Build&apos;) {
+            steps {
+                sh &apos;&apos;&apos;
+                    python --version
+                &apos;&apos;&apos;
+            }
+        }
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>true</disabled>
+</flow-definition>

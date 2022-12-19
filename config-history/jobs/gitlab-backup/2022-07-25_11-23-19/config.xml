@@ -1,0 +1,65 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><project>
+  <actions/>
+  <description>Gitlab数据备份</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>Gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>3</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>192.168.50.191</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 1 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+pwd
+echo "Start to gitlab backup..."
+docker exec --user root -i gitlab gitlab-backup create
+echo "Gitlab backup finished!"
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+set -x
+
+backup_dir="/home/indemind/devops/gitlab/data/backups"
+gitlab_backup_archive=$(curl -s -S  -u "shiquan":"saisai002" $BUILD_URL/consoleText|grep 'Creating backup archive: '|awk -F ' ' '{print $4}')
+#echo $gitlab_backup_archive
+
+echo "Uploading ${gitlab_backup_archive} to root@192.168.50.158:/backup/gitlab/backups/${gitlab_backup_archive}"
+sudo mv $backup_dir/${gitlab_backup_archive} "/backup/gitlab/"
+sudo chown indemind:indemind -R /backup/gitlab/
+scp -P 222 /backup/gitlab/${gitlab_backup_archive} root@192.168.50.158:/backup/gitlab/backups/
+echo "Uploaded gitlab backup to root@192.168.50.158:/backup/gitlab/backups/${gitlab_backup_archive} finished!"</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.3"/>
+  </buildWrappers>
+</project>

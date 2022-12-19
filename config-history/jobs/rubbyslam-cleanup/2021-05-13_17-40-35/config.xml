@@ -1,0 +1,42 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><project>
+  <actions/>
+  <description/>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>Gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <com.ceilfors.jenkins.plugins.jiratrigger.JiraCommentTrigger plugin="jira-trigger@1.0.0">
+      <spec/>
+      <jqlFilter>project = CM</jqlFilter>
+      <parameterMappings>
+        <com.ceilfors.jenkins.plugins.jiratrigger.parameter.IssueAttributePathParameterMapping>
+          <jenkinsParameter>JIRA_ISSUE_KEY</jenkinsParameter>
+          <issueAttributePath>KEY</issueAttributePath>
+        </com.ceilfors.jenkins.plugins.jiratrigger.parameter.IssueAttributePathParameterMapping>
+      </parameterMappings>
+      <commentPattern>(?i)build now</commentPattern>
+    </com.ceilfors.jenkins.plugins.jiratrigger.JiraCommentTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo test</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

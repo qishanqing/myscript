@@ -1,0 +1,52 @@
+Started by upstream project "[8mha:////4HiC4dFq3ymInQtmMt8Nk3JDR2Crs5ld91btlvfc0++eAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/az8JP3kxKKC0pwcfQCdKlODwgAAAA==[0mcarpull" build number [8mha:////4KDGaFm9YTrsC1Hnzj3NaaG/KA+my7TWptoZwWWRlcoOAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAymEgZ+/az8JP3kxKKC0pwcfWNTAOelf0XEAAAA[0m35
+originally caused by:
+ Started by upstream project "[8mha:////4M/fRfvhICYI12RMwuRIYi32Fx+/B1GgxvfobS9id40fAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/az8JP3cgtKcHH0AOoHRc8AAAAA=[0mmpull" build number [8mha:////4JPrFx9JsarVoT02SBhFPEEBXFRrDLVgFoGKM3yBS4nzAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAymEgZe/az8JP3cgtKcHH1jUwAPmkeEwgAAAA==[0m35
+ originally caused by:
+  Started from command line by [8mha:////4JziddStA/x9aVTOxRtowWNSpTrXucf8XBnGgMy/MYFbAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgYB/dLi1CL9wszijMS8QqARAGz4+njFAAAA[0mqishanqing
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building remotely on [8mha:////4PcSAK482muqdTNhz2AorwRbd/y/nqlKAQ84kEqhAJQjAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCIjANHfAbrKAAAA[0mkhadas-car2 in workspace /root/workspace/workspace/carpull/label/khadas-car2
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+[khadas-car2] $ /bin/sh -xe /tmp/jenkins4513977027125109006.sh
++ cd /root/myscript
++ git checkout ./
++ git clean -xdf ./
++ git pull --rebase
+来自 github.com:qishanqing/myscript
+ + ddccf63...b14e8bd indemind   -> origin/indemind  (强制更新)
+首先，回退分支以便在上面重放您的工作...
+FATAL: Remote call on khadas-car2 failed
+Also:   hudson.remoting.Channel$CallSiteStackTrace: Remote call to khadas-car2
+		at hudson.remoting.Channel.attachCallSiteStackTrace(Channel.java:1788)
+		at hudson.remoting.UserRequest$ExceptionResponse.retrieve(UserRequest.java:356)
+		at hudson.remoting.Channel.call(Channel.java:998)
+		at hudson.Launcher$RemoteLauncher.kill(Launcher.java:1083)
+		at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:510)
+		at hudson.model.Run.execute(Run.java:1856)
+		at hudson.matrix.MatrixRun.run(MatrixRun.java:153)
+		at hudson.model.ResourceController.execute(ResourceController.java:97)
+		at hudson.model.Executor.run(Executor.java:428)
+java.lang.NoClassDefFoundError: Could not initialize class hudson.slaves.SlaveComputer
+	at hudson.util.ProcessTree.get(ProcessTree.java:432)
+	at hudson.Launcher$RemoteLauncher$KillTask.call(Launcher.java:1100)
+	at hudson.Launcher$RemoteLauncher$KillTask.call(Launcher.java:1091)
+	at hudson.remoting.UserRequest.perform(UserRequest.java:211)
+	at hudson.remoting.UserRequest.perform(UserRequest.java:54)
+	at hudson.remoting.Request$2.run(Request.java:369)
+	at hudson.remoting.InterceptingExecutorService$1.call(InterceptingExecutorService.java:72)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused: java.io.IOException: Remote call on khadas-car2 failed
+	at hudson.remoting.Channel.call(Channel.java:1004)
+	at hudson.Launcher$RemoteLauncher.kill(Launcher.java:1083)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:510)
+	at hudson.model.Run.execute(Run.java:1856)
+	at hudson.matrix.MatrixRun.run(MatrixRun.java:153)
+	at hudson.model.ResourceController.execute(ResourceController.java:97)
+	at hudson.model.Executor.run(Executor.java:428)
+Notified JIRA that a build has completed.
+Finished: FAILURE

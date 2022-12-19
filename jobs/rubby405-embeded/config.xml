@@ -1,0 +1,195 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>Gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <EnvInjectJobProperty plugin="envinject@2.3.0">
+      <info>
+        <secureGroovyScript plugin="script-security@1.72">
+          <script></script>
+          <sandbox>false</sandbox>
+        </secureGroovyScript>
+        <loadFilesFromMaster>false</loadFilesFromMaster>
+      </info>
+      <on>true</on>
+      <keepJenkinsSystemVariables>true</keepJenkinsSystemVariables>
+      <keepBuildVariables>true</keepBuildVariables>
+      <overrideBuildParameters>false</overrideBuildParameters>
+      <contributors/>
+    </EnvInjectJobProperty>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>3</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>SOURCE_PROJECT</name>
+          <description>R源代码项目</description>
+          <defaultValue>EmbeddedGroup/rubby_sensor_p</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TARGET_PROJECT</name>
+          <description>子模块项目。</description>
+          <defaultValue>rubby405/integration/sensors</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>SOURCE_BRANCH</name>
+          <description>嵌入式组I18R源代码项目监控分支</description>
+          <defaultValue>dev</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BUILD_SCRIPT</name>
+          <description>项目编译调用脚本</description>
+          <defaultValue>build.sh</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>CLEAN_TARGET_PROJECT</name>
+          <description>推送目标项目是否先删除项目所有文件，true表示确认
+ </description>
+          <defaultValue>true</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TARGET_PROJECT_FILE_PATH</name>
+          <description>提交目标项目根目录下相对路径，目标目录会自动创建	</description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TARGET_BRANCH</name>
+          <description>嵌入式组I18R子模块项目监控分支</description>
+          <defaultValue>master</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>CLEAN_WORKSPACE</name>
+          <description></description>
+          <defaultValue>true</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_CONTAINER</name>
+          <description>默认编译rubby环境镜像</description>
+          <defaultValue>c405</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>master ||191</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>bash /home/indemind/myscript/build/build.sh</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.69">
+      <recipientList>qishanqing@indemind.cn</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>qishanqing@indemind.cn,lishaohui@indemind.cn</recipientList>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>JENKINS编译-${JOB_NAME}</defaultSubject>
+      <defaultContent>&lt;!DOCTYPE html&gt;    
+&lt;html&gt;    
+&lt;head&gt;    
+&lt;meta charset=&quot;UTF-8&quot;&gt;    
+&lt;title&gt;${ENV, var=&quot;JOB_NAME&quot;}-第${BUILD_NUMBER}次构建日志&lt;/title&gt;    
+&lt;/head&gt;    
+    
+&lt;body leftmargin=&quot;8&quot; marginwidth=&quot;0&quot; topmargin=&quot;8&quot; marginheight=&quot;4&quot;    
+    offset=&quot;0&quot;&gt;    
+    &lt;table width=&quot;95%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;  style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif&quot;&gt;    
+        &lt;tr&gt;    
+            本邮件由系统自动发出，无需回复！&lt;br/&gt;            
+            &lt;td&gt;&lt;font color=&quot;#CC0000&quot;&gt;构建结果 - ${BUILD_STATUS}&lt;/font&gt;&lt;/td&gt;   
+        &lt;/tr&gt;    
+        &lt;tr&gt;    
+            &lt;td&gt;&lt;br /&gt;    
+            &lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建信息&lt;/font&gt;&lt;/b&gt;    
+            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot; /&gt;&lt;/td&gt;    
+        &lt;/tr&gt;    
+        &lt;tr&gt;    
+            &lt;td&gt;    
+                &lt;ul&gt;
+                    &lt;li&gt;构建项目： ${JOB_NAME}&lt;/li&gt;    
+                    &lt;li&gt;触发原因： ${CAUSE}&lt;/li&gt;    
+                    &lt;li&gt;构建状态： ${BUILD_STATUS}&lt;/li&gt;    
+                    &lt;li&gt;构建日志： &lt;a href=&quot;${BUILD_URL}console&quot;&gt;${BUILD_URL}console&lt;/a&gt;&lt;/li&gt; 
+                    &lt;li&gt;版本地址  ： &lt;a href=&quot;http://192.168.50.191:85/${TARGET_PROJECT}/-/tree/$BRANCH&quot;&gt;http://192.168.50.191:85/${TARGET_PROJECT}/-/tree/$BRANCH&lt;/a&gt;&lt;/li&gt; 
+                    &lt;li&gt;查看更多：${JENKINS_JOB_BUILD_LOG_URL}&lt;/li&gt;  
+                &lt;/ul&gt; 
+            &lt;/td&gt;    
+        &lt;/tr&gt;    
+    &lt;/table&gt;    
+&lt;/body&gt;    
+&lt;/html&gt;</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <from></from>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter>CLEAN_WORKSPACE</cleanupParameter>
+      <externalDelete></externalDelete>
+      <disableDeferredWipeout>false</disableDeferredWipeout>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.3"/>
+    <EnvInjectBuildWrapper plugin="envinject@2.3.0">
+      <info>
+        <secureGroovyScript plugin="script-security@1.72">
+          <script></script>
+          <sandbox>false</sandbox>
+        </secureGroovyScript>
+        <loadFilesFromMaster>false</loadFilesFromMaster>
+      </info>
+    </EnvInjectBuildWrapper>
+  </buildWrappers>
+</project>

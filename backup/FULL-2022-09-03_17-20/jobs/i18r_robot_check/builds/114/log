@@ -1,0 +1,411 @@
+Started by GitLab push by JENKINS
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building remotely on [8mha:////4MPPEh8feJE9uNY0ThUfUuMmeXp+equSlRr0prvRJKt5AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJDAGuOCCPKAAAA[0mkhadas-car1 in workspace /root/workspace/workspace/i18r_robot_check
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+using credential add4e790-1baf-4d9e-81aa-2941949e9901
+Cloning the remote Git repository
+Using shallow clone with depth 1
+Cloning repository ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check.git
+ > /usr/bin/git init /root/workspace/workspace/i18r_robot_check # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check.git
+ > /usr/bin/git --version # timeout=10
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress --depth=1 -- ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check.git # timeout=10
+ > /usr/bin/git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check.git # timeout=10
+Using shallow fetch with depth 1
+Fetching upstream changes from ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check.git
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress --depth=1 -- ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse remotes/origin/dev^{commit} # timeout=10
+ > /usr/bin/git branch -a -v --no-abbrev --contains 5809c711337476221a3a961381468e6f90e8176b # timeout=10
+Checking out Revision 5809c711337476221a3a961381468e6f90e8176b (origin/dev)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 5809c711337476221a3a961381468e6f90e8176b # timeout=10
+Commit message: "update tools"
+ > /usr/bin/git rev-list --no-walk 6634cff77038fbd9e08a2bd9c7cc153b35d6dc07 # timeout=10
+First time build. Skipping changelog.
+[i18r_robot_check] $ /bin/sh -xe /tmp/jenkins7042512844882294964.sh
++ cd /root/workspace/workspace/i18r_robot_check
++ date +%Y-%m-%d-%H:%M:%S
++ tar zcvf /root/tmp/i18r-robot-check-2022-08-30-22:10:17.tgz ChangeLog.md Module.yaml Readme.md arm64 bin config deps embsyslog.sh include pack.sh readme.md run.sh tools x64
+ChangeLog.md
+Module.yaml
+Readme.md
+arm64/
+arm64/libupgrade_module.so
+arm64/libdepthcomputation.so
+arm64/libmonitor_node.so
+arm64/pkgconfig/
+arm64/pkgconfig/apriltag.pc
+arm64/libusbtof_module.so
+arm64/libmcu_module.so.1
+arm64/libemb_common.so.1.3.2
+arm64/libimsee_module.so.1
+arm64/libTof.so
+arm64/libmulti_module.so.1.3.2
+arm64/libinfrastructureCheck.so.1.1.1
+arm64/libapriltagsKaess.so
+arm64/libdepthmapwrapper.so
+arm64/libbarcodescaner.so.1
+arm64/libmulti_module.so
+arm64/libemb_common.so
+arm64/libbarcodescaner.so
+arm64/liblidar_module.so
+arm64/liblidar_module.so.1
+arm64/libmcu_module.so
+arm64/libmonitor_node.so.1
+arm64/libinfrastructureCheck.so
+arm64/libvcu_module.so.1
+arm64/libusbtof_module.so.1
+arm64/libbarcodescaner.so.1.0.0
+arm64/libsensor_module.so.1
+arm64/libsensor_module.so
+arm64/libvcu_module.so
+arm64/liblidar_module.so.1.3.2
+arm64/libimsee_module.so.1.3.2
+arm64/libemb_common.so.1
+arm64/libProClientSDK.so
+arm64/libvcu_module.so.1.3.2
+arm64/libmonitor_node.so.1.3.2
+arm64/libemb_monitor.so.1.3.2
+arm64/libemb_monitor.so
+arm64/libimsee_module.so
+arm64/libmulti_module.so.1
+arm64/libusbtof_module.so.1.3.2
+arm64/libinfrastructureCheck.so.1.1.0
+arm64/libmodule.so
+arm64/libsensor_module.so.1.3.2
+arm64/libemb_monitor.so.1
+arm64/libspectre.so
+arm64/libmcu_module.so.1.3.2
+arm64/libdepthcomputation.so.1.7.0
+bin/
+bin/Readme.md
+config/
+config/lcd_light.yaml
+config/emb_log.yaml
+config/emb_sensor_monitor.yaml
+config/0000-0000-0000-0000.spc
+config/emb_config.yaml
+config/params.yaml
+deps/
+deps/net_client
+deps/net_server
+deps/ap.sh
+deps/iperf
+deps/README.md
+deps/i18r_sta.sh
+deps/sshpass
+deps/go
+embsyslog.sh
+include/
+include/ProductInfo.hpp
+include/MultiModule.hpp
+include/Usb3dtof.hpp
+include/EmbManager.hpp
+include/infrastructureCheck/
+include/infrastructureCheck/infrastructureCheck.h
+include/infrastructureCheck/createTargetPoints.h
+include/EmbTypes.hpp
+include/SensorModule.hpp
+include/VcuModule.hpp
+include/network/
+include/network/README.md
+include/network/NetTest.c
+include/network/NetTest.h
+include/calibrationInterface.h
+include/Readme.md
+include/McuModule.hpp
+include/Module.hpp
+include/ImseeModule.hpp
+include/AprilTags/
+include/AprilTags/Tag16h5_other.h
+include/AprilTags/UnionFindSimple.h
+include/AprilTags/Tag16h5.h
+include/AprilTags/Tag25h9.h
+include/AprilTags/TagFamily.h
+include/AprilTags/Gaussian.h
+include/AprilTags/pch.h
+include/AprilTags/Edge.h
+include/AprilTags/TagDetector.h
+include/AprilTags/Segment.h
+include/AprilTags/GrayModel.h
+include/AprilTags/XYWeight.h
+include/AprilTags/Homography33.h
+include/AprilTags/GLine2D.h
+include/AprilTags/GLineSegment2D.h
+include/AprilTags/TagDetection.h
+include/AprilTags/FloatImage.h
+include/AprilTags/MathUtil.h
+include/AprilTags/Quad.h
+include/AprilTags/Tag36h9.h
+include/AprilTags/Tag25h7.h
+include/AprilTags/Tag36h11.h
+include/AprilTags/Gridder.h
+include/AprilTags/Tag36h11_other.h
+include/BarcodeScaner.hpp
+include/LidarData.hpp
+pack.sh
+readme.md
+run.sh
+tools
+x64/
+x64/libdepthcomputation.so
+x64/libmcu_module.so.1.2.26
+x64/libsensor_module.so.1.2.26
+x64/libmonitor_node.so
+x64/liblidar_module.so.1.2.26
+x64/pkgconfig/
+x64/pkgconfig/apriltag.pc
+x64/libusbtof_module.so.1.2.26
+x64/libusbtof_module.so
+x64/libmcu_module.so.1
+x64/libimsee_module.so.1
+x64/libemb_monitor.so.1.2.26
+x64/libTof.so
+x64/libapriltagsKaess.so
+x64/libdepthmapwrapper.so
+x64/libbarcodescaner.so.1
+x64/libmulti_module.so
+x64/libemb_common.so
+x64/libbarcodescaner.so
+x64/liblidar_module.so
+x64/liblidar_module.so.1
+x64/libmcu_module.so
+x64/libmonitor_node.so.1
+x64/libinfrastructureCheck.so
+x64/libvcu_module.so.1
+x64/libemb_common.so.1.2.26
+x64/Readme.md
+x64/libusbtof_module.so.1
+x64/libbarcodescaner.so.1.0.0
+x64/libvcu_module.so.1.2.26
+x64/libsensor_module.so.1
+x64/libimsee_module.so.1.2.26
+x64/libsensor_module.so
+x64/libmonitor_node.so.1.2.26
+x64/libvcu_module.so
+x64/libemb_common.so.1
+x64/libemb_monitor.so.1.3.2
+x64/libmulti_module.so.1.2.26
+x64/libemb_monitor.so
+x64/libimsee_module.so
+x64/libmulti_module.so.1
+x64/libinfrastructureCheck.so.1.1.0
+x64/libmodule.so
+x64/libemb_monitor.so.1
+x64/libspectre.so
+x64/libdepthcomputation.so.1.7.0
++ mv /root/tmp/i18r-robot-check-2022-08-30-22:10:17.tgz /mnt/ftp/release/INDEMINDAPP/i18r-robot-check/
+[i18r_robot_check] $ /bin/sh -xe /tmp/jenkins9184785040387577038.sh
++ bash /root/myscript/build/i18r_tools.sh
++++ dirname /root/myscript/build/i18r_tools.sh
+++ cd /root/myscript/build
+++ pwd
++ project_path=/root/myscript/build
++ init_project_env
++ APP_WORKSPACE=/root/system/i18rApplicationDeb/work
++ VERSION_FILE=/root/system/i18rApplicationDeb/work/DEBIAN/control
++ trigger=/root/workspace/workspace/i18r_robot_check/pack.sh
++ SOURCE_DIR=/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check
++ PACKAGE=A311D-interface-testsuite
++ version=1.0-114
++ app_name=a311D-interface-testsuite_1.0-114_arm64.deb
++ TARGET_PROJECT='~/system/product_tools_group'
++ project_update
++ rm -rf /root/system/i18rApplicationDeb /root/system/product_tools_group
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rApplicationDeb.git /root/system/i18rApplicationDeb --depth=1
+正克隆到 '/root/system/i18rApplicationDeb'...
++ git clone ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git -b master '~/system/product_tools_group' --depth=1
+正克隆到 '~/system/product_tools_group'...
+正在检出文件:  59% (70/118)   正在检出文件:  60% (71/118)   正在检出文件:  61% (72/118)   正在检出文件:  62% (74/118)   正在检出文件:  63% (75/118)   正在检出文件:  64% (76/118)   正在检出文件:  65% (77/118)   正在检出文件:  66% (78/118)   正在检出文件:  67% (80/118)   正在检出文件:  68% (81/118)   正在检出文件:  69% (82/118)   正在检出文件:  70% (83/118)   正在检出文件:  71% (84/118)   正在检出文件:  72% (85/118)   正在检出文件:  73% (87/118)   正在检出文件:  74% (88/118)   正在检出文件:  75% (89/118)   正在检出文件:  76% (90/118)   正在检出文件:  77% (91/118)   正在检出文件:  78% (93/118)   正在检出文件:  79% (94/118)   正在检出文件:  80% (95/118)   正在检出文件:  81% (96/118)   正在检出文件:  82% (97/118)   正在检出文件:  83% (98/118)   正在检出文件:  84% (100/118)   正在检出文件:  85% (101/118)   正在检出文件:  86% (102/118)   正在检出文件:  87% (103/118)   正在检出文件:  88% (104/118)   正在检出文件:  89% (106/118)   正在检出文件:  90% (107/118)   正在检出文件:  91% (108/118)   正在检出文件:  92% (109/118)   正在检出文件:  93% (110/118)   正在检出文件:  94% (111/118)   正在检出文件:  95% (113/118)   正在检出文件:  96% (114/118)   正在检出文件:  97% (115/118)   正在检出文件:  98% (116/118)   正在检出文件:  99% (117/118)   正在检出文件: 100% (118/118)   正在检出文件: 100% (118/118), 完成.
++ prebuild
++ bash -ex /root/workspace/workspace/i18r_robot_check/pack.sh
++ '[' '!' -d release ']'
++ mkdir release
++ rm -rf 'release/*'
++ '[' '!' -d release/i18r_robot_check/i18r_robot_check ']'
++ mkdir release/i18r_robot_check/i18r_robot_check -p
++ cp -a arm64 release/i18r_robot_check/i18r_robot_check
++ cp -a tools release/i18r_robot_check/i18r_robot_check
++ cp -a run.sh release/i18r_robot_check/i18r_robot_check
++ cp -a deps release/i18r_robot_check/i18r_robot_check
++ mkdir release/i18r_robot_check/i18r_robot_check/config
++ cp -f config/emb_config.yaml config/emb_log.yaml config/emb_sensor_monitor.yaml config/lcd_light.yaml config/params.yaml release/i18r_robot_check/i18r_robot_check/config/
++ ln -vs i18r_robot_check/deps ./release/i18r_robot_check/
+'./release/i18r_robot_check/deps' -> 'i18r_robot_check/deps'
++ cd release
++ tar -zcvf i18r_robot_check.tar.gz i18r_robot_check
+i18r_robot_check/
+i18r_robot_check/i18r_robot_check/
+i18r_robot_check/i18r_robot_check/arm64/
+i18r_robot_check/i18r_robot_check/arm64/libupgrade_module.so
+i18r_robot_check/i18r_robot_check/arm64/libdepthcomputation.so
+i18r_robot_check/i18r_robot_check/arm64/libmonitor_node.so
+i18r_robot_check/i18r_robot_check/arm64/pkgconfig/
+i18r_robot_check/i18r_robot_check/arm64/pkgconfig/apriltag.pc
+i18r_robot_check/i18r_robot_check/arm64/libusbtof_module.so
+i18r_robot_check/i18r_robot_check/arm64/libmcu_module.so.1
+i18r_robot_check/i18r_robot_check/arm64/libemb_common.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libimsee_module.so.1
+i18r_robot_check/i18r_robot_check/arm64/libTof.so
+i18r_robot_check/i18r_robot_check/arm64/libmulti_module.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libinfrastructureCheck.so.1.1.1
+i18r_robot_check/i18r_robot_check/arm64/libapriltagsKaess.so
+i18r_robot_check/i18r_robot_check/arm64/libdepthmapwrapper.so
+i18r_robot_check/i18r_robot_check/arm64/libbarcodescaner.so.1
+i18r_robot_check/i18r_robot_check/arm64/libmulti_module.so
+i18r_robot_check/i18r_robot_check/arm64/libemb_common.so
+i18r_robot_check/i18r_robot_check/arm64/libbarcodescaner.so
+i18r_robot_check/i18r_robot_check/arm64/liblidar_module.so
+i18r_robot_check/i18r_robot_check/arm64/liblidar_module.so.1
+i18r_robot_check/i18r_robot_check/arm64/libmcu_module.so
+i18r_robot_check/i18r_robot_check/arm64/libmonitor_node.so.1
+i18r_robot_check/i18r_robot_check/arm64/libinfrastructureCheck.so
+i18r_robot_check/i18r_robot_check/arm64/libvcu_module.so.1
+i18r_robot_check/i18r_robot_check/arm64/libusbtof_module.so.1
+i18r_robot_check/i18r_robot_check/arm64/libbarcodescaner.so.1.0.0
+i18r_robot_check/i18r_robot_check/arm64/libsensor_module.so.1
+i18r_robot_check/i18r_robot_check/arm64/libsensor_module.so
+i18r_robot_check/i18r_robot_check/arm64/libvcu_module.so
+i18r_robot_check/i18r_robot_check/arm64/liblidar_module.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libimsee_module.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libemb_common.so.1
+i18r_robot_check/i18r_robot_check/arm64/libProClientSDK.so
+i18r_robot_check/i18r_robot_check/arm64/libvcu_module.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libmonitor_node.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libemb_monitor.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libemb_monitor.so
+i18r_robot_check/i18r_robot_check/arm64/libimsee_module.so
+i18r_robot_check/i18r_robot_check/arm64/libmulti_module.so.1
+i18r_robot_check/i18r_robot_check/arm64/libusbtof_module.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libinfrastructureCheck.so.1.1.0
+i18r_robot_check/i18r_robot_check/arm64/libmodule.so
+i18r_robot_check/i18r_robot_check/arm64/libsensor_module.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libemb_monitor.so.1
+i18r_robot_check/i18r_robot_check/arm64/libspectre.so
+i18r_robot_check/i18r_robot_check/arm64/libmcu_module.so.1.3.2
+i18r_robot_check/i18r_robot_check/arm64/libdepthcomputation.so.1.7.0
+i18r_robot_check/i18r_robot_check/tools
+i18r_robot_check/i18r_robot_check/deps/
+i18r_robot_check/i18r_robot_check/deps/net_client
+i18r_robot_check/i18r_robot_check/deps/net_server
+i18r_robot_check/i18r_robot_check/deps/ap.sh
+i18r_robot_check/i18r_robot_check/deps/iperf
+i18r_robot_check/i18r_robot_check/deps/README.md
+i18r_robot_check/i18r_robot_check/deps/i18r_sta.sh
+i18r_robot_check/i18r_robot_check/deps/sshpass
+i18r_robot_check/i18r_robot_check/deps/go
+i18r_robot_check/i18r_robot_check/config/
+i18r_robot_check/i18r_robot_check/config/lcd_light.yaml
+i18r_robot_check/i18r_robot_check/config/emb_log.yaml
+i18r_robot_check/i18r_robot_check/config/emb_sensor_monitor.yaml
+i18r_robot_check/i18r_robot_check/config/emb_config.yaml
+i18r_robot_check/i18r_robot_check/config/params.yaml
+i18r_robot_check/i18r_robot_check/run.sh
+i18r_robot_check/deps
++ cd -
+/root/workspace/workspace/i18r_robot_check
++ mkdir -p /root/system/i18rApplicationDeb/work/root/
++ cp -av /root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/deps /root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check /root/system/i18rApplicationDeb/work/root/
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/deps' -> '/root/system/i18rApplicationDeb/work/root/deps'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libProClientSDK.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libProClientSDK.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libTof.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libTof.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libapriltagsKaess.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libapriltagsKaess.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libbarcodescaner.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libbarcodescaner.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libbarcodescaner.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libbarcodescaner.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libbarcodescaner.so.1.0.0' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libbarcodescaner.so.1.0.0'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libdepthcomputation.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libdepthcomputation.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libdepthcomputation.so.1.7.0' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libdepthcomputation.so.1.7.0'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libdepthmapwrapper.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libdepthmapwrapper.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libemb_common.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libemb_common.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libemb_common.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libemb_common.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libemb_common.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libemb_common.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libemb_monitor.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libemb_monitor.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libemb_monitor.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libemb_monitor.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libemb_monitor.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libemb_monitor.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libimsee_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libimsee_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libimsee_module.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libimsee_module.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libimsee_module.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libimsee_module.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libinfrastructureCheck.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libinfrastructureCheck.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libinfrastructureCheck.so.1.1.0' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libinfrastructureCheck.so.1.1.0'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libinfrastructureCheck.so.1.1.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libinfrastructureCheck.so.1.1.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/liblidar_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/liblidar_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/liblidar_module.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/liblidar_module.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/liblidar_module.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/liblidar_module.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmcu_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmcu_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmcu_module.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmcu_module.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmcu_module.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmcu_module.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmodule.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmodule.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmonitor_node.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmonitor_node.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmonitor_node.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmonitor_node.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmonitor_node.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmonitor_node.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmulti_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmulti_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmulti_module.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmulti_module.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libmulti_module.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libmulti_module.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libsensor_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libsensor_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libsensor_module.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libsensor_module.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libsensor_module.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libsensor_module.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libspectre.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libspectre.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libupgrade_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libupgrade_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libusbtof_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libusbtof_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libusbtof_module.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libusbtof_module.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libusbtof_module.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libusbtof_module.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libvcu_module.so' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libvcu_module.so'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libvcu_module.so.1' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libvcu_module.so.1'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/libvcu_module.so.1.3.2' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/libvcu_module.so.1.3.2'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/pkgconfig' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/pkgconfig'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/arm64/pkgconfig/apriltag.pc' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/arm64/pkgconfig/apriltag.pc'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/tools' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/tools'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/run.sh' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/run.sh'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/README.md' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/README.md'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/ap.sh' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/ap.sh'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/go' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/go'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/i18r_sta.sh' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/i18r_sta.sh'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/iperf' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/iperf'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/net_client' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/net_client'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/net_server' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/net_server'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/deps/sshpass' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/deps/sshpass'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/config' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/config'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/config/emb_config.yaml' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/config/emb_config.yaml'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/config/emb_log.yaml' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/config/emb_log.yaml'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/config/emb_sensor_monitor.yaml' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/config/emb_sensor_monitor.yaml'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/config/lcd_light.yaml' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/config/lcd_light.yaml'
+'/root/workspace/workspace/i18r_robot_check/release/i18r_robot_check/i18r_robot_check/config/params.yaml' -> '/root/system/i18rApplicationDeb/work/root/i18r_robot_check/config/params.yaml'
++ App_install
++ pushd /root/system/i18rApplicationDeb/work
+~/system/i18rApplicationDeb/work ~/workspace/workspace/i18r_robot_check
++ Version_Update
++ sed -i s/VERSION/1.0-114/g /root/system/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/PLATFORM/arm64/g /root/system/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/INDEMINDAPP/A311D-interface-testsuite/g /root/system/i18rApplicationDeb/work/DEBIAN/control
++ dpkg -b . /root/system/a311D-interface-testsuite_1.0-114_arm64.deb
+dpkg-deb: 正在 '/root/system/a311D-interface-testsuite_1.0-114_arm64.deb' 中构建软件包 'a311d-interface-testsuite'。
++ popd
+~/workspace/workspace/i18r_robot_check
++ APP_PUSH
++ pushd '~/system/product_tools_group'
+~/workspace/workspace/i18r_robot_check/~/system/product_tools_group ~/workspace/workspace/i18r_robot_check
++ xargs git rm
++ find -name '*interface-testsuite*.deb'
+rm 'factory_set_tools/接口测试/a311D-interface-testsuite_1.0-113_arm64.deb'
++ mv /root/system/a311D-interface-testsuite_1.0-114_arm64.deb factory_set_tools/接口测试/
++ git add factory_set_tools/接口测试/a311D-interface-testsuite_1.0-114_arm64.deb
++ git commit -m a311D-interface-testsuite_1.0-114_arm64.deb
+[master 8393a01] a311D-interface-testsuite_1.0-114_arm64.deb
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 "factory_set_tools/\346\216\245\345\217\243\346\265\213\350\257\225/a311D-interface-testsuite_1.0-113_arm64.deb"
+ create mode 100644 "factory_set_tools/\346\216\245\345\217\243\346\265\213\350\257\225/a311D-interface-testsuite_1.0-114_arm64.deb"
++ git push
+To ssh://192.168.50.191:222/i18r_product_tools/product_tools_group.git
+   b286148..8393a01  master -> master
+Notified JIRA that a build has completed.
+Finished: SUCCESS

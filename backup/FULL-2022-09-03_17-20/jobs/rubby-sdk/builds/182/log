@@ -1,0 +1,352 @@
+Started by user [8mha:////4CxdUWQECjdXMwyVgfqeFaIP/aI9EkxHsnLryzaOJrJlAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgZ+/dLi1CL9nMzKxLyc/Lx0AJMuWZLEAAAA[0m李炎龙
+Rebuilds build #[8mha:////4Ia76nv6mEF0d7gjljLAPAeGAgGLfjUjteXaLiogYeDIAAAApR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgZp/bLM1HL94pRs/az8JP2i0qSkSl0Qz9DCEAAEgL5H0AAAAA==[0m181
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+[EnvInject] - Preparing an environment for the build.
+[EnvInject] - Keeping Jenkins system variables.
+[EnvInject] - Keeping Jenkins build variables.
+[EnvInject] - Injecting contributions.
+Building on master in workspace /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No emails were triggered.
+[EnvInject] - Executing scripts and injecting environment variables after the SCM step.
+[workspace] $ /bin/sh -xe /tmp/jenkins3632996369098806102.sh
++ bash /home/indemind/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20220901
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ echo abby/integration/sdk
+++ awk -F/ '{print $1"%2F"$2}'
++ CONVERT_TARGET_PROJECT=abby%2Fintegration
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/abby%2Fintegration
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    35  100    35    0     0    678      0 --:--:-- --:--:-- --:--:--   686
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+KeyError: 'id'
++ SUB_PROJECT_ID=
++ true
++ '[' -z ']'
++ SOURCE_DIR=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins
++ TARGET_DIR=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk
++ prepare_env
+++ uname -m
++ system_platform=x86_64
++ export COMMIT_ID_FILE=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_last_build_id
++ COMMIT_ID_FILE=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_last_build_id
++ export COMMIT_MSG_FILE=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg
++ COMMIT_MSG_FILE=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg.tmp
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_last_build_id
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg.tmp
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/result.log
++ CLONE_DEPTH=--depth=1
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('\''rubby-sdk'\'','\''abby/source/sdk_plubins'\'','\''task-RUB-59'\'','\''abby/integration/sdk'\'','\''master'\'',now(),'\''http://192.168.50.26:8080/job/rubby-sdk/182/'\'','\''master'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ JENKINS_JOB_A=mind
++ JENKINS_JOB_B=rbn
++ JENKINS_JOB_C=mark-check-tools
++ [[ rubby-sdk =~ mind ]]
++ '[' true = false ']'
++ source_project_fetch
++ git clone ssh://git@192.168.50.191:222/abby/source/sdk_plubins -b task-RUB-59 --depth=1
+Cloning into 'sdk_plubins'...
++ target_project_update
++ rm -rf /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/abby/integration/sdk -b master --depth=1
+Cloning into 'sdk'...
++ [[ x86_64 =~ x86_64 ]]
++ docker exec -i c405 /bin/bash
++ [[ c405 == c405 ]]
++ echo 'rubby project building in c405......'
+rubby project building in c405......
++ pushd /root/system/abby_msg
+~/system/abby_msg /
++ git checkout ./
++ git clean -xdf ./
++ git pull origin master
+From ssh://192.168.50.191:222/abby/source/abby_msg
+ * branch            master     -> FETCH_HEAD
+Already up to date.
++ popd
+/
++ pushd /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins
+/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins /
++ git submodule update --init --recursive
+Submodule 'submodules/abby_msg' (http://192.168.50.191:85/abby/source/abby_msg.git) registered for path 'submodules/abby_msg'
+Submodule 'submodules/protocol' (http://192.168.50.191:85/abby/source/app_protocol.git) registered for path 'submodules/protocol'
+Cloning into '/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/submodules/abby_msg'...
+Cloning into '/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/submodules/protocol'...
+Submodule path 'submodules/abby_msg': checked out 'c2ff09ef709eddc19af6d2e1d97248bad8a5145c'
+Submodule path 'submodules/protocol': checked out '357735f1ed7295a0199fc41de5c18d2a5ffb3a4e'
++ git submodule update --remote
+Submodule path 'submodules/abby_msg': checked out 'b0a02c15a9a11dc9cb8f6f5f0d3c0760f242b8de'
+Submodule path 'submodules/protocol': checked out 'c5ef870dd32f041d86356b07048ed5b58dd55531'
++ source /opt/ros/melodic/setup.bash
++ bash -ex build.sh
++ set -ex
++ git submodule update --init --recursive
+Submodule path 'submodules/abby_msg': checked out 'c2ff09ef709eddc19af6d2e1d97248bad8a5145c'
+Submodule path 'submodules/protocol': checked out '357735f1ed7295a0199fc41de5c18d2a5ffb3a4e'
++ git submodule update --remote
+Submodule path 'submodules/abby_msg': checked out 'b0a02c15a9a11dc9cb8f6f5f0d3c0760f242b8de'
+Submodule path 'submodules/protocol': checked out 'c5ef870dd32f041d86356b07048ed5b58dd55531'
++ BuildDir=build
++ '[' -d build ']'
++ mkdir build
++ cd build
++ cmake -DBUILD_ROS_NODE=ON -DUSE_ZK_ROBOT=OFF -DUSE_HMI_SIMULATOR=OFF ..
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- HOST_ARCH: armv8
+-- Found OpenCV: /usr/local (found version "3.4.3") 
+-- Found OpenCV: /usr/local (found suitable version "3.4.3", minimum required is "3.4") 
+-- BUILD_ROS_NODE=ON
+-- Using CATKIN_DEVEL_PREFIX: /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/build/devel
+-- Using CMAKE_PREFIX_PATH: /opt/ros/melodic
+-- This workspace overlays: /opt/ros/melodic
+-- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.17", minimum required is "2") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python2
+-- Using Debian Python package layout
+-- Using empy: /usr/bin/empy
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/build/test_results
+-- Forcing gtest/gmock from source, though one was otherwise available.
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+CMake Warning (dev) at /usr/src/googletest/CMakeLists.txt:3 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googlemock/CMakeLists.txt:40 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googletest/CMakeLists.txt:47 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found PythonInterp: /usr/bin/python2 (found version "2.7.17") 
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests-2.7
+-- catkin 0.7.29
+-- BUILD_SHARED_LIBS is on
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- CONFIG_USE_ZK_ROBOT = 0
+-- CONFIG_USE_HMI_SIMULATOR = 0
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/build
++ make -j4
+Scanning dependencies of target bag_recorder_plugin
+Scanning dependencies of target bag_player_plugin
+Scanning dependencies of target hmi_plugin
+Scanning dependencies of target state_plugin
+[  3%] Building CXX object plugins/bag_recorder/CMakeFiles/bag_recorder_plugin.dir/src/BagRecorderNode.cpp.o
+[  3%] Building CXX object plugins/bag_player/CMakeFiles/bag_player_plugin.dir/src/BagPlayerNode.cpp.o
+[  4%] Building CXX object plugins/hmi/CMakeFiles/hmi_plugin.dir/src/HMINode.cpp.o
+[  6%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/Context.cpp.o
+[  8%] Building CXX object plugins/bag_recorder/CMakeFiles/bag_recorder_plugin.dir/src/record/Recorder.cpp.o
+[  9%] Building CXX object plugins/bag_player/CMakeFiles/bag_player_plugin.dir/src/player/PlayerManager.cpp.o
+[ 11%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/StateNode.cpp.o
+[ 12%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/fault/FaultState.cpp.o
+[ 14%] Building CXX object plugins/hmi/CMakeFiles/hmi_plugin.dir/src/hmi/hmi_manager.cpp.o
+[ 16%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/fault2/Fault2State.cpp.o
+[ 17%] Building CXX object plugins/bag_recorder/CMakeFiles/bag_recorder_plugin.dir/src/record/Bag.cpp.o
+[ 19%] Building CXX object plugins/bag_player/CMakeFiles/bag_player_plugin.dir/src/player/Player.cpp.o
+[ 20%] Linking CXX shared library ../../../lib/arm/libbag_recorder_plugin.so
+[ 20%] Built target bag_recorder_plugin
+[ 22%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/clean/CleaningState.cpp.o
+Scanning dependencies of target monitor_resource_plugin
+[ 24%] Building CXX object plugins/monitor_resource/CMakeFiles/monitor_resource_plugin.dir/src/ResourceMonitorNode.cpp.o
+[ 25%] Linking CXX shared library ../../../lib/arm/libbag_player_plugin.so
+[ 25%] Built target bag_player_plugin
+[ 27%] Building CXX object plugins/monitor_resource/CMakeFiles/monitor_resource_plugin.dir/src/ResourceMonitor/ResourceMonitor.cpp.o
+[ 29%] Building CXX object plugins/hmi/CMakeFiles/hmi_plugin.dir/src/hmi/manual_set.cpp.o
+[ 30%] Linking CXX shared library ../../../lib/arm/libmonitor_resource_plugin.so
+[ 30%] Built target monitor_resource_plugin
+[ 32%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/ready/ReadyState.cpp.o
+[ 33%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/shutdown/ShutdownState.cpp.o
+[ 35%] Building CXX object plugins/hmi/CMakeFiles/hmi_plugin.dir/src/hmi/auto_set.cpp.o
+[ 37%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/startup/StartupState.cpp.o
+Scanning dependencies of target monitor_topic_plugin
+[ 38%] Building CXX object plugins/monitor_topic/CMakeFiles/monitor_topic_plugin.dir/src/TopicMonitorNode.cpp.o
+[ 40%] Building CXX object plugins/monitor_topic/CMakeFiles/monitor_topic_plugin.dir/src/TopicMonitor/TopicMonitor.cpp.o
+[ 41%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/remote/RemoteState.cpp.o
+[ 43%] Linking CXX shared library ../../../lib/arm/libhmi_plugin.so
+Scanning dependencies of target sys_plugin
+[ 45%] Building CXX object plugins/system/integration/CMakeFiles/sys_plugin.dir/src/SystemNode.cpp.o
+[ 45%] Built target hmi_plugin
+Scanning dependencies of target test_sys_plugin
+[ 46%] Building CXX object plugins/system/test/CMakeFiles/test_sys_plugin.dir/src/SystemNode.cpp.o
+[ 48%] Building CXX object plugins/system/integration/CMakeFiles/sys_plugin.dir/src/log/LogManager.cpp.o
+[ 50%] Building CXX object plugins/system/test/CMakeFiles/test_sys_plugin.dir/src/log/LogManager.cpp.o
+[ 51%] Linking CXX shared library ../../../../lib/arm/libsys_plugin.so
+[ 51%] Built target sys_plugin
+Scanning dependencies of target remote_hmi_plugin
+[ 53%] Building CXX object plugins/remote_hmi/CMakeFiles/remote_hmi_plugin.dir/src/RemoteHmiNode.cpp.o
+[ 54%] Linking CXX shared library ../../../../lib/arm/libtest_sys_plugin.so
+[ 54%] Built target test_sys_plugin
+Scanning dependencies of target work_log_plugin
+[ 56%] Building CXX object plugins/work_log/CMakeFiles/work_log_plugin.dir/src/WorkLogNode.cpp.o
+[ 58%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/factory/StateFactory.cpp.o
+[ 59%] Linking CXX shared library ../../../lib/arm/libremote_hmi_plugin.so
+[ 59%] Built target remote_hmi_plugin
+[ 61%] Building CXX object plugins/work_log/CMakeFiles/work_log_plugin.dir/src/WorkLog/WorkLog.cpp.o
+[ 62%] Building CXX object plugins/state/CMakeFiles/state_plugin.dir/src/state/state/self_test/SelfTestState.cpp.o
+[ 64%] Linking CXX shared library ../../../lib/arm/libmonitor_topic_plugin.so
+[ 64%] Built target monitor_topic_plugin
+Scanning dependencies of target map_plugin
+[ 66%] Building CXX object plugins/map/CMakeFiles/map_plugin.dir/src/MapNode.cpp.o
+[ 67%] Building CXX object plugins/map/CMakeFiles/map_plugin.dir/src/map_manager/MapManager.cpp.o
+[ 69%] Linking CXX shared library ../../../lib/arm/libwork_log_plugin.so
+[ 70%] Building CXX object plugins/map/CMakeFiles/map_plugin.dir/src/map_manager/SceneHelper.cpp.o
+[ 70%] Built target work_log_plugin
+[ 72%] Building CXX object plugins/map/CMakeFiles/map_plugin.dir/src/map_manager/SceneDataHelper.cpp.o
+[ 74%] Building CXX object plugins/map/CMakeFiles/map_plugin.dir/src/map_manager/SqliteHelper.cpp.o
+[ 75%] Linking CXX shared library ../../../lib/arm/libstate_plugin.so
+Scanning dependencies of target hmi_simulator_plugin
+[ 77%] Building CXX object plugins/hmi_simulator/CMakeFiles/hmi_simulator_plugin.dir/src/hmi_sim_node.cpp.o
+[ 79%] Building CXX object plugins/map/CMakeFiles/map_plugin.dir/src/map_manager/CostmapServer.cpp.o
+[ 79%] Built target state_plugin
+Scanning dependencies of target sensor_simulator_plugin
+Scanning dependencies of target led_manager
+[ 80%] Building CXX object plugins/sensor_simulator/CMakeFiles/sensor_simulator_plugin.dir/src/sensor_sim_node.cpp.o
+[ 82%] Building CXX object plugins/led_manager/CMakeFiles/led_manager.dir/src/LedManagerNode.cpp.o
+[ 83%] Building CXX object plugins/hmi_simulator/CMakeFiles/hmi_simulator_plugin.dir/src/simulator/simulator.cpp.o
+[ 85%] Building CXX object plugins/sensor_simulator/CMakeFiles/sensor_simulator_plugin.dir/src/simulator/simulator.cpp.o
+[ 87%] Building CXX object plugins/led_manager/CMakeFiles/led_manager.dir/src/LedManager.cpp.o
+[ 88%] Building CXX object plugins/hmi_simulator/CMakeFiles/hmi_simulator_plugin.dir/src/simulator/tcp_server.cpp.o
+[ 90%] Building CXX object plugins/map/CMakeFiles/map_plugin.dir/src/map_manager/PointCloudHelper.cpp.o
+[ 91%] Linking CXX shared library ../../../lib/arm/libled_manager.so
+[ 91%] Built target led_manager
+Scanning dependencies of target ros_plugin
+[ 93%] Building CXX object plugins/ros/CMakeFiles/ros_plugin.dir/src/RosNode.cpp.o
+[ 95%] Linking CXX shared library ../../../lib/arm/libhmi_simulator_plugin.so
+[ 95%] Built target hmi_simulator_plugin
+[ 96%] Linking CXX shared library ../../../lib/arm/libsensor_simulator_plugin.so
+[ 96%] Built target sensor_simulator_plugin
+[ 98%] Linking CXX shared library ../../../lib/arm/libmap_plugin.so
+[ 98%] Built target map_plugin
+[100%] Linking CXX shared library ../../../lib/arm/libros_plugin.so
+[100%] Built target ros_plugin
++ cd ..
++ Dir=install
++ '[' -d install ']'
++ mkdir install
++ cp -r doc install
++ cp README.md install
++ cp -r lib install
++ cp -r config install
++ cp -r scripts install
++ popd
+/
++ exit
++ check_status_code
++ test -f /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/result.log
++ [[ '' = false ]]
++ generate_message
++ cd /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg.tmp ]]
++ cat /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.26:8080/job/rubby-sdk/182/'
++ echo 'Push x86_64 platform files'
++ generate_commits
++ pushd /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk
+/home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace
++ :
+++ find /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins -name install
+++ xargs -l ls
++ [[ true = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ [[ true =~ mind ]]
++ '[' -z '' ']'
++ cp -ar /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/install/README.md /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/install/config /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/install/doc /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/install/lib /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/sdk_plubins/install/scripts .
++ git add --all .
+++ git status -s
++ add_file_list='M  doc/BagPlayerNode.md
+M  doc/BagRecorderNode.md
+M  doc/HMINode.md
+M  lib/arm/libmap_plugin.so
+M  lib/arm/libstate_plugin.so'
++ '[' -z 'M  doc/BagPlayerNode.md
+M  doc/BagRecorderNode.md
+M  doc/HMINode.md
+M  lib/arm/libmap_plugin.so
+M  lib/arm/libstate_plugin.so' ']'
++ git commit -s -F /home/jenkins/jenkins_home/jobs/rubby-sdk/workspace/_commit-msg
+[master 8918cef] f04f47d remove OnMapQuery
+ 5 files changed, 24 insertions(+), 4 deletions(-)
+ rewrite lib/arm/libmap_plugin.so (64%)
+++ git config --local --get branch.master.remote
++ local remote=origin
+++ git config --local --get branch.master.merge
++ local branch=refs/heads/master
++ git push --no-verify origin HEAD:refs/heads/master
+To ssh://192.168.50.191:222/abby/integration/sdk
+   405d4df..8918cef  HEAD -> master
++ [[ -z '' ]]
++ :
+Notified JIRA that a build has completed.
+No emails were triggered.
+Finished: SUCCESS

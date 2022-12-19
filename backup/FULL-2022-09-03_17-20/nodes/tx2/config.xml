@@ -1,0 +1,35 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<slave>
+  <temporaryOfflineCause class="hudson.slaves.OfflineCause$LaunchFailed">
+    <timestamp>1662108051492</timestamp>
+  </temporaryOfflineCause>
+  <name>tx2</name>
+  <description></description>
+  <remoteFS>/home/nvidia/.jenkins</remoteFS>
+  <numExecutors>1</numExecutors>
+  <mode>EXCLUSIVE</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.31.2">
+    <host>192.168.50.101</host>
+    <port>22</port>
+    <credentialsId>7c95e6f9-fd75-45f9-8232-e034a590f65d</credentialsId>
+    <javaPath>/usr/local/java/jdk1.8.0_261/bin/java</javaPath>
+    <launchTimeoutSeconds>60</launchTimeoutSeconds>
+    <maxNumRetries>10</maxNumRetries>
+    <retryWaitTime>15</retryWaitTime>
+    <sshHostKeyVerificationStrategy class="hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy"/>
+    <tcpNoDelay>true</tcpNoDelay>
+  </launcher>
+  <label>tx2</label>
+  <nodeProperties>
+    <hudson.tools.ToolLocationNodeProperty>
+      <locations>
+        <hudson.tools.ToolLocationNodeProperty_-ToolLocation>
+          <type>hudson.model.JDK$DescriptorImpl</type>
+          <name>jdk8</name>
+          <home>/usr/local/java/jdk1.8.0_261/bin</home>
+        </hudson.tools.ToolLocationNodeProperty_-ToolLocation>
+      </locations>
+    </hudson.tools.ToolLocationNodeProperty>
+  </nodeProperties>
+</slave>

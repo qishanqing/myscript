@@ -1,0 +1,1985 @@
+Started by user [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building remotely on [8mha:////4J8M8M4pLAVsr5HsUCuoFBwpyiajxV9VrGbWj66EbYmPAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJjAEfvBs3KAAAA[0mkhadas-car3 in workspace /root/workspace/workspace/i18r-sdk
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+using credential add4e790-1baf-4d9e-81aa-2941949e9901
+Cloning the remote Git repository
+Cloning repository ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git
+ > /usr/bin/git init /root/workspace/workspace/i18r-sdk # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git
+ > /usr/bin/git --version # timeout=10
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress -- ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git # timeout=10
+ > /usr/bin/git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress -- ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse origin/release^{commit} # timeout=10
+Checking out Revision 36d10943a6e86e694d9f0ae5bb1eebee9ef967ba (origin/release)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 36d10943a6e86e694d9f0ae5bb1eebee9ef967ba # timeout=10
+Commit message: "Merge branch 'devel/evt3' into release"
+ > /usr/bin/git rev-list --no-walk d703babf5cbe65914f5af30e2514a7e3289c93c0 # timeout=10
+[i18r-sdk] $ /bin/sh -xe /tmp/jenkins8241436992594147472.sh
++ date +%Y%m%d
++ DT=20220719
++ cd /root/system/cppreview
++ echo check code style start
+check code style start
++ echo
+
++ test -f get_variable.py
++ sed -r s/\\033\[[0-9]+m//g -i get_variable.py
++ tee sdk_codesytle_check.log
++ python3 review.py --input /root/workspace/workspace/i18r-sdk
+
+Function name:-------------------------------------------------------------------------------------
+ /root/workspace/workspace/i18r-sdk/kbcontrol/include/KBTypes.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/include/KBControl.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/include/KBClient.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/include/interactive/NamePipesReceive.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/include/interactive/ReceiveObject.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/src/KBControl.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/src/KBClient.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/src/interactive/NamePipesReceive.cpp  ( 16 )
+[8] std::string IDT_KEY ("<KEYS>");
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/KBServer.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/KBMonitor/KBMonitor.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/interactive/NamePipesSend.h  ( 14 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/interactive/SendObject.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/util/Time.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/main.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/KBServer.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/KBMonitor/KBMonitor.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/interactive/NamePipesSend.cpp  ( 15 )
+[160] kb::bufs_t tmp ("<KEYS>");
+ /root/workspace/workspace/i18r-sdk/kbcontrol/example/test_kbcontrol.cpp  ( 2 )
+[13] void exit_handler (int sgn);
+ /root/workspace/workspace/i18r-sdk/server/shutdown/Shutdown.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/shutdown/Shutdown.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/startup/TimeSync.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeFactory.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/startup/TimeSync.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeLoader.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/startup/Startup.cpp  ( 13 )
+[243] void exit_handler (int sgn);
+[288] void init (int argc, char argv);
+[361] void spin ();
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeLoader.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeFactory.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/core/DataCenter.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/Topic.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/core/Node.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishList.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/core/Parameters.cpp  ( 1 )
+[14] string to_string (string val);
+ /root/workspace/workspace/i18r-sdk/server/core/Parameters.h  ( 4 )
+[17] string to_string (string val);
+[29] T toNumber (const std::string str);
+ /root/workspace/workspace/i18r-sdk/server/core/IDGenerator.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/core/VcuRegCenter.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishList.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishThreadPool.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/core/DataCenter.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/Logger.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/core/Logger.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/core/VcuRegCenter.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/Handle.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/SimpleAction.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishThreadPool.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/core/Service.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/demo/SimpleAction/Test.cpp  ( 6 )
+[75] void test1 ();
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/RecorderNode.cpp  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/RecorderNode.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/recorder/Recorder.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/recorder/Recorder.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/player/Player.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/player/Player.h  ( 5 )
+[34] T toNumber (const std::string str);
+ /root/workspace/workspace/i18r-sdk/server/nodes/detector/DetectorProxy.cpp  ( 21 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/detector/DetectorProxy.h  ( 21 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/slam/SlamProxy.cpp  ( 27 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/slam/SlamProxy.h  ( 27 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/Test.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/Test.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/CaseFactory.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/TestCase.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/CaseFactory.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestMap.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestDepth.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestCloud.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestSlam.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestVCU.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestDetector.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestNoNav.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTeachingMode.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestManualMode.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTeachingModeWithMarker.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestIDLESlamSaveMap.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestManualModeWithMarker.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestDataCollec.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestSlamWithMarker.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTrackingModeWithMarker.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTrackingMode.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/Context.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/HMIServices.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/Context.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/Lockable.h  ( 3 )
+[21] void lock ();
+[25] bool try_lock () noexcept;
+[30] void unlock ();
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/HMIServices.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/gohome/GoHome.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/Parameters.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/states.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/State.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StandbyState.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState1.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ReadyState.cpp  ( 47 )
+[371] vcu_register::working_mode  mode( vcu_register::WorkingMode::WM_ENERGY);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ShutdownState.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ManualCleaningState.h  ( 36 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StartupState.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState2.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/SelfTestState.cpp  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/SelfTestState.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState1.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState2.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ReadyState.h  ( 46 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/TrainingState.cpp  ( 22 )
+[89] control_types::AutoCleanProperty property ( control_types::AUTOCLEAN_PROPERTY::ECO);
+[292] vcu_register::working_mode  mode( vcu_register::WorkingMode::WM_ENERGY);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ConcreteState.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/AutoCleaningState.h  ( 30 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StandbyState.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/AutoCleaningState.cpp  ( 31 )
+[169] control_types::AutoCleanProperty property ( (swr::control_types::AutoCleanProperty)TransCleanWay( autoParam.clean_way));
+[792] Vem  em(VEM::MOP_OFF);
+[793] Vwm  wm(VWM::WM_COPY);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ShutdownState.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ManualCleaningState.cpp  ( 37 )
+[228] vcu_register::working_mode  mode( vcu_register::WorkingMode::WM_ENERGY);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StartupState.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/TrainingState.h  ( 21 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/factory/StateFactory.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/factory/StateFactory.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/factory/StateType.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/errorevent/ErrorEvent.cpp  ( 4 )
+[48] swr::FaultCode fault (static_cast<uint32_t>(ee.msg.code), (swr::error_types::ErrorState::ON == ee.msg.state ? swr::FaultState::FaultState_On : swr::FaultState::FaultState_Off));
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/errorevent/ErrorEvent.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/slamresult/SlamResult.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/slamresult/SlamResult.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/TransportFacade.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/TransportFacade.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/TransportMessage.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_service.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_data_session.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_ins_session.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_message.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_client.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/log/log.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/recordlog/RecordLog.h  ( 16 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/recordlog/RecordLog.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/powerdown/PowerDown.cpp  ( 9 )
+[76] vcu_register::vcu_request_power_down_flag pd (msg);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/powerdown/PowerDown.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTestRealStatus.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingMode.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/MachineParams.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingHours.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTestRealStatus.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/FaultSetting.cpp  ( 2 )
+[45] vcu_register::vcu_error_code vcuerr (static_cast<uint32_t>(error), state);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/DeviceParamsAll.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/VcuParam.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/SystemInfo.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/MachineParams.h  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/ParamTypes.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentStatus.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/SystemInfo.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentStatus.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTesting.cpp  ( 16 )
+[45] vcu_register::main_brush_motor setdata ( swch ? vcu_register::RunningState::RUN : vcu_register::RunningState::STOP);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingMode.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/FaultSetting.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTesting.h  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingHours.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/timearea/TimeArea.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/timearea/TimeArea.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/testconsumables/TestConsumables.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/titlebar/TitleBar.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/titlebar/TitleBar.cpp  ( 7 )
+[52] vcu_register::battery_power_percentage bpp (msg);
+[115] vcu_register::battery_status bs (msg);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/detectresult/DetectResult.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/detectresult/DetectResult.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgTimeout.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/GetMsgConfig.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgSrvResult.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgTimeout.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgHandle.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/GetMsgConfig.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgChecker.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgHandle.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/motioncontrol/MotionControl.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/motioncontrol/MotionControl.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/OneSwitch.h  ( 4 )
+[25] vcu_register::one_button_switch obs ( swch ? vcu_register::OneButtonSwitch::OBS_ON : vcu_register::OneButtonSwitch::OBS_OFF);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/TestingMode.h  ( 2 )
+[18] vcu_register::test_mode tmode ((vcu_register::TestMode)mode);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/PowerDown.h  ( 2 )
+[19] vcu_register::NaviConfirmsPowerDown state ( powerdown ? vcu_register::NaviConfirmsPowerDown::UI_CONFIRMS : vcu_register::NaviConfirmsPowerDown::UI_CANCELS);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/HandlePulled.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/CleaningMode.h  ( 2 )
+[20] vcu_register::cleaning_mode cmode ((vcu_register::CleaningMode)mode);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/multisystem/EnableWifi.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/multisystem/OperVolume.h  ( 3 )
+[28] vcu_register::buzzer_volume bv ( static_cast<vcu_register::BuzzerVolume>(gear));
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/reportcleanpath/ReportCleanPath.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/reportcleanpath/ReportCleanPath.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/scanqr/ScanQR.h  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/scanqr/ScanQR.cpp  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/updatethumbnail/UpdateThumbnail.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/updatethumbnail/UpdateThumbnail.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/laser/LaserProxy.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/laser/LaserProxy.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/tof/TofProxy.cpp  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/tof/TofProxy.h  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/can/CANProxy.h  ( 22 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/can/CANProxy.cpp  ( 22 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/imsee/ImseeProxy.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/imsee/ImseeProxy.h  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/InsideVCUProxy.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/InsideVCUProxy.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VCUProxy.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuSyncConfig.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuSyncConfig.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuResource.h  ( 31 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/InsideVcuNode.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuResource.cpp  ( 29 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VCUProxy.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/power_down/PowerDown.h  ( 2 )
+[21] vcu_register::navi_confirms_power_down ncpd ( (powerdown) ? vcu_register::NaviConfirmsPowerDown::UI_CONFIRMS : vcu_register::NaviConfirmsPowerDown::UI_CANCELS);
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/one_switch/OneSwitch.h  ( 4 )
+[25] vcu_register::one_button_switch obs ( swch ? vcu_register::OneButtonSwitch::OBS_ON : vcu_register::OneButtonSwitch::OBS_OFF);
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/buzzer_oper/BuzzerOper.cpp  ( 17 )
+[80] vcu_register::buzzer msg (vcu_register::Buzzer::BZ_OFF);
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/buzzer_oper/BuzzerOper.h  ( 16 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl2.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl2.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptor.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/error/VCUError.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/error/VCUError.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusChecker.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusChecker.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusMP.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusSign.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusSign.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusMP.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuSetYaml.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegNode.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegCfg.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/RepeatFilter.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuParam.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegSetBase.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegFactory.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegSetBase.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuSetYaml.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegFactory.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegFilter.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegBase.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegBase.cpp  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/fault_alarm/FaultAlarm.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/fault_alarm/AlarmCheck.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/status_info/StatusInfoOne.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/status_info/StatusInfoFive.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/status_info/StatusInfoSix.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/marker/MarkerProxy.h  ( 33 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/marker/MarkerProxy.cpp  ( 34 )
+[324] marker_srv::MarkerResultSrv mkRlt (res, tm);
+[346] PtrImseeImg pimg (new imsee_types::CImseeImage( msg.time, msg.left.clone(), msg.right.clone(), msg.fill_light));
+[445] vcu_register::light_belt setdata ( vcu_register::LightBelt::LB_ALL_LIGHTS_OFF);
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/CloudNode.h  ( 48 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/logger_define.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/CloudNode.cpp  ( 52 )
+[393] cloud::GetMachineConfigResponse resp (msg);
+[737] cloud::DownloadProgressReport rpt (msg);
+[762] cloud::ServiceLogRequest req (msg);
+[1343] std::unique_lock<std::mutex> lck (mtxConntected, std::defer_lock);
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/test/tlv_test.cpp  ( 4 )
+[13] void testResourceInfo ();
+[37] swr::cloud::ResourceInfoRequest reqRecv (msg);
+[71] void testResourceCommand ();
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/test/modem_simulator.cpp  ( 7 )
+[87] WorkRunsRequest req (msg);
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/Data.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPClient.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPServer.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPClient.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TLVMessage.h  ( 17 )
+[85] std::uint64_t htonll (std::uint64_t data);
+[100] std::uint64_t ntohll (std::uint64_t data);
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPConnection.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPConnection.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPServer.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/CloudMessage.h  ( 1 )
+[26] std::shared_ptr<TLVMessage> toTLVMessage () = 0;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/Topic.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/tlv_msgs.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourceExecuteResponse.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ServiceLogResponse.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigWorkTimeResponse.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourcePushRequest.h  ( 1 )
+[95] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/UploadProgressReport.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigMachineRequest.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/DownloadProgressReport.h  ( 1 )
+[86] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigSiteInfoResponse.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigWorkTimeRequest.h  ( 1 )
+[91] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ServiceLogRequest.h  ( 1 )
+[66] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourceExecuteRequest.h  ( 1 )
+[89] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigSiteInfoRequest.h  ( 1 )
+[66] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigMachineResponse.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourcePushResponse.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapRemoveResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceDownloadRequest.h  ( 1 )
+[42] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetSignalStrengthResponse.h  ( 1 )
+[77] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapRemoveRequest.h  ( 1 )
+[51] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceCommandRequest.h  ( 1 )
+[65] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/EventRequest.h  ( 1 )
+[51] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceDownloadResponse.h  ( 1 )
+[58] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapTransferResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/SetPasswordResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceUploadResponse.h  ( 1 )
+[65] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetModemInfoRequest.h  ( 1 )
+[47] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/StatusRequest.h  ( 1 )
+[76] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapTransferRequest.h  ( 1 )
+[52] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetMachineConfigRequest.h  ( 1 )
+[40] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapCreateResponse.h  ( 1 )
+[65] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/EventResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceRequestRequest.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapGetResponse.h  ( 2 )
+[165] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapGetRequest.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetMachineConfigResponse.h  ( 1 )
+[94] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetPasswordResponse.h  ( 1 )
+[65] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/StatusResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/WorkRunsRequest.h  ( 1 )
+[108] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/SetPasswordRequest.h  ( 1 )
+[53] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetPasswordRequest.h  ( 1 )
+[47] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetSignalStrengthRequest.h  ( 1 )
+[47] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetModemInfoResponse.h  ( 1 )
+[83] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceInfoResponse.h  ( 1 )
+[65] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/BasicRequest.h  ( 1 )
+[70] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceInfoRequest.h  ( 1 )
+[77] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceRequestResponse.h  ( 1 )
+[65] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapCreateRequest.h  ( 1 )
+[57] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/WorkRunsResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceCommandResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/BasicResponse.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceUploadRequest.h  ( 1 )
+[59] std::shared_ptr<TLVMessage> toTLVMessage () override;
+ /root/workspace/workspace/i18r-sdk/server/nodes/hdchecker/HardwareChecker.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hdchecker/HardwareChecker.cpp  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/datacollec/DataCollecNode.h  ( 42 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/datacollec/DataCollecNode.cpp  ( 42 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/datacollec/DataHead.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/detector/DetectorProxy.cpp  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/detector/DetectorProxy.h  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/HMIServices.h  ( 32 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/HMIServices.cpp  ( 32 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/tcp_module.cpp  ( 29 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/tcp_module.h  ( 31 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_client/main.cpp  ( 2 )
+[9] void ctrlHandler (int sgn);
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_client/TestTcpClient.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_client/TestTcpClient.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_server/main.cpp  ( 2 )
+[7] void ctrlHandler (int sgn);
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_server/TestTcpServer.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_server/TestTcpServer.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/tcp_module.cpp  ( 54 )
+[561] swr::FaultCode fault (code, swr::FaultState::FaultState_On);
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/tcp_module.h  ( 55 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_client/main.cpp  ( 2 )
+[9] void ctrlHandler (int sgn);
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_client/TestTcpClient.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_client/TestTcpClient.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_server/main.cpp  ( 2 )
+[7] void ctrlHandler (int sgn);
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_server/TestTcpServer.cpp  ( 16 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_server/TestTcpServer.h  ( 22 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/laser/LaserProxy.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/laser/LaserProxy.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/tof/TofProxy.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/tof/TofProxy.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/CANProxy.h  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/CANProxy.cpp  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/adaptor/CANSimulator.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/adaptor/CANSimulator.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/adaptor/CANAdaptor.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/imsee/ImseeProxy.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/imsee/ImseeProxy.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/VCUProxy.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/VCUProxy.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator2.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator2.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUAdaptor.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusChecker.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusChecker.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusMP.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusSign.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusSign.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusMP.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/mcu_coprocessor/McuCoprocessorNode.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/mcu_coprocessor/McuCoprocessorNode.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/depth/DepthProxy.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/depth/DepthProxy.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/sensor_system/SensorSystem.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/sensor_system/SensorSystem.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/calibration/CalibrationNode.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/calibration/CalibrationNode.cpp  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/ros_wrapper/ROSWrapper.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/ros_wrapper/ROSWrapper.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/mcu_coprocessor/McuCoprocessorNode.cpp  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/mcu_coprocessor/McuCoprocessorNode.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/kb_control/KBControlProxy.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/kb_control/KBControlProxy.cpp  ( 12 )
+[25] bool check_digits (const std::string s);
+[31] bool check_xdigits (const std::string s);
+[128] sensor_types::RobotMovingMode movingMode ( sensor_types::MovingMode::SPEED_MODE);
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/Synchronizer.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/ExceptionHiding.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/SettingLoader.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/log.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/type_def.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/SettingUpdater.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/DisplayLoader.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/ExceptionHiding.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/SettingUpdater.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/Differentiator.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/swchecker/SoftwareChecker.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/swchecker/SoftwareChecker.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/MonitorNode.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/MonitorNode.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/Monitor.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/data/DataMonitor.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/data/DataMonitor.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/error_report/ErrorReportMonitor.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/error_report/ErrorReportMonitor.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/hd_resource/HardwareResourceMonitor.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/hd_resource/HardwareResourceMonitor.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/depth/DepthProxy.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/depth/DepthProxy.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/depth/PrecisionManager.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/logger_define.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/MapNode.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/MapNode.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/MapManager.cpp  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/MapManager.h  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/PriorityTaskPool.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskQueue.h  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskConfig.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/PriorityTask.hpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/PriorityTaskPool.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskQueue.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskConfig.cpp  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/CloudMapManager.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/CloudMapManager.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/SyncMapManager.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/SyncMapManager.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/local/LocalMapManager.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/local/LocalMapManager.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavProxy.cpp  ( 81 )
+[456] vcu_register::battery_power_percentage bpp (msg);
+[1384] vcu_register::working_mode wm ((vcu_register::WorkingMode)intensity);
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/RobotCommand.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavProxy.h  ( 79 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavSyncCloudConfig.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavSyncCloudConfig.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSyncConfig.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSystem.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSyncConfig.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSystem.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/emb_manager/EmbManager.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/emb_manager/EmbManager.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/calibration/CalibrationNode.h  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/calibration/CalibrationNode.cpp  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/WorkLogs.cpp  ( 14 )
+[48] int operator- (const Date dt);
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/WorkLogs.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/worklog/WorkLog.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/worklog/WorkLog.cpp  ( 18 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/ros_wrapper/ROSWrapper.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/ros_wrapper/ROSWrapper.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardTaskManager.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardHandleThread.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardTaskManager.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardHandleThread.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForward.h  ( 33 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForward.cpp  ( 33 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/TcpRecombine.h  ( 4 )
+[122] bool _send (void buf, int pkt_len, int msg_len, uint16_t seq);
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/MsgForwardTcpClient.h  ( 5 )
+[236] int _send (const char buf, int len);
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/TcpClient.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/msg_generated.h  ( 171 )
+[354] flatbuffers::String model () const;
+[357] flatbuffers::String S_N () const;
+[360] flatbuffers::String F_W_image_version () const;
+[363] flatbuffers::String F_W_version () const;
+[366] flatbuffers::String H_W_version () const;
+[389] void add_model (flatbuffers::Offset<flatbuffers::String> model);
+[392] void add_S_N (flatbuffers::Offset<flatbuffers::String> S_N);
+[395] void add_F_W_image_version (flatbuffers::Offset<flatbuffers::String> F_W_image_version);
+[398] void add_F_W_version (flatbuffers::Offset<flatbuffers::String> F_W_version);
+[401] void add_H_W_version (flatbuffers::Offset<flatbuffers::String> H_W_version);
+[673] void add_Navigation (flatbuffers::Offset<Msg::_Basic_Navigation> Navigation);
+[676] void add_Coprocessor (flatbuffers::Offset<Msg::_Basic_Coprocessor> Coprocessor);
+[679] void add_HMI (flatbuffers::Offset<Msg::_Basic_HMI> HMI);
+[713] uint16_t navId () const;
+[716] uint32_t time () const;
+[719] uint8_t content () const;
+[735] void add_navId (uint16_t navId);
+[738] void add_time (uint32_t time);
+[741] void add_content (uint8_t content);
+[788] flatbuffers::String siteCode () const;
+[791] uint16_t hlcId () const;
+[794] uint8_t slotCode () const;
+[797] flatbuffers::String routeId () const;
+[800] uint32_t startTime () const;
+[803] uint32_t endTime () const;
+[806] uint32_t usageTime () const;
+[809] uint32_t codeLength () const;
+[812] uint32_t runLength () const;
+[815] uint32_t cleanedArea () const;
+[818] uint32_t dedupCleanArea () const;
+[821] uint32_t avgSpeed () const;
+[824] uint32_t assistCount () const;
+[827] flatbuffers::String routeCode () const;
+[830] uint32_t bootCardNum () const;
+[833] flatbuffers::String iconCode () const;
+[866] void add_siteCode (flatbuffers::Offset<flatbuffers::String> siteCode);
+[869] void add_hlcId (uint16_t hlcId);
+[872] void add_slotCode (uint8_t slotCode);
+[875] void add_routeId (flatbuffers::Offset<flatbuffers::String> routeId);
+[878] void add_startTime (uint32_t startTime);
+[881] void add_endTime (uint32_t endTime);
+[884] void add_usageTime (uint32_t usageTime);
+[887] void add_codeLength (uint32_t codeLength);
+[890] void add_runLength (uint32_t runLength);
+[893] void add_cleanedArea (uint32_t cleanedArea);
+[896] void add_dedupCleanArea (uint32_t dedupCleanArea);
+[899] void add_avgSpeed (uint32_t avgSpeed);
+[902] void add_assistCount (uint32_t assistCount);
+[905] void add_routeCode (flatbuffers::Offset<flatbuffers::String> routeCode);
+[908] void add_bootCardNum (uint32_t bootCardNum);
+[911] void add_iconCode (flatbuffers::Offset<flatbuffers::String> iconCode);
+[1017] uint8_t type () const;
+[1023] flatbuffers::String hlcCode () const;
+[1032] uint32_t size () const;
+[1058] void add_type (uint8_t type);
+[1064] void add_hlcCode (flatbuffers::Offset<flatbuffers::String> hlcCode);
+[1073] void add_size (uint32_t size);
+[1140] uint8_t responseId () const;
+[1143] uint32_t progress () const;
+[1158] void add_responseId (uint8_t responseId);
+[1161] void add_progress (uint32_t progress);
+[1288] flatbuffers::String mapPath () const;
+[1291] flatbuffers::String routePath () const;
+[1294] flatbuffers::String pngPath () const;
+[1297] flatbuffers::String semanticPath () const;
+[1323] void add_mapPath (flatbuffers::Offset<flatbuffers::String> mapPath);
+[1326] void add_routePath (flatbuffers::Offset<flatbuffers::String> routePath);
+[1329] void add_pngPath (flatbuffers::Offset<flatbuffers::String> pngPath);
+[1332] void add_semanticPath (flatbuffers::Offset<flatbuffers::String> semanticPath);
+[1561] bool response () const;
+[1575] void add_response (bool response);
+[1701] flatbuffers::String bodyNum () const;
+[1704] flatbuffers::String machineName () const;
+[1707] flatbuffers::String routeName () const;
+[1731] uint8_t mapState () const;
+[1734] uint8_t pngState () const;
+[1737] uint8_t routeState () const;
+[1793] void add_bodyNum (flatbuffers::Offset<flatbuffers::String> bodyNum);
+[1796] void add_machineName (flatbuffers::Offset<flatbuffers::String> machineName);
+[1799] void add_routeName (flatbuffers::Offset<flatbuffers::String> routeName);
+[1823] void add_mapState (uint8_t mapState);
+[1826] void add_pngState (uint8_t pngState);
+[1829] void add_routeState (uint8_t routeState);
+[2023] Msg::RouteInfo routeInfo () const;
+[2038] void add_routeInfo (flatbuffers::Offset<Msg::RouteInfo> routeInfo);
+[2070] flatbuffers::Vector<flatbuffers::Offset<Msg::RouteInfo>> routeInfoList () const;
+[2090] void add_routeInfoList (flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Msg::RouteInfo>>> routeInfoList);
+[2131] flatbuffers::Vector<flatbuffers::Offset<Msg::SlotInfo>> slotInfoList () const;
+[2147] void add_slotInfoList (flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Msg::SlotInfo>>> slotInfoList);
+[2317] flatbuffers::Vector<flatbuffers::Offset<Msg::HlcInfo>> hlcInfoList () const;
+[2333] void add_hlcInfoList (flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Msg::HlcInfo>>> hlcInfoList);
+[2669] uint8_t oldSlotCode () const;
+[2672] uint8_t newSlotCode () const;
+[2702] void add_oldSlotCode (uint8_t oldSlotCode);
+[2705] void add_newSlotCode (uint8_t newSlotCode);
+[2838] uint32_t workTimeLimit () const;
+[2847] flatbuffers::String timezone () const;
+[2850] uint32_t bodyNum2 () const;
+[2856] flatbuffers::String hmiAminPwd () const;
+[2879] void add_workTimeLimit (uint32_t workTimeLimit);
+[2888] void add_timezone (flatbuffers::Offset<flatbuffers::String> timezone);
+[2891] void add_bodyNum2 (uint32_t bodyNum2);
+[2897] void add_hmiAminPwd (flatbuffers::Offset<flatbuffers::String> hmiAminPwd);
+[2966] flatbuffers::String locationName () const;
+[2969] flatbuffers::String floorName () const;
+[2972] flatbuffers::String siteName () const;
+[2996] void add_locationName (flatbuffers::Offset<flatbuffers::String> locationName);
+[2999] void add_floorName (flatbuffers::Offset<flatbuffers::String> floorName);
+[3002] void add_siteName (flatbuffers::Offset<flatbuffers::String> siteName);
+[3058] uint32_t totalWorkTime () const;
+[3061] uint32_t totalPulseCount () const;
+[3064] uint32_t totalRunLength () const;
+[3067] uint32_t totalCleanedArea () const;
+[3070] uint32_t undedupCleanedArea () const;
+[3088] void add_totalWorkTime (uint32_t totalWorkTime);
+[3091] void add_totalPulseCount (uint32_t totalPulseCount);
+[3094] void add_totalRunLength (uint32_t totalRunLength);
+[3097] void add_totalCleanedArea (uint32_t totalCleanedArea);
+[3100] void add_undedupCleanedArea (uint32_t undedupCleanedArea);
+[3138] Msg::ConfigMachine configMachine () const;
+[3141] Msg::ConfigSiteInfo configSiteInfo () const;
+[3144] Msg::ConfigVCUData configVCUData () const;
+[3163] void add_configMachine (flatbuffers::Offset<Msg::ConfigMachine> configMachine);
+[3166] void add_configSiteInfo (flatbuffers::Offset<Msg::ConfigSiteInfo> configSiteInfo);
+[3169] void add_configVCUData (flatbuffers::Offset<Msg::ConfigVCUData> configVCUData);
+[3201] uint8_t requestId () const;
+[3215] void add_requestId (uint8_t requestId);
+[3286] uint8_t logCode () const;
+[3289] flatbuffers::String logName () const;
+[3305] void add_logCode (uint8_t logCode);
+[3308] void add_logName (flatbuffers::Offset<flatbuffers::String> logName);
+[3393] flatbuffers::String taskId () const;
+[3396] Msg::Navigation any_type () const;
+[3399] void any () const;
+[3403] Msg::Basic any_as_Basic () const;
+[3406] Msg::AFI any_as_AFI () const;
+[3409] Msg::Work any_as_Work () const;
+[3412] Msg::UploadRouteDataRequest any_as_UploadRouteDataRequest () const;
+[3415] Msg::UploadRouteDataResponse any_as_UploadRouteDataResponse () const;
+[3418] Msg::CreateRoutePathRequest any_as_CreateRoutePathRequest () const;
+[3421] Msg::CreateRoutePathResponse any_as_CreateRoutePathResponse () const;
+[3424] Msg::SaveRouteRequest any_as_SaveRouteRequest () const;
+[3427] Msg::SaveRouteResponse any_as_SaveRouteResponse () const;
+[3430] Msg::GetRouteInfoRequest any_as_GetRouteInfoRequest () const;
+[3433] Msg::GetRouteInfoResponse any_as_GetRouteInfoResponse () const;
+[3436] Msg::GetHlcInfoRequest any_as_GetHlcInfoRequest () const;
+[3439] Msg::GetHlcInfoResponse any_as_GetHlcInfoResponse () const;
+[3442] Msg::GetSiteInfoRequest any_as_GetSiteInfoRequest () const;
+[3445] Msg::GetSiteInfoResponse any_as_GetSiteInfoResponse () const;
+[3448] Msg::DownloadRouteRequest any_as_DownloadRouteRequest () const;
+[3451] Msg::DownloadRouteResponse any_as_DownloadRouteResponse () const;
+[3454] Msg::DeleteRouteRequest any_as_DeleteRouteRequest () const;
+[3457] Msg::DeleteRouteResponse any_as_DeleteRouteResponse () const;
+[3460] Msg::TransferRouteRequest any_as_TransferRouteRequest () const;
+[3463] Msg::TransferRouteResponse any_as_TransferRouteResponse () const;
+[3466] Msg::ConfigRequest any_as_ConfigRequest () const;
+[3469] Msg::Config any_as_Config () const;
+[3472] Msg::LogInfoRequest any_as_LogInfoRequest () const;
+[3475] Msg::LogInfoResponse any_as_LogInfoResponse () const;
+[3478] Msg::LogRequest any_as_LogRequest () const;
+[3481] Msg::LogResponse any_as_LogResponse () const;
+[3607] void add_taskId (flatbuffers::Offset<flatbuffers::String> taskId);
+[3610] void add_any_type (Msg::Navigation any_type);
+[3613] void add_any (flatbuffers::Offset<void> any);
+ /root/workspace/workspace/i18r-sdk/server/util/log/slog.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/util/time/Time.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/util/time/Time.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/util/model_param/ModelParam.cpp  ( 9 )
+[13] bool ModelParam::open (const char filePath, bool writeFlags);
+[22] bool ModelParam::read (imsee_types::MoudleAllParam modelParam);
+[65] bool ModelParam::write (const imsee_types::MoudleAllParam modelParam);
+[221] void ModelParam::close ();
+[232] bool ModelParam::readCameraParameter ( const char name, std::map<imsee_types::Resolution, imsee_types::CameraParameter> cameraParam);
+[343] bool ModelParam::readValue (const char name, T value);
+[360] bool ModelParam::readIMUParameter (const char name, imsee_types::IMUParameter imuParam);
+[466] bool ModelParam::readModuleInfo (const char name, imsee_types::ModuleInfo moduleInfo);
+[541] bool ModelParam::readSlamParameter (const char name, imsee_types::SlamParameter slamParam);
+ /root/workspace/workspace/i18r-sdk/server/util/model_param/ModelParam.h  ( 9 )
+[19] bool open (const char filePath, bool writeFlags);
+[20] bool read (imsee_types::MoudleAllParam modelParam);
+[21] bool write (const imsee_types::MoudleAllParam modelParam);
+[22] void close ();
+[27] bool readCameraParameter ( const char name, std::map<imsee_types::Resolution, imsee_types::CameraParameter> cameraParam);
+[29] bool readValue (const char name, T value);
+[30] bool readIMUParameter (const char name, imsee_types::IMUParameter imuParam);
+[31] bool readModuleInfo (const char name, imsee_types::ModuleInfo moduleInfo);
+[32] bool readSlamParameter (const char name, imsee_types::SlamParameter slamParam);
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/swr_srvs.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamCleanPathSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamDealMapSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/GetSlamResultSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamInitSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamFinishSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetProductInfoSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetCpuFreqSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetFreeRamSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetFreeMemSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/tof/TofProductInfoSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/GetLightValueSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/GetModuleAllParamSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/GetCameraParamSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/SetLightAdjustSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/vcu/VcuRegData.h  ( 6 )
+[28] bool is_uint16 () const;
+[32] bool is_float () const;
+[36] uint16_t get_uint16 () const;
+[39] float get_float () const;
+[79] uint32_t get_data () const;
+[190] void parse ();
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/vcu/VcuRegType.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/CleaningModeSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/WorkingModeSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/TestingModeSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/SetDataSrv.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/GetDataSrv.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/navi/VirtualWallInflationRadiusSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/navi/ConfigVelocitySrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/navi/VirtualWallEnableSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/marker/StartMarkerSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/marker/MarkerResultSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetModemInfoSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ClearConfigSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/EventSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapUploadSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetSignalStrengthSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceRequestSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceUploadSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetPasswordSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapRemoveSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetMachineConfig.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/CleanMapsCacheSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/StatusSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/CheckConfigSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceCommandSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/SetPasswordSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapTransferSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapDownloadSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceInfoSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapGetSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/WorkRunsSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapCreateSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/BasicSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/exception_hiding/ExceptionFilteringSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/monitor/GetTopicRateSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/base/GetWorkStateSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/GetMapPathSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/GetRouteConfigSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/SetMapTimeSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/FirmwareDownloadSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/hmi/WorkLogDataSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/hmi/GetHMIStateSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/hmi/WorkLogListSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetCamera2OdometrySrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetImu2OdometrySrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetCamera2TofSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetCamera2LidarSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/state_provider/StateOperation.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/coprocessor/GetUltraDataSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/coprocessor/GetProductInfoSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/StartTraningModeSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/StartSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/CanControlSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/StopSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/CleaningPathSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/HomePointSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/swr_acts.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/hdtest/SelfTestAction.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/cloud/UrlDownloadAction.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/cloud/ResourceUploadAction.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/cloud/ResourceDownloadAction.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/map/MapDownloadAction.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/control/AutoModeAction.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/ota/demo/Main.cpp  ( 1 )
+
+Variable name:-------------------------------------------------------------------------------------
+ /root/workspace/workspace/i18r-sdk/kbcontrol/include/KBTypes.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/include/KBControl.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/include/KBClient.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/include/interactive/NamePipesReceive.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/include/interactive/ReceiveObject.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/src/KBControl.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/src/KBClient.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/client/src/interactive/NamePipesReceive.cpp  ( 19 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/KBServer.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/KBMonitor/KBMonitor.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/interactive/NamePipesSend.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/interactive/SendObject.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/include/util/Time.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/main.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/KBServer.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/KBMonitor/KBMonitor.cpp  ( 5 )
+[95] static std::string s_str = std::to_string(key);
+[115] int tmp_h = tmv.tv_sec / 60;
+ /root/workspace/workspace/i18r-sdk/kbcontrol/src/server/src/interactive/NamePipesSend.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/kbcontrol/example/test_kbcontrol.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/shutdown/Shutdown.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/shutdown/Shutdown.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/startup/TimeSync.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeFactory.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/startup/TimeSync.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeLoader.cpp  ( 11 )
+[26]  std::string depend_path
+[80] std::uint32_t finished_c = 0;
+ /root/workspace/workspace/i18r-sdk/server/startup/Startup.cpp  ( 34 )
+[193] auto nodes_modules = config["nodes"]["modules"];
+[373] static std::atomic_bool running_flag;
+[414] swr::util::Rate loop_rate(60);
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeLoader.h  ( 11 )
+[52]  std::string depend_path
+ /root/workspace/workspace/i18r-sdk/server/startup/NodeFactory.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/core/DataCenter.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/core/Topic.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/core/Node.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishList.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/core/Parameters.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/core/Parameters.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/core/IDGenerator.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/core/VcuRegCenter.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishList.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishThreadPool.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/DataCenter.h  ( 173 )
+ /root/workspace/workspace/i18r-sdk/server/core/Logger.h  ( 38 )
+ /root/workspace/workspace/i18r-sdk/server/core/Logger.cpp  ( 37 )
+ /root/workspace/workspace/i18r-sdk/server/core/VcuRegCenter.h  ( 282 )
+[89] swr::Service<vcu_hardware_version> get_vcu_hardware_version;
+[91] swr::Service<vcu_firmware_version> get_vcu_firmware_version;
+[93] swr::Service<vcuerial_number> get_vcuerial_number;
+[95] swr::Service<vcu_model> get_vcu_model;
+[97] swr::Service<mcu_hardware_version> get_mcu_hardware_version;
+[99] swr::Service<mcu_firmware_version> get_mcu_firmware_version;
+[101] swr::Service<mcu_serial_number> get_mcu_serial_number;
+[103] swr::Service<mcu_model> get_mcu_model;
+[105] swr::Service<charger_hardware_version> get_charger_hardware_version;
+[107] swr::Service<charger_firmware_version> get_charger_firmware_version;
+[109] swr::Service<charger_serial_number> get_charger_serial_number;
+[111] swr::Service<charger_model> get_charger_model;
+[113] swr::Service<battery_hardware_version> get_battery_hardware_version;
+[115] swr::Service<battery_firmware_version> get_battery_firmware_version;
+[117] swr::Service<battery_serial_number> get_battery_serial_number;
+[119] swr::Service<battery_model> get_battery_model;
+[121] swr::Service<rfid_hardware_version> get_rfid_hardware_version;
+[123] swr::Service<rfid_firmware_version> get_rfid_firmware_version;
+[125] swr::Service<rfid_serial_number> get_rfid_serial_number;
+[127] swr::Service<rfid_model> get_rfid_model;
+[129] swr::Service<modem_hardware_version> get_modem_hardware_version;
+[131] swr::Service<modem_firmware_version> get_modem_firmware_version;
+[133] swr::Service<modem_serial_number> get_modem_serial_number;
+[135] swr::Service<modem_model> get_modem_model;
+[139] swr::Service<customer_teaching_time> get_customer_teaching_time;
+[141] swr::Service<customer_manual_time> get_customer_manual_time;
+[143] swr::Service<customer_independent_time> get_customer_independent_time;
+[145] swr::Service<total_treach_hours> get_total_treach_hours;
+[147] swr::Service<total_manual_hours> get_total_manual_hours;
+[149] swr::Service<total_auto_hours> get_total_auto_hours;
+[151] swr::Service<vcu_request_power_down_flag> get_vcu_request_power_down_flag;
+[153] swr::Service<navigation_rw_vcu_status> get_navigation_rw_vcu_status;
+[155] swr::Service<lock_state> get_lock_state;
+[157] swr::Service<system_time_stamp> get_system_time_stamp;
+[159] swr::Service<status_info_1> get_status_info_1;
+[161] swr::Service<status_info_5> get_status_info_5;
+[163] swr::Service<left_travel_motor_current> get_left_travel_motor_current;
+[165] swr::Service<left_travel_motor_status> get_left_travel_motor_status;
+[167] swr::Service<right_travel_motor_current> get_right_travel_motor_current;
+[169] swr::Service<travel_motor_current> get_travel_motor_current;
+[171] swr::Service<right_travel_motor_status> get_right_travel_motor_status;
+[173] swr::Service<left_brush_motor_current> get_left_brush_motor_current;
+[175] swr::Service<left_brush_motor_status> get_left_brush_motor_status;
+[177] swr::Service<left_brush_motor_mos_temp> get_left_brush_motor_mos_temp;
+[179] swr::Service<right_brush_motor_current> get_right_brush_motor_current;
+[181] swr::Service<right_brush_motor_status> get_right_brush_motor_status;
+[183] swr::Service<right_brush_motor_mos_temp> get_right_brush_motor_mos_temp;
+[185] swr::Service<suction_pump_current> get_suction_pump_current;
+[187] swr::Service<suction_pump_status> get_suction_pump_status;
+[189] swr::Service<suction_pump_internal_temp> get_suction_pump_internal_temp;
+[191] swr::Service<brush_disc_thruster_current> get_brush_disc_thruster_current;
+[193] swr::Service<brush_disc_pusher_status> get_brush_disc_pusher_status;
+[195] swr::Service<wiper_wire_pusher_current> get_wiper_wire_pusher_current;
+[197] swr::Service<wiper_wire_pusher_status> get_wiper_wire_pusher_status;
+[199] swr::Service<clean_water_pump_status> get_clean_water_pump_status;
+[201] swr::Service<left_brake_assembly_status> get_left_brake_assembly_status;
+[203] swr::Service<right_brake_assembly_status> get_right_brake_assembly_status;
+[205] swr::Service<light_band_status> get_light_band_status;
+[207] swr::Service<cliff_sensor_status> get_cliff_sensor_status;
+[209] swr::Service<collision_sensor_status> get_collision_sensor_status;
+[212] swr::Service<wheel_suspension_sensor_status> get_wheel_suspension_sensor_status;
+[214] swr::Service<main_brush_motor_current> get_main_brush_motor_current;
+[216] swr::Service<main_brush_motor_status> get_main_brush_motor_status;
+[218] swr::Service<mcu_temp> get_mcu_temp;
+[220] swr::Service<wheel_odometer> get_wheel_odometer;
+[222] swr::Service<total_charging_time> get_total_charging_time;
+[224] swr::Service<total_charging_capacity> get_total_charging_capacity;
+[226] swr::Service<battery_status> get_battery_status;
+[228] swr::Service<battery_voltage> get_battery_voltage;
+[230] swr::Service<battery_current> get_battery_current;
+[232] swr::Service<bms_temp> get_bms_temp;
+[234] swr::Service<cell_temp> get_cell_temp;
+[236] swr::Service<battery_power_percentage> get_battery_power_percentage;
+[238] swr::Service<battery_voltage_gear> get_battery_voltage_gear;
+[240] swr::Service<rfid_card> get_rfid_card;
+[242] swr::Service<network_type> get_network_type;
+[244] swr::Service<cellular_mode> get_cellular_mode;
+[246] swr::Service<cellular_signal_strength> get_cellular_signal_strength;
+[248] swr::Service<wifi_signal_strength> get_wifi_signal_strength;
+[253] swr::Service<upgrade_file_download_progress> get_upgrade_file_download_progress;
+[255] swr::Service<vcu_upgrade_progress_query> get_vcu_upgrade_progress_query;
+[257] swr::Service<vcu_upgrade_request> get_vcu_upgrade_request;
+[259] swr::Service<is_the_vcu_upgrade_complete> get_is_the_vcu_upgrade_complete;
+[261] swr::Service<vcu_upgrade_file_version> get_vcu_upgrade_file_version;
+[263] swr::Service<mcu_upgrade_progress_query> get_mcu_upgrade_progress_query;
+[265] swr::Service<mcu_upgrade_request> get_mcu_upgrade_request;
+[267] swr::Service<is_mcu_upgrade_complete> get_is_mcu_upgrade_complete;
+[269] swr::Service<mcu_upgrade_file_version> get_mcu_upgrade_file_version;
+[273] swr::Service<navi_hardware_version> set_navi_hardware_version;
+[275] swr::Service<navi_firmware_version> set_navi_firmware_version;
+[277] swr::Service<copr_hardware_version> set_copr_hardware_version;
+[279] swr::Service<copr_firmware_version> set_copr_firmware_version;
+[281] swr::Service<hmi_hardware_version> set_hmi_hardware_version;
+[283] swr::Service<hmi_firmware_version> set_hmi_firmware_version;
+[285] swr::Service<navi_confirms_power_down> set_navi_confirms_power_down;
+[287] swr::Service<navi_system_self_test> set_navi_system_self_test;
+[289] swr::Service<upgrade_request> set_upgrade_request;
+[291] swr::Service<confirm_upgrade> set_confirm_upgrade;
+[293] swr::Service<navigation_fault_status_1> set_navigation_fault_status_1;
+[296] swr::Service<traveling_motors_rated_current> set_traveling_motors_rated_current;
+[299] swr::Service<traveling_motor_overload_current> set_traveling_motor_overload_current;
+[301] swr::Service<travel_motors_overload_time> set_travel_motors_overload_time;
+[304] swr::Service<traveling_motor_maximum_speed> set_traveling_motor_maximum_speed;
+[307] swr::Service<traveling_motor_forward_speed> set_traveling_motor_forward_speed;
+[309] swr::Service<travel_motor_reverse_speed> set_travel_motor_reverse_speed;
+[312] swr::Service<left_right_brush_rated_current> set_left_right_brush_rated_current;
+[315] swr::Service<left_right_brush_overload_current> set_left_right_brush_overload_current;
+[318] swr::Service<left_right_brush_overload_time> set_left_right_brush_overload_time;
+[320] swr::Service<main_brush_rated_current> set_main_brush_rated_current;
+[322] swr::Service<main_brush_overload_current> set_main_brush_overload_current;
+[324] swr::Service<main_brush_overload_time> set_main_brush_overload_time;
+[327] swr::Service<main_brush_pressure_current_l_gear> set_main_brush_pressure_current_l_gear;
+[330] swr::Service<main_brush_pressure_current_m_gear> set_main_brush_pressure_current_m_gear;
+[333] swr::Service<main_brush_pressure_current_h_gear> set_main_brush_pressure_current_h_gear;
+[335] swr::Service<brush_disc_rated_current> set_brush_disc_rated_current;
+[337] swr::Service<brush_disc_overload_current> set_brush_disc_overload_current;
+[339] swr::Service<brush_disc_overload_time> set_brush_disc_overload_time;
+[342] swr::Service<brush_disk_uplink_timing_time> set_brush_disk_uplink_timing_time;
+[344] swr::Service<brush_disc_down_timing_time> set_brush_disc_down_timing_time;
+[347] swr::Service<brush_disc_initial_lifting_speed> set_brush_disc_initial_lifting_speed;
+[350] swr::Service<brush_disc_working_lifting_speed> set_brush_disc_working_lifting_speed;
+[352] swr::Service<wiper_wire_rated_current> set_wiper_wire_rated_current;
+[354] swr::Service<wiper_wire_overload_current> set_wiper_wire_overload_current;
+[356] swr::Service<wiper_wire_overload_time> set_wiper_wire_overload_time;
+[358] swr::Service<wiper_wire_up_timing_time> set_wiper_wire_up_timing_time;
+[360] swr::Service<wiper_wire_down_timing_time> set_wiper_wire_down_timing_time;
+[363] swr::Service<wiper_wire_up_start_delay_time> set_wiper_wire_up_start_delay_time;
+[366] swr::Service<wiper_wire_back_rise_delay_time> set_wiper_wire_back_rise_delay_time;
+[368] swr::Service<suction_rated_current> set_suction_rated_current;
+[370] swr::Service<suction_overload_current> set_suction_overload_current;
+[372] swr::Service<suction_overload_time> set_suction_overload_time;
+[375] swr::Service<suction_forward_state_shutdown_delay> set_suction_forward_state_shutdown_delay;
+[378] swr::Service<suction_reverse_state_shutdown_delay> set_suction_reverse_state_shutdown_delay;
+[381] swr::Service<clean_water_water_volume_gear> set_clean_water_water_volume_gear;
+[383] swr::Service<clean_water_1_gear_flow> set_clean_water_1_gear_flow;
+[385] swr::Service<clean_water_2_gear_flow> set_clean_water_2_gear_flow;
+[387] swr::Service<battery_power_display_mode> set_battery_power_display_mode;
+[389] swr::Service<battery_1_gear_voltage> set_battery_1_gear_voltage;
+[391] swr::Service<battery_2_gear_voltage> set_battery_2_gear_voltage;
+[393] swr::Service<battery_3_gear_voltage> set_battery_3_gear_voltage;
+[395] swr::Service<battery_4_gear_voltage> set_battery_4_gear_voltage;
+[397] swr::Service<battery_5_gear_voltage> set_battery_5_gear_voltage;
+[400] swr::Service<energy_mode_suction_pump_speed> set_energy_mode_suction_pump_speed;
+[403] swr::Service<energy_mode_main_brush_pressure> set_energy_mode_main_brush_pressure;
+[405] swr::Service<energy_mode_water_volume> set_energy_mode_water_volume;
+[407] swr::Service<max_mode_travel_speed> set_max_mode_travel_speed;
+[409] swr::Service<max_mode_main_brush_pressure> set_max_mode_main_brush_pressure;
+[411] swr::Service<max_mode_water_volume> set_max_mode_water_volume;
+[413] swr::Service<enable_mop> set_enable_mop;
+[415] swr::Service<buzzer_volume> set_buzzer_volume;
+[417] swr::Service<one_button_switch> set_one_button_switch;
+[419] swr::Service<working_mode> set_working_mode;
+[421] swr::Service<cleaning_mode> set_cleaning_mode;
+[423] swr::Service<test_mode> set_test_mode;
+[425] swr::Service<brush_disc_wire_pusher> set_brush_disc_wire_pusher;
+[427] swr::Service<wiper_wire_pusher> set_wiper_wire_pusher;
+[429] swr::Service<main_brush_motor> set_main_brush_motor;
+[431] swr::Service<left_brush_motor> set_left_brush_motor;
+[433] swr::Service<right_brush_motor> set_right_brush_motor;
+[435] swr::Service<suction_pump> set_suction_pump;
+[437] swr::Service<clean_water_pump> set_clean_water_pump;
+[439] swr::Service<left_brake_assembly> set_left_brake_assembly;
+[441] swr::Service<right_brake_assembly> set_right_brake_assembly;
+[443] swr::Service<light_belt> set_light_belt;
+[445] swr::Service<buzzer> set_buzzer;
+[447] swr::Service<unlock_password_bit> set_unlock_password_bit;
+[449] swr::Service<customer_teaching_duration> set_customer_teaching_duration;
+[451] swr::Service<customer_manual_duration> set_customer_manual_duration;
+[453] swr::Service<customer_autonomy_duration> set_customer_autonomy_duration;
+[457] swr::Service<navi_hardware_version> get_navi_hardware_version;
+[459] swr::Service<navi_firmware_version> get_navi_firmware_version;
+[461] swr::Service<copr_hardware_version> get_copr_hardware_version;
+[463] swr::Service<copr_firmware_version> get_copr_firmware_version;
+[465] swr::Service<hmi_hardware_version> get_hmi_hardware_version;
+[467] swr::Service<hmi_firmware_version> get_hmi_firmware_version;
+[469] swr::Service<navi_confirms_power_down> get_navi_confirms_power_down;
+[471] swr::Service<navi_system_self_test> get_navi_system_self_test;
+[473] swr::Service<upgrade_request> get_upgrade_request;
+[475] swr::Service<confirm_upgrade> get_confirm_upgrade;
+[477] swr::Service<navigation_fault_status_1> get_navigation_fault_status_1;
+[480] swr::Service<traveling_motors_rated_current> get_traveling_motors_rated_current;
+[483] swr::Service<traveling_motor_overload_current> get_traveling_motor_overload_current;
+[485] swr::Service<travel_motors_overload_time> get_travel_motors_overload_time;
+[488] swr::Service<traveling_motor_maximum_speed> get_traveling_motor_maximum_speed;
+[491] swr::Service<traveling_motor_forward_speed> get_traveling_motor_forward_speed;
+[493] swr::Service<travel_motor_reverse_speed> get_travel_motor_reverse_speed;
+[496] swr::Service<left_right_brush_rated_current> get_left_right_brush_rated_current;
+[499] swr::Service<left_right_brush_overload_current> get_left_right_brush_overload_current;
+[502] swr::Service<left_right_brush_overload_time> get_left_right_brush_overload_time;
+[504] swr::Service<main_brush_rated_current> get_main_brush_rated_current;
+[506] swr::Service<main_brush_overload_current> get_main_brush_overload_current;
+[508] swr::Service<main_brush_overload_time> get_main_brush_overload_time;
+[511] swr::Service<main_brush_pressure_current_l_gear> get_main_brush_pressure_current_l_gear;
+[514] swr::Service<main_brush_pressure_current_m_gear> get_main_brush_pressure_current_m_gear;
+[517] swr::Service<main_brush_pressure_current_h_gear> get_main_brush_pressure_current_h_gear;
+[519] swr::Service<brush_disc_rated_current> get_brush_disc_rated_current;
+[521] swr::Service<brush_disc_overload_current> get_brush_disc_overload_current;
+[523] swr::Service<brush_disc_overload_time> get_brush_disc_overload_time;
+[526] swr::Service<brush_disk_uplink_timing_time> get_brush_disk_uplink_timing_time;
+[528] swr::Service<brush_disc_down_timing_time> get_brush_disc_down_timing_time;
+[531] swr::Service<brush_disc_initial_lifting_speed> get_brush_disc_initial_lifting_speed;
+[534] swr::Service<brush_disc_working_lifting_speed> get_brush_disc_working_lifting_speed;
+[536] swr::Service<wiper_wire_rated_current> get_wiper_wire_rated_current;
+[538] swr::Service<wiper_wire_overload_current> get_wiper_wire_overload_current;
+[540] swr::Service<wiper_wire_overload_time> get_wiper_wire_overload_time;
+[542] swr::Service<wiper_wire_up_timing_time> get_wiper_wire_up_timing_time;
+[544] swr::Service<wiper_wire_down_timing_time> get_wiper_wire_down_timing_time;
+[547] swr::Service<wiper_wire_up_start_delay_time> get_wiper_wire_up_start_delay_time;
+[550] swr::Service<wiper_wire_back_rise_delay_time> get_wiper_wire_back_rise_delay_time;
+[552] swr::Service<suction_rated_current> get_suction_rated_current;
+[554] swr::Service<suction_overload_current> get_suction_overload_current;
+[556] swr::Service<suction_overload_time> get_suction_overload_time;
+[559] swr::Service<suction_forward_state_shutdown_delay> get_suction_forward_state_shutdown_delay;
+[562] swr::Service<suction_reverse_state_shutdown_delay> get_suction_reverse_state_shutdown_delay;
+[565] swr::Service<clean_water_water_volume_gear> get_clean_water_water_volume_gear;
+[567] swr::Service<clean_water_1_gear_flow> get_clean_water_1_gear_flow;
+[569] swr::Service<clean_water_2_gear_flow> get_clean_water_2_gear_flow;
+[571] swr::Service<battery_power_display_mode> get_battery_power_display_mode;
+[573] swr::Service<battery_1_gear_voltage> get_battery_1_gear_voltage;
+[575] swr::Service<battery_2_gear_voltage> get_battery_2_gear_voltage;
+[577] swr::Service<battery_3_gear_voltage> get_battery_3_gear_voltage;
+[579] swr::Service<battery_4_gear_voltage> get_battery_4_gear_voltage;
+[581] swr::Service<battery_5_gear_voltage> get_battery_5_gear_voltage;
+[584] swr::Service<energy_mode_suction_pump_speed> get_energy_mode_suction_pump_speed;
+[587] swr::Service<energy_mode_main_brush_pressure> get_energy_mode_main_brush_pressure;
+[589] swr::Service<energy_mode_water_volume> get_energy_mode_water_volume;
+[591] swr::Service<max_mode_travel_speed> get_max_mode_travel_speed;
+[593] swr::Service<max_mode_main_brush_pressure> get_max_mode_main_brush_pressure;
+[595] swr::Service<max_mode_water_volume> get_max_mode_water_volume;
+[597] swr::Service<enable_mop> get_enable_mop;
+[599] swr::Service<buzzer_volume> get_buzzer_volume;
+[601] swr::Service<one_button_switch> get_one_button_switch;
+[603] swr::Service<working_mode> get_working_mode;
+[605] swr::Service<cleaning_mode> get_cleaning_mode;
+[607] swr::Service<test_mode> get_test_mode;
+[609] swr::Service<brush_disc_wire_pusher> get_brush_disc_wire_pusher;
+[611] swr::Service<wiper_wire_pusher> get_wiper_wire_pusher;
+[613] swr::Service<main_brush_motor> get_main_brush_motor;
+[615] swr::Service<left_brush_motor> get_left_brush_motor;
+[617] swr::Service<right_brush_motor> get_right_brush_motor;
+[619] swr::Service<suction_pump> get_suction_pump;
+[621] swr::Service<clean_water_pump> get_clean_water_pump;
+[623] swr::Service<left_brake_assembly> get_left_brake_assembly;
+[625] swr::Service<right_brake_assembly> get_right_brake_assembly;
+[627] swr::Service<light_belt> get_light_belt;
+[629] swr::Service<buzzer> get_buzzer;
+[631] swr::Service<unlock_password_bit> get_unlock_password_bit;
+[633] swr::Service<customer_teaching_duration> get_customer_teaching_duration;
+[635] swr::Service<customer_manual_duration> get_customer_manual_duration;
+[637] swr::Service<customer_autonomy_duration> get_customer_autonomy_duration;
+ /root/workspace/workspace/i18r-sdk/server/core/Handle.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/core/SimpleAction.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/core/PublishThreadPool.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/core/Service.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/demo/SimpleAction/Test.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/RecorderNode.cpp  ( 27 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/RecorderNode.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/recorder/Recorder.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/recorder/Recorder.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/player/Player.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/recorder/player/Player.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/detector/DetectorProxy.cpp  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/detector/DetectorProxy.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/slam/SlamProxy.cpp  ( 18 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/slam/SlamProxy.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/Test.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/Test.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/CaseFactory.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/TestCase.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/CaseFactory.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestMap.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestDepth.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestCloud.h  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestSlam.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestVCU.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/module/TestDetector.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestNoNav.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTeachingMode.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestManualMode.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTeachingModeWithMarker.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestIDLESlamSaveMap.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestManualModeWithMarker.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestDataCollec.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestSlamWithMarker.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTrackingModeWithMarker.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/test/cases/mode/TestTrackingMode.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/Context.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/HMIServices.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/Context.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/Lockable.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/HMIServices.cpp  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/gohome/GoHome.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/Parameters.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/states.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/State.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StandbyState.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState1.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ReadyState.cpp  ( 70 )
+[954] auto site_code = route->site_code()->str();
+[955] auto hlc_code = route->hlc_code()->str();
+[956] auto route_id = route->route_id()->str();
+[957] auto slot_code = route->slot_code();
+[1012] auto reg_id = msg->reg_id();
+[1022] std::vector<uint16_t> id_list;
+[1023] std::vector<uint16_t> data_list;
+[1055] auto msg_any = msg->any();
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ShutdownState.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ManualCleaningState.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StartupState.cpp  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState2.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/SelfTestState.cpp  ( 58 )
+[162] std::string hi_str
+[162]  std::string lo_str
+[162]  std::string all_name
+[170] std::string version_txt_path = sdkpath + "/../version.txt";
+[173] std::string package_name;
+[191] auto rdot_1 = package_name.rfind('.');
+[193] auto split_pos = package_name.rfind('_');
+[198] auto rdot_2 = package_name.rfind('.', rdot_1 - 1);
+[200] auto rdot_3 = package_name.rfind('.', rdot_2 - 1);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/SelfTestState.h  ( 12 )
+[29] std::string hi_str
+[29]  std::string lo_str
+[29]  std::string all_name
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState1.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/FaultState2.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ReadyState.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/TrainingState.cpp  ( 33 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ConcreteState.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/AutoCleaningState.h  ( 30 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StandbyState.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/AutoCleaningState.cpp  ( 54 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ShutdownState.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/ManualCleaningState.cpp  ( 59 )
+[637] auto site_code = route->site_code()->str();
+[638] auto hlc_code = route->hlc_code()->str();
+[639] auto route_id = route->route_id()->str();
+[640] auto slot_code = route->slot_code();
+[695] auto reg_id = msg->reg_id();
+[705] std::vector<uint16_t> id_list;
+[706] std::vector<uint16_t> data_list;
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/StartupState.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/state/TrainingState.h  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/factory/StateFactory.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/factory/StateFactory.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/state/factory/StateType.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/errorevent/ErrorEvent.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/errorevent/ErrorEvent.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/slamresult/SlamResult.h  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/slamresult/SlamResult.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/TransportFacade.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/TransportFacade.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/TransportMessage.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_service.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_data_session.h  ( 18 )
+[133] void SendBuffer(std::uint8_t*buffer, size_t size) {
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_ins_session.h  ( 15 )
+[132] void SendBuffer(std::uint8_t*buffer, size_t size) {
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_message.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/transport/tcp/tcp_client.h  ( 18 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/log/log.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/recordlog/RecordLog.h  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/recordlog/RecordLog.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/powerdown/PowerDown.cpp  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/powerdown/PowerDown.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTestRealStatus.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingMode.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/MachineParams.cpp  ( 24 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingHours.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTestRealStatus.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/FaultSetting.cpp  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/DeviceParamsAll.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/VcuParam.h  ( 7 )
+[21] bool GetVcuStatus(int16_t id, T& data) {
+[41] bool SetVcuParam(int16_t id, T& data) {
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/SystemInfo.cpp  ( 22 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/MachineParams.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/ParamTypes.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentStatus.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/SystemInfo.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentStatus.cpp  ( 20 )
+[69] swr::hmi_types::CoreUnit core_zero = {0};
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTesting.cpp  ( 21 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingMode.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/FaultSetting.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/EquipmentTesting.h  ( 12 )
+[43] uint16_t TransBrakeOper(BrakeOper oper);
+[44] uint16_t TransWirePusherOper(WirePusherOper oper);
+[45] uint16_t TransWaterPumpGearOper(WaterPumpGearOper oper);
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/deviceparams/WorkingHours.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/timearea/TimeArea.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/timearea/TimeArea.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/testconsumables/TestConsumables.h  ( 15 )
+[48] bool charging_plug = (BatteryStatus::B_DISCHARGING == battery.state);
+[51] bool safety_switch = (EmergencyButton::RELEASE == info1.emergency);
+[56] bool handle_position = false;
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/titlebar/TitleBar.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/titlebar/TitleBar.cpp  ( 12 )
+[75] int four_g = 0, wifi = 0;
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/detectresult/DetectResult.cpp  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/detectresult/DetectResult.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgTimeout.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/GetMsgConfig.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgSrvResult.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgTimeout.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgHandle.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/GetMsgConfig.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgChecker.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/msg/MsgHandle.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/motioncontrol/MotionControl.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/motioncontrol/MotionControl.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/OneSwitch.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/TestingMode.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/PowerDown.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/HandlePulled.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/vcuregister/CleaningMode.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/multisystem/EnableWifi.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/multisystem/OperVolume.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/reportcleanpath/ReportCleanPath.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/reportcleanpath/ReportCleanPath.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/scanqr/ScanQR.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/scanqr/ScanQR.cpp  ( 26 )
+[135] static int frame_count = FRAME_SKIP;
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/updatethumbnail/UpdateThumbnail.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hmi_services/updatethumbnail/UpdateThumbnail.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/laser/LaserProxy.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/laser/LaserProxy.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/tof/TofProxy.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/tof/TofProxy.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/can/CANProxy.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/can/CANProxy.cpp  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/imsee/ImseeProxy.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/imsee/ImseeProxy.h  ( 11 )
+[30] std::atomic_int32_t ir_light_value;
+[31] std::atomic_int32_t tx_light_value;
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/InsideVCUProxy.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/InsideVCUProxy.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VCUProxy.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuSyncConfig.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuSyncConfig.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuResource.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/InsideVcuNode.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VcuResource.cpp  ( 32 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/VCUProxy.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/power_down/PowerDown.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/one_switch/OneSwitch.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/buzzer_oper/BuzzerOper.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_oper/buzzer_oper/BuzzerOper.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl2.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl2.cpp  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptorImpl.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/adaptor/VCUAdaptor.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/error/VCUError.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/error/VCUError.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusChecker.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusChecker.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusMP.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusSign.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusSign.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/checker/ModbusMP.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuSetYaml.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegNode.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegCfg.h  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/RepeatFilter.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuParam.h  ( 8 )
+[22] bool GetVcuStatus(int16_t id, T& data) {
+[43] bool SetVcuParam(int16_t id, T& data) {
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegSetBase.h  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegFactory.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegSetBase.cpp  ( 22 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuSetYaml.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegFactory.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegFilter.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegBase.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/VcuRegBase.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/fault_alarm/FaultAlarm.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/fault_alarm/AlarmCheck.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/status_info/StatusInfoOne.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/status_info/StatusInfoFive.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/vcu/vcu_register/status_info/StatusInfoSix.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/marker/MarkerProxy.h  ( 34 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/marker/MarkerProxy.cpp  ( 26 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/CloudNode.h  ( 62 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/logger_define.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/CloudNode.cpp  ( 57 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/test/tlv_test.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/test/modem_simulator.cpp  ( 12 )
+[56] std::string DecIntToHexStr(long long num) {
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/Data.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPClient.h  ( 7 )
+[39] std::function<void(std::shared_ptr<TCPConnection>)> OnConnected;
+[40] std::function<void(std::shared_ptr<TCPConnection>)> OnDisconnected;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPServer.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPClient.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TLVMessage.h  ( 26 )
+[234] bool AppendData(uint64_t data) {
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPConnection.h  ( 18 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPConnection.cpp  ( 16 )
+[17] std::string DecIntToHexStr(long long num) {
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/tlv/TCPServer.h  ( 9 )
+[49] std::function<void(std::shared_ptr<TCPConnection>)> OnConnected;
+[50] std::function<void(std::shared_ptr<TCPConnection>)> OnDisconnected;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/CloudMessage.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/Topic.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/tlv_msgs.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourceExecuteResponse.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ServiceLogResponse.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigWorkTimeResponse.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourcePushRequest.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/UploadProgressReport.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigMachineRequest.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/DownloadProgressReport.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigSiteInfoResponse.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigWorkTimeRequest.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ServiceLogRequest.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourceExecuteRequest.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigSiteInfoRequest.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ConfigMachineResponse.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/m2n/ResourcePushResponse.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapRemoveResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceDownloadRequest.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetSignalStrengthResponse.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapRemoveRequest.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceCommandRequest.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/EventRequest.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceDownloadResponse.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapTransferResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/SetPasswordResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceUploadResponse.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetModemInfoRequest.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/StatusRequest.h  ( 26 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapTransferRequest.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetMachineConfigRequest.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapCreateResponse.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/EventResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceRequestRequest.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapGetResponse.h  ( 19 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapGetRequest.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetMachineConfigResponse.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetPasswordResponse.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/StatusResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/WorkRunsRequest.h  ( 28 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/SetPasswordRequest.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetPasswordRequest.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetSignalStrengthRequest.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/GetModemInfoResponse.h  ( 10 )
+[24] Data<std::string> SN;
+[27] Data<std::string> IMEI;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceInfoResponse.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/BasicRequest.h  ( 8 )
+[24] Data<std::string> SN;
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceInfoRequest.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceRequestResponse.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/MapCreateRequest.h  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/WorkRunsResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceCommandResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/BasicResponse.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/cloud/protocol/msg/n2m/ResourceUploadRequest.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hdchecker/HardwareChecker.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/hdchecker/HardwareChecker.cpp  ( 73 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/datacollec/DataCollecNode.h  ( 35 )
+[38] uint16_t m_uimu_max;
+[39] uint16_t m_uodometer_max;
+[42] bool m_isStart;
+[43] bool m_bTmpSave;
+[45] bool m_bsw;
+[57] std::string m_strPath;
+[58] std::string m_strTarPath;
+[60] error_types::ErrorCode m_errCode;
+[61] base_types::Time m_stamp;
+[62] YAML::Node m_config;
+[65] std::ofstream m_ofsFile;
+[67] int m_nImuCnt;
+[68] int m_nMeterCnt;
+[72] util::ThreadSafetyQueue<data_img> m_queImage;
+[73] util::ThreadSafetyQueue<data_imu> m_queImu;
+[74] util::ThreadSafetyQueue<data_radar> m_queRadar;
+[75] util::ThreadSafetyQueue<data_tof> m_queTof;
+[76] util::ThreadSafetyQueue<data_ultradar> m_queUltRadar;
+[77] util::ThreadSafetyQueue<data_odometer> m_queOdometer;
+[79] std::atomic_bool m_bSaveRunning;
+[81] std::atomic_bool m_bUplaodRunning;
+[85] std::mutex mtx_cpu;
+[86] std::condition_variable cond_cpu;
+[87] std::atomic_bool m_bCpuRunning;
+ /root/workspace/workspace/i18r-sdk/server/nodes/datacollec/DataCollecNode.cpp  ( 54 )
+[151] vcu_register::navi_hardware_version navi_v;
+[155] vcu_register::vcu_hardware_version vcu_v;
+[159] vcu_register::mcu_hardware_version muc_v;
+[284] auto safe_errcode = cfg["safe"]["errcode"];
+[308] auto function_errcode = cfg["function_opt"]["errcode"];
+[332] auto scene_errcode = cfg["scene_opt"]["errcode"];
+ /root/workspace/workspace/i18r-sdk/server/nodes/datacollec/DataHead.h  ( 9 )
+[56] uint32_t frame_id;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/detector/DetectorProxy.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/detector/DetectorProxy.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/HMIServices.h  ( 23 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/HMIServices.cpp  ( 35 )
+[147] hmi_types::RptScanQR scan_qr;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/tcp_module.cpp  ( 27 )
+[127] auto pimsee_image = std::make_shared<hmi_types::RptImseeImage>();
+[162] auto slam_map = std::make_shared<hmi_types::RptRosMap>();
+[164] size_t fu_1 = 0;
+[503]  std::shared_ptr<util::TCPMessage> request_msg
+[503]  flatbuffers::FlatBufferBuilder response_builder
+[822] std::vector<float> vec_grid;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/tcp_module.h  ( 29 )
+[74] std::shared_ptr<util::TCPMessage> request_msg
+[74]  flatbuffers::FlatBufferBuilder response_builder
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_client/main.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_client/TestTcpClient.h  ( 6 )
+[36] util::ThreadSafetyQueue<FuncRqtMsg> m_tsque;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_client/TestTcpClient.cpp  ( 15 )
+[143] auto thumbnail_path = respCleanTask->thumbnail_path()->str();
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_server/main.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_server/TestTcpServer.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module/test/tcp_server/TestTcpServer.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/tcp_module.cpp  ( 59 )
+[159] auto pimsee_image = std::make_shared<hmi_types::ReportImage>();
+[194] auto slam_map = std::make_shared<hmi_types::ReportRosMap>();
+[196] size_t negative_1 = 0;
+[525] std::vector<swr::PersonPoint> person_list;
+[542] std::vector<swr::ElevatorPoint> elevator_list;
+[649] std::shared_ptr<util::TCPMessage> request_msg
+[1528] auto clean_way = msg->clean_way();
+[1531] auto site_code = route->site_code()->str();
+[1532] auto hlc_code = route->hlc_code()->str();
+[1533] auto slot_code = route->slot_code();
+[1534] auto route_id = route->route_id()->str();
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/tcp_module.h  ( 48 )
+[131] std::shared_ptr<util::TCPMessage> request_msg
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_client/main.cpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_client/TestTcpClient.h  ( 8 )
+[47] std::vector<FuncCMD> m_cmdlist;
+[48] util::ThreadSafetyQueue<FuncCMD> m_tsque;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_client/TestTcpClient.cpp  ( 20 )
+[367] auto item_ = CreateSwitch(builder, true);
+[664] auto log_list = response->message_as_ResponseOperationRecord()->record_list();
+[699] auto route_list = response->message_as_ResponseSiteRoutes()->route_list();
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_server/main.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_server/TestTcpServer.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/hmi_services/tcp_module2/test/tcp_server/TestTcpServer.h  ( 16 )
+[117] std::atomic_bool m_report_test_status;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/laser/LaserProxy.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/laser/LaserProxy.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/tof/TofProxy.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/tof/TofProxy.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/CANProxy.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/CANProxy.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/adaptor/CANSimulator.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/adaptor/CANSimulator.h  ( 8 )
+[19] util::LoopThread *sim_t;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/can/adaptor/CANAdaptor.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/imsee/ImseeProxy.cpp  ( 11 )
+[111] imsee_types::CImseeImu imsee_imu;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/imsee/ImseeProxy.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/VCUProxy.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/VCUProxy.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator2.cpp  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator2.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUAdaptor.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/adaptor/VCUSimulator.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusChecker.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusChecker.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusMP.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusSign.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusSign.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/vcu/checker/ModbusMP.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/mcu_coprocessor/McuCoprocessorNode.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/mcu_coprocessor/McuCoprocessorNode.h  ( 5 )
+[22] util::LoopThread *sim_t;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/depth/DepthProxy.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/depth/DepthProxy.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/sensor_system/SensorSystem.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/sensor_system/SensorSystem.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/calibration/CalibrationNode.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/calibration/CalibrationNode.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/ros_wrapper/ROSWrapper.cpp  ( 11 )
+[94] float resolution_ = 0.05;
+ /root/workspace/workspace/i18r-sdk/server/nodes/simulator/ros_wrapper/ROSWrapper.h  ( 7 )
+[32] ros::Subscriber sub_pose;
+[34] ros::Publisher map_pub;
+ /root/workspace/workspace/i18r-sdk/server/nodes/mcu_coprocessor/McuCoprocessorNode.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/mcu_coprocessor/McuCoprocessorNode.h  ( 8 )
+[27] std::mutex ultras_mtx;
+ /root/workspace/workspace/i18r-sdk/server/nodes/kb_control/KBControlProxy.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/kb_control/KBControlProxy.cpp  ( 23 )
+[354] std::vector<int> err_list;
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/Synchronizer.h  ( 6 )
+[34] auto dis_switch = d_par.second->show_switch;
+[35] auto set_switch = itm->second->flow_switch;
+[46] ExDisplayData sync_data;
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/ExceptionHiding.cpp  ( 9 )
+[72] auto cur_dis = std::make_shared<DisplayLoader>(dis_path);
+[79] auto dis_differ = std::make_shared<Differentiator>(dis_ptr, cur_dis);
+[99] auto tmp_set_ptr = std::make_shared<SettingLoader>(set_path);
+[128] auto err_str = oss.str();
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/SettingLoader.h  ( 8 )
+[43] int on_num = 0;
+[44] int off_num = 0;
+[48] auto e_list = node["error_list"];
+[50] auto set_item = std::make_shared<ExSettingItem>();
+[52] auto e_item = e_list[i];
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/log.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/type_def.h  ( 9 )
+[50] std::string hmi_code;
+[51] std::vector<std::string> inner_codes;
+[52] int show_switch;
+[101] std::string inner_code;
+[102] std::string ist_code;
+[103] int reg_id;
+[104] int bit_id;
+[105] int flow_switch;
+[118] bool enable_switch;
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/SettingUpdater.h  ( 4 )
+[21]  PtrSettingLoader set_ptr
+[27] VErrList ve_list
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/DisplayLoader.h  ( 10 )
+[36] int on_num = 0;
+[37] int off_num = 0;
+[39] auto e_list = node["error_list"];
+[41] PtrExDisplayItem dis_item = std::make_shared<ExDisplayItem>();
+[43] auto e_item = e_list[i];
+[53] auto in_s = e_item[1];
+[57] auto t_in_code = in_s[j].as<std::string>();
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/ExceptionHiding.h  ( 9 )
+[32] std::string dis_path;
+[33] PtrDisplayLoader dis_ptr;
+[34] std::mutex dis_mtx;
+[36] std::string set_path;
+[37] PtrSettingLoader set_ptr;
+[38] std::mutex set_mtx;
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/SettingUpdater.cpp  ( 12 )
+[14]  PtrSettingLoader set_ptr
+[26] VErrList ve_list;
+[35] auto ret_itm = set_data.err_list.find(in_code);
+[61] auto error_list = node["error_list"];
+[86] int fail_num = 0;
+[90] uint32_t int_hex = 0;
+[98] vcu_register::vcu_error_code ve_code(int_hex, par.second);
+ /root/workspace/workspace/i18r-sdk/server/nodes/exception_hiding/Differentiator.h  ( 6 )
+[34] auto old_show = itm->second->show_switch;
+[35] auto new_show = npar.second->show_switch;
+[46] ExDisplayData diff_list;
+ /root/workspace/workspace/i18r-sdk/server/nodes/swchecker/SoftwareChecker.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/swchecker/SoftwareChecker.cpp  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/MonitorNode.cpp  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/MonitorNode.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/Monitor.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/data/DataMonitor.h  ( 15 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/data/DataMonitor.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/error_report/ErrorReportMonitor.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/error_report/ErrorReportMonitor.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/hd_resource/HardwareResourceMonitor.cpp  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/monitor/hd_resource/HardwareResourceMonitor.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/depth/DepthProxy.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/depth/DepthProxy.cpp  ( 17 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/depth/PrecisionManager.h  ( 5 )
+[38] auto l_c = low_set.count(infoSrv.info);
+[43] auto h_c = high_set.count(infoSrv.info);
+[62] Set_string low_set{"FFFFFFFFFF", "CHBTT0DAAV", "CHBTT0DABV"};
+[63] Set_string high_set{"CHBTT0DACV"};
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/logger_define.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/MapNode.cpp  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/MapNode.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/MapManager.cpp  ( 44 )
+[109] msg_types::SlotInfo A, B, C, D, E, F;
+[289] std::string route_dir = routePath + "/" + info.siteCode + "/" + info.hlcCode + "/" + info.routeCode;
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/MapManager.h  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/PriorityTaskPool.cpp  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskQueue.h  ( 22 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskConfig.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/PriorityTask.hpp  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/PriorityTaskPool.h  ( 6 )
+[34] std::mutex queue_mutex;
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskQueue.cpp  ( 69 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/task_queue/TaskConfig.cpp  ( 24 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/CloudMapManager.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/CloudMapManager.cpp  ( 36 )
+[412] std::string route_dir = routePath + "/" + info.siteCode + "/" + info.hlcCode + "/" + info.routeCode + "/";
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/SyncMapManager.cpp  ( 57 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/cloud/SyncMapManager.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/local/LocalMapManager.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/map/manager/local/LocalMapManager.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavProxy.cpp  ( 40 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/RobotCommand.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavProxy.h  ( 39 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavSyncCloudConfig.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/navigation/NavSyncCloudConfig.cpp  ( 14 )
+[91] double A = 0.0;
+[92] double B = 0.0;
+[93] double C = 0.0;
+[94] double D = 0.0;
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSyncConfig.cpp  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSystem.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSyncConfig.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/sensor_system/SensorSystem.cpp  ( 16 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/emb_manager/EmbManager.cpp  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/emb_manager/EmbManager.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/calibration/CalibrationNode.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/calibration/CalibrationNode.cpp  ( 13 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/WorkLogs.cpp  ( 27 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/WorkLogs.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/worklog/WorkLog.h  ( 16 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/work_logs/worklog/WorkLog.cpp  ( 20 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/ros_wrapper/ROSWrapper.cpp  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/ros_wrapper/ROSWrapper.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardTaskManager.cpp  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardHandleThread.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardTaskManager.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForwardHandleThread.cpp  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForward.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/MsgForward.cpp  ( 14 )
+[607] auto tmp_msg = Msg::CreateUploadRouteDataRequest(builder, msg.type, builder.CreateString(msg.siteCode), builder.CreateString(msg.hlcCode), msg.slotCode, builder.CreateString(msg.routeCode), msg.size, msg.time );
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/TcpRecombine.h  ( 13 )
+[12] uint32_t msg_len;
+[13] uint32_t pkt_len;
+[114] TCP_CALLBACK_FUNC recv_callback;
+[115] TCP_CALLBACK_FUNC send_callback;
+[118] uint32_t recv_buf_len;
+[119] uint16_t seq_wait;
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/MsgForwardTcpClient.h  ( 8 )
+[242] std::string server_ip;
+[243] uint16_t server_port;
+[245] std::mutex tcp_mutex;
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/TcpClient.h  ( 7 )
+[78] int client_sockfd;
+[82] bool is_connected;
+ /root/workspace/workspace/i18r-sdk/server/nodes/msg_forward/include/msg_generated.h  ( 110 )
+[387] flatbuffers::FlatBufferBuilder &fbb_;
+[388] flatbuffers::uoffset_t start_;
+[392] flatbuffers::Offset<flatbuffers::String> S_N
+[395] flatbuffers::Offset<flatbuffers::String> F_W_image_version
+[398] flatbuffers::Offset<flatbuffers::String> F_W_version
+[401] flatbuffers::Offset<flatbuffers::String> H_W_version
+[423] _Basic_NavigationBuilder builder_(_fbb);
+[439] auto model__ = model ? _fbb.CreateString(model) : 0;
+[440] auto S_N__ = S_N ? _fbb.CreateString(S_N) : 0;
+[441] auto F_W_image_version__ = F_W_image_version ? _fbb.CreateString(F_W_image_version) : 0;
+[442] auto F_W_version__ = F_W_version ? _fbb.CreateString(F_W_version) : 0;
+[443] auto H_W_version__ = H_W_version ? _fbb.CreateString(H_W_version) : 0;
+[673] flatbuffers::Offset<Msg::_Basic_Navigation> Navigation
+[676] flatbuffers::Offset<Msg::_Basic_Coprocessor> Coprocessor
+[679] flatbuffers::Offset<Msg::_Basic_HMI> HMI
+[982] auto siteCode__ = siteCode ? _fbb.CreateString(siteCode) : 0;
+[983] auto routeId__ = routeId ? _fbb.CreateString(routeId) : 0;
+[984] auto routeCode__ = routeCode ? _fbb.CreateString(routeCode) : 0;
+[985] auto iconCode__ = iconCode ? _fbb.CreateString(iconCode) : 0;
+[1121] auto hlcCode__ = hlcCode ? _fbb.CreateString(hlcCode) : 0;
+[1371] auto mapPath__ = mapPath ? _fbb.CreateString(mapPath) : 0;
+[1372] auto routePath__ = routePath ? _fbb.CreateString(routePath) : 0;
+[1373] auto pngPath__ = pngPath ? _fbb.CreateString(pngPath) : 0;
+[1374] auto semanticPath__ = semanticPath ? _fbb.CreateString(semanticPath) : 0;
+[1909] auto bodyNum__ = bodyNum ? _fbb.CreateString(bodyNum) : 0;
+[1910] auto machineName__ = machineName ? _fbb.CreateString(machineName) : 0;
+[1911] auto routeName__ = routeName ? _fbb.CreateString(routeName) : 0;
+[2119] auto routeInfoList__ = routeInfoList ? _fbb.CreateVector<flatbuffers::Offset<Msg::RouteInfo>>(*routeInfoList) : 0;
+[2173] auto slotInfoList__ = slotInfoList ? _fbb.CreateVector<flatbuffers::Offset<Msg::SlotInfo>>(*slotInfoList) : 0;
+[2359] auto hlcInfoList__ = hlcInfoList ? _fbb.CreateVector<flatbuffers::Offset<Msg::HlcInfo>>(*hlcInfoList) : 0;
+[2941] auto timezone__ = timezone ? _fbb.CreateString(timezone) : 0;
+[2943] auto hmiAminPwd__ = hmiAminPwd ? _fbb.CreateString(hmiAminPwd) : 0;
+[3038] auto locationName__ = locationName ? _fbb.CreateString(locationName) : 0;
+[3039] auto floorName__ = floorName ? _fbb.CreateString(floorName) : 0;
+[3040] auto siteName__ = siteName ? _fbb.CreateString(siteName) : 0;
+[3337] auto logName__ = logName ? _fbb.CreateString(logName) : 0;
+[3610] Msg::Navigation any_type
+[3645] auto taskId__ = taskId ? _fbb.CreateString(taskId) : 0;
+ /root/workspace/workspace/i18r-sdk/server/util/log/slog.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/util/time/Time.cpp  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/util/time/Time.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/util/model_param/ModelParam.cpp  ( 55 )
+[72] auto citer_left = modelParam._left_camera.find(imsee_types::Resolution::RES_640X400);
+[80] auto citer_right = modelParam._right_camera.find(imsee_types::Resolution::RES_640X400);
+ /root/workspace/workspace/i18r-sdk/server/util/model_param/ModelParam.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/swr_srvs.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamCleanPathSrv.h  ( 2 )
+[15] SlamCleanPathSrv(std::list<swr::control_types::PATH_ITEM>& path_, std::uint8_t& errorCode_) : path(path_), errorCode(errorCode_) {
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamDealMapSrv.h  ( 3 )
+[15] SlamDealMapSrv(slam_srv::SlamDealMap map_deal_, const char* map_path_) : map_deal(map_deal_), map_path(map_path_) {
+[23] slam_srv::SlamDealMap map_deal;
+[24] std::string map_path;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/GetSlamResultSrv.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamInitSrv.h  ( 4 )
+[25] SlamInitSrv(base_types::Time time_, cv::Mat pose_, slam_srv::SlamRunMoudle module_) : time(time_), pose(pose_), run_module(module_) {
+[32] SlamRunMoudle run_module;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/slam/SlamFinishSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetProductInfoSrv.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetCpuFreqSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetFreeRamSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/multi/GetFreeMemSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/tof/TofProductInfoSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/GetLightValueSrv.h  ( 2 )
+[8] int ir_light_value;
+[9] int tx_light_value;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/GetModuleAllParamSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/GetCameraParamSrv.h  ( 3 )
+[22] imsee_types::ModuleInfo robot_param;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/imsee/SetLightAdjustSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/vcu/VcuRegData.h  ( 43 )
+[562] bool power_down;
+[573] bool read_write;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/vcu/VcuRegType.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/CleaningModeSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/WorkingModeSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/TestingModeSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/SetDataSrv.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/modbus/GetDataSrv.h  ( 8 )
+[46] GetDataSrv(std::uint16_t start_id, std::size_t size = 1) {
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/navi/VirtualWallInflationRadiusSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/navi/ConfigVelocitySrv.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/navi/VirtualWallEnableSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/marker/StartMarkerSrv.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/marker/MarkerResultSrv.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetModemInfoSrv.h  ( 7 )
+[16] std::string SN;
+[19] std::string IMEI;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ClearConfigSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/EventSrv.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapUploadSrv.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetSignalStrengthSrv.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceRequestSrv.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceUploadSrv.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetPasswordSrv.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapRemoveSrv.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/GetMachineConfig.h  ( 11 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/CleanMapsCacheSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/StatusSrv.h  ( 25 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/CheckConfigSrv.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceCommandSrv.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/SetPasswordSrv.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapTransferSrv.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapDownloadSrv.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/ResourceInfoSrv.h  ( 10 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapGetSrv.h  ( 14 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/WorkRunsSrv.h  ( 27 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/MapCreateSrv.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/cloud/BasicSrv.h  ( 7 )
+[14] std::string SN;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/exception_hiding/ExceptionFilteringSrv.h  ( 2 )
+[10] uint32_t err_code;
+[12] bool flow_switch;
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/monitor/GetTopicRateSrv.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/base/GetWorkStateSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/GetMapPathSrv.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/GetRouteConfigSrv.h  ( 12 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/SetMapTimeSrv.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/map/FirmwareDownloadSrv.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/hmi/WorkLogDataSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/hmi/GetHMIStateSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/hmi/WorkLogListSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetCamera2OdometrySrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetImu2OdometrySrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetCamera2TofSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/calibration/GetCamera2LidarSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/state_provider/StateOperation.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/coprocessor/GetUltraDataSrv.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/coprocessor/GetProductInfoSrv.h  ( 7 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/StartTraningModeSrv.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/StartSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/CanControlSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/StopSrv.h  ( 1 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/CleaningPathSrv.h  ( 2 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/srv/control/HomePointSrv.h  ( 3 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/swr_acts.h  ( 0 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/hdtest/SelfTestAction.h  ( 4 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/cloud/UrlDownloadAction.h  ( 6 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/cloud/ResourceUploadAction.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/cloud/ResourceDownloadAction.h  ( 9 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/map/MapDownloadAction.h  ( 8 )
+ /root/workspace/workspace/i18r-sdk/server/msgs/act/control/AutoModeAction.h  ( 5 )
+ /root/workspace/workspace/i18r-sdk/ota/demo/Main.cpp  ( 4 )
+
+Type name:-----------------------------------------------------------------------------------------
+ base  ( 29 )
+ struct  ( 120 )
+timeval
+tm*
+sigaction
+NodeInfo_r
+operation
+statfs
+tm
+confInfo
+data_img
+data_radar
+data_ultradar
+data_imu
+data_tof
+data_odometer
+sockaddr_in
+_Basic_Navigation
+_Basic_NavigationBuilder
+_Basic_Coprocessor
+_Basic_CoprocessorBuilder
+_Basic_HMI
+_Basic_HMIBuilder
+one_reg_data
+ class  ( 398 )
+vcu_data
+vcu_one
+vcu_binary
+vcu_quaternion
+vcu_pentagram
+vcu_octet
+vcu_version
+vcu_request_power_down_flag
+navigation_rw_vcu_status
+lock_state
+status_info_1
+status_info_5
+status_info_6
+left_travel_motor_status
+travel_motor_current
+right_travel_motor_status
+left_brush_motor_current
+left_brush_motor_status
+right_brush_motor_status
+suction_pump_status
+brush_disc_pusher_status
+wiper_wire_pusher_current
+wiper_wire_pusher_status
+clean_water_pump_status
+left_brake_assembly_status
+right_brake_assembly_status
+light_band_status
+cliff_sensor_status
+collision_sensor_status
+wheel_suspension_sensor_status
+main_brush_motor_status
+wheel_odometer
+battery_status
+network_type
+cellular_mode
+vcu_upgrade_request
+mcu_upgrade_request
+is_mcu_upgrade_complete
+navi_confirms_power_down
+navi_system_self_test
+upgrade_request
+confirm_upgrade
+navigation_fault_status_1
+clean_water_water_volume_gear
+enable_mop
+buzzer_volume
+one_button_switch
+working_mode
+cleaning_mode
+test_mode
+brush_disc_wire_pusher
+wiper_wire_pusher
+main_brush_motor
+left_brush_motor
+right_brush_motor
+suction_pump
+clean_water_pump
+left_brake_assembly
+right_brake_assembly
+light_belt
+buzzer
+vcu_error_code
+ enum  ( 68 )
+ namespace  ( 63 )
+Msg
+ using  ( 229 )
+ typedef  ( 5 )
+ template  ( 7 )
+
+function: 8% (300 / 3508)
+variable: 9% (507 / 5170)
+type: 9% (85 / 919)
++ mkdir -p /mnt/ftp/release/code_style_report/20220719
++ mv sdk_codesytle_check.log /mnt/ftp/release/code_style_report/20220719/
++ echo check code style end
+check code style end
+Notified JIRA that a build has completed.
+Finished: SUCCESS

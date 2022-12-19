@@ -1,0 +1,1105 @@
+Started by user [8mha:////4Hr/xdFmTLt5KnrTe8trZK2TESQ/V/NsI0vaVi1tHUXnAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgYB/dLi1CL9qgygIcUZpYmZAFPXC9zFAAAA[0mzhangshuai
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+[EnvInject] - Preparing an environment for the build.
+[EnvInject] - Keeping Jenkins system variables.
+[EnvInject] - Keeping Jenkins build variables.
+[EnvInject] - Injecting contributions.
+Building remotely on [8mha:////4MPPEh8feJE9uNY0ThUfUuMmeXp+equSlRr0prvRJKt5AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJDAGuOCCPKAAAA[0mkhadas-car1 in workspace /root/workspace/workspace/mark-check-tools
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No emails were triggered.
+[EnvInject] - Executing scripts and injecting environment variables after the SCM step.
+[mark-check-tools] $ /bin/sh -xe /tmp/jenkins1380249631698734924.sh
++ bash /root/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20220802
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ echo i18r_product_tools/i18r_robot_check
+++ awk -F/ '{print $1"%2F"$2}'
++ CONVERT_TARGET_PROJECT=i18r_product_tools%2Fi18r_robot_check
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/i18r_product_tools%2Fi18r_robot_check
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3573    0  3573    0     0  21920      0 --:--:-- --:--:-- --:--:-- 21920100  3573    0  3573    0     0  19524      0 --:--:-- --:--:-- --:--:-- 19418
++ SUB_PROJECT_ID=552
++ TARGET_DIR=/root/workspace/workspace/mark-check-tools/i18r_robot_check
++ SOURCE_DIR=/root/workspace/workspace/mark-check-tools/infrastructurecheck
++ prepare_env
+++ uname -m
++ system_platform=aarch64
++ export COMMIT_ID_FILE=/root/workspace/workspace/mark-check-tools/_last_build_id
++ COMMIT_ID_FILE=/root/workspace/workspace/mark-check-tools/_last_build_id
++ export COMMIT_MSG_FILE=/root/workspace/workspace/mark-check-tools/_commit-msg
++ COMMIT_MSG_FILE=/root/workspace/workspace/mark-check-tools/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/root/workspace/workspace/mark-check-tools/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/root/workspace/workspace/mark-check-tools/_commit-msg.tmp
++ rm -f /root/workspace/workspace/mark-check-tools/_last_build_id
++ rm -f /root/workspace/workspace/mark-check-tools/_commit-msg
++ rm -f /root/workspace/workspace/mark-check-tools/_commit-msg.tmp
++ rm -f /root/workspace/workspace/mark-check-tools/result.log
++ CLONE_DEPTH=--depth=1
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('\''mark-check-tools'\'','\''zhangshuai/infrastructurecheck'\'','\''arm_compile'\'','\''i18r_product_tools/i18r_robot_check'\'','\''dev'\'',now(),'\''http://192.168.50.26:8080/job/mark-check-tools/19/'\'','\''khadas-car1'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ '[' true = false ']'
++ source_project_fetch
++ git clone ssh://git@192.168.50.191:222/zhangshuai/infrastructurecheck -b arm_compile --depth=1
+正克隆到 'infrastructurecheck'...
++ target_project_update
++ rm -rf /root/workspace/workspace/mark-check-tools/i18r_robot_check
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/i18r_product_tools/i18r_robot_check -b dev --depth=1
+正克隆到 'i18r_robot_check'...
++ [[ aarch64 =~ x86_64 ]]
++ [[ mark-check-tools =~ rbn ]]
++ public_project_update
++ pushd /root/system/I18RPublicBaseTypes
+~/system/I18RPublicBaseTypes ~/workspace/workspace/mark-check-tools
++ git checkout ./
++ git clean -xdf ./
++ git pull origin develop
+来自 ssh://192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes
+ * branch            develop    -> FETCH_HEAD
+已经是最新的。
++ ./install.sh
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CMAKE_INSTALL_PREFIX: /usr/local.
+-- I18R_INCLUDE_INSTALL_DIR: /usr/local/include/I18RPublicBaseTypes.
+-- CMAKE_CURRENT_SOURCE_DIR: /root/system/I18RPublicBaseTypes.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/system/I18RPublicBaseTypes/build
+Install the project...
+-- Install configuration: "Release"
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/cloud_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/old_hmi_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/swr_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Data.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ErrorInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ErrorMessage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/FormatData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/InternalErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Module.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ThreadInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Time.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/WorkStatus.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Cameara2Camera.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Lidar.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Odometry.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Tof.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Imu2Odometry.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Transform.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/cloud/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/autoClean_property.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/clean_path.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/current_type.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/drop_event.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/pose.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/robot_event.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/robot_status.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/work_mode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/work_runs.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/CalibrationImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/DepthMatrix.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/DepthPointCloud.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/LightAdjustment.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/SourceImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/class.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/detect_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/detector_param.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/error_code.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/instance.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/map.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/EulerAngle.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/Point.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/Quaternion.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/gen.sh
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImu.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgHotplug.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImu.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgParam.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameterOld.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/IMUParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/ModuleInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/MoudleAllParam.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/Resolution.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/SDebugSet.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/SlamParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/StreamType.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker/MarkerState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker/state.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/AFI.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Basic.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Config.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Log.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Route.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Work.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/BumperEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CleanEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CliffData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CliffEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CtrlType.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/DropEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/EncoderData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/LaserScan.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/PointCloud2.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/RobotChassisEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/StartStopSwitchEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthImg.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofGrayImg.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofPointCloud.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/UltraData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/UsbHotplug.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityCmd.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/DataRateState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/SystemState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/UserOperation.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/Pose.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/SlamResult.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/SlamState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorMessage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorTable.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/IceErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/error_maps.yaml
++ popd
+~/workspace/workspace/mark-check-tools
++ public_i18rutilitysubmodule_update
++ pushd /root/system/i18rutilitysubmodule
+~/system/i18rutilitysubmodule ~/workspace/workspace/mark-check-tools
++ git checkout ./
++ git clean -xdf ./
++ git pull origin develop
+来自 ssh://192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule
+ * branch            develop    -> FETCH_HEAD
+已经是最新的。
++ ./install.sh
++ popd
+~/workspace/workspace/mark-check-tools
++ project_build
++ pushd /root/workspace/workspace/mark-check-tools/infrastructurecheck
+~/workspace/workspace/mark-check-tools/infrastructurecheck ~/workspace/workspace/mark-check-tools
+++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''zhangshuai/infrastructurecheck'\'' and source_branch='\''arm_compile'\'' and target_project='\''i18r_product_tools/i18r_robot_check'\'' and target_branch='\''dev'\'' and status='\''0'\'' order by id desc limit 1;'
+++ set +x
++ version='first_commit_id
+803a5c3'
+++ awk -F ' ' '{print $2}'
+++ echo first_commit_id 803a5c3
++ version=803a5c3
+++ git log -1 --pretty=format:%h
++ first_commit_id_now=48a2bb1
++ cmdb_mysql 'update prebuild set first_commit_id='\''48a2bb1'\'' where build_url='\''http://192.168.50.26:8080/job/mark-check-tools/19/'\'';'
++ set +x
++ '[' 48a2bb1 == 803a5c3 ']'
++ bash -ex compile.sh
++ echo 'install apriltag...'
+install apriltag...
++ rm install -rf
++ cd third_party/apriltags/
++ mkdir -p build
++ cd build
++ cmake .. -DCMAKE_INSTALL_PREFIX=../../../install
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+Build type: Debug
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Using flag -std=c++11.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/build
++ make
+Scanning dependencies of target apriltagsKaess
+[  6%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/Edge.cc.o
+[ 13%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/FloatImage.cc.o
+[ 20%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/Gaussian.cc.o
+[ 26%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/GLine2D.cc.o
+[ 33%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/GLineSegment2D.cc.o
+[ 40%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/GrayModel.cc.o
+[ 46%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/Homography33.cc.o
+[ 53%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/MathUtil.cc.o
+[ 60%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/Quad.cc.o
+[ 66%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/Segment.cc.o
+[ 73%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/TagDetection.cc.o
+[ 80%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/TagDetector.cc.o
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/TagDetector.cc:152:0: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   #pragma omp parallel for
+ 
+[ 86%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/TagFamily.cc.o
+[ 93%] Building CXX object CMakeFiles/apriltagsKaess.dir/src/UnionFindSimple.cc.o
+[100%] Linking CXX shared library /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/lib/libapriltagsKaess.so
+[100%] Built target apriltagsKaess
++ make install
+[100%] Built target apriltagsKaess
+Install the project...
+-- Install configuration: "Debug"
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5_other.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/UnionFindSimple.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h9.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagFamily.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gaussian.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/pch.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Edge.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetector.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Segment.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GrayModel.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/XYWeight.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Homography33.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLine2D.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLineSegment2D.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetection.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/FloatImage.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/MathUtil.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Quad.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h9.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h7.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gridder.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11_other.h
++ echo path/to/project
+path/to/project
++ cd ../../../
++ mkdir -p build
++ cd build
++ cmake .. -DCMAKE_INSTALL_PREFIX=../install/
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+Build type: Release
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Using flag -std=c++11.
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   system
+--   filesystem
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/workspace/workspace/mark-check-tools/infrastructurecheck/build
++ make install
+Scanning dependencies of target infrastructureCheck
+[ 33%] Building CXX object CMakeFiles/infrastructureCheck.dir/src/infrastructureCheck/infrastructureCheck.cc.o
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc: In member function ‘cv::Mat infrastructureCheck::InfrastructureCheck::drawImg(const cv::Mat&)’:
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc:381:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < detections.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc: In member function ‘void infrastructureCheck::InfrastructureCheck::computePoints(const cv::Mat&, std::vector<cv::Point_<float> >&, std::vector<cv::Point3_<float> >&, float)’:
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc:607:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < tagDetections.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc: In member function ‘bool infrastructureCheck::InfrastructureCheck::compuePose(const cv::Mat&, infrastructureCheck::CameraSide, cv::Mat&, cv::Mat&, float)’:
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc:675:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < tagDetections.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~
+/root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc:714:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < vpts2.size(); i++)
+                       ~~^~~~~~~~~~~~~~
+[ 66%] Building CXX object CMakeFiles/infrastructureCheck.dir/src/infrastructureCheck/createTargetPoints.cc.o
+[100%] Linking CXX shared library ../install/lib/libinfrastructureCheck.so
+[100%] Built target infrastructureCheck
+Install the project...
+-- Install configuration: "Release"
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/infrastructureCheck
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/infrastructureCheck/infrastructureCheck.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/infrastructureCheck/createTargetPoints.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5_other.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/UnionFindSimple.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h9.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagFamily.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gaussian.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/pch.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Edge.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetector.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Segment.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GrayModel.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/XYWeight.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Homography33.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLine2D.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLineSegment2D.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetection.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/FloatImage.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/MathUtil.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Quad.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h9.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h7.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gridder.h
+-- Up-to-date: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11_other.h
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/readme.md
+-- Installing: /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/config/params.yaml
++ popd
+~/workspace/workspace/mark-check-tools
++ check_status_code
++ test -f /root/workspace/workspace/mark-check-tools/result.log
++ [[ '' = false ]]
++ generate_message
++ cd /root/workspace/workspace/mark-check-tools/infrastructurecheck
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /root/workspace/workspace/mark-check-tools/_commit-msg.tmp ]]
++ cat /root/workspace/workspace/mark-check-tools/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.26:8080/job/mark-check-tools/19/'
++ echo 'Push aarch64 platform files'
++ generate_commits
++ pushd /root/workspace/workspace/mark-check-tools/i18r_robot_check
+~/workspace/workspace/mark-check-tools/i18r_robot_check ~/workspace/workspace/mark-check-tools
+++ xargs -l ls
+++ find /root/workspace/workspace/mark-check-tools/infrastructurecheck -name install
++ install_dir_list='config
+include
+lib
+readme.md'
++ [[ mark-check-tools = true ]]
++ [[ mark-check-tools = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ xargs -i mv '{}' /root/workspace/workspace/mark-check-tools/i18r_robot_check/arm64/
++ find /root/workspace/workspace/mark-check-tools/infrastructurecheck/install -name '*.so*'
++ cp -ar /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/config /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/lib /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/readme.md .
++ git add --all .
+++ git status -s
++ add_file_list='M  arm64/libinfrastructureCheck.so.1.1.1
+M  config/params.yaml'
++ '[' -z 'M  arm64/libinfrastructureCheck.so.1.1.1
+M  config/params.yaml' ']'
++ git commit -s -F /root/workspace/workspace/mark-check-tools/_commit-msg
+[dev d2ef567] 48a2bb1 add log
+ 2 files changed, 12 insertions(+), 6 deletions(-)
+ rewrite arm64/libinfrastructureCheck.so.1.1.1 (74%)
+++ git config --local --get branch.dev.remote
++ local remote=origin
+++ git config --local --get branch.dev.merge
++ local branch=refs/heads/dev
++ git push --no-verify origin HEAD:refs/heads/dev
+To ssh://192.168.50.191:222/i18r_product_tools/i18r_robot_check
+   b19cf14..d2ef567  HEAD -> dev
++ [[ -z 48a2bb1 ]]
++ cmdb_mysql 'update prebuild set status='\''0'\'' where build_url='\''http://192.168.50.26:8080/job/mark-check-tools/19/'\'';'
++ set +x
++ [[ '' = true ]]
++ [[ '' = c405 ]]
++ [[ '' = c3566 ]]
++ check_code_style
++ pushd /root/system/cppreview
+~/system/cppreview ~/workspace/workspace/mark-check-tools/i18r_robot_check ~/workspace/workspace/mark-check-tools
++ git checkout ./
++ git clean -xdf ./
+正删除 __pycache__/
+正删除 utils/__pycache__/
++ git pull
+已经是最新的。
++ echo 'check code style start'
+check code style start
++ echo
+
++ test -f get_variable.py
++ sed -r 's/\\033\[[0-9]+m//g' -i get_variable.py
++ tee infrastructurecheck_aarch64_codesytle_check.log
++ timeout 5m python3 review.py --input /root/workspace/workspace/mark-check-tools/infrastructurecheck
+
+Function name:-------------------------------------------------------------------------------------
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Homography33.cc  ( 5 )
+[16] Eigen::Matrix3d Homography33::getH ();
+[23] void Homography33::setCorrespondences (const std::vector< std::pair<float,float> > sPts, const std::vector< std::pair<float,float> > dPts);
+[29] void Homography33::addCorrespondence (float worldx, float worldy, float imagex, float imagey);
+[163] void Homography33::compute ();
+[192] Eigen::JacobiSVD<Eigen::MatrixXd> svd (fA, Eigen::ComputeFullU | Eigen::ComputeFullV);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/TagFamily.cc  ( 4 )
+[37] void TagFamily::setErrorRecoveryBits (int b);
+[41] void TagFamily::setErrorRecoveryFraction (float v);
+[83] void TagFamily::decode (TagDetection det, unsigned long long rCode) const;
+[114] void TagFamily::printHammingDistances () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/GrayModel.cc  ( 3 )
+[16] void GrayModel::addObservation (float x, float y, float gray);
+[41] float GrayModel::interpolate (float x, float y);
+[46] void GrayModel::compute ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Segment.cc  ( 2 )
+[11] float Segment::segmentLength ();
+[15] void Segment::printSegment ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Gaussian.cc  ( 2 )
+[8] std::vector<float> Gaussian::makeGaussianFilter (float sigma, int n);
+[34] void Gaussian::convolveSymmetricCentered (const std::vector<float> a, unsigned int aoff, unsigned int alen, const std::vector<float> f, std::vector<float> r, unsigned int roff);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Edge.cc  ( 3 )
+[14] int Edge::edgeCost (float theta0, float theta1, float mag1);
+[28] void Edge::calcEdges (float theta0, int x, int y, const FloatImage theta, const FloatImage mag, std::vector<Edge> edges, size_t nEdges);
+[70] void Edge::mergeEdges (std::vector<Edge> edges, UnionFindSimple uf, float tmin[], float tmax[], float mmin[], float mmax[]);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/FloatImage.cc  ( 4 )
+[24] void FloatImage::decimateAvg ();
+[37] void FloatImage::normalize ();
+[46] void FloatImage::filterFactoredCentered (const std::vector<float> fhoriz, const std::vector<float> fvert);
+[71] void FloatImage::printMinMax () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/TagDetection.cc  ( 6 )
+[10] bool isnan (float x);
+[33] float TagDetection::getXYOrientation () const;
+[54] bool TagDetection::overlapsTooMuch (const TagDetection other) const;
+[76] Eigen::Matrix4d TagDetection::getRelativeTransform (double tag_size, double fx, double fy, double px, double py) const;
+[115] void TagDetection::getRelativeTranslationRotation (double tag_size, double fx, double fy, double px, double py, Eigen::Vector3d trans, Eigen::Matrix3d rot) const;
+[137] void TagDetection::draw (cv::Mat image) const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/GLineSegment2D.cc  ( 1 )
+[9] GLineSegment2D GLineSegment2D::lsqFitXYW (const std::vector<XYWeight> xyweight);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/MathUtil.cc  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/GLine2D.cc  ( 4 )
+[17] float GLine2D::getLineCoordinate (const std::pair<float,float> pt);
+[54] GLine2D GLine2D::lsqFitXYW (const std::vector<XYWeight> xyweights);
+[89] void GLine2D::normalizeSlope ();
+[98] void GLine2D::normalizeP ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Quad.cc  ( 3 )
+[54] void Quad::search (const FloatImage fImage, std::vector<Segment> path, Segment parent, int depth, std::vector<Quad> quads, const std::pair<float,float> opticalCenter);
+[70] GLine2D linea (std::make_pair(path[i]->getX0(),path[i]->getY0()), std::make_pair(path[i]->getX1(),path[i]->getY1()));
+[72] GLine2D lineb (std::make_pair(path[i+1]->getX0(),path[i+1]->getY0()), std::make_pair(path[i+1]->getX1(),path[i+1]->getY1()));
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/TagDetector.cc  ( 1 )
+[38] std::vector<TagDetection> TagDetector::extractTags (const cv::Mat image);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/UnionFindSimple.cc  ( 4 )
+[6] int UnionFindSimple::getRepresentative (int thisId);
+[20] void UnionFindSimple::printDataVector () const;
+[25] int UnionFindSimple::connectNodes (int aId, int bId);
+[46] void UnionFindSimple::init ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag16h5_other.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/UnionFindSimple.h  ( 4 )
+[23] int getRepresentative (int thisId);
+[29] int connectNodes (int aId, int bId);
+[31] void printDataVector () const;
+[34] void init ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag16h5.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag25h9.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/TagFamily.h  ( 4 )
+[34] void setErrorRecoveryBits (int b);
+[36] void setErrorRecoveryFraction (float v);
+[58] void decode (TagDetection det, unsigned long long rCode) const;
+[61] void printHammingDistances () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Gaussian.h  ( 2 )
+[18] std::vector<float> makeGaussianFilter (float sigma, int n);
+[31] void convolveSymmetricCentered (const std::vector<float> a, unsigned int aoff, unsigned int alen, const std::vector<float> f, std::vector<float> r, unsigned int roff);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/pch.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Edge.h  ( 3 )
+[45] int edgeCost (float theta0, float theta1, float mag1);
+[50] void calcEdges (float theta0, int x, int y, const FloatImage theta, const FloatImage mag, std::vector<Edge> edges, size_t nEdges);
+[53] void mergeEdges (std::vector<Edge> edges, UnionFindSimple uf, float tmin[], float tmax[], float mmin[], float mmax[]);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/TagDetector.h  ( 1 )
+[23] std::vector<TagDetection> extractTags (const cv::Mat image);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Segment.h  ( 15 )
+[17] float getX0 () const return x0 };
+[18] void setX0 (float newValue) x0 = newValue };
+[20] float getY0 () const return y0 };
+[21] void setY0 (float newValue) y0 = newValue };
+[23] float getX1 () const return x1 };
+[24] void setX1 (float newValue) x1 = newValue };
+[26] float getY1 () const return y1 };
+[27] void setY1 (float newValue) y1 = newValue };
+[29] float getTheta () const return theta };
+[30] void setTheta (float newValue) theta = newValue };
+[32] float getLength () const return length };
+[33] void setLength (float newValue) length = newValue };
+[36] float segmentLength ();
+[39] void printSegment ();
+[42] int getId () const return segmentId };
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/GrayModel.h  ( 3 )
+[21] void addObservation (float x, float y, float gray);
+[25] float interpolate (float x, float y);
+[28] void compute ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/XYWeight.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Homography33.h  ( 4 )
+[48] void setCorrespondences (const std::vector< std::pair<float,float> > srcPts, const std::vector< std::pair<float,float> > dstPts);
+[50] void addCorrespondence (float worldx, float worldy, float imagex, float imagey);
+[54] Eigen::Matrix3d getH ();
+[58] void compute ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/GLine2D.h  ( 4 )
+[46] float getLineCoordinate (const std::pair<float,float> p);
+[54] GLine2D lsqFitXYW (const std::vector<XYWeight> xyweights);
+[62] void normalizeSlope ();
+[63] void normalizeP ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/GLineSegment2D.h  ( 1 )
+[18] GLineSegment2D lsqFitXYW (const std::vector<XYWeight> xyweight);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/TagDetection.h  ( 5 )
+[62] float getXYOrientation () const;
+[71] bool overlapsTooMuch (const TagDetection other) const;
+[82] Eigen::Matrix4d getRelativeTransform (double tag_size, double fx, double fy, double px, double py) const;
+[87] void getRelativeTranslationRotation (double tag_size, double fx, double fy, double px, double py, Eigen::Vector3d trans, Eigen::Matrix3d rot) const;
+[90] void draw (cv::Mat image) const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/FloatImage.h  ( 11 )
+[34] float get (int x, int y) const return pixels[ywidth + x] };
+[35] void set (int x, int y, float v) pixels[ywidth + x] = v };
+[37] int getWidth () const return width };
+[38] int getHeight () const return height };
+[39] int getNumFloatImagePixels () const return widthheight };
+[40] std::vector<float> getFloatImagePixels () const return pixels };
+[43] void decimateAvg ();
+[46] void normalize ();
+[48] void filterFactoredCentered (const std::vector<float> fhoriz, const std::vector<float> fvert);
+[51] void copyToSketch (DualCoding::Sketch<T> sketch);
+[56] void printMinMax () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/MathUtil.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Quad.h  ( 1 )
+[61] void search (const FloatImage fImage, std::vector<Segment> path, Segment parent, int depth, std::vector<Quad> quads, const std::pair<float,float> opticalCenter);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag36h9.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag25h7.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag36h11.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Gridder.h  ( 7 )
+[43] void gridderInit (float x0Arg, float y0Arg, float x1Arg, float y1Arg, float ppCell);
+[70] void add (float x, float y, T object);
+[106] bool hasNext ();
+[112] T next ();
+[119] void findNext ();
+[143] void iteratorInit (float x, float y, float range);
+[175] iterator find (float x, float y, float range) return Iterator(this,x,y,range) };
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag36h11_other.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/infrastructureCheck/infrastructureCheck.h  ( 9 )
+[28] void mat2RPY (const Eigen::Matrix<T, 3, 3> m, T roll, T pitch, T yaw);
+[70] bool compuePose (const cv::Mat im, CameraSide camSide, cv::Affine3d Tcw, float minBorderDistance = 4);
+[73] cv::Mat drawImg (const cv::Mat im);
+[77] bool cameraParamsSimpleCheck (CameraParams_t camParams, std::string prefix = "leftCamera");
+[78] void computePoints (const cv::Mat im, std::vector<cv::Point2f> pts2, std::vector<cv::Point3f> pts3, float minBorderDistance = 4);
+[79] double computeRms (const std::vector<cv::Point2f> vpts2, const std::vector<cv::Point3f> vpts3, CameraSide camSide, cv::Mat rvec, cv::Mat tvec);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/infrastructureCheck/createTargetPoints.h  ( 6 )
+[11] int getGridRows () const;
+[12] int getGridCols () const;
+[13] int getTagSize () const;
+[14] int getTagSpacing () const;
+[15] cv::Point3f point (int i) const;
+[17] int gridCoordinatesToPointIdx (int row, int col) const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag16h5_other.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/UnionFindSimple.h  ( 4 )
+[23] int getRepresentative (int thisId);
+[29] int connectNodes (int aId, int bId);
+[31] void printDataVector () const;
+[34] void init ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag16h5.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag25h9.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/TagFamily.h  ( 4 )
+[34] void setErrorRecoveryBits (int b);
+[36] void setErrorRecoveryFraction (float v);
+[58] void decode (TagDetection det, unsigned long long rCode) const;
+[61] void printHammingDistances () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Gaussian.h  ( 2 )
+[18] std::vector<float> makeGaussianFilter (float sigma, int n);
+[31] void convolveSymmetricCentered (const std::vector<float> a, unsigned int aoff, unsigned int alen, const std::vector<float> f, std::vector<float> r, unsigned int roff);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/pch.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Edge.h  ( 3 )
+[45] int edgeCost (float theta0, float theta1, float mag1);
+[50] void calcEdges (float theta0, int x, int y, const FloatImage theta, const FloatImage mag, std::vector<Edge> edges, size_t nEdges);
+[53] void mergeEdges (std::vector<Edge> edges, UnionFindSimple uf, float tmin[], float tmax[], float mmin[], float mmax[]);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/TagDetector.h  ( 1 )
+[23] std::vector<TagDetection> extractTags (const cv::Mat image);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Segment.h  ( 15 )
+[17] float getX0 () const return x0 };
+[18] void setX0 (float newValue) x0 = newValue };
+[20] float getY0 () const return y0 };
+[21] void setY0 (float newValue) y0 = newValue };
+[23] float getX1 () const return x1 };
+[24] void setX1 (float newValue) x1 = newValue };
+[26] float getY1 () const return y1 };
+[27] void setY1 (float newValue) y1 = newValue };
+[29] float getTheta () const return theta };
+[30] void setTheta (float newValue) theta = newValue };
+[32] float getLength () const return length };
+[33] void setLength (float newValue) length = newValue };
+[36] float segmentLength ();
+[39] void printSegment ();
+[42] int getId () const return segmentId };
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/GrayModel.h  ( 3 )
+[21] void addObservation (float x, float y, float gray);
+[25] float interpolate (float x, float y);
+[28] void compute ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/XYWeight.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Homography33.h  ( 4 )
+[48] void setCorrespondences (const std::vector< std::pair<float,float> > srcPts, const std::vector< std::pair<float,float> > dstPts);
+[50] void addCorrespondence (float worldx, float worldy, float imagex, float imagey);
+[54] Eigen::Matrix3d getH ();
+[58] void compute ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/GLine2D.h  ( 4 )
+[46] float getLineCoordinate (const std::pair<float,float> p);
+[54] GLine2D lsqFitXYW (const std::vector<XYWeight> xyweights);
+[62] void normalizeSlope ();
+[63] void normalizeP ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/GLineSegment2D.h  ( 1 )
+[18] GLineSegment2D lsqFitXYW (const std::vector<XYWeight> xyweight);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/TagDetection.h  ( 5 )
+[62] float getXYOrientation () const;
+[71] bool overlapsTooMuch (const TagDetection other) const;
+[82] Eigen::Matrix4d getRelativeTransform (double tag_size, double fx, double fy, double px, double py) const;
+[87] void getRelativeTranslationRotation (double tag_size, double fx, double fy, double px, double py, Eigen::Vector3d trans, Eigen::Matrix3d rot) const;
+[90] void draw (cv::Mat image) const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/FloatImage.h  ( 11 )
+[34] float get (int x, int y) const return pixels[ywidth + x] };
+[35] void set (int x, int y, float v) pixels[ywidth + x] = v };
+[37] int getWidth () const return width };
+[38] int getHeight () const return height };
+[39] int getNumFloatImagePixels () const return widthheight };
+[40] std::vector<float> getFloatImagePixels () const return pixels };
+[43] void decimateAvg ();
+[46] void normalize ();
+[48] void filterFactoredCentered (const std::vector<float> fhoriz, const std::vector<float> fvert);
+[51] void copyToSketch (DualCoding::Sketch<T> sketch);
+[56] void printMinMax () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/MathUtil.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Quad.h  ( 1 )
+[61] void search (const FloatImage fImage, std::vector<Segment> path, Segment parent, int depth, std::vector<Quad> quads, const std::pair<float,float> opticalCenter);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag36h9.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag25h7.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag36h11.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Gridder.h  ( 7 )
+[43] void gridderInit (float x0Arg, float y0Arg, float x1Arg, float y1Arg, float ppCell);
+[70] void add (float x, float y, T object);
+[106] bool hasNext ();
+[112] T next ();
+[119] void findNext ();
+[143] void iteratorInit (float x, float y, float range);
+[175] iterator find (float x, float y, float range) return Iterator(this,x,y,range) };
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag36h11_other.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/examples/main.cc  ( 2 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/createTargetPoints.cc  ( 6 )
+[20] int TargetPoints::getGridRows () const;
+[24] int TargetPoints::getGridCols () const;
+[28] int TargetPoints::getTagSize () const;
+[32] int TargetPoints::getTagSpacing () const;
+[37] cv::Point3f TargetPoints::point (int i) const;
+[52] int TargetPoints::gridCoordinatesToPointIdx (int row, int col) const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc  ( 18 )
+[29] bool valid (double x1, double x2, double x);
+[36] double wrapRad (double rad, double min_deg = -20, double max_deg = 20);
+[79] void saveStereoImg (std::string path, const cv::Mat imLeft, const cv::Mat imRight);
+[86] bool saveParams (std::string path, const cv::Mat marker2Camera);
+[98] cv::FileStorage fs (camera2odoYaml, cv::FileStorage::WRITE);
+[112] cv::Vec3f project3D (cv::Point2f pt1, cv::Point2f pt2, const cv::Mat P);
+[140] double InfrastructureCheck::computeRms (const std::vector<cv::Point2f> vpts2, const std::vector<cv::Point3f> vpts3, CameraSide camSide, cv::Mat rvec, cv::Mat tvec);
+[177] bool InfrastructureCheck::cameraParamsSimpleCheck (CameraParams_t camParams, std::string prefix);
+[377] cv::Mat InfrastructureCheck::drawImg (const cv::Mat im);
+[389] bool InfrastructureCheck::compuePose (const cv::Mat im, CameraSide camSide, cv::Affine3d Tcw, float minBorderDistance);
+[572] void InfrastructureCheck::computePoints (const cv::Mat im, std::vector<cv::Point2f> pts2, std::vector<cv::Point3f> pts3, float minBorderDistance);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/infrastructureCheck/infrastructureCheck.h  ( 9 )
+[28] void mat2RPY (const Eigen::Matrix<T, 3, 3> m, T roll, T pitch, T yaw);
+[70] bool compuePose (const cv::Mat im, CameraSide camSide, cv::Affine3d Tcw, float minBorderDistance = 4);
+[73] cv::Mat drawImg (const cv::Mat im);
+[77] bool cameraParamsSimpleCheck (CameraParams_t camParams, std::string prefix = "leftCamera");
+[78] void computePoints (const cv::Mat im, std::vector<cv::Point2f> pts2, std::vector<cv::Point3f> pts3, float minBorderDistance = 4);
+[79] double computeRms (const std::vector<cv::Point2f> vpts2, const std::vector<cv::Point3f> vpts3, CameraSide camSide, cv::Mat rvec, cv::Mat tvec);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/infrastructureCheck/createTargetPoints.h  ( 6 )
+[11] int getGridRows () const;
+[12] int getGridCols () const;
+[13] int getTagSize () const;
+[14] int getTagSpacing () const;
+[15] cv::Point3f point (int i) const;
+[17] int gridCoordinatesToPointIdx (int row, int col) const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5_other.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/UnionFindSimple.h  ( 4 )
+[23] int getRepresentative (int thisId);
+[29] int connectNodes (int aId, int bId);
+[31] void printDataVector () const;
+[34] void init ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h9.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagFamily.h  ( 4 )
+[34] void setErrorRecoveryBits (int b);
+[36] void setErrorRecoveryFraction (float v);
+[58] void decode (TagDetection det, unsigned long long rCode) const;
+[61] void printHammingDistances () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gaussian.h  ( 2 )
+[18] std::vector<float> makeGaussianFilter (float sigma, int n);
+[31] void convolveSymmetricCentered (const std::vector<float> a, unsigned int aoff, unsigned int alen, const std::vector<float> f, std::vector<float> r, unsigned int roff);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/pch.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Edge.h  ( 3 )
+[45] int edgeCost (float theta0, float theta1, float mag1);
+[50] void calcEdges (float theta0, int x, int y, const FloatImage theta, const FloatImage mag, std::vector<Edge> edges, size_t nEdges);
+[53] void mergeEdges (std::vector<Edge> edges, UnionFindSimple uf, float tmin[], float tmax[], float mmin[], float mmax[]);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetector.h  ( 1 )
+[23] std::vector<TagDetection> extractTags (const cv::Mat image);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Segment.h  ( 15 )
+[17] float getX0 () const return x0 };
+[18] void setX0 (float newValue) x0 = newValue };
+[20] float getY0 () const return y0 };
+[21] void setY0 (float newValue) y0 = newValue };
+[23] float getX1 () const return x1 };
+[24] void setX1 (float newValue) x1 = newValue };
+[26] float getY1 () const return y1 };
+[27] void setY1 (float newValue) y1 = newValue };
+[29] float getTheta () const return theta };
+[30] void setTheta (float newValue) theta = newValue };
+[32] float getLength () const return length };
+[33] void setLength (float newValue) length = newValue };
+[36] float segmentLength ();
+[39] void printSegment ();
+[42] int getId () const return segmentId };
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GrayModel.h  ( 3 )
+[21] void addObservation (float x, float y, float gray);
+[25] float interpolate (float x, float y);
+[28] void compute ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/XYWeight.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Homography33.h  ( 4 )
+[48] void setCorrespondences (const std::vector< std::pair<float,float> > srcPts, const std::vector< std::pair<float,float> > dstPts);
+[50] void addCorrespondence (float worldx, float worldy, float imagex, float imagey);
+[54] Eigen::Matrix3d getH ();
+[58] void compute ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLine2D.h  ( 4 )
+[46] float getLineCoordinate (const std::pair<float,float> p);
+[54] GLine2D lsqFitXYW (const std::vector<XYWeight> xyweights);
+[62] void normalizeSlope ();
+[63] void normalizeP ();
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLineSegment2D.h  ( 1 )
+[18] GLineSegment2D lsqFitXYW (const std::vector<XYWeight> xyweight);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetection.h  ( 5 )
+[62] float getXYOrientation () const;
+[71] bool overlapsTooMuch (const TagDetection other) const;
+[82] Eigen::Matrix4d getRelativeTransform (double tag_size, double fx, double fy, double px, double py) const;
+[87] void getRelativeTranslationRotation (double tag_size, double fx, double fy, double px, double py, Eigen::Vector3d trans, Eigen::Matrix3d rot) const;
+[90] void draw (cv::Mat image) const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/FloatImage.h  ( 11 )
+[34] float get (int x, int y) const return pixels[ywidth + x] };
+[35] void set (int x, int y, float v) pixels[ywidth + x] = v };
+[37] int getWidth () const return width };
+[38] int getHeight () const return height };
+[39] int getNumFloatImagePixels () const return widthheight };
+[40] std::vector<float> getFloatImagePixels () const return pixels };
+[43] void decimateAvg ();
+[46] void normalize ();
+[48] void filterFactoredCentered (const std::vector<float> fhoriz, const std::vector<float> fvert);
+[51] void copyToSketch (DualCoding::Sketch<T> sketch);
+[56] void printMinMax () const;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/MathUtil.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Quad.h  ( 1 )
+[61] void search (const FloatImage fImage, std::vector<Segment> path, Segment parent, int depth, std::vector<Quad> quads, const std::pair<float,float> opticalCenter);
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h9.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h7.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gridder.h  ( 7 )
+[43] void gridderInit (float x0Arg, float y0Arg, float x1Arg, float y1Arg, float ppCell);
+[70] void add (float x, float y, T object);
+[106] bool hasNext ();
+[112] T next ();
+[119] void findNext ();
+[143] void iteratorInit (float x, float y, float range);
+[175] iterator find (float x, float y, float range) return Iterator(this,x,y,range) };
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11_other.h  ( 0 )
+
+Variable name:-------------------------------------------------------------------------------------
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Homography33.cc  ( 27 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/TagFamily.cc  ( 11 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/GrayModel.cc  ( 7 )
+[54] Eigen::Matrix4d Ainv;
+[62] double det_unused;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Segment.cc  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Gaussian.cc  ( 11 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Edge.cc  ( 33 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/FloatImage.cc  ( 11 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/TagDetection.cc  ( 31 )
+[76] double tag_size
+[106] Eigen::Matrix4d T;
+[121] Eigen::Matrix4d M;
+[127] Eigen::Matrix4d MT = M*T;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/GLineSegment2D.cc  ( 5 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/MathUtil.cc  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/GLine2D.cc  ( 20 )
+[55] float Cxx=0, Cyy=0, Cxy=0, Ex=0, Ey=0, mXX=0, mYY=0, mXY=0, mX=0, mY=0;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/Quad.cc  ( 25 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/TagDetector.cc  ( 75 )
+[56] int height_ = fimOrig.getHeight();
+[57] int width_ = fimOrig.getWidth();
+[155] float Ix = fimSeg.get(x+1, y) - fimSeg.get(x-1, y);
+[156] float Iy = fimSeg.get(x, y+1) - fimSeg.get(x, y-1);
+[496] Eigen::Matrix3d R;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/src/UnionFindSimple.cc  ( 8 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag16h5_other.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/UnionFindSimple.h  ( 7 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag16h5.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag25h9.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/TagFamily.h  ( 14 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Gaussian.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/pch.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Edge.h  ( 13 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/TagDetector.h  ( 2 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Segment.h  ( 6 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/GrayModel.h  ( 8 )
+[37] Eigen::Matrix4d A;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/XYWeight.h  ( 3 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Homography33.h  ( 6 )
+[65] Eigen::Matrix3d H;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/GLine2D.h  ( 4 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/GLineSegment2D.h  ( 3 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/TagDetection.h  ( 15 )
+[82] double tag_size
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/FloatImage.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/MathUtil.h  ( 12 )
+[45] double coeff_1 = M_PI/4;
+[46] double coeff_2 = 3*coeff_1;
+[47] double abs_y = fabs(y)+1e-10;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Quad.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag36h9.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag25h7.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag36h11.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Gridder.h  ( 17 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/AprilTags/Tag36h11_other.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/third_party/apriltags/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp  ( 2 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/infrastructureCheck/infrastructureCheck.h  ( 47 )
+[20] cv::Mat K;
+[21] cv::Mat D;
+[22] cv::Mat Rect;
+[23] cv::Mat P;
+[40] bool HDCameraParams = true;
+[42] double CameraParamsSacle = 1;
+[45] double F_EPS_MIN;
+[46] double F_EPS_MAX;
+[47] double CX_EPS_MIN;
+[48] double CX_EPS_MAX;
+[49] double CY_EPS_MIN;
+[50] double CY_EPS_MAX;
+[51] double BaseLine_EPS_MIN;
+[52] double BaseLine_EPS_MAX;
+[53] double C2C_DEG_THRED_MIN;
+[54] double C2C_DEG_THRED_MAX;
+[55] double Distorn_EPS_MIN;
+[56] double Distorn_EPS_MAX;
+[57] double LINE_ERR_EPS;
+[58] double MARKER_LENGTH_EPS;
+[59] double MARKER_LENGTH;
+[60] double REPRO_RMS;
+[70]  cv::Affine3d Tcw
+[72]  cv::Mat Rwc
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/infrastructureCheck/createTargetPoints.h  ( 8 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag16h5_other.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/UnionFindSimple.h  ( 7 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag16h5.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag25h9.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/TagFamily.h  ( 14 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Gaussian.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/pch.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Edge.h  ( 13 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/TagDetector.h  ( 2 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Segment.h  ( 6 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/GrayModel.h  ( 8 )
+[37] Eigen::Matrix4d A;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/XYWeight.h  ( 3 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Homography33.h  ( 6 )
+[65] Eigen::Matrix3d H;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/GLine2D.h  ( 4 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/GLineSegment2D.h  ( 3 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/TagDetection.h  ( 15 )
+[82] double tag_size
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/FloatImage.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/MathUtil.h  ( 12 )
+[45] double coeff_1 = M_PI/4;
+[46] double coeff_2 = 3*coeff_1;
+[47] double abs_y = fabs(y)+1e-10;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Quad.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag36h9.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag25h7.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag36h11.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Gridder.h  ( 17 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/include/AprilTags/Tag36h11_other.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/examples/main.cc  ( 26 )
+[51] cv::Affine3d Tcw;
+[83] auto Rcw = Tcw.linear();
+[85] Eigen::Matrix3d R;
+[143] cv::Mat Rwc;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/createTargetPoints.cc  ( 4 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/src/infrastructureCheck/infrastructureCheck.cc  ( 98 )
+[14] std::ofstream ofs_log;
+[19] static cv::Mat K1, D1;
+[20] static cv::Mat K2, D2;
+[21] static cv::Mat R1, R2;
+[24] static cv::Mat P2;
+[25] static std::string Save_PARAMS_PATH;
+[26] static cv::Mat Marker2Odo;
+[36]  double min_deg = -20
+[36]  double max_deg = 20
+[50] double x_theta
+[51] Eigen::Matrix3d Rx;
+[60] double y_theta
+[61] Eigen::Matrix3d Ry;
+[70] double z_theta
+[71] Eigen::Matrix3d Rz;
+[127] swr::imsee_types::CameraParameter left_camera
+[127]  swr::imsee_types::CameraParameter right_camera
+[127]  cv::Mat D1
+[127]  cv::Mat P1
+[127]  cv::Mat D2
+[127]  cv::Mat R2
+[163] cv::Mat R;
+[389]  cv::Affine3d Tcw
+[438]  cv::Mat Rwc
+[612] int _cols = tagCols * 2;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp  ( 2 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/infrastructureCheck/infrastructureCheck.h  ( 47 )
+[20] cv::Mat K;
+[21] cv::Mat D;
+[22] cv::Mat Rect;
+[23] cv::Mat P;
+[40] bool HDCameraParams = true;
+[42] double CameraParamsSacle = 1;
+[45] double F_EPS_MIN;
+[46] double F_EPS_MAX;
+[47] double CX_EPS_MIN;
+[48] double CX_EPS_MAX;
+[49] double CY_EPS_MIN;
+[50] double CY_EPS_MAX;
+[51] double BaseLine_EPS_MIN;
+[52] double BaseLine_EPS_MAX;
+[53] double C2C_DEG_THRED_MIN;
+[54] double C2C_DEG_THRED_MAX;
+[55] double Distorn_EPS_MIN;
+[56] double Distorn_EPS_MAX;
+[57] double LINE_ERR_EPS;
+[58] double MARKER_LENGTH_EPS;
+[59] double MARKER_LENGTH;
+[60] double REPRO_RMS;
+[70]  cv::Affine3d Tcw
+[72]  cv::Mat Rwc
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/infrastructureCheck/createTargetPoints.h  ( 8 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5_other.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/UnionFindSimple.h  ( 7 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag16h5.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h9.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagFamily.h  ( 14 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gaussian.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/pch.h  ( 0 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Edge.h  ( 13 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetector.h  ( 2 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Segment.h  ( 6 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GrayModel.h  ( 8 )
+[37] Eigen::Matrix4d A;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/XYWeight.h  ( 3 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Homography33.h  ( 6 )
+[65] Eigen::Matrix3d H;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLine2D.h  ( 4 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/GLineSegment2D.h  ( 3 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/TagDetection.h  ( 15 )
+[82] double tag_size
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/FloatImage.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/MathUtil.h  ( 12 )
+[45] double coeff_1 = M_PI/4;
+[46] double coeff_2 = 3*coeff_1;
+[47] double abs_y = fabs(y)+1e-10;
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Quad.h  ( 9 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h9.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag25h7.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11.h  ( 1 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Gridder.h  ( 17 )
+ /root/workspace/workspace/mark-check-tools/infrastructurecheck/install/include/AprilTags/Tag36h11_other.h  ( 1 )
+
+Type name:-----------------------------------------------------------------------------------------
+ base  ( 29 )
+ struct  ( 6 )
+CameraParams_t
+ class  ( 18 )
+ enum  ( 1 )
+ namespace  ( 4 )
+AprilTags
+DualCoding
+ using  ( 2 )
+ typedef  ( 2 )
+ template  ( 1 )
+
+function: 94% (278 / 295)
+variable: 11% (107 / 938)
+type: 4% (3 / 63)
++ mkdir -p /mnt/ftp/release/code_style_report/20220802
++ mv infrastructurecheck_aarch64_codesytle_check.log /mnt/ftp/release/code_style_report/20220802/
++ echo 'check code style end'
+check code style end
++ popd
+~/workspace/workspace/mark-check-tools/i18r_robot_check ~/workspace/workspace/mark-check-tools
+Notified JIRA that a build has completed.
+Email was triggered for: Success
+Sending email for trigger: Success
+Sending email to: qishanqing@indemind.cn zhangshuai@indemind.cn
+Finished: SUCCESS

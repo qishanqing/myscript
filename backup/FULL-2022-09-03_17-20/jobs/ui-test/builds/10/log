@@ -1,0 +1,394 @@
+Started by user [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building remotely on [8mha:////4MPPEh8feJE9uNY0ThUfUuMmeXp+equSlRr0prvRJKt5AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJDAGuOCCPKAAAA[0mkhadas-car1 in workspace /root/workspace/workspace/ui-test
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+using credential add4e790-1baf-4d9e-81aa-2941949e9901
+Cloning the remote Git repository
+Cloning repository ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git
+ > /usr/bin/git init /root/workspace/workspace/ui-test # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git
+ > /usr/bin/git --version # timeout=10
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress -- ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git # timeout=10
+ > /usr/bin/git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress -- ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse origin/I18R-2334^{commit} # timeout=10
+Checking out Revision 9598073f2a94db27a25f2a73b07ed24256f62aa3 (origin/I18R-2334)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 9598073f2a94db27a25f2a73b07ed24256f62aa3 # timeout=10
+Commit message: "补充"
+ > /usr/bin/git rev-list --no-walk 9598073f2a94db27a25f2a73b07ed24256f62aa3 # timeout=10
+[ui-test] $ /bin/sh -xe /tmp/jenkins6146858747692657679.sh
++ bash compile.sh
++ project_update
++ git checkout ./
++ git clean -xdf ./
++ git pull
+您当前不在一个分支上。
+请指定您要合并哪一个分支。
+详见 git-pull(1)。
+
+    git pull <远程> <分支>
+
++ git submodule update --init --recursive
+子模组 'I18RPublicBaseTypes'（http://192.168.50.191:85/AroundI18RProject/I18RPublicBaseTypes.git）未对路径 'I18RPublicBaseTypes' 注册
+子模组 'I18RSensorsSubmodule'（http://192.168.50.191:85/AroundI18RProject/I18RSensorsSubmodule.git）未对路径 'I18RSensorsSubmodule' 注册
+子模组 'i18r_robot_check'（http://192.168.50.191:85/i18r_product_tools/i18r_robot_check.git）未对路径 'i18r_robot_check' 注册
+正克隆到 '/root/workspace/workspace/ui-test/I18RPublicBaseTypes'...
+正克隆到 '/root/workspace/workspace/ui-test/I18RSensorsSubmodule'...
+正克隆到 '/root/workspace/workspace/ui-test/i18r_robot_check'...
+子模组路径 'I18RPublicBaseTypes'：检出 '4819ebb3c85807a27dbc0a974b203bb473e250ea'
+子模组路径 'I18RSensorsSubmodule'：检出 'cdaf0dd4de2e5fa72206c646c33ba4a4f748426d'
+子模组路径 'i18r_robot_check'：检出 'fe23611b11b628fe05e1caa40e8d076756300036'
++ git submodule update --remote
+子模组路径 'I18RPublicBaseTypes'：检出 'fafbbc4cd3121e882cd0a6e566d7955ea246d036'
+子模组路径 'I18RSensorsSubmodule'：检出 '28aad02919736b6d39c590f5852ecb5e700afa6a'
+子模组路径 'i18r_robot_check'：检出 '17a8b2ee6b1546a49c32407ec393bdecd73c9f12'
++ project_build
++ mkdir -p build install/Data install/lib
++ cd build
++ qmake ..
+Info: creating stash file /root/workspace/workspace/ui-test/build/.qmake.stash
++ make -j4
+cd client/ && ( test -e Makefile || /usr/lib/qt5/bin/qmake -o Makefile /root/workspace/workspace/ui-test/client/client.pro ) && make -f Makefile 
+make[1]: 进入目录“/root/workspace/workspace/ui-test/build/client”
+/usr/lib/qt5/bin/uic ../../client/mainwindow.ui -o ui_mainwindow.h
+/usr/lib/qt5/bin/uic ../../client/mainform.ui -o ui_mainform.h
+/usr/lib/qt5/bin/uic ../../client/modules/intelligentclean.ui -o ui_intelligentclean.h
+/usr/lib/qt5/bin/uic ../../client/messagewindow.ui -o ui_messagewindow.h
+/usr/lib/qt5/bin/uic ../../client/modules/timedtask.ui -o ui_timedtask.h
+/usr/lib/qt5/bin/uic ../../client/modules/menuform.ui -o ui_menuform.h
+/usr/lib/qt5/bin/uic ../../client/keyboardform.ui -o ui_keyboardform.h
+/usr/lib/qt5/bin/uic ../../client/modules/mapsourceform.ui -o ui_mapsourceform.h
+../../client/modules/intelligentclean.ui: Warning: Z-order assignment: 'horizontalSpacer_8' is not a valid widget.
+../../client/modules/intelligentclean.ui: Warning: Z-order assignment: 'horizontalSpacer_9' is not a valid widget.
+../../client/modules/intelligentclean.ui: Warning: Z-order assignment: 'horizontalSpacer_13' is not a valid widget.
+../../client/modules/intelligentclean.ui: Warning: Z-order assignment: 'horizontalSpacer_15' is not a valid widget.
+../../client/modules/intelligentclean.ui: Warning: Z-order assignment: 'horizontalSpacer_14' is not a valid widget.
+/usr/lib/qt5/bin/uic ../../client/modules/qrcardform.ui -o ui_qrcardform.h
+/usr/lib/qt5/bin/uic ../../client/modules/adminform.ui -o ui_adminform.h
+/usr/lib/qt5/bin/uic ../../client/faultform.ui -o ui_faultform.h
+/usr/lib/qt5/bin/uic ../../client/logsform.ui -o ui_logsform.h
+/usr/lib/qt5/bin/uic ../../client/mapslotview.ui -o ui_mapslotview.h
+/usr/lib/qt5/bin/uic ../../client/modules/systemset.ui -o ui_systemset.h
+/usr/lib/qt5/bin/uic ../../client/modules/faultview.ui -o ui_faultview.h
+/usr/lib/qt5/bin/uic ../../client/messageboxform.ui -o ui_messageboxform.h
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o qtsingleapplication.o ../../client/qtsingleapplication/src/qtsingleapplication.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o qtlocalpeer.o ../../client/qtsingleapplication/src/qtlocalpeer.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o main.o ../../client/main.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o mainwindow.o ../../client/mainwindow.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o tcpdatadistribute.o ../../client/tcpdatadistribute.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o serverdatabeach.o ../../client/serverdatabeach.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o mainform.o ../../client/mainform.cpp
+../../client/main.cpp: In function ‘void messageHandler(QtMsgType, const QMessageLogContext&, const QString&)’:
+../../client/main.cpp:14:12: warning: enumeration value ‘QtInfoMsg’ not handled in switch [-Wswitch]
+     switch (type) {
+            ^
+../../client/main.cpp:11:63: warning: unused parameter ‘text’ [-Wunused-parameter]
+ void messageHandler(QtMsgType type, const QMessageLogContext &text,const QString &info)
+                                                               ^~~~
+../../client/mainwindow.cpp: In member function ‘void MainWindow::readFaultConfig()’:
+../../client/mainwindow.cpp:919:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0;i < fualtContainer.size();++i){
+                       ~~^~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp: In member function ‘void ServerDataBeach::onGetReportData(const QByteArray&)’:
+../../client/serverdatabeach.cpp:980:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0;i < faultList->size();++i){
+                           ~~^~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:1023:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0;i < grid->size();){
+                       ~~^~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:1024:75: warning: narrowing conversion of ‘grid->flatbuffers::Vector<float>::Get(((flatbuffers::uoffset_t)(i + 2)))’ from ‘flatbuffers::Vector<float>::return_type {aka float}’ to ‘int’ inside { } [-Wnarrowing]
+             ObsmapParameters param{grid->Get(i),grid->Get(i + 1),grid->Get(i + 2)};
+                                                                  ~~~~~~~~~^~~~~~~
+../../client/serverdatabeach.cpp:1383:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0;i < list->size();++i){
+                       ~~^~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp: In member function ‘void ServerDataBeach::onGetResponseData(const QByteArray&)’:
+../../client/serverdatabeach.cpp:1595:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0;i < reportList->size();++i){
+                           ~~^~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:1808:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0;i < report->route_list()->size();++i){
+                           ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:2331:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0;i < report->reg_id()->size();++i){
+                           ~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:2334:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0;i < report->reg_data()->size();++i){
+                           ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o intelligentclean.o ../../client/modules/intelligentclean.cpp
+../../client/mainform.cpp: In member function ‘void MainForm::runFaultEvent(bool)’:
+../../client/mainform.cpp:405:35: warning: unused parameter ‘robot’ [-Wunused-parameter]
+ void MainForm::runFaultEvent(bool robot)
+                                   ^~~~~
+In file included from ../../client/serverdatabeach.h:20:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/parameters.h: At global scope:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+../../client/mainform.cpp: In member function ‘void MainForm::inOutAnime(QWidget*, QWidget*, bool, int)’:
+../../client/mainform.cpp:1865:74: warning: unused parameter ‘speed’ [-Wunused-parameter]
+ void MainForm::inOutAnime(QWidget *parent,QWidget *child,bool isShow,int speed)
+                                                                          ^~~~~
+../../client/modules/intelligentclean.cpp: In member function ‘void IntelligentClean::onUpdatePerson(const QVector<QPointF>&)’:
+../../client/modules/intelligentclean.cpp:2304:63: warning: unused parameter ‘data’ [-Wunused-parameter]
+ void IntelligentClean::onUpdatePerson(const QVector<QPointF> &data)
+                                                               ^~~~
+../../client/modules/intelligentclean.cpp: In member function ‘void IntelligentClean::onUpdateElevator(const QVector<QPointF>&)’:
+../../client/modules/intelligentclean.cpp:2313:65: warning: unused parameter ‘data’ [-Wunused-parameter]
+ void IntelligentClean::onUpdateElevator(const QVector<QPointF> &data)
+                                                                 ^~~~
+../../client/modules/intelligentclean.cpp: In member function ‘void IntelligentClean::onUpdateQRAnime(const QPoint&, const QSize&, const QrProcess&)’:
+../../client/modules/intelligentclean.cpp:2695:29: warning: statement has no effect [-Wunused-value]
+             currentQrFrames == 157;
+             ~~~~~~~~~~~~~~~~^~~~~~
+../../client/modules/intelligentclean.cpp: In lambda function:
+../../client/modules/intelligentclean.cpp:331:27: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             switchViewPage(ViewPage::MODE_SET_PAGE);
+             ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/modules/intelligentclean.cpp:333:9: note: here
+         case DeviceMode::IN_TASK:{//跳转至示任务模式
+         ^~~~
+../../client/modules/intelligentclean.cpp: In member function ‘void IntelligentClean::onUpdateQrInfo(const QVector<QString>&)’:
+../../client/modules/intelligentclean.cpp:2996:20: warning: this statement may fall through [-Wimplicit-fallthrough=]
+         newHlcCode = info[0];
+../../client/modules/intelligentclean.cpp:2998:5: note: here
+     case ScanCodeType::GET_MAPSOURCE:{//获取地图资源
+     ^~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o messagewindow.o ../../client/messagewindow.cpp
+../../client/serverdatabeach.cpp: In member function ‘void ServerDataBeach::onGetResponseData(const QByteArray&)’:
+../../client/serverdatabeach.cpp:1737:38: warning: ‘sensor.UnitSensor::binocular’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+                 qDebug()<<"--双目:"<<sensor.binocular;
+                                      ^
+../../client/messagewindow.cpp: In member function ‘void MessageWindow::setButtonEnabled(bool)’:
+../../client/messagewindow.cpp:181:43: warning: unused parameter ‘state’ [-Wunused-parameter]
+ void MessageWindow::setButtonEnabled(bool state)
+                                           ^~~~~
+In file included from ../../client/qranime.h:11:0,
+                 from ../../client/messagewindow.h:10,
+                 from ../../client/messagewindow.cpp:1:
+../../client/parameters.h: At global scope:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+In file included from ../../client/serverdatabeach.h:12:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/public_generated.h: In member function ‘void ServerDataBeach::setRequestServer(const swr::RequestDataField&, bool)’:
+../../client/public_generated.h:1953:28: warning: ‘way’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(AutoBorderRouteCleanWay::VT_WAY, static_cast<int8_t>(way), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:651:23: note: ‘way’ was declared here
+         AutoBorderWay way;
+                       ^~~
+In file included from ../../client/serverdatabeach.h:14:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/request_generated.h:1633:28: warning: ‘optionType’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(RequestWorkingHours::VT_OPER, static_cast<int8_t>(oper), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:527:18: note: ‘optionType’ was declared here
+         OperType optionType;
+                  ^~~~~~~~~~
+In file included from ../../client/serverdatabeach.h:14:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/request_generated.h:1581:28: warning: ‘optionType’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(RequestWorkingMode::VT_OPER, static_cast<int8_t>(oper), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:504:18: note: ‘optionType’ was declared here
+         OperType optionType;
+                  ^~~~~~~~~~
+In file included from ../../client/serverdatabeach.h:12:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/public_generated.h:3438:28: warning: ‘ParamsModuleType’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(MachineParamRqst::VT_TYPE, static_cast<int8_t>(type), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:324:29: note: ‘ParamsModuleType’ was declared here
+         MachineParamsModule ParamsModuleType;
+                             ^~~~~~~~~~~~~~~~
+In file included from ../../client/serverdatabeach.h:14:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/request_generated.h:1313:28: warning: ‘optionType’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(RequestMachineParams::VT_OPER, static_cast<int8_t>(oper), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:325:18: note: ‘optionType’ was declared here
+         OperType optionType;
+                  ^~~~~~~~~~
+In file included from ../../client/serverdatabeach.h:12:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/public_generated.h:1883:28: warning: ‘mode’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(AutoCleanParam::VT_CLEAN_WAY, static_cast<int8_t>(clean_way), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:175:18: note: ‘mode’ was declared here
+         CleanWay mode;
+                  ^~~~
+In file included from ../../client/serverdatabeach.h:12:0,
+                 from ../../client/serverdatabeach.cpp:1:
+../../client/public_generated.h:1799:28: warning: ‘mode’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(TeachCleanParam::VT_MODE, static_cast<int8_t>(mode), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../client/serverdatabeach.cpp:150:18: note: ‘mode’ was declared here
+         PlanMode mode;
+                  ^~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o timedtask.o ../../client/modules/timedtask.cpp
+../../client/serverdatabeach.cpp: In member function ‘void ServerDataBeach::onGetReportData(const QByteArray&)’:
+../../client/serverdatabeach.cpp:1349:21: warning: ‘type’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+         source.type = type;
+         ~~~~~~~~~~~~^~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o menuform.o ../../client/modules/menuform.cpp
+../../client/modules/timedtask.cpp: In lambda function:
+../../client/modules/timedtask.cpp:35:68: warning: unused parameter ‘hourValue’ [-Wunused-parameter]
+     connect(hourSet,&RollingBoxY::currentValueChanged,this,[=](int hourValue){
+                                                                    ^~~~~~~~~
+../../client/modules/timedtask.cpp: In member function ‘void TimedTask::getTask(const int&, MapSlotView*)’:
+../../client/modules/timedtask.cpp:686:57: warning: parameter ‘map’ set but not used [-Wunused-but-set-parameter]
+ void TimedTask::getTask(const int &taskId, MapSlotView *map)
+                                                         ^~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o keyboardform.o ../../client/keyboardform.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o mapsourceform.o ../../client/modules/mapsourceform.cpp
+In file included from ../../client/keyboardform.h:8:0,
+                 from ../../client/keyboardform.cpp:1:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o qrcardform.o ../../client/modules/qrcardform.cpp
+../../client/modules/menuform.cpp: In member function ‘virtual void MenuForm::changeEvent(QEvent*)’:
+../../client/modules/menuform.cpp:1013:36: warning: unused parameter ‘event’ [-Wunused-parameter]
+ void MenuForm::changeEvent(QEvent *event)
+                                    ^~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o adminform.o ../../client/modules/adminform.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o faultform.o ../../client/faultform.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o rollingboxy.o ../../client/modules/rollingboxy.cpp
+../../client/faultform.cpp: In member function ‘QString faultForm::getTitle()’:
+../../client/faultform.cpp:174:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+In file included from ../../client/faultform.h:10:0,
+                 from ../../client/faultform.cpp:1:
+../../client/parameters.h: At global scope:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+In file included from ../../client/modules/menuform.h:19:0,
+                 from ../../client/modules/menuform.cpp:1:
+../../client/parameters.h: At global scope:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+../../client/modules/adminform.cpp: In member function ‘bool AdminForm::initCheckBox(QCheckBox*)’:
+../../client/modules/adminform.cpp:1128:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o fananime.o ../../client/fananime.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o logsform.o ../../client/logsform.cpp
+In file included from ../../client/fananime.h:10:0,
+                 from ../../client/fananime.cpp:1:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o cleanviewforwidget.o ../../client/cleanviewforwidget.cpp
+In file included from ../../client/logsform.h:6:0,
+                 from ../../client/logsform.cpp:1:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o mapslotview.o ../../client/mapslotview.cpp
+In file included from ../../client/cleanviewforwidget.h:17:0,
+                 from ../../client/cleanviewforwidget.cpp:1:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o videoform.o ../../client/videoform.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o qranime.o ../../client/qranime.cpp
+In file included from ../../client/videoform.h:10:0,
+                 from ../../client/videoform.cpp:1:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o selfinspectionanime.o ../../client/selfinspectionanime.cpp
+In file included from ../../client/qranime.h:11:0,
+                 from ../../client/qranime.cpp:1:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o thumbnailview.o ../../client/thumbnailview.cpp
+In file included from ../../client/selfinspectionanime.cpp:1:0:
+../../client/selfinspectionanime.h: In constructor ‘SelfInspectionAnime::SelfInspectionAnime(QWidget*)’:
+../../client/selfinspectionanime.h:20:13: warning: ‘SelfInspectionAnime::car’ will be initialized after [-Wreorder]
+     QPixmap car;
+             ^~~
+../../client/selfinspectionanime.h:18:13: warning:   ‘QPixmap SelfInspectionAnime::carPose’ [-Wreorder]
+     QPixmap carPose;
+             ^~~~~~~
+../../client/selfinspectionanime.cpp:3:1: warning:   when initialized here [-Wreorder]
+ SelfInspectionAnime::SelfInspectionAnime(QWidget *parent) : QWidget(parent),
+ ^~~~~~~~~~~~~~~~~~~
+In file included from ../../client/selfinspectionanime.cpp:1:0:
+../../client/selfinspectionanime.h:19:13: warning: ‘SelfInspectionAnime::progress’ will be initialized after [-Wreorder]
+     QPixmap progress;
+             ^~~~~~~~
+../../client/selfinspectionanime.h:17:13: warning:   ‘QPixmap SelfInspectionAnime::background’ [-Wreorder]
+     QPixmap background;
+             ^~~~~~~~~~
+../../client/selfinspectionanime.cpp:3:1: warning:   when initialized here [-Wreorder]
+ SelfInspectionAnime::SelfInspectionAnime(QWidget *parent) : QWidget(parent),
+ ^~~~~~~~~~~~~~~~~~~
+In file included from ../../client/selfinspectionanime.h:11:0,
+                 from ../../client/selfinspectionanime.cpp:1:
+../../client/parameters.h: At global scope:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o systemset.o ../../client/modules/systemset.cpp
+In file included from ../../client/thumbnailview.h:10:0,
+                 from ../../client/thumbnailview.cpp:1:
+../../client/parameters.h:908:21: warning: ‘logCommands’ defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -I../../client -I. -I../../client/qtsingleapplication/src -I/root/workspace/workspace/ui-test/client/usr/local/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtXml -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -o faultview.o ../../client/modules/faultview.cpp
+Build was aborted
+Aborted by [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+{standard input}: Assembler messages:
+{standard input}:84287: 警告： 文件结束，非行尾；插入新行
+{standard input}:85593: 错误： unknown pseudo-op: `.u'
+{standard input}:85550: 错误： invalid operands (*UND* and .gcc_except_table sections) for `-'
+g++: internal compiler error: 已终止 (program cc1plus)
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <file:///usr/share/doc/gcc-7/README.Bugs> for instructions.
+Makefile:1724: recipe for target 'menuform.o' failed
+make[1]: *** [menuform.o] Error 4
+make[1]: *** 正在等待未完成的任务....
+g++: internal compiler error: 已终止 (program cc1plus)
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <file:///usr/share/doc/gcc-7/README.Bugs> for instructions.
+Makefile:1813: recipe for target 'systemset.o' failed
+make[1]: *** [systemset.o] Error 4
+g++: internal compiler error: 已终止 (program cc1plus)
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <file:///usr/share/doc/gcc-7/README.Bugs> for instructions.
+Makefile:1819: recipe for target 'faultview.o' failed
+make[1]: *** [faultview.o] Error 4
+{standard input}: Assembler messages:
+{standard input}:13695: 警告： 文件结束，非行尾；插入新行
+{standard input}:11782: 错误： invalid operands (*UND* and .gcc_except_table._ZN12Ui_AdminForm13retranslateUiEP7QWidget sections) for `-'
+{standard input}:14024: 错误： invalid operands (.text._ZN12Ui_AdminForm13retranslateUiEP7QWidget and *UND* sections) for `-'
+g++: internal compiler error: 已终止 (program cc1plus)
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <file:///usr/share/doc/gcc-7/README.Bugs> for instructions.
+Makefile:1754: recipe for target 'adminform.o' failed
+make[1]: *** [adminform.o] Error 4
+make[1]: 离开目录“/root/workspace/workspace/ui-test/build/client”
+Makefile:46: recipe for target 'sub--root-workspace-workspace-ui-test-client-client-pro-make_first-ordered' failed
+make: *** [sub--root-workspace-workspace-ui-test-client-client-pro-make_first-ordered] Error 2
+Notified JIRA that a build has completed.
+Finished: ABORTED

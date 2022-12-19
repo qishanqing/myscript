@@ -1,0 +1,1144 @@
+Started by GitLab push by qiuliru
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+[EnvInject] - Preparing an environment for the build.
+[EnvInject] - Keeping Jenkins system variables.
+[EnvInject] - Keeping Jenkins build variables.
+[EnvInject] - Injecting contributions.
+Building remotely on [8mha:////4MPPEh8feJE9uNY0ThUfUuMmeXp+equSlRr0prvRJKt5AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJDAGuOCCPKAAAA[0mkhadas-car1 in workspace /root/workspace/workspace/i18r_depth
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No emails were triggered.
+[EnvInject] - Executing scripts and injecting environment variables after the SCM step.
+[i18r_depth] $ /bin/sh -xe /tmp/jenkins292367492750562761.sh
++ bash /root/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20220813
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ echo AroundI18RProject/I18RDepthSubmodule
+++ awk -F/ '{print $1"%2F"$2}'
++ CONVERT_TARGET_PROJECT=AroundI18RProject%2FI18RDepthSubmodule
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/AroundI18RProject%2FI18RDepthSubmodule
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3438    0  3438    0     0  29384      0 --:--:-- --:--:-- --:--:-- 29135100  3438    0  3438    0     0  29384      0 --:--:-- --:--:-- --:--:-- 29135
++ SUB_PROJECT_ID=293
++ TARGET_DIR=/root/workspace/workspace/i18r_depth/I18RDepthSubmodule
++ SOURCE_DIR=/root/workspace/workspace/i18r_depth/DepthModuleForICE
++ prepare_env
+++ uname -m
++ system_platform=aarch64
++ export COMMIT_ID_FILE=/root/workspace/workspace/i18r_depth/_last_build_id
++ COMMIT_ID_FILE=/root/workspace/workspace/i18r_depth/_last_build_id
++ export COMMIT_MSG_FILE=/root/workspace/workspace/i18r_depth/_commit-msg
++ COMMIT_MSG_FILE=/root/workspace/workspace/i18r_depth/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_depth/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_depth/_commit-msg.tmp
++ rm -f /root/workspace/workspace/i18r_depth/_last_build_id
++ rm -f /root/workspace/workspace/i18r_depth/_commit-msg
++ rm -f /root/workspace/workspace/i18r_depth/_commit-msg.tmp
++ rm -f /root/workspace/workspace/i18r_depth/result.log
++ CLONE_DEPTH=--depth=1
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('\''i18r_depth'\'','\''qiuliru/DepthModuleForICE'\'','\''compile_arm'\'','\''AroundI18RProject/I18RDepthSubmodule'\'','\''compile'\'',now(),'\''http://192.168.50.26:8080/job/i18r_depth/296/'\'','\''khadas-car1'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ '[' true = false ']'
++ source_project_fetch
++ git clone ssh://git@192.168.50.191:222/qiuliru/DepthModuleForICE -b compile_arm --depth=1
+正克隆到 'DepthModuleForICE'...
++ target_project_update
++ rm -rf /root/workspace/workspace/i18r_depth/I18RDepthSubmodule
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RDepthSubmodule -b compile --depth=1
+正克隆到 'I18RDepthSubmodule'...
++ [[ aarch64 =~ x86_64 ]]
++ [[ i18r_depth =~ rbn ]]
++ public_project_update
++ pushd /root/system/I18RPublicBaseTypes
+~/system/I18RPublicBaseTypes ~/workspace/workspace/i18r_depth
++ git checkout ./
++ git clean -xdf ./
++ git pull origin develop
+来自 ssh://192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes
+ * branch            develop    -> FETCH_HEAD
+已经是最新的。
++ ./install.sh
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CMAKE_INSTALL_PREFIX: /usr/local.
+-- I18R_INCLUDE_INSTALL_DIR: /usr/local/include/I18RPublicBaseTypes.
+-- CMAKE_CURRENT_SOURCE_DIR: /root/system/I18RPublicBaseTypes.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/system/I18RPublicBaseTypes/build
+Install the project...
+-- Install configuration: "Release"
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/cloud_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/old_hmi_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/swr_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Data.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ErrorInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ErrorMessage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/FormatData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/InternalErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Module.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ThreadInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Time.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/WorkStatus.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Cameara2Camera.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Lidar.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Odometry.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Tof.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Imu2Odometry.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Transform.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/cloud/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/autoClean_property.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/clean_path.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/current_type.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/drop_event.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/pose.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/robot_event.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/robot_status.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/work_mode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/work_runs.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/CalibrationImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/DepthMatrix.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/DepthPointCloud.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/LightAdjustment.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/SourceImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/class.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/detect_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/detector_param.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/error_code.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/instance.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/map.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/EulerAngle.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/Point.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/Quaternion.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/gen.sh
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImu.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgHotplug.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImu.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgParam.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameterOld.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/IMUParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/ModuleInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/MoudleAllParam.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/Resolution.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/SDebugSet.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/SlamParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/StreamType.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker/MarkerState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker/state.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/AFI.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Basic.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Config.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Log.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Route.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Work.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/BumperEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CleanEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CliffData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CliffEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CtrlType.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/DropEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/EncoderData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/LaserScan.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/PointCloud2.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/RobotChassisEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/StartStopSwitchEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthImg.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofGrayImg.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofPointCloud.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/UltraData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/UsbHotplug.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityCmd.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/DataRateState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/SystemState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/UserOperation.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/Pose.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/SlamResult.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/SlamState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorMessage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorTable.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/IceErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/error_maps.yaml
++ popd
+~/workspace/workspace/i18r_depth
++ public_i18rutilitysubmodule_update
++ pushd /root/system/i18rutilitysubmodule
+~/system/i18rutilitysubmodule ~/workspace/workspace/i18r_depth
++ git checkout ./
++ git clean -xdf ./
++ git pull origin develop
+来自 ssh://192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule
+ * branch            develop    -> FETCH_HEAD
+已经是最新的。
++ ./install.sh
++ popd
+~/workspace/workspace/i18r_depth
++ project_build
++ pushd /root/workspace/workspace/i18r_depth/DepthModuleForICE
+~/workspace/workspace/i18r_depth/DepthModuleForICE ~/workspace/workspace/i18r_depth
+++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''qiuliru/DepthModuleForICE'\'' and source_branch='\''compile_arm'\'' and target_project='\''AroundI18RProject/I18RDepthSubmodule'\'' and target_branch='\''compile'\'' and status='\''0'\'' order by id desc limit 1;'
+++ set +x
++ version='first_commit_id
+fe0375e'
+++ awk -F ' ' '{print $2}'
+++ echo first_commit_id fe0375e
++ version=fe0375e
+++ git log -1 --pretty=format:%h
++ first_commit_id_now=1f19771
++ cmdb_mysql 'update prebuild set first_commit_id='\''1f19771'\'' where build_url='\''http://192.168.50.26:8080/job/i18r_depth/296/'\'';'
++ set +x
++ '[' 1f19771 == fe0375e ']'
++ bash -ex compile.sh
++ rm -rf build
++ mkdir build
++ cd build
++ cmake ..
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+Build type: Release
+Detected armv8  -D__ARM_PLATFORM__ -D__ARM_NEON__ -DENABLE_NEON -Ofast -std=c++11 -Wno-unused-result
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Using flag -std=c++11.
+-- CONFIG_BUILD_ROS=ON
+-- CONFIG_BUILD_ROS_CV=OFF
+-- Using CATKIN_DEVEL_PREFIX: /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/devel
+-- Using CMAKE_PREFIX_PATH: /opt/ros/melodic
+-- This workspace overlays: /opt/ros/melodic
+-- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.17", minimum required is "2") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python2
+-- Using Debian Python package layout
+-- Using empy: /usr/bin/empy
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/test_results
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+CMake Warning (dev) at /usr/src/googletest/CMakeLists.txt:3 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+    PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googlemock/CMakeLists.txt:40 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+    PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/src/googletest/googletest/CMakeLists.txt:47 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+    PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found PythonInterp: /usr/bin/python2 (found version "2.7.17") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests-2.7
+-- catkin 0.7.29
+-- BUILD_SHARED_LIBS is on
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   system
+--   filesystem
+CMake Warning at CMakeLists.txt:98 (message):
+  OpenMP found.
+
+
+-- CONFIG_BUILD_I18R=ON
+-- I18R_TYPES_DIRECTORY: /root/workspace/workspace/i18r_depth/DepthModuleForICE/../../AroundI18RProject/I18RPublicBaseTypes
+-- CONFIG_BUILD_I26R=OFF
+-- CONFIG_BUILD_TOF=ON
+-- CONFIG_BUILD_OPENCV_CONTRIB=OFF
+-- Looking for CL_VERSION_2_2
+-- Looking for CL_VERSION_2_2 - found
+-- Found OpenCL: /usr/lib/aarch64-linux-gnu/libOpenCL.so (found version "2.2") 
+-- CONFIG_BUILD_OPENCL=ON
+-- config path="/root/workspace/workspace/i18r_depth/DepthModuleForICE/config/"
+-- BUILD_TEST_NODE=ON
+-- BUILD_TOF_CAM_TEST_NODE=OFF
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/workspace/workspace/i18r_depth/DepthModuleForICE/build
++ make -j4
+Scanning dependencies of target depth
+[  5%] Building CXX object CMakeFiles/depth.dir/modules/common/filter.cpp.o
+[  5%] Building CXX object CMakeFiles/depth.dir/modules/common/cloud_quality.cpp.o
+[  8%] Building CXX object CMakeFiles/depth.dir/modules/common/point_process.cpp.o
+[ 11%] Building CXX object CMakeFiles/depth.dir/modules/common/math.cpp.o
+[ 14%] Building CXX object CMakeFiles/depth.dir/modules/common/time.cpp.o
+[ 17%] Building CXX object CMakeFiles/depth.dir/modules/common/visualization.cpp.o
+[ 20%] Building CXX object CMakeFiles/depth.dir/modules/recorder/recorder.cpp.o
+[ 22%] Building CXX object CMakeFiles/depth.dir/modules/laser/ground_layer.cpp.o
+[ 25%] Building CXX object CMakeFiles/depth.dir/modules/laser/laser_computation.cpp.o
+[ 28%] Building CXX object CMakeFiles/depth.dir/modules/laser/laser_layers.cpp.o
+[ 31%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/stereo_vision.cpp.o
+[ 34%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/rectify/orb_extractor.cpp.o
+[ 37%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/rectify/rectify.cpp.o
+[ 40%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_cpu/block_matching.cpp.o
+[ 42%] Building CXX object CMakeFiles/depth.dir/modules/tof/tof.cpp.o
+[ 45%] Building CXX object CMakeFiles/depth.dir/modules/calibration/calibration.cpp.o
+[ 48%] Building CXX object CMakeFiles/depth.dir/modules/impl/depth_impl.cpp.o
+[ 51%] Building CXX object CMakeFiles/depth.dir/modules/impl/laser_thread.cpp.o
+[ 54%] Building CXX object CMakeFiles/depth.dir/modules/impl/monitor_thread.cpp.o
+[ 57%] Building CXX object CMakeFiles/depth.dir/modules/impl/stereo_thread.cpp.o
+[ 60%] Building CXX object CMakeFiles/depth.dir/modules/impl/tof_thread.cpp.o
+[ 62%] Building CXX object CMakeFiles/depth.dir/modules/pose_process/pose_process.cpp.o
+[ 65%] Building CXX object CMakeFiles/depth.dir/modules/depth.cpp.o
+[ 68%] Building CXX object CMakeFiles/depth.dir/modules/ros_function/ros_function.cpp.o
+[ 71%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_gpu/bm_cl.cpp.o
+[ 74%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_gpu/src/construction.cpp.o
+[ 77%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_gpu/src/cvc_cl.cpp.o
+[ 80%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_gpu/src/disp_sel_cl.cpp.o
+[ 82%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_gpu/src/lrcheck.cpp.o
+[ 85%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_gpu/src/ocl_util.cpp.o
+[ 88%] Building CXX object CMakeFiles/depth.dir/modules/stereo_vision/bm_gpu/src/preprocess.cpp.o
+[ 91%] Linking CXX shared library ../lib/libdepth.so
+[ 91%] Built target depth
+Scanning dependencies of target unittest
+[ 94%] Building CXX object CMakeFiles/unittest.dir/test/src/data_reader.cpp.o
+[ 97%] Building CXX object CMakeFiles/unittest.dir/test/test.cpp.o
+[100%] Linking CXX executable ../test/unittest
+[100%] Built target unittest
++ cd ..
++ cd install
++ mkdir include
++ cd ..
++ cp -a lib install/
++ cp -r config install/
++ cp -r include/I18R/depth.h install/include/
++ cp test/tof_cam_test.cpp install/test/
++ cp include/server.h install/test/
++ cp include/basetypes.h install/test/
++ cp build_config.h.in install/test/
++ popd
+~/workspace/workspace/i18r_depth
++ check_status_code
++ test -f /root/workspace/workspace/i18r_depth/result.log
++ [[ '' = false ]]
++ generate_message
++ cd /root/workspace/workspace/i18r_depth/DepthModuleForICE
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /root/workspace/workspace/i18r_depth/_commit-msg.tmp ]]
++ cat /root/workspace/workspace/i18r_depth/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.26:8080/job/i18r_depth/296/'
++ echo 'Push aarch64 platform files'
++ generate_commits
++ pushd /root/workspace/workspace/i18r_depth/I18RDepthSubmodule
+~/workspace/workspace/i18r_depth/I18RDepthSubmodule ~/workspace/workspace/i18r_depth
+++ xargs -l ls
+++ find /root/workspace/workspace/i18r_depth/DepthModuleForICE -name install
++ install_dir_list='CMakeLists.txt
+config
+include
+lib
+README.md
+test'
++ [[ true = true ]]
++ for i in $install_dir_list
++ '[' -z arm64 ']'
++ git rm -r arm64/CMakeLists.txt
+rm 'arm64/CMakeLists.txt'
++ for i in $install_dir_list
++ '[' -z arm64 ']'
++ git rm -r arm64/config
+rm 'arm64/config/depth.yml'
+rm 'arm64/config/hardware_param.yml'
+rm 'arm64/config/test.yml'
++ for i in $install_dir_list
++ '[' -z arm64 ']'
++ git rm -r arm64/include
+rm 'arm64/include/depth.h'
++ for i in $install_dir_list
++ '[' -z arm64 ']'
++ git rm -r arm64/lib
+rm 'arm64/lib/libdepth.so'
+rm 'arm64/lib/libdepth.so.1.8.7'
++ for i in $install_dir_list
++ '[' -z arm64 ']'
++ git rm -r arm64/README.md
+rm 'arm64/README.md'
++ for i in $install_dir_list
++ '[' -z arm64 ']'
++ git rm -r arm64/test
+rm 'arm64/test/basetypes.h'
+rm 'arm64/test/build_config.h.in'
+rm 'arm64/test/run.sh'
+rm 'arm64/test/server.h'
+rm 'arm64/test/test.cpp'
+rm 'arm64/test/tof_cam_test.cpp'
++ [[ true = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ '[' -z arm64 ']'
++ mkdir -p arm64
++ cp -ar /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/CMakeLists.txt /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/config /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/include /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/lib /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/README.md /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test arm64/
++ git add --all .
+++ git status -s
++ add_file_list='M  arm64/config/depth.yml'
++ '[' -z 'M  arm64/config/depth.yml' ']'
++ git commit -s -F /root/workspace/workspace/i18r_depth/_commit-msg
+[compile db5da20] 1f19771 1.8.7.1 for desk detection(3)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+++ git config --local --get branch.compile.remote
++ local remote=origin
+++ git config --local --get branch.compile.merge
++ local branch=refs/heads/compile
++ git push --no-verify origin HEAD:refs/heads/compile
+remote: 
+remote: To create a merge request for compile, visit:        
+remote:   http://192.168.50.191:85/AroundI18RProject/I18RDepthSubmodule/-/merge_requests/new?merge_request%5Bsource_branch%5D=compile        
+remote: 
+To ssh://192.168.50.191:222/AroundI18RProject/I18RDepthSubmodule
+   a2324f9..db5da20  HEAD -> compile
++ [[ -z 1f19771 ]]
++ cmdb_mysql 'update prebuild set status='\''0'\'' where build_url='\''http://192.168.50.26:8080/job/i18r_depth/296/'\'';'
++ set +x
++ [[ '' = true ]]
++ [[ '' = c405 ]]
++ [[ '' = c3566 ]]
++ check_code_style
++ pushd /root/system/cppreview
+~/system/cppreview ~/workspace/workspace/i18r_depth/I18RDepthSubmodule ~/workspace/workspace/i18r_depth
++ git checkout ./
++ git clean -xdf ./
+正删除 __pycache__/
+正删除 i18r_robot_aarch64_codesytle_check.log
+正删除 utils/__pycache__/
++ git pull
+已经是最新的。
++ echo 'check code style start'
+check code style start
++ echo
+
++ test -f get_variable.py
++ sed -r 's/\\033\[[0-9]+m//g' -i get_variable.py
++ tee DepthModuleForICE_aarch64_codesytle_check.log
++ timeout 5m python3 review.py --input /root/workspace/workspace/i18r_depth/DepthModuleForICE
+
+Function name:-------------------------------------------------------------------------------------
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/texture_quality_inspection.cpp  ( 5 )
+[185] cv::FileStorage hardwareParamFile ("config/texture_cfg.yml", cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/texture_quality_inspection.h  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/realtime.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/sample.cpp  ( 3 )
+[18] cv::FileStorage paramFile (path, cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/tof_quality_inspection.h  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/realtime.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/sample.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/tof_quality_inspection.cpp  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/test.cpp  ( 13 )
+[112] cv::FileStorage fsSettings1 (modulePath, cv::FileStorage::READ);
+[213] std::shared_ptr<TofDepthDataFrame> tof_frame_ptr (new TofDepthDataFrame);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/test_for_real.cpp  ( 4 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/tof_cam_test.cpp  ( 4 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/test_texture.cpp  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/include/data_reader.h  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/src/data_reader.cpp  ( 5 )
+[113] cv::FileStorage fsSettings1 (mPath + "/MODULE.yaml", cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/keyboard_control.cpp  ( 4 )
+[27] void keyboard_control::update_dirction_status (KeyTouchTimeCheck key, Direcion dir);
+[72] void check_if_long_time_no_touch (KeyTouchTimeCheck key);
+[78] void keyboard_control::key_check_task ();
+[196] void keyboard_control::init ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/multi_main.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/reg.hpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/imsee_main.cpp  ( 3 )
+[64] std::string imgSubDir (imgSaveMainDir + std::string("imsee_") + std::to_string(data->imseeid) + std::string("/"));
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/mcu_main.cpp  ( 10 )
+[15] void test_change_mode (int status);
+[24] void test_disable_brake (void);
+[33] void test_brake (void);
+[42] void test_clear_encoder (void);
+[51] void test_disable_cliff (void);
+[59] void test_enable_cliff (void);
+[68] void test_disable_bumper (void);
+[77] void test_enable_bumper (void);
+[92] void send_spd_func ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/vcu_main.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/usbtof_main.cpp  ( 4 )
+[37] void writeDepthData (std::string filename, swr::sensor_types::TofDepthData Depth, unsigned int numPoints);
+[58] void writePointCloud (std::string filename, swr::sensor_types::TofPoinCloud pointCloud, size_t numPoints);
+[84] void tof_run_task (usb_3d_tof::Usb3dtof p_tof, int index);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/lidar_main.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/sensor_main.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/keyboard_control.hpp  ( 10 )
+[42] void key_control_task ();
+[43] void key_check_task ();
+[45] void update_dirction_status (KeyTouchTimeCheck key, Direcion dir);
+[53] void init ();
+[54] float get_line_spd () return mVx };
+[55] float get_rotation_spd () return mWz };
+[57] int get_once_robot_mode ();
+[62] int get_once_brake_disable_status ();
+[67] int get_once_cliff_disable_status ();
+[72] int get_once_bumper_disable_status ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/MultiModule.hpp  ( 24 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/Usb3dtof.hpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/SensorModule.hpp  ( 19 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/VcuModule.hpp  ( 10 )
+[20] int ReadStatusRegs_0x04 ( uint16_t start_reg, uint16_t buf, uint16_t count) = 0;
+[23] int ReadSettingRegs_0x03 ( uint16_t start_reg, uint16_t buf, uint16_t count) = 0;
+[26] int WriteSettingReg_0x06 ( uint16_t reg, uint16_t data) = 0;
+[29] int WriteSettingRegs_0x10 ( uint16_t start_reg, uint16_t buf, uint16_t count) = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/McuModule.hpp  ( 16 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/ImseeModule.hpp  ( 28 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/LidarData.hpp  ( 16 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/keyboard_control.cpp  ( 4 )
+[27] void keyboard_control::update_dirction_status (KeyTouchTimeCheck key, Direcion dir);
+[72] void check_if_long_time_no_touch (KeyTouchTimeCheck key);
+[78] void keyboard_control::key_check_task ();
+[196] void keyboard_control::init ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/multi_main.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/reg.hpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/imsee_main.cpp  ( 3 )
+[64] std::string imgSubDir (imgSaveMainDir + std::string("imsee_") + std::to_string(data->imseeid) + std::string("/"));
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/manager.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/controller.cpp  ( 2 )
+[20] void usage ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/mcu_main.cpp  ( 10 )
+[15] void test_change_mode (int status);
+[24] void test_disable_brake (void);
+[33] void test_brake (void);
+[42] void test_clear_encoder (void);
+[51] void test_disable_cliff (void);
+[59] void test_enable_cliff (void);
+[68] void test_disable_bumper (void);
+[77] void test_enable_bumper (void);
+[92] void send_spd_func ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/vcu_main.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/usbtof_main.cpp  ( 4 )
+[37] void writeDepthData (std::string filename, swr::sensor_types::TofDepthData Depth, unsigned int numPoints);
+[58] void writePointCloud (std::string filename, swr::sensor_types::TofPoinCloud pointCloud, size_t numPoints);
+[84] void tof_run_task (usb_3d_tof::Usb3dtof p_tof, int index);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/lidar_main.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/img_show.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/sensor_main.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/keyboard_control.hpp  ( 10 )
+[42] void key_control_task ();
+[43] void key_check_task ();
+[45] void update_dirction_status (KeyTouchTimeCheck key, Direcion dir);
+[53] void init ();
+[54] float get_line_spd () return mVx };
+[55] float get_rotation_spd () return mWz };
+[57] int get_once_robot_mode ();
+[62] int get_once_brake_disable_status ();
+[67] int get_once_cliff_disable_status ();
+[72] int get_once_bumper_disable_status ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/ProductInfo.hpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/MultiModule.hpp  ( 24 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/Usb3dtof.hpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/EmbManager.hpp  ( 9 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/SensorModule.hpp  ( 19 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/VcuModule.hpp  ( 10 )
+[20] int ReadStatusRegs_0x04 ( uint16_t start_reg, uint16_t buf, uint16_t count) = 0;
+[23] int ReadSettingRegs_0x03 ( uint16_t start_reg, uint16_t buf, uint16_t count) = 0;
+[26] int WriteSettingReg_0x06 ( uint16_t reg, uint16_t data) = 0;
+[29] int WriteSettingRegs_0x10 ( uint16_t start_reg, uint16_t buf, uint16_t count) = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/McuModule.hpp  ( 16 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/ImseeModule.hpp  ( 28 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/LidarData.hpp  ( 16 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/include/server.h  ( 11 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/include/basetypes.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/include/I18R/depth.h  ( 25 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/texture_check/include/texture_check.h  ( 10 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/texture_check/src/texture_check_impl.cpp  ( 8 )
+[123] std::shared_ptr<ImgDataFrame> imgDataPtr (new ImgDataFrame);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/texture_check/src/texture_check_impl.h  ( 15 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/status_code.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/config.h  ( 4 )
+[443] cv::FileStorage calibfile ("/root/robot_calibration/tof.yaml", cv::FileStorage::READ);
+[475] cv::FileStorage calibfileC ("/root/robot_calibration/cam2odo.yaml", cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/error_event.h  ( 4 )
+[33] void setCallback (std::function<void(ErrorMessage)> cb);
+[58] void publish ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/depth.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/depth_log.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/recorder/recorder.h  ( 17 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/recorder/recorder.cpp  ( 21 )
+[73] cv::FileStorage writeFile (mPath + "/MODULE.yaml", cv::FileStorage::WRITE);
+[148] std::ofstream imgFile (mImgPath + "/data.txt", std::ios::binary | std::ios::app | std::ios::in | std::ios::out);
+[164] std::ofstream tofFile (mTofPath + "/data.txt", std::ios::binary | std::ios::app | std::ios::in | std::ios::out);
+[197] cv::FileStorage laserFile (mLaserPath + "/laser/" + std::to_string(time_int) + ".yml", cv::FileStorage::WRITE);
+[222] cv::FileStorage laserDataFile (mLaserPath + "/laser/" + std::to_string(time_int) + ".yml", cv::FileStorage::WRITE);
+[382] cv::FileStorage paramFile (mPath + "/MODULE.yaml", cv::FileStorage::READ);
+[516] cv::FileStorage outfile ( mLaserPath + "/laser/" + std::to_string(mTofTimestamp[index]) + ".yml", cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/ros_function/ros_function.cpp  ( 20 )
+[312] TofDataFramePtr tofCloud (new TofDataFrame);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/ros_function/ros_function.h  ( 20 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/ros_function/depth_with_ros.h  ( 15 )
+[150] cv::FileStorage configfile (configPath+"depth.yml", cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/ground_layer.cpp  ( 11 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_def.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_computation.h  ( 11 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/ground_layer.h  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_layers.h  ( 10 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_computation.cpp  ( 12 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_layers.cpp  ( 10 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/tof/tof.cpp  ( 5 )
+[246] cv::FileStorage outfile (filePath, cv::FileStorage::WRITE);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/tof/tof.h  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/filter.cpp  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/thread.h  ( 11 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/point_process.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/time.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/visualization.h  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/cloud_quality.h  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/point_process.h  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/filter.h  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/cloud_quality.cpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/time.h  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/math.cpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/math.h  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/visualization.cpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/camera_param.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/stereo_vision.h  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/stereo_vision.cpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/sample.cpp  ( 5 )
+[41] cv::Mat opncvBM (const cv::Mat left, const cv::Mat right);
+[64] cv::Mat nbmcpu (const cv::Mat left, const cv::Mat right);
+[88] cv::Mat nbmgpu (const cv::Mat left, const cv::Mat right);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/bm_cl.h  ( 9 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/bm_cl.cpp  ( 8 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/sample/main.cc  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/common_func.h  ( 1 )
+[138] float get_rt ();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/ocl_util.h  ( 2 )
+[47] int openCLdevicepoll (void);
+[152] void context_notify (const char notify_message, const void private_info, size_t cb, void user_data);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/construction.h  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/preprocess.h  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/cvc_cl.h  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/lrcheck.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/disp_sel_cl.h  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/lrcheck.cpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/preprocess.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/disp_sel_cl.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/cvc_cl.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/ocl_util.cpp  ( 2 )
+[20] int openCLdevicepoll (void);
+[784] void context_notify (const char notify_message, const void private_info, size_t cb, void user_data);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/construction.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/cl_files/cl_str.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_cpu/block_matching.cpp  ( 25 )
+[538] ocl::Kernel k ("prefilter_xsobel", ocl::calib3d::StereoBMindemind_oclsrc);
+[683] void FindStereoCorrespondenceBM_SIMD (const Mat left, const Mat right, Mat disp, Mat cost, StereoBMindemindParams state, uchar buf, int _dy0, int _dy1 );
+[1873] void operator ()(const Range range) const CV_OVERRIDE;
+[2056] bool init (int dtype, cv::Size leftsize_in);
+[2210] int getMinDisparity () const CV_OVERRIDE return params.minDisparity };
+[2211] void setMinDisparity (int minDisparity) CV_OVERRIDE params.minDisparity = minDisparity };
+[2213] int getNumDisparities () const CV_OVERRIDE return params.numDisparities };
+[2214] void setNumDisparities (int numDisparities) CV_OVERRIDE params.numDisparities = numDisparities };
+[2216] int getBlockSize () const CV_OVERRIDE return params.SADWindowSize };
+[2217] void setBlockSize (int blockSize) CV_OVERRIDE params.SADWindowSize = blockSize };
+[2219] int getSpeckleWindowSize () const CV_OVERRIDE return params.speckleWindowSize };
+[2220] void setSpeckleWindowSize (int speckleWindowSize) CV_OVERRIDE params.speckleWindowSize = speckleWindowSize };
+[2222] int getSpeckleRange () const CV_OVERRIDE return params.speckleRange };
+[2223] void setSpeckleRange (int speckleRange) CV_OVERRIDE params.speckleRange = speckleRange };
+[2225] int getDisp12MaxDiff () const CV_OVERRIDE return params.disp12MaxDiff };
+[2226] void setDisp12MaxDiff (int disp12MaxDiff) CV_OVERRIDE params.disp12MaxDiff = disp12MaxDiff };
+[2229] void setPreFilterType (int preFilterType) CV_OVERRIDE params.preFilterType = preFilterType };
+[2235] void setPreFilterCap (int preFilterCap) CV_OVERRIDE params.preFilterCap = preFilterCap };
+[2238] void setTextureThreshold (int textureThreshold) CV_OVERRIDE params.textureThreshold = textureThreshold };
+[2241] void setUniquenessRatio (int uniquenessRatio) CV_OVERRIDE params.uniquenessRatio = uniquenessRatio };
+[2270] void read (const FileNode fn) CV_OVERRIDE;
+[2305] Ptr<StereoBMindemind> StereoBMindemind::create (int _numDisparities, int _SADWindowSize);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_cpu/block_matching.h  ( 1 )
+[30] bool init (int dtype, cv::Size leftsize_in) = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/orb_extractor.h  ( 10 )
+[57] void operator ()( cv::InputArray image, cv::InputArray mask, std::vector<cv::KeyPoint> keypoints, cv::OutputArray descriptors);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/rectify.h  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/orb_extractor.cpp  ( 12 )
+[1120] void ORBExtractor::operator ()(InputArray _image, InputArray _mask, vector<KeyPoint> _keypoints, OutputArray _descriptors);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/rectify.cpp  ( 15 )
+[132] cv::BFMatcher matcher  (cv::NORM_HAMMING);
+[300] cv::Vec4d k (D.ptr<cv::Vec4d>());
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/calibration/calibration.cpp  ( 11 )
+[604] cv::FileStorage calibfile (mFilePath + mCamera2TofCalibrationFileName, cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/calibration/calibration.h  ( 10 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/tof_thread.cpp  ( 7 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/stereo_thread.h  ( 24 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/common.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/monitor_thread.h  ( 22 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/laser_thread.h  ( 25 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/tof_thread.h  ( 16 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/depth_impl.h  ( 30 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/depth_impl.cpp  ( 10 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/laser_thread.cpp  ( 17 )
+[167] cv::FileStorage calibfile ("/root/robot_calibration/tof.yaml", cv::FileStorage::READ);
+[206] cv::FileStorage calibfileC ("/root/robot_calibration/cam2odo.yaml", cv::FileStorage::READ);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/monitor_thread.cpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/stereo_thread.cpp  ( 14 )
+[200] std::shared_ptr<ImgDataFrame> imgDataPtr (new ImgDataFrame);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/output/light_thread.h  ( 9 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/pose_process/pose_process.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/pose_process/pose_process.h  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/build_config.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/CMakeFiles/FindOpenMP/OpenMPTryFlag.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/test.cpp  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/server.h  ( 11 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/tof_cam_test.cpp  ( 4 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/basetypes.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/include/depth.h  ( 25 )
+
+Variable name:-------------------------------------------------------------------------------------
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/texture_quality_inspection.cpp  ( 63 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/texture_quality_inspection.h  ( 15 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/realtime.cpp  ( 24 )
+[108] imsee_module::ImseeModule *p_imsee = imsee[id];
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/texture_quality_inspection/sample.cpp  ( 12 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/tof_quality_inspection.h  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/realtime.cpp  ( 10 )
+[85] usb_3d_tof::Usb3dtof *p_tof = tofs[id];
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/sample.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/quality_inspection_tools/tof_quality_inspection/tof_quality_inspection.cpp  ( 44 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/test.cpp  ( 62 )
+[260] cv::Mat left_image, right_image;
+[318] std::string data_path
+[535] int echo_time = 100000;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/test_for_real.cpp  ( 26 )
+[167] cv::Mat Kl(3,3,CV_64FC1,moduleAllParam._left_camera[swr::imsee_types::Resolution::RES_640X400]._K);
+[168] cv::Mat Kr(3,3,CV_64FC1,moduleAllParam._right_camera[swr::imsee_types::Resolution::RES_640X400]._K);
+[174] std::string config_path = CONFIG_BUILD_CONFIGFILE_PATH;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/tof_cam_test.cpp  ( 28 )
+[137] std::string config_path = "../config/";
+[174] imsee_module::ImseeModule *p_imsee = imsee[id];
+[286] usb_3d_tof::Usb3dtof *p_tof = tofs[id];
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/test_texture.cpp  ( 26 )
+[171] cv::Mat Kl(3,3,CV_64FC1,moduleAllParam._left_camera[swr::imsee_types::Resolution::RES_640X400]._K);
+[172] cv::Mat Kr(3,3,CV_64FC1,moduleAllParam._right_camera[swr::imsee_types::Resolution::RES_640X400]._K);
+[178] std::string config_path = CONFIG_BUILD_CONFIGFILE_PATH;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/include/data_reader.h  ( 22 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/src/data_reader.cpp  ( 31 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/keyboard_control.cpp  ( 10 )
+[33] static float forward_flag = 0;
+[34] static float rotation_flag = 0;
+[79] int key_file_descriptor = 0;
+[80] termios original_terminal_state;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/multi_main.cpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/reg.hpp  ( 10 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/imsee_main.cpp  ( 24 )
+[90] std::string RightImgName = imgRightDir + std::to_string(data->camera_index) + std::string("_irtx_") + std::to_string(data->ir_tx_state) + std::string(".jpg");
+[186] ImseeModule *p_imsee = ImseeModule::Create(iter.second, "./config/");
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/mcu_main.cpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/vcu_main.cpp  ( 11 )
+[33] int nb_points = (REGISTERS_NB > INPUT_REGISTERS_NB) ? REGISTERS_NB : INPUT_REGISTERS_NB;
+[34] uint16_t *tab_rp_registers = (uint16_t *)malloc(nb_points * sizeof(uint16_t));
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/usbtof_main.cpp  ( 18 )
+[37]  swr::sensor_types::TofDepthData Depth
+[84] usb_3d_tof::Usb3dtof p_tof
+[86] static int depth_data_count = 0;
+[121] static int pcl_data_count = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/lidar_main.cpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/sensor_main.cpp  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/sample/keyboard_control.hpp  ( 18 )
+[15] bool is_timeout;
+[23] bool is_key_control_running = false;
+[24] std::thread *p_keyboard_check_th = nullptr;
+[26] float config_line_speed = 0.1f;
+[27] float config_rotation_speed = 0.2f;
+[32] int robot_mode = 0;
+[34] KeyTouchTimeCheck go_line_check;
+[35] KeyTouchTimeCheck go_rotation_check;
+[38] int disable_brake_flag = 0;
+[39] int disable_cliff_flag = 0;
+[40] int disable_bumer_flag = 0;
+[51] bool is_stop_key_touched = false;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/MultiModule.hpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/Usb3dtof.hpp  ( 12 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/SensorModule.hpp  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/VcuModule.hpp  ( 6 )
+[20]  uint16_t start_reg
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/McuModule.hpp  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/ImseeModule.hpp  ( 22 )
+[128] ImseeProductInfo ProductInfo
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/arm64/include/LidarData.hpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/keyboard_control.cpp  ( 10 )
+[33] static float forward_flag = 0;
+[34] static float rotation_flag = 0;
+[79] int key_file_descriptor = 0;
+[80] termios original_terminal_state;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/multi_main.cpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/reg.hpp  ( 10 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/imsee_main.cpp  ( 24 )
+[90] std::string RightImgName = imgRightDir + std::to_string(data->camera_index) + std::string("_irtx_") + std::to_string(data->ir_tx_state) + std::string(".jpg");
+[186] ImseeModule *p_imsee = ImseeModule::Create(iter.second, "./config/");
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/manager.cpp  ( 4 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/controller.cpp  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/mcu_main.cpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/vcu_main.cpp  ( 11 )
+[33] int nb_points = (REGISTERS_NB > INPUT_REGISTERS_NB) ? REGISTERS_NB : INPUT_REGISTERS_NB;
+[34] uint16_t *tab_rp_registers = (uint16_t *)malloc(nb_points * sizeof(uint16_t));
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/usbtof_main.cpp  ( 18 )
+[37]  swr::sensor_types::TofDepthData Depth
+[84] usb_3d_tof::Usb3dtof p_tof
+[86] static int depth_data_count = 0;
+[121] static int pcl_data_count = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/lidar_main.cpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/img_show.cpp  ( 7 )
+[35] cv::Mat img_1(400, 1280/2, CV_8UC1, buf_ok);
+[36] cv::Mat img_2(400, 1280/2, CV_8UC1, buf_nook);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/sensor_main.cpp  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/sample/keyboard_control.hpp  ( 18 )
+[15] bool is_timeout;
+[23] bool is_key_control_running = false;
+[24] std::thread *p_keyboard_check_th = nullptr;
+[26] float config_line_speed = 0.1f;
+[27] float config_rotation_speed = 0.2f;
+[32] int robot_mode = 0;
+[34] KeyTouchTimeCheck go_line_check;
+[35] KeyTouchTimeCheck go_rotation_check;
+[38] int disable_brake_flag = 0;
+[39] int disable_cliff_flag = 0;
+[40] int disable_bumer_flag = 0;
+[51] bool is_stop_key_touched = false;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/ProductInfo.hpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/MultiModule.hpp  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/Usb3dtof.hpp  ( 12 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/EmbManager.hpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/SensorModule.hpp  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/VcuModule.hpp  ( 6 )
+[20]  uint16_t start_reg
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/McuModule.hpp  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/ImseeModule.hpp  ( 22 )
+[128] ImseeProductInfo ProductInfo
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/test/sensors/x64/include/LidarData.hpp  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/include/server.h  ( 13 )
+[52] std::string size_str = " ";
+[62] std::vector<float> pose_vec = mPoseMap[timestamp];
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/include/basetypes.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/include/I18R/depth.h  ( 9 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/texture_check/include/texture_check.h  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/texture_check/src/texture_check_impl.cpp  ( 15 )
+[178] cv::Mat disp_now;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/texture_check/src/texture_check_impl.h  ( 19 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/status_code.h  ( 5 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/config.h  ( 80 )
+[379] cv::Mat Tot = cv::Mat::eye(4,4,CV_32FC1);
+[407] cv::Mat Tos = cv::Mat::eye(4,4,CV_32FC1);
+[428] cv::Mat Tog = cv::Mat::eye(4,4,CV_32FC1);
+[436] cv::Mat Tsc = cv::Mat::eye(4,4,CV_32FC1);
+[454] cv::Mat Tgt=cv::Mat(4,4,CV_32FC1);
+[460] cv::Mat TgtLast = Tog.inv() * Tot;
+[486] cv::Mat Tco=cv::Mat(3,3,CV_32FC1);
+[495] cv::Mat TcoLast = Tsc.inv() * Tos.inv();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/error_event.h  ( 8 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/depth.cpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/depth_log.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/recorder/recorder.h  ( 30 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/recorder/recorder.cpp  ( 42 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/ros_function/ros_function.cpp  ( 33 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/ros_function/ros_function.h  ( 56 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/ros_function/depth_with_ros.h  ( 17 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/ground_layer.cpp  ( 91 )
+[879] cv::Mat R = transposeBetween2Frame(cv::Rect(0, 0, 3, 3)).clone();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_def.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_computation.h  ( 54 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/ground_layer.h  ( 45 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_layers.h  ( 36 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_computation.cpp  ( 84 )
+[383] cv::Mat Trans = mParam.mTc2tof;
+[512] cv::Mat R = transposeBetween2Frame(cv::Rect(0, 0, 3, 3)).clone();
+[569] int cnt_in=0;
+[572] int cnt_in2=0;
+[575] int cnt_in3=0;
+[577] int cnt_all=0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/laser/laser_layers.cpp  ( 107 )
+[559] cv::Mat R = transposeBetween2Frame(cv::Rect(0, 0, 3, 3)).clone();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/tof/tof.cpp  ( 22 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/tof/tof.h  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/filter.cpp  ( 42 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/thread.h  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/point_process.cpp  ( 16 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/time.cpp  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/visualization.h  ( 21 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/cloud_quality.h  ( 6 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/point_process.h  ( 8 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/filter.h  ( 26 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/cloud_quality.cpp  ( 47 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/time.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/math.cpp  ( 23 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/math.h  ( 8 )
+[51]  double Q
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/common/visualization.cpp  ( 39 )
+[15] float A = (center.y-p.y)/(center.x-p.x);
+[17] float C = center.y-A*center.x;
+[60] cv::viz::WCloud cloud_widget(depth, cv::viz::Color::red());
+[145] int last_size = mCloudVec[i].size();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/camera_param.h  ( 3 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/stereo_vision.h  ( 25 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/stereo_vision.cpp  ( 53 )
+[95] int SADWindowSize = 5;
+[99] int P1 = 8*channel*SADWindowSize*SADWindowSize;
+[100] int P2 = 16*channel*SADWindowSize*SADWindowSize;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/sample.cpp  ( 21 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/bm_cl.h  ( 36 )
+[49] size_t bufferSize_2D;
+[50] size_t bufferSize_3D;
+[52] size_t bufferSize_2D_for_resize;
+[53] size_t bufferSize_3D_for_resize;
+[71] std::shared_ptr<disp_sel_cl> pDispSel_cl;
+[72] std::shared_ptr<PreProcess> pPreProcess_cl;
+[73] std::shared_ptr<Construction> pConstruction_cl;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/bm_cl.cpp  ( 64 )
+[401] std::chrono::steady_clock::time_point tsobel_gpu = std::chrono::steady_clock::now();
+[561] cv::Mat fillCostSpace3D_window3(1, bufferSize_3D, CV_32FC1, cv::Scalar::all(MAXFLOAT));
+[586] cv::Mat disp_win7 = lDisMap.clone();
+[606] cv::Mat lDisMap_t = cv::Mat(height/2, width, CV_16SC1, cv::Scalar(-16));
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/sample/main.cc  ( 13 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/common_func.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/ocl_util.h  ( 16 )
+[152]  void user_data
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/construction.h  ( 9 )
+[22] int Generate(cl_mem memoryObjects[], BuffID disp, BuffID depth3d, const int height, const int width, const int scaleY);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/preprocess.h  ( 4 )
+[21] int SobelGpu(cl_mem memoryObjects[], BuffID leftImg, BuffID rightImg, BuffID leftGrad, BuffID rightGrad, const int height, const int width);
+[22] int RemapGpu(cl_mem memoryObjects[]);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/cvc_cl.h  ( 16 )
+[19] int XConvolution(cl_mem memoryObjects[], BuffID leftImg, BuffID rightImg, BuffID leftGrad, BuffID rightGrad, BuffID costSpaceX, const int height, const int width, const int radius, const int minDis, const int maxDis);
+[21] int XConvolutionWithTexture(cl_mem memoryObjects[], BuffID leftImg, BuffID rightImg, BuffID leftGrad, BuffID rightGrad, BuffID costSpaceX, const int height, const int width, const int radius, const int minDis, const int maxDis);
+[23] int YConvolution(cl_mem memoryObjects[], BuffID costSpaceX, BuffID costSpaceAll, const int height, const int width, const int radius, const int numDis);
+[25] int YConvolutionRowStep2(cl_mem memoryObjects[], BuffID costSpaceX, BuffID costSpaceAll, const int height, const int width, const int radius, const int numDis);
+[27] int YConvolutionForPlane(cl_mem memoryObjects[], BuffID costSpaceX, BuffID costSpaceAll, const int height, const int width, const int numDis, const int textureRadius, const int direction);
+[30] int FillCostNear(cl_mem memoryObjects[], BuffID costSpaceSrc, BuffID costSpaceTgt, const int widthSrc, const int heightSrc, const int startFillDisTgt, const int endFillDisTgt);
+[34] int Transpose45(cl_mem memoryObjects[]);
+[35] int FilterYSpecialWindow(cl_mem memoryObjects[]);
+[60] size_t bufferSize_2D, bufferSize_3D;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/lrcheck.h  ( 1 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/include/disp_sel_cl.h  ( 11 )
+[15] int WTAAndPostProcessWithNear(cl_mem memoryObjects[], BuffID costSpace, BuffID disp, BuffID costOfdisp, const int height, const int width, const int maxDis, const int midDis, const float texture_thred, const float cost_thred);
+[16] int MixDisp(cl_mem memoryObjects[], BuffID dispTgt, BuffID dispSrc, const int heightTgt, const int widthTgt, const int scale);
+[18] int MixDisp3(cl_mem memoryObjects[], BuffID dispTgt, BuffID dispSrc1, BuffID dispSrc2, const int heightTgt, const int widthTgt, const int scale);
+[20] int MediumFilterAndRestore(cl_mem memoryObjects[], BuffID dispIn, BuffID filteredDispOut, const int height, const int width, const int dispStartScale, const int scale);
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/lrcheck.cpp  ( 15 )
+[30] AutoBuffer<float> _disp2buf(cols*2);
+[36] int DISP_SHIFT = 4, DISP_SCALE = 1 << DISP_SHIFT;
+[37] int INVALID_DISP = minD - 1, INVALID_DISP_SCALED = INVALID_DISP*DISP_SCALE;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/preprocess.cpp  ( 4 )
+[74] int arg_num = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/disp_sel_cl.cpp  ( 6 )
+[116] int arg_num = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/cvc_cl.cpp  ( 7 )
+[120] int arg_num = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/ocl_util.cpp  ( 25 )
+[784]  void user_data
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/src/construction.cpp  ( 10 )
+[67] int arg_num = 0;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_gpu/cl_files/cl_str.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_cpu/block_matching.cpp  ( 105 )
+[42] int SADWindowSize;
+[56] static bool ocl_prefilter_norm(InputArray _input, OutputArray _output, int winsize, int prefilterCap) {
+[61] int scale_g = winsize*winsize/8, scale_s = (1024 + scale_g)/(scale_g*2);
+[80] void ValidateDisparityindemind(InputOutputArray _disp, InputArray _cost, int minDisparity, int numberOfDisparities, int disp12MaxDiff ) {
+[91] AutoBuffer<int> _disp2buf(cols*2);
+[95] int INVALID_DISP = minD - 1, INVALID_DISP_SCALED = INVALID_DISP*DISP_SCALE;
+[537] static bool ocl_prefilter_xsobel(InputArray _input, OutputArray _output, int prefilterCap) {
+[683]  int _dy0
+[683]  int _dy1 
+[698] dType FILTERED = (dType)((mindisp - 1) << disp_shift);
+[700] int minsad_thred = ftzero*2*wsz*wsz*0.2;
+[1490] int thresh_near = minsad *1.05f;
+[1842] static bool ocl_prefiltering(InputArray left0, InputArray right0, OutputArray left, OutputArray right, StereoBMindemindParams* state) {
+[1892] static bool ocl_StereoBMindemind( InputArray _left, InputArray _right, OutputArray _disp, StereoBMindemindParams* state) {
+[1960] int _row0 = std::min(cvRound(range.start * rows / nstripes), rows);
+[1961] int _row1 = std::min(cvRound(range.end * rows / nstripes), rows);
+[2056]  cv::Size leftsize_in
+[2132] double N0 = 8000000 / (useShorts ? 1 : 4);
+[2305] int _numDisparities
+[2305]  int _SADWindowSize
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/bm_cpu/block_matching.h  ( 2 )
+[30]  cv::Size leftsize_in
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/orb_extractor.h  ( 30 )
+[38] cv::Point2i UL, UR, BL, BR;
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/rectify.h  ( 26 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/orb_extractor.cpp  ( 92 )
+[35] int v_sum = 0;
+[39] int val_plus = center[u + v * step], val_minus = center[u - v * step];
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/stereo_vision/rectify/rectify.cpp  ( 110 )
+[243] static void Remap(uchar * src, uchar* dst, float* mapX, float* mapY, int w, int h, int pixels) {
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/calibration/calibration.cpp  ( 81 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/calibration/calibration.h  ( 25 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/tof_thread.cpp  ( 14 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/stereo_thread.h  ( 36 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/common.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/monitor_thread.h  ( 35 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/laser_thread.h  ( 37 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/tof_thread.h  ( 20 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/depth_impl.h  ( 33 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/depth_impl.cpp  ( 15 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/laser_thread.cpp  ( 47 )
+[177] cv::Mat Tgt=cv::Mat(4,4,CV_32FC1);
+[184] cv::Mat TgtLast = mTgt;
+[215] cv::Mat Toc=cv::Mat(3,3,CV_32FC1);
+[224] cv::Mat Tco = Toc.inv();
+[225] cv::Mat TcoLast = mTct*mTgt.inv()*mTog.inv();
+[242] cv::Mat Tct = TcoLast*mTog*mTgt;
+[590] cv::Mat R = origin(cv::Rect(0, 0, 3, 3)).clone();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/monitor_thread.cpp  ( 7 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/impl/stereo_thread.cpp  ( 74 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/output/light_thread.h  ( 7 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/pose_process/pose_process.cpp  ( 8 )
+[14] cv::Mat R = transformWorld2Odom(cv::Rect(0, 0, 3, 3)).clone();
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/modules/pose_process/pose_process.h  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/build_config.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp  ( 2 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/build/CMakeFiles/FindOpenMP/OpenMPTryFlag.cpp  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/test.cpp  ( 16 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/server.h  ( 13 )
+[52] std::string size_str = " ";
+[62] std::vector<float> pose_vec = mPoseMap[timestamp];
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/tof_cam_test.cpp  ( 28 )
+[137] std::string config_path = "../config/";
+[174] imsee_module::ImseeModule *p_imsee = imsee[id];
+[286] usb_3d_tof::Usb3dtof *p_tof = tofs[id];
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/test/basetypes.h  ( 0 )
+ /root/workspace/workspace/i18r_depth/DepthModuleForICE/install/include/depth.h  ( 9 )
+
+Type name:-----------------------------------------------------------------------------------------
+ base  ( 29 )
+ struct  ( 22 )
+termios
+timespec
+ class  ( 51 )
+keyboard_control
+bm_cl
+cvc_cl
+disp_sel_cl
+ enum  ( 10 )
+ namespace  ( 9 )
+Ltme
+ using  ( 28 )
+ typedef  ( 1 )
+ template  ( 3 )
+
+function: 11% (122 / 1086)
+variable: 5% (169 / 3000)
+type: 4% (7 / 153)
++ mkdir -p /mnt/ftp/release/code_style_report/20220813
++ mv DepthModuleForICE_aarch64_codesytle_check.log /mnt/ftp/release/code_style_report/20220813/
++ echo 'check code style end'
+check code style end
++ popd
+~/workspace/workspace/i18r_depth/I18RDepthSubmodule ~/workspace/workspace/i18r_depth
+Notified JIRA that a build has completed.
+No emails were triggered.
+Finished: SUCCESS

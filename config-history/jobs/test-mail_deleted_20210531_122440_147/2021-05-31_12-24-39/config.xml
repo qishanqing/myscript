@@ -1,0 +1,119 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>Gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -ex
+echo &quot;hello&quot;
+
+echo &quot;VER=V1.0.0&quot; &gt;.profile
+echo &quot;LIB=libpath_planning.so&quot; &gt;&gt; .profile
+</command>
+    </hudson.tasks.Shell>
+    <EnvInjectBuilder plugin="envinject@2.3.0">
+      <info>
+        <propertiesFilePath>.profile</propertiesFilePath>
+      </info>
+    </EnvInjectBuilder>
+    <EnvInjectBuilder plugin="envinject@2.3.0">
+      <info/>
+    </EnvInjectBuilder>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.69">
+      <recipientList>shiquan@indemind.cn</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+        <hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
+          <email>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.AlwaysTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>【$VER Uploaded 】$LIB</defaultSubject>
+      <defaultContent>&lt;!DOCTYPE html&gt;    
+&lt;html&gt;    
+&lt;head&gt;    
+&lt;meta charset=&quot;UTF-8&quot;&gt;    
+&lt;title&gt;${ENV, var=&quot;JOB_NAME&quot;}-第${BUILD_NUMBER}次构建日志&lt;/title&gt;    
+&lt;/head&gt;    
+    
+&lt;body leftmargin=&quot;8&quot; marginwidth=&quot;0&quot; topmargin=&quot;8&quot; marginheight=&quot;4&quot;    
+    offset=&quot;0&quot;&gt;    
+    &lt;table width=&quot;95%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;  style=&quot;font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif&quot;&gt;    
+        &lt;tr&gt;    
+            本邮件由系统自动发出，无需回复！&lt;br/&gt;            
+            &lt;td&gt;&lt;font color=&quot;#CC0000&quot;&gt;构建结果 - ${BUILD_STATUS}&lt;/font&gt;&lt;/td&gt;   
+        &lt;/tr&gt;    
+        &lt;tr&gt;    
+            &lt;td&gt;&lt;br /&gt;    
+            &lt;b&gt;&lt;font color=&quot;#0B610B&quot;&gt;构建信息&lt;/font&gt;&lt;/b&gt;    
+            &lt;hr size=&quot;2&quot; width=&quot;100%&quot; align=&quot;center&quot; /&gt;&lt;/td&gt;    
+        &lt;/tr&gt;    
+        &lt;tr&gt;    
+            &lt;td&gt;    
+                &lt;ul&gt;
+                    &lt;li&gt;触发原因： ${CAUSE}&lt;/li&gt;    
+                    &lt;li&gt;构建状态： ${BUILD_STATUS}&lt;/li&gt;    
+                    &lt;li&gt;构建日志： &lt;a href=&quot;${BUILD_URL}console&quot;&gt;${BUILD_URL}console&lt;/a&gt;&lt;/li&gt; 
+                    &lt;li&gt;版本号：$VER&lt;/li&gt; 
+                    &lt;li&gt;so文件：$LIB&lt;/li&gt; 
+                    &lt;li&gt;版本地址  ： &lt;a href=&quot;http://192.168.50.191:85/AbbyRobotProject/AbbyNavigationSubmodule/-/tree/test_compile&quot;&gt;http://192.168.50.191:85/AbbyRobotProject/AbbyNavigationSubmodule/-/tree/test_compile&lt;/a&gt;&lt;/li&gt;    
+                &lt;/ul&gt; 
+            &lt;/td&gt;    
+        &lt;/tr&gt;    
+    &lt;/table&gt;    
+&lt;/body&gt;    
+&lt;/html&gt;</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <from></from>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

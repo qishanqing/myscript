@@ -1,0 +1,586 @@
+Started by user [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building on master in workspace /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty
+[WS-CLEANUP] Clean-up disabled, skipping workspace deletion.
+using credential add4e790-1baf-4d9e-81aa-2941949e9901
+Cloning the remote Git repository
+Cloning repository ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git
+ > /usr/bin/git init /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git
+ > /usr/bin/git --version # timeout=10
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress -- ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git # timeout=10
+ > /usr/bin/git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress -- ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse origin/master^{commit} # timeout=10
+Checking out Revision f9b3b07888d3f57b6245c79fb3f3cb367e2212f8 (origin/master)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f f9b3b07888d3f57b6245c79fb3f3cb367e2212f8 # timeout=10
+Commit message: "slam: add build.sh"
+ > /usr/bin/git rev-list --no-walk f9b3b07888d3f57b6245c79fb3f3cb367e2212f8 # timeout=10
+[Thirdparty] $ /bin/sh -xe /tmp/jenkins2370693048138068911.sh
++ docker exec -i c405 bash
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty /
++ echo 'Configuring and building Thirdparty/DBoW2 ...'
+Configuring and building Thirdparty/DBoW2 ...
++ cd DBoW2
++ mkdir build
++ cd build
++ cmake .. -DCMAKE_BUILD_TYPE=Release
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DBoW2/build
++ make -j4
+Scanning dependencies of target DBoW2
+[ 14%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/BowVector.cpp.o
+[ 42%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FeatureVector.cpp.o
+[ 42%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FORB.cpp.o
+[ 57%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/ScoringObject.cpp.o
+[ 71%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Random.cpp.o
+[ 85%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Timestamp.cpp.o
+[100%] Linking CXX shared library ../lib/libDBoW2.so
+[100%] Built target DBoW2
++ cd ../../DLib
++ mkdir build
++ cd build
++ cmake .. -DCMAKE_BUILD_TYPE=Release
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found OpenCV: /usr/local (found suitable version "3.4.3", minimum required is "3.4") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DLib/build
++ make -j4
+Scanning dependencies of target DLib
+[  6%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BRIEF.cpp.o
+[  6%] Building CXX object CMakeFiles/DLib.dir/src/DVision/FSolver.cpp.o
+[ 13%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PLYFile.cpp.o
+[ 13%] Building CXX object CMakeFiles/DLib.dir/src/DVision/ImageFunctions.cpp.o
+[ 17%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PatchFile.cpp.o
+[ 20%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BundleCamera.cpp.o
+[ 24%] Building CXX object CMakeFiles/DLib.dir/src/DVision/HSolver.cpp.o
+[ 27%] Building CXX object CMakeFiles/DLib.dir/src/DVision/Matches.cpp.o
+[ 31%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PMVSCamera.cpp.o
+[ 34%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PixelPointFile.cpp.o
+[ 37%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Drawing.cpp.o
+[ 41%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Geometry.cpp.o
+[ 44%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Mat.cpp.o
+[ 48%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Types.cpp.o
+[ 51%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/GUI.cpp.o
+[ 55%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/IO.cpp.o
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DLib/src/DUtilsCV/GUI.cpp: In static member function 'static int DUtilsCV::GUI::showImage(const cv::Mat&, bool, DUtilsCV::GUI::tWinHandler*, int)':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DLib/src/DUtilsCV/GUI.cpp:56:10: warning: comparison is always false due to limited range of data type [-Wtype-limits]
+   if(key == -1) key = NO_KEY;
+      ~~~~^~~~~
+[ 58%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Transformations.cpp.o
+[ 62%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/BinaryFile.cpp.o
+[ 65%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/DebugFunctions.cpp.o
+[ 68%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LUT.cpp.o
+[ 72%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Profiler.cpp.o
+[ 75%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/StringFunctions.cpp.o
+[ 79%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Timestamp.cpp.o
+[ 82%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/ConfigFile.cpp.o
+[ 86%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/FileFunctions.cpp.o
+[ 89%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LineFile.cpp.o
+[ 93%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Random.cpp.o
+[ 96%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/TimeManager.cpp.o
+[100%] Linking CXX shared library ../lib/libDLib.so
+[100%] Built target DLib
++ cd ../..
++ cd gtsam
++ mkdir build
++ cd build
++ cmake -DCMAKE_INSTALL_PREFIX=../lib -DCMAKE_BUILD_TYPE=Release -DGTSAM_USE_SYSTEM_EIGEN=OFF -DGTSAM_POSE3_EXPMAP=ON -DGTSAM_ROT3_EXPMAP=ON -DGTSAM_TANGENT_PREINTEGRATION=OFF ..
+-- The CXX compiler identification is GNU 7.5.0
+-- The C compiler identification is GNU 7.5.0
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test COMPILER_HAS_WSUGGEST_OVERRIDE
+-- Performing Test COMPILER_HAS_WSUGGEST_OVERRIDE - Success
+-- Performing Test COMPILER_HAS_WMISSING_OVERRIDE
+-- Performing Test COMPILER_HAS_WMISSING_OVERRIDE - Failed
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found Boost: /usr/include (found suitable version "1.65.1", minimum required is "1.65") found components:  serialization system filesystem thread program_options date_time timer chrono regex atomic 
+-- Found Eigen version: 3.3.7
+-- GTSAM_POSE3_EXPMAP=ON, enabling GTSAM_ROT3_EXPMAP as well
+-- Could NOT find MKL (missing: MKL_INCLUDE_DIR MKL_LIBRARIES) 
+-- Found OpenMP_C: -fopenmp (found version "4.5") 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- Found TBB: /usr/include (found suitable version "2017.0", minimum required is "4.4") found components:  tbb tbbmalloc 
+-- Building 3rdparty
+-- Looking for execinfo.h
+-- Looking for execinfo.h - found
+-- Looking for getline
+-- Looking for getline - found
+-- checking for thread-local storage - found
+-- Could NOT find GeographicLib (missing: GeographicLib_LIBRARY_DIRS GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS) 
+-- Building base
+-- Building basis
+-- Building geometry
+-- Building inference
+-- Building symbolic
+-- Building discrete
+-- Building linear
+-- Building nonlinear
+-- Building sam
+-- Building sfm
+-- Building slam
+-- Building navigation
+-- GTSAM Version: 4.1.0
+-- Install prefix: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib
+-- Building GTSAM - shared: ON
+-- Building base_unstable
+-- Building geometry_unstable
+-- Building linear_unstable
+-- Building discrete_unstable
+-- Building dynamics_unstable
+-- Building nonlinear_unstable
+-- Building slam_unstable
+-- Building partition_unstable
+-- GTSAM_UNSTABLE Version: 4.1.0
+-- Install prefix: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib
+-- Wrote /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/build/GTSAMConfig.cmake
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- ===============================================================
+-- ================  Configuration Options  ======================
+--  CMAKE_CXX_COMPILER_ID type                       : GNU
+--  CMAKE_CXX_COMPILER_VERSION                       : 7.5.0
+--  CMake version                                    : 3.10.2
+--  CMake generator                                  : Unix Makefiles
+--  CMake build tool                                 : /usr/bin/make
+-- Build flags                                               
+--  Build Tests                                      : Enabled
+--  Build examples with 'make all'                   : Enabled
+--  Build timing scripts with 'make all'             : Disabled
+--  Build shared GTSAM libraries                     : Enabled
+--  Put build type in library name                   : Enabled
+--  Build libgtsam_unstable                          : Enabled
+--  Build GTSAM unstable Python                      : Enabled
+--  Build MATLAB Toolbox for unstable                : Disabled
+--  Build for native architecture                    : Enabled
+--  Build type                                       : Release
+--  C compilation flags                              :  -O3 -DNDEBUG
+--  C++ compilation flags                            :  -O3 -DNDEBUG
+--  GTSAM_COMPILE_FEATURES_PUBLIC                    : cxx_std_11
+--  GTSAM_COMPILE_OPTIONS_PUBLIC                     : -march=native
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC                 : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_DEBUG               : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_DEBUG           : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_RELEASE             : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELEASE         : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_TIMING              : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_TIMING          : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_PROFILING           : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_PROFILING       : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_RELWITHDEBINFO      : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELWITHDEBINFO  : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_MINSIZEREL          : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_MINSIZEREL      : 
+--  Use System Eigen                                 : OFF (Using version: 3.3.7)
+--  Use Intel TBB                                    : Yes (Version: 2017.0)
+--  Eigen will use MKL                               : MKL not found
+--  Eigen will use MKL and OpenMP                    : OpenMP found but GTSAM_WITH_EIGEN_MKL is disabled
+--  Default allocator                                : TBB
+--  Cheirality exceptions enabled                    : YES
+--  Build with ccache                                : Yes
+-- Packaging flags
+--  CPack Source Generator                           : TGZ
+--  CPack Generator                                  : TGZ
+-- GTSAM flags                                               
+--  Quaternions as default Rot3                      : Disabled
+--  Runtime consistency checking                     : Disabled
+--  Rot3 retract is full ExpMap                      : Enabled
+--  Pose3 retract is full ExpMap                     : Enabled
+--  Allow features deprecated in GTSAM 4.1           : Enabled
+--  Metis-based Nested Dissection                    : Enabled
+--  Use tangent-space preintegration                 : Disabled
+-- MATLAB toolbox flags
+--  Install MATLAB toolbox                           : Disabled
+-- Python toolbox flags                                      
+--  Build Python module with pybind                  : Disabled
+-- ===============================================================
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/build
++ make -j8
+Scanning dependencies of target CppUnitLite
+[  2%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/Test.cpp.o
+[  2%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/TestRegistry.cpp.o
+[  2%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/TestResult.cpp.o
+Scanning dependencies of target metis-gtsam
+[  2%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/error.c.o
+[  2%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/evaluate.c.o
+[  2%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/csr.c.o
+[  2%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/blas.c.o
+[  2%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/b64.c.o
+[  2%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/fkvkselect.c.o
+[  2%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/fs.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/getopt.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/gkregex.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/graph.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/htable.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/io.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/itemsets.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/mcore.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/memory.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/omp.c.o
+[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/pdb.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/pqueue.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/random.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/rw.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/seq.c.o
+[  7%] Linking CXX static library libCppUnitLite.a
+[  7%] Built target CppUnitLite
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/sort.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/string.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/timers.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/tokenizer.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/__/GKlib/util.c.o
+[  7%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/auxapi.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/balance.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/bucketsort.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/checkgraph.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/coarsen.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/compress.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/contig.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/debug.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/fm.c.o
+[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/fortran.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/frename.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/gklib.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/graph.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/initpart.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/kmetis.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/kwayfm.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/kwayrefine.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/mcutil.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/mesh.c.o
+[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/meshpart.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/minconn.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/mincover.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/mmd.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/ometis.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/options.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/parmetis.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/pmetis.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/refine.c.o
+[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/separator.c.o
+[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/sfm.c.o
+[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/srefine.c.o
+[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/stat.c.o
+[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/timing.c.o
+[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/util.c.o
+[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis-gtsam.dir/wspace.c.o
+[ 18%] Linking C shared library libmetis-gtsam.so
+[ 18%] Built target metis-gtsam
+Scanning dependencies of target gtsam
+[ 21%] Building C object gtsam/CMakeFiles/gtsam.dir/3rdparty/CCOLAMD/Source/ccolamd.c.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/DSFVector.cpp.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/Matrix.cpp.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/Vector.cpp.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/cholesky.cpp.o
+[ 21%] Building C object gtsam/CMakeFiles/gtsam.dir/3rdparty/SuiteSparse_config/SuiteSparse_config.c.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/SymmetricBlockMatrix.cpp.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/VerticalBlockMatrix.cpp.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/debug.cpp.o
+[ 21%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/timing.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/types.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/basis/Chebyshev.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/basis/Chebyshev2.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3Bundler.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3DS2.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3DS2_Base.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3Fisheye.cpp.o
+[ 23%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3Unified.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3_S2.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3_S2Stereo.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/CalibratedCamera.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cyclic.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/EssentialMatrix.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Line3.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/OrientedPlane3.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Point2.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Point3.cpp.o
+[ 26%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Pose2.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Pose3.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot2.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot3.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot3M.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SO3.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SO4.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SOn.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Similarity3.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SimpleCamera.cpp.o
+[ 28%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/StereoCamera.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/StereoPoint2.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Unit3.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/triangulation.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/BayesTree.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Factor.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Key.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/LabeledSymbol.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Ordering.cpp.o
+[ 31%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Symbol.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/VariableIndex.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/VariableSlots.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicBayesNet.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicBayesTree.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicConditional.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicEliminationTree.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicFactor.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicFactorGraph.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicISAM.cpp.o
+[ 34%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicJunctionTree.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DecisionTreeFactor.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteBayesNet.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteBayesTree.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteConditional.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteEliminationTree.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteFactor.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteFactorGraph.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteJunctionTree.cpp.o
+[ 36%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteKey.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/Potentials.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/Signature.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/ConjugateGradientSolver.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Errors.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianBayesNet.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianBayesTree.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianConditional.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianDensity.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianEliminationTree.cpp.o
+[ 39%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianFactor.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianFactorGraph.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianISAM.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianJunctionTree.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/HessianFactor.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/IterativeSolver.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/JacobianFactor.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/KalmanFilter.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/LossFunctions.cpp.o
+[ 42%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/NoiseModel.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/PCGSolver.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Preconditioner.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Sampler.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Scatter.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphBuilder.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphPreconditioner.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphSolver.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/VectorValues.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/iterative.cpp.o
+[ 44%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/linearExceptions.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/CustomFactor.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/DoglegOptimizer.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/DoglegOptimizerImpl.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/GaussNewtonOptimizer.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2-impl.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2Clique.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2Params.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LevenbergMarquardtOptimizer.cpp.o
+[ 47%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LevenbergMarquardtParams.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LinearContainerFactor.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/Marginals.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearConjugateGradientOptimizer.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearFactor.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearFactorGraph.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearISAM.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearOptimizer.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearOptimizerParams.cpp.o
+[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/Values.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/sfm/MFAS.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/sfm/ShonanAveraging.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/sfm/ShonanFactor.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/sfm/TranslationRecovery.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/EssentialMatrixConstraint.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/FrobeniusFactor.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/InitializePose3.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/OrientedPlane3Factor.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/dataset.cpp.o
+[ 52%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/lago.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/AHRSFactor.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/AttitudeFactor.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/CombinedImuFactor.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/GPSFactor.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ImuBias.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ImuFactor.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ManifoldPreintegration.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/NavState.cpp.o
+[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/PreintegratedRotation.cpp.o
+[ 57%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/PreintegrationBase.cpp.o
+[ 57%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/PreintegrationParams.cpp.o
+[ 57%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ScenarioRunner.cpp.o
+[ 57%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/TangentPreintegration.cpp.o
+[ 57%] Linking CXX shared library libgtsam.so
+[ 57%] Built target gtsam
+Scanning dependencies of target UGM_chain
+Scanning dependencies of target UGM_small
+Scanning dependencies of target TimeTBB
+[ 57%] Building CXX object examples/CMakeFiles/UGM_chain.dir/UGM_chain.cpp.o
+[ 57%] Building CXX object examples/CMakeFiles/UGM_small.dir/UGM_small.cpp.o
+Scanning dependencies of target StereoVOExample_large
+Scanning dependencies of target SolverComparer
+Scanning dependencies of target StereoVOExample
+Scanning dependencies of target SimpleRotation
+[ 57%] Building CXX object examples/CMakeFiles/TimeTBB.dir/TimeTBB.cpp.o
+Scanning dependencies of target ShonanAveragingCLI
+[ 57%] Building CXX object examples/CMakeFiles/StereoVOExample_large.dir/StereoVOExample_large.cpp.o
+[ 57%] Building CXX object examples/CMakeFiles/SolverComparer.dir/SolverComparer.cpp.o
+[ 57%] Building CXX object examples/CMakeFiles/SimpleRotation.dir/SimpleRotation.cpp.o
+[ 57%] Building CXX object examples/CMakeFiles/StereoVOExample.dir/StereoVOExample.cpp.o
+[ 57%] Building CXX object examples/CMakeFiles/ShonanAveragingCLI.dir/ShonanAveragingCLI.cpp.o
+[ 57%] Linking CXX executable TimeTBB
+[ 57%] Built target TimeTBB
+Scanning dependencies of target Pose3SLAMExample_changeKeys
+[ 57%] Building CXX object examples/CMakeFiles/Pose3SLAMExample_changeKeys.dir/Pose3SLAMExample_changeKeys.cpp.o
+[ 60%] Linking CXX executable SimpleRotation
+[ 60%] Built target SimpleRotation
+Scanning dependencies of target PlanarSLAMExample
+[ 60%] Building CXX object examples/CMakeFiles/PlanarSLAMExample.dir/PlanarSLAMExample.cpp.o
+[ 63%] Linking CXX executable UGM_chain
+[ 63%] Built target UGM_chain
+Scanning dependencies of target ImuFactorsExample2
+[ 63%] Building CXX object examples/CMakeFiles/ImuFactorsExample2.dir/ImuFactorsExample2.cpp.o
+[ 63%] Linking CXX executable UGM_small
+[ 63%] Built target UGM_small
+Scanning dependencies of target Pose2SLAMStressTest
+[ 63%] Building CXX object examples/CMakeFiles/Pose2SLAMStressTest.dir/Pose2SLAMStressTest.cpp.o
+[ 63%] Linking CXX executable StereoVOExample
+[ 63%] Built target StereoVOExample
+Scanning dependencies of target Pose2SLAMExample_graph
+[ 63%] Building CXX object examples/CMakeFiles/Pose2SLAMExample_graph.dir/Pose2SLAMExample_graph.cpp.o
+[ 65%] Linking CXX executable Pose3SLAMExample_changeKeys
+[ 65%] Built target Pose3SLAMExample_changeKeys
+Scanning dependencies of target SFMExample_bal
+[ 68%] Building CXX object examples/CMakeFiles/SFMExample_bal.dir/SFMExample_bal.cpp.o
+[ 68%] Linking CXX executable StereoVOExample_large
+[ 68%] Built target StereoVOExample_large
+Scanning dependencies of target HMMExample
+[ 68%] Building CXX object examples/CMakeFiles/HMMExample.dir/HMMExample.cpp.o
+[ 68%] Linking CXX executable ShonanAveragingCLI
+[ 68%] Built target ShonanAveragingCLI
+Scanning dependencies of target CameraResectioning
+[ 68%] Building CXX object examples/CMakeFiles/CameraResectioning.dir/CameraResectioning.cpp.o
+[ 71%] Linking CXX executable SolverComparer
+[ 71%] Built target SolverComparer
+Scanning dependencies of target IMUKittiExampleGPS
+[ 71%] Building CXX object examples/CMakeFiles/IMUKittiExampleGPS.dir/IMUKittiExampleGPS.cpp.o
+[ 71%] Linking CXX executable HMMExample
+[ 71%] Built target HMMExample
+Scanning dependencies of target ISAM2Example_SmartFactor
+[ 73%] Building CXX object examples/CMakeFiles/ISAM2Example_SmartFactor.dir/ISAM2Example_SmartFactor.cpp.o
+[ 73%] Linking CXX executable Pose2SLAMStressTest
+[ 73%] Built target Pose2SLAMStressTest
+Scanning dependencies of target DiscreteBayesNet_FG
+[ 73%] Building CXX object examples/CMakeFiles/DiscreteBayesNet_FG.dir/DiscreteBayesNet_FG.cpp.o
+[ 73%] Linking CXX executable Pose2SLAMExample_graph
+[ 73%] Built target Pose2SLAMExample_graph
+Scanning dependencies of target Pose3SLAMExampleExpressions_BearingRangeWithTransform
+[ 73%] Building CXX object examples/CMakeFiles/Pose3SLAMExampleExpressions_BearingRangeWithTransform.dir/Pose3SLAMExampleExpressions_BearingRangeWithTransform.cpp.o
+[ 73%] Linking CXX executable ImuFactorsExample2
+[ 73%] Built target ImuFactorsExample2
+Scanning dependencies of target OdometryExample
+[ 73%] Building CXX object examples/CMakeFiles/OdometryExample.dir/OdometryExample.cpp.o
+[ 73%] Linking CXX executable CameraResectioning
+[ 73%] Built target CameraResectioning
+Scanning dependencies of target CombinedImuFactorsExample
+[ 73%] Building CXX object examples/CMakeFiles/CombinedImuFactorsExample.dir/CombinedImuFactorsExample.cpp.o
+[ 73%] Linking CXX executable PlanarSLAMExample
+[ 73%] Built target PlanarSLAMExample
+Scanning dependencies of target SFMExample_bal_COLAMD_METIS
+[ 73%] Building CXX object examples/CMakeFiles/SFMExample_bal_COLAMD_METIS.dir/SFMExample_bal_COLAMD_METIS.cpp.o
+[ 73%] Linking CXX executable DiscreteBayesNet_FG
+[ 73%] Built target DiscreteBayesNet_FG
+Scanning dependencies of target Pose2SLAMExample_g2o
+[ 73%] Building CXX object examples/CMakeFiles/Pose2SLAMExample_g2o.dir/Pose2SLAMExample_g2o.cpp.o
+[ 73%] Linking CXX executable SFMExample_bal
+[ 73%] Built target SFMExample_bal
+Scanning dependencies of target Pose3Localization
+[ 73%] Building CXX object examples/CMakeFiles/Pose3Localization.dir/Pose3Localization.cpp.o
+[ 73%] Linking CXX executable IMUKittiExampleGPS
+[ 73%] Built target IMUKittiExampleGPS
+Scanning dependencies of target Pose2SLAMExampleExpressions
+[ 73%] Building CXX object examples/CMakeFiles/Pose2SLAMExampleExpressions.dir/Pose2SLAMExampleExpressions.cpp.o
+[ 73%] Linking CXX executable OdometryExample
+[ 73%] Built target OdometryExample
+Scanning dependencies of target METISOrderingExample
+[ 73%] Building CXX object examples/CMakeFiles/METISOrderingExample.dir/METISOrderingExample.cpp.o
+c++: internal compiler error: Killed (program cc1plus)
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See <file:///usr/share/doc/gcc-7/README.Bugs> for instructions.
+examples/CMakeFiles/ISAM2Example_SmartFactor.dir/build.make:62: recipe for target 'examples/CMakeFiles/ISAM2Example_SmartFactor.dir/ISAM2Example_SmartFactor.cpp.o' failed
+make[2]: *** [examples/CMakeFiles/ISAM2Example_SmartFactor.dir/ISAM2Example_SmartFactor.cpp.o] Error 4
+CMakeFiles/Makefile2:24016: recipe for target 'examples/CMakeFiles/ISAM2Example_SmartFactor.dir/all' failed
+make[1]: *** [examples/CMakeFiles/ISAM2Example_SmartFactor.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[ 73%] Linking CXX executable Pose2SLAMExample_g2o
+[ 73%] Built target Pose2SLAMExample_g2o
+[ 73%] Linking CXX executable CombinedImuFactorsExample
+[ 73%] Built target CombinedImuFactorsExample
+[ 73%] Linking CXX executable Pose3Localization
+[ 73%] Built target Pose3Localization
+[ 73%] Linking CXX executable METISOrderingExample
+[ 73%] Built target METISOrderingExample
+[ 73%] Linking CXX executable SFMExample_bal_COLAMD_METIS
+[ 73%] Built target SFMExample_bal_COLAMD_METIS
+[ 73%] Linking CXX executable Pose3SLAMExampleExpressions_BearingRangeWithTransform
+[ 73%] Built target Pose3SLAMExampleExpressions_BearingRangeWithTransform
+[ 73%] Linking CXX executable Pose2SLAMExampleExpressions
+[ 73%] Built target Pose2SLAMExampleExpressions
+Makefile:162: recipe for target 'all' failed
+make: *** [all] Error 2
+Build step 'Execute shell' marked build as failure
+Notified JIRA that a build has completed.
+Finished: FAILURE

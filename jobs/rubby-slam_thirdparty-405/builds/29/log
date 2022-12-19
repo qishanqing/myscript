@@ -1,0 +1,1712 @@
+Started by user [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+Building on master in workspace /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty
+[WS-CLEANUP] Clean-up disabled, skipping workspace deletion.
+using credential add4e790-1baf-4d9e-81aa-2941949e9901
+ > /usr/bin/git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git
+ > /usr/bin/git --version # timeout=10
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress -- ssh://git@192.168.50.191:222/lifei/slam_thirdparty.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse origin/master^{commit} # timeout=10
+Checking out Revision aff359cc56374d9511b358cfe429486040b4b53f (origin/master)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f aff359cc56374d9511b358cfe429486040b4b53f # timeout=10
+Commit message: "slam: change CMAkelists"
+ > /usr/bin/git rev-list --no-walk f9b3b07888d3f57b6245c79fb3f3cb367e2212f8 # timeout=10
+[Thirdparty] $ /bin/sh -xe /tmp/jenkins7345161912810382200.sh
++ docker exec -i c405 bash
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty /
++ echo 'Configuring and building Thirdparty/DBoW2 ...'
+Configuring and building Thirdparty/DBoW2 ...
++ cd DBoW2
++ mkdir build
+/bin/mkdir: cannot create directory 'build': File exists
++ true
++ cd build
++ cmake .. -DCMAKE_BUILD_TYPE=Release
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Using flag -std=c++11.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DBoW2/build
++ make -j4
+Scanning dependencies of target DBoW2
+[ 14%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/BowVector.cpp.o
+[ 28%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FORB.cpp.o
+[ 42%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/ScoringObject.cpp.o
+[ 57%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FeatureVector.cpp.o
+[ 71%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Random.cpp.o
+[ 85%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Timestamp.cpp.o
+[100%] Linking CXX shared library ../lib/libDBoW2.so
+[100%] Built target DBoW2
++ cd ../../DLib
++ mkdir build
+/bin/mkdir: cannot create directory 'build': File exists
++ true
++ cd build
++ cmake .. -DCMAKE_BUILD_TYPE=Release
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Using flag -std=c++11.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DLib/build
++ make -j4
+Scanning dependencies of target DLib
+[  6%] Building CXX object CMakeFiles/DLib.dir/src/DVision/FSolver.cpp.o
+[  6%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BRIEF.cpp.o
+[ 10%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PLYFile.cpp.o
+[ 13%] Building CXX object CMakeFiles/DLib.dir/src/DVision/ImageFunctions.cpp.o
+[ 17%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PatchFile.cpp.o
+[ 20%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BundleCamera.cpp.o
+[ 24%] Building CXX object CMakeFiles/DLib.dir/src/DVision/HSolver.cpp.o
+[ 27%] Building CXX object CMakeFiles/DLib.dir/src/DVision/Matches.cpp.o
+[ 31%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PMVSCamera.cpp.o
+[ 34%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PixelPointFile.cpp.o
+[ 37%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Drawing.cpp.o
+[ 41%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Geometry.cpp.o
+[ 44%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Mat.cpp.o
+[ 48%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Types.cpp.o
+[ 51%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/GUI.cpp.o
+[ 55%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/IO.cpp.o
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DLib/src/DUtilsCV/GUI.cpp: In static member function 'static int DUtilsCV::GUI::showImage(const cv::Mat&, bool, DUtilsCV::GUI::tWinHandler*, int)':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/DLib/src/DUtilsCV/GUI.cpp:56:10: warning: comparison is always false due to limited range of data type [-Wtype-limits]
+   if(key == -1) key = NO_KEY;
+      ~~~~^~~~~
+[ 58%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Transformations.cpp.o
+[ 62%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/BinaryFile.cpp.o
+[ 65%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/DebugFunctions.cpp.o
+[ 68%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LUT.cpp.o
+[ 72%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Profiler.cpp.o
+[ 75%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/StringFunctions.cpp.o
+[ 79%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Timestamp.cpp.o
+[ 82%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/ConfigFile.cpp.o
+[ 86%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/FileFunctions.cpp.o
+[ 89%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LineFile.cpp.o
+[ 93%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Random.cpp.o
+[ 96%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/TimeManager.cpp.o
+[100%] Linking CXX shared library ../lib/libDLib.so
+[100%] Built target DLib
++ cd ../..
++ cd gtsam
++ mkdir build
+/bin/mkdir: cannot create directory 'build': File exists
++ true
++ cd build
++ cmake -DCMAKE_INSTALL_PREFIX=../lib -DCMAKE_BUILD_TYPE=Release -DGTSAM_USE_SYSTEM_EIGEN=OFF -DGTSAM_POSE3_EXPMAP=ON -DGTSAM_ROT3_EXPMAP=ON -DGTSAM_TANGENT_PREINTEGRATION=OFF ..
+-- Found Eigen version: 3.3.7
+-- GTSAM_POSE3_EXPMAP=ON, enabling GTSAM_ROT3_EXPMAP as well
+-- Could NOT find MKL (missing: MKL_INCLUDE_DIR MKL_LIBRARIES) 
+-- Building 3rdparty
+-- checking for thread-local storage - found
+-- Could NOT find GeographicLib (missing: GeographicLib_LIBRARY_DIRS GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS) 
+-- Building base
+-- Building basis
+-- Building geometry
+-- Building inference
+-- Building symbolic
+-- Building discrete
+-- Building linear
+-- Building nonlinear
+-- Building sam
+-- Building sfm
+-- Building slam
+-- Building navigation
+-- GTSAM Version: 4.1.0
+-- Install prefix: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib
+-- Building GTSAM - shared: ON
+-- Building base_unstable
+-- Building geometry_unstable
+-- Building linear_unstable
+-- Building discrete_unstable
+-- Building dynamics_unstable
+-- Building nonlinear_unstable
+-- Building slam_unstable
+-- Building partition_unstable
+-- GTSAM_UNSTABLE Version: 4.1.0
+-- Install prefix: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib
+-- Wrote /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/build/GTSAMConfig.cmake
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- ===============================================================
+-- ================  Configuration Options  ======================
+--  CMAKE_CXX_COMPILER_ID type                       : GNU
+--  CMAKE_CXX_COMPILER_VERSION                       : 7.5.0
+--  CMake version                                    : 3.10.2
+--  CMake generator                                  : Unix Makefiles
+--  CMake build tool                                 : /usr/bin/make
+-- Build flags                                               
+--  Build Tests                                      : Enabled
+--  Build examples with 'make all'                   : Enabled
+--  Build timing scripts with 'make all'             : Disabled
+--  Build shared GTSAM libraries                     : Enabled
+--  Put build type in library name                   : Enabled
+--  Build libgtsam_unstable                          : Enabled
+--  Build GTSAM unstable Python                      : Enabled
+--  Build MATLAB Toolbox for unstable                : Disabled
+--  Build for native architecture                    : Enabled
+--  Build type                                       : Release
+--  C compilation flags                              :  -O3 -DNDEBUG
+--  C++ compilation flags                            :  -O3 -DNDEBUG
+--  GTSAM_COMPILE_FEATURES_PUBLIC                    : cxx_std_11
+--  GTSAM_COMPILE_OPTIONS_PUBLIC                     : -march=native
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC                 : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_DEBUG               : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_DEBUG           : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_RELEASE             : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELEASE         : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_TIMING              : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_TIMING          : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_PROFILING           : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_PROFILING       : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_RELWITHDEBINFO      : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELWITHDEBINFO  : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_MINSIZEREL          : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_MINSIZEREL      : 
+--  Use System Eigen                                 : OFF (Using version: 3.3.7)
+--  Use Intel TBB                                    : Yes (Version: 2017.0)
+--  Eigen will use MKL                               : MKL not found
+--  Eigen will use MKL and OpenMP                    : OpenMP found but GTSAM_WITH_EIGEN_MKL is disabled
+--  Default allocator                                : TBB
+--  Cheirality exceptions enabled                    : YES
+--  Build with ccache                                : Yes
+-- Packaging flags
+--  CPack Source Generator                           : TGZ
+--  CPack Generator                                  : TGZ
+-- GTSAM flags                                               
+--  Quaternions as default Rot3                      : Disabled
+--  Runtime consistency checking                     : Disabled
+--  Rot3 retract is full ExpMap                      : Enabled
+--  Pose3 retract is full ExpMap                     : Enabled
+--  Allow features deprecated in GTSAM 4.1           : Enabled
+--  Metis-based Nested Dissection                    : Enabled
+--  Use tangent-space preintegration                 : Disabled
+-- MATLAB toolbox flags
+--  Install MATLAB toolbox                           : Disabled
+-- Python toolbox flags                                      
+--  Build Python module with pybind                  : Disabled
+-- ===============================================================
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/build
++ make -j8
+[  2%] Built target CppUnitLite
+[ 18%] Built target metis-gtsam
+[ 57%] Built target gtsam
+[ 60%] Built target UGM_small
+[ 60%] Built target UGM_chain
+[ 63%] Built target SimpleRotation
+[ 63%] Built target StereoVOExample_large
+[ 65%] Built target SolverComparer
+[ 65%] Built target TimeTBB
+[ 65%] Built target ShonanAveragingCLI
+[ 65%] Built target StereoVOExample
+[ 65%] Built target HMMExample
+[ 65%] Built target ImuFactorsExample2
+[ 65%] Built target PlanarSLAMExample
+[ 68%] Built target Pose3SLAMExample_changeKeys
+[ 71%] Built target Pose2SLAMExample_graph
+[ 71%] Built target SFMExample_bal
+[ 71%] Built target Pose2SLAMStressTest
+[ 71%] Built target CameraResectioning
+[ 71%] Built target DiscreteBayesNet_FG
+[ 71%] Built target IMUKittiExampleGPS
+[ 71%] Built target Pose3SLAMExampleExpressions_BearingRangeWithTransform
+[ 71%] Built target OdometryExample
+[ 71%] Built target SFMExample_bal_COLAMD_METIS
+[ 71%] Built target Pose2SLAMExample_g2o
+[ 71%] Built target CombinedImuFactorsExample
+[ 73%] Built target ISAM2Example_SmartFactor
+[ 73%] Built target DiscreteBayesNetExample
+[ 73%] Built target METISOrderingExample
+[ 73%] Built target Pose2SLAMExampleExpressions
+[ 73%] Built target easyPoint2KalmanFilter
+[ 73%] Built target Pose3Localization
+[ 73%] Built target CreateSFMExampleData
+[ 76%] Built target Pose2SLAMExample
+[ 76%] Built target VisualISAMExample
+[ 76%] Built target Pose2SLAMExample_graphviz
+[ 76%] Built target Pose3SLAMExample_initializePose3Chordal
+[ 76%] Built target InverseKinematicsExampleExpressions
+[ 76%] Built target Pose2SLAMwSPCG
+[ 78%] Built target LocalizationExample
+[ 81%] Built target SFMExample
+[ 81%] Built target Pose3SLAMExample_g2o
+[ 81%] Built target Pose3SLAMExample_initializePose3Gradient
+[ 81%] Built target SFMExample_SmartFactor
+[ 81%] Built target RangeISAMExample_plaza2
+[ 81%] Built target SFMExampleExpressions
+[ 81%] Built target SFMExampleExpressions_bal
+[ 84%] Built target FisheyeExample
+[ 84%] Built target VisualISAM2Example
+[ 84%] Built target SFMExample_SmartFactorPCG
+[ 84%] Built target ImuFactorsExample
+[ 86%] Built target SelfCalibrationExample
+[ 86%] Built target Pose2SLAMExample_lago
+[ 97%] Built target gtsam_unstable
+[ 97%] Built target schedulingExample
+[100%] Built target schedulingQuals12
+[100%] Built target schedulingQuals13
+[100%] Built target TimeOfArrivalExample
+[100%] Built target SmartStereoProjectionFactorExample
+[100%] Built target ConcurrentCalibration
+[100%] Built target FixedLagSmootherExample
+[100%] Built target ISAM2_SmartFactorStereo_IMU
+[100%] Built target SmartProjectionFactorExample
+[100%] Built target GncPoseAveragingExample
+[100%] Built target SmartRangeExample_plaza2
+[100%] Built target SmartRangeExample_plaza1
+[100%] Built target ConcurrentFilteringAndSmoothingExample
++ make install
+[  2%] Built target CppUnitLite
+[ 18%] Built target metis-gtsam
+[ 57%] Built target gtsam
+[ 60%] Built target UGM_chain
+[ 60%] Built target TimeTBB
+[ 60%] Built target StereoVOExample_large
+[ 60%] Built target StereoVOExample
+[ 63%] Built target SolverComparer
+[ 65%] Built target SimpleRotation
+[ 65%] Built target ShonanAveragingCLI
+[ 65%] Built target UGM_small
+[ 68%] Built target Pose3SLAMExample_changeKeys
+[ 68%] Built target PlanarSLAMExample
+[ 68%] Built target ImuFactorsExample2
+[ 68%] Built target Pose2SLAMStressTest
+[ 68%] Built target Pose2SLAMExample_graph
+[ 71%] Built target SFMExample_bal
+[ 71%] Built target HMMExample
+[ 71%] Built target CameraResectioning
+[ 71%] Built target IMUKittiExampleGPS
+[ 73%] Built target ISAM2Example_SmartFactor
+[ 73%] Built target DiscreteBayesNet_FG
+[ 73%] Built target Pose3SLAMExampleExpressions_BearingRangeWithTransform
+[ 73%] Built target OdometryExample
+[ 73%] Built target CombinedImuFactorsExample
+[ 73%] Built target SFMExample_bal_COLAMD_METIS
+[ 73%] Built target Pose2SLAMExample_g2o
+[ 73%] Built target Pose3Localization
+[ 73%] Built target Pose2SLAMExampleExpressions
+[ 73%] Built target METISOrderingExample
+[ 73%] Built target DiscreteBayesNetExample
+[ 73%] Built target easyPoint2KalmanFilter
+[ 73%] Built target CreateSFMExampleData
+[ 73%] Built target VisualISAMExample
+[ 76%] Built target Pose2SLAMExample
+[ 76%] Built target InverseKinematicsExampleExpressions
+[ 76%] Built target Pose2SLAMExample_graphviz
+[ 78%] Built target LocalizationExample
+[ 78%] Built target Pose3SLAMExample_initializePose3Chordal
+[ 78%] Built target Pose2SLAMwSPCG
+[ 78%] Built target Pose3SLAMExample_g2o
+[ 78%] Built target Pose3SLAMExample_initializePose3Gradient
+[ 81%] Built target SFMExample
+[ 81%] Built target SFMExample_SmartFactor
+[ 81%] Built target RangeISAMExample_plaza2
+[ 81%] Built target SFMExampleExpressions
+[ 81%] Built target SFMExample_SmartFactorPCG
+[ 81%] Built target SFMExampleExpressions_bal
+[ 84%] Built target FisheyeExample
+[ 84%] Built target VisualISAM2Example
+[ 84%] Built target ImuFactorsExample
+[ 86%] Built target Pose2SLAMExample_lago
+[ 86%] Built target SelfCalibrationExample
+[ 97%] Built target gtsam_unstable
+[ 97%] Built target schedulingExample
+[100%] Built target schedulingQuals12
+[100%] Built target schedulingQuals13
+[100%] Built target TimeOfArrivalExample
+[100%] Built target SmartStereoProjectionFactorExample
+[100%] Built target FixedLagSmootherExample
+[100%] Built target ConcurrentCalibration
+[100%] Built target ISAM2_SmartFactorStereo_IMU
+[100%] Built target SmartProjectionFactorExample
+[100%] Built target GncPoseAveragingExample
+[100%] Built target SmartRangeExample_plaza2
+[100%] Built target SmartRangeExample_plaza1
+[100%] Built target ConcurrentFilteringAndSmoothingExample
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAM/gtsam_extra.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAM/GTSAMConfig.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAM/GTSAMConfigVersion.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAM/GTSAM-exports.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAM/GTSAM-exports-release.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/CppUnitLite/Failure.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/CppUnitLite/Test.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/CppUnitLite/TestHarness.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/CppUnitLite/TestRegistry.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/CppUnitLite/TestResult.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libCppUnitLite.a
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/global_includes.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/precompiled_header.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/config.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/dllexport.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam.so.4.1.0
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam.so.4
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam.so
+-- Set runtime path of "/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam.so.4.1.0" to ""
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/CCOLAMD/ccolamd.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/SuiteSparse_config/SuiteSparse_config.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Cholesky
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/CholmodSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Core
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Dense
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Eigen
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Eigenvalues
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Geometry
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Householder
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/IterativeLinearSolvers
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Jacobi
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/LU
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/MetisSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/OrderingMethods
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/PaStiXSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/PardisoSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/QR
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/QtAlignedMalloc
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/SPQRSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/SVD
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/Sparse
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/SparseCholesky
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/SparseCore
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/SparseLU
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/SparseQR
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/StdDeque
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/StdList
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/StdVector
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/SuperLUSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/UmfPackSupport
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/UmfPackSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/UmfPackSupport/UmfPackSupport.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/MetisSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/MetisSupport/MetisSupport.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/ComplexEigenSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/RealQZ.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/RealSchur.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/EigenSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/Tridiagonalization.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/ComplexSchur.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/HessenbergDecomposition.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/IterativeSolverBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/BasicPreconditioners.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/IterativeLinearSolvers/SolveWithGuess.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SuperLUSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SuperLUSupport/SuperLUSupport.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/PardisoSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/PardisoSupport/PardisoSupport.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU/FullPivLU.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU/InverseImpl.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU/arch
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU/arch/Inverse_SSE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU/PartialPivLU.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU/PartialPivLU_LAPACKE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/LU/Determinant.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_pruneL.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_column_dfs.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_pivotL.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_SupernodalMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_Structs.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_gemm_kernel.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_kernel_bmod.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_panel_dfs.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLUImpl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_column_bmod.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_copy_to_ucol.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_Memory.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_relax_snode.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_Utils.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_heap_relax_snode.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseLU/SparseLU_panel_bmod.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins/BlockMethods.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins/ArrayCwiseUnaryOps.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins/MatrixCwiseBinaryOps.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins/ArrayCwiseBinaryOps.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins/CommonCwiseBinaryOps.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins/CommonCwiseUnaryOps.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/OrderingMethods
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/OrderingMethods/Ordering.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/OrderingMethods/Amd.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/OrderingMethods/Eigen_Colamd.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Jacobi
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Jacobi/Jacobi.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/ParametrizedLine.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/EulerAngles.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Quaternion.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Translation.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/AlignedBox.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Umeyama.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Hyperplane.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/RotationBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/AngleAxis.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Transform.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/arch
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/arch/Geometry_SSE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/OrthoMethods.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Homogeneous.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Scaling.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Geometry/Rotation2D.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/QR
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/QR/FullPivHouseholderQR.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/QR/HouseholderQR_LAPACKE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/QR/HouseholderQR.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/QR/CompleteOrthogonalDecomposition.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/QR/ColPivHouseholderQR.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc/RealSvd2x2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc/blas.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc/lapacke.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc/lapack.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc/lapacke_mangling.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc/Image.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/misc/Kernel.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/CholmodSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/CholmodSupport/CholmodSupport.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SVD
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SVD/JacobiSVD_LAPACKE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SVD/JacobiSVD.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SVD/SVDBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SVD/UpperBidiagonalization.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SVD/BDCSVD.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/SolverBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/SolveTriangular.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/EigenBase.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/functors
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/functors/UnaryFunctors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/functors/BinaryFunctors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/functors/TernaryFunctors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/functors/StlFunctors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/functors/NullaryFunctors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/functors/AssignmentFunctors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/DenseBase.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/StaticAssert.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/DisableStupidWarnings.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/Constants.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/Macros.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/XprHelper.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/NonMPL2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/ReenableStupidWarnings.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/ForwardDeclarations.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/BlasUtil.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/Memory.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/Meta.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/util/MKL_support.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CoreIterators.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CwiseTernaryOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/VectorwiseOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Swap.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Matrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/ProductEvaluators.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Assign.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CwiseUnaryOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Block.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/NumTraits.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/ForceAlignedAccess.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/GenericPacketMath.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/DenseCoeffsBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Transpositions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/AssignEvaluator.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Product.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/BooleanRedux.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Array.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/GeneralBlockPanelKernel.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/TriangularMatrixVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/SelfadjointMatrixVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/TriangularSolverMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/SelfadjointRank2Update.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/TriangularMatrixMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/GeneralMatrixMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/Parallelizer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/TriangularSolverVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/SelfadjointMatrixMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/GeneralMatrixVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/SelfadjointProduct.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Ref.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/BandMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Diagonal.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/PlainObjectBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/ArrayBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/ConditionEstimator.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Solve.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Fuzzy.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/ReturnByValue.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/NoAlias.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/MatrixBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/GeneralProduct.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Reverse.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Redux.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Transpose.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Replicate.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/MathFunctionsImpl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CoreEvaluators.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Inverse.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Map.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CwiseBinaryOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Visitor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Assign_MKL.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/IO.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/VectorBlock.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Random.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/StableNorm.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/CUDA
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/CUDA/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/CUDA/TypeCasting.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/CUDA/PacketMathHalf.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/CUDA/Half.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/CUDA/Complex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/CUDA/PacketMath.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/SSE
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/SSE/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/SSE/TypeCasting.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/SSE/Complex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/SSE/PacketMath.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX/TypeCasting.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX/Complex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX/PacketMath.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/ZVector
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/ZVector/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/ZVector/Complex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/ZVector/PacketMath.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/Default
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/Default/ConjHelper.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/Default/Settings.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AltiVec
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AltiVec/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AltiVec/Complex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AltiVec/PacketMath.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/NEON
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/NEON/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/NEON/Complex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/NEON/PacketMath.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX512
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX512/MathFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/arch/AVX512/PacketMath.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/MapBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/ArrayWrapper.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/TriangularMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CwiseUnaryView.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Dot.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/NestByValue.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Stride.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CommaInitializer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/SelfCwiseBinaryOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/GlobalFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/PermutationMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/CwiseNullaryOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/DenseStorage.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/DiagonalMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/SelfAdjointView.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/Select.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Core/DiagonalProduct.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SPQRSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SPQRSupport/SuiteSparseQRSupport.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Householder
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Householder/Householder.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Householder/HouseholderSequence.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Householder/BlockHouseholder.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCholesky
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCholesky/SimplicialCholesky_impl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCholesky/SimplicialCholesky.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/StlSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/StlSupport/StdList.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/StlSupport/details.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/StlSupport/StdVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/StlSupport/StdDeque.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Cholesky
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Cholesky/LLT.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Cholesky/LLT_LAPACKE.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/Cholesky/LDLT.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseQR
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseQR/SparseQR.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/PaStiXSupport
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/PaStiXSupport/PaStiXSupport.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseTriangularView.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseCwiseBinaryOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseCompressedBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/AmbiVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseDenseProduct.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/TriangularSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseCwiseUnaryOp.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseDiagonalProduct.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseSolverBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseSelfAdjointView.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseSparseProductWithPruning.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparsePermutation.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseDot.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/ConservativeSparseSparseProduct.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseColEtree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseBlock.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseRedux.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/CompressedStorage.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseProduct.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseTranspose.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseFuzzy.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseUtil.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseView.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseAssign.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/MappedSparseMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseMap.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseRef.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/Eigen/Eigen/src/SparseCore/SparseMatrixBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/metis/metis.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libmetis-gtsam.so
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/autodiff.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/eigen.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/example.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/fixed_array.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/fpclassify.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/jet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/macros.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/manual_constructor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/rotation.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/3rdparty/ceres/variadic_evaluate.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/ConcurrentMap.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/DSFMap.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/DSFVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/FastDefaultAllocator.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/FastList.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/FastMap.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/FastSet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/FastVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/GenericValue.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/Group.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/Lie.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/LieMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/LieScalar.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/LieVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/Manifold.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/Matrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/OptionalJacobian.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/ProductLieGroup.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/SymmetricBlockMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/Testable.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/TestableAssertions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/ThreadsafeException.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/Value.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/Vector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/VectorSpace.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/VerticalBlockMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/WeightedSampler.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/chartTesting.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/cholesky.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/concepts.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/debug.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/lieProxies.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/make_shared.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/numericalDerivative.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/serialization.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/serializationTestHelpers.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/testLie.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/timing.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/treeTraversal-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/types.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/utilities.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/treeTraversal/parallelTraversalTasks.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/treeTraversal/statistics.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/deprecated/LieMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/deprecated/LieScalar.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/base/deprecated/LieVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/basis/Basis.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/basis/BasisFactors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/basis/Chebyshev.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/basis/Chebyshev2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/basis/FitBasis.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/basis/Fourier.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/basis/ParameterMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/BearingRange.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3Bundler.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3DS2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3DS2_Base.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3Fisheye.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3Unified.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3_S2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cal3_S2Stereo.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/CalibratedCamera.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/CameraSet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Cyclic.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/EssentialMatrix.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Line3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/OrientedPlane3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/PinholeCamera.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/PinholePose.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/PinholeSet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Point2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Point3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Pose2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Pose3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Quaternion.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Rot2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Rot3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/SO3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/SO4.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/SOn-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/SOn.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Similarity3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/SimpleCamera.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/StereoCamera.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/StereoPoint2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/Unit3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/concepts.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/geometry/triangulation.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/BayesNet-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/BayesNet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/BayesTree-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/BayesTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/BayesTreeCliqueBase-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/BayesTreeCliqueBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/ClusterTree-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/ClusterTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/Conditional-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/Conditional.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/EliminateableFactorGraph-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/EliminateableFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/EliminationTree-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/EliminationTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/Factor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/FactorGraph-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/FactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/ISAM-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/ISAM.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/JunctionTree-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/JunctionTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/Key.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/LabeledSymbol.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/MetisIndex-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/MetisIndex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/Ordering.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/Symbol.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/VariableIndex-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/VariableIndex.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/VariableSlots.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/graph-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/graph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/inference-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/inference/inferenceExceptions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicBayesNet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicBayesTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicConditional.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicEliminationTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicFactor-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicISAM.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/symbolic/SymbolicJunctionTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/AlgebraicDecisionTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/Assignment.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DecisionTree-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DecisionTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DecisionTreeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteBayesNet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteBayesTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteConditional.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteEliminationTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteJunctionTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteKey.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/DiscreteMarginals.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/Potentials.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/discrete/Signature.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/AcceleratedPowerMethod.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/BinaryJacobianFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/ConjugateGradientSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/Errors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianBayesNet.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianBayesTree-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianBayesTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianConditional-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianConditional.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianDensity.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianEliminationTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianISAM.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/GaussianJunctionTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/HessianFactor-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/HessianFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/IterativeSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/JacobianFactor-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/JacobianFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/KalmanFilter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/LossFunctions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/NoiseModel.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/PCGSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/PowerMethod.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/Preconditioner.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/RegularHessianFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/RegularJacobianFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/Sampler.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/Scatter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/SparseEigen.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/SubgraphBuilder.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/SubgraphPreconditioner.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/SubgraphSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/VectorValues.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/iterative-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/iterative.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/linearAlgorithms-inst.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/linear/linearExceptions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/AdaptAutoDiff.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/CustomFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/DoglegOptimizer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/DoglegOptimizerImpl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/Expression-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/Expression.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ExpressionFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ExpressionFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ExtendedKalmanFilter-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ExtendedKalmanFilter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/FunctorizedFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/GaussNewtonOptimizer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/GncOptimizer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/GncParams.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ISAM2-impl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ISAM2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ISAM2Clique.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ISAM2Params.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ISAM2Result.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/ISAM2UpdateParams.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/LevenbergMarquardtOptimizer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/LevenbergMarquardtParams.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/LinearContainerFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/Marginals.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/NonlinearConjugateGradientOptimizer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/NonlinearEquality.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/NonlinearFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/NonlinearFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/NonlinearISAM.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/NonlinearOptimizer.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/NonlinearOptimizerParams.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/PriorFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/Symbol.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/Values-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/Values.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/WhiteNoiseFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/expressionTesting.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/expressions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/factorTesting.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/nonlinearExceptions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/utilities.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/internal/CallRecord.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/internal/ExecutionTrace.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/internal/ExpressionNode.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/internal/JacobianMap.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/internal/LevenbergMarquardtState.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/nonlinear/internal/NonlinearOptimizerState.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sam/BearingFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sam/BearingRangeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sam/RangeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sfm/BinaryMeasurement.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sfm/MFAS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sfm/ShonanAveraging.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sfm/ShonanFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sfm/ShonanGaugeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sfm/TranslationFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/sfm/TranslationRecovery.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/AntiFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/BearingFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/BearingRangeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/BetweenFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/BoundingConstraint.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/EssentialMatrixConstraint.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/EssentialMatrixFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/FrobeniusFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/GeneralSFMFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/InitializePose.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/InitializePose3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/JacobianFactorQ.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/JacobianFactorQR.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/JacobianFactorSVD.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/KarcherMeanFactor-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/KarcherMeanFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/OrientedPlane3Factor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/PoseRotationPrior.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/PoseTranslationPrior.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/PriorFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/ProjectionFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/RangeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/ReferenceFrameFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/RegularImplicitSchurFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/RotateFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/SmartFactorBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/SmartFactorParams.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/SmartProjectionFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/SmartProjectionPoseFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/StereoFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/TriangulationFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/dataset.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/expressions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/slam/lago.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/AHRSFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/AttitudeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/CombinedImuFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/ConstantVelocityFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/GPSFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/ImuBias.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/ImuFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/MagFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/MagPoseFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/ManifoldPreintegration.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/NavState.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/PreintegratedRotation.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/PreintegrationBase.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/PreintegrationParams.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/Scenario.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/ScenarioRunner.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/TangentPreintegration.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam/navigation/expressions.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dllexport.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam_unstable.so.4.1.0
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam_unstable.so.4
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam_unstable.so
+-- Set runtime path of "/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/libgtsam_unstable.so.4.1.0" to ""
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/base/BTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/base/DSF.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/base/Dummy.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/base/FixedVector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/geometry/BearingS2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/geometry/Event.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/geometry/InvDepthCamera3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/geometry/Pose3Upright.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/geometry/SimPolygon2D.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/geometry/SimWall2D.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/ActiveSetSolver-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/ActiveSetSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/EqualityFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/InequalityFactorGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/InfeasibleInitialValues.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/InfeasibleOrUnboundedProblem.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/LP.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/LPInitSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/LPSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/LinearCost.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/LinearEquality.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/LinearInequality.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/QP.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/QPInitSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/QPSParser.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/QPSParserException.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/linear/QPSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/discrete/AllDiff.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/discrete/BinaryAllDiff.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/discrete/CSP.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/discrete/Constraint.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/discrete/Domain.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/discrete/Scheduler.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/discrete/SingleValue.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/DynamicsPriors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/FullIMUFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/IMUFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/Pendulum.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/PoseRTV.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/SimpleHelicopter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/VelocityConstraint.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/dynamics/VelocityConstraint3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/BatchFixedLagSmoother.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/ConcurrentBatchFilter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/ConcurrentBatchSmoother.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/ConcurrentFilteringAndSmoothing.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/ConcurrentIncrementalFilter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/ConcurrentIncrementalSmoother.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/FixedLagSmoother.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/IncrementalFixedLagSmoother.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/LinearizedFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/nonlinear/NonlinearClusterTree.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/AHRS.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/BetweenFactorEM.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/BiasedGPSFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/DummyFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/EquivInertialNavFactor_GlobalVel.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/EquivInertialNavFactor_GlobalVel_NoBias.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/GaussMarkov1stOrderFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/InertialNavFactor_GlobalVelocity.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/InvDepthFactor3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/InvDepthFactorVariant1.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/InvDepthFactorVariant2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/InvDepthFactorVariant3.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/LocalOrientedPlane3Factor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/Mechanization_bRn2.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/MultiProjectionFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/PartialPriorFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/PoseBetweenFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/PosePriorFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/PoseToPointFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/ProjectionFactorPPP.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/ProjectionFactorPPPC.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/ProjectionFactorRollingShutter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/RelativeElevationFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/SmartProjectionPoseFactorRollingShutter.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/SmartRangeFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/SmartStereoProjectionFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/SmartStereoProjectionFactorPP.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/SmartStereoProjectionPoseFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/TOAFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/TSAMFactors.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/TransformBtwRobotsUnaryFactor.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/slam/TransformBtwRobotsUnaryFactorEM.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/partition/FindSeparator-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/partition/FindSeparator.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/partition/GenericGraph.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/partition/NestedDissection-inl.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/partition/NestedDissection.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/include/gtsam_unstable/partition/PartitionWorkSpace.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/GTSAMCMakeToolsConfig.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/Config.cmake.in
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/dllexport.h.in
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/GtsamBuildTypes.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/GtsamMakeConfigFile.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/GtsamTesting.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/GtsamPrinting.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/FindNumPy.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAMCMakeTools/README.html
++ cd ../../Kimera-RPGO
++ mkdir lib
+/bin/mkdir: cannot create directory 'lib': File exists
++ true
++ mkdir build
+/bin/mkdir: cannot create directory 'build': File exists
++ true
++ cd build
++ cmake -DCMAKE_INSTALL_PREFIX=../lib -DCMAKE_BUILD_TYPE=Release ..
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   serialization
+--   system
+--   filesystem
+--   thread
+--   program_options
+--   date_time
+--   timer
+--   chrono
+--   regex
+--   atomic
+-- GTSAM include directory:  /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/gtsam/lib/lib/cmake/GTSAM/../../../include
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   filesystem
+--   regex
+--   timer
+--   date_time
+--   program_options
+--   system
+-- ===============================================================
+-- ================  Configuration Options  ======================
+-- CMAKE_CXX_COMPILER_ID type                : GNU
+-- CMAKE_CXX_COMPILER_VERSION                : 7.5.0
+-- Build flags                                               
+--   Build type                              : Release
+--   C compilation flags (Release)           :  
+--   C++ compilation flags (Release)         :  -O3 -DNDEBUG
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/build
++ make -j8
+[ 14%] Built target GenerateTrajectories
+[ 71%] Built target KimeraRPGO
+[ 85%] Built target RpgoReadG2o
+[100%] Built target RpgoReadG2oIncremental
++ make install
+[ 57%] Built target KimeraRPGO
+[ 71%] Built target RpgoReadG2o
+[ 85%] Built target RpgoReadG2oIncremental
+[100%] Built target GenerateTrajectories
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/libKimeraRPGO.so
+-- Set runtime path of "/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/libKimeraRPGO.so" to ""
+-- Old export file "/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/cmake/KimeraRPGO/KimeraRPGOTargets.cmake" will be replaced.  Removing files [/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/cmake/KimeraRPGO/KimeraRPGOTargets-release.cmake].
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/cmake/KimeraRPGO/KimeraRPGOTargets.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/cmake/KimeraRPGO/KimeraRPGOTargets-release.cmake
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/logger.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/GenericSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/SolverParams.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/outlier
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/outlier/OutlierRemoval.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/outlier/pcm.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/utils
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/utils/graph_utils.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/utils/geometry_utils.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/utils/type_utils.h
+-- Up-to-date: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/max_clique_finder
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/max_clique_finder/findClique.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/max_clique_finder/graphIO.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/include/KimeraRPGO/RobustSolver.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/cmake/KimeraRPGO/KimeraRPGOConfig.cmake
+-- Installing: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Kimera-RPGO/lib/lib/cmake/KimeraRPGO/KimeraRPGOConfigVersion.cmake
++ cd ../../g2o
++ echo 'Configuring and building Thirdparty/g2o ...'
+Configuring and building Thirdparty/g2o ...
++ mkdir build
+/bin/mkdir: cannot create directory 'build': File exists
++ true
++ cd build
++ cmake .. -DCMAKE_BUILD_TYPE=Release
+-- BUILD TYPE:Release
+-- Compiling on Unix
+CMake Warning (dev) at /usr/share/cmake-3.10/Modules/FindOpenMP.cmake:310 (if):
+  if given arguments:
+
+    "TRUE"
+
+  An argument named "TRUE" appears in a conditional statement.  Policy
+  CMP0012 is not set: if() recognizes numbers and boolean constants.  Run
+  "cmake --help-policy CMP0012" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+Call Stack (most recent call first):
+  /usr/share/cmake-3.10/Modules/FindOpenMP.cmake:425 (_OPENMP_GET_SPEC_DATE)
+  CMakeLists.txt:47 (FIND_PACKAGE)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/share/cmake-3.10/Modules/FindOpenMP.cmake:310 (if):
+  if given arguments:
+
+    "TRUE"
+
+  An argument named "TRUE" appears in a conditional statement.  Policy
+  CMP0012 is not set: if() recognizes numbers and boolean constants.  Run
+  "cmake --help-policy CMP0012" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+Call Stack (most recent call first):
+  /usr/share/cmake-3.10/Modules/FindOpenMP.cmake:425 (_OPENMP_GET_SPEC_DATE)
+  CMakeLists.txt:47 (FIND_PACKAGE)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/build
++ make -j8
+Scanning dependencies of target g2o
+[  3%] Building CXX object CMakeFiles/g2o.dir/g2o/types/types_sba.cpp.o
+[  6%] Building CXX object CMakeFiles/g2o.dir/g2o/core/hyper_graph_action.cpp.o
+[  9%] Building CXX object CMakeFiles/g2o.dir/g2o/core/marginal_covariance_cholesky.cpp.o
+[ 12%] Building CXX object CMakeFiles/g2o.dir/g2o/core/optimizable_graph.cpp.o
+[ 16%] Building CXX object CMakeFiles/g2o.dir/g2o/types/types_seven_dof_expmap.cpp.o
+[ 19%] Building CXX object CMakeFiles/g2o.dir/g2o/types/types_six_dof_expmap.cpp.o
+[ 22%] Building CXX object CMakeFiles/g2o.dir/g2o/core/cache.cpp.o
+[ 25%] Building CXX object CMakeFiles/g2o.dir/g2o/core/solver.cpp.o
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:74: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                                                          ^~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:74: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                                                          ^~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.h:30:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:74: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                                                          ^~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.h:30:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of 'class g2o::BaseVertex<3, Eigen::Matrix<double, 3, 1> >':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.h:40:35:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:82: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                                                  ^~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:82: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                                                  ^~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:82: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                                                  ^~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:82: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                                                  ^~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+[ 29%] Building CXX object CMakeFiles/g2o.dir/g2o/core/optimization_algorithm_factory.cpp.o
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of 'class g2o::BaseVertex<3, Eigen::Matrix<double, 3, 1> >':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.h:40:35:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of 'class g2o::BaseVertex<3, Eigen::Matrix<double, 3, 1> >':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_sba.h:40:35:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of 'class g2o::BaseVertex<6, g2o::SE3Quat>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:59:33:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of 'class g2o::BaseVertex<6, g2o::SE3Quat>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:59:33:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<6, g2o::SE3Quat, g2o::VertexSE3Expmap, g2o::VertexSE3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:83:24:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<6, g2o::SE3Quat, g2o::VertexSE3Expmap, g2o::VertexSE3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:83:24:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<2, Eigen::Matrix<double, 2, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSE3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:114:35:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<2, Eigen::Matrix<double, 2, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSE3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:114:35:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<3, Eigen::Matrix<double, 3, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSE3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:146:41:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<3, Eigen::Matrix<double, 3, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSE3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:146:41:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:38:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:37,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h: In instantiation of 'class g2o::BaseVertex<7, g2o::Sim3>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:48:35:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:62:72: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+     typedef Eigen::Map<Matrix<double, D, D>, Matrix<double,D,D>::Flags & AlignedBit ? Aligned : Unaligned >  HessianBlockType;
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<7, g2o::Sim3, g2o::VertexSim3Expmap, g2o::VertexSim3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:99:27:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h: In instantiation of 'class g2o::BaseBinaryEdge<2, Eigen::Matrix<double, 2, 1>, g2o::VertexSBAPointXYZ, g2o::VertexSim3Expmap>':
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:130:36:   required from here
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:59:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Di, Dj>, Matrix<double, Di, Dj>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+In file included from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: 'Eigen::AlignedBit' is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+In file included from /usr/local/include/eigen3/Eigen/Core:363:0,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,
+                 from /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:
+/usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+                                     ^~~~~~~~~~
+[ 32%] Building CXX object CMakeFiles/g2o.dir/g2o/core/estimate_propagator.cpp.o
+[ 35%] Building CXX object CMakeFiles/g2o.dir/g2o/core/factory.cpp.o
+[ 38%] Building CXX object CMakeFiles/g2o.dir/g2o/core/sparse_optimizer.cpp.o
+[ 41%] Building CXX object CMakeFiles/g2o.dir/g2o/core/parameter_container.cpp.o
+[ 45%] Building CXX object CMakeFiles/g2o.dir/g2o/core/optimization_algorithm.cpp.o
+[ 48%] Building CXX object CMakeFiles/g2o.dir/g2o/core/optimization_algorithm_with_hessian.cpp.o
+[ 51%] Building CXX object CMakeFiles/g2o.dir/g2o/core/optimization_algorithm_levenberg.cpp.o
+[ 54%] Building CXX object CMakeFiles/g2o.dir/g2o/core/optimization_algorithm_gauss_newton.cpp.o
+[ 58%] Building CXX object CMakeFiles/g2o.dir/g2o/core/jacobian_workspace.cpp.o
+[ 61%] Linking CXX shared library ../lib/libg2o.so
+[100%] Built target g2o
++ cd ../../Sophus
++ echo 'Configuring and building Thirdparty/Sophus ...'
+Configuring and building Thirdparty/Sophus ...
++ mkdir build
+/bin/mkdir: cannot create directory 'build': File exists
++ true
++ cd build
++ cmake .. -DCMAKE_BUILD_TYPE=Release
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubbyslamcode/Thirdparty/Sophus/build
++ make -j4
+[ 25%] Built target test_sim2
+[ 25%] Built target test_se2
+[ 25%] Built target test_rxso2
+[ 33%] Built target test_so3
+[ 41%] Built target test_so2
+[ 58%] Built target test_rxso3
+[ 58%] Built target test_geometry
+[ 66%] Built target test_se3
+[ 75%] Built target test_common
+[ 83%] Built target HelloSO3
+[ 95%] Built target test_velocities
+[100%] Built target test_sim3
++ cd ../..
+Notified JIRA that a build has completed.
+Finished: SUCCESS

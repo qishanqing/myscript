@@ -1,0 +1,64 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><project>
+  <actions/>
+  <description/>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>Gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>3</daysToKeep>
+        <numToKeep>5</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>158</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <com.ceilfors.jenkins.plugins.jiratrigger.JiraCommentTrigger plugin="jira-trigger@1.0.0">
+      <spec/>
+      <jqlFilter>project = CM</jqlFilter>
+      <parameterMappings/>
+      <commentPattern>build</commentPattern>
+    </com.ceilfors.jenkins.plugins.jiratrigger.JiraCommentTrigger>
+    <com.ceilfors.jenkins.plugins.jiratrigger.JiraChangelogTrigger plugin="jira-trigger@1.0.0">
+      <spec/>
+      <jqlFilter>project = CM</jqlFilter>
+      <parameterMappings/>
+      <changelogMatchers>
+        <com.ceilfors.jenkins.plugins.jiratrigger.changelog.JiraFieldChangelogMatcher>
+          <fieldType>JIRA</fieldType>
+          <field>status</field>
+          <newValue>已解决</newValue>
+          <oldValue>处理中</oldValue>
+          <comparingNewValue>true</comparingNewValue>
+          <comparingOldValue>true</comparingOldValue>
+        </com.ceilfors.jenkins.plugins.jiratrigger.changelog.JiraFieldChangelogMatcher>
+      </changelogMatchers>
+    </com.ceilfors.jenkins.plugins.jiratrigger.JiraChangelogTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+source /home/indemind/myscript/sh/cmdb
+cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('\''i18r-slam-pc'\'','\''liuqiaojun/Location_interface_to_SDK'\'','\''compile'\'','\''AroundI18RProject/I18RSlamSubmodule'\'','\''compile'\'',now(),'\''http://192.168.50.26:8080/job/i18r-slam-pc/121/'\'','\''master'\'')'
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,713 @@
+Started by user [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Running as SYSTEM
+[EnvInject] - Loading node environment variables.
+[EnvInject] - Preparing an environment for the build.
+[EnvInject] - Keeping Jenkins system variables.
+[EnvInject] - Keeping Jenkins build variables.
+[EnvInject] - Injecting contributions.
+Building on master in workspace /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No emails were triggered.
+[EnvInject] - Executing scripts and injecting environment variables after the SCM step.
+[workspace] $ /bin/sh -xe /tmp/jenkins2042949972025781736.sh
++ bash /home/indemind/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20220829
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ echo zhangshuai/calibr_lib
+++ awk -F/ '{print $1"%2F"$2}'
++ CONVERT_TARGET_PROJECT=zhangshuai%2Fcalibr_lib
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/zhangshuai%2Fcalibr_lib
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3591    0  3591    0     0  34587      0 --:--:-- --:--:-- --:--:-- 34864
++ SUB_PROJECT_ID=637
++ TARGET_DIR=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/calibr_lib
++ SOURCE_DIR=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr
++ prepare_env
+++ uname -m
++ system_platform=x86_64
++ export COMMIT_ID_FILE=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_last_build_id
++ COMMIT_ID_FILE=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_last_build_id
++ export COMMIT_MSG_FILE=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg
++ COMMIT_MSG_FILE=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg.tmp
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_last_build_id
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg.tmp
++ rm -f /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/result.log
++ CLONE_DEPTH=--depth=1
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('\''rubby-cam2odo'\'','\''zhangshuai/camera2odometrycalibr'\'','\''arm_compile'\'','\''zhangshuai/calibr_lib'\'','\''cam-odo-calibr'\'',now(),'\''http://192.168.50.26:8080/job/rubby-cam2odo/13/'\'','\''master'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ '[' true = false ']'
++ source_project_fetch
++ git clone ssh://git@192.168.50.191:222/zhangshuai/camera2odometrycalibr -b arm_compile --depth=1
+Cloning into 'camera2odometrycalibr'...
++ target_project_update
++ rm -rf /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/calibr_lib
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/zhangshuai/calibr_lib -b cam-odo-calibr --depth=1
+Cloning into 'calibr_lib'...
++ [[ x86_64 =~ x86_64 ]]
++ docker exec -i c405 /bin/bash
+++ uname -m
++ system_platform=x86_64
++ [[ c405 == c405 ]]
++ echo 'rubby project building in c405......'
+rubby project building in c405......
++ pushd /root/system/abby_msg
+~/system/abby_msg /
++ git checkout ./
++ git clean -xdf ./
++ git pull origin master
+From ssh://192.168.50.191:222/abby/source/abby_msg
+ * branch            master     -> FETCH_HEAD
+Already up to date.
++ popd
+/
++ pushd /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr /
++ source /opt/ros/melodic/setup.bash
++ bash -ex compile.sh
++ echo 'install kalibr_apriltag2...'
+install kalibr_apriltag2...
++ cd kalibr_apriltag2
++ mkdir -p build
++ cd build
++ cmake .. -DCMAKE_INSTALL_PREFIX=../../install/camera2odometryCalibr
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+Build type: Release
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Using flag -std=c++11.
+-- Found OpenCV: /usr/local (found version "3.4.3") 
+--  CMAKE_SYSTEM_PROCESSOR: aarch64
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/build
++ make -j4
+Scanning dependencies of target kalibr_apriltag2
+[  5%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/GLineSegment2D.cc.o
+[ 16%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/FloatImage.cc.o
+[ 16%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/GLine2D.cc.o
+[ 22%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/Edge.cc.o
+[ 27%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/Gaussian.cc.o
+[ 33%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/GrayModel.cc.o
+[ 38%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/Homography33.cc.o
+[ 44%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/MathUtil.cc.o
+[ 50%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/Quad.cc.o
+[ 55%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/Segment.cc.o
+[ 61%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/TagDetection.cc.o
+[ 66%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/TagDetector.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/src/apriltags/TagDetector.cc:152:0: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   #pragma omp parallel for
+ 
+[ 72%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/TagFamily.cc.o
+[ 77%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/apriltags/UnionFindSimple.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/src/apriltags/TagDetection.cc: In member function 'Eigen::Matrix4d AprilTags::TagDetection::getRelativeTransform(double, double, double, double, double, const cv::Mat&) const':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/src/apriltags/TagDetection.cc:102:8: warning: unused variable 'flg' [-Wunused-variable]
+   bool flg = cv::solvePnP(objPts, imgPts, cameraMatrix, D, rvec, tvec);
+        ^~~
+[ 83%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/target/DetectTarget.cc.o
+[ 88%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/target/MouseSelection.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/src/target/DetectTarget.cc: In member function 'bool target::DetectTarget::computeObservation(const cv::Mat&, cv::Mat&, cv::Mat&, bool)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/src/target/DetectTarget.cc:100:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     if (detections.size() < minTagsForValidObs) {
+         ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+[ 94%] Building CXX object CMakeFiles/kalibr_apriltag2.dir/src/target/StereoDetectTarget.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/src/target/MouseSelection.cc: In member function 'void target::MouseSelection::showNearPoints(const cv::Mat&, const cv::Mat&, cv::Mat&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/kalibr_apriltag2/src/target/MouseSelection.cc:54:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vidx.size(); ++i)
+                     ~~^~~~~~~~~~~~~
+[100%] Linking CXX shared library /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/lib/arm/libkalibr_apriltag2.so
+[100%] Built target kalibr_apriltag2
++ make install
+[100%] Built target kalibr_apriltag2
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Tag25h9.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Tag36h11.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/UnionFindSimple.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Tag36h9.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Quad.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/FloatImage.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/GLine2D.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/tags
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Homography33.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Tag36h11_other.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/GrayModel.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/pch.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Gridder.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/MathUtil.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Tag16h5.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Edge.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Tag16h5_other.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/TagDetection.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/TagDetector.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/GLineSegment2D.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Tag25h7.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/TagFamily.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Segment.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/Gaussian.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/apriltags/XYWeight.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/target
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/target/StereoDetectTarget.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/target/MouseSelection.h
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/include/target/DetectTarget.h
++ echo path/to/camera2odometryCalibr
+path/to/camera2odometryCalibr
++ cd ../../
++ mkdir -p build
++ cd build
++ cmake .. -DCMAKE_INSTALL_PREFIX=../install/camera2odometryCalibr
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Using flag -std=c++11.
+-- Found installed version of Eigen: /usr/lib/cmake/eigen3
+-- Found required Ceres dependency: Eigen version 3.3.4 in /usr/include/eigen3
+-- Found required Ceres dependency: glog
+-- Found installed version of gflags: /usr/lib/aarch64-linux-gnu/cmake/gflags
+-- Detected gflags version: 2.2.1
+-- Found required Ceres dependency: gflags
+-- Found Ceres version: 1.13.0 installed in: /usr with components: [LAPACK, SuiteSparse, SparseLinearAlgebraLibrary, CXSparse, SchurSpecializations, OpenMP]
+-- Found OpenCV: /usr/local (found suitable version "3.4.3", minimum required is "3.4") 
+-- Use the imported target: /usr/include/eigen3
+--  CMAKE_SYSTEM_PROCESSOR: aarch64
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/build
++ make -j4
+Scanning dependencies of target camera2odometryCalibr
+[ 15%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/tools.cc.o
+[ 15%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/processData.cc.o
+[ 23%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/visualOdo.cc.o
+[ 30%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/optimizer.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc: In function 'void camera2odometryCalibr::WritePlyForAlignDeltaPos(std::__cxx11::string, const std::vector<std::tuple<double, double, double> >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:138:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vXC.size(); i++)
+                     ~~^~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/processData.cc: In function 'void camera2odometryCalibr::meanStdMaxMin(const std::vector<double, std::allocator<double> >&, double*)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/processData.cc:83:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 1; i < data.size(); i++)
+                     ~~^~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/processData.cc:99:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 1; i < data.size(); i++)
+                     ~~^~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:137:12: warning: unused variable 'time' [-Wunused-variable]
+     double time, x, y, theta, z;
+            ^~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:137:24: warning: unused variable 'theta' [-Wunused-variable]
+     double time, x, y, theta, z;
+                        ^~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc: In function 'std::vector<double, std::allocator<double> > camera2odometryCalibr::processAlignData(const std::vector<camera2odometryCalibr::TimeOmega>&, const std::vector<camera2odometryCalibr::TimeOmega>&, std::vector<camera2odometryCalibr::SyncAlignData>&, double)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:154:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < wTimeOmegas_.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:196:58: warning: value computed is not used [-Wunused-value]
+                 std::abs(omega - it_curr_vOmegas->omega) > std::max(std::abs(omega), std::abs(it_curr_vOmegas->omega)) * 2;
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:215:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vsyncAlignData.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:238:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vsyncAlignData.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:249:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vsyncAlignData.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc: In function 'bool camera2odometryCalibr::EstimateTimeDely(std::__cxx11::string, std::__cxx11::string, int)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:285:16: warning: unused variable 'delta_t' [-Wunused-variable]
+         double delta_t;
+                ^~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:343:11: warning: unused variable 'dropFrame' [-Wunused-variable]
+       int dropFrame  = 0;
+           ^~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:388:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < vsyncAlignData.size(); i++)
+                       ~~^~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:401:14: warning: unused variable 'std_error' [-Wunused-variable]
+       double std_error = init_omega_err_std.at(1);
+              ^~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/tools.cc:427:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < vsyncAlignData.size(); i++)
+                       ~~^~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'std::vector<Eigen::Matrix<double, 3, 1> > camera2odometryCalibr::generateCameraPts(Eigen::Matrix3d, Eigen::Vector3d, std::vector<cv::Point3_<float> >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:42:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < objPts.size(); i++)
+                     ~~^~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/optimizer.cc: In function 'void camera2odometryCalibr::OptimizerPose(const std::vector<cv::Point3_<float> >&, const std::vector<cv::Point_<float> >&, cv::Mat&, cv::Mat&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/optimizer.cc:83:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vpt3s.size(); i++)
+                     ~~^~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/optimizer.cc:105:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vpt3s.size(); i++)
+                     ~~^~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'void camera2odometryCalibr::WriteToPLYFile(std::__cxx11::string, camera2odometryCalibr::CameraSide, const std::vector<std::pair<Eigen::Matrix<double, 4, 4>, std::vector<Eigen::Matrix<double, 3, 1> > > >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:88:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int j = 0; j < pts.size(); j++)
+                       ~~^~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'void camera2odometryCalibr::WriteToPLYFile(std::__cxx11::string, const std::vector<std::pair<cv::Affine3<double>, std::vector<camera2odometryCalibr::ObjPts> > >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:103:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i =0; i < posesAnd3DCloud.size(); i++)
+                    ~~^~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:118:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < posesAnd3DCloud.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:128:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < posesAnd3DCloud.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:133:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int j = 0; j < clould.size(); j++)
+                       ~~^~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'void camera2odometryCalibr::WriteFile(std::__cxx11::string, const std::vector<std::tuple<double, cv::Affine3<double>, std::vector<camera2odometryCalibr::ObjPts, std::allocator<camera2odometryCalibr::ObjPts> >, std::vector<camera2odometryCalibr::MarkerPoints, std::allocator<camera2odometryCalibr::MarkerPoints> >, std::vector<camera2odometryCalibr::MarkerPoints, std::allocator<camera2odometryCalibr::MarkerPoints> > > >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:165:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < timePoseObjLeftRightPts.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'double camera2odometryCalibr::ComputePose(std::vector<cv::Point3_<float> >&, std::vector<cv::Point_<float> >&, Eigen::Matrix3d&, Eigen::Vector3d&, camera2odometryCalibr::CameraSide)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:224:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < unimgPts.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'cv::Affine3d camera2odometryCalibr::ComputePose(const std::vector<camera2odometryCalibr::ObjPts>&, std::vector<camera2odometryCalibr::MarkerPoints>&, std::vector<camera2odometryCalibr::MarkerPoints>&, cv::Affine3d)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:283:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < vobjPts.size(); i++)
+                       ~~^~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:292:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for (int j = 0; j < vmarkerPtsAlign1.size(); j++)
+                         ~~^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'void camera2odometryCalibr::AlignMarkerData(const std::vector<camera2odometryCalibr::MarkerPoints>&, const std::vector<camera2odometryCalibr::MarkerPoints>&, std::vector<camera2odometryCalibr::MarkerPoints>&, std::vector<camera2odometryCalibr::MarkerPoints>&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:350:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vmarkerPts1.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:353:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int j = 0; j < vmarkerPts2.size(); j++)
+                       ~~^~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:358:34: warning: self-comparison always evaluates to true [-Wtautological-compare]
+           if ((mkPts1.wherePlane == mkPts1.wherePlane) && (mkPts1.tagId == mkPts2.tagId))
+                ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'std::vector<camera2odometryCalibr::ObjPts> camera2odometryCalibr::Compute3DPts(std::vector<camera2odometryCalibr::MarkerPoints>&, std::vector<camera2odometryCalibr::MarkerPoints>&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:429:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vobjPts.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:436:13: warning: unused variable 'tagId' [-Wunused-variable]
+         int tagId = objPts.tagId;
+             ^~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'std::vector<camera2odometryCalibr::MarkerPoints> camera2odometryCalibr::DetectMarker(cv::Mat)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:537:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < tagDetections.size(); i++)
+                       ~~^~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'void camera2odometryCalibr::ComputeMarkerPts(const cv::Mat&, std::map<int, std::pair<std::vector<cv::Point_<float> >, std::vector<cv::Point3_<float> > > >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:640:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < tagDetections.size(); i++)
+                       ~~^~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:661:13: warning: unused variable 'wherePlane' [-Wunused-variable]
+  const int& wherePlane = ppt.first;
+             ^~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:662:14: warning: unused variable 'pts' [-Wunused-variable]
+  const auto& pts = ppt.second;
+              ^~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'cv::Mat camera2odometryCalibr::ShowMarker(const cv::Mat&, std::vector<cv::Point_<float> >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:750:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vpts.size(); i++)
+                     ~~^~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In function 'cv::Mat camera2odometryCalibr::ShowMarker(const cv::Mat&, const std::vector<camera2odometryCalibr::MarkerPoints>&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:774:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < vpts.size(); i++)
+                       ~~^~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:778:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         if (i + 1 == vpts.size())
+             ~~~~~~^~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:772:18: warning: unused variable 'wherePlane' [-Wunused-variable]
+       const int& wherePlane = mkpts.wherePlane;
+                  ^~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In member function 'void camera2odometryCalibr::VisualOdometry::EstimateOdoMono(camera2odometryCalibr::CameraSide)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:1030:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    if (maxCountPts < itCurr->second.first.size())
+        ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:1115:9: warning: unused variable 'angle' [-Wunused-variable]
+  double angle = cameraDataStamped.angleAxis_cl.angle();
+         ^~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:966:12: warning: unused variable 'yaws' [-Wunused-variable]
+     double yaws = 0;
+            ^~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc: In member function 'bool camera2odometryCalibr::VisualOdometry::EstimateRyx(Eigen::Matrix3d&, camera2odometryCalibr::CameraSide)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/visualOdo.cc:1201:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < cnt; i++)
+                     ~~^~~~~
+[ 38%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/wheelOdo.cc.o
+[ 46%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/camera2odo.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc: In member function 'void camera2odometryCalibr::WheelOdo::EstiOdo(const string&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:66:32: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_curr->leftEncoder < encoder_low_wrap && it_pre->leftEncoder > encoder_high_wrap)
+           ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:66:74: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_curr->leftEncoder < encoder_low_wrap && it_pre->leftEncoder > encoder_high_wrap)
+                                                      ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:71:33: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_curr->rightEncoder < encoder_low_wrap && it_pre->rightEncoder > encoder_high_wrap)
+           ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:71:76: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_curr->rightEncoder < encoder_low_wrap && it_pre->rightEncoder > encoder_high_wrap)
+                                                       ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:76:31: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_pre->leftEncoder < encoder_low_wrap && it_curr->leftEncoder > encoder_high_wrap)
+           ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:76:74: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_pre->leftEncoder < encoder_low_wrap && it_curr->leftEncoder > encoder_high_wrap)
+                                                     ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:81:32: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_pre->rightEncoder < encoder_low_wrap && it_curr->rightEncoder > encoder_high_wrap)
+           ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:81:76: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (it_pre->rightEncoder < encoder_low_wrap && it_curr->rightEncoder > encoder_high_wrap)
+                                                      ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:62:14: warning: unused variable 'delta_time' [-Wunused-variable]
+       double delta_time = (it_curr->timeStamp - it_pre->timeStamp);
+              ^~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/wheelOdo.cc:23:12: warning: unused variable 'rad_unit' [-Wunused-variable]
+     double rad_unit = 2 * M_PI / Params.r_s;
+            ^~~~~~~~
+[ 53%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/createTargetPoints.cc.o
+[ 61%] Building CXX object CMakeFiles/camera2odometryCalibr.dir/src/camera2odometryCalibr/opticalFlow.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc: In function 'void camera2odometryCalibr::RefineExPara(Eigen::Matrix3d&, Eigen::Vector2d&, std::vector<Eigen::Quaternion<double> >&, std::vector<Eigen::Matrix<double, 3, 1> >&, std::vector<Eigen::Quaternion<double> >&, std::vector<Eigen::Matrix<double, 3, 1> >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:290:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vqOdo.size(); i++)
+                     ~~^~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc: In function 'Eigen::MatrixXd camera2odometryCalibr::compute_fim(std::vector<camera2odometryCalibr::SysData>&, camera2odometryCalibr::calibr_result_t&, const Matrix3d&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:496:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < sync_datas.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc: In function 'bool camera2odometryCalibr::SolveJ2(const std::vector<camera2odometryCalibr::SysData>&, double&, double&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:668:24: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int  i = 0; i < sysDatas.size(); i++)
+                      ~~^~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:674:21: warning: unused variable 'z' [-Wunused-variable]
+       const double& z = std::abs(sysData.project_plane_lc[2]);
+                     ^
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:677:14: warning: unused variable 'omega' [-Wunused-variable]
+       double omega = angle / delta_t;
+              ^~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc: In function 'void camera2odometryCalibr::RefineExPara(std::vector<camera2odometryCalibr::SysData>&, camera2odometryCalibr::calibr_result_t&, Eigen::Matrix3d&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:729:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < sync_data.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc: In function 'bool camera2odometryCalibr::EstimateRemainingParams(const std::vector<camera2odometryCalibr::SysData>&, double&, double&, camera2odometryCalibr::calibr_result_t&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:787:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < sysDatas.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:797:14: warning: unused variable 'z' [-Wunused-variable]
+       double z = std::abs(sync_data.project_plane_lc[2]);
+              ^
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:785:12: warning: unused variable 'c' [-Wunused-variable]
+     double c, cx, cy, cx1, cx2, cy1, cy2, t1, t2;
+            ^
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc: In member function 'bool camera2odometryCalibr::Camera2OdoCalibr::EstimateParams()':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:1090:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (int i = 0; i < vdata.size(); i++)
+                       ~~^~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc: In member function 'bool camera2odometryCalibr::Camera2OdoCalibr::EstimateParams(std::map<camera2odometryCalibr::CameraSide, std::vector<camera2odometryCalibr::SysData> >&, std::map<camera2odometryCalibr::CameraSide, camera2odometryCalibr::calibr_result_t>&, std::map<camera2odometryCalibr::CameraSide, Eigen::Matrix<double, 3, 3> >&)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:1162:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for (int k = 0; k < sync_datas.size(); k++)
+                         ~~^~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:1180:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         if (thresh_index >= sync_datas.size())
+             ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/camera2odo.cc:1201:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for (int k = 0; k < sync_datas.size(); k++)
+                         ~~^~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc: In function 'std::vector<camera2odometryCalibr::OdoDataStamped> camera2odometryCalibr::readOdoData(std::__cxx11::string)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:176:11: warning: unused variable 'dropFrame' [-Wunused-variable]
+       int dropFrame  = 0;
+           ^~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc: In function 'std::vector<camera2odometryCalibr::WheelTimeTheta> camera2odometryCalibr::readWheelData(std::__cxx11::string)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:232:11: warning: unused variable 'dropFrame' [-Wunused-variable]
+       int dropFrame  = 0;
+           ^~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc: In member function 'bool camera2odometryCalibr::FlowError::operator()(const double*, double*) const':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:300:14: warning: unused variable 'r' [-Wunused-variable]
+       double r = x[1];
+              ^
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:301:14: warning: unused variable 'psi' [-Wunused-variable]
+       double psi = x[2];
+              ^~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc: In member function 'void camera2odometryCalibr::OpticalFlow::EstiOdo()':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:493:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 1; i < opticalFlowDatas.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:530:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vSyncWheelAndFlowData.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:605:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (int i = 0; i < vSyncWheelAndFlowData.size(); i++)
+                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:554:21: warning: variable 't1' set but not used [-Wunused-but-set-variable]
+     Eigen::Vector4d t1 = svd.matrixV().block<4,1>(0,2);
+                     ^~
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/src/camera2odometryCalibr/opticalFlow.cc:555:21: warning: variable 't2' set but not used [-Wunused-but-set-variable]
+     Eigen::Vector4d t2 = svd.matrixV().block<4,1>(0,3);
+                     ^~
+[ 69%] Linking CXX shared library ../install/camera2odometryCalibr/lib/arm/libcamera2odometryCalibr.so
+[ 69%] Built target camera2odometryCalibr
+Scanning dependencies of target main
+Scanning dependencies of target wheelOdo
+[ 76%] Building CXX object CMakeFiles/main.dir/examples/main.cc.o
+[ 84%] Building CXX object CMakeFiles/wheelOdo.dir/examples/wheelOdo.cc.o
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/examples/main.cc: In function 'int main(int, char**)':
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/examples/main.cc:51:41: warning: comparison of constant '0' with boolean expression is always false [-Wbool-compare]
+   if (Camera2OdoCalibr.EstimateParams() < 0)
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+[ 92%] Linking CXX executable main
+[100%] Linking CXX executable wheelOdo
+[100%] Built target main
+[100%] Built target wheelOdo
++ make install
+[ 69%] Built target camera2odometryCalibr
+[ 84%] Built target main
+[100%] Built target wheelOdo
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_pose3D_visual_odo.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_xy.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_delta_t1.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_xy_equal_axis.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_xy_diff.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_align_time.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_delta_t.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/plot_align_time1.py
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/script/env.sh
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/readme.md
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/bin/main
+-- Set runtime path of "/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/bin/main" to ""
+-- Installing: /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/bin/wheelOdo
+-- Set runtime path of "/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr/bin/wheelOdo" to ""
++ popd
+/
++ exit
++ check_status_code
++ test -f /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/result.log
++ [[ '' = false ]]
++ generate_message
++ cd /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg.tmp ]]
++ cat /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.26:8080/job/rubby-cam2odo/13/'
++ echo 'Push x86_64 platform files'
++ generate_commits
++ pushd /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/calibr_lib
+/home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/calibr_lib /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace
+++ find /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr -name install
+++ xargs -l ls
++ install_dir_list=camera2odometryCalibr
++ [[ true = true ]]
++ for i in $install_dir_list
++ '[' -z '' ']'
++ git rm -r camera2odometryCalibr
+fatal: pathspec 'camera2odometryCalibr' did not match any files
++ true
++ [[ true = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ '[' -z '' ']'
++ cp -ar /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/camera2odometrycalibr/install/camera2odometryCalibr .
++ git add --all .
+++ git status -s
++ add_file_list='A  camera2odometryCalibr/bin/main
+A  camera2odometryCalibr/bin/wheelOdo
+A  camera2odometryCalibr/include/apriltags/Edge.h
+A  camera2odometryCalibr/include/apriltags/FloatImage.h
+A  camera2odometryCalibr/include/apriltags/GLine2D.h
+A  camera2odometryCalibr/include/apriltags/GLineSegment2D.h
+A  camera2odometryCalibr/include/apriltags/Gaussian.h
+A  camera2odometryCalibr/include/apriltags/GrayModel.h
+A  camera2odometryCalibr/include/apriltags/Gridder.h
+A  camera2odometryCalibr/include/apriltags/Homography33.h
+A  camera2odometryCalibr/include/apriltags/MathUtil.h
+A  camera2odometryCalibr/include/apriltags/Quad.h
+A  camera2odometryCalibr/include/apriltags/Segment.h
+A  camera2odometryCalibr/include/apriltags/Tag16h5.h
+A  camera2odometryCalibr/include/apriltags/Tag16h5_other.h
+A  camera2odometryCalibr/include/apriltags/Tag25h7.h
+A  camera2odometryCalibr/include/apriltags/Tag25h9.h
+A  camera2odometryCalibr/include/apriltags/Tag36h11.h
+A  camera2odometryCalibr/include/apriltags/Tag36h11_other.h
+A  camera2odometryCalibr/include/apriltags/Tag36h9.h
+A  camera2odometryCalibr/include/apriltags/TagDetection.h
+A  camera2odometryCalibr/include/apriltags/TagDetector.h
+A  camera2odometryCalibr/include/apriltags/TagFamily.h
+A  camera2odometryCalibr/include/apriltags/UnionFindSimple.h
+A  camera2odometryCalibr/include/apriltags/XYWeight.h
+A  camera2odometryCalibr/include/apriltags/pch.h
+A  camera2odometryCalibr/include/apriltags/tags
+A  camera2odometryCalibr/include/target/DetectTarget.h
+A  camera2odometryCalibr/include/target/MouseSelection.h
+A  camera2odometryCalibr/include/target/StereoDetectTarget.h
+A  camera2odometryCalibr/lib/arm/libcamera2odometryCalibr.so
+A  camera2odometryCalibr/lib/arm/libkalibr_apriltag2.so
+A  camera2odometryCalibr/readme.md
+A  camera2odometryCalibr/script/env.sh
+A  camera2odometryCalibr/script/plot_align_time.py
+A  camera2odometryCalibr/script/plot_align_time1.py
+A  camera2odometryCalibr/script/plot_delta_t.py
+A  camera2odometryCalibr/script/plot_delta_t1.py
+A  camera2odometryCalibr/script/plot_pose3D_visual_odo.py
+A  camera2odometryCalibr/script/plot_xy.py
+A  camera2odometryCalibr/script/plot_xy_diff.py
+A  camera2odometryCalibr/script/plot_xy_equal_axis.py'
++ '[' -z 'A  camera2odometryCalibr/bin/main
+A  camera2odometryCalibr/bin/wheelOdo
+A  camera2odometryCalibr/include/apriltags/Edge.h
+A  camera2odometryCalibr/include/apriltags/FloatImage.h
+A  camera2odometryCalibr/include/apriltags/GLine2D.h
+A  camera2odometryCalibr/include/apriltags/GLineSegment2D.h
+A  camera2odometryCalibr/include/apriltags/Gaussian.h
+A  camera2odometryCalibr/include/apriltags/GrayModel.h
+A  camera2odometryCalibr/include/apriltags/Gridder.h
+A  camera2odometryCalibr/include/apriltags/Homography33.h
+A  camera2odometryCalibr/include/apriltags/MathUtil.h
+A  camera2odometryCalibr/include/apriltags/Quad.h
+A  camera2odometryCalibr/include/apriltags/Segment.h
+A  camera2odometryCalibr/include/apriltags/Tag16h5.h
+A  camera2odometryCalibr/include/apriltags/Tag16h5_other.h
+A  camera2odometryCalibr/include/apriltags/Tag25h7.h
+A  camera2odometryCalibr/include/apriltags/Tag25h9.h
+A  camera2odometryCalibr/include/apriltags/Tag36h11.h
+A  camera2odometryCalibr/include/apriltags/Tag36h11_other.h
+A  camera2odometryCalibr/include/apriltags/Tag36h9.h
+A  camera2odometryCalibr/include/apriltags/TagDetection.h
+A  camera2odometryCalibr/include/apriltags/TagDetector.h
+A  camera2odometryCalibr/include/apriltags/TagFamily.h
+A  camera2odometryCalibr/include/apriltags/UnionFindSimple.h
+A  camera2odometryCalibr/include/apriltags/XYWeight.h
+A  camera2odometryCalibr/include/apriltags/pch.h
+A  camera2odometryCalibr/include/apriltags/tags
+A  camera2odometryCalibr/include/target/DetectTarget.h
+A  camera2odometryCalibr/include/target/MouseSelection.h
+A  camera2odometryCalibr/include/target/StereoDetectTarget.h
+A  camera2odometryCalibr/lib/arm/libcamera2odometryCalibr.so
+A  camera2odometryCalibr/lib/arm/libkalibr_apriltag2.so
+A  camera2odometryCalibr/readme.md
+A  camera2odometryCalibr/script/env.sh
+A  camera2odometryCalibr/script/plot_align_time.py
+A  camera2odometryCalibr/script/plot_align_time1.py
+A  camera2odometryCalibr/script/plot_delta_t.py
+A  camera2odometryCalibr/script/plot_delta_t1.py
+A  camera2odometryCalibr/script/plot_pose3D_visual_odo.py
+A  camera2odometryCalibr/script/plot_xy.py
+A  camera2odometryCalibr/script/plot_xy_diff.py
+A  camera2odometryCalibr/script/plot_xy_equal_axis.py' ']'
++ git commit -s -F /home/jenkins/jenkins_home/jobs/rubby-cam2odo/workspace/_commit-msg
+[cam-odo-calibr a802c1a] 4dd8994 update main.cc
+ 42 files changed, 2114 insertions(+)
+ create mode 100755 camera2odometryCalibr/bin/main
+ create mode 100755 camera2odometryCalibr/bin/wheelOdo
+ create mode 100644 camera2odometryCalibr/include/apriltags/Edge.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/FloatImage.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/GLine2D.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/GLineSegment2D.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Gaussian.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/GrayModel.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Gridder.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Homography33.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/MathUtil.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Quad.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Segment.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Tag16h5.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Tag16h5_other.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Tag25h7.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Tag25h9.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Tag36h11.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Tag36h11_other.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/Tag36h9.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/TagDetection.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/TagDetector.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/TagFamily.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/UnionFindSimple.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/XYWeight.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/pch.h
+ create mode 100644 camera2odometryCalibr/include/apriltags/tags
+ create mode 100644 camera2odometryCalibr/include/target/DetectTarget.h
+ create mode 100644 camera2odometryCalibr/include/target/MouseSelection.h
+ create mode 100644 camera2odometryCalibr/include/target/StereoDetectTarget.h
+ create mode 100755 camera2odometryCalibr/lib/arm/libcamera2odometryCalibr.so
+ create mode 100755 camera2odometryCalibr/lib/arm/libkalibr_apriltag2.so
+ create mode 100644 camera2odometryCalibr/readme.md
+ create mode 100644 camera2odometryCalibr/script/env.sh
+ create mode 100644 camera2odometryCalibr/script/plot_align_time.py
+ create mode 100644 camera2odometryCalibr/script/plot_align_time1.py
+ create mode 100644 camera2odometryCalibr/script/plot_delta_t.py
+ create mode 100644 camera2odometryCalibr/script/plot_delta_t1.py
+ create mode 100644 camera2odometryCalibr/script/plot_pose3D_visual_odo.py
+ create mode 100644 camera2odometryCalibr/script/plot_xy.py
+ create mode 100644 camera2odometryCalibr/script/plot_xy_diff.py
+ create mode 100644 camera2odometryCalibr/script/plot_xy_equal_axis.py
+++ git config --local --get branch.cam-odo-calibr.remote
++ local remote=origin
+++ git config --local --get branch.cam-odo-calibr.merge
++ local branch=refs/heads/cam-odo-calibr
++ git push --no-verify origin HEAD:refs/heads/cam-odo-calibr
+remote: 
+remote: To create a merge request for cam-odo-calibr, visit:        
+remote:   http://192.168.50.191:85/zhangshuai/calibr_lib/-/merge_requests/new?merge_request%5Bsource_branch%5D=cam-odo-calibr        
+remote: 
+To ssh://192.168.50.191:222/zhangshuai/calibr_lib
+   253bfa4..a802c1a  HEAD -> cam-odo-calibr
++ [[ -z '' ]]
++ [[ '' = true ]]
++ [[ c405 = c405 ]]
++ echo 'skip check code style'
+skip check code style
+Notified JIRA that a build has completed.
+No emails were triggered.
+Finished: SUCCESS

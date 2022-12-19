@@ -1,0 +1,94 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>Gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>5</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>192.168.50.191</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash -ex
+
+echo $WORKSPACE
+
+# Define code, dataset, log path and current date
+root_dir=CleaningRobotSDK
+SLAM_DATA_DIR=&quot;/docker/ftp/guest/slam_data&quot;
+DS_ROOT_DIR=&quot;$SLAM_DATA_DIR/dataset&quot;
+DS_ROOT_LOG_DIR=&quot;$SLAM_DATA_DIR/log&quot;
+CONFIG_FILE=&quot;MODULE.yaml&quot;
+CUR_DATE=$(date &quot;+%Y%m%d&quot;)
+CUR_TIME=$(date &quot;+%Y%m%d_%H%M%S&quot;)
+export NODE_NAME=tx2
+
+# Check code path is exists or not.
+if [ ! -d $root_dir ];then
+  git clone git@192.168.50.158:VisualModule/CleaningRobotSDK.git -b develop
+else
+  rm -rf $root_dir
+  git clone git@192.168.50.158:VisualModule/CleaningRobotSDK.git -b develop
+fi
+
+# Build slam
+cd $root_dir/slam
+./build.sh
+
+# Close dataset runing ui.
+sed -i &apos;s/useDisplay: 1/useDisplay: 0/g&apos; SLAM.yaml
+
+
+# Run dataset and upload dataset log to ftp.
+cd sample
+if [ ! -d $DS_ROOT_DIR ];then
+	echo &quot;dataset root directory is not exists, please check!&quot;
+	exit 1
+else
+	database_yaml=$(find $DS_ROOT_DIR -name $CONFIG_FILE -print|egrep -v &quot;data092103|data092101&quot;)
+	for yaml in $database_yaml
+	do
+		yaml_dir=$(dirname $yaml)
+        dataset_name=$(basename $yaml_dir)
+        log_name=${CUR_TIME}_${dataset_name}
+        dataset_log_dir=$DS_ROOT_LOG_DIR/$CUR_DATE/$dataset_name
+		echo &quot;Running SLAM dataset: $yaml_dir&quot;
+		mkdir log
+		./SLAM_Test $yaml_dir $yaml
+        if [ ! -d $dataset_log_dir ];then
+          mkdir -p $dataset_log_dir
+        fi
+		mv log $dataset_log_dir/$log_name
+	done
+fi
+
+echo &quot;Dataset was uploaded: ftp://192.168.50.191/slam_data/log/$CUR_DATE&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.3"/>
+  </buildWrappers>
+</project>

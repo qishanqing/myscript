@@ -1,0 +1,68 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><flow-definition plugin="workflow-job@2.39">
+  <description/>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
+      <gitLabConnection>Gitlab</gitLabConnection>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>5</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.80">
+    <script>pipeline {
+    agent {
+        node {
+            label 'tx2'
+            customWorkspace '/home/nvidia/.jenkins/workspace/slam'
+        }
+
+    }
+  
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'develop', credentialsId: '909cdc70-04bc-4f1c-8f95-337267172c77', url: 'git@192.168.50.158:VisualModule/CleaningRobotSDK.git'
+                sh '''
+                    git clean -xdf .
+                    git checkout ./
+                    echo -n "$(date +%Y-%m-%d-%H:%M:%S)" &gt; ~/.jenkins/tx2
+                '''
+                }
+            }
+        
+        stage('Build') {
+            steps {
+                sh label: '', script: '''echo $PATH
+                #!/bin/bash -ilex
+                source /etc/profile
+                echo $PATH
+                make path_planing'''
+            }
+        }
+        stage('upload') {
+            steps{
+                sh '''
+                    path=`cat ~/tmp/tx2`
+                    find -name "libpath_planning.so" | xargs -I '{}' ~/myscript/sh/upload-to-ftp -d '{}' ftp://ftpuser:ftpuser@indemind@192.168.50.191/path_planing/$path/
+                '''
+            }
+        }
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
