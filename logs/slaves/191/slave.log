@@ -1,6 +1,85 @@
-Inbound agent connected from 192.168.50.26/192.168.50.26:56314
-Remoting version: 3077.vd69cf116da_6f
-Launcher: JNLPLauncher
-Communication Protocol: JNLP4-connect
-This is a Unix agent
-Agent successfully connected and online
+SSHLauncher{host='192.168.50.191', port=22, credentialsId='7673992c-756f-44c6-912c-353daa3f1452', jvmOptions='', javaPath='', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
+[12/19/22 09:13:52] [SSH] Opening SSH connection to 192.168.50.191:22.
+[12/19/22 09:13:52] [SSH] WARNING: SSH Host Keys are not being verified. Man-in-the-middle attacks may be possible against this connection.
+[12/19/22 09:13:52] [SSH] Authentication successful.
+[12/19/22 09:13:52] [SSH] The remote user's environment is:
+BASH=/bin/bash
+BASHOPTS=cmdhist:complete_fullquote:extquote:force_fignore:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_EXECUTION_STRING=set
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="4" [1]="3" [2]="48" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='4.3.48(1)-release'
+DIRSTACK=()
+EUID=1000
+GROUPS=()
+HOME=/home/indemind
+HOSTNAME=indemind-desktop
+HOSTTYPE=x86_64
+IFS=$' \t\n'
+LANG=zh_CN.UTF-8
+LANGUAGE=zh_CN:zh
+LOGNAME=indemind
+MACHTYPE=x86_64-pc-linux-gnu
+MAIL=/var/mail/indemind
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+PIPESTATUS=([0]="0")
+PPID=24244
+PS4='+ '
+PWD=/home/indemind
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:hashall:interactive-comments
+SHLVL=1
+SSH_CLIENT='192.168.50.26 49166 22'
+SSH_CONNECTION='192.168.50.26 49166 192.168.50.191 22'
+TERM=dumb
+UID=1000
+USER=indemind
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_SESSION_ID=9495
+_=']'
+Checking Java version in the PATH
+java version "1.8.0_251"
+Java(TM) SE Runtime Environment (build 1.8.0_251-b08)
+Java HotSpot(TM) Server VM (build 25.251-b08, mixed mode)
+[12/19/22 09:13:52] [SSH] Checking java version of /home/indemind/.jenkins_slave/jdk/bin/java
+Couldn't figure out the Java version of /home/indemind/.jenkins_slave/jdk/bin/java
+bash: /home/indemind/.jenkins_slave/jdk/bin/java: 没有那个文件或目录
+
+[12/19/22 09:13:52] [SSH] Checking java version of /usr/local/java/jdk1.8.0_261/bin/bin/java
+Couldn't figure out the Java version of /usr/local/java/jdk1.8.0_261/bin/bin/java
+bash: /usr/local/java/jdk1.8.0_261/bin/bin/java: 没有那个文件或目录
+
+[12/19/22 09:13:52] [SSH] Checking java version of java
+[12/19/22 09:13:52] [SSH] java -version returned 1.8.0_251.
+[12/19/22 09:13:52] [SSH] Starting sftp client.
+[12/19/22 09:13:52] [SSH] Copying latest remoting.jar...
+Source agent hash is 778DAD42A65312A61B7AE281A5F31129. Installed agent hash is 778DAD42A65312A61B7AE281A5F31129
+Verified agent jar. No update is necessary.
+Expanded the channel window size to 4MB
+[12/19/22 09:13:52] [SSH] Starting agent process: cd "/home/indemind/.jenkins_slave" && java  -jar remoting.jar -workDir /home/indemind/.jenkins_slave -jar-cache /home/indemind/.jenkins_slave/remoting/jarCache
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: hudson/remoting/Launcher has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:756)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+Agent JVM has terminated. Exit code=1
+[12/19/22 09:13:53] Launch failed - cleaning up connection
+[12/19/22 09:13:53] [SSH] Connection closed.

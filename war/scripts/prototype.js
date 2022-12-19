@@ -908,7 +908,7 @@ var Enumerable = (function() {
 
   function findAll(iterator, context) {
     var results = [];
-    this.forEach(function(value, index) {
+    this.each(function(value, index) {
       if (iterator.call(context, value, index))
         results.push(value);
     });
@@ -1069,6 +1069,7 @@ var Enumerable = (function() {
     detect:     detect,
     findAll:    findAll,
     select:     findAll,
+    filter:     findAll,
     grep:       grep,
     include:    include,
     member:     include,
