@@ -3,7 +3,7 @@ set -e
 source /etc/profile
 
 gitlab_backup_path=/var/opt/gitlab/backups
-gitlab_backup_path_host=/backup/gitlab/backups
+gitlab_backup_path_host=/data/backup/gitlab/backups
 ret=0
 
 gitlab_backup () {
