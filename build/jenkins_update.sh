@@ -10,7 +10,7 @@ function output-manifest.xml-from-template() {
     get-job-info
     c="<hudson.plugins.timestamper.TimestamperBuildWrapper plugin=timestamper@1.20/>\n  <org.jenkinsci.plugins.builduser.BuildUser plugin=build-user-vars-plugin@1.9/>"
     if ! `cat $template | grep "org.jenkinsci.plugins.builduser" `;then
-	sed -i "s#<hudson.*#$c#g" $template
+	sed -i "s#hudson.plugins.timestamper.TimestamperBuildWrapper.*#$c#g" $template
     fi
 }
 
