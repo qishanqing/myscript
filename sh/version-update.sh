@@ -313,7 +313,8 @@ function jc-update-job() {
 }
 
 function is-trigger-job(){
-    if [ $BUILD_CAUSE = TIMERTRIGGER ];then
+#    if [ $BUILD_CAUSE = TIMERTRIGGER ];then
+    if [ x${BUILD_USER_ID} = xtimer ];then
         export PATH="$PATH:~/myscript/sh"
 	jc-update-job && version=$trigger_version
     fi

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 apt update
-apt install openjdk-11-jdk curlftpfs mysql-client ntpdate -y
+apt install openjdk-11-jdk curlftpfs mysql-client ntpdate stow -y
 
-mkdir -p ~/system ~/tmp/logs
+mkdir -p ~/system ~/tmp/logs  /mnt/ftp
 
 ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub
@@ -26,5 +26,5 @@ mkswap /swapfile
 swapon /swapfile
 
 touch ~/.gitconfig
-
-
+echo "export PATH="$PATH:~/myscript/sh" >> ~/.bashrc
+echo "192.168.50.26   master-node build" >> /etc/hosts
