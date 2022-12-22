@@ -40,7 +40,11 @@ init_project_env(){
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b dev $CLONE_DEPTH"
+    if ! [ x$SDK_BRANCH = xcompile_12 ];then 
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b compile_12 $CLONE_DEPTH"
+    else
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b dev $CLONE_DEPTH"
+    fi
     is-trigger-job
     mount_ftp
     check_paremter_is_right
@@ -63,9 +67,7 @@ function App_project_fetch(){
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
-	    if ! [ x$SDK_BRANCH = xcompile_12 ];then
-		i18rproject_conf_update
-	    fi
+	    i18rproject_conf_update
 	    release_note
 	    project_info_database
 	    mkdir build && cd build
