@@ -8,9 +8,9 @@ function get-job-info() {
 
 function output-manifest.xml-from-template() {
     get-job-info
-    c="<hudson.plugins.timestamper.TimestamperBuildWrapper plugin=timestamper@1.20/>\n  <org.jenkinsci.plugins.builduser.BuildUser plugin=build-user-vars-plugin@1.9/>"
-    if -z `cat $template | grep "org.jenkinsci.plugins.builduser" `;then
-	sed -i "s#hudson.plugins.timestamper.TimestamperBuildWrapper.*#$c#g" $template
+    c='<hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.20"/>\n  <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/>'
+    if [[ -z `cat $template | grep "org.jenkinsci.plugins.builduser" ` ]];then
+	sed -i "s#<hudson.plugins.timestamper.TimestamperBuildWrapper.*#$c#g" $template
     fi
 }
 
@@ -25,6 +25,6 @@ function jc-update-job() {
     done
 }
 
-for JOB_NAME in `jc list-jobs | grep .*sdk`;do
+for JOB_NAME in `jc list-jobs`;do
     jc-update-job
 done
