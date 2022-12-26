@@ -34,7 +34,7 @@ gitlab_date_upload() {
     gitlab_backup
     clean_old_version &&
 	(
-	    scp -r -P222 $gitlab_backup_path_host  root@192.168.50.158:/backup/gitlab/ && echo "gitlab data success" | mails_cm -i "gitlab data backup"
+	    scp -r -P222 $gitlab_backup_path_host/../*  root@192.168.50.158:/backup/gitlab/ && echo "gitlab data success" | mails_cm -i "gitlab data backup"
 	)
 }
 
