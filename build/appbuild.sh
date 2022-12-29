@@ -105,13 +105,13 @@ function App_install(){
     elif [[ $RELEASE = true ]];then
 	is-sign-task
 	deb_type
-	tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_ALL_${version}.tgz
 	tgz_type
+	Plug-in_version
 	ota_update
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
-	echo "$sdk_note"
-	echo "$submodule_note"
+#	echo "$sdk_note"
+#	echo "$submodule_note"
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5', sdk_log='$sdk_note', submodule_log='$submodule_note' where build_url='$BUILD_URL';"
     fi
 
@@ -144,6 +144,16 @@ function Release_Version_Rule(){
 	rm -rf $WORK_DIR/$sourcename
 	mv $WORK_DIR/SDK $WORK_DIR/$sourcename
     popd
+}
+
+Plug-in_version()
+{
+    increment_version ${version%.*}
+    version=$trigger_version
+    Version_Update
+    cp /mnt/ftp/release/INDEMINDAPP/sdk/costmap_common_params_wsbot.yaml $WORK_DIR/$sourcename/modules/navigation/arm64/share/wsbot_navigation/param/costmap_common_params_wsbot.yaml
+    deb_type
+    tgz_type
 }
 
 init_project_env

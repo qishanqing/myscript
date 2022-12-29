@@ -87,10 +87,7 @@ function App_install(){
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-#	SWR_VERSION=$SWR_VERSION-SIGN
-#	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
 	deb_type
-#	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
 	echo "$sdk_note"
 	echo "$submodule_note"

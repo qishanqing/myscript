@@ -17,19 +17,19 @@ init_project_env(){
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     fi
 
+    appname=PARKER
+    sourcename=parker
     BUILD_DIR=$RELEASE_DIR/workspace
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
-    UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
-    TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/fresh_version
+    UI_DIR=/mnt/ftp/release/${appname}/client
+    TEST_DIR=/mnt/ftp/release/${appname}/test
+    FTP_RELEASE_DIR=/mnt/ftp/release/${appname}/fresh_version
     FTP_RELEASE_SIGN_DIR=${FTP_RELEASE_DIR%/*}/sign
     FTP_RELEASE_OTA_DIR=${FTP_RELEASE_DIR%/*}/ota_full_version
     FTP_RELEASE_OTA_DIFF_DIR=${FTP_RELEASE_DIR%/*}/ota
     function_list=/mnt/ftp/release/app_update_release
-    appname=PARCER
-    sourcename=parker
     CONFIG_DIR=~/system/i18rconfig
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
@@ -96,7 +96,6 @@ function App_install(){
     elif [[ $RELEASE = true ]];then
 	is-sign-task
 	deb_type
-	tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_ALL_${version}.tgz
 	tgz_type
 	ota_update
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
