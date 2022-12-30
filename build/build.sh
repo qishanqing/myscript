@@ -20,7 +20,7 @@ init_project_env(){
     TARGET_DIR=$WORKSPACE/${TARGET_PROJECT##*/}
     prepare_env
     CLONE_DEPTH="--depth=1"
-    cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME')";
+    cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME','$BUILD_USER_ID')";
     DOCKER_CONTAINER_I18="build-x64-18.04"
     DOCKER_CONTAINER_RUBBY="c405"
     DOCKER_CONTAINER_RUBBY_INSIDE="c3566"

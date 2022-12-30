@@ -208,7 +208,7 @@ function ui_update(){
 }
 
 function project_info_database(){
-    cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name) values ('${appname}','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME')";
+    cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user) values ('${appname}','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME','$BUILD_USER_ID')";
 }
 
 function ota_project_fetch(){
