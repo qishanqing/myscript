@@ -106,7 +106,7 @@ function App_install(){
 	is-sign-task
 	deb_type
 	tgz_type
-	Plug-in_version
+#	Plug-in_version
 	ota_update
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
