@@ -11,7 +11,7 @@ confluence_sys_upload () {
     confluence_sys_backup &&
 	(
 	    cd $wiki_backup_dir 
-	    scp -r -P222  backups  root@192.168.50.158:/backup/confluence && rm -rf $wiki_backup_dir
+	    scp -r -P222  backups  root@192.168.50.158:/backup/confluence && rm -rf $wiki_backup_dir/backups
 	    echo "backup sys data success" | mails_cm -i "confluence sys data backup"
 	    
 	)
