@@ -32,8 +32,8 @@ init_project_env(){
     JENKINS_JOB_E="nodejs"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
-	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
-	build_version=`cat $VERSION_FILE_PATH`
+#	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
+#	build_version=`cat $VERSION_FILE_PATH`
 	nub=${build_version}_${BUILD_PLATFORM}
     fi
 }
