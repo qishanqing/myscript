@@ -6,7 +6,7 @@
   <numExecutors>1</numExecutors>
   <mode>EXCLUSIVE</mode>
   <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
-  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.31.2">
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@2.854.v7fd446b_337c9">
     <host>192.168.50.203</host>
     <port>22</port>
     <credentialsId>66a5f811-c68c-4e86-98a8-8e0eb752d7ff</credentialsId>
@@ -17,8 +17,19 @@
     <sshHostKeyVerificationStrategy class="hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy"/>
     <tcpNoDelay>true</tcpNoDelay>
   </launcher>
-  <label>khadas-car1</label>
+  <label>khadas-car2</label>
   <nodeProperties>
+    <hudson.slaves.EnvironmentVariablesNodeProperty>
+      <envVars serialization="custom">
+        <unserializable-parents/>
+        <tree-map>
+          <default>
+            <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+          </default>
+          <int>0</int>
+        </tree-map>
+      </envVars>
+    </hudson.slaves.EnvironmentVariablesNodeProperty>
     <hudson.tools.ToolLocationNodeProperty>
       <locations>
         <hudson.tools.ToolLocationNodeProperty_-ToolLocation>
@@ -28,16 +39,5 @@
         </hudson.tools.ToolLocationNodeProperty_-ToolLocation>
       </locations>
     </hudson.tools.ToolLocationNodeProperty>
-    <hudson.slaves.EnvironmentVariablesNodeProperty>
-      <envVars serialization="custom">
-        <unserializable-parents/>
-        <tree-map>
-          <default>
-            <comparator class="hudson.util.CaseInsensitiveComparator"/>
-          </default>
-          <int>0</int>
-        </tree-map>
-      </envVars>
-    </hudson.slaves.EnvironmentVariablesNodeProperty>
   </nodeProperties>
 </slave>
