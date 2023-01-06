@@ -75,13 +75,13 @@ function generate_commits(){
 
     install_dir_list=`find $SOURCE_DIR -name install  | xargs -l  ls`
     if [[ "$CLEAN_TARGET_PROJECT" = true ]];then
-        for i in $install_dir_list;do
 	    if ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
-		git rm -r $TARGET_PROJECT_FILE_PATH/$i || true
+		git rm -r $TARGET_PROJECT_FILE_PATH/* || true
 	    else
-		git rm -r $i || true
+		for i in $install_dir_list;do
+		    git rm -r $i || true
+		done
 	    fi
-        done
     fi
 
     if [[ "$CLEAN_TARGET_PROJECT" = "$JENKINS_JOB_C" ]];then
