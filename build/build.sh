@@ -30,6 +30,7 @@ init_project_env(){
     JENKINS_JOB_C="mark-check-tools"
     JENKINS_JOB_D="java"
     JENKINS_JOB_E="nodejs"
+    JENKINS_JOB_F="_ui"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
 #	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
@@ -133,10 +134,14 @@ function generate_commits(){
 	    git pull --rebase
 	    git push --no-verify $remote HEAD:$branch
 	)
+    j=$(echo $JOB_NAME | grep "$JENKINS_JOB_F"$) || true
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	pushd $SOURCE_DIR
 	generate_tag
 	popd
+    elif [[ $j != "" ]] && [[ ! -z $RELEASE ]] ;then
+	build_version=$RELEASE
+	generate_tag
     fi
     popd
 }
