@@ -1,10 +1,9 @@
 #!/bin/bash
 set -ex
 
-TEMP=$(getopt -o m:d:c:a:h --long ms:,ai:,dlocal:,dcar:,help -n $(basename -- $0) -- "$@")
+TEMP=$(getopt -o m:dcah --long ms:,ai:,dlocal:,dcar:,help -n $(basename -- $0) -- "$@")
 ms=
 pl=
-ai=
 eval set -- "$TEMP"
 while true;do
     case "$1" in
@@ -47,7 +46,7 @@ mind_os() {
     popd
 }
 
-deploy_myscript() {
+deploy_car() {
     pushd /root/myscript
     git checkout ./
     git clean -xdf ./
@@ -55,7 +54,7 @@ deploy_myscript() {
     popd
 }
 
-deploy_car() {
+deploy_myscript() {
     pushd /home/indemind/myscript
     git checkout ./
     git clean -xdf ./
@@ -65,11 +64,11 @@ deploy_car() {
 
 if ! [ -z $ms ];then
     mind_os
-elif [ $ai = true  ];then
+elif [[ $ai = true ]];then
     $FUNCTION_INSTALL
-elif [ $dlocal = build  ];then
+elif [[ $dlocal = build ]];then
     deploy_myscript
-elif [ $dcar = build ];then
+elif [[ $dcar = build ]];then
     deploy_car
 else
     echo "no function for this"
