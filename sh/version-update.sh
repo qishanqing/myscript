@@ -187,7 +187,11 @@ function ui_job_build(){
     if ! [[ -z $1 ]];then
 	bash jc build $ui_job_name -p SOURCE_BRANCH=$1 -p TARGET_BRANCH= -s &
     else
-	bash jc build $ui_job_name -p RELEASE=r$version.$SWR_VERSION -s &
+	if [[ $RELEASE == true ]];then
+	    bash jc build $ui_job_name -p RELEASE=r$version.$SWR_VERSION -s &
+	else
+	    bash jc build $ui_job_name -s &
+	fi
     fi
 }
 
