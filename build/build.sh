@@ -198,7 +198,7 @@ function source_project_fetch(){
 function source_project_update(){
     if [ -d "$SOURCE_DIR" ];then
 	pushd $SOURCE_DIR
-#	git checkout ./
+	git checkout ./
 	git pull --rebase
 	popd
     else
