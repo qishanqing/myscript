@@ -42,6 +42,17 @@ init_project_env(){
 
 function prepare_env() {
     system_platform=`uname -m`
+    core=`cat /proc/cpuinfo | grep "processor"| sort|uniq| wc -l`
+    if [[ $core == 32 ]];then
+	mt=-j24
+    elif [[ $core == 16 ]];then
+	mt=-j12
+    elif [[ $core == 6 ]];then
+	mt=-j4
+    else
+	mt=-j4
+    fi
+
     export COMMIT_ID_FILE=${WORKSPACE}/_last_build_id 
     export COMMIT_MSG_FILE=${WORKSPACE}/_commit-msg
     export COMMIT_MSG_FILE_TMP=${WORKSPACE}/_commit-msg.tmp
@@ -225,6 +236,7 @@ insert_db()
 function project_build(){
     pushd $SOURCE_DIR
     project_init_remote || true
+    sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT
     if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
 	bash -ex $BUILD_SCRIPT $nub
     elif [ "$KEEP_BUILD" = true ];then
@@ -342,6 +354,7 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
         git submodule update --init --recursive
         git submodule update --remote
     ) || true
+    sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT
     if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
        source /opt/ros/melodic/setup.bash &> /dev/null
        bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
