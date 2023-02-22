@@ -46,7 +46,7 @@ function prepare_env() {
     if [[ $core == 32 ]];then
 	mt=-j24
     elif [[ $core == 16 ]];then
-	mt=-j12
+	mt=-j8
     elif [[ $core == 6 ]];then
 	mt=-j4
     else
