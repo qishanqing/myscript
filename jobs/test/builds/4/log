@@ -1,0 +1,56 @@
+Started by user [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Running as SYSTEM
+Building remotely on [8mha:////4MPPEh8feJE9uNY0ThUfUuMmeXp+equSlRr0prvRJKt5AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJDAGuOCCPKAAAA[0mkhadas-car1 in workspace /root/workspace/workspace/test
+[test] $ /bin/sh -xe /tmp/jenkins5210529825266747984.sh
++ bash -ex /root/myscript/build/jenkins_update.sh
++ export 'PATH=/usr/bin/bin:/usr/bin/bin:/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/myscript/sh'
++ PATH='/usr/bin/bin:/usr/bin/bin:/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/myscript/sh'
+++ grep '.*sdk'
+++ jc list-jobs
++ for JOB_NAME in `jc list-jobs | grep .*sdk`
++ jc-update-job
++ template=/root/tmp/logs/rbn100-sdk.xml
++ output-manifest.xml-from-template
++ get-job-info
++ jc get-job rbn100-sdk
++ c='<hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.20"/>\n  <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/>'
+++ grep org.jenkinsci.plugins.builduser
+++ cat /root/tmp/logs/rbn100-sdk.xml
++ [[ -z     <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/> ]]
+++ seq 1 10
++ for n in $(seq 1 10)
++ jc update-job rbn100-sdk
++ cat /root/tmp/logs/rbn100-sdk.xml
++ break
++ for JOB_NAME in `jc list-jobs | grep .*sdk`
++ jc-update-job
++ template=/root/tmp/logs/rubby-sdk-3566.xml
++ output-manifest.xml-from-template
++ get-job-info
++ jc get-job rubby-sdk-3566
++ c='<hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.20"/>\n  <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/>'
+++ grep org.jenkinsci.plugins.builduser
+++ cat /root/tmp/logs/rubby-sdk-3566.xml
++ [[ -z     <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/> ]]
+++ seq 1 10
++ for n in $(seq 1 10)
++ jc update-job rubby-sdk-3566
++ cat /root/tmp/logs/rubby-sdk-3566.xml
++ break
++ for JOB_NAME in `jc list-jobs | grep .*sdk`
++ jc-update-job
++ template=/root/tmp/logs/rubby405-sdk.xml
++ output-manifest.xml-from-template
++ get-job-info
++ jc get-job rubby405-sdk
++ c='<hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.20"/>\n  <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/>'
+++ grep org.jenkinsci.plugins.builduser
+++ cat /root/tmp/logs/rubby405-sdk.xml
++ [[ -z '' ]]
++ sed -i 's#<hudson.plugins.timestamper.TimestamperBuildWrapper.*#<hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.20"/>\n  <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/>#g' /root/tmp/logs/rubby405-sdk.xml
+++ seq 1 10
++ for n in $(seq 1 10)
++ jc update-job rubby405-sdk
++ cat /root/tmp/logs/rubby405-sdk.xml
++ break
+Finished: SUCCESS

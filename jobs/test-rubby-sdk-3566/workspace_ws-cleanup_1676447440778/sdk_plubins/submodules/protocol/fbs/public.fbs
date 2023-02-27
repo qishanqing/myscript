@@ -1,0 +1,108 @@
+namespace abby;
+
+//地图信息
+table MapInfo {
+	id:long;
+    scene_id:long;
+    map_id:long;
+    use_count:int;
+    image:string;
+    thumbnail:string;
+    date:long;
+    last_data:long;
+    default: bool;
+}
+
+// 清扫类型
+enum CleanType : byte {
+    CleanAll = 0,                           //全区清扫
+    CleanPartition = 1,                     //分区清扫
+    CleanRegion = 2,          				//划区清扫
+	CleanSemantics = 3,               		//语义清扫
+}
+
+table Point2D{
+	x: double;
+	y: double;
+}
+
+table Area{
+	points: [Point2D];
+}
+
+// 轮廓点集信息类型
+enum OutlineType : byte {
+    WholeRegion = 0,                        //全区
+    Partition = 1,                          //分区
+    Region = 2,          				    //划区
+	Semantics = 3,               		    //语义
+    ForbiddenZone = 4,                      //禁区
+    VirtualWall = 5,                        //虚拟墙
+    ChargingPile = 6,                       //充电桩
+}
+
+// 轮廓点集信息
+table Outline{
+    id:long;                //点集id
+    scene_id:long;          //场景id
+    map_id:long;            //map id
+	type:OutlineType;       //轮廓点集信息类型
+    areas:[Area];           //区域集合
+}
+
+// 清扫状态
+enum CleanState : byte {
+    Start = 0,          // 开始
+    Pause = 1,          // 暂停
+    Continue = 2,       // 继续
+    Stop = 3,           // 停止
+    NewScene = 4,       // 新建场景
+}
+
+// 结束状态
+enum FinishStatus : byte {
+    OK = 0,                        //正常结束
+    ERROR = 1,                     //异常结束
+}
+
+// 清扫模式
+enum CleanMode : byte {
+    Quiet = 0,              // 安静
+    FullPower = 1,          // 全功率
+    Stop = 2,               // 停止
+}
+
+// 清扫状态
+enum SportMode : byte {
+    NewMap = 0,         // 建图
+    UseMap = 1,         // 有图
+    P2P = 2,            // 点到点  
+}
+
+// 定时周期
+enum TimerDuration : byte {
+    Once        = 1,            // 单次
+    Everyday    = 2,            // 每天
+    Weekday     = 3,            // 工作日
+    Weekend     = 4,            // 周末
+    Monday      = 5,            // 周一
+    Tuesday     = 6,            // 周二
+    Wednesday   = 7,            // 周三
+    Thursday    = 8,            // 周四
+    Friday      = 9,            // 周五
+    Saturday    = 10,           // 周六
+    Sunday      = 11,           // 周日
+    //EveryFewDays = 20+N,        //每隔N天
+}
+
+// 定时任务
+table TimerTask {
+	id:long;
+    task_name:string;           //任务名称
+    scene_id:long;              //场景id
+    map_id:long;                //地图id
+    area_id:long;               //分区id
+    clean_mode:CleanMode;       //清扫模式
+    duration:byte;              //重复周期
+    task_start_time:string;     //任务启动时间 %Y-%m-%d %H:%M:%S
+}

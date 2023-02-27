@@ -1,0 +1,35 @@
+launch:
+  wifi_check: false
+  sensor_topics:
+#    - [ "/img_tx" ]
+    - [ "/img_ir" ]
+    - [ "/imu" ]
+    - [ "/lightflow" ]
+    - [ "/motor_current" ]
+    
+recorder:
+    enable: false
+    modules:  
+     - imsee
+     - encoder
+     - lightflow
+     - pose
+     - drop_event
+
+player:
+    enable: false
+    update_stamp: false
+    auto_exit: false
+    modules:
+     - imsee
+     - encoder
+     - lightflow
+     - pose
+     - drop_event
+     
+remote:
+  line: 1.0
+  angular: 1.0
+
+ui:
+  scale: 200.0

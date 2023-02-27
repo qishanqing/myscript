@@ -1,0 +1,39 @@
+#!/bin/sh
+set -e
+
+rm_conffile() {
+    local PKGNAME="$1"
+    local CONFFILE="$2"
+    
+    [ -e "$CONFFILE" ] || return 0
+    
+    local md5sum="$(md5sum $CONFFILE | sed -e 's/ .*//')"
+    local old_md5sum="$(dpkg-query -W -f='${Conffiles}' $PKGNAME | \
+    sed -n -e "\' $CONFFILE ' { s/ obsolete$//; s/.* //; p }")"
+    if [ "$md5sum" = "$old_md5sum" ]; then
+        echo "Removing obsolete conffile $CONFFILE ..."
+        rm -f "$CONFFILE"
+    fi
+}
+
+rm_file() {
+    local CONFFILE="$1"
+    rm -rf $CONFFILE
+}
+
+case "$1" in
+    install|upgrade)
+        rm_file /etc/default/isc-dhcp-server
+        rm_file /etc/default/wifi_interface
+        rm_file /etc/dhcp/dhcpd.conf
+        rm_file /etc/hostapd/hostapd.conf
+        rm_file /etc/hostapd/hostapd_user.conf
+        rm_file /usr/bin/ap.sh
+        rm_file /usr/bin/sta.sh
+        rm_file /usr/bin/wifi_status.sh
+    ;;
+esac
+
+
+
+exit 0

@@ -1,0 +1,31 @@
+<slave>
+  <name>cloud-test</name>
+  <description></description>
+  <remoteFS>/home/indemind/.jenkins</remoteFS>
+  <numExecutors>1</numExecutors>
+  <mode>EXCLUSIVE</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@2.854.v7fd446b_337c9">
+    <host>192.168.50.44</host>
+    <port>22</port>
+    <credentialsId>8036b52b-313e-477d-ab95-6a14450d5f7d</credentialsId>
+    <prefixStartSlaveCmd>source /opt/ros/melodic/setup.bash;source ~/.bashrc;</prefixStartSlaveCmd>
+    <launchTimeoutSeconds>3600</launchTimeoutSeconds>
+    <maxNumRetries>10</maxNumRetries>
+    <retryWaitTime>15</retryWaitTime>
+    <sshHostKeyVerificationStrategy class="hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy"/>
+    <tcpNoDelay>true</tcpNoDelay>
+  </launcher>
+  <label>cloud</label>
+  <nodeProperties>
+    <hudson.tools.ToolLocationNodeProperty>
+      <locations>
+        <hudson.tools.ToolLocationNodeProperty_-ToolLocation>
+          <type>hudson.model.JDK$DescriptorImpl</type>
+          <name>jdk8</name>
+          <home>/usr/lib/jvm/jdk-11</home>
+        </hudson.tools.ToolLocationNodeProperty_-ToolLocation>
+      </locations>
+    </hudson.tools.ToolLocationNodeProperty>
+  </nodeProperties>
+</slave>

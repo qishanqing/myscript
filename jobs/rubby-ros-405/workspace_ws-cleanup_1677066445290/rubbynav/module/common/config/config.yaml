@@ -1,0 +1,213 @@
+%YAML:1.0
+---
+#############################################################
+#                           rubbynav
+#############################################################
+
+# 配置文件分为规划PLANNING、控制MOTION和其他OTHERS三部分
+
+#------------------------------------------------------------------------------------------#
+# PLANNING
+#------------------------------------------------------------------------------------------#
+
+# 清扫框数目(0: 多个区域, 1: 1个区域)
+boxNumber: 0
+
+# 清扫框的大小(栅格)
+sideLength0: 90   # 多个清扫区域
+sideLength1: 40   # 1个清扫区域
+
+#------------------------------------------------------------------------------------------#
+# MOTION
+#------------------------------------------------------------------------------------------#
+
+# 重定位时走三角的边长
+triangleSideLength: 0.5
+
+# 前视距离(虚拟碰撞, m)
+overLook: 0.05
+
+# 弓形
+## 路径插点点间距(m)
+pointSpacingBow: 0.1
+
+## PID参数
+KPBow: -2.2
+KIBow: 0.0
+KDBow: 0.0
+
+## 允许的角度范围(单边: 度)
+angleLimitBow: 20.0
+
+## 最大线速度(m/s)
+maxSpeedVlBow: 0.32
+## 线加速度
+accLiner: 0.005
+## 切入弧形时的线速度(m/s)
+speedArc: 0.1
+
+## 最大角速度(rad/s)
+maxSpeedVaBow: 0.8
+
+
+
+# 导航
+## 路径插点点间距(m)
+pointSpacingNav: 0.1
+
+## PID参数
+KPNav: -2.2
+KINav: 0.0
+KDNav: 0.0
+
+## 允许的角度范围(单边: 度)
+angleLimitNav: 20.0
+
+## 最大线速度(m/s)
+maxSpeedVlNav: 0.32
+maxSpeedVaNav: 0.8
+
+##忽略depth数据个数,最大有效值７
+depthIgnoreSize: 3
+
+#------------------------------------------------------------------------------------------#
+# OTHERS
+#------------------------------------------------------------------------------------------#
+
+# 发送给slam的地图的大小
+width2slam: 40
+height2slam: 40
+
+# rviz显示
+showNavMap: 1
+showForbidenMap: 1
+showRegionSegmentationMap: 1
+showCoverMap: 1
+showFollowMap: 1
+showPathMap: 0
+showAPPMap: 1
+showPerceptionMap: 1
+
+#------------------------------------------------------------------------------------------#
+# 自动分区
+#------------------------------------------------------------------------------------------#
+# this variable selects the algorithm for room segmentation
+# 1 = morphological segmentation   testmap0.155s
+# 2 = distance segmentation	   testmap0.188s
+# 3 = Voronoi segmentation	   testmap0.28s
+# int
+room_segmentation_algorithm: 3
+robot_radius : 0.3
+map_resolution : 0.05
+# publishes the segmented map as grid map upon service call
+#在服务调用时将分段地图发布为网格地图
+# bool
+publish_segmented_map: true
+
+# room area factor-> Set the limitation of area of the room -------> in [m^2]
+#morphological segmentation: 47.0 - 0.8 (means the room area after eroding/shrinking s.t. too small/big contours are not treated as rooms)
+#房间面积系数->设置房间面积限制------->单位[m^2]
+#形态分割：47.0-0.8（表示侵蚀/收缩后的房间面积。太小/太大的轮廓不被视为房间）
+room_area_factor_upper_limit_morphological: 30 #47.0
+room_area_factor_lower_limit_morphological: 0.1 #0.8
+
+#distance segmentation: 163.0 - 0.35 (means the room area after decreasing the boundary for the binary filter s.t. too small/big contours are not treated as rooms)
+#距离分割：163.0-0.35（表示减少二元过滤器边界后的房间面积。太小/太大的轮廓不被视为房间）
+room_area_factor_upper_limit_distance: 40 #163.0
+room_area_factor_lower_limit_distance: 0.1 #0.35
+
+  #Voronoi segmentation: 120.0 - 1.53 (means the max/min area that an area separated by critical lines is allowed to have)
+#Voronoi分割：120.0-1.53（表示由临界线分隔的区域允许具有的最大/最小面积）
+room_area_factor_upper_limit_voronoi: 50.0        #10000.0
+room_area_factor_lower_limit_voronoi: 0.2            #0.1
+
+#parameters for the voronoi segmentation that specify the neighborhood for critical Point extraction and the distance between critical Points.
+#voronoi分割的参数，指定临界点提取的邻域和临界点之间的距离。
+voronoi_neighborhood_index: 100 #280         #larger value sets a larger neighborhood for searching critical points --> int
+#较大的值为搜索临界点-->int设置较大的邻域
+max_iterations:  100   #150                     #sets the maximal number of iterations to search for a neighborhood, also used for the vrf segmentation --> int
+#设置搜索邻域的最大迭代次数，也用于vrf分割-->int
+min_critical_point_distance_factor: 1.5 #0.5 #1.6 #minimal distance factor between two critical points before one of it gets eliminated --> double
+#消除其中一个临界点前两个临界点之间的最小距离系数-->加倍
+
+
+
+#预处理参数
+expand_pretreatment : 1 #初始膨胀n个像素，提取完外轮廓后，腐蚀回对应像素
+
+
+
+
+#room合并参数
+wall_around_case_a : 0.75 #合并条件a（邻域=1&&面积小于max_area_for_merging&&墙相邻长度/周长<wall_around_case_a）
+
+room_area_lower_limit : 2.0  #合并条件b（area<room_area_lower_limit&&最大边界领域接触/周长>contact_length_max_ratio_b）
+contact_length_max_ratio_b : 0.2
+
+neighbor_room_length_max_ratio_c1 : 0.98 #合并条件c  ((邻域=1||与所有邻域接触和比周长>neighbor_room_length_max_ratio && 墙相邻长度/周长 > wall_around_case_c&&最大边界领域接触/周长>contact_length_max_ratio_c)
+neighbor_room_length_max_ratio_c2 : 0.95
+wall_around_case_c : 0.5
+contact_length_max_ratio_c : 0.15
+
+contact_length_max_ratio_d1 : 0.2  #合并条件d（邻域边界占比>contact_length_max_ratio_d1||[邻域边界占比>contact_length_max_ratio_d2&&墙边界占比>（1-2*邻域边界占比-0.05)&&墙边界占比<1-邻域边界占比）]
+contact_length_max_ratio_d2 : 0.1
+
+contact_length_max_ratio_e : 0.4  #合并条件e 邻域边界占比>contact_length_max_ratio_e
+
+
+
+max_area_for_merging: 12.5 #12.5              #maximal area [m²] of a room that should be merged with its surrounding rooms, also used for the voronoi random field segmentation
+#应与其周围房间合并的房间的最大面积[m²]，
+
+
+#自添合并参数
+#走廊长度范围 double，范围内的门被删除 单位m
+corridor_width_min : 0.8     #raw0.7
+corridor_width_max : 1    #raw0.75
+corridor_maxarea : 20 #走廊面积限制，当corridor_separate为1时判断
+corridor_separate  : 1   #分离出走廊
+
+#合并条件：房间门长度在范围内，判断门左右两区域面积相加大小在合并后房间面积范围内，较大区域大于，满足合并
+#房间门长度范围 double 单位m
+roomdoor_min : 0.575          #raw0.25
+roomdoor_max : 0.675      #raw0.55
+#较大房间面积
+roomarea_max : 3.25     #raw2
+#合并后房间面积
+mergeroom_maxarea : 7.75    #raw6.75
+mergeroom_minarea : 5      #raw2.75
+expand_points  : 5   #int     n个像素  <25
+
+publish_raw_map : 0     #显示未融合地图
+publish_door_map : 0  #显示门
+publish_color_map : 0 #显示彩色图
+
+#------------------------------------------------------------------------------------------#
+# 早期版本控制算法，当前已经不再使用，但请勿删除
+#------------------------------------------------------------------------------------------#
+# NavPID_P: 0.5
+# NavPID_I: 0.01
+# NavPID_D: 0.0
+# NavPID_S: 0.0
+# NavPID_G: 10.0
+
+# WallPID_P: 0.5
+# WallPID_I: 0.01
+# WallPID_D: 0.0
+# WallPID_S: 0.0
+# WallPID_G: 10.0
+
+# Cmd_v: 0.25
+
+
+#############################################################
+#                           rubbyrobot
+#############################################################
+
+# 划区区域: simulation测试用
+areaBoard:
+  - [ 10,20 ]
+  - [ 30,20 ]
+  - [ 30,40 ]
+  - [ 10,40 ]
+  - [ 10,20 ]

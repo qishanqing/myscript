@@ -4,27 +4,7 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.18"/>
-    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.5.9">
-      <gitLabConnection>Gitlab</gitLabConnection>
-    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
-    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
-      <autoRebuild>false</autoRebuild>
-      <rebuildDisabled>false</rebuildDisabled>
-    </com.sonyericsson.rebuild.RebuildSettings>
-    <EnvInjectJobProperty plugin="envinject@2.3.0">
-      <info>
-        <secureGroovyScript plugin="script-security@1.72">
-          <script></script>
-          <sandbox>false</sandbox>
-        </secureGroovyScript>
-        <loadFilesFromMaster>false</loadFilesFromMaster>
-      </info>
-      <on>true</on>
-      <keepJenkinsSystemVariables>true</keepJenkinsSystemVariables>
-      <keepBuildVariables>true</keepBuildVariables>
-      <overrideBuildParameters>false</overrideBuildParameters>
-    </EnvInjectJobProperty>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.8"/>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>3</daysToKeep>
@@ -33,6 +13,15 @@
         <artifactNumToKeep>-1</artifactNumToKeep>
       </strategy>
     </jenkins.model.BuildDiscarderProperty>
+    <com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty plugin="gitlab-plugin@1.6.0">
+      <gitLabConnection>Gitlab</gitLabConnection>
+      <jobCredentialId></jobCredentialId>
+      <useAlternativeCredential>false</useAlternativeCredential>
+    </com.dabsquared.gitlabjenkins.connection.GitLabConnectionProperty>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.34">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
@@ -43,7 +32,6 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>SOURCE_PROJECT_RENAME</name>
-          <description></description>
           <defaultValue>os</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
@@ -55,7 +43,6 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TARGET_PROJECT</name>
-          <description></description>
           <defaultValue>mind_os/mind_os</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
@@ -85,9 +72,16 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
           <name>CLEAN_WORKSPACE</name>
-          <description></description>
           <defaultValue>true</defaultValue>
         </hudson.model.BooleanParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>KEEP_BUILD</name>
+          <defaultValue>true</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>build_version</name>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -98,10 +92,12 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
-    <com.dabsquared.gitlabjenkins.GitLabPushTrigger plugin="gitlab-plugin@1.5.9">
+    <com.dabsquared.gitlabjenkins.GitLabPushTrigger plugin="gitlab-plugin@1.6.0">
       <spec></spec>
       <triggerOnPush>true</triggerOnPush>
+      <triggerToBranchDeleteRequest>false</triggerToBranchDeleteRequest>
       <triggerOnMergeRequest>true</triggerOnMergeRequest>
+      <triggerOnlyIfNewCommitsPushed>false</triggerOnlyIfNewCommitsPushed>
       <triggerOnPipelineEvent>false</triggerOnPipelineEvent>
       <triggerOnAcceptedMergeRequest>false</triggerOnAcceptedMergeRequest>
       <triggerOnClosedMergeRequest>false</triggerOnClosedMergeRequest>
@@ -111,12 +107,14 @@
       <noteRegex>Jenkins please retry a build</noteRegex>
       <ciSkip>true</ciSkip>
       <skipWorkInProgressMergeRequest>true</skipWorkInProgressMergeRequest>
+      <labelsThatForcesBuildIfAdded></labelsThatForcesBuildIfAdded>
       <setBuildDescription>true</setBuildDescription>
       <branchFilterType>All</branchFilterType>
       <includeBranchesSpec></includeBranchesSpec>
       <excludeBranchesSpec></excludeBranchesSpec>
+      <sourceBranchRegex></sourceBranchRegex>
       <targetBranchRegex></targetBranchRegex>
-      <secretToken>{AQAAABAAAAAwPGETRpS2Xt16kEhN2UbXzOat2FWOFw3OtG3o9fixhAsLWboc9hYZ1gIFClbl3fnLI5BQ4JUXm+S+2Soruy/l8A==}</secretToken>
+      <secretToken>{AQAAABAAAAAw0OIgnGRFQfCxJcgQGc322hEsd22CpdsMCoPkBvq4ezUAssvNvthLF4/ZNCS3Y1g74R2S0a5DXrVqvoopM1kQhg==}</secretToken>
       <pendingBuildName></pendingBuildName>
       <cancelPendingBuildsOnUpdate>false</cancelPendingBuildsOnUpdate>
     </com.dabsquared.gitlabjenkins.GitLabPushTrigger>
@@ -125,10 +123,11 @@
   <builders>
     <hudson.tasks.Shell>
       <command>bash ~/myscript/build/build.sh</command>
+      <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.69">
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.91">
       <recipientList>qishanqing@indemind.cn</recipientList>
       <configuredTriggers>
         <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
@@ -196,21 +195,13 @@
     </hudson.plugins.emailext.ExtendedEmailPublisher>
   </publishers>
   <buildWrappers>
-    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.38">
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.43">
       <deleteDirs>false</deleteDirs>
       <cleanupParameter></cleanupParameter>
       <externalDelete></externalDelete>
       <disableDeferredWipeout>false</disableDeferredWipeout>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
-    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.11.3"/>
-    <EnvInjectBuildWrapper plugin="envinject@2.3.0">
-      <info>
-        <secureGroovyScript plugin="script-security@1.72">
-          <script></script>
-          <sandbox>false</sandbox>
-        </secureGroovyScript>
-        <loadFilesFromMaster>false</loadFilesFromMaster>
-      </info>
-    </EnvInjectBuildWrapper>
+    <hudson.plugins.timestamper.TimestamperBuildWrapper plugin="timestamper@1.20"/>
+    <org.jenkinsci.plugins.builduser.BuildUser plugin="build-user-vars-plugin@1.9"/>
   </buildWrappers>
 </project>

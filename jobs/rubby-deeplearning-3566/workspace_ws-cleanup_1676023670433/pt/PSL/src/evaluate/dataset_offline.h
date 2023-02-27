@@ -1,0 +1,15 @@
+//
+// Created by hao on 2021/7/21.
+//
+
+#ifndef DETECTOR_SAMPLE_DATASETOFFLINE_H
+#define DETECTOR_SAMPLE_DATASETOFFLINE_H
+
+
+class DataSetOffline
+{
+
+};
+
+
+#endif //DETECTOR_SAMPLE_DATASETOFFLINE_H

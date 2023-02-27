@@ -369,3 +369,87 @@ ll
 ls
 date
 exit
+cd ~/.ssh/
+ll
+cat id_rsa.pub 
+exit
+git pull --rebase github indemind
+git pull --rebase github indemind
+cd /home/indemind/myscript/
+git pull --rebase github indemind
+exit
+exit
+docker
+docker ps
+exit
+exit
+docker ps
+docker ps
+docker ps
+sudo gpasswd -a jenkins docker
+sudo newgrp docker
+docker ps
+ll /var/run/docker.sock 
+ls -la /var/run/docker.sock 
+chmod 777 /var/run/docker.sock 
+sudo chmod 777 /var/run/docker.sock 
+docker ps
+exit
+docker ps
+ll /var/run/docker.sock 
+ls -ls /var/run/docker.sock 
+cat /etc/passwd | grep docker
+cat /etc/passwd
+cat /etc/group | grep docker
+groupadd -g 999 docker
+sudo groupadd -g 999 docker
+sudo groupdel docker
+sudo groupadd -g 999 docker
+ls -ls /var/run/docker.sock 
+sudo gpasswd -a jenkins docker
+exit
+cd /var/jenkins_home/jobs/rubby-depth-test/workspace/
+ll
+ls -l
+cd depth/
+docker ps
+docker exec -i c405 /bin/bash
+docker exec -id c405 /bin/bash
+exit
+docker ps
+docker exec -i c405 /bin/bash
+docker ps
+ls -la /var/run/docker.sock 
+cat /etc/group | grep docker
+docker version
+newgrp docker 
+exit
+docker exec -it c405 /bin/bash
+exit
+cat /etc/group | grep root
+id jenkins
+who
+whoami
+ll /var/run
+ls -l /var/run
+cd /run/
+ls -l /var/run
+ls -l 
+ll
+ls -l 
+chmod 777 /var/run/docker.sock 
+sudo chmod 777 /var/run/docker.sock 
+ls -l 
+ls -l 
+cat ~/.gitconfig 
+ll
+ls -l 
+ll
+ls -la
+ls -la
+exit
+cat /etc/group | grep root
+sudo gpasswd -a jenkins root
+newgrp root
+exit
+exit

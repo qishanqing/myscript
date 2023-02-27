@@ -1,0 +1,247 @@
+include "public.fbs";
+namespace abby;
+
+table ServerRptImage {
+	height: int;
+	weight: int;
+    image: [ubyte];
+}
+
+table ServerGrid
+{
+    x: int;
+    y: int;
+    value: byte;
+}
+
+// report/增量地图
+table ServerRptOccupancyGrid {
+    time: long;
+	wifth: int;
+	height: int;
+	resolution: float;
+    grid_data : [ServerGrid];
+}
+
+// response/请求设备序列号
+table ServerRespSn {
+    sn: string;
+}
+
+// 工作类型
+enum WorkingType : byte {
+    Ready = 0,          					// 待机
+	Cleaning = 1,               			// 自动清扫
+	RemoteControl = 2,               		// 远程遥控
+	Fault = 3,               				// 故障
+	CleanRegion = 4,						// 区域清扫
+}
+
+// report/工作状态
+table ServerRptWorkingState {
+	state: WorkingType;
+}
+
+// response/请求设备序列号
+table ServerRespSpeed {
+    success: bool;
+}
+
+// response/设置手动控制下的停止
+table ServerRespStop {
+    success: bool;
+}
+
+// report/姿态
+table ServerRptPose {
+	px: float;
+	py: float;
+	yaw: float;
+}
+
+// response/切换到自动清扫
+table ServerRespSwitchAuto {
+    success: bool;
+}
+
+//response/切换到手动清扫
+table ServerRespSwitchManual {
+    success: bool;
+}
+
+//response/开始自动清扫
+table ServerRespAutoStart {
+    success: bool;
+}
+
+// 识别类型
+enum ClassID: byte {
+    UNKNOWN = 0,          			// 未知
+    SHOES = 1,               		// 鞋子
+	BIN = 2,               			// 垃圾桶
+	PEDESTAL = 3,               	// 底座
+	WIRE = 4,               		// 线团
+	SOCKET = 5,               		// 插排
+	CAT	= 6,						// 猫
+	DOG	= 7,						// 狗
+	DESK_RECT = 8,					// 桌子矩形
+	DESK_CIRCLE = 9,				// 桌子圆形
+}
+
+table Point{
+	x: double;
+	y: double;
+	z: double;
+}
+
+table ServerSenmaticObject{
+	id: int;
+	class_id: ClassID;
+	location: [Point];
+	stype: uint16;
+}
+
+// 语义地图状态
+enum SenmaticStatus: byte {
+    NO_UPDATE = 0,          		// 未更新
+    UPDATE = 1,               		// 更新
+}
+
+// report/语义地图
+table ServerRptSenmaticMap {
+	status: SenmaticStatus;
+	objects: [ServerSenmaticObject];
+}
+
+// response/当前场景下的地图列表
+table ServerRespMapList {
+    list: [MapInfo];
+	success: bool;			//true 成功 false 失败
+}
+
+// response/当前地图信息
+table ServerRespMapOccupancyGrid {
+    wifth: int;
+	height: int;
+	resolution: float;
+    grid_data : [ServerGrid];
+	success: bool;			//true 成功 false 失败
+}
+
+//废弃-->使用ServerRespSceneDesc统一处理
+// response/当前地图信息
+table ServerRespMapSemantics {
+    objects: [ServerSenmaticObject];
+	success: bool;			//true 成功 false 失败
+}
+
+// response/区域清扫
+table ServerRespStartRegion {
+    success: bool;
+}
+
+//response/场景描述信息
+table ServerRespSceneDesc {
+    desc:[Outline];
+	success: bool;
+}
+
+//response/新增场景描述信息
+table ServerRespAddSceneDesc {
+	success: bool;
+}
+
+//response/删除场景描述信息
+table ServerRespDelSceneDesc {
+	success: bool;
+}
+
+//response/设置清扫模式
+table ServerRespSetState {
+	success: bool;
+}
+
+// report/重定位后使用新地图
+table ServerRptChangeMap {
+	relocation: bool;			//重定位是否成功，true 使用sceneId/mapid，false 询问是否新建场景
+	scene_id:long;
+	map_id:long;
+}
+
+// report/绑架后重定位失败后询问新建场景或请求放回原地重试
+table ServerRptRelocationFailed {
+	time:long;
+}
+
+// report/结束状态
+table ServerRptFinishStatus {
+	time:FinishStatus;
+}
+
+// response/回充
+table ServerRespRecharge {
+	time:long;
+}
+
+//response/添加定时任务
+table ServerRespAddTimer {
+	success: bool;
+}
+
+//response/更新定时任务
+table ServerRespUpdateTimer {
+	success: bool;
+}
+
+//response/删除定时任务
+table ServerRespDelTimer {
+	success: bool;
+}
+
+//response/定时任务列表
+table ServerRespListTimer {
+	success: bool;
+	tasks:[TimerTask];
+}
+
+//request/设置清扫模式
+table ServerRespCleanMode{
+    success: bool;
+}
+
+union ServerType {
+	ServerRptImage,
+	ServerRptOccupancyGrid,
+	ServerRespSn,
+	ServerRptWorkingState,
+	ServerRespSpeed,
+	ServerRespStop,
+	ServerRptPose,
+	ServerRespSwitchAuto,
+	ServerRespSwitchManual,
+	ServerRespAutoStart,
+	ServerRptSenmaticMap,
+	ServerRespMapList,
+	ServerRespMapOccupancyGrid,
+	ServerRespMapSemantics,
+	ServerRespStartRegion,
+	ServerRespSceneDesc,
+	ServerRespAddSceneDesc,
+	ServerRespDelSceneDesc,
+	ServerRespSetState,
+	ServerRptChangeMap,
+	ServerRptRelocationFailed,
+	ServerRptFinishStatus,
+	ServerRespRecharge,
+	ServerRespAddTimer,
+	ServerRespUpdateTimer,
+	ServerRespDelTimer,
+	ServerRespListTimer,
+	ServerRespCleanMode,
+}
+
+table ServerData {
+    message: ServerType;
+}
+
+root_type ServerData;

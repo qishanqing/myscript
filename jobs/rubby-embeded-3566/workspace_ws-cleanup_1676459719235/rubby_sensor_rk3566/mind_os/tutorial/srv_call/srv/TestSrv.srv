@@ -1,0 +1,18 @@
+namespace tutorial.srv_call
+
+message InnerVector {
+    vector_data: [uint32]
+}
+
+service TestSrv {
+    request {
+        stamp: uint64
+        param: int32
+        inner_vector_data: [InnerVector]
+    }
+    response {
+        result: int32
+        success: bool
+        inner_vector_data: [InnerVector]
+    }
+}

@@ -1,0 +1,566 @@
+Started by user [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Running as SYSTEM
+Building remotely on [8mha:////4KlQqlsBph4xPlZyN8hWGoiD/RL9+nkTHD+ZAf2IYLifAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgZe/eT83ILSktQifUNTCwCQOU3ywgAAAA==[0m158 (gitlab) in workspace /home/indemind/.jenkins/workspace/rubby_ui_pc
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+Extended Email Publisher is currently disabled in project settings
+[rubby_ui_pc] $ /bin/sh -xe /tmp/jenkins10276413338865185896.sh
++ bash /home/indemind/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20221221
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ echo AroundI18RProject/i18rconfig
+++ awk -F/ '{print $1"%2F"$2}'
++ CONVERT_TARGET_PROJECT=AroundI18RProject%2Fi18rconfig
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/AroundI18RProject%2Fi18rconfig
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3384    0  3384    0     0   3482      0 --:--:-- --:--:-- --:--:--  3481100  3384    0  3384    0     0   3481      0 --:--:-- --:--:-- --:--:--  3481
++ SUB_PROJECT_ID=409
++ '[' -z ']'
++ SOURCE_DIR=/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui
++ TARGET_DIR=/home/indemind/.jenkins/workspace/rubby_ui_pc/i18rconfig
++ prepare_env
+++ uname -m
++ system_platform=x86_64
++ export COMMIT_ID_FILE=/home/indemind/.jenkins/workspace/rubby_ui_pc/_last_build_id
++ COMMIT_ID_FILE=/home/indemind/.jenkins/workspace/rubby_ui_pc/_last_build_id
++ export COMMIT_MSG_FILE=/home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg
++ COMMIT_MSG_FILE=/home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg.tmp
++ rm -f /home/indemind/.jenkins/workspace/rubby_ui_pc/_last_build_id
++ rm -f /home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg
++ rm -f /home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg.tmp
++ rm -f /home/indemind/.jenkins/workspace/rubby_ui_pc/result.log
++ rm -f /home/indemind/.jenkins/workspace/rubby_ui_pc/no_code_change.log
++ CLONE_DEPTH=--depth=1
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name) values ('\''rubby_ui_pc'\'','\''abby/source/rubby_ui'\'','\''master'\'','\''AroundI18RProject/i18rconfig'\'','\''rubby-dev'\'',now(),'\''http://192.168.50.26:8080/job/rubby_ui_pc/6/'\'','\''158'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ DOCKER_CONTAINER_JAVA=node
++ JENKINS_JOB_A=mind
++ JENKINS_JOB_B=rbn
++ JENKINS_JOB_C=mark-check-tools
++ JENKINS_JOB_D=java
++ JENKINS_JOB_E=nodejs
++ [[ rubby_ui_pc =~ mind ]]
++ '[' true = false ']'
++ source_project_fetch
++ git clone ssh://git@192.168.50.191:222/abby/source/rubby_ui -b master --depth=1
+正克隆到 'rubby_ui'...
++ target_project_update
++ rm -rf /home/indemind/.jenkins/workspace/rubby_ui_pc/i18rconfig
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig -b rubby-dev --depth=1
+正克隆到 'i18rconfig'...
++ insert_db
++ pushd /home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui
+~/.jenkins/workspace/rubby_ui_pc/rubby_ui ~/.jenkins/workspace/rubby_ui_pc
+++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''abby/source/rubby_ui'\'' and source_branch='\''master'\'' and target_project='\''AroundI18RProject/i18rconfig'\'' and target_branch='\''rubby-dev'\'' and status='\''0'\'' and job_name='\''rubby_ui_pc'\'' order by id desc limit 1;'
+++ set +x
++ version=
+++ echo
+++ awk -F ' ' '{print $2}'
++ version=
+++ git log -1 --pretty=format:%h
++ first_commit_id_now=9ef91dc
++ cmdb_mysql 'update prebuild set first_commit_id='\''9ef91dc'\'' where build_url='\''http://192.168.50.26:8080/job/rubby_ui_pc/6/'\'';'
++ set +x
++ popd
+~/.jenkins/workspace/rubby_ui_pc
++ [[ x86_64 =~ x86_64 ]]
++ docker exec -i build-x64-18.04 /bin/bash
++ [[ build-x64-18.04 == c405 ]]
++ [[ build-x64-18.04 == c3566 ]]
++ [[ rubby_ui_pc =~ mind ]]
++ [[ build-x64-18.04 == node ]]
++ pushd /root/system/I18RPublicBaseTypes
++ git checkout ./
+~/system/I18RPublicBaseTypes /
++ git clean -xdf ./
++ git pull origin develop
+From ssh://192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes
+ * branch            develop    -> FETCH_HEAD
+Already up to date.
++ ./install.sh
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CMAKE_INSTALL_PREFIX: /usr/local.
+-- I18R_INCLUDE_INSTALL_DIR: /usr/local/include/I18RPublicBaseTypes.
+-- CMAKE_CURRENT_SOURCE_DIR: /root/system/I18RPublicBaseTypes.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/system/I18RPublicBaseTypes/build
+Install the project...
+-- Install configuration: "Release"
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/cloud_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/old_hmi_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/swr_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Data.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ErrorInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ErrorMessage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/FormatData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/InternalErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Module.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/ThreadInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/Time.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/base/WorkStatus.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Cameara2Camera.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Lidar.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Odometry.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Tof.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Imu2Odometry.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/calibr/Transform.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/cloud/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/autoClean_property.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/clean_path.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/current_type.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/drop_event.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/pose.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/robot_event.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/robot_status.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/work_mode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/control/work_runs.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/CalibrationImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/DepthMatrix.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/DepthPointCloud.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/LightAdjustment.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/depth/SourceImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/class.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/detect_types.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/detector_param.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/error_code.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/instance.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/detector/map.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/EulerAngle.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/Point.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/geometry/Quaternion.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/gen.sh
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response.fbs
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response_generated.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/public.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/report.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/request.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/hmi/response.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImu.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgHotplug.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImu.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgParam.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameterOld.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/IMUParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/ModuleInfo.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/MoudleAllParam.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/Resolution.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/SDebugSet.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/SlamParameter.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/imsee/StreamType.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker/MarkerState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/marker/state.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/AFI.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Basic.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Config.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Log.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Route.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/msg/Work.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/BumperEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CleanEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CliffData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CliffEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/CtrlType.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/DropEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/EncoderData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/LaserScan.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/PointCloud2.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/RobotChassisEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/SonyCamera.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/StartStopSwitchEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthImg.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofGrayImg.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/TofPointCloud.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/UltraData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/UsbHotplug.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityCmd.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityData.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/DataRateState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/SystemState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/server/UserOperation.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/Pose.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/README.md
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/SlamResult.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/slam/SlamState.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorEvent.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorMessage.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/ErrorTable.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/IceErrorCode.h
+-- Up-to-date: /usr/local/include/I18RPublicBaseTypes/error/error_maps.yaml
++ popd
++ pushd /root/system/i18rutilitysubmodule
++ git checkout ./
+/
+~/system/i18rutilitysubmodule /
++ git clean -xdf ./
++ git pull origin develop
+From ssh://192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule
+ * branch            develop    -> FETCH_HEAD
+Already up to date.
++ ./install.sh
++ popd
++ pushd /home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui
+/
+/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui /
++ git submodule update --init --recursive
+Submodule 'app_protocol' (http://192.168.50.191:85/abby/source/app_protocol.git) registered for path 'app_protocol'
+Cloning into '/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/app_protocol'...
+Submodule path 'app_protocol': checked out '36afe873d27434244d21235b27feeffe099ece63'
++ git submodule update --remote
++ '[' x9ef91dc == x ']'
++ source /opt/ros/melodic/setup.bash
++ bash -ex compile.sh
++ set -x
++ project_update
++ git checkout ./
++ git clean -xdf ./
++ git pull
+Already up to date.
++ git submodule update --init --recursive
++ git submodule update --remote
++ project_build
++ project_name=RubbyProject
++ mkdir -p install
++ cd RubbyProject
++ mkdir -p build
++ cd build
++ qmake ..
+Info: creating stash file /home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/build/.qmake.stash
++ make -j4
+/usr/lib/qt5/bin/uic ../mainwindow.ui -o ui_mainwindow.h
+/usr/lib/qt5/bin/uic ../popupwindow.ui -o ui_popupwindow.h
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o qtsingleapplication.o ../qtsingleapplication/src/qtsingleapplication.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o qtlocalpeer.o ../qtsingleapplication/src/qtlocalpeer.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o main.o ../main.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o cleanpainter.o ../cleanpainter.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o datatransceivers.o ../WebSockets/datatransceivers.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o dataprocessingcenter.o ../WebSockets/dataprocessingcenter.cpp
+../main.cpp: In function 'void messageHandler(QtMsgType, const QMessageLogContext&, const QString&)':
+../main.cpp:14:12: warning: enumeration value 'QtInfoMsg' not handled in switch [-Wswitch]
+     switch (type) {
+            ^
+../main.cpp:11:63: warning: unused parameter 'text' [-Wunused-parameter]
+ void messageHandler(QtMsgType type, const QMessageLogContext &text,const QString &info)
+                                                               ^~~~
+In file included from ../WebSockets/datatransceivers.h:8:0,
+                 from ../WebSockets/datatransceivers.cpp:1:
+../WebSockets/../WebSockets/message_helper.hpp:96:32: warning: 'const abby::ClientData* abby::unpackage_client(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ClientData* unpackage_client(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+../WebSockets/../WebSockets/message_helper.hpp:73:32: warning: 'const abby::ServerData* abby::unpackage_server(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ServerData* unpackage_server(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+../WebSockets/../WebSockets/message_helper.hpp:45:36: warning: 'std::shared_ptr<abby::ws_message> abby::package(const flatbuffers::FlatBufferBuilder&)' defined but not used [-Wunused-function]
+ static std::shared_ptr<ws_message> package(const flatbuffers::FlatBufferBuilder& builder)
+                                    ^~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o popupwindow.o ../popupwindow.cpp
+/usr/lib/qt5/bin/rcc -name source ../source.qrc -o qrc_source.cpp
+g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o mainwindow.o ../mainwindow.cpp
+../WebSockets/dataprocessingcenter.cpp: In member function 'void DataProcessingCenter::setServerRequest(const abby::ClientType&, bool)':
+../WebSockets/dataprocessingcenter.cpp:3:74: warning: unused parameter 'isok' [-Wunused-parameter]
+ void DataProcessingCenter::setServerRequest(const ClientType &type, bool isok)
+                                                                          ^~~~
+../WebSockets/dataprocessingcenter.cpp: In member function 'void DataProcessingCenter::onGetServerData(const QByteArray&)':
+../WebSockets/dataprocessingcenter.cpp:347:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0;i < grid->size();++i){
+                       ~~^~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:450:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0;i < soureObject->size();++i){
+                           ~~^~~~~~~~~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:500:37: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                     for(int p = 0;p < box->size();++p){
+                                   ~~^~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:496:31: warning: variable 'meta' set but not used [-Wunused-but-set-variable]
+                     QMetaEnum meta = QMetaEnum::fromType<CleanPainter::ServerObjectType>();
+                               ^~~~
+../WebSockets/dataprocessingcenter.cpp:554:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0;i < mapList->size();++i){
+                           ~~^~~~~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:578:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0;i < grid->size();++i){
+                       ~~^~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:602:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0;i < soureObject->size();++i){
+                       ~~^~~~~~~~~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:655:37: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                     for(int p = 0;p < box->size();++p){
+                                   ~~^~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:711:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for(int i = 0;i < data->size();++i){
+                       ~~^~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:731:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int m = 0;m < rectData->size();++m){
+                           ~~^~~~~~~~~~~~~~~~~~
+In file included from .././WebSockets/dataprocessingcenter.h:15:0,
+                 from ../mainwindow.h:18,
+                 from ../main.cpp:1:
+.././WebSockets/../WebSockets/message_helper.hpp: At global scope:
+.././WebSockets/../WebSockets/message_helper.hpp:96:32: warning: 'const abby::ClientData* abby::unpackage_client(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ClientData* unpackage_client(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+.././WebSockets/../WebSockets/message_helper.hpp:73:32: warning: 'const abby::ServerData* abby::unpackage_server(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ServerData* unpackage_server(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+.././WebSockets/../WebSockets/message_helper.hpp:45:36: warning: 'std::shared_ptr<abby::ws_message> abby::package(const flatbuffers::FlatBufferBuilder&)' defined but not used [-Wunused-function]
+ static std::shared_ptr<ws_message> package(const flatbuffers::FlatBufferBuilder& builder)
+                                    ^~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o qrc_source.o qrc_source.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/qtsingleapplication/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtWebSockets -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../qtsingleapplication/src/qtsingleapplication.h -o moc_qtsingleapplication.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/qtsingleapplication/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtWebSockets -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../qtsingleapplication/src/qtlocalpeer.h -o moc_qtlocalpeer.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/qtsingleapplication/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtWebSockets -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../mainwindow.h -o moc_mainwindow.cpp
+In file included from ../../RubbyProject/cleanpainter.h:14:0,
+                 from ../WebSockets/dataprocessingcenter.h:17,
+                 from ../WebSockets/dataprocessingcenter.cpp:1:
+../../RubbyProject/parameters.h: At global scope:
+../../RubbyProject/parameters.h:48:21: warning: 'logCommands' defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+In file included from ../WebSockets/dataprocessingcenter.h:15:0,
+                 from ../WebSockets/dataprocessingcenter.cpp:1:
+../WebSockets/../WebSockets/message_helper.hpp:96:32: warning: 'const abby::ClientData* abby::unpackage_client(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ClientData* unpackage_client(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/qtsingleapplication/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtWebSockets -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../cleanpainter.h -o moc_cleanpainter.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/qtsingleapplication/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtWebSockets -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../WebSockets/datatransceivers.h -o moc_datatransceivers.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/qtsingleapplication/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtWebSockets -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../WebSockets/dataprocessingcenter.h -o moc_dataprocessingcenter.cpp
+/usr/lib/qt5/bin/moc -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject -I/home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/RubbyProject/qtsingleapplication/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtWebSockets -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../popupwindow.h -o moc_popupwindow.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_qtsingleapplication.o moc_qtsingleapplication.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_qtlocalpeer.o moc_qtlocalpeer.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_mainwindow.o moc_mainwindow.cpp
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_cleanpainter.o moc_cleanpainter.cpp
+In file included from ../../RubbyProject/../app_protocol/generated/s2c_generated.h:9:0,
+                 from ../WebSockets/dataprocessingcenter.h:13,
+                 from ../WebSockets/dataprocessingcenter.cpp:1:
+../../RubbyProject/../app_protocol/generated/public_generated.h: In member function 'void DataProcessingCenter::setServerRequest(const abby::ClientType&, bool)':
+../../RubbyProject/../app_protocol/generated/public_generated.h:456:28: warning: 'areaType' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(Outline::VT_TYPE, static_cast<int8_t>(type), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:172:25: note: 'areaType' was declared here
+             OutlineType areaType;
+                         ^~~~~~~~
+In file included from ../WebSockets/dataprocessingcenter.h:14:0,
+                 from ../WebSockets/dataprocessingcenter.cpp:1:
+../../RubbyProject/../app_protocol/generated/c2s_generated.h:764:28: warning: 'cleanType' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(ClientReqStartRegion::VT_TYPE, static_cast<int8_t>(type), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:112:25: note: 'cleanType' was declared here
+         abby::CleanType cleanType;
+                         ^~~~~~~~~
+In file included from ../WebSockets/dataprocessingcenter.h:14:0,
+                 from ../WebSockets/dataprocessingcenter.cpp:1:
+../../RubbyProject/../app_protocol/generated/c2s_generated.h:407:28: warning: 'key' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     fbb_.AddElement<int8_t>(ClientRptRemoteControl::VT_KEY, static_cast<int8_t>(key), 0);
+     ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../WebSockets/dataprocessingcenter.cpp:33:23: note: 'key' was declared here
+         abby::KeyType key;
+                       ^~~
+../mainwindow.cpp: In lambda function:
+../mainwindow.cpp:585:46: warning: variable 'event' set but not used [-Wunused-but-set-variable]
+             DataProcessingCenter::CleanEvent event;
+                                              ^~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_datatransceivers.o moc_datatransceivers.cpp
+In file included from ../cleanpainter.h:14:0,
+                 from moc_cleanpainter.cpp:9:
+../parameters.h:48:21: warning: 'logCommands' defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_dataprocessingcenter.o moc_dataprocessingcenter.cpp
+In file included from .././WebSockets/dataprocessingcenter.h:15:0,
+                 from ../mainwindow.h:18,
+                 from ../mainwindow.cpp:1:
+.././WebSockets/../WebSockets/message_helper.hpp: At global scope:
+.././WebSockets/../WebSockets/message_helper.hpp:96:32: warning: 'const abby::ClientData* abby::unpackage_client(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ClientData* unpackage_client(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+.././WebSockets/../WebSockets/message_helper.hpp:73:32: warning: 'const abby::ServerData* abby::unpackage_server(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ServerData* unpackage_server(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+.././WebSockets/../WebSockets/message_helper.hpp:45:36: warning: 'std::shared_ptr<abby::ws_message> abby::package(const flatbuffers::FlatBufferBuilder&)' defined but not used [-Wunused-function]
+ static std::shared_ptr<ws_message> package(const flatbuffers::FlatBufferBuilder& builder)
+                                    ^~~~~~~
+In file included from ../WebSockets/datatransceivers.h:8:0,
+                 from moc_datatransceivers.cpp:9:
+../WebSockets/../WebSockets/message_helper.hpp:96:32: warning: 'const abby::ClientData* abby::unpackage_client(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ClientData* unpackage_client(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+../WebSockets/../WebSockets/message_helper.hpp:73:32: warning: 'const abby::ServerData* abby::unpackage_server(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ServerData* unpackage_server(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+../WebSockets/../WebSockets/message_helper.hpp:45:36: warning: 'std::shared_ptr<abby::ws_message> abby::package(const flatbuffers::FlatBufferBuilder&)' defined but not used [-Wunused-function]
+ static std::shared_ptr<ws_message> package(const flatbuffers::FlatBufferBuilder& builder)
+                                    ^~~~~~~
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I../../RubbyProject -I. -I../qtsingleapplication/src -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtWebSockets -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o moc_popupwindow.o moc_popupwindow.cpp
+In file included from ../../RubbyProject/cleanpainter.h:14:0,
+                 from .././WebSockets/dataprocessingcenter.h:17,
+                 from ../mainwindow.h:18,
+                 from moc_mainwindow.cpp:9:
+../../RubbyProject/parameters.h:48:21: warning: 'logCommands' defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+In file included from .././WebSockets/dataprocessingcenter.h:15:0,
+                 from ../mainwindow.h:18,
+                 from moc_mainwindow.cpp:9:
+.././WebSockets/../WebSockets/message_helper.hpp:96:32: warning: 'const abby::ClientData* abby::unpackage_client(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ClientData* unpackage_client(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+.././WebSockets/../WebSockets/message_helper.hpp:73:32: warning: 'const abby::ServerData* abby::unpackage_server(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ServerData* unpackage_server(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+.././WebSockets/../WebSockets/message_helper.hpp:45:36: warning: 'std::shared_ptr<abby::ws_message> abby::package(const flatbuffers::FlatBufferBuilder&)' defined but not used [-Wunused-function]
+ static std::shared_ptr<ws_message> package(const flatbuffers::FlatBufferBuilder& builder)
+                                    ^~~~~~~
+../mainwindow.cpp: In lambda function:
+../mainwindow.cpp:642:71: warning: 'event' may be used uninitialized in this function [-Wmaybe-uninitialized]
+             qDebug()<<"--请求清扫事件："<<meta.valueToKey(event);
+                                                                       ^
+In file included from ../../RubbyProject/cleanpainter.h:14:0,
+                 from ../WebSockets/dataprocessingcenter.h:17,
+                 from moc_dataprocessingcenter.cpp:9:
+../../RubbyProject/parameters.h:48:21: warning: 'logCommands' defined but not used [-Wunused-variable]
+ static const char * logCommands[] = {
+                     ^~~~~~~~~~~
+In file included from ../WebSockets/dataprocessingcenter.h:15:0,
+                 from moc_dataprocessingcenter.cpp:9:
+../WebSockets/../WebSockets/message_helper.hpp:96:32: warning: 'const abby::ClientData* abby::unpackage_client(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ClientData* unpackage_client(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+../WebSockets/../WebSockets/message_helper.hpp:73:32: warning: 'const abby::ServerData* abby::unpackage_server(const uint8_t*, uint32_t)' defined but not used [-Wunused-function]
+ static const abby::ServerData* unpackage_server(const uint8_t* buf,std::uint32_t size)
+                                ^~~~~~~~~~~~~~~~
+../WebSockets/../WebSockets/message_helper.hpp:45:36: warning: 'std::shared_ptr<abby::ws_message> abby::package(const flatbuffers::FlatBufferBuilder&)' defined but not used [-Wunused-function]
+ static std::shared_ptr<ws_message> package(const flatbuffers::FlatBufferBuilder& builder)
+                                    ^~~~~~~
+g++ -no-pie -Wl,-O1 -o RubbyProject qtsingleapplication.o qtlocalpeer.o main.o mainwindow.o cleanpainter.o datatransceivers.o dataprocessingcenter.o popupwindow.o qrc_source.o moc_qtsingleapplication.o moc_qtlocalpeer.o moc_mainwindow.o moc_cleanpainter.o moc_datatransceivers.o moc_dataprocessingcenter.o moc_popupwindow.o   -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lQt5Widgets -lQt5Gui -lQt5Xml -lQt5WebSockets -lQt5Network -lQt5Core -lGL -lpthread 
++ cp -av RubbyProject/build/RubbyProject install/
+'RubbyProject/build/RubbyProject' -> 'install/RubbyProject'
++ popd
++ exit
+/
++ [[ -f /home/indemind/.jenkins/workspace/rubby_ui_pc/no_code_change.log ]]
++ check_status_code
++ test -f /home/indemind/.jenkins/workspace/rubby_ui_pc/result.log
++ [[ '' = false ]]
++ generate_message
++ [[ rubby_ui_pc =~ mind ]]
++ cd /home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg.tmp ]]
++ cat /home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.26:8080/job/rubby_ui_pc/6/'
++ echo 'Push x86_64 platform files'
++ generate_commits
++ pushd /home/indemind/.jenkins/workspace/rubby_ui_pc/i18rconfig
+~/.jenkins/workspace/rubby_ui_pc/i18rconfig ~/.jenkins/workspace/rubby_ui_pc
+++ find /home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui -name install
+++ xargs -l ls
++ install_dir_list=RubbyProject
++ [[ true = true ]]
++ for i in '$install_dir_list'
++ '[' -z client ']'
++ git rm -r client/RubbyProject
+fatal: 路径规格 'client/RubbyProject' 未匹配任何文件
++ true
++ [[ true = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ [[ true =~ mind ]]
++ [[ true =~ java ]]
++ [[ true =~ nodejs ]]
++ '[' -z client ']'
++ mkdir -p client
++ cp -ar /home/indemind/.jenkins/workspace/rubby_ui_pc/rubby_ui/install/. client/
++ git add --all .
+++ git status -s
++ add_file_list='A  client/RubbyProject'
++ '[' -z 'A  client/RubbyProject' ']'
++ git commit -s -F /home/indemind/.jenkins/workspace/rubby_ui_pc/_commit-msg
+[rubby-dev 46f7b61] 9ef91dc fixed cp for build
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100755 client/RubbyProject
+++ git config --local --get branch.rubby-dev.remote
++ local remote=origin
+++ git config --local --get branch.rubby-dev.merge
++ local branch=refs/heads/rubby-dev
++ git push --no-verify origin HEAD:refs/heads/rubby-dev
+remote: 
+remote: To create a merge request for rubby-dev, visit:        
+remote:   http://192.168.50.191:85/AroundI18RProject/i18rconfig/-/merge_requests/new?merge_request%5Bsource_branch%5D=rubby-dev        
+remote: 
+To ssh://192.168.50.191:222/AroundI18RProject/i18rconfig
+   02e49d8..46f7b61  HEAD -> rubby-dev
++ [[ rubby_ui_pc =~ mind ]]
++ popd
+~/.jenkins/workspace/rubby_ui_pc
++ [[ -z 9ef91dc ]]
++ cmdb_mysql 'update prebuild set status='\''0'\'' where build_url='\''http://192.168.50.26:8080/job/rubby_ui_pc/6/'\'';'
++ set +x
++ :
+Extended Email Publisher is currently disabled in project settings
+Finished: SUCCESS
