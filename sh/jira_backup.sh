@@ -4,16 +4,18 @@ source /etc/profile
 
 jira_backup_dir=/data/backup/jira/
 jira_backup_mysql_path="/data/backup/mysql"
-jira_backup_mysql_name="jira-$(date +%Y-%m-%d-%H:%M).sql"
+jira_backup_mysql_name="jira-$(date +%Y-%m-%d-%H-%M).sql"
 jira_sys_backup () {
     docker cp  jira7:/var/atlassian/jira/export $jira_backup_dir
+    docker cp  jira7:/var/atlassian/jira/data/attachments $jira_backup_dir
+    docker cp  jira7:/var/atlassian/jira/data/avatars $jira_backup_dir
 }
 
 jira_sys_upload () {
     jira_sys_backup &&
 	(
 	    cd $jira_backup_dir	    
-	    scp -r -P222 export  root@192.168.50.158:/backup/jira && echo "backup sys data success" | mails_cm -i "jira sys data backup"
+	    rsync -avz -e 'ssh -p 222' *  root@192.168.50.158:/backup/jira/
 	) 
 }
 

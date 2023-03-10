@@ -5,18 +5,13 @@ source /etc/profile
 wiki_backup_dir="/data/docker/wiki/etc/backups"
 wiki_backup_mysql="wiki"
 wiki_backup_mysql_path="/data/backup/mysql"
-wiki_backup_mysql_name="wiki-$(date +%Y-%m-%d-%H:%M).sql"
-confluence_sys_backup () {
-#    docker cp  confluence:/var/atlassian/confluence/backups $wiki_backup_dir
-}
+wiki_backup_mysql_name="wiki-$(date +%Y-%m-%d-%H-%M).sql"
 
 confluence_sys_upload () {
-#    confluence_sys_backup &&
 	(
 	    cd $wiki_backup_dir
 	    scp -r -P222 `ls -t | head -1` root@192.168.50.158:/backup/confluence/backups/
 	    echo "backup sys data success" | mails_cm -i "confluence sys data backup"
-	    
 	)
 }
 
