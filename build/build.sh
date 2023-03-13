@@ -20,6 +20,7 @@ init_project_env(){
     TARGET_DIR=$WORKSPACE/${TARGET_PROJECT##*/}
     prepare_env
     CLONE_DEPTH="--depth=1"
+    PUBLICBASETYPES_DIR=~/system/I18RPublicBaseTypes
     cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME','$BUILD_USER_ID')";
     DOCKER_CONTAINER_I18="build-x64-18.04"
     DOCKER_CONTAINER_RUBBY="c405"
@@ -31,6 +32,7 @@ init_project_env(){
     JENKINS_JOB_D="java"
     JENKINS_JOB_E="nodejs"
     JENKINS_JOB_F="_ui"
+    JENKINS_JOB_G="i12r"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
 #	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
@@ -250,9 +252,13 @@ function project_build(){
 }
 
 function public_project_update(){
-    pushd ~/system/I18RPublicBaseTypes
-    git checkout ./ && git clean -xdf ./
-    git pull origin develop
+    rm -rf  $PUBLICBASETYPES_DIR
+    if [[ $JOB_NAME =~ "$JENKINS_JOB_G" ]];then
+	git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git $PUBLICBASETYPES_DIR -b compile_12 $CLONE_DEPTH
+    else
+	git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git $PUBLICBASETYPES_DIR -b develop $CLONE_DEPTH
+    fi
+    pushd $PUBLICBASETYPES_DIR
     ./install.sh
     popd
 }
