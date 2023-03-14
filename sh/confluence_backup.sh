@@ -10,6 +10,7 @@ wiki_backup_mysql_name="wiki-$(date +%Y-%m-%d-%H-%M).sql"
 confluence_sys_upload () {
 	(
 	    cd $wiki_backup_dir
+	    sudo chmod 755 * || true
 	    rsync -avz -e 'ssh -p 222' *  root@192.168.50.158:/backup/confluence/backups/
 #	    scp -r -P222 `ls -t | head -1` root@192.168.50.158:/backup/confluence/backups/
 #	    echo "backup sys data success" | mails_cm -i "confluence sys data backup"
@@ -21,6 +22,7 @@ confluence_data_backup () {
 }
 
 confluence_data_upload () {
+    confluence_data_backup &&
 	(
 	    cd $wiki_backup_mysql_path
 	    scp -r -P222 $wiki_backup_mysql_name  root@192.168.50.158:/backup/mysql/ && echo "backup msyql data success" | mails_cm -i "confluence msyql data backup"
