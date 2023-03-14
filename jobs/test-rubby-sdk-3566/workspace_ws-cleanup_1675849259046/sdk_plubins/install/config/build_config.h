@@ -1,6 +1,0 @@
-#define CONFIG_USE_ZK_ROBOT 0
-#define CONFIG_USE_HMI_SIMULATOR 0
-#define SERVER_VERSION ""
-
-
-

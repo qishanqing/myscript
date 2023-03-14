@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 3580:
+/***/ 1536:
 /***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(875);
@@ -23,9 +23,9 @@ const pageUp = buildHistoryPageNav.querySelectorAll(".pageUp")[0];
 const pageDown = buildHistoryPageNav.querySelectorAll(".pageDown")[0];
 const leftRightPadding = 4;
 const updateBuildsRefreshInterval = 5000;
-function updateBuilds() {
+function updateBuilds(params) {
   if (isPageVisible()) {
-    new Ajax.Request(ajaxUrl, {
+    new Ajax.Request(ajaxUrl + toQueryString(params), {
       requestHeaders: buildHistoryContainer.headers,
       onSuccess: function (rsp) {
         var dataTable = getDataTable(buildHistoryContainer);
@@ -71,17 +71,17 @@ function updateBuilds() {
         // next update
         buildHistoryContainer.headers = ["n", rsp.getResponseHeader("n")];
         checkAllRowCellOverflows();
-        createRefreshTimeout();
+        createRefreshTimeout(params);
       }
     });
   } else {
-    createRefreshTimeout();
+    createRefreshTimeout(params);
   }
 }
 var buildRefreshTimeout;
-function createRefreshTimeout() {
+function createRefreshTimeout(params) {
   cancelRefreshTimeout();
-  buildRefreshTimeout = window.setTimeout(updateBuilds, updateBuildsRefreshInterval);
+  buildRefreshTimeout = window.setTimeout(() => updateBuilds(params), updateBuildsRefreshInterval);
 }
 function cancelRefreshTimeout() {
   if (buildRefreshTimeout) {
@@ -410,7 +410,7 @@ function loadPage(params, focusOnSearch) {
       updatePageParams(newDataTable);
       togglePageUpDown();
       if (!hasPageUp()) {
-        createRefreshTimeout();
+        createRefreshTimeout(params);
       }
       if (focusOnSearch) {
         pageSearchInput.focus();
@@ -655,7 +655,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], function() { return __webpack_require__(3580); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [216], function() { return __webpack_require__(1536); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

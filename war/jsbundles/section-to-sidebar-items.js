@@ -44,7 +44,11 @@ window.addEventListener("load", function () {
     `);
     item.addEventListener("click", () => {
       const headerToScrollTo = document.getElementById(item.querySelector(".task-link").dataset.sectionId);
-      document.documentElement.scrollTop = i === 0 ? 0 : headerToScrollTo.getBoundingClientRect().top + window.scrollY - 70;
+      const sectionTopPosition = headerToScrollTo.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({
+        top: i === 0 ? 0 : sectionTopPosition,
+        behavior: "smooth"
+      });
     });
     sidebarItems.insertAdjacentElement("beforeend", item);
   });

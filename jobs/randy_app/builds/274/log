@@ -1,0 +1,196 @@
+Started by timer
+Running as SYSTEM
+Building remotely on [8mha:////4PcSAK482muqdTNhz2AorwRbd/y/nqlKAQ84kEqhAJQjAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCIjANHfAbrKAAAA[0mkhadas-car2 (car2) in workspace /root/workspace/workspace/randy_app
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+No emails were triggered.
+[randy_app] $ /bin/sh -xe /tmp/jenkins4402261966139707128.sh
++ bash /root/myscript/build/randyapp.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ . /root/myscript/build/../sh/version-update.sh
++ set -ex
++ init_project_env
+++ whoami
++ '[' root = root ']'
++ ios=root
++ RELEASE_DIR=/root
++ DESKTOP_DIR=/root/workspace/i18rApplicationDeb/work/root/workspace
++ appname=RANDY
++ sourcename=randy_server
++ BUILD_DIR=/root/workspace
++ APP_WORKSPACE=/root/workspace/i18rApplicationDeb/work
++ WORK_DIR=/root/workspace/i18rApplicationDeb/work/root/workspace
++ VERSION_FILE=/root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ UI_DIR=/mnt/ftp/release/RANDY/client
++ TEST_DIR=/mnt/ftp/release/RANDY/test
++ FTP_RELEASE_DIR=/mnt/ftp/release/RANDY/fresh_version
++ FTP_RELEASE_SIGN_DIR=/mnt/ftp/release/RANDY/fresh_version/sign
++ FTP_RELEASE_OTA_DIR=/mnt/ftp/release/RANDY/fresh_version/ota_full_version
++ FTP_RELEASE_OTA_DIFF_DIR=/mnt/ftp/release/RANDY/fresh_version/ota
++ function_list=/mnt/ftp/release/app_update_release
++ CONFIG_DIR=/root/system/randy_config
++ OTA_DIR=/root/system/i18rota
+++ uname -m
++ PLATFORM=aarch64
++ ui_job_name=randy_ui
++ CLONE_DEPTH=--depth=1
++ ENCRYPTION_TOOL=/root/system/i18rconfig/upx_arm.out
+++ echo EVT
+++ perl -npe s,_,-,g
++ x=EVT
++ tgz_release=INTG
++ CONFIG_REMOTE='git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git /root/system/randy_config --depth=1'
++ is-trigger-job
++ '[' xtimer = xtimer ']'
++ export 'PATH=/usr/bin/bin:/usr/bin/bin:/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/myscript/sh'
++ PATH='/usr/bin/bin:/usr/bin/bin:/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/myscript/sh'
++ jc-update-job
++ template=/root/tmp/logs/randy_app.xml
++ output-manifest.xml-from-template
++ increment_version 1.1.17
++ part=(${1//\./ })
++ declare -a part
++ declare new
++ declare -i carry=1
++ (( CNTR=3-1 ))
++ (( CNTR>=0 ))
++ len=2
++ new=18
++ '[' 2 -gt 2 ']'
++ carry=0
++ part[CNTR]=18
++ (( CNTR-=1  ))
++ (( CNTR>=0 ))
++ len=1
++ new=1
++ '[' 1 -gt 2 ']'
++ carry=0
++ part[CNTR]=1
++ (( CNTR-=1  ))
++ (( CNTR>=0 ))
++ len=1
++ new=1
++ '[' 1 -gt 2 ']'
++ carry=0
++ part[CNTR]=1
++ (( CNTR-=1  ))
++ (( CNTR>=0 ))
++ new='1 1 18'
+++ perl -npe s,00,,g
+++ echo -e 1.1.18.0
++ trigger_version=1.1.18.0
++ get-job-info
++ jc get-job randy_app
++ sed -i s#1.1.17.0#1.1.18.0#g /root/tmp/logs/randy_app.xml
+++ seq 1 10
++ for n in $(seq 1 10)
++ jc update-job randy_app
++ cat /root/tmp/logs/randy_app.xml
++ break
++ version=1.1.18.0
++ mount_ftp
++ '[' -d /mnt/ftp/release ']'
++ check_paremter_is_right
++ [[ -z 1.1.18.0 ]]
+++ check 1.1.18.0
+++ local a=1.1.18.0
+++ printf %d 1.1.18.0
++++ sed 's/^[+-]\?0\+//'
++++ echo 1.1.18.0
+++ printf %d 1.1.18.0
++++ sed 's/\.//g'
++++ echo 1.1.18.0
+++ printf %d 11180
+++ echo vb
+++ return
++ [[ vb == vb ]]
++ echo 'check paremter is done'
+check paremter is done
++ clean_workspace
++ pushd /root/workspace
+~/workspace ~/workspace/workspace/randy_app
++ sudo rm -rf i18rApplicationDeb 'INDEMINDAPP*' randy_server client
++ popd
+~/workspace/workspace/randy_app
++ App_project_fetch
++ pushd /root/workspace
+~/workspace ~/workspace/workspace/randy_app
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rApplicationDeb.git --depth=1
+正克隆到 'i18rApplicationDeb'...
++ mkdir -p /root/workspace/i18rApplicationDeb/work/root/workspace
++ pushd /root/workspace
+~/workspace ~/workspace ~/workspace/workspace/randy_app
++ git clone ssh://git@192.168.50.191:222/airbus/source/randy_server.git -b master
+正克隆到 'randy_server'...
++ pushd randy_server
+~/workspace/randy_server ~/workspace ~/workspace ~/workspace/workspace/randy_app
++ config_project_update
++ [[ -d /root/system/randy_config ]]
++ git clone ssh://git@192.168.50.191:222/airbus/source/randy_config.git /root/system/randy_config --depth=1
+正克隆到 '/root/system/randy_config'...
+正在检出文件:  53% (196/365)   正在检出文件:  54% (198/365)   正在检出文件:  55% (201/365)   正在检出文件:  56% (205/365)   正在检出文件:  57% (209/365)   正在检出文件:  58% (212/365)   正在检出文件:  59% (216/365)   正在检出文件:  60% (219/365)   正在检出文件:  61% (223/365)   正在检出文件:  62% (227/365)   正在检出文件:  63% (230/365)   正在检出文件:  64% (234/365)   正在检出文件:  65% (238/365)   正在检出文件:  66% (241/365)   正在检出文件:  67% (245/365)   正在检出文件:  68% (249/365)   正在检出文件:  69% (252/365)   正在检出文件:  70% (256/365)   正在检出文件:  71% (260/365)   正在检出文件:  72% (263/365)   正在检出文件:  73% (267/365)   正在检出文件:  74% (271/365)   正在检出文件:  75% (274/365)   正在检出文件:  76% (278/365)   正在检出文件:  77% (282/365)   正在检出文件:  78% (285/365)   正在检出文件:  79% (289/365)   正在检出文件:  80% (292/365)   正在检出文件:  81% (296/365)   正在检出文件:  82% (300/365)   正在检出文件:  83% (303/365)   正在检出文件:  84% (307/365)   正在检出文件:  85% (311/365)   正在检出文件:  86% (314/365)   正在检出文件:  87% (318/365)   正在检出文件:  88% (322/365)   正在检出文件:  89% (325/365)   正在检出文件:  90% (329/365)   正在检出文件:  91% (333/365)   正在检出文件:  92% (336/365)   正在检出文件:  93% (340/365)   正在检出文件:  94% (344/365)   正在检出文件:  95% (347/365)   正在检出文件:  96% (351/365)   正在检出文件:  97% (355/365)   正在检出文件:  98% (358/365)   正在检出文件:  99% (362/365)   正在检出文件: 100% (365/365)   正在检出文件: 100% (365/365), 完成.
++ ui_job_build
++ export 'PATH=/usr/bin/bin:/usr/bin/bin:/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/myscript/sh:~/myscript/sh'
++ PATH='/usr/bin/bin:/usr/bin/bin:/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/myscript/sh:~/myscript/sh'
++ [[ -z '' ]]
++ [[ true == true ]]
++ [[ '' == true ]]
++ git submodule update --init --recursive
++ bash jc build randy_ui -p RELEASE=r1.1.18.0.EVT -s
+子模组 'modules/depth'（http://192.168.50.191:85/airbus/integration/depth.git）未对路径 'modules/depth' 注册
+子模组 'modules/detector'（http://192.168.50.191:85/airbus/integration/perception.git）未对路径 'modules/detector' 注册
+子模组 'modules/marker'（http://192.168.50.191:85/airbus/integration/marker.git）未对路径 'modules/marker' 注册
+子模组 'modules/navigation'（http://192.168.50.191:85/airbus/integration/navigation.git）未对路径 'modules/navigation' 注册
+子模组 'modules/selfcalibr'（http://192.168.50.191:85/airbus/integration/calibration.git）未对路径 'modules/selfcalibr' 注册
+子模组 'modules/sensor'（http://192.168.50.191:85/airbus/integration/sensors.git）未对路径 'modules/sensor' 注册
+子模组 'modules/slam'（http://192.168.50.191:85/airbus/integration/slam.git）未对路径 'modules/slam' 注册
+子模组 'modules/types'（http://192.168.50.191:85/airbus/source/randy_message.git）未对路径 'modules/types' 注册
+正克隆到 '/root/workspace/randy_server/modules/depth'...
+Started randy_ui #266
+正克隆到 '/root/workspace/randy_server/modules/detector'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/integration/perception.git' 到子模组路径 '/root/workspace/randy_server/modules/detector'
+克隆 'modules/detector' 失败。按计划重试
+正克隆到 '/root/workspace/randy_server/modules/marker'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/integration/marker.git' 到子模组路径 '/root/workspace/randy_server/modules/marker'
+克隆 'modules/marker' 失败。按计划重试
+正克隆到 '/root/workspace/randy_server/modules/navigation'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/integration/navigation.git' 到子模组路径 '/root/workspace/randy_server/modules/navigation'
+克隆 'modules/navigation' 失败。按计划重试
+正克隆到 '/root/workspace/randy_server/modules/selfcalibr'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/integration/calibration.git' 到子模组路径 '/root/workspace/randy_server/modules/selfcalibr'
+克隆 'modules/selfcalibr' 失败。按计划重试
+正克隆到 '/root/workspace/randy_server/modules/sensor'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/integration/sensors.git' 到子模组路径 '/root/workspace/randy_server/modules/sensor'
+克隆 'modules/sensor' 失败。按计划重试
+正克隆到 '/root/workspace/randy_server/modules/slam'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/integration/slam.git' 到子模组路径 '/root/workspace/randy_server/modules/slam'
+克隆 'modules/slam' 失败。按计划重试
+正克隆到 '/root/workspace/randy_server/modules/types'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/source/randy_message.git' 到子模组路径 '/root/workspace/randy_server/modules/types'
+克隆 'modules/types' 失败。按计划重试
+正克隆到 '/root/workspace/randy_server/modules/detector'...
+fatal: write error: 设备上没有空间
+fatal: index-pack 失败
+fatal: 无法克隆 'http://192.168.50.191:85/airbus/integration/perception.git' 到子模组路径 '/root/workspace/randy_server/modules/detector'
+第二次尝试克隆 'modules/detector' 失败，退出
+Build step 'Execute shell' marked build as failure
+Email was triggered for: Failure - Any
+Sending email for trigger: Failure - Any
+Sending email to: qishanqing@indemind.cn wangjianwei@indemind.cn
+Finished: FAILURE

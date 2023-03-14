@@ -1,29 +1,3 @@
-docker ps
-docker images
-exit
-ls
-pwd
-cd /var/lib/jenkins/
-ls -al
-cd jobs/
-ls -al
-history
-exit
-pwd
-exit
-ssh indemind@192.168.50.158
-ssh indemind@192.168.50.158 ls
-ssh root@192.168.50.158 ls
-cat ~/.ssh/known_hosts 
-ll ~/.ssh/
-cd .ssh/
-ls
-ls -al
-exit
-ll
-ls
-cd .ssh/
-ll
 ls
 cat known_hosts 
 cd /var/lib/jenkins/
@@ -452,4 +426,75 @@ cat /etc/group | grep root
 sudo gpasswd -a jenkins root
 newgrp root
 exit
+exit
+ping www.baidu.com
+vim 
+vi
+cat 
+cat /etc/hosts 
+cat /etc/resolv.conf 
+ping 192.168.50.1
+apt update
+exit
+cat ~/.ssh/id_rsa.bk 
+cat ~/.ssh/id_rsa.pub 
+exit
+cd /var/jenkins_home/jobs/
+ll
+ls -la
+cd /var/jenkins_home/jobs/test-rubby-sdk-3566/workspace/sdk_plubins
+cd /var/jenkins_home/jobs/test-rubby-sdk-3566/workspace/
+ll
+ls
+exit
+git config -l
+cd ~/tmp/
+ll
+git clone ssh://git@192.168.50.191:222/abby/source/sdk_plubins -b master --depth=1
+cat ~/.ssh/id_rsa.pub 
+ll
+ls
+cd ~/.ssh/
+ll
+ls
+ssh-keygen -t
+ssh-keygen -t rsa
+cat /var/jenkins_home/.ssh/id_rsa.pub 
+cd ~/.ssh/
+ll
+ls
+ls -l /var/jenkins_home/.ssh/
+ll
+ls
+md5sum id_rsa.pub 
+md5sum /var/jenkins_home/.ssh/id_rsa.pub 
+cd ~/.gitconfig 
+pwd
+ssh-keygen -t rsa
+ll
+ls
+cat id_rsa.pub 
+git clone ssh://git@192.168.50.191:222/abby/source/sdk_plubins -b master --depth=1
+exit
+docker ps
+exit
+docker ps
+exit
+docker ps
+vim ~/.gitconfig
+cd /var/jenkins_home/jobs/test-rubby-sdk-3566/workspace/
+ll
+ls
+cd sdk/
+git submodule update --init --recursive
+git submodule update --remote
+exit
+date
+date -R
+hwclock --systohc
+hwclock 
+hwclock --show
+exit
+ll
+ls
 exit
