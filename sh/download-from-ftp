@@ -1,0 +1,60 @@
+#!/bin/bash
+set -x
+
+export BUILD_ID=dontkillme
+
+## start code-generator "^\\s *#\\s *"
+# generate-getopt d:dir
+## end code-generator
+## start generated code
+TEMP=$(getopt -o d: --long "dir:"  -n $(basename $0) -- "$@")
+dir=
+eval set -- "$TEMP"
+while true; do
+    case "$1" in
+        -d|--dir)
+            dir=$2
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            die "internal error"
+            ;;
+    esac
+done
+
+## end generated code
+
+if test $# = 0 -o -z "$dir"; then
+    echo "Error: Usage $(basename $0) -d dir ftp-urls..."
+fi
+
+filename=$(basename "$dir")
+name=$(dirname "$dir")/$(echo -n "$filename" | perl -npe 's,\.\d+\.tmp$,,')
+if test -f "$dir"; then
+    name=$dir
+fi
+
+    for ftp in "$@"; do
+        ftp_dir=$(echo "$ftp" | perl -npe 's,.*?//.*?/,,')
+        if test "$SMARTCM_TEST_FTP"; then
+            ftp_dir=$ftp_dir/debug-ftp-upload
+        fi
+        ftp_host=$(echo "$ftp" | perl -npe 's,^(.*?//.*?/).*,$1,')
+        for (( n = 0; n < 5; n++ )); do
+            if time lftp -c "connect $ftp_host;
+	       set ssl:verify-certificate no;
+	       mget -c '${name}'"|| echo "${name} files no found";then
+	       break
+            fi
+
+            if test "$n" = 4; then
+		echo "Download $name from $ftp failed for too many times "
+            fi
+
+            sleep 30
+        done
+    done
