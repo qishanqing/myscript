@@ -7,6 +7,7 @@ mkdir -p ~/system ~/tmp/logs  /mnt/ftp
 
 ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub
+systemctl enable systemd-timesyncd
 
 pushd /root/system/
 curlftpfs -o rw,allow_other,nonempty ftp://guest:guest@192.168.50.191 /mnt/ftp/
@@ -37,6 +38,9 @@ popd
 dd if=/dev/zero of=/swapfile bs=1M count=8888
 mkswap /swapfile
 swapon /swapfile
+添加到vim /etc/rc.local 之前exit 0
+sudo mkswap -f /swapfile && sudo swapon /swapfile
+
 
 touch ~/.gitconfig
 echo export PATH="$PATH:~/myscript/sh" >> ~/.bashrc

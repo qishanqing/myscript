@@ -81,6 +81,7 @@ function App_install(){
 	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
 	    (
 		mv $TEST_DIR/${deb_name} ${trash_dir}
+		mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
