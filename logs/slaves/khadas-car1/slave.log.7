@@ -1,77 +1,25 @@
 SSHLauncher{host='192.168.50.196', port=22, credentialsId='66a5f811-c68c-4e86-98a8-8e0eb752d7ff', jvmOptions='', javaPath='', prefixStartSlaveCmd='source /opt/ros/melodic/setup.bash;source ~/.bashrc;', suffixStartSlaveCmd='', launchTimeoutSeconds=3600, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
-[03/26/23 19:32:07] [SSH] Opening SSH connection to 192.168.50.196:22.
-[03/26/23 19:32:07] [SSH] WARNING: SSH Host Keys are not being verified. Man-in-the-middle attacks may be possible against this connection.
-[03/26/23 19:32:07] [SSH] Authentication successful.
-[03/26/23 19:32:07] [SSH] The remote user's environment is:
-BASH=/bin/bash
-BASHOPTS=cmdhist:complete_fullquote:extquote:force_fignore:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
-BASH_ALIASES=()
-BASH_ARGC=()
-BASH_ARGV=()
-BASH_CMDS=()
-BASH_EXECUTION_STRING=set
-BASH_LINENO=()
-BASH_SOURCE=()
-BASH_VERSINFO=([0]="4" [1]="4" [2]="20" [3]="1" [4]="release" [5]="aarch64-unknown-linux-gnu")
-BASH_VERSION='4.4.20(1)-release'
-DIRSTACK=()
-EUID=0
-GROUPS=()
-HOME=/root
-HOSTNAME=car1
-HOSTTYPE=aarch64
-IFS=$' \t\n'
-LANG=zh_CN.UTF-8
-LC_ALL=zh_CN.UTF-8
-LC_MESSAGES=POSIX
-LOGNAME=root
-MACHTYPE=aarch64-unknown-linux-gnu
-MAIL=/var/mail/root
-OPTERR=1
-OPTIND=1
-OSTYPE=linux-gnu
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-PIPESTATUS=([0]="0")
-PPID=9817
-PS4='+ '
-PWD=/root
-SHELL=/bin/bash
-SHELLOPTS=braceexpand:hashall:interactive-comments
-SHLVL=1
-SSH_CLIENT='192.168.50.191 42970 22'
-SSH_CONNECTION='192.168.50.191 42970 192.168.50.196 22'
-TERM=dumb
-UID=0
-USER=root
-XDG_RUNTIME_DIR=/run/user/0
-XDG_SESSION_ID=2095
-_=']'
-Checking Java version in the PATH
-openjdk version "11.0.18" 2023-01-17
-OpenJDK Runtime Environment (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1)
-OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mode)
-[03/26/23 19:32:07] [SSH] Checking java version of /root/workspace/jdk/bin/java
-Couldn't figure out the Java version of /root/workspace/jdk/bin/java
-bash: /root/workspace/jdk/bin/java: 没有那个文件或目录
-
-[03/26/23 19:32:07] [SSH] Checking java version of /usr/bin/bin/java
-Couldn't figure out the Java version of /usr/bin/bin/java
-bash: /usr/bin/bin/java: 没有那个文件或目录
-
-[03/26/23 19:32:08] [SSH] Checking java version of java
-[03/26/23 19:32:08] [SSH] java -version returned 11.0.18.
-[03/26/23 19:32:08] [SSH] Starting sftp client.
-[03/26/23 19:32:08] [SSH] Copying latest remoting.jar...
-Source agent hash is 25B899E9C1FD1001F55EF1A8DB224323. Installed agent hash is 25B899E9C1FD1001F55EF1A8DB224323
-Verified agent jar. No update is necessary.
-Expanded the channel window size to 4MB
-[03/26/23 19:32:08] [SSH] Starting agent process: source /opt/ros/melodic/setup.bash;source ~/.bashrc;cd "/root/workspace" && java  -jar remoting.jar -workDir /root/workspace -jar-cache /root/workspace/remoting/jarCache
-OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x0000007f7e000000, 33554432, 0) failed; error='Not enough space' (errno=12)
-#
-# There is insufficient memory for the Java Runtime Environment to continue.
-# Native memory allocation (mmap) failed to map 33554432 bytes for committing reserved memory.
-# An error report file with more information is saved as:
-# /root/workspace/hs_err_pid9954.log
-Agent JVM has terminated. Exit code=1
-[03/26/23 19:32:21] Launch failed - cleaning up connection
-[03/26/23 19:32:21] [SSH] Connection closed.
+[03/26/23 19:34:07] [SSH] Opening SSH connection to 192.168.50.196:22.
+[03/26/23 19:35:08] [SSH] WARNING: SSH Host Keys are not being verified. Man-in-the-middle attacks may be possible against this connection.
+ERROR: Unexpected error while trying to authenticate as root with credential=66a5f811-c68c-4e86-98a8-8e0eb752d7ff
+java.io.IOException: Password authentication failed.
+	at com.trilead.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:404)
+	at com.trilead.ssh2.Connection.authenticateWithPassword(Connection.java:340)
+	at com.cloudbees.jenkins.plugins.sshcredentials.impl.TrileadSSHPasswordAuthenticator.doAuthenticate(TrileadSSHPasswordAuthenticator.java:114)
+	at com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.authenticate(SSHAuthenticator.java:431)
+	at com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.authenticate(SSHAuthenticator.java:468)
+	at hudson.plugins.sshslaves.SSHLauncher.openConnection(SSHLauncher.java:881)
+	at hudson.plugins.sshslaves.SSHLauncher.lambda$launch$0(SSHLauncher.java:434)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.io.IOException: No valid packets after 120000 milliseconds, you can increase the timeout by setting the property -Dcom.trilead.ssh2.auth.AuthenticationManager.timeout=<MILLISECONDS>
+	at com.trilead.ssh2.auth.AuthenticationManager.deQueue(AuthenticationManager.java:86)
+	at com.trilead.ssh2.auth.AuthenticationManager.getNextMessage(AuthenticationManager.java:100)
+	at com.trilead.ssh2.auth.AuthenticationManager.authenticatePassword(AuthenticationManager.java:379)
+	... 10 more
+[03/26/23 19:37:08] [SSH] Authentication failed.
+Authentication failed.
+[03/26/23 19:37:08] Launch failed - cleaning up connection
+[03/26/23 19:37:08] [SSH] Connection closed.
