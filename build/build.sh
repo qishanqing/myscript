@@ -33,6 +33,7 @@ init_project_env(){
     JENKINS_JOB_E="nodejs"
     JENKINS_JOB_F="_ui"
     JENKINS_JOB_G="i12r"
+    JENKINS_JOB_E="clean_recorder"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
 #	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
@@ -254,6 +255,8 @@ function project_build(){
 function public_project_update(){
     rm -rf  $PUBLICBASETYPES_DIR
     if [[ $JOB_NAME =~ "$JENKINS_JOB_G" ]];then
+	git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git $PUBLICBASETYPES_DIR -b compile_12 $CLONE_DEPTH
+    elif [[ $JOB_NAME =~ "$JENKINS_JOB_E" ]];then
 	git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git $PUBLICBASETYPES_DIR -b compile_12 $CLONE_DEPTH
     else
 	git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git $PUBLICBASETYPES_DIR -b develop $CLONE_DEPTH
