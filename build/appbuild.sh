@@ -44,6 +44,8 @@ init_project_env(){
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b compile_12 $CLONE_DEPTH"
     elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b compile_12_tof $CLONE_DEPTH"
+    elif  [ x$SDK_BRANCH = xclean_recorder ]; then
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b clean_recorder $CLONE_DEPTH"
     else
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b dev $CLONE_DEPTH"
     fi
