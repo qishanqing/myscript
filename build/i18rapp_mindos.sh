@@ -74,12 +74,11 @@ function App_project_fetch(){
 	    i18rproject_conf_update
 	    release_note
 	    project_info_database
-	    mkdir build && cd build
 	    set +x
 	    source ../scripts/env_debug.sh > /dev/null
 	    set -x
 	    if [[ $SWR_VERSION =~ ICE_EVT ]] || [[ $SWR_VERSION =~ DVT ]] || [[ $SWR_VERSION =~ PVT ]] || [[ $SWR_VERSION =~ MP ]];then
-		bash -x mosbuild.sh
+		bash -x scripts/mosbuild.sh
 	    else
 		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    fi &&
