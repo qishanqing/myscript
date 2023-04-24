@@ -139,6 +139,7 @@ function Release_Version_Rule(){
 	mv modules SDK
 	mv ota SDK
 	mv scripts SDK
+	mv run SDK
 	mv  SDK $WORK_DIR
 	rm -rf $WORK_DIR/$sourcename
 	mv $WORK_DIR/SDK $WORK_DIR/$sourcename
