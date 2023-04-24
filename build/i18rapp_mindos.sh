@@ -78,15 +78,10 @@ function App_project_fetch(){
 	    source ./scripts/env_debug.sh > /dev/null
 	    set -x
 	    if [[ $SWR_VERSION =~ ICE_EVT ]] || [[ $SWR_VERSION =~ DVT ]] || [[ $SWR_VERSION =~ PVT ]] || [[ $SWR_VERSION =~ MP ]];then
-		bash -x scripts/mosbuild.sh
+		bash -ex scripts/mosbuild.sh
 	    else
 		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
-	    fi &&
-		(
-		    cd ../daemons/
-		    mkdir build && cd build
-		    cmake .. && make -j4
-		)
+	    fi
 	)
     )
 popd
