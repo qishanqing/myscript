@@ -239,7 +239,7 @@ insert_db()
 function project_build(){
     pushd $SOURCE_DIR
     project_init_remote || true
-    sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT
+    sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT || true
     if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
 	bash -ex $BUILD_SCRIPT $nub
     elif [ "$KEEP_BUILD" = true ];then
