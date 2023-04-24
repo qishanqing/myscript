@@ -75,7 +75,7 @@ function App_project_fetch(){
 	    release_note
 	    project_info_database
 	    set +x
-	    source ../scripts/env_debug.sh > /dev/null
+	    source ./scripts/env_debug.sh > /dev/null
 	    set -x
 	    if [[ $SWR_VERSION =~ ICE_EVT ]] || [[ $SWR_VERSION =~ DVT ]] || [[ $SWR_VERSION =~ PVT ]] || [[ $SWR_VERSION =~ MP ]];then
 		bash -x scripts/mosbuild.sh
