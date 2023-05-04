@@ -31,6 +31,7 @@ init_project_env(){
     appname=I18R
     sourcename=SmallWashingRobotSDK
     CONFIG_DIR=~/system/i18rconfig
+    CONFIG_BRANCH="$CONFIG_BRANCH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
@@ -41,13 +42,13 @@ init_project_env(){
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
     if [ x$SDK_BRANCH = xcompile_12 ]; then 
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b compile_12 $CLONE_DEPTH"
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
     elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b compile_12_tof $CLONE_DEPTH"
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12_tof} $CLONE_DEPTH"
     elif  [ x$SDK_BRANCH = xclean_recorder ]; then
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b clean_recorder $CLONE_DEPTH"
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-clean_recorder} $CLONE_DEPTH"
     else
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b dev $CLONE_DEPTH"
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-dev} $CLONE_DEPTH"
     fi
     is-trigger-job
     mount_ftp
