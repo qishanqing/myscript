@@ -83,12 +83,7 @@ function App_project_fetch(){
 		cmake -DMBUILD_VCU=ON -D SERVER_VERSION:STRIONG=${version} .. && make -j4
 	    else
 		cmake -D SERVER_VERSION:STRIONG=${version} .. && make -j4
-	    fi &&
-		(
-		    cd ../daemons/
-		    mkdir build && cd build
-		    cmake .. && make -j4
-		)
+	    fi
 	)
     )
 popd
