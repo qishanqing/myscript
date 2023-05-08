@@ -40,10 +40,14 @@ function check(){
 }
 
 check_paremter_is_right(){
+    rx="^([0-9]+\.){3}([0-9]+)$"
     if [[ -z $version ]];then
 	echo "please input version"
 	exit 1
     elif [[ $(check "$version") == vb ]] || [[ $(check "$version") == integer ]] ;then
+	if ! [[ $version =~ $rx ]];then
+	   RELEASE=test
+	fi
 	echo "check paremter is done"
     else
 	echo "please input version number"
