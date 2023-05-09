@@ -47,9 +47,9 @@ function prepare_env() {
     system_platform=`uname -m`
     core=`cat /proc/cpuinfo | grep "processor"| sort|uniq| wc -l`
     if [[ $core == 32 ]];then
-	mt=-j16
-    elif [[ $core == 16 ]];then
 	mt=-j8
+    elif [[ $core == 16 ]];then
+	mt=-j6
     elif [[ $core == 6 ]];then
 	mt=-j4
     else

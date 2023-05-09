@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt update
-apt install unzip expect  openjdk-11-jdk lftp curlftpfs rsync mysql-client ntpdate stow libucl-dev libglew-dev glew-utils -y
+apt install unzip expect ftp openjdk-11-jdk lftp curlftpfs rsync mysql-client ntpdate stow libucl-dev libglew-dev glew-utils -y
 
 mkdir -p ~/system ~/tmp/logs  /mnt/ftp
 
