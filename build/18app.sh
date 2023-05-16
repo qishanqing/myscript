@@ -70,7 +70,7 @@ function App_project_fetch(){
 		cp -ar /mnt/ftp/release/INDEMINDAPP/sdk/gitmodules .gitmodules
 	    fi
 	    git submodule update --init --recursive --depth=1 || git submodule update --init --recursive
-	    git submodule update --remote --depth=1 || git submodule update --remote
+	    git submodule update --remote --depth=1 || git submodule update --remote || true
 	    submodule_version_check
 	    i18rproject_conf_update
 	    release_note
