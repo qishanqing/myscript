@@ -97,7 +97,7 @@ function mount_ftp(){
 
 function release_note(){
     if [[ $RELEASE = true ]];then
-	point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' order by id desc limit 1;"`
+	point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 1;"`
 	point=`echo ${point// /} |awk -F ' ' '{print $2}'`
 	release_log=${point}-r${version}.${SWR_VERSION}
 	mkdir -p $WORK_DIR/${release_log}
@@ -155,6 +155,15 @@ function deb_type(){
 
 function tgz_type(){
     tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_ALL_${version}.tgz
+    pushd $APP_WORKSPACE$RELEASE_DIR
+    echo "$tgz_full_name" | tee $WORK_DIR/version.txt
+    tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
+    tgz_full_md5=`cat $WORK_DIR/version.txt`
+    popd
+}
+
+function tgz_type_18(){
+    tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${min_version}_ALL_${version}.tgz
     pushd $APP_WORKSPACE$RELEASE_DIR
     echo "$tgz_full_name" | tee $WORK_DIR/version.txt
     tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
@@ -224,7 +233,8 @@ function ota_project_fetch(){
 	rm -rf $OTA_DIR
     fi
 
-    git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b ${SWR_VERSION_SIGN:-$SWR_VERSION} $CLONE_DEPTH  $OTA_DIR || (echo ota project update fails && exit)
+    OTA_BRANCH="${appname}-${SWR_VERSION_SIGN:-$SWR_VERSION}"
+    git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $OTA_BRANCH $CLONE_DEPTH  $OTA_DIR || (echo ota project update fails && exit)
 }
 
 function ota_update(){
@@ -241,10 +251,49 @@ function ota_update(){
 	    last_version=`echo $last_version | perl -npe 's.r..g'`
 	    git add --all .
 	    git commit -m "update r$version.${SWR_VERSION_SIGN:-$SWR_VERSION}"
-	    git tag -a r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
-	    git push origin r$version.${SWR_VERSION_SIGN:-$SWR_VERSION} -f
-	    git push origin HEAD:${SWR_VERSION_SIGN:-$SWR_VERSION}
+	    git tag -a r$version.${OTA_BRANCH} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
+	    git push origin r$version.${OTA_BRANCH} -f
+	    git push origin HEAD:${OTA_BRANCH}
 	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${last_version}_${version}.tgz
+	    echo "$ota_update_release_name" | tee version.txt
+	    echo "" >> version.txt
+	    echo "" >> version.txt
+	    git diff $last_tag HEAD --name-status >> version.txt
+	    git diff $last_tag HEAD --name-only |
+		while read f;do
+		    cp --parents -av  $f $path_workspace
+		done
+	    (
+		cd $path_work
+		tar -zcvf $BUILD_DIR/$ota_update_release_name workspace/*
+	    )
+	    mv $BUILD_DIR/$ota_update_release_name $FTP_RELEASE_OTA_DIFF_DIR
+	)
+}
+
+
+
+function ota_update_18(){
+    ota_project_fetch
+    rsync -ar $WORK_DIR/* --exclude r[0-9]* --exclude -*  $OTA_DIR/ &&
+	(
+	    cd $OTA_DIR/
+	    local path_work=~/tmp
+	    local path_workspace=$path_work/workspace
+	    rm -rf  $path_workspace || true
+	    mkdir -p  $path_workspace
+	    last_tag=`git tag --sort=taggerdate | tail -n 1`
+	    min_tag=`git tag --sort=taggerdate | head -n 1`
+	    min_version=`echo $min_tag | cut -d '.' -f 1-4`
+	    min_version=`echo $min_version | perl -npe 's.r..g'`
+	    last_version=`echo $last_tag | cut -d '.' -f 1-4`
+	    last_version=`echo $last_version | perl -npe 's.r..g'`
+	    git add --all .
+	    git commit -m "update r$version.${SWR_VERSION_SIGN:-$SWR_VERSION}"
+	    git tag -a r$version.${OTA_BRANCH} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
+	    git push origin r$version.${OTA_BRANCH} -f
+	    git push origin HEAD:${OTA_BRANCH}
+	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_${last_version}_${version}.tgz
 	    echo "$ota_update_release_name" | tee version.txt
 	    echo "" >> version.txt
 	    echo "" >> version.txt
