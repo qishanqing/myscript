@@ -35,7 +35,7 @@ init_project_env(){
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
-    ui_job_name="i18r_ui"
+    ui_job_name="18test_ui"
     CLONE_DEPTH="--depth=5"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
@@ -61,7 +61,7 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b ${SDK_BRANCH:-modem_indemind} && (
+	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b ${SDK_BRANCH:-modem_indemind} $CLONE_DEPT && (
 	    pushd $sourcename
 
 	    config_project_update
