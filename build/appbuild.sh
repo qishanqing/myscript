@@ -34,13 +34,14 @@ init_project_env(){
     CONFIG_BRANCH="$CONFIG_BRANCH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
-    RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
     ui_job_name="i18r_ui"
     CLONE_DEPTH="--depth=1"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
+    RELEASE_BRANCH="${appname}-${SWR_VERSION}"
+    RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     if [ x$SDK_BRANCH = xcompile_12 ]; then 
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
     elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then

@@ -34,14 +34,15 @@ init_project_env(){
     CONFIG_BRANCH="$CONFIG_BRANCH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
-    RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
+    RELEASE_BRANCH="${appname}-${SWR_VERSION}"
+    RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     ui_job_name="18test_ui"
     CLONE_DEPTH="--depth=5"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
-    if [ x$SDK_BRANCH = xcompile_12 ]; then 
+    if [ x$SDK_BRANCH = xcompile_12 ]; then
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
     elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12_tof} $CLONE_DEPTH"
@@ -104,7 +105,7 @@ function App_install(){
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-	deb_type
+	deb_type_18
 	ota_update_18
 	tgz_type_18
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true

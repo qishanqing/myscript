@@ -60,19 +60,19 @@ function Add_Tag(){
 	echo "================================="
     else
 	pushd $WORK_DIR/$sourcename
-	git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	    git tag -d r$version.$SWR_VERSION || true
-	    git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+	git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
+	    git tag -d $RELEASE_TAG || true
+	    git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
 	)
-	git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || (
-	    git submodule foreach git tag -d r$version.$SWR_VERSION || true
-	    git submodule foreach git tag -a r$version.$SWR_VERSION -m "add $SWR_VERSION tag release:$version" || true
+	git submodule foreach git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
+	    git submodule foreach git tag -d $RELEASE_TAG || true
+	    git submodule foreach git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
 	)
-	git push origin r$version.$SWR_VERSION -f
-	git submodule foreach git push origin r$version.$SWR_VERSION -f
+	git push origin $RELEASE_TAG -f
+	git submodule foreach git push origin $RELEASE_TAG -f
 	popd
     fi
-    cmdb_mysql "update indemindapp set tag_name='r$version.$SWR_VERSION',client='$ui_version_now' where build_url='$BUILD_URL';"
+    cmdb_mysql "update indemindapp set tag_name='$RELEASE_TAG',client='$ui_version_now' where build_url='$BUILD_URL';"
 }
 
 function clean_workspace(){
@@ -99,7 +99,8 @@ function release_note(){
     if [[ $RELEASE = true ]];then
 	point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 1;"`
 	point=`echo ${point// /} |awk -F ' ' '{print $2}'`
-	release_log=${point}-r${version}.${SWR_VERSION}
+	min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
+	release_log=${point}-${RELEASE_TAG}
 	mkdir -p $WORK_DIR/${release_log}
 	git log $point.. .>$WORK_DIR/${release_log}/sdk.log ||true
 	git submodule foreach git log $point.. .>$WORK_DIR/${release_log}/submodule.log || true
@@ -160,6 +161,13 @@ function tgz_type(){
     tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
     tgz_full_md5=`cat $WORK_DIR/version.txt`
     popd
+}
+
+function deb_type_18(){
+    deb_name=INDEMINDAPP_${appname}_${x}_${SWR_VERSION}_${MIN_VERSION:-$min_version}_ALL_${version}.deb
+    echo "$deb_name" | tee $WORK_DIR/version.txt
+    dpkg -b . $BUILD_DIR/$deb_name && md5sum $BUILD_DIR/$deb_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
+    deb_md5=`cat $WORK_DIR/version.txt`
 }
 
 function tgz_type_18(){
@@ -234,6 +242,7 @@ function ota_project_fetch(){
     fi
 
     OTA_BRANCH="${appname}-${SWR_VERSION_SIGN:-$SWR_VERSION}"
+    OTA_TAG="r$version_${OTA_BRANCH}"
     git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $OTA_BRANCH $CLONE_DEPTH  $OTA_DIR || (echo ota project update fails && exit)
 }
 
@@ -250,9 +259,9 @@ function ota_update(){
 	    last_version=`echo $last_tag | cut -d '.' -f 1-4`
 	    last_version=`echo $last_version | perl -npe 's.r..g'`
 	    git add --all .
-	    git commit -m "update r$version.${SWR_VERSION_SIGN:-$SWR_VERSION}"
-	    git tag -a r$version.${OTA_BRANCH} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
-	    git push origin r$version.${OTA_BRANCH} -f
+	    git commit -m "update $OTA_TAG"
+	    git tag -a $OTA_TAG -m "add $OTA_TAG tag release:$version"
+	    git push origin $OTA_TAG -f
 	    git push origin HEAD:${OTA_BRANCH}
 	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${last_version}_${version}.tgz
 	    echo "$ota_update_release_name" | tee version.txt
@@ -283,14 +292,11 @@ function ota_update_18(){
 	    rm -rf  $path_workspace || true
 	    mkdir -p  $path_workspace
 	    last_tag=`git tag --sort=taggerdate | tail -n 1`
-	    min_tag=`git tag --sort=taggerdate | head -n 1`
-	    min_version=`echo $min_tag | cut -d '.' -f 1-4`
-	    min_version=`echo $min_version | perl -npe 's.r..g'`
 	    last_version=`echo $last_tag | cut -d '.' -f 1-4`
 	    last_version=`echo $last_version | perl -npe 's.r..g'`
 	    git add --all .
-	    git commit -m "update r$version.${SWR_VERSION_SIGN:-$SWR_VERSION}"
-	    git tag -a r$version.${OTA_BRANCH} -m "add ${SWR_VERSION_SIGN:-$SWR_VERSION} tag release:$version"
+	    git commit -m "update r$version.${OTA_BRANCH}"
+	    git tag -a r$version.${OTA_BRANCH} -m "add ${OTA_BRANCH} tag release:$version"
 	    git push origin r$version.${OTA_BRANCH} -f
 	    git push origin HEAD:${OTA_BRANCH}
 	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_${last_version}_${version}.tgz
