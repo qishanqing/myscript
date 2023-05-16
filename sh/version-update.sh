@@ -99,7 +99,6 @@ function release_note(){
     if [[ $RELEASE = true ]];then
 	point=`cmdb_mysql "SELECT tag_name FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 1;"`
 	point=`echo ${point// /} |awk -F ' ' '{print $2}'`
-	min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
 	release_log=${point}-${RELEASE_TAG}
 	mkdir -p $WORK_DIR/${release_log}
 	git log $point.. .>$WORK_DIR/${release_log}/sdk.log ||true
@@ -164,14 +163,14 @@ function tgz_type(){
 }
 
 function deb_type_18(){
-    deb_name=INDEMINDAPP_${appname}_${x}_${SWR_VERSION}_${MIN_VERSION:-$min_version}_ALL_${version}.deb
+    deb_name=INDEMINDAPP_${appname}_${SWR_VERSION}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.deb
     echo "$deb_name" | tee $WORK_DIR/version.txt
     dpkg -b . $BUILD_DIR/$deb_name && md5sum $BUILD_DIR/$deb_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
     deb_md5=`cat $WORK_DIR/version.txt`
 }
 
 function tgz_type_18(){
-    tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${min_version}_ALL_${version}.tgz
+    tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
     pushd $APP_WORKSPACE$RELEASE_DIR
     echo "$tgz_full_name" | tee $WORK_DIR/version.txt
     tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
@@ -299,7 +298,7 @@ function ota_update_18(){
 	    git tag -a r$version.${OTA_BRANCH} -m "add ${OTA_BRANCH} tag release:$version"
 	    git push origin r$version.${OTA_BRANCH} -f
 	    git push origin HEAD:${OTA_BRANCH}
-	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_${last_version}_${version}.tgz
+	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${min_version}_${last_version}_${version}.tgz
 	    echo "$ota_update_release_name" | tee version.txt
 	    echo "" >> version.txt
 	    echo "" >> version.txt

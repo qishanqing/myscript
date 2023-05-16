@@ -42,6 +42,7 @@ init_project_env(){
     trash_dir=/mnt/ftp/Trash
     RELEASE_BRANCH="${appname}-${SWR_VERSION}"
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
+    min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     if [ x$SDK_BRANCH = xcompile_12 ]; then 
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
     elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then
