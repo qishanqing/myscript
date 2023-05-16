@@ -61,7 +61,7 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b ${SDK_BRANCH:-modem_indemind} $CLONE_DEPT && (
+	git clone ssh://git@192.168.50.191:222/AroundI18RProject/SmallWashingRobotSDK.git -b ${SDK_BRANCH:-modem_indemind} && (
 	    pushd $sourcename
 
 	    config_project_update
@@ -69,8 +69,8 @@ function App_project_fetch(){
 	    if [[ $gitmodules == true ]];then
 		cp -ar /mnt/ftp/release/INDEMINDAPP/sdk/gitmodules .gitmodules
 	    fi
-	    git submodule update --init --recursive
-	    git submodule update --remote
+	    git submodule update --init --recursive --depth=1 || git submodule update --init --recursive
+	    git submodule update --remote --depth=1 || git submodule update --remote
 	    submodule_version_check
 	    i18rproject_conf_update
 	    release_note
