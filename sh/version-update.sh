@@ -240,7 +240,8 @@ function ota_project_fetch(){
 	rm -rf $OTA_DIR
     fi
 
-    OTA_BRANCH="${appname}-${SWR_VERSION_SIGN:-$SWR_VERSION}"
+#    OTA_BRANCH="${appname}-${SWR_VERSION_SIGN:-$SWR_VERSION}"
+    OTA_BRANCH="18-${SWR_VERSION_SIGN:-$SWR_VERSION}"
     OTA_TAG="r$version_${OTA_BRANCH}"
     git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $OTA_BRANCH $CLONE_DEPTH  $OTA_DIR || (echo ota project update fails && exit)
 }
@@ -298,7 +299,7 @@ function ota_update_18(){
 	    git tag -a r$version.${OTA_BRANCH} -m "add ${OTA_BRANCH} tag release:$version"
 	    git push origin r$version.${OTA_BRANCH} -f
 	    git push origin HEAD:${OTA_BRANCH}
-	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${min_version}_${last_version}_${version}.tgz
+	    ota_update_release_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${last_version}_${last_version}_${version}.tgz
 	    echo "$ota_update_release_name" | tee version.txt
 	    echo "" >> version.txt
 	    echo "" >> version.txt
