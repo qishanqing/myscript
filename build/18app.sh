@@ -76,7 +76,7 @@ function App_project_fetch(){
 	    git submodule update --remote --depth=1 || git submodule update --remote || true
 	    submodule_version_check
 	    i18rproject_conf_update
-	    release_note
+#	    release_note
 	    project_info_database
 	    mkdir build && cd build
 	    set +x
