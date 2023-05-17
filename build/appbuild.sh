@@ -17,25 +17,36 @@ init_project_env(){
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     fi
 
-    BUILD_DIR=$RELEASE_DIR/workspace
-    APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
-    WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
-    VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
-    UI_DIR=/mnt/ftp/release/INDEMINDAPP/client
-    TEST_DIR=/mnt/ftp/release/INDEMINDAPP/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/INDEMINDAPP/fresh_version
-    FTP_RELEASE_SIGN_DIR=${FTP_RELEASE_DIR%/*}/sign
-    FTP_RELEASE_OTA_DIR=${FTP_RELEASE_DIR%/*}/ota_full_version
-    FTP_RELEASE_OTA_DIFF_DIR=${FTP_RELEASE_DIR%/*}/ota
-    function_list=/mnt/ftp/release/app_update_release
     appname=I18R
-    sourcename=SmallWashingRobotSDK
     CONFIG_DIR=~/system/i18rconfig
     CONFIG_BRANCH="$CONFIG_BRANCH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     ui_job_name="i18r_ui"
     CLONE_DEPTH="--depth=1"
+    sourcename=SmallWashingRobotSDK
+    BUILD_DIR=$RELEASE_DIR/workspace
+    APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
+    WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
+    VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
+
+    if [ x$SDK_BRANCH = xcompile_12 ]; then 
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
+    elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12_tof} $CLONE_DEPTH"
+    elif  [ x$SDK_BRANCH = xclean_recorder ]; then
+	upload_ftp_project=CLEAN_RECORDER
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-clean_recorder} $CLONE_DEPTH"
+    else
+	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-dev} $CLONE_DEPTH"
+    fi
+
+    TEST_DIR=/mnt/ftp/release/${upload_ftp_project:-INDEMINDAPP}/test
+    FTP_RELEASE_DIR=/mnt/ftp/release/${upload_ftp_project:-INDEMINDAPP}/fresh_version
+    FTP_RELEASE_SIGN_DIR=${FTP_RELEASE_DIR%/*}/sign
+    FTP_RELEASE_OTA_DIR=${FTP_RELEASE_DIR%/*}/ota_full_version
+    FTP_RELEASE_OTA_DIFF_DIR=${FTP_RELEASE_DIR%/*}/ota
+    function_list=/mnt/ftp/release/app_update_release
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
@@ -43,15 +54,7 @@ init_project_env(){
     RELEASE_BRANCH="${appname}-${SWR_VERSION}"
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
-    if [ x$SDK_BRANCH = xcompile_12 ]; then 
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
-    elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12_tof} $CLONE_DEPTH"
-    elif  [ x$SDK_BRANCH = xclean_recorder ]; then
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-clean_recorder} $CLONE_DEPTH"
-    else
-	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-dev} $CLONE_DEPTH"
-    fi
+
     is-trigger-job
     mount_ftp
     check_paremter_is_right
