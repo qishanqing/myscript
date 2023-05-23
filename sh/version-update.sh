@@ -222,7 +222,8 @@ function ui_update(){
     config_project_update
     pushd $DESKTOP_DIR
     if ! [[ -z ${UI_BRANCH} ]];then
-	cp -av ${client_name} .
+#	cp -av ${client_name} .
+	upload-to-ftp -f -d ${client_name#*/ftp} ftp://guest:guest@192.168.50.191/
 	tar zxvf ${client_name##*/}
 	rm -rf ${client_name##*/}
     else
