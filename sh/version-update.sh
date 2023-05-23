@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ~/.bashrc
+
 increment_version ()
 {
   declare -a part=( ${1//\./ } )
@@ -221,9 +223,8 @@ function ui_update(){
     local client_name=`ls  -t  /mnt/ftp/release/INDEMINDAPP/product_tools/${appname}-${UI_BRANCH}-client* | head -1`
     config_project_update
     pushd $DESKTOP_DIR
-    if ! [[ -z ${UI_BRANCH} ]];then
-#	cp -av ${client_name} .
-	upload-to-ftp -f -d ${client_name#*/ftp} ftp://guest:guest@192.168.50.191/
+    if ! [[ -z ${UI_BRANCH} ]];then 	
+	upload-to-ftp -f -d ${client_name#*/ftp} ftp://guest:guest@192.168.50.191/ || cp -av ${client_name} .
 	tar zxvf ${client_name##*/}
 	rm -rf ${client_name##*/}
     else
