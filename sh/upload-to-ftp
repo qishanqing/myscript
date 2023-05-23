@@ -1,5 +1,5 @@
 #!/bin/bash
-set +x
+set -x
 
 export BUILD_ID=dontkillme
 
@@ -7,14 +7,23 @@ export BUILD_ID=dontkillme
 # generate-getopt d:dir
 ## end code-generator
 ## start generated code
-TEMP=$(getopt -o d: --long "dir:"  -n $(basename $0) -- "$@")
+TEMP=$(getopt -o tfd: --long "dir:"  -n $(basename $0) -- "$@")
 dir=
+todo=
 eval set -- "$TEMP"
 while true; do
     case "$1" in
         -d|--dir)
             dir=$2
             shift 2
+            ;;
+	-t)
+	    todo=put
+            shift
+            ;;
+	-f)
+	    todo=get
+            shift
             ;;
         --)
             shift
@@ -34,15 +43,12 @@ if test $# = 0 -o -z "$dir"; then
 fi
 
 filename=$(basename "$dir")
-name=$(dirname "$dir")/$(echo -n "$filename" | perl -npe 's,\.\d+\.tmp$,,').zip
+name=$(dirname "$dir")/$(echo -n "$filename" | perl -npe 's,\.\d+\.tmp$,,')
 if test -f "$dir"; then
     name=$dir
 fi
 
 (
-
-    #    md5sum "$name" > "$name".md5
-    #    ls -l "$name" > "$name".size
 
     for ftp in "$@"; do
         ftp_dir=$(echo "$ftp" | perl -npe 's,.*?//.*?/,,')
@@ -50,21 +56,19 @@ fi
             ftp_dir=$ftp_dir/debug-ftp-upload
         fi
         ftp_host=$(echo "$ftp" | perl -npe 's,^(.*?//.*?/).*,$1,')
-        for (( n = 0; n < 20; n++ )); do
+        for (( n = 0; n < 3; n++ )); do
 
-            if time lftp -c "connect $ftp_host;
+	    if time lftp -c "connect $ftp_host;
                 set ssl:verify-certificate no;
-                $(if test "$ftp_dir"; then echo "mkdir -p $ftp_dir || echo true; cd $ftp_dir;"; fi)
-		put '${name}'";then
+		cd $ftp_dir &&  $todo '${name}'";then
 		break
             fi
 
-            if test "$n" = 19; then
-		echo "Upload $name to $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
-                #mails_cm -i "Upload $name to $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
+            if test "$n" = 3; then
+		echo "Upload $name from $ftp failed for too many times , re-run with upload-dir-to-ftp -d $dir $ftp"
             fi
 
-            sleep 30
+            sleep 10
         done
     done
-) >& ~/tmp/$filename.ftp.log &
+)
