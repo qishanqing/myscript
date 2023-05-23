@@ -112,7 +112,7 @@ function App_install(){
 	tgz_type_18
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
-	cmdb_mysql "update indemindapp set status='2', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5', sdk_log='$sdk_note', submodule_log='$submodule_note' where build_url='$BUILD_URL';"
+	cmdb_mysql "update indemindapp set status='2', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true

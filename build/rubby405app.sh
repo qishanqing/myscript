@@ -83,9 +83,7 @@ function App_install(){
     elif [[ $RELEASE = true ]];then
 	deb_type
 	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
-	echo "$sdk_note"
-	echo "$submodule_note"
-	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5', sdk_log='$sdk_note', submodule_log='$submodule_note' where build_url='$BUILD_URL';"
+	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
