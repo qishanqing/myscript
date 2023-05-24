@@ -54,7 +54,6 @@ init_project_env(){
     RELEASE_BRANCH="${appname}-${SWR_VERSION}"
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
-
     is-trigger-job
     mount_ftp
     check_paremter_is_right

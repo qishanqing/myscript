@@ -223,7 +223,12 @@ function ui_update(){
     local client_name=`ls  -t  /mnt/ftp/release/INDEMINDAPP/product_tools/${appname}-${UI_BRANCH}-client* | head -1`
     config_project_update
     pushd $DESKTOP_DIR
-    if ! [[ -z ${UI_BRANCH} ]];then 	
+    if ! [[ -z ${UI_BRANCH} ]];then
+
+	if [[ -z $client_name ]];then
+	    echo "ui lib code no found"
+	fi
+
 	upload-to-ftp -f -d ${client_name#*/ftp} ftp://guest:guest@192.168.50.191/ || cp -av ${client_name} .
 	tar zxvf ${client_name##*/}
 	rm -rf ${client_name##*/}
@@ -234,7 +239,7 @@ function ui_update(){
 }
 
 function project_info_database(){
-    cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user,sdk_log,submodule_log,ui_branch,config_branch,sign) values ('${appname}','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME','$BUILD_USER_ID','$sdk_note','$submodule_note','$UI_BRANCH','$CONFIG_BRANCH','$SIGN')";
+    cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user,sdk_log,submodule_log,ui_branch,config_branch,sign,min_version) values ('${appname}','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME','$BUILD_USER_ID','$sdk_note','$submodule_note','$UI_BRANCH','$CONFIG_BRANCH','$SIGN','${MIN_VERSION:-$min_version}')";
 }
 
 function ota_project_fetch(){

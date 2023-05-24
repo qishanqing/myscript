@@ -33,7 +33,9 @@ init_project_env(){
     CONFIG_DIR=~/system/i18rconfig
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
-    RELEASE_BRANCH="devel/evt3_${version}_${SWR_VERSION}"
+    RELEASE_BRANCH="${appname}-${SWR_VERSION}"
+    RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
+    min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     ui_job_name="parker_ui"
     CLONE_DEPTH="--depth=1"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out

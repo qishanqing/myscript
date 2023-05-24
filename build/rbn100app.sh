@@ -34,6 +34,9 @@ init_project_env(){
     ui_job_name="rbn100_ui"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
+    RELEASE_BRANCH="${appname}-${SWR_VERSION}"
+    RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
+    min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     CLONE_DEPTH="--depth=1"
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b rbn100-dev $CLONE_DEPTH"
     ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
