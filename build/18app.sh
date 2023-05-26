@@ -35,7 +35,7 @@ init_project_env(){
     CONFIG_BRANCH="$CONFIG_BRANCH"
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
-    RELEASE_BRANCH="${appname}-${SWR_VERSION}"
+    RELEASE_BRANCH="${upload_ftp_project:-$appname}-${SWR_VERSION}"
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     ui_job_name="i18r_ui"

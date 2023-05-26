@@ -248,8 +248,7 @@ function ota_project_fetch(){
 	rm -rf $OTA_DIR
     fi
 
-#    OTA_BRANCH="${appname}-${SWR_VERSION_SIGN:-$SWR_VERSION}"
-    OTA_BRANCH="18-${SWR_VERSION_SIGN:-$SWR_VERSION}"
+    OTA_BRANCH=$RELEASE_BRANCH
     OTA_TAG="r$version_${OTA_BRANCH}"
     git clone ssh://git@192.168.50.191:222/qishanqing/i18rota.git -b $OTA_BRANCH $CLONE_DEPTH  $OTA_DIR || (echo ota project update fails && exit)
 }
