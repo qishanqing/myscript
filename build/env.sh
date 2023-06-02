@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 apt update
 apt install unzip expect ftp openjdk-11-jdk lftp curlftpfs rsync mysql-client ntpdate stow libucl-dev libglew-dev glew-utils -y
 
@@ -58,3 +59,5 @@ touch ~/.gitconfig
 
 echo export PATH="$PATH:~/myscript/sh" >> ~/.bashrc
 echo "192.168.50.191   master-node build" >> /etc/hosts
+
+手动下载一个仓库，记录用户名密码，新环境替换libm.so.6
