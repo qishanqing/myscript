@@ -87,7 +87,7 @@ function App_install(){
     ui_update
     Version_Update
     Add_Tag
-    Release_Version_Rule_all
+    Release_Version_Rule
     if [[ $RELEASE = test ]];then
 	deb_type
 	mv $BUILD_DIR/INDEMINDAPP_${appname}* $TEST_DIR ||

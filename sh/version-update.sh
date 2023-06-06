@@ -402,7 +402,6 @@ function is-sign-task(){
     fi
 }
 
-
 function Release_Version_Rule_all(){
     pushd $WORK_DIR/$sourcename
 	if [[ $PLATFORM = aarch64 ]];then
@@ -411,5 +410,34 @@ function Release_Version_Rule_all(){
             find -name arm64 | xargs -i rm -rf {}
 	fi
 	find -name .git | xargs -i rm -rf {}
+    popd
+}
+
+
+function Release_Version_Rule(){
+    pushd $WORK_DIR/$sourcename
+	mkdir -p SDK
+
+	if [[ $PLATFORM = aarch64 ]];then
+            find -name x64 | xargs -i rm -rf {}
+	elif [[ $PLATFORM = x86_64 ]];then
+            find -name arm64 | xargs -i rm -rf {}
+	fi
+	find -name CMake* | xargs -i rm -rf {}
+
+	mv lib SDK || true
+	mv config SDK || true
+	(
+	    cd kbcontrol || true
+	    rm -rf src/ example/ CMakeLists.txt include/
+	)
+	mv kbcontrol SDK || true
+	mv modules SDK || true
+	mv ota SDK || true
+	mv scripts SDK || true
+	mv run SDK || true
+	mv  SDK $WORK_DIR || true
+	rm -rf $WORK_DIR/$sourcename || true
+	mv $WORK_DIR/SDK $WORK_DIR/$sourcename || true
     popd
 }

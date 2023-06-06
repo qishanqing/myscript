@@ -118,34 +118,6 @@ function App_install(){
     popd
 }
 
-function Release_Version_Rule(){
-    pushd $WORK_DIR/$sourcename
-	mkdir -p SDK
-
-	if [[ $PLATFORM = aarch64 ]];then
-            find -name x64 | xargs -i rm -rf {}
-	elif [[ $PLATFORM = x86_64 ]];then
-            find -name arm64 | xargs -i rm -rf {}
-	fi
-	find -name CMake* | xargs -i rm -rf {}
-
-	mv lib SDK
-	mv config SDK
-	(
-	    cd kbcontrol
-	    rm -rf src/ example/ CMakeLists.txt include/
-	)
-	mv kbcontrol SDK
-	mv modules SDK
-	mv ota SDK
-	mv scripts SDK
-	mv run SDK
-	mv  SDK $WORK_DIR
-	rm -rf $WORK_DIR/$sourcename
-	mv $WORK_DIR/SDK $WORK_DIR/$sourcename
-    popd
-}
-
 Plug-in_version()
 {
     increment_version ${version%.*}
