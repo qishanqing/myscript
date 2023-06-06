@@ -144,9 +144,12 @@ function generate_commits(){
 
     git push --no-verify $remote HEAD:$branch ||
 	(
-	    git checkout ./ && git clean -xdf ./
-	    git pull --rebase
-	    git push --no-verify $remote HEAD:$branch
+	    for (( n = 0; n < 3; n++ )); do
+		git checkout ./ && git clean -xdf ./
+		git pull --rebase
+		git push --no-verify $remote HEAD:$branch && break
+		sleep 10
+	    done
 	)
     j=$(echo $JOB_NAME | grep "$JENKINS_JOB_F"$) || true
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
