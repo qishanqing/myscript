@@ -426,6 +426,7 @@ function Release_Version_Rule(){
 	find -name CMake* | xargs -i rm -rf {}
 
 	mv lib SDK || true
+	mv build SDK || true
 	mv config SDK || true
 	(
 	    cd kbcontrol || true
