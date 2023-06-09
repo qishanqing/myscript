@@ -36,8 +36,6 @@ init_project_env(){
     JENKINS_JOB_E="clean_recorder"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
-#	VERSION_FILE_PATH="/mnt/ftp/MindOS/version"
-#	build_version=`cat $VERSION_FILE_PATH`
 	nub=${build_version}_${BUILD_PLATFORM}
     fi
 }
@@ -123,6 +121,8 @@ function generate_commits(){
 	sync_files="${SOURCE_DIR}/dist/*"
 	cp -ar $sync_files .
 	deploy_project $sync_files
+    elif ! [ -z $Modules_List ];then
+	bash -ex ${SOURCE_DIR}/${CLEAN_TARGET_PROJECT} ${TARGET_DIR}
     elif ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
 	cp -ar $SOURCE_DIR/install/. $TARGET_PROJECT_FILE_PATH/
@@ -243,10 +243,16 @@ function project_build(){
     pushd $SOURCE_DIR
     project_init_remote || true
     sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT || true
-    if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
-	bash -ex $BUILD_SCRIPT $nub
-    elif [ "$KEEP_BUILD" = true ];then
-	bash -ex $BUILD_SCRIPT $nub
+    if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ] || [ "$KEEP_BUILD" = true ];then
+	if ! [ -z $Modules_List ];then
+	    arr=(${Modules_List//,/ })
+	    for m in `echo ${arr[@]}`;do
+		m=`echo $m | perl -npe 's;";;g'`
+		bash -ex $BUILD_SCRIPT -b $m
+	    done
+	else
+	    bash -ex $BUILD_SCRIPT $nub
+	fi
     else
 	echo "code is not change"
 	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
