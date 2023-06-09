@@ -1,0 +1,615 @@
+Started by user [8mha:////4E5dz7ZPjjbaYr/z11B7xpgm2ME6wK3XraoL/25bIDStAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAy2EgYe/dLi1CL9SqAZFaUAMeIq+MEAAAA=[0myangxu
+Running as SYSTEM
+Building remotely on [8mha:////4D6yRyBYe7oknGfyEvkNHQn9TOnFM8NY87mS+dJ5YRC3AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCIzAMgbbL3KAAAA[0mkhadas-car6 (car6) in workspace /root/workspace
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+[workspace] $ /bin/sh -xe /tmp/jenkins6879953361446348448.sh
++ bash /root/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20230609
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ awk -F/ '{print $1"%2F"$2}'
+++ echo parker/integration/server
++ CONVERT_TARGET_PROJECT=parker%2Fintegration
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/parker%2Fintegration
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    35  100    35    0     0    472      0 --:--:-- --:--:-- --:--:--   472
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+KeyError: 'id'
++ SUB_PROJECT_ID=
++ true
++ '[' -z parker ']'
++ SOURCE_DIR=/root/workspace/parker
++ TARGET_DIR=/root/workspace/server
++ prepare_env
+++ uname -m
++ system_platform=aarch64
+++ cat /proc/cpuinfo
+++ grep processor
+++ sort
+++ uniq
+++ wc -l
++ core=6
++ [[ 6 == 32 ]]
++ [[ 6 == 16 ]]
++ [[ 6 == 6 ]]
++ mt=-j4
++ export COMMIT_ID_FILE=/root/workspace/_last_build_id
++ COMMIT_ID_FILE=/root/workspace/_last_build_id
++ export COMMIT_MSG_FILE=/root/workspace/_commit-msg
++ COMMIT_MSG_FILE=/root/workspace/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/root/workspace/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/root/workspace/_commit-msg.tmp
++ rm -f /root/workspace/_last_build_id
++ rm -f /root/workspace/_commit-msg
++ rm -f /root/workspace/_commit-msg.tmp
++ rm -f /root/workspace/result.log
++ rm -f /root/workspace/no_code_change.log
++ CLONE_DEPTH=--depth=1
++ PUBLICBASETYPES_DIR=/root/system/I18RPublicBaseTypes
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('\''parker-sdk'\'','\''parker/source/server'\'','\''parker_sunny_mos'\'','\''parker/integration/server'\'','\''parker_sunny'\'',now(),'\''http://192.168.50.26:8080/job/parker-sdk/26/'\'','\''khadas-car6'\'','\''yangxu'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ DOCKER_CONTAINER_JAVA=node
++ JENKINS_JOB_A=mind
++ JENKINS_JOB_B=rbn
++ JENKINS_JOB_C=mark-check-tools
++ JENKINS_JOB_D=java
++ JENKINS_JOB_E=nodejs
++ JENKINS_JOB_F=_ui
++ JENKINS_JOB_G=i12r
++ JENKINS_JOB_E=clean_recorder
++ [[ parker-sdk =~ mind ]]
++ '[' true = false ']'
++ source_project_fetch
++ git clone ssh://git@192.168.50.191:222/parker/source/server parker -b parker_sunny_mos --depth=1
+正克隆到 'parker'...
++ target_project_update
++ rm -rf /root/workspace/server
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/parker/integration/server -b parker_sunny --depth=1
+正克隆到 'server'...
++ insert_db
++ pushd /root/workspace/parker
+~/workspace/parker ~/workspace
+++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''parker/source/server'\'' and source_branch='\''parker_sunny_mos'\'' and target_project='\''parker/integration/server'\'' and target_branch='\''parker_sunny'\'' and status='\''0'\'' and job_name='\''parker-sdk'\'' order by id desc limit 1;'
+++ set +x
++ version=
+++ awk -F ' ' '{print $2}'
+++ echo
++ version=
+++ git log -1 --pretty=format:%h
++ first_commit_id_now=c03d98e
++ cmdb_mysql 'update prebuild set first_commit_id='\''c03d98e'\'' where build_url='\''http://192.168.50.26:8080/job/parker-sdk/26/'\'';'
++ set +x
++ popd
+~/workspace
++ [[ aarch64 =~ x86_64 ]]
++ [[ parker-sdk =~ rbn ]]
++ [[ parker-sdk =~ mind ]]
++ public_project_update
++ rm -rf /root/system/I18RPublicBaseTypes
++ [[ parker-sdk =~ i12r ]]
++ [[ parker-sdk =~ clean_recorder ]]
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git /root/system/I18RPublicBaseTypes -b develop --depth=1
+正克隆到 '/root/system/I18RPublicBaseTypes'...
++ pushd /root/system/I18RPublicBaseTypes
+~/system/I18RPublicBaseTypes ~/workspace
++ ./install.sh
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CMAKE_INSTALL_PREFIX: /usr/local.
+-- I18R_INCLUDE_INSTALL_DIR: /usr/local/include/I18RPublicBaseTypes.
+-- CMAKE_CURRENT_SOURCE_DIR: /root/system/I18RPublicBaseTypes.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/system/I18RPublicBaseTypes/build
+sudo: 无法解析主机：car6
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/cloud_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/marker_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/old_hmi_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/swr_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/Data.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorInfo.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorMessage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/FormatData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/InternalErrorCode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/Module.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/ThreadInfo.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/Time.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/WorkStatus.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Cameara2Camera.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Lidar.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Odometry.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Tof.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Imu2Odometry.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Transform.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/cloud/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/PointCloud.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/autoClean_property.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/clean_path.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/current_type.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/drop_event.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/grass_boundary.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/pose.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_event.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_status.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_mode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_runs.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/CalibrationImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthMatrix.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthPointCloud.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/GrassBoundary.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/LightAdjustment.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/SourceImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/DetectorResult.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/class.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detect_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detector_param.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/error_code.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/instance.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/map.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/EulerAngle.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Point.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Quaternion.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/gen.sh
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImu.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgHotplug.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImu.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgParam.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameter.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameterOld.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/IMUParameter.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/ModuleInfo.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/MoudleAllParam.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/Resolution.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SDebugSet.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SlamParameter.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/StreamType.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/marker/MarkerState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/marker/state.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/AFI.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Basic.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Config.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Log.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Route.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Work.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/BumperEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CleanEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CtrlType.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/DropEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/EncoderData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/LaserScan.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/PointCloud2.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/RobotChassisEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/SonyCamera.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/StartStopSwitchEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthImg.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofGrayImg.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofPointCloud.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UltraData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UsbHotplug.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityCmd.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server/DataRateState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server/SystemState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server/UserOperation.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/Pose.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamResult.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorCode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorMessage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorTable.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/IceErrorCode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/error_maps.yaml
+sudo: 无法解析主机：car6
++ popd
+~/workspace
++ public_i18rutilitysubmodule_update
++ pushd /root/system/i18rutilitysubmodule
+~/system/i18rutilitysubmodule ~/workspace
++ git checkout ./
++ git clean -xdf ./
++ git pull origin develop
+来自 ssh://192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule
+ * branch            develop    -> FETCH_HEAD
+已经是最新的。
++ ./install.sh
+sudo: 无法解析主机：car6
++ popd
+~/workspace
++ project_build
++ pushd /root/workspace/parker
+~/workspace/parker ~/workspace
++ project_init_remote
++ git submodule update --init --recursive
+子模组 'modules/depth'（http://192.168.50.191:85/parker/integration/depth.git）未对路径 'modules/depth' 注册
+子模组 'modules/detector'（http://192.168.50.191:85/parker/integration/perception.git）未对路径 'modules/detector' 注册
+子模组 'modules/marker'（http://192.168.50.191:85/parker/integration/marker.git）未对路径 'modules/marker' 注册
+子模组 'modules/navigation'（http://192.168.50.191:85/parker/integration/navigation.git）未对路径 'modules/navigation' 注册
+子模组 'modules/selfcalibr'（http://192.168.50.191:85/parker/integration/calibr.git）未对路径 'modules/selfcalibr' 注册
+子模组 'modules/sensor'（http://192.168.50.191:85/parker/integration/sensors.git）未对路径 'modules/sensor' 注册
+子模组 'modules/slam'（http://192.168.50.191:85/parker/integration/slam.git）未对路径 'modules/slam' 注册
+子模组 'modules/types'（http://192.168.50.191:85/parker/source/messages.git）未对路径 'modules/types' 注册
+正克隆到 '/root/workspace/parker/modules/depth'...
+正克隆到 '/root/workspace/parker/modules/detector'...
+正克隆到 '/root/workspace/parker/modules/marker'...
+正克隆到 '/root/workspace/parker/modules/navigation'...
+正克隆到 '/root/workspace/parker/modules/selfcalibr'...
+正克隆到 '/root/workspace/parker/modules/sensor'...
+正克隆到 '/root/workspace/parker/modules/slam'...
+正克隆到 '/root/workspace/parker/modules/types'...
+子模组路径 'modules/depth'：检出 'd8bade4cb903a780878feab0ff1e3cc8494f5cd2'
+子模组路径 'modules/detector'：检出 '82f8090b09949416ae85cea5ef9b1c445052ec74'
+子模组路径 'modules/marker'：检出 '96f8c9f5ba788bd09e42627250cdc4601ff275eb'
+子模组路径 'modules/navigation'：检出 '2a243f9929690f3b41735af7b49349c512e7fe18'
+子模组路径 'modules/selfcalibr'：检出 'ef2380ee15caba750c11e1484953c3ad3b6d70f5'
+子模组路径 'modules/sensor'：检出 '21376f4e48b90f55192f1333377aa2b9c299ad3e'
+子模组路径 'modules/slam'：检出 'dd1871d863426a8566bae9bce3399ada51bb8ec8'
+子模组路径 'modules/types'：检出 '1c3f5155ce847916c921cd495af54f1e1df0b410'
++ git submodule update --remote
+子模组路径 'modules/depth'：检出 '82c04d1c769c335f0fff807b975b0da8818f9ed8'
+子模组路径 'modules/detector'：检出 '08e288245844ff04addacbf1f2d6bb6fe94ff5cc'
+子模组路径 'modules/marker'：检出 'fa2ac76c904f037a6ab84cac8ffc9df00e7604c7'
+子模组路径 'modules/navigation'：检出 '2fd605601762c2c1feb75385c5bd58ad15d19ca7'
+子模组路径 'modules/selfcalibr'：检出 '1240f987d5ea8eb844e3c9d83d5b4010553670dd'
+子模组路径 'modules/sensor'：检出 '02ef62462f47e5215b3df4e4c8435b3b03a51ec4'
+子模组路径 'modules/slam'：检出 'd43a961468b4aaf1a450dc14441d10233390e1a4'
+子模组路径 'modules/types'：检出 '3b1ca1e8d616c4d06bd56da8fdfebbcf4cfba3ae'
++ sed -i 's/make -j[0-9].*/make -j4/g' scripts/mosbuild.sh
++ '[' xc03d98e == x ']'
++ '[' -z '"server"' ']'
++ arr=(${Modules_List//,/ })
+++ echo '"server"'
++ for m in `echo ${arr[@]}`
+++ perl -npe 's;";;g'
+++ echo '"server"'
++ m=server
++ bash -ex scripts/mosbuild.sh -b server
++ main -b server
++ case $1 in
++ local module=server
++ echo 'Build target server.'
+Build target server.
+++ echo server
+++ tr '[a-z]' '[A-Z]'
++ local Module=SERVER
++ BuildModule server MOS_SERVER
++ local targetName=server
++ local cmakeFlag=MOS_SERVER
++ local jNum=
+++ GetProjectPath
+++++ dirname scripts/mosbuild.sh
++++ cd scripts
++++ pwd
+++ local scriptsDir=/root/workspace/parker/scripts
++++ dirname /root/workspace/parker/scripts
+++ echo /root/workspace/parker
++ local proPath=/root/workspace/parker
+++ pwd
++ local workPath=/root/workspace/parker
++ '[' '' == '' ']'
++ jNum=4
++ cd /root/workspace/parker
++ echo 'Building target server...'
+Building target server...
++ '[' '!' -d build_server ']'
++ mkdir build_server
++ cd build_server
++ cmake -DMOS_BUILD=ON -DMOS_SERVER=ON ..
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- PRO_DIR: /root/workspace/parker
+-- HOST_ARCH: armv8
+-- PLATFORM=arm64
+-- SERVER_VERSION=1.0.0
+-- MOS_BUILD=ON
+-- MBUILD_MONITOR=ON
+-- MBUILD_HMI_SERVICES=ON
+-- MBUILD_HMI_SERVICES_SIMULATOR=OFF
+-- MBUILD_CLOUD=ON
+-- CONFIG_BUILD_CLOUD = 1
+-- MBUILD_MAP=ON
+-- CONFIG_BUILD_MAP = 1
+-- MBUILD_WORKLOGS=ON
+-- CONFIG_BUILD_WORKLOGS = 1
+-- MBUILD_EXCEPTION_HIDING=ON
+-- CONFIG_BUILD_EXCEPTION_HIDING = 1
+-- MBUILD_KBCONTROL=ON
+-- KBCONTROL_PATH: /root/workspace/parker/kbcontrol
+-- MBUILD_HARDWARE_CHECKER=ON
+-- MBUILD_SOFTWARE_CHECKER=ON
+-- SERVER_PATH: /root/workspace/parker/server
+-- BUILD_WITH_ROS is 
+-- Found OpenCV: /usr/local (found version "3.4.3") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/workspace/parker/build_server
++ make -j4
+Scanning dependencies of target server_plugin
+[  1%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/monitor/MonitorNode.cpp.o
+[  2%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/monitor/error_report/ErrorReportMonitor.cpp.o
+[  3%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/monitor/data/DataMonitor.cpp.o
+[  5%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/monitor/hd_resource/HardwareResourceMonitor.cpp.o
+[  6%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/HMIServices.cpp.o
+[  7%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/Context.cpp.o
+[  9%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/transport/TransportFacade.cpp.o
+[ 10%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/SelfTestState.cpp.o
+[ 11%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/StartupState.cpp.o
+[ 12%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/ReadyState.cpp.o
+[ 14%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/StandbyState.cpp.o
+/root/workspace/parker/server/nodes/hmi_services/state/state/SelfTestState.cpp: In member function ‘void swr::hmi_state::SelfTestState::OnSelftTestResult(bool, bool, swr::hdtest_act::SelfTestAction::Response&)’:
+/root/workspace/parker/server/nodes/hmi_services/state/state/SelfTestState.cpp:458:30: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for(int i = 0; i < resp.errors.size(); i++) {
+                            ~~^~~~~~~~~~~~~~~~~~~~
+[ 15%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/ManualCleaningState.cpp.o
+[ 16%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/TrainingState.cpp.o
+[ 18%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/AutoCleaningState.cpp.o
+[ 19%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/FaultState1.cpp.o
+[ 20%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/FaultState2.cpp.o
+[ 22%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/state/ShutdownState.cpp.o
+[ 23%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/state/factory/StateFactory.cpp.o
+[ 24%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/titlebar/TitleBar.cpp.o
+[ 25%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/timearea/TimeArea.cpp.o
+[ 27%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/detectresult/DetectResult.cpp.o
+[ 28%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/EquipmentTesting.cpp.o
+[ 29%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/FaultSetting.cpp.o
+[ 31%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/MachineParams.cpp.o
+[ 32%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/WorkingHours.cpp.o
+[ 33%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/WorkingMode.cpp.o
+[ 35%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/EquipmentStatus.cpp.o
+[ 36%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/EquipmentTestRealStatus.cpp.o
+[ 37%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/deviceparams/SystemInfo.cpp.o
+[ 38%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/errorevent/ErrorEvent.cpp.o
+[ 40%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/motioncontrol/MotionControl.cpp.o
+[ 41%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/msg/GetMsgConfig.cpp.o
+[ 42%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/msg/MsgHandle.cpp.o
+[ 44%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/msg/MsgTimeout.cpp.o
+[ 45%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/powerdown/PowerDown.cpp.o
+[ 46%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/recordlog/RecordLog.cpp.o
+[ 48%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/reportcleanpath/ReportCleanPath.cpp.o
+[ 49%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/scanqr/ScanQR.cpp.o
+[ 50%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/slamresult/SlamResult.cpp.o
+[ 51%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hmi_services/pattern/updatethumbnail/UpdateThumbnail.cpp.o
+[ 53%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/cloud/CloudNode.cpp.o
+[ 54%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/cloud/protocol/tlv/TCPClient.cpp.o
+[ 55%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/cloud/protocol/tlv/TCPServer.cpp.o
+[ 57%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/cloud/protocol/tlv/TCPConnection.cpp.o
+[ 58%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/map/MapNode.cpp.o
+[ 59%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/map/manager/MapManager.cpp.o
+[ 61%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/map/manager/local/LocalMapManager.cpp.o
+[ 62%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/map/manager/cloud/CloudMapManager.cpp.o
+[ 63%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/map/manager/task_queue/TaskConfig.cpp.o
+[ 64%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/map/manager/task_queue/TaskQueue.cpp.o
+[ 66%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/map/manager/task_queue/PriorityTaskPool.cpp.o
+[ 67%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/work_logs/WorkLogs.cpp.o
+[ 68%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/work_logs/worklog/WorkLog.cpp.o
+[ 70%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/exception_hiding/ExceptionHiding.cpp.o
+[ 71%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/exception_hiding/SettingUpdater.cpp.o
+[ 72%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/kb_control/KBControlProxy.cpp.o
+[ 74%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/hdchecker/HardwareChecker.cpp.o
+[ 75%] Building CXX object CMakeFiles/server_plugin.dir/server/nodes/swchecker/SoftwareChecker.cpp.o
+[ 76%] Building CXX object CMakeFiles/server_plugin.dir/server/startup/Startup.cpp.o
+In file included from /root/workspace/parker/server/msgs/srv/swr_srvs.h:45:0,
+                 from /root/workspace/parker/server/msgs/serialization/service_serialization.h:3,
+                 from /root/workspace/parker/server/core/Service.h:298,
+                 from /root/workspace/parker/server/core/DataCenter.h:9,
+                 from /root/workspace/parker/server/nodes/hdchecker/HardwareChecker.h:13,
+                 from /root/workspace/parker/server/nodes/hdchecker/HardwareChecker.cpp:8:
+/root/workspace/parker/server/msgs/srv/cloud/EventSrv.h: In member function ‘void swr::node::HardwareChecker::SendErrorToCloud(const bool&, swr::error_types::ErrorMessage&)’:
+/root/workspace/parker/server/msgs/srv/cloud/EventSrv.h:9:7: warning: ‘srv.swr::cloud_srv::EventSrv::timeout’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ class EventSrv
+       ^~~~~~~~
+/root/workspace/parker/server/msgs/srv/cloud/EventSrv.h:9:7: warning: ‘srv.swr::cloud_srv::EventSrv::status’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+/root/workspace/parker/server/msgs/srv/cloud/EventSrv.h:9:7: warning: ‘srv.swr::cloud_srv::EventSrv::code’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+[ 77%] Building CXX object CMakeFiles/server_plugin.dir/server/startup/NodeLoader.cpp.o
+[ 79%] Building CXX object CMakeFiles/server_plugin.dir/server/startup/NodeFactory.cpp.o
+[ 80%] Building CXX object CMakeFiles/server_plugin.dir/server/startup/TimeSync.cpp.o
+[ 81%] Building CXX object CMakeFiles/server_plugin.dir/server/core/DataCenter.cpp.o
+[ 83%] Building CXX object CMakeFiles/server_plugin.dir/server/core/VcuRegCenter.cpp.o
+[ 84%] Building CXX object CMakeFiles/server_plugin.dir/server/core/Parameters.cpp.o
+[ 85%] Building CXX object CMakeFiles/server_plugin.dir/server/core/Logger.cpp.o
+[ 87%] Building CXX object CMakeFiles/server_plugin.dir/server/core/PublishList.cpp.o
+[ 88%] Building CXX object CMakeFiles/server_plugin.dir/server/core/PublishThreadPool.cpp.o
+[ 89%] Building CXX object CMakeFiles/server_plugin.dir/server/core/NameGenerator.cpp.o
+[ 90%] Building CXX object CMakeFiles/server_plugin.dir/server/util/time/Time.cpp.o
+[ 92%] Building CXX object CMakeFiles/server_plugin.dir/server/shutdown/Shutdown.cpp.o
+[ 93%] Building CXX object CMakeFiles/server_plugin.dir/server/util/common/thread/Thread.cpp.o
+[ 94%] Building CXX object CMakeFiles/server_plugin.dir/server/util/common/thread/ThreadPool.cpp.o
+[ 96%] Building CXX object CMakeFiles/server_plugin.dir/server/plugins/adaptor/AdaptorNode.cpp.o
+In file included from /root/workspace/parker/server/startup/Startup.h:7:0,
+                 from /root/workspace/parker/server/plugins/adaptor/AdaptorNode.cpp:10:
+/root/workspace/parker/server/util/log/slog.h:13:0: warning: "SLOG" redefined
+ #define SLOG(LEVEL) LOG(LEVEL) << "[Server] "
+ 
+In file included from /root/workspace/parker/server/plugins/adaptor/AdaptorNode.cpp:9:0:
+/root/workspace/parker/server/plugins/adaptor/log_define.h:5:0: note: this is the location of the previous definition
+ #define SLOG(MODE) LOG(MODE) << "[Server] [Adaptor]"
+ 
+In file included from /root/workspace/parker/server/startup/Startup.h:7:0,
+                 from /root/workspace/parker/server/plugins/adaptor/AdaptorNode.cpp:10:
+/root/workspace/parker/server/util/log/slog.h:14:0: warning: "DSLOG" redefined
+ #define DSLOG(LEVEL) DLOG(LEVEL) << "[Server] "
+ 
+In file included from /root/workspace/parker/server/plugins/adaptor/AdaptorNode.cpp:9:0:
+/root/workspace/parker/server/plugins/adaptor/log_define.h:6:0: note: this is the location of the previous definition
+ #define DSLOG(MODE) DLOG(MODE) << "[Server] [Adaptor]"
+ 
+[ 97%] Building CXX object CMakeFiles/server_plugin.dir/server/plugins/adaptor/adaptor/TopicAdaptor.cpp.o
+[ 98%] Building CXX object CMakeFiles/server_plugin.dir/server/plugins/adaptor/adaptor/ServiceAdaptor.cpp.o
+[100%] Linking CXX shared library ../lib/libserver_plugin.so
+[100%] Built target server_plugin
++ echo 'Built target server.'
+Built target server.
++ echo ''
+
++ cd /root/workspace/parker
++ popd
+~/workspace
++ check_status_code
++ test -f /root/workspace/result.log
++ [[ '' = false ]]
++ generate_message
++ [[ parker-sdk =~ mind ]]
++ cd /root/workspace/parker
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /root/workspace/_commit-msg.tmp ]]
++ cat /root/workspace/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.26:8080/job/parker-sdk/26/'
++ echo 'Push aarch64 platform files'
++ generate_commits
++ pushd /root/workspace/server
+~/workspace/server ~/workspace
+++ xargs -l ls
+++ find /root/workspace/parker -name install
++ install_dir_list='/root/workspace/parker/ota/start/install
+install.sh'
++ [[ scripts/copy_files.sh = true ]]
++ [[ scripts/copy_files.sh = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ [[ scripts/copy_files.sh =~ mind ]]
++ [[ scripts/copy_files.sh =~ java ]]
++ [[ scripts/copy_files.sh =~ clean_recorder ]]
++ '[' -z '"server"' ']'
++ bash -ex /root/workspace/parker/scripts/copy_files.sh /root/workspace/server
++ CopyFiles /root/workspace/server
+++ GetProjectPath
+++++ dirname /root/workspace/parker/scripts/copy_files.sh
++++ cd /root/workspace/parker/scripts
++++ pwd
+++ local scriptsDir=/root/workspace/parker/scripts
++++ dirname /root/workspace/parker/scripts
+++ echo /root/workspace/parker
++ local sp=/root/workspace/parker
++ local tp=/root/workspace/server
++ echo 'source path: /root/workspace/parker'
+source path: /root/workspace/parker
++ echo 'target path: /root/workspace/server'
+target path: /root/workspace/server
++ '[' '!' -d /root/workspace/server ']'
++ cp -r /root/workspace/parker/lib /root/workspace/server
++ cp -r /root/workspace/parker/ota /root/workspace/server
++ cp -r /root/workspace/parker/run /root/workspace/server
++ cp -r /root/workspace/parker/scripts /root/workspace/server
++ cp -r /root/workspace/parker/kbcontrol /root/workspace/server
++ cp -r /root/workspace/parker/config /root/workspace/server
++ rm -rf /root/workspace/server/ota/demo
++ rm -rf /root/workspace/server/kbcontrol/example
++ rm -rf /root/workspace/server/kbcontrol/src
++ rm -rf /root/workspace/server/kbcontrol/include
++ rm -rf /root/workspace/server/kbcontrol/CMakeLists.txt
++ rm -f /root/workspace/server/config/build_config.h.in
++ git add --all .
+++ git status -s
++ add_file_list='M  lib/libserver_plugin.so'
++ '[' -z 'M  lib/libserver_plugin.so' ']'
++ git commit -s -F /root/workspace/_commit-msg
+[parker_sunny 66078bb] c03d98e update cloud start result
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+++ git config --local --get branch.parker_sunny.remote
++ local remote=origin
+++ git config --local --get branch.parker_sunny.merge
++ local branch=refs/heads/parker_sunny
++ git push --no-verify origin HEAD:refs/heads/parker_sunny
+remote: 
+remote: To create a merge request for parker_sunny, visit:        
+remote:   http://192.168.50.191:85/parker/integration/server/-/merge_requests/new?merge_request%5Bsource_branch%5D=parker_sunny        
+remote: 
+To ssh://192.168.50.191:222/parker/integration/server
+   e07cd3b..66078bb  HEAD -> parker_sunny
+++ grep '_ui$'
+++ echo parker-sdk
++ j=
++ true
++ [[ parker-sdk =~ mind ]]
++ [[ '' != '' ]]
++ popd
+~/workspace
++ [[ -z c03d98e ]]
++ cmdb_mysql 'update prebuild set status='\''0'\'' where build_url='\''http://192.168.50.26:8080/job/parker-sdk/26/'\'';'
++ set +x
++ :
+Finished: SUCCESS
