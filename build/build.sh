@@ -44,6 +44,7 @@ init_project_env(){
 
 function prepare_env() {
     system_platform=`uname -m`
+:<<zhushi
     core=`cat /proc/cpuinfo | grep "processor"| sort|uniq| wc -l`
     if [[ $core == 32 ]];then
 	mt=-j8
@@ -54,7 +55,8 @@ function prepare_env() {
     else
 	mt=-j4
     fi
-
+zhushi
+    mt=-j4
     export COMMIT_ID_FILE=${WORKSPACE}/_last_build_id 
     export COMMIT_MSG_FILE=${WORKSPACE}/_commit-msg
     export COMMIT_MSG_FILE_TMP=${WORKSPACE}/_commit-msg.tmp
