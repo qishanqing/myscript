@@ -227,8 +227,15 @@ function source_project_update(){
 }
 
 function project_init_remote() {
-    git submodule update --init --recursive
-    git submodule update --remote
+    sf=`find  -type f -name sync_submodules.sh`
+    if ! [ -z $sf ];then
+	arr=(${Modules_List//,/ })
+	#local m=`echo ${arr[@]} | perl -npe "s;';;g"`
+	echo ${arr[@]} | xargs $sf
+    else
+       git submodule update --init --recursive
+       git submodule update --remote
+    fi
 }
 
 insert_db()
@@ -248,7 +255,6 @@ function project_build(){
     sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT || true
     if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ] || [ "$KEEP_BUILD" = true ];then
 	if ! [ -z $Modules_List ];then
-	    arr=(${Modules_List//,/ })
 	    for m in `echo ${arr[@]}`;do
 		m=`echo $m | perl -npe 's;";;g'`
 		bash -ex $BUILD_SCRIPT -b $m
