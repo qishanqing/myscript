@@ -1,0 +1,106 @@
+Started by GitLab push by JENKINS
+Running as SYSTEM
+Building remotely on [8mha:////4MPPEh8feJE9uNY0ThUfUuMmeXp+equSlRr0prvRJKt5AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJDAGuOCCPKAAAA[0mkhadas-car1 (car1) in workspace /root/workspace/workspace/i18r_tools
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+using credential add4e790-1baf-4d9e-81aa-2941949e9901
+Cloning the remote Git repository
+Using shallow clone with depth 1
+Cloning repository ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git
+ > /usr/bin/git init /root/workspace/workspace/i18r_tools # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress --depth=1 -- ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git # timeout=10
+ > /usr/bin/git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > /usr/bin/git rev-parse remotes/origin/master^{commit} # timeout=10
+ > /usr/bin/git branch -a -v --no-abbrev --contains 6fbb28190c3ae908fedb9d91c7c7d9e72c5dfb6e # timeout=10
+Checking out Revision 6fbb28190c3ae908fedb9d91c7c7d9e72c5dfb6e (origin/master)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 6fbb28190c3ae908fedb9d91c7c7d9e72c5dfb6e # timeout=10
+Commit message: "a311D-interface-testsuite_1.0.2-392_arm64.deb"
+ > /usr/bin/git rev-list --no-walk 1217667b57f1b5e9e8ea25923c87b1e238a3933f # timeout=10
+First time build. Skipping changelog.
+[i18r_tools] $ /bin/sh -xe /tmp/jenkins1649449377530559792.sh
++ bash /root/myscript/build/i18r_tools_version_update.sh
++++ dirname /root/myscript/build/i18r_tools_version_update.sh
+++ cd /root/myscript/build
+++ pwd
++ project_path=/root/myscript/build
++ . /root/myscript/build/../sh/version-update.sh
+++ . /root/.bashrc
++++ '[' -z '' ']'
++++ return
++ . /root/myscript/build/../sh/now.
+++ export LANG=zh_CN.UTF-8
+++ LANG=zh_CN.UTF-8
++ . /root/myscript/build/../sh/cmdb
+++ set -x
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ init_project_env
++ file=生产工具/config/AuthorizationInformation.xml
++ chmod a+x 生产工具/config/AuthorizationInformation.xml
+++ perl -npe 's,<.*?>,,g'
+++ grep -i '<version>' 生产工具/config/AuthorizationInformation.xml
++ version='        V1.1.21'
+++ sed 's/[[:space:]]//g'
+++ echo V1.1.21
++ version=V1.1.21
+++ find -name 'a*.deb'
++ hw_version=./factory_set_tools/接口测试/a311D-interface-testsuite_1.0.2-392_arm64.deb
++ hw_version=./factory_set_tools/接口测试/a311D-interface-testsuite_1.0.2
++ hw_version=1.0.2
++ ftp_upload_path=/mnt/ftp/release/INDEMINDAPP/product_tools/
++ increment_version V1.1.21
++ part=(${1//\./ })
++ declare -a part
++ declare new
++ declare -i carry=1
++ (( CNTR=3-1 ))
++ (( CNTR>=0 ))
++ len=2
++ new=22
++ '[' 2 -gt 2 ']'
++ carry=0
++ part[CNTR]=22
++ (( CNTR-=1  ))
++ (( CNTR>=0 ))
++ len=1
++ new=1
++ '[' 1 -gt 2 ']'
++ carry=0
++ part[CNTR]=1
++ (( CNTR-=1  ))
++ (( CNTR>=0 ))
++ len=2
++ new=0
++ '[' 1 -gt 2 ']'
++ carry=0
++ part[CNTR]=0
++ (( CNTR-=1  ))
++ (( CNTR>=0 ))
++ new='0 1 22'
+++ perl -npe s,00,,g
+++ echo -e 0.1.22.0
++ trigger_version=0.1.22.0
++ tgz_install
+++ date +%Y-%m-%d-%H-%M-%S
++ tgz_file_name=i18r-tools-14-V1.1.21_1.0.2-2023-06-26-12-03-31.tgz
++ tar zcvf i18r-tools-14-V1.1.21_1.0.2-2023-06-26-12-03-31.tgz factory_set_tools 生产工具
+factory_set_tools/
+factory_set_tools/量产程序/
+factory_set_tools/量产程序/Readme
+factory_set_tools/量产程序/setenv_SDK.sh
+factory_set_tools/量产程序/S50launcher_SDK
+factory_set_tools/量产程序/INDEMINDAPP_DVT_1.1.36.2.deb
+Build was aborted
+Aborted by [8mha:////4FCKJYn7TntWy0E9yb5LbOYOQzMY6AUmHbbeMtYcoOkhAAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYB/dLi1CL9wszijMS8QqARAJgVRoDFAAAA[0m祁善庆
+Terminated
+Finished: ABORTED
