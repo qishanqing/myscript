@@ -47,7 +47,7 @@ dd if=/dev/zero of=/swapfile bs=1M count=8888
 mkswap /swapfile
 swapon /swapfile
 添加到vim /etc/rc.local 之前exit 0
-sudo mkswap -f /swapfile && sudo swapon /swapfile
+mkswap -f /swapfile && swapon /swapfile
 
 
 touch ~/.gitconfig

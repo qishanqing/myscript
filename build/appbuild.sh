@@ -30,11 +30,11 @@ init_project_env(){
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
 
-    if [ x$SDK_BRANCH = xcompile_12 ]; then 
+    if [[ x$SDK_BRANCH = xcompile_12 ]]; then 
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
-    elif  [ x$SDK_BRANCH = xcompile_12_tof ]; then
+    elif  [[ x$SDK_BRANCH = xcompile_12_tof ]]; then
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12_tof} $CLONE_DEPTH"
-    elif  [ x$SDK_BRANCH = xclean_recorder ]; then
+    elif  [[ x$SDK_BRANCH =~ xclean_recorder ]]; then
 	upload_ftp_project=CLEAN_RECORDER
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-clean_recorder} $CLONE_DEPTH"
     else
