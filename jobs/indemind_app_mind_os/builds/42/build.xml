@@ -1,0 +1,91 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.ParametersAction>
+      <safeParameters class="sorted-set"/>
+      <parameters>
+        <hudson.model.StringParameterValue>
+          <name>version</name>
+          <description>必须填写数字-app version</description>
+          <value>840</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>SWR_VERSION</name>
+          <description>机器开发板型号</description>
+          <value>MP</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>RELEASE</name>
+          <description>开发自测请填写test（version随意填写数字）</description>
+          <value>test</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>SDK_BRANCH</name>
+          <description>默认不用填写</description>
+          <value></value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>UI_BRANCH</name>
+          <description>验证ui的临时分支，默认不用填写</description>
+          <value></value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.TextParameterValue>
+          <name>note</name>
+          <description>文本信息，具体描述</description>
+          <value></value>
+        </hudson.model.TextParameterValue>
+        <hudson.model.BooleanParameterValue>
+          <name>SIGN</name>
+          <value>true</value>
+        </hudson.model.BooleanParameterValue>
+      </parameters>
+      <parameterDefinitionNames>
+        <string>version</string>
+        <string>SWR_VERSION</string>
+        <string>RELEASE</string>
+        <string>SDK_BRANCH</string>
+        <string>UI_BRANCH</string>
+        <string>note</string>
+        <string>SIGN</string>
+      </parameterDefinitionNames>
+    </hudson.model.ParametersAction>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>wangdongqing</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <jenkins.metrics.impl.TimeInQueueAction plugin="metrics@4.2.13-420.vea_2f17932dd6">
+      <queuingDurationMillis>5</queuingDurationMillis>
+      <blockedDurationMillis>0</blockedDurationMillis>
+      <buildableDurationMillis>3</buildableDurationMillis>
+      <waitingDurationMillis>1</waitingDurationMillis>
+    </jenkins.metrics.impl.TimeInQueueAction>
+    <jenkins.model.InterruptedBuildAction>
+      <causes>
+        <jenkins.model.CauseOfInterruption_-UserInterruption>
+          <user>wangdongqing</user>
+        </jenkins.model.CauseOfInterruption_-UserInterruption>
+      </causes>
+    </jenkins.model.InterruptedBuildAction>
+    <com.sonyericsson.rebuild.RebuildAction plugin="rebuild@1.34"/>
+  </actions>
+  <queueId>10449</queueId>
+  <timestamp>1688444306406</timestamp>
+  <startTime>1688444306675</startTime>
+  <result>ABORTED</result>
+  <duration>7371</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn>khadas-car1</builtOn>
+  <workspace>/root/workspace/workspace/indemind_app_mind_os</workspace>
+  <hudsonVersion>2.392</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="java.util.Collections$UnmodifiableSet">
+    <c class="sorted-set"/>
+  </culprits>
+</build>
