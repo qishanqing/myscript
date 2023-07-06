@@ -1,5 +1,5 @@
 SSHLauncher{host='192.168.50.2', port=22, credentialsId='66a5f811-c68c-4e86-98a8-8e0eb752d7ff', jvmOptions='', javaPath='', prefixStartSlaveCmd='source /opt/ros/melodic/setup.bash;source ~/.bashrc;', suffixStartSlaveCmd='', launchTimeoutSeconds=3600, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
-[06/28/23 18:48:34] [SSH] Opening SSH connection to 192.168.50.2:22.
+[06/28/23 18:52:34] [SSH] Opening SSH connection to 192.168.50.2:22.
 No route to host (Host unreachable)
 SSH Connection failed with IOException: "No route to host (Host unreachable)", retrying in 15 seconds. There are 10 more retries left.
 No route to host (Host unreachable)
@@ -16,33 +16,88 @@ No route to host (Host unreachable)
 SSH Connection failed with IOException: "No route to host (Host unreachable)", retrying in 15 seconds. There are 4 more retries left.
 No route to host (Host unreachable)
 SSH Connection failed with IOException: "No route to host (Host unreachable)", retrying in 15 seconds. There are 3 more retries left.
-No route to host (Host unreachable)
-SSH Connection failed with IOException: "No route to host (Host unreachable)", retrying in 15 seconds. There are 2 more retries left.
-No route to host (Host unreachable)
-SSH Connection failed with IOException: "No route to host (Host unreachable)", retrying in 15 seconds. There are 1 more retries left.
-No route to host (Host unreachable)
-ERROR: Connection is not established!
-java.lang.IllegalStateException: Connection is not established!
-	at com.trilead.ssh2.Connection.getRemainingAuthMethods(Connection.java:988)
-	at com.cloudbees.jenkins.plugins.sshcredentials.impl.TrileadSSHPasswordAuthenticator.canAuthenticate(TrileadSSHPasswordAuthenticator.java:83)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:176)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
-	at java.base/java.util.Spliterators$IteratorSpliterator.tryAdvance(Spliterators.java:1812)
-	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:127)
-	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:502)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:488)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
-	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:543)
-	at com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.newInstance(SSHAuthenticator.java:222)
-	at com.cloudbees.jenkins.plugins.sshcredentials.SSHAuthenticator.newInstance(SSHAuthenticator.java:173)
-	at hudson.plugins.sshslaves.SSHLauncher.openConnection(SSHLauncher.java:881)
-	at hudson.plugins.sshslaves.SSHLauncher.lambda$launch$0(SSHLauncher.java:434)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-[06/28/23 18:51:38] Launch failed - cleaning up connection
-[06/28/23 18:51:38] [SSH] Connection closed.
+ERROR: Connection terminated
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2911)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3406)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:932)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:375)
+	at hudson.remoting.ObjectInputStreamEx.<init>(ObjectInputStreamEx.java:49)
+	at hudson.remoting.Command.readFrom(Command.java:142)
+	at hudson.remoting.Command.readFrom(Command.java:128)
+	at hudson.remoting.AbstractSynchronousByteArrayCommandTransport.read(AbstractSynchronousByteArrayCommandTransport.java:35)
+	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:61)
+Caused: java.io.IOException: Unexpected termination of the channel
+	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:75)
+[06/28/23 18:54:49] [SSH] WARNING: SSH Host Keys are not being verified. Man-in-the-middle attacks may be possible against this connection.
+[06/28/23 18:54:49] [SSH] Authentication successful.
+[06/28/23 18:54:50] [SSH] The remote user's environment is:
+BASH=/bin/bash
+BASHOPTS=cmdhist:complete_fullquote:extquote:force_fignore:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_EXECUTION_STRING=set
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="4" [1]="4" [2]="20" [3]="1" [4]="release" [5]="aarch64-unknown-linux-gnu")
+BASH_VERSION='4.4.20(1)-release'
+DIRSTACK=()
+EUID=0
+GROUPS=()
+HOME=/root
+HOSTNAME=car3
+HOSTTYPE=aarch64
+IFS=$' \t\n'
+LANG=zh_CN.UTF-8
+LC_ALL=zh_CN.UTF-8
+LC_MESSAGES=POSIX
+LOGNAME=root
+MACHTYPE=aarch64-unknown-linux-gnu
+MAIL=/var/mail/root
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+PIPESTATUS=([0]="0")
+PPID=3487
+PS4='+ '
+PWD=/root
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:hashall:interactive-comments
+SHLVL=1
+SSH_CLIENT='192.168.50.191 47030 22'
+SSH_CONNECTION='192.168.50.191 47030 192.168.50.2 22'
+TERM=dumb
+UID=0
+USER=root
+XDG_RUNTIME_DIR=/run/user/0
+XDG_SESSION_ID=1
+_=']'
+Checking Java version in the PATH
+openjdk version "11.0.18" 2023-01-17
+OpenJDK Runtime Environment (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1)
+OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu118.04.1, mixed mode)
+[06/28/23 18:54:50] [SSH] Checking java version of /root/workspace/jdk/bin/java
+Couldn't figure out the Java version of /root/workspace/jdk/bin/java
+bash: /root/workspace/jdk/bin/java: 没有那个文件或目录
+
+[06/28/23 18:54:50] [SSH] Checking java version of /usr/bin/bin/java
+Couldn't figure out the Java version of /usr/bin/bin/java
+bash: /usr/bin/bin/java: 没有那个文件或目录
+
+[06/28/23 18:54:50] [SSH] Checking java version of java
+[06/28/23 18:54:51] [SSH] java -version returned 11.0.18.
+[06/28/23 18:54:51] [SSH] Starting sftp client.
+[06/28/23 18:54:51] [SSH] Copying latest remoting.jar...
+[06/28/23 18:54:51] [SSH] Copied 1,370,647 bytes.
+Expanded the channel window size to 4MB
+[06/28/23 18:54:51] [SSH] Starting agent process: source /opt/ros/melodic/setup.bash;source ~/.bashrc;cd "/root/workspace" && java  -jar remoting.jar -workDir /root/workspace -jar-cache /root/workspace/remoting/jarCache
+6月 28, 2023 6:29:45 下午 org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+信息: Using /root/workspace/remoting as a remoting work directory
+6月 28, 2023 6:29:45 下午 org.jenkinsci.remoting.engine.WorkDirManager setupLogging
+信息: Both error and output logs will be printed to /root/workspace/remoting
+Agent JVM has not reported exit code. Is it still running?
+[06/28/23 18:54:55] Launch failed - cleaning up connection
+[06/28/23 18:54:55] [SSH] Connection closed.
