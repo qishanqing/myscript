@@ -1,0 +1,510 @@
+Started by user [8mha:////4GZLdJ3zYVtTaCml8iVum++M0lnTj7l+sRg8SaQVn3p2AAAAlR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAy+EgZO/dLi1CL98uJiAKhZb0u+AAAA[0mwangshuaishuai
+Running as SYSTEM
+Building remotely on [8mha:////4J8M8M4pLAVsr5HsUCuoFBwpyiajxV9VrGbWj66EbYmPAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJjAEfvBs3KAAAA[0mkhadas-car3 (car3) in workspace /root/workspace/workspace/i12r-ros
+[WS-CLEANUP] Clean-up disabled, skipping workspace deletion.
+No emails were triggered.
+[i12r-ros] $ /bin/sh -xe /tmp/jenkins11105216087219926811.sh
++ bash /root/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20230825
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ awk -F/ '{print $1"%2F"$2}'
+++ echo AroundI18RProject/I18RNavigationSubmodule
++ CONVERT_TARGET_PROJECT=AroundI18RProject%2FI18RNavigationSubmodule
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/AroundI18RProject%2FI18RNavigationSubmodule
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3480    0  3480    0     0  32222      0 --:--:-- --:--:-- --:--:-- 32222
++ SUB_PROJECT_ID=291
++ '[' -z ']'
++ SOURCE_DIR=/root/workspace/workspace/i12r-ros/i18r_robot
++ TARGET_DIR=/root/workspace/workspace/i12r-ros/I18RNavigationSubmodule
++ prepare_env
+++ uname -m
++ system_platform=aarch64
++ :
+++ sort
+++ grep processor
+++ cat /proc/cpuinfo
+++ wc -l
+++ uniq
++ mt=-j4
++ export COMMIT_ID_FILE=/root/workspace/workspace/i12r-ros/_last_build_id
++ COMMIT_ID_FILE=/root/workspace/workspace/i12r-ros/_last_build_id
++ export COMMIT_MSG_FILE=/root/workspace/workspace/i12r-ros/_commit-msg
++ COMMIT_MSG_FILE=/root/workspace/workspace/i12r-ros/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i12r-ros/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i12r-ros/_commit-msg.tmp
++ rm -f /root/workspace/workspace/i12r-ros/_last_build_id
++ rm -f /root/workspace/workspace/i12r-ros/_commit-msg
++ rm -f /root/workspace/workspace/i12r-ros/_commit-msg.tmp
++ rm -f /root/workspace/workspace/i12r-ros/result.log
++ rm -f /root/workspace/workspace/i12r-ros/no_code_change.log
++ CLONE_DEPTH=--depth=1
++ PUBLICBASETYPES_DIR=/root/system/I18RPublicBaseTypes
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('\''i12r-ros'\'','\''wss/i18r_robot'\'','\''i12r_dev'\'','\''AroundI18RProject/I18RNavigationSubmodule'\'','\''compile_12'\'',now(),'\''http://192.168.50.191:8088/job/i12r-ros/43/'\'','\''khadas-car3'\'','\''wss'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ DOCKER_CONTAINER_JAVA=node
++ JENKINS_JOB_A=mind
++ JENKINS_JOB_B=rbn
++ JENKINS_JOB_C=mark-check-tools
++ JENKINS_JOB_D=java
++ JENKINS_JOB_E=nodejs
++ JENKINS_JOB_F=_ui
++ JENKINS_JOB_G=i12r
++ JENKINS_JOB_E=clean_recorder
++ JENKINS_JOB_F=i18r
++ [[ i12r-ros =~ mind ]]
++ '[' false = false ']'
++ source_project_update
++ '[' -d /root/workspace/workspace/i12r-ros/i18r_robot ']'
++ pushd /root/workspace/workspace/i12r-ros/i18r_robot
+~/workspace/workspace/i12r-ros/i18r_robot ~/workspace/workspace/i12r-ros
++ git checkout ./
++ git pull --rebase
+来自 ssh://192.168.50.191:222/wss/i18r_robot
+   244af7b..65d2735  i12r_dev   -> origin/i12r_dev
+更新 244af7b..65d2735
+Fast-forward
+ .../src/public/check_footprint.cpp                 | 70 ++++++++++------------
+ 1 file changed, 33 insertions(+), 37 deletions(-)
+当前分支 i12r_dev 是最新的。
++ popd
+~/workspace/workspace/i12r-ros
++ target_project_update
++ rm -rf /root/workspace/workspace/i12r-ros/I18RNavigationSubmodule
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RNavigationSubmodule -b compile_12 --depth=1
+正克隆到 'I18RNavigationSubmodule'...
++ insert_db
++ pushd /root/workspace/workspace/i12r-ros/i18r_robot
+~/workspace/workspace/i12r-ros/i18r_robot ~/workspace/workspace/i12r-ros
+++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''wss/i18r_robot'\'' and source_branch='\''i12r_dev'\'' and target_project='\''AroundI18RProject/I18RNavigationSubmodule'\'' and target_branch='\''compile_12'\'' and status='\''0'\'' and job_name='\''i12r-ros'\'' order by id desc limit 1;'
+++ set +x
++ version='first_commit_id
+244af7b'
+++ awk -F ' ' '{print $2}'
+++ echo first_commit_id 244af7b
++ version=244af7b
+++ git log -1 --pretty=format:%h
++ first_commit_id_now=65d2735
++ cmdb_mysql 'update prebuild set first_commit_id='\''65d2735'\'' where build_url='\''http://192.168.50.191:8088/job/i12r-ros/43/'\'';'
++ set +x
++ popd
+~/workspace/workspace/i12r-ros
++ [[ aarch64 =~ x86_64 ]]
++ [[ i12r-ros =~ rbn ]]
++ [[ i12r-ros =~ mind ]]
++ public_project_update
++ rm -rf /root/system/I18RPublicBaseTypes
++ [[ i12r-ros =~ i12r ]]
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git /root/system/I18RPublicBaseTypes -b compile_12 --depth=1
+正克隆到 '/root/system/I18RPublicBaseTypes'...
++ public_project_todo
++ pushd /root/system/I18RPublicBaseTypes
+~/system/I18RPublicBaseTypes ~/workspace/workspace/i12r-ros
++ ./install.sh
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CMAKE_INSTALL_PREFIX: /usr/local.
+-- I18R_INCLUDE_INSTALL_DIR: /usr/local/include/I18RPublicBaseTypes.
+-- CMAKE_CURRENT_SOURCE_DIR: /root/system/I18RPublicBaseTypes.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/system/I18RPublicBaseTypes/build
+sudo: 无法解析主机：car3
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/cloud_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/marker_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/old_hmi_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/swr_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/Data.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorInfo.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorMessage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/FormatData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/InternalErrorCode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/Module.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/ThreadInfo.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/Time.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/base/WorkStatus.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Cameara2Camera.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Lidar.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Odometry.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Tof.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Imu2Odometry.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Transform.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/cloud/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/autoClean_property.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/clean_path.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/current_type.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/drop_event.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/pose.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_event.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_status.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_mode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_runs.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/CalibrationImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthMatrix.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthPointCloud.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/LightAdjustment.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/depth/SourceImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/DetectorResult.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/class.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detect_types.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detector_param.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/error_code.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/instance.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/detector/map.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/EulerAngle.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Point.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Quaternion.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/gen.sh
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.fbs
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response_generated.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImu.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgHotplug.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImu.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgParam.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameter.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameterOld.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/IMUParameter.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/ModuleInfo.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/MoudleAllParam.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/Resolution.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SDebugSet.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SlamParameter.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/StreamType.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/marker/MarkerState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/marker/state.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/AFI.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Basic.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Config.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Log.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Route.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Work.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/BumperEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CleanEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CleanType.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CtrlType.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/DropEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/EncoderData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/LaserScan.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/PointCloud2.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/RobotChassisEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/SonyCamera.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/StartStopSwitchEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthImg.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofGrayImg.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofPointCloud.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UltraData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UsbHotplug.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityCmd.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityData.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server/DataRateState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server/SystemState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/server/UserOperation.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/Pose.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/README.md
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamResult.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamState.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorCode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorEvent.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorMessage.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorTable.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/IceErrorCode.h
+-- Installing: /usr/local/include/I18RPublicBaseTypes/error/error_maps.yaml
+sudo: 无法解析主机：car3
++ popd
+~/workspace/workspace/i12r-ros
++ public_i18rutilitysubmodule_update
++ pushd /root/system/i18rutilitysubmodule
+~/system/i18rutilitysubmodule ~/workspace/workspace/i12r-ros
++ git checkout ./
++ git clean -xdf ./
++ git pull origin develop
+来自 ssh://192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule
+ * branch            develop    -> FETCH_HEAD
+已经是最新的。
++ ./install.sh
+sudo: 无法解析主机：car3
++ popd
+~/workspace/workspace/i12r-ros
++ project_build
++ pushd /root/workspace/workspace/i12r-ros/i18r_robot
+~/workspace/workspace/i12r-ros/i18r_robot ~/workspace/workspace/i12r-ros
++ project_init_remote
+++ find -type f -name sync_submodules.sh
++ sf=
++ '[' -z ']'
++ git submodule update --init --recursive
+fatal: 在 .gitmodules 中未找到子模组 'src/indemind_clean_robot/include/I18RPublicBaseTypes' 的 url
++ git submodule update --remote
++ sed -i 's/make -j[0-9].*/make -j4/g' compile.sh
++ '[' x65d2735 == x244af7b ']'
++ '[' -z ']'
++ bash -ex compile.sh
++ catkin_make -DCMAKE_BUILD_TYPE=RELEASE install
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target _i18r_msgs_generate_messages_check_deps_KeyboardInput
+[  0%] Built target _i18r_msgs_generate_messages_check_deps_BumperEvent
+[  0%] Built target _i18r_msgs_generate_messages_check_deps_WheelDropEvent
+[  0%] Built target _i18r_msgs_generate_messages_check_deps_MotorPower
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target _i18r_msgs_generate_messages_check_deps_CliffEvent
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target sensor_msgs_generate_messages_nodejs
+[  0%] Built target sensor_msgs_generate_messages_py
+[  0%] Built target sensor_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target sensor_msgs_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target dynamic_reconfigure_generate_messages_nodejs
+[  0%] Built target visualization_msgs_generate_messages_py
+[  0%] Built target visualization_msgs_generate_messages_nodejs
+[  0%] Built target visualization_msgs_generate_messages_cpp
+[  0%] Built target visualization_msgs_generate_messages_eus
+[  3%] Built target interactive_markers
+[  3%] Built target tf2_msgs_generate_messages_nodejs
+[  3%] Built target tf2_msgs_generate_messages_py
+[  3%] Built target tf2_msgs_generate_messages_lisp
+[  3%] Built target roscpp_generate_messages_py
+[  3%] Built target visualization_msgs_generate_messages_lisp
+[  3%] Built target actionlib_generate_messages_lisp
+[  3%] Built target roscpp_generate_messages_nodejs
+[  3%] Built target tf2_msgs_generate_messages_eus
+[  3%] Built target roscpp_generate_messages_eus
+[  3%] Built target roscpp_generate_messages_lisp
+[  3%] Built target actionlib_generate_messages_eus
+[  3%] Built target rosgraph_msgs_generate_messages_cpp
+[  3%] Built target roscpp_generate_messages_cpp
+[  3%] Built target rosgraph_msgs_generate_messages_nodejs
+[  3%] Built target rosgraph_msgs_generate_messages_eus
+[  3%] Built target rosgraph_msgs_generate_messages_py
+[  3%] Built target actionlib_generate_messages_nodejs
+[  3%] Built target rosgraph_msgs_generate_messages_lisp
+[  3%] Built target actionlib_generate_messages_cpp
+[  3%] Built target map_msgs_generate_messages_py
+[  3%] Built target actionlib_generate_messages_py
+[  3%] Built target tf2_msgs_generate_messages_cpp
+[  3%] Built target map_msgs_generate_messages_cpp
+[  3%] Built target tf_generate_messages_py
+[  3%] Built target tf_generate_messages_nodejs
+[  3%] Built target tf_generate_messages_cpp
+[  3%] Built target tf_generate_messages_eus
+[  3%] Built target map_msgs_generate_messages_nodejs
+[  3%] Built target nav_msgs_generate_messages_nodejs
+[  3%] Built target tf_generate_messages_lisp
+[  3%] Built target dynamic_reconfigure_generate_messages_eus
+[  3%] Built target _costmap_2d_generate_messages_check_deps_PubMap
+[  3%] Built target nav_msgs_generate_messages_lisp
+[  3%] Built target map_msgs_generate_messages_eus
+[  3%] Built target dynamic_reconfigure_generate_messages_lisp
+[  3%] Built target dynamic_reconfigure_generate_messages_cpp
+[  3%] Built target dynamic_reconfigure_generate_messages_py
+[  3%] Built target dynamic_reconfigure_gencfg
+[  3%] Built target nav_msgs_generate_messages_eus
+[  3%] Built target nav_msgs_generate_messages_cpp
+[  3%] Built target nav_msgs_generate_messages_py
+[  3%] Built target costmap_2d_generate_messages_cpp
+[  3%] Built target map_msgs_generate_messages_lisp
+[  4%] Built target costmap_2d_generate_messages_eus
+[  4%] Built target costmap_2d_generate_messages_lisp
+[  6%] Built target costmap_2d_gencfg
+[  9%] Built target costmap_converter_gencfg
+[  9%] Built target _catkin_empty_exported_target
+[  9%] Built target _costmap_converter_generate_messages_check_deps_ObstacleArrayMsg
+[  9%] Built target global_planner_gencfg
+[  9%] Built target _costmap_converter_generate_messages_check_deps_ObstacleMsg
+[  9%] Built target _navfn_generate_messages_check_deps_MakeNavPlan
+[  9%] Built target base_local_planner_gencfg
+[  9%] Built target _navfn_generate_messages_check_deps_SetCostmap
+[  9%] Built target clean_robot_gencfg
+[  9%] Built target _base_local_planner_generate_messages_check_deps_Position2DInt
+[  9%] Built target std_srvs_generate_messages_eus
+[  9%] Built target std_srvs_generate_messages_cpp
+[  9%] Built target move_base_msgs_generate_messages_py
+[  9%] Built target move_base_msgs_generate_messages_lisp
+[  9%] Built target move_base_msgs_generate_messages_eus
+[  9%] Built target std_srvs_generate_messages_lisp
+[  9%] Built target move_base_msgs_generate_messages_nodejs
+[  9%] Built target move_base_msgs_generate_messages_cpp
+[  9%] Built target std_srvs_generate_messages_nodejs
+[  9%] Built target std_srvs_generate_messages_py
+[  9%] Built target teb_local_planner_gencfg
+[ 11%] Built target i18r_msgs_generate_messages_eus
+[ 11%] Built target _teb_local_planner_generate_messages_check_deps_TrajectoryMsg
+[ 12%] Built target wsfake_localization
+[ 12%] Built target _teb_local_planner_generate_messages_check_deps_TrajectoryPointMsg
+[ 12%] Built target _teb_local_planner_generate_messages_check_deps_FeedbackMsg
+[ 13%] Built target i18r_msgs_generate_messages_py
+[ 16%] Built target i18r_msgs_generate_messages_nodejs
+[ 18%] Built target i18r_msgs_generate_messages_lisp
+[ 19%] Built target i18r_msgs_generate_messages_cpp
+[ 19%] Built target costmap_2d_generate_messages_nodejs
+[ 20%] Built target cv_bridge
+[ 21%] Built target costmap_converter_generate_messages_py
+[ 22%] Built target costmap_2d_generate_messages_py
+[ 24%] Built target costmap_converter_generate_messages_eus
+[ 25%] Built target costmap_converter_generate_messages_cpp
+[ 25%] Built target costmap_converter_generate_messages_lisp
+[ 25%] Built target navfn_generate_messages_cpp
+[ 26%] Built target navfn_generate_messages_eus
+[ 27%] Built target costmap_converter_generate_messages_nodejs
+[ 28%] Built target navfn_generate_messages_lisp
+[ 29%] Built target navfn_generate_messages_nodejs
+[ 29%] Built target base_local_planner_generate_messages_py
+[ 31%] Built target base_local_planner_generate_messages_eus
+[ 31%] Built target navfn_generate_messages_py
+[ 31%] Built target base_local_planner_generate_messages_lisp
+[ 31%] Built target base_local_planner_generate_messages_cpp
+[ 32%] Built target base_local_planner_generate_messages_nodejs
+[ 34%] Built target teb_local_planner_generate_messages_py
+[ 35%] Built target teb_local_planner_generate_messages_cpp
+[ 36%] Built target teb_local_planner_generate_messages_nodejs
+[ 39%] Built target teb_local_planner_generate_messages_eus
+[ 39%] Built target teb_local_planner_generate_messages_lisp
+[ 39%] Built target i18r_msgs_generate_messages
+[ 39%] Built target costmap_converter_generate_messages
+[ 39%] Built target costmap_2d_generate_messages
+[ 40%] Built target cv_bridge_boost
+[ 40%] Built target navfn_generate_messages
+[ 40%] Built target teb_local_planner_generate_messages
+[ 40%] Built target base_local_planner_generate_messages
+[ 44%] Built target costmap_2d
+[ 47%] Built target layers
+[ 47%] Built target clear_costmap_recovery
+[ 48%] Built target navfn
+[ 55%] Built target base_local_planner
+[ 58%] Built target costmap_converter
+[ 59%] Built target point_grid
+[ 60%] Built target navfn_node
+[ 62%] Built target trajectory_planner_ros
+[ 65%] Built target global_planner
+[ 66%] Built target standalone_converter
+[ 66%] Built target rotate_recovery
+[ 67%] Built target planner
+[ 71%] Built target teb_local_planner
+Scanning dependencies of target path_planning
+[ 71%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/advsensor.cpp.o
+[ 71%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/clstate.cpp.o
+[ 71%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/global_reaction.cpp.o
+[ 72%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/indemind_map.cpp.o
+[ 73%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/clean_robot.cpp.o
+[ 73%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/manual_ros.cpp.o
+[ 74%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/sensors.cpp.o
+[ 74%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/path_planning.cpp.o
+[ 74%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/ultra_mapping.cpp.o
+[ 74%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/back_normal_state.cpp.o
+[ 74%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/nav.cpp.o
+[ 75%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/load_para.cpp.o
+[ 75%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/cpu_check.cpp.o
+[ 75%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/cliff_state.cpp.o
+[ 77%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/check_footprint.cpp.o
+[ 77%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/bumper_state.cpp.o
+[ 77%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/path_save.cpp.o
+[ 77%] Building CXX object indemind_clean_robot/CMakeFiles/path_planning.dir/src/task_based/defedge_state.cpp.o
+/root/workspace/workspace/i12r-ros/i18r_robot/src/indemind_clean_robot/src/public/check_footprint.cpp: In member function ‘int8_t CheckFootprint::footprintCost(double, double, double, const std::vector<geometry_msgs::Point_<std::allocator<void> > >&, costmap_2d::Costmap2DROS*, bool, double, double)’:
+/root/workspace/workspace/i12r-ros/i18r_robot/src/indemind_clean_robot/src/public/check_footprint.cpp:96:5: error: ‘startStamp’ was not declared in this scope
+     startStamp = nav::Now();
+     ^~~~~~~~~~
+/root/workspace/workspace/i12r-ros/i18r_robot/src/indemind_clean_robot/src/public/check_footprint.cpp:96:5: note: suggested alternative: ‘StartState’
+     startStamp = nav::Now();
+     ^~~~~~~~~~
+     StartState
+indemind_clean_robot/CMakeFiles/path_planning.dir/build.make:398: recipe for target 'indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/check_footprint.cpp.o' failed
+make[2]: *** [indemind_clean_robot/CMakeFiles/path_planning.dir/src/public/check_footprint.cpp.o] Error 1
+make[2]: *** 正在等待未完成的任务....
+CMakeFiles/Makefile2:8885: recipe for target 'indemind_clean_robot/CMakeFiles/path_planning.dir/all' failed
+make[1]: *** [indemind_clean_robot/CMakeFiles/path_planning.dir/all] Error 2
+Makefile:140: recipe for target 'all' failed
+make: *** [all] Error 2
+Base path: /root/workspace/workspace/i12r-ros/i18r_robot
+Source space: /root/workspace/workspace/i12r-ros/i18r_robot/src
+Build space: /root/workspace/workspace/i12r-ros/i18r_robot/build
+Devel space: /root/workspace/workspace/i12r-ros/i18r_robot/devel
+Install space: /root/workspace/workspace/i12r-ros/i18r_robot/install
+####
+#### Running command: "make cmake_check_build_system" in "/root/workspace/workspace/i12r-ros/i18r_robot/build"
+####
+####
+#### Running command: "make install -j6 -l6" in "/root/workspace/workspace/i12r-ros/i18r_robot/build"
+####
+Invoking "make install -j6 -l6" failed
+Build step 'Execute shell' marked build as failure
+Email was triggered for: Failure - Any
+Sending email for trigger: Failure - Any
+Sending email to: qishanqing@indemind.cn wangshuaishuai@indemind.cn liuziwen@indemind.cn
+Finished: FAILURE
