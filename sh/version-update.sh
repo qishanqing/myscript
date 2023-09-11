@@ -2,7 +2,7 @@
 
 . ~/.bashrc
 
-increment_version ()
+increment_version1 ()
 {
   declare -a part=( ${1//\./ } )
   declare    new
@@ -18,7 +18,7 @@ increment_version ()
   trigger_version=`echo -e "${new// /.}.0" | perl -npe "s,00,,g"`
 }
 
-increment_version1 ()
+increment_version ()
 {
   declare -a part=( ${1//\./ } )
   declare    new
@@ -29,6 +29,7 @@ increment_version1 ()
   part[CNTR]=${new}
   new="${part[*]}"
   version=`echo -e "${new// /.}"`
+  trigger_version=$version
 }
 
 function check(){
