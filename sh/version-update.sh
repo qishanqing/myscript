@@ -59,8 +59,8 @@ check_paremter_is_right(){
 }
 
 function Add_Tag(){
-    if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]] || [[ $gitmodules = true ]] ;then
-	echo "================================="
+    if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]] || [[ $gitmodules = true ]] || [[ ! -z $SDK_BRANCH ]];then
+	echo "add tag disabled"
     else
 	pushd $WORK_DIR/$sourcename
 	git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
@@ -222,7 +222,11 @@ function ui_update(){
     fg || true
     mkdir -p $DESKTOP_DIR
     local client_name=`ls  -t  /mnt/ftp/release/INDEMINDAPP/product_tools/${appname}-${UI_BRANCH}-client* | head -1`
-    config_project_update
+    if [[ ! -z $CONFIG_BRANCH ]];then
+	echo "config is changeing......"
+    else
+	config_project_update
+    fi
     pushd $DESKTOP_DIR
     if ! [[ -z ${UI_BRANCH} ]];then
 
@@ -255,7 +259,13 @@ function ota_project_fetch(){
 }
 
 function ota_update(){
-    ota_project_fetch
+    if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]] || [[ $gitmodules = true ]] || [[ ! -z $SDK_BRANCH ]];then
+	echo "ota is disabled"
+	return 0
+    else
+	ota_project_fetch
+    fi
+
     rsync -ar $WORK_DIR/* --exclude r[0-9]* --exclude -*  $OTA_DIR/ &&
 	(
 	    cd $OTA_DIR/
