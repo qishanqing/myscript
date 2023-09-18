@@ -28,7 +28,7 @@ increment_version ()
   new=$((part[CNTR]+carry))
   part[CNTR]=${new}
   new="${part[*]}"
-  version=`echo -e "${new// /.}"`
+  version=`echo -e "${new// /.}.0"`
   trigger_version=$version
 }
 
