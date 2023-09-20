@@ -4,3 +4,564 @@ Building remotely on [8mha:////4GJECaSXI5jaa88kGHMmbEkdCg31N4g4yVAlsCFwflHgAAAA
 [jenkins_config] $ /bin/sh -xe /tmp/jenkins15000127726763237795.sh
 + cd /home/jenkins/jenkins_home
 + git add . -f
++ git commit -m 'update config for daliy'
+[jenkins 3ee379f] update config for daliy
+ 599 files changed, 34881 insertions(+), 15040 deletions(-)
+ create mode 100644 jobs/18test_app/builds/232/build.xml
+ rename jobs/{wiki-backup/builds/217 => 18test_app/builds/232}/changelog.xml (100%)
+ create mode 100644 jobs/18test_app/builds/232/log
+ create mode 100644 jobs/18test_app/builds/232/timestamper/timestamps
+ create mode 100644 jobs/18test_app/builds/232/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/builds/5080/build.xml
+ delete mode 100644 jobs/check_mount_ftp/builds/5080/log
+ delete mode 100644 jobs/check_mount_ftp/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/builds/{5081 => 5086}/build.xml (84%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/188 => check_mount_ftp/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/builds/{5082 => 5086}/log (100%)
+ create mode 100644 jobs/check_mount_ftp/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/builds/5086/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/check_mount_ftp/builds/5087/build.xml
+ rename jobs/{test_control-planing-i18r-so-upload/builds/187 => check_mount_ftp/builds/5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/builds/{5081 => 5087}/log (100%)
+ create mode 100644 jobs/check_mount_ftp/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/builds/5087/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/builds/{5082 => 5088}/build.xml (91%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/186 => check_mount_ftp/builds/5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/builds/{5079 => 5088}/log (100%)
+ create mode 100644 jobs/check_mount_ftp/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/builds/5088/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/builds/{5078 => 5089}/build.xml (91%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/185 => check_mount_ftp/builds/5089}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/builds/{5078 => 5089}/log (100%)
+ create mode 100644 jobs/check_mount_ftp/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/builds/5089/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/builds/{5079 => 5090}/build.xml (87%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/184 => check_mount_ftp/builds/5090}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/builds/5090/log
+ create mode 100644 jobs/check_mount_ftp/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/builds/5090/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5080/build.xml
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5082/log
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5078 => 5086}/build.xml (86%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/183 => check_mount_ftp/configurations/axis-label/191/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5081 => 5086}/log (80%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5086/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5082 => 5087}/build.xml (86%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/182 => check_mount_ftp/configurations/axis-label/191/builds/5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5078 => 5087}/log (80%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5087/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5081 => 5088}/build.xml (83%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/181 => check_mount_ftp/configurations/axis-label/191/builds/5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5079 => 5088}/log (80%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5088/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5089/build.xml
+ rename jobs/{test_control-planing-i18r-so-upload/builds/180 => check_mount_ftp/configurations/axis-label/191/builds/5089}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5089/log
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5089/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5079 => 5090}/build.xml (83%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/179 => check_mount_ftp/configurations/axis-label/191/builds/5090}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{5080 => 5090}/log (80%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/5090/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5082/log
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{5082 => 5086}/build.xml (85%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/178 => check_mount_ftp/configurations/axis-label/khadas-car1/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{5078 => 5086}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5086/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/5082 => khadas-car1/builds/5087}/build.xml (80%)
+ rename jobs/{test_control-planing-i18r-so-upload/builds/177 => check_mount_ftp/configurations/axis-label/khadas-car1/builds/5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{5079 => 5087}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5087/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{5078 => 5088}/build.xml (83%)
+ rename jobs/{test-rubby-sdk-3566/builds/191 => check_mount_ftp/configurations/axis-label/khadas-car1/builds/5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{5080 => 5088}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5088/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car4/builds/5079 => khadas-car1/builds/5089}/build.xml (80%)
+ rename jobs/{jira-backup/builds/835 => check_mount_ftp/configurations/axis-label/khadas-car1/builds/5089}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{5081 => 5089}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5089/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{5079 => 5090}/build.xml (80%)
+ rename jobs/{jenkins_config/builds/176 => check_mount_ftp/configurations/axis-label/khadas-car1/builds/5090}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5090/log
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/5090/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5082/log
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/{5081 => 5086}/build.xml (86%)
+ rename jobs/{gitlab-backup/builds/699 => check_mount_ftp/configurations/axis-label/khadas-car2/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/{5078 => 5086}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5086/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/{5080 => 5087}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car6/builds/5082 => khadas-car2/builds/5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/{5079 => 5087}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5087/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car4/builds/5082 => khadas-car2/builds/5088}/build.xml (80%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car6/builds/5081 => khadas-car2/builds/5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/{5080 => 5088}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5088/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car1/builds/5080 => khadas-car2/builds/5089}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car6/builds/5080 => khadas-car2/builds/5089}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/{5081 => 5089}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5089/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car1/builds/5081 => khadas-car2/builds/5090}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car6/builds/5079 => khadas-car2/builds/5090}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5090/log
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/5090/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5082/log
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{5079 => 5086}/build.xml (86%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car6/builds/5078 => khadas-car3/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{5078 => 5086}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5086/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/5078 => khadas-car3/builds/5087}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/5082 => khadas-car3/builds/5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{5080 => 5087}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5087/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/5078 => khadas-car3/builds/5088}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/5081 => khadas-car3/builds/5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{5079 => 5088}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5088/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5089/build.xml
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/5080 => khadas-car3/builds/5089}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5089/log
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5089/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{5078 => 5090}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/5079 => khadas-car3/builds/5090}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{5081 => 5090}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/5090/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5080/build.xml
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5082/log
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5078 => 5086}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/5078 => khadas-car4/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5078 => 5086}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5086/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5087/build.xml
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5082 => 5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5081 => 5087}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5087/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5081 => 5088}/build.xml (80%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5081 => 5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5079 => 5088}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5088/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5082 => khadas-car4/builds/5089}/build.xml (80%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5080 => 5089}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5089/log
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5089/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5090/build.xml
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5079 => 5090}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{5080 => 5090}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/5090/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5080/build.xml
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5082/log
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5081 => khadas-car5/builds/5086}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car4/builds/5078 => khadas-car5/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{5078 => 5086}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5086/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/5079 => khadas-car5/builds/5087}/build.xml (82%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5082 => khadas-car5/builds/5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{5079 => 5087}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5087/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5088/build.xml
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5081 => khadas-car5/builds/5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{5080 => 5088}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5088/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{5082 => 5089}/build.xml (80%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5080 => khadas-car5/builds/5089}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{5081 => 5089}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5089/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{5079 => 5090}/build.xml (86%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5079 => khadas-car5/builds/5090}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5090/log
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/5090/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5078/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5078/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5079/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5079/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5080/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5080/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5081/build.xml
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5081/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5081/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5082/build.xml
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5082/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5082/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5078 => 5086}/build.xml (85%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5078 => khadas-car6/builds/5086}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5082 => 5086}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5086/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5086/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5080 => 5087}/build.xml (80%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/5082 => khadas-car6/builds/5087}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5078 => 5087}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5087/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5087/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5079 => 5088}/build.xml (85%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/5081 => khadas-car6/builds/5088}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5080 => 5088}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5088/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5088/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/5080 => khadas-car6/builds/5089}/build.xml (83%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/5080 => khadas-car6/builds/5089}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5081 => 5089}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5089/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5089/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/5081 => khadas-car6/builds/5090}/build.xml (77%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/5079 => khadas-car6/builds/5090}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{5079 => 5090}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5090/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/5090/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/clean_recorder_depth/builds/77/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/khadas-car2/builds/5078 => clean_recorder_depth/builds/77}/changelog.xml (100%)
+ create mode 100644 jobs/clean_recorder_depth/builds/77/log
+ create mode 100644 jobs/clean_recorder_depth/builds/77/timestamper/timestamps
+ create mode 100644 jobs/clean_recorder_depth/builds/77/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/clean_recorder_depth/builds/78/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/khadas-car1/builds/5082 => clean_recorder_depth/builds/78}/changelog.xml (100%)
+ create mode 100644 jobs/clean_recorder_depth/builds/78/log
+ create mode 100644 jobs/clean_recorder_depth/builds/78/timestamper/timestamps
+ create mode 100644 jobs/clean_recorder_depth/builds/78/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/clean_recorder_depth/builds/79/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/khadas-car1/builds/5081 => clean_recorder_depth/builds/79}/changelog.xml (100%)
+ create mode 100644 jobs/clean_recorder_depth/builds/79/log
+ create mode 100644 jobs/clean_recorder_depth/builds/79/timestamper/timestamps
+ create mode 100644 jobs/clean_recorder_depth/builds/79/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/clean_recorder_depth/builds/80/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/khadas-car1/builds/5080 => clean_recorder_depth/builds/80}/changelog.xml (100%)
+ create mode 100644 jobs/clean_recorder_depth/builds/80/log
+ create mode 100644 jobs/clean_recorder_depth/builds/80/timestamper/timestamps
+ create mode 100644 jobs/clean_recorder_depth/builds/80/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/clean_recorder_depth/builds/81/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/khadas-car1/builds/5079 => clean_recorder_depth/builds/81}/changelog.xml (100%)
+ create mode 100644 jobs/clean_recorder_depth/builds/81/log
+ create mode 100644 jobs/clean_recorder_depth/builds/81/timestamper/timestamps
+ create mode 100644 jobs/clean_recorder_depth/builds/81/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gitlab-backup/builds/699/timestamper/timestamps
+ delete mode 100644 jobs/gitlab-backup/builds/699/timestamper/timestamps.SHA-1
+ rename jobs/gitlab-backup/builds/{699 => 702}/build.xml (84%)
+ rename jobs/{check_mount_ftp/configurations/axis-label/khadas-car1/builds/5078 => gitlab-backup/builds/702}/changelog.xml (100%)
+ rename jobs/gitlab-backup/builds/{699 => 702}/log (99%)
+ create mode 100644 jobs/gitlab-backup/builds/702/timestamper/timestamps
+ create mode 100644 jobs/gitlab-backup/builds/702/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/i12r-embeded-indemd/builds/102/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/191/builds/5082 => i12r-embeded-indemd/builds/102}/changelog.xml (100%)
+ create mode 100644 jobs/i12r-embeded-indemd/builds/102/log
+ create mode 100644 jobs/i12r-embeded-indemd/builds/102/timestamper/timestamps
+ create mode 100644 jobs/i12r-embeded-indemd/builds/102/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/i12r-embeded-indemd/builds/103/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/191/builds/5081 => i12r-embeded-indemd/builds/103}/changelog.xml (100%)
+ create mode 100644 jobs/i12r-embeded-indemd/builds/103/log
+ create mode 100644 jobs/i12r-embeded-indemd/builds/103/timestamper/timestamps
+ create mode 100644 jobs/i12r-embeded-indemd/builds/103/timestamper/timestamps.SHA-1
+ rename jobs/{test_control-planing-i18r-so-upload/builds/184 => i18r-slam-calibration/builds/93}/build.xml (75%)
+ rename jobs/{check_mount_ftp/configurations/axis-label/191/builds/5080 => i18r-slam-calibration/builds/93}/changelog.xml (100%)
+ create mode 100644 jobs/i18r-slam-calibration/builds/93/log
+ create mode 100644 jobs/i18r-slam-calibration/builds/93/timestamper/timestamps
+ create mode 100644 jobs/i18r-slam-calibration/builds/93/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/i18r_robot_check/builds/495/timestamper/timestamps
+ delete mode 100644 jobs/i18r_robot_check/builds/495/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/i18r_robot_check/builds/496/timestamper/timestamps
+ delete mode 100644 jobs/i18r_robot_check/builds/496/timestamper/timestamps.SHA-1
+ rename jobs/i18r_robot_check/builds/{495 => 498}/build.xml (89%)
+ rename jobs/{i18r_tools/builds/459 => i18r_robot_check/builds/498}/changelog.xml (100%)
+ rename jobs/i18r_robot_check/builds/{496 => 498}/log (94%)
+ rename jobs/{i18r_tools/builds/459 => i18r_robot_check/builds/498}/polling.log (100%)
+ create mode 100644 jobs/i18r_robot_check/builds/498/timestamper/timestamps
+ create mode 100644 jobs/i18r_robot_check/builds/498/timestamper/timestamps.SHA-1
+ rename jobs/i18r_robot_check/builds/{496 => 499}/build.xml (88%)
+ rename jobs/{i18r_tools/builds/458 => i18r_robot_check/builds/499}/changelog.xml (100%)
+ rename jobs/i18r_robot_check/builds/{495 => 499}/log (93%)
+ rename jobs/{i18r_tools/builds/458 => i18r_robot_check/builds/499}/polling.log (100%)
+ create mode 100644 jobs/i18r_robot_check/builds/499/timestamper/timestamps
+ create mode 100644 jobs/i18r_robot_check/builds/499/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/i18r_tools/builds/458/timestamper/timestamps
+ delete mode 100644 jobs/i18r_tools/builds/458/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/i18r_tools/builds/459/timestamper/timestamps
+ delete mode 100644 jobs/i18r_tools/builds/459/timestamper/timestamps.SHA-1
+ rename jobs/i18r_tools/builds/{459 => 461}/build.xml (88%)
+ rename jobs/{i18r_robot_check/builds/496 => i18r_tools/builds/461}/changelog.xml (100%)
+ rename jobs/i18r_tools/builds/{458 => 461}/log (88%)
+ rename jobs/{i18r_robot_check/builds/496 => i18r_tools/builds/461}/polling.log (100%)
+ create mode 100644 jobs/i18r_tools/builds/461/timestamper/timestamps
+ create mode 100644 jobs/i18r_tools/builds/461/timestamper/timestamps.SHA-1
+ rename jobs/i18r_tools/builds/{458 => 462}/build.xml (89%)
+ rename jobs/{i18r_robot_check/builds/495 => i18r_tools/builds/462}/changelog.xml (100%)
+ rename jobs/i18r_tools/builds/{459 => 462}/log (86%)
+ rename jobs/{i18r_robot_check/builds/495 => i18r_tools/builds/462}/polling.log (100%)
+ create mode 100644 jobs/i18r_tools/builds/462/timestamper/timestamps
+ create mode 100644 jobs/i18r_tools/builds/462/timestamper/timestamps.SHA-1
+ rename jobs/{test_control-planing-i18r-so-upload/builds/185 => i18r_ui/builds/2235}/build.xml (69%)
+ rename jobs/{check_mount_ftp/configurations/axis-label/191/builds/5079 => i18r_ui/builds/2235}/changelog.xml (100%)
+ create mode 100644 jobs/i18r_ui/builds/2235/log
+ create mode 100644 jobs/i18r_ui/builds/2235/timestamper/timestamps
+ create mode 100644 jobs/i18r_ui/builds/2235/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/i18r_ui/builds/2236/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/191/builds/5078 => i18r_ui/builds/2236}/changelog.xml (100%)
+ create mode 100644 jobs/i18r_ui/builds/2236/log
+ create mode 100644 jobs/i18r_ui/builds/2236/timestamper/timestamps
+ create mode 100644 jobs/i18r_ui/builds/2236/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/i18r_ui/builds/2237/build.xml
+ rename jobs/{check_mount_ftp/builds/5082 => i18r_ui/builds/2237}/changelog.xml (100%)
+ create mode 100644 jobs/i18r_ui/builds/2237/log
+ create mode 100644 jobs/i18r_ui/builds/2237/timestamper/timestamps
+ create mode 100644 jobs/i18r_ui/builds/2237/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/indemind_app/builds/1590/build.xml
+ rename jobs/{check_mount_ftp/builds/5081 => indemind_app/builds/1590}/changelog.xml (100%)
+ create mode 100644 jobs/indemind_app/builds/1590/log
+ create mode 100644 jobs/indemind_app/builds/1590/timestamper/timestamps
+ create mode 100644 jobs/indemind_app/builds/1590/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/jenkins_config/builds/176/log
+ rename jobs/jenkins_config/builds/{176 => 179}/build.xml (74%)
+ rename jobs/{check_mount_ftp/builds/5080 => jenkins_config/builds/180}/changelog.xml (100%)
+ create mode 100644 jobs/jenkins_config/builds/180/log
+ delete mode 100644 jobs/jira-backup/builds/835/timestamper/timestamps
+ delete mode 100644 jobs/jira-backup/builds/835/timestamper/timestamps.SHA-1
+ rename jobs/jira-backup/builds/{835 => 838}/build.xml (79%)
+ rename jobs/{check_mount_ftp/builds/5079 => jira-backup/builds/838}/changelog.xml (100%)
+ rename jobs/jira-backup/builds/{835 => 838}/log (82%)
+ create mode 100644 jobs/jira-backup/builds/838/timestamper/timestamps
+ create mode 100644 jobs/jira-backup/builds/838/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/parker-vislam-zs/builds/249/build.xml
+ rename jobs/{check_mount_ftp/builds/5078 => parker-vislam-zs/builds/249}/changelog.xml (100%)
+ create mode 100644 jobs/parker-vislam-zs/builds/249/log
+ create mode 100644 jobs/parker-vislam-zs/builds/249/timestamper/timestamps
+ create mode 100644 jobs/parker-vislam-zs/builds/249/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/rubby_app/builds/353/build.xml
+ create mode 100644 jobs/rubby_app/builds/353/changelog.xml
+ create mode 100644 jobs/rubby_app/builds/353/log
+ create mode 100644 jobs/rubby_app/builds/353/log.html
+ create mode 100644 jobs/rubby_app/builds/353/log_content.html
+ create mode 100644 jobs/rubby_app/builds/353/log_ref.html
+ create mode 100644 jobs/rubby_app/builds/353/logdebugLinks.html
+ create mode 100644 jobs/rubby_app/builds/353/logerrorLinks.html
+ create mode 100644 jobs/rubby_app/builds/353/loginfoLinks.html
+ create mode 100644 jobs/rubby_app/builds/353/logwarningLinks.html
+ create mode 100644 jobs/rubby_app/builds/353/timestamper/timestamps
+ create mode 100644 jobs/rubby_app/builds/353/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/rubby_app/builds/354/build.xml
+ create mode 100644 jobs/rubby_app/builds/354/changelog.xml
+ create mode 100644 jobs/rubby_app/builds/354/log
+ create mode 100644 jobs/rubby_app/builds/354/log.html
+ create mode 100644 jobs/rubby_app/builds/354/log_content.html
+ create mode 100644 jobs/rubby_app/builds/354/log_ref.html
+ create mode 100644 jobs/rubby_app/builds/354/logdebugLinks.html
+ create mode 100644 jobs/rubby_app/builds/354/logerrorLinks.html
+ create mode 100644 jobs/rubby_app/builds/354/loginfoLinks.html
+ create mode 100644 jobs/rubby_app/builds/354/logwarningLinks.html
+ create mode 100644 jobs/rubby_app/builds/354/timestamper/timestamps
+ create mode 100644 jobs/rubby_app/builds/354/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/tally_app/builds/33/build.xml
+ create mode 100644 jobs/tally_app/builds/33/changelog.xml
+ create mode 100644 jobs/tally_app/builds/33/log
+ create mode 100644 jobs/tally_app/builds/33/timestamper/timestamps
+ create mode 100644 jobs/tally_app/builds/33/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test-rubby-sdk-3566/builds/191/timestamper/timestamps
+ delete mode 100644 jobs/test-rubby-sdk-3566/builds/191/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/194/build.xml
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/194/changelog.xml
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/194/log
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/194/timestamper/timestamps
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/194/timestamper/timestamps.SHA-1
+ rename jobs/test-rubby-sdk-3566/builds/{191 => 195}/build.xml (93%)
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/195/changelog.xml
+ rename jobs/test-rubby-sdk-3566/builds/{191 => 195}/log (72%)
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/195/timestamper/timestamps
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/195/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/196/build.xml
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/196/changelog.xml
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/196/log
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/196/timestamper/timestamps
+ create mode 100644 jobs/test-rubby-sdk-3566/builds/196/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/177/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/177/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/178/log
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/178/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/178/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/179/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/179/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/180/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/180/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/181/log
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/181/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/181/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/182/build.xml
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/182/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/182/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/183/build.xml
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/183/log
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/183/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/183/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/184/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/184/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/185/log
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/185/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/185/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/186/log
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/186/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/186/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/187/build.xml
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/187/log
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/187/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/187/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/188/build.xml
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/188/timestamper/timestamps
+ delete mode 100644 jobs/test_control-planing-i18r-so-upload/builds/188/timestamper/timestamps.SHA-1
+ rename jobs/test_control-planing-i18r-so-upload/builds/{180 => 199}/build.xml (96%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/199/changelog.xml
+ rename jobs/test_control-planing-i18r-so-upload/builds/{179 => 199}/log (96%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/199/timestamper/timestamps
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/199/timestamper/timestamps.SHA-1
+ rename jobs/test_control-planing-i18r-so-upload/builds/{179 => 200}/build.xml (95%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/200/changelog.xml
+ rename jobs/test_control-planing-i18r-so-upload/builds/{188 => 200}/log (95%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/200/timestamper/timestamps
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/200/timestamper/timestamps.SHA-1
+ rename jobs/test_control-planing-i18r-so-upload/builds/{178 => 201}/build.xml (92%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/201/changelog.xml
+ rename jobs/test_control-planing-i18r-so-upload/builds/{184 => 201}/log (95%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/201/timestamper/timestamps
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/201/timestamper/timestamps.SHA-1
+ rename jobs/test_control-planing-i18r-so-upload/builds/{177 => 202}/build.xml (94%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/202/changelog.xml
+ rename jobs/test_control-planing-i18r-so-upload/builds/{182 => 202}/log (95%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/202/timestamper/timestamps
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/202/timestamper/timestamps.SHA-1
+ rename jobs/test_control-planing-i18r-so-upload/builds/{186 => 203}/build.xml (96%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/203/changelog.xml
+ rename jobs/test_control-planing-i18r-so-upload/builds/{177 => 203}/log (95%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/203/timestamper/timestamps
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/203/timestamper/timestamps.SHA-1
+ rename jobs/test_control-planing-i18r-so-upload/builds/{181 => 204}/build.xml (82%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/204/changelog.xml
+ rename jobs/test_control-planing-i18r-so-upload/builds/{180 => 204}/log (95%)
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/204/timestamper/timestamps
+ create mode 100644 jobs/test_control-planing-i18r-so-upload/builds/204/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/wiki-backup/builds/217/timestamper/timestamps
+ delete mode 100644 jobs/wiki-backup/builds/217/timestamper/timestamps.SHA-1
+ rename jobs/wiki-backup/builds/{217 => 220}/build.xml (79%)
+ create mode 100644 jobs/wiki-backup/builds/220/changelog.xml
+ rename jobs/wiki-backup/builds/{217 => 220}/log (89%)
+ create mode 100644 jobs/wiki-backup/builds/220/timestamper/timestamps
+ create mode 100644 jobs/wiki-backup/builds/220/timestamper/timestamps.SHA-1
++ git push
+warning: push.default 尚未设置，它的默认值在 Git 2.0 已从 'matching'
+变更为 'simple'。若要不再显示本信息并保持传统习惯，进行如下设置：
+
+  git config --global push.default matching
+
+若要不再显示本信息并从现在开始采用新的使用习惯，设置：
+
+  git config --global push.default simple
+
+当 push.default 设置为 'matching' 后，git 将推送和远程同名的所有
+本地分支。
+
+从 Git 2.0 开始，Git 默认采用更为保守的 'simple' 模式，只推送当前
+分支到远程关联的同名分支，即 'git push' 推送当前分支。
+
+参见 'git help config' 并查找 'push.default' 以获取更多信息。
+（'simple' 模式由 Git 1.7.11 版本引入。如果您有时要使用老版本的 Git，
+为保持兼容，请用 'current' 代替 'simple'）
+
+Warning: Permanently added 'github.com,20.205.243.166' (ECDSA) to the list of known hosts.
+remote:         
+remote: GitHub found 96 vulnerabilities on qishanqing/myscript's default branch (8 critical, 45 high, 35 moderate, 8 low). To find out more, visit:        
+remote:      https://github.com/qishanqing/myscript/security/dependabot        
+remote: 
+To git@github.com:qishanqing/myscript.git
+   55a704a..3ee379f  jenkins -> jenkins
+Finished: SUCCESS
