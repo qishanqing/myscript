@@ -28,8 +28,7 @@ increment_version ()
   new=$((part[CNTR]+carry))
   part[CNTR]=${new}
   new="${part[*]}"
-  version=`echo -e "${new// /.}.0"`
-  trigger_version=$version
+  trigger_version=`echo -e "${new// /.}.0"`
 }
 
 function check(){
@@ -59,6 +58,7 @@ check_paremter_is_right(){
 }
 
 function Add_Tag(){
+    RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]] || [[ $gitmodules = true ]] || [[ ! -z $SDK_BRANCH ]];then
 	echo "add tag disabled"
     else
