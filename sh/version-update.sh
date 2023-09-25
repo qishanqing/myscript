@@ -74,6 +74,13 @@ function Add_Tag(){
 	git push origin $RELEASE_TAG -f
 	git submodule foreach git push origin $RELEASE_TAG -f
 	popd
+	pushd $CONFIG_DIR
+	git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
+	    git tag -d $RELEASE_TAG || true
+	    git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
+	)
+	git push origin $RELEASE_TAG -f || true
+	popd
     fi
     cmdb_mysql "update indemindapp set tag_name='$RELEASE_TAG',client='$ui_version_now' where build_url='$BUILD_URL';"
 }
