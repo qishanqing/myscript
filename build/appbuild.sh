@@ -34,7 +34,7 @@ init_project_env(){
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12} $CLONE_DEPTH"
     elif  [[ x$SDK_BRANCH = xcompile_12_tof ]]; then
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-compile_12_tof} $CLONE_DEPTH"
-    elif  [[ x$SDK_BRANCH =~ xclean_recorder ]]; then
+    elif  [[ x$CONFIG_BRANCH =~ xclean_recorder ]]; then
 	upload_ftp_project=CLEAN_RECORDER
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-clean_recorder} $CLONE_DEPTH"
     else
