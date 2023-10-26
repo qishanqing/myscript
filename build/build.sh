@@ -124,7 +124,7 @@ function generate_commits(){
 	sync_files="${SOURCE_DIR}/dist/*"
 	cp -ar $sync_files .
 	deploy_project $sync_files
-    elif ! [ -z $Modules_List ];then
+    elif ! [ -z $Modules_List ] || [ $JOB_NAME = i18r_g2-sdk ];then
 	bash -ex ${SOURCE_DIR}/${CLEAN_TARGET_PROJECT} ${TARGET_DIR}
     elif ! [ -z "$TARGET_PROJECT_FILE_PATH" ];then
 	mkdir -p $TARGET_PROJECT_FILE_PATH || true
