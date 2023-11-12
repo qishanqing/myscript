@@ -1,1356 +1,0 @@
-Started by user [8mha:////4PuPrVqfmiKYrDXnyWV9hICL82VuE+SZkTyZDRRZLVnbAAAAnB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgYB/dLi1CL9nMzSwszE/KzSPADZ2uqSxQAAAA==[0mliuqiaojun
-Running as SYSTEM
-Building remotely on [8mha:////4P1a+jSCm2+jQZ3VRdJij7cRjyhx4PB7el9tXnyqLu2zAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCITAOR6YlPKAAAA[0mkhadas-car4 (car4) in workspace /root/workspace/workspace/i18r_g2-slam
-[WS-CLEANUP] Deleting project workspace...
-[WS-CLEANUP] Deferred wipeout is used...
-[WS-CLEANUP] Done
-[i18r_g2-slam] $ /bin/sh -xe /tmp/jenkins15271660854552830961.sh
-+ bash /root/myscript/build/build.sh
-++ export MYSQL_PWD=123
-++ MYSQL_PWD=123
-++ export -f cmdb_mysql
-+ set -ex
-+ export -f public_project_update
-+ export -f project_build
-+ init_project_env
-++ date +%Y%m%d
-+ DT=20231109
-+ UserName=jenkins
-+ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
-+ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
-+ GIT_HOST=192.168.50.191
-++ echo repid_deploy/integration/slam_plugins
-++ awk -F/ '{print $1"%2F"$2}'
-+ CONVERT_TARGET_PROJECT=repid_deploy%2Fintegration
-++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
-++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/repid_deploy%2Fintegration
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    35  100    35    0     0    729      0 --:--:-- --:--:-- --:--:--   729
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-KeyError: 'id'
-+ SUB_PROJECT_ID=
-+ true
-+ '[' -z sm ']'
-+ SOURCE_DIR=/root/workspace/workspace/i18r_g2-slam/sm
-+ TARGET_DIR=/root/workspace/workspace/i18r_g2-slam/slam_plugins
-+ prepare_env
-++ uname -m
-+ system_platform=aarch64
-+ :
-++ grep processor
-++ cat /proc/cpuinfo
-++ uniq
-++ sort
-++ wc -l
-+ mt=-j4
-+ export COMMIT_ID_FILE=/root/workspace/workspace/i18r_g2-slam/_last_build_id
-+ COMMIT_ID_FILE=/root/workspace/workspace/i18r_g2-slam/_last_build_id
-+ export COMMIT_MSG_FILE=/root/workspace/workspace/i18r_g2-slam/_commit-msg
-+ COMMIT_MSG_FILE=/root/workspace/workspace/i18r_g2-slam/_commit-msg
-+ export COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_g2-slam/_commit-msg.tmp
-+ COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_g2-slam/_commit-msg.tmp
-+ rm -f /root/workspace/workspace/i18r_g2-slam/_last_build_id
-+ rm -f /root/workspace/workspace/i18r_g2-slam/_commit-msg
-+ rm -f /root/workspace/workspace/i18r_g2-slam/_commit-msg.tmp
-+ rm -f /root/workspace/workspace/i18r_g2-slam/result.log
-+ rm -f /root/workspace/workspace/i18r_g2-slam/no_code_change.log
-+ CLONE_DEPTH=--depth=1
-+ PUBLICBASETYPES_DIR=/root/system/I18RPublicBaseTypes
-+ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('\''i18r_g2-slam'\'','\''liuqiaojun/slam_g2'\'','\''master'\'','\''repid_deploy/integration/slam_plugins'\'','\''i18r_g2'\'',now(),'\''http://192.168.50.191:8088/job/i18r_g2-slam/14/'\'','\''khadas-car4'\'','\''liuqiaojun'\'')'
-+ set +x
-+ DOCKER_CONTAINER_I18=build-x64-18.04
-+ DOCKER_CONTAINER_RUBBY=c405
-+ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
-+ DOCKER_CONTAINER_JAVA=node
-+ JENKINS_JOB_A=mind
-+ JENKINS_JOB_B=rbn
-+ JENKINS_JOB_C=mark-check-tools
-+ JENKINS_JOB_D=java
-+ JENKINS_JOB_E=nodejs
-+ JENKINS_JOB_F=_ui
-+ JENKINS_JOB_G=i12r
-+ JENKINS_JOB_E=clean_recorder
-+ JENKINS_JOB_F=i18r
-+ [[ i18r_g2-slam =~ mind ]]
-+ '[' true = false ']'
-+ source_project_fetch
-+ git clone ssh://git@192.168.50.191:222/liuqiaojun/slam_g2 sm -b master --depth=1
-正克隆到 'sm'...
-正在检出文件:   0% (40/15589)   正在检出文件:   1% (156/15589)   正在检出文件:   2% (312/15589)   正在检出文件:   3% (468/15589)   正在检出文件:   4% (624/15589)   正在检出文件:   5% (780/15589)   正在检出文件:   6% (936/15589)   正在检出文件:   7% (1092/15589)   正在检出文件:   8% (1248/15589)   正在检出文件:   9% (1404/15589)   正在检出文件:  10% (1559/15589)   正在检出文件:  11% (1715/15589)   正在检出文件:  12% (1871/15589)   正在检出文件:  13% (2027/15589)   正在检出文件:  14% (2183/15589)   正在检出文件:  15% (2339/15589)   正在检出文件:  16% (2495/15589)   正在检出文件:  17% (2651/15589)   正在检出文件:  18% (2807/15589)   正在检出文件:  19% (2962/15589)   正在检出文件:  20% (3118/15589)   正在检出文件:  21% (3274/15589)   正在检出文件:  22% (3430/15589)   正在检出文件:  23% (3586/15589)   正在检出文件:  24% (3742/15589)   正在检出文件:  25% (3898/15589)   正在检出文件:  26% (4054/15589)   正在检出文件:  27% (4210/15589)   正在检出文件:  28% (4365/15589)   正在检出文件:  28% (4383/15589)   正在检出文件:  29% (4521/15589)   正在检出文件:  30% (4677/15589)   正在检出文件:  31% (4833/15589)   正在检出文件:  32% (4989/15589)   正在检出文件:  33% (5145/15589)   正在检出文件:  34% (5301/15589)   正在检出文件:  35% (5457/15589)   正在检出文件:  36% (5613/15589)   正在检出文件:  37% (5768/15589)   正在检出文件:  38% (5924/15589)   正在检出文件:  39% (6080/15589)   正在检出文件:  40% (6236/15589)   正在检出文件:  41% (6392/15589)   正在检出文件:  42% (6548/15589)   正在检出文件:  43% (6704/15589)   正在检出文件:  44% (6860/15589)   正在检出文件:  45% (7016/15589)   正在检出文件:  46% (7171/15589)   正在检出文件:  47% (7327/15589)   正在检出文件:  48% (7483/15589)   正在检出文件:  49% (7639/15589)   正在检出文件:  50% (7795/15589)   正在检出文件:  51% (7951/15589)   正在检出文件:  52% (8107/15589)   正在检出文件:  53% (8263/15589)   正在检出文件:  54% (8419/15589)   正在检出文件:  55% (8574/15589)   正在检出文件:  56% (8730/15589)   正在检出文件:  57% (8886/15589)   正在检出文件:  58% (9042/15589)   正在检出文件:  59% (9198/15589)   正在检出文件:  60% (9354/15589)   正在检出文件:  61% (9510/15589)   正在检出文件:  62% (9666/15589)   正在检出文件:  63% (9822/15589)   正在检出文件:  64% (9977/15589)   正在检出文件:  65% (10133/15589)   正在检出文件:  66% (10289/15589)   正在检出文件:  67% (10445/15589)   正在检出文件:  68% (10601/15589)   正在检出文件:  69% (10757/15589)   正在检出文件:  70% (10913/15589)   正在检出文件:  71% (11069/15589)   正在检出文件:  72% (11225/15589)   正在检出文件:  73% (11380/15589)   正在检出文件:  74% (11536/15589)   正在检出文件:  75% (11692/15589)   正在检出文件:  76% (11848/15589)   正在检出文件:  77% (12004/15589)   正在检出文件:  78% (12160/15589)   正在检出文件:  79% (12316/15589)   正在检出文件:  80% (12472/15589)   正在检出文件:  81% (12628/15589)   正在检出文件:  82% (12783/15589)   正在检出文件:  83% (12939/15589)   正在检出文件:  84% (13095/15589)   正在检出文件:  85% (13251/15589)   正在检出文件:  86% (13407/15589)   正在检出文件:  87% (13563/15589)   正在检出文件:  88% (13719/15589)   正在检出文件:  89% (13875/15589)   正在检出文件:  90% (14031/15589)   正在检出文件:  91% (14186/15589)   正在检出文件:  92% (14342/15589)   正在检出文件:  93% (14498/15589)   正在检出文件:  94% (14654/15589)   正在检出文件:  95% (14810/15589)   正在检出文件:  96% (14966/15589)   正在检出文件:  97% (15122/15589)   正在检出文件:  98% (15278/15589)   正在检出文件:  99% (15434/15589)   正在检出文件: 100% (15589/15589)   正在检出文件: 100% (15589/15589), 完成.
-+ target_project_update
-+ rm -rf /root/workspace/workspace/i18r_g2-slam/slam_plugins
-+ target_project_fetch
-+ git clone ssh://git@192.168.50.191:222/repid_deploy/integration/slam_plugins -b i18r_g2 --depth=1
-正克隆到 'slam_plugins'...
-正在检出文件:   7% (30/396)   正在检出文件:   8% (32/396)   正在检出文件:   9% (36/396)   正在检出文件:  10% (40/396)   正在检出文件:  11% (44/396)   正在检出文件:  12% (48/396)   正在检出文件:  13% (52/396)   正在检出文件:  14% (56/396)   正在检出文件:  15% (60/396)   正在检出文件:  16% (64/396)   正在检出文件:  17% (68/396)   正在检出文件:  18% (72/396)   正在检出文件:  19% (76/396)   正在检出文件:  20% (80/396)   正在检出文件:  21% (84/396)   正在检出文件:  22% (88/396)   正在检出文件:  23% (92/396)   正在检出文件:  24% (96/396)   正在检出文件:  25% (99/396)   正在检出文件:  26% (103/396)   正在检出文件:  27% (107/396)   正在检出文件:  28% (111/396)   正在检出文件:  29% (115/396)   正在检出文件:  30% (119/396)   正在检出文件:  31% (123/396)   正在检出文件:  32% (127/396)   正在检出文件:  33% (131/396)   正在检出文件:  34% (135/396)   正在检出文件:  35% (139/396)   正在检出文件:  36% (143/396)   正在检出文件:  37% (147/396)   正在检出文件:  38% (151/396)   正在检出文件:  39% (155/396)   正在检出文件:  40% (159/396)   正在检出文件:  41% (163/396)   正在检出文件:  42% (167/396)   正在检出文件:  43% (171/396)   正在检出文件:  44% (175/396)   正在检出文件:  45% (179/396)   正在检出文件:  46% (183/396)   正在检出文件:  47% (187/396)   正在检出文件:  48% (191/396)   正在检出文件:  49% (195/396)   正在检出文件:  50% (198/396)   正在检出文件:  51% (202/396)   正在检出文件:  52% (206/396)   正在检出文件:  53% (210/396)   正在检出文件:  54% (214/396)   正在检出文件:  55% (218/396)   正在检出文件:  56% (222/396)   正在检出文件:  57% (226/396)   正在检出文件:  58% (230/396)   正在检出文件:  59% (234/396)   正在检出文件:  60% (238/396)   正在检出文件:  61% (242/396)   正在检出文件:  62% (246/396)   正在检出文件:  63% (250/396)   正在检出文件:  64% (254/396)   正在检出文件:  65% (258/396)   正在检出文件:  66% (262/396)   正在检出文件:  67% (266/396)   正在检出文件:  68% (270/396)   正在检出文件:  69% (274/396)   正在检出文件:  70% (278/396)   正在检出文件:  71% (282/396)   正在检出文件:  72% (286/396)   正在检出文件:  73% (290/396)   正在检出文件:  74% (294/396)   正在检出文件:  75% (297/396)   正在检出文件:  76% (301/396)   正在检出文件:  77% (305/396)   正在检出文件:  78% (309/396)   正在检出文件:  79% (313/396)   正在检出文件:  80% (317/396)   正在检出文件:  81% (321/396)   正在检出文件:  82% (325/396)   正在检出文件:  83% (329/396)   正在检出文件:  84% (333/396)   正在检出文件:  85% (337/396)   正在检出文件:  86% (341/396)   正在检出文件:  87% (345/396)   正在检出文件:  88% (349/396)   正在检出文件:  89% (353/396)   正在检出文件:  90% (357/396)   正在检出文件:  91% (361/396)   正在检出文件:  92% (365/396)   正在检出文件:  93% (369/396)   正在检出文件:  94% (373/396)   正在检出文件:  95% (377/396)   正在检出文件:  96% (381/396)   正在检出文件:  97% (385/396)   正在检出文件:  98% (389/396)   正在检出文件:  99% (393/396)   正在检出文件: 100% (396/396)   正在检出文件: 100% (396/396), 完成.
-+ insert_db
-+ pushd /root/workspace/workspace/i18r_g2-slam/sm
-~/workspace/workspace/i18r_g2-slam/sm ~/workspace/workspace/i18r_g2-slam
-++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''liuqiaojun/slam_g2'\'' and source_branch='\''master'\'' and target_project='\''repid_deploy/integration/slam_plugins'\'' and target_branch='\''i18r_g2'\'' and status='\''0'\'' and job_name='\''i18r_g2-slam'\'' order by id desc limit 1;'
-++ set +x
-+ version='first_commit_id
-101f351'
-++ awk -F ' ' '{print $2}'
-++ echo first_commit_id 101f351
-+ version=101f351
-++ git log -1 --pretty=format:%h
-+ first_commit_id_now=4f2f190
-+ cmdb_mysql 'update prebuild set first_commit_id='\''4f2f190'\'' where build_url='\''http://192.168.50.191:8088/job/i18r_g2-slam/14/'\'';'
-+ set +x
-+ popd
-~/workspace/workspace/i18r_g2-slam
-+ [[ aarch64 =~ x86_64 ]]
-+ [[ i18r_g2-slam =~ rbn ]]
-+ [[ i18r_g2-slam =~ mind ]]
-+ public_project_update
-+ rm -rf /root/system/I18RPublicBaseTypes
-+ [[ i18r_g2-slam =~ i12r ]]
-+ [[ i18r_g2-slam =~ clean_recorder ]]
-+ [[ i18r_g2-slam =~ i18r ]]
-+ git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git /root/system/I18RPublicBaseTypes -b develop --depth=1
-正克隆到 '/root/system/I18RPublicBaseTypes'...
-+ public_project_todo
-+ pushd /root/system/I18RPublicBaseTypes
-~/system/I18RPublicBaseTypes ~/workspace/workspace/i18r_g2-slam
-+ ./install.sh
--- The C compiler identification is GNU 7.5.0
--- The CXX compiler identification is GNU 7.5.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- CMAKE_INSTALL_PREFIX: /usr/local.
--- I18R_INCLUDE_INSTALL_DIR: /usr/local/include/I18RPublicBaseTypes.
--- CMAKE_CURRENT_SOURCE_DIR: /root/system/I18RPublicBaseTypes.
--- Configuring done
--- Generating done
--- Build files have been written to: /root/system/I18RPublicBaseTypes/build
-sudo: 无法解析主机：car4
-Install the project...
--- Install configuration: "Release"
--- Installing: /usr/local/include/I18RPublicBaseTypes/base_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/cloud_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/marker_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/old_hmi_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/swr_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/Data.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorInfo.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorMessage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/FormatData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/InternalErrorCode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/Module.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/ThreadInfo.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/Time.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/WorkStatus.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Cameara2Camera.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Lidar.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Odometry.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Tof.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Imu2Odometry.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Transform.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/cloud/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/PointCloud.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/autoClean_property.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/clean_path.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/current_type.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/drop_event.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/grass_boundary.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/pose.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_event.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_status.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_mode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_runs.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/CalibrationImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthMatrix.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthPointCloud.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/GrassBoundary.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/LightAdjustment.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/SourceImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/DetectorResult.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/class.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detect_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detector_param.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/error_code.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/instance.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/map.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/EulerAngle.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Point.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Quaternion.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/gen.sh
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImu.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgHotplug.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImu.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgParam.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameter.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameterOld.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/IMUParameter.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/ModuleInfo.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/MoudleAllParam.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/Resolution.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SDebugSet.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SlamParameter.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/StreamType.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/marker/MarkerState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/marker/state.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/AFI.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Basic.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Config.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Log.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Route.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Work.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/BumperEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CleanEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CtrlType.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/DropEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/EncoderData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/LaserScan.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/PointCloud2.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/RobotChassisEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/SonyCamera.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/StartStopSwitchEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthImg.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofGrayImg.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofPointCloud.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UltraData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UsbHotplug.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityCmd.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server/DataRateState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server/SystemState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server/UserOperation.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/Pose.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamResult.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorCode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorMessage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorTable.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/IceErrorCode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/error_maps.yaml
-sudo: 无法解析主机：car4
-+ popd
-~/workspace/workspace/i18r_g2-slam
-+ public_i18rutilitysubmodule_update
-+ pushd /root/system/i18rutilitysubmodule
-~/system/i18rutilitysubmodule ~/workspace/workspace/i18r_g2-slam
-+ git checkout ./
-+ git clean -xdf ./
-+ git pull origin develop
-来自 ssh://192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule
- * branch            develop    -> FETCH_HEAD
-已经是最新的。
-+ ./install.sh
-sudo: 无法解析主机：car4
-+ popd
-~/workspace/workspace/i18r_g2-slam
-+ project_build
-+ pushd /root/workspace/workspace/i18r_g2-slam/sm
-~/workspace/workspace/i18r_g2-slam/sm ~/workspace/workspace/i18r_g2-slam
-+ project_init_remote
-++ find -type f -name sync_submodules.sh
-+ sf=
-+ '[' -z ']'
-+ git submodule update --init --recursive
-子模组 'thirdparty/messages'（http://192.168.50.191:85/repid_deploy/source/messages.git）未对路径 'thirdparty/messages' 注册
-正克隆到 '/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/messages'...
-子模组路径 'thirdparty/messages'：检出 '24a59e60dc28730ab66909919cede1b4ab032089'
-+ git submodule update --remote
-子模组路径 'thirdparty/messages'：检出 'dbdd91d2ba02ed52cb814dfb14de4d56bff5fca8'
-+ sed -i 's/make -j[0-9].*/make -j4/g' build_g2.sh
-+ '[' x4f2f190 == x101f351 ']'
-+ '[' -z ']'
-+ bash -ex build_g2.sh
-+ git submodule update --init --recursive
-子模组路径 'thirdparty/messages'：检出 '24a59e60dc28730ab66909919cede1b4ab032089'
-+ git submodule update --remote
-子模组路径 'thirdparty/messages'：检出 'dbdd91d2ba02ed52cb814dfb14de4d56bff5fca8'
-+ echo 'Configuring and building Thirdparty/DBoW2 ...'
-Configuring and building Thirdparty/DBoW2 ...
-+ cd thirdparty/DBoW2
-+ mkdir build
-+ cd build
-+ cmake .. -DCMAKE_BUILD_TYPE=Release
--- The C compiler identification is GNU 7.5.0
--- The CXX compiler identification is GNU 7.5.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Use the imported target: /usr/include/eigen3
--- Configuring done
--- Generating done
--- Build files have been written to: /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DBoW2/build
-+ make -j4
-Scanning dependencies of target DBoW2
-[ 11%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/BowVector.cpp.o
-[ 22%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FORB.cpp.o
-[ 33%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/ScoringObject.cpp.o
-[ 44%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FeatureVector.cpp.o
-[ 55%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FSuperPoint256.cpp.o
-[ 66%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FSuperPoint.cpp.o
-[ 77%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Random.cpp.o
-[ 88%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Timestamp.cpp.o
-[100%] Linking CXX shared library ../lib/libDBoW2.so
-[100%] Built target DBoW2
-+ cd ../../DLib
-+ echo 'Configuring and building thirdparty/DLib ...'
-Configuring and building thirdparty/DLib ...
-+ mkdir build
-+ cd build
-+ cmake .. -DCMAKE_BUILD_TYPE=Release
--- The C compiler identification is GNU 7.5.0
--- The CXX compiler identification is GNU 7.5.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Found OpenCV: /usr/local (found suitable version "3.4.3", minimum required is "3") 
--- Configuring done
--- Generating done
--- Build files have been written to: /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DLib/build
-+ make -j4
-Scanning dependencies of target DLib
-[  3%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BRIEF.cpp.o
-[  6%] Building CXX object CMakeFiles/DLib.dir/src/DVision/FSolver.cpp.o
-[ 10%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PLYFile.cpp.o
-[ 13%] Building CXX object CMakeFiles/DLib.dir/src/DVision/ImageFunctions.cpp.o
-[ 17%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PatchFile.cpp.o
-[ 20%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BundleCamera.cpp.o
-[ 24%] Building CXX object CMakeFiles/DLib.dir/src/DVision/HSolver.cpp.o
-[ 27%] Building CXX object CMakeFiles/DLib.dir/src/DVision/Matches.cpp.o
-[ 31%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PMVSCamera.cpp.o
-[ 34%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PixelPointFile.cpp.o
-[ 37%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Drawing.cpp.o
-[ 41%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Geometry.cpp.o
-[ 44%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Mat.cpp.o
-[ 48%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Types.cpp.o
-[ 51%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/GUI.cpp.o
-[ 55%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/IO.cpp.o
-[ 58%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Transformations.cpp.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DLib/src/DUtilsCV/GUI.cpp: In static member function ‘static int DUtilsCV::GUI::showImage(const cv::Mat&, bool, DUtilsCV::GUI::tWinHandler*, int)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DLib/src/DUtilsCV/GUI.cpp:56:10: warning: comparison is always false due to limited range of data type [-Wtype-limits]
-   if(key == -1) key = NO_KEY;
-      ~~~~^~~~~
-[ 62%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/BinaryFile.cpp.o
-[ 65%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/DebugFunctions.cpp.o
-[ 68%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LUT.cpp.o
-[ 72%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Profiler.cpp.o
-[ 75%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/StringFunctions.cpp.o
-[ 79%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Timestamp.cpp.o
-[ 82%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/ConfigFile.cpp.o
-[ 86%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/FileFunctions.cpp.o
-[ 89%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LineFile.cpp.o
-[ 93%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Random.cpp.o
-[ 96%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/TimeManager.cpp.o
-[100%] Linking CXX shared library libDLib.so
-[100%] Built target DLib
-+ cd ../../gtsam_source
-+ echo 'Configuring and building Thirdparty/gtsam_source ...'
-Configuring and building Thirdparty/gtsam_source ...
-+ mkdir build
-+ cd build
-+ cmake -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF -DBUILD_SHARED_LIBS=ON -DGTSAM_USE_SYSTEM_EIGEN=ON -DGTSAM_BUILD_TESTS=OFF -DGTSAM_BUILD_EXAMPLES_ALWAYS=OFF -DGTSAM_POSE3_EXPMAP=ON -DGTSAM_ROT3_EXPMAP=ON -DCMAKE_BUILD_TYPE=Release ..
--- The CXX compiler identification is GNU 7.5.0
--- The C compiler identification is GNU 7.5.0
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- GTSAM_SOURCE_ROOT_DIR: [/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source]
--- Looking for pthread.h
--- Looking for pthread.h - found
--- Looking for pthread_create
--- Looking for pthread_create - not found
--- Looking for pthread_create in pthreads
--- Looking for pthread_create in pthreads - not found
--- Looking for pthread_create in pthread
--- Looking for pthread_create in pthread - found
--- Found Threads: TRUE  
--- Found Boost: /usr/include (found suitable version "1.65.1", minimum required is "1.43") found components:  serialization system filesystem thread program_options date_time timer chrono regex atomic 
-Ignoring Boost restriction on optional lvalue assignment from rvalues
--- Found TBB: /usr/include (found suitable version "2017.0", minimum required is "4.4") found components:  tbb tbbmalloc 
--- Could NOT find MKL (missing: MKL_INCLUDE_DIR MKL_LIBRARIES) 
--- Found OpenMP_C: -fopenmp (found version "4.5") 
--- Found OpenMP_CXX: -fopenmp (found version "4.5") 
--- Found OpenMP: TRUE (found version "4.5")  
--- Found Eigen3: /usr/include/eigen3 (Required is at least version "2.91.0") 
--- Found Eigen version: 3.3.4
--- Building 3rdparty
--- Looking for execinfo.h
--- Looking for execinfo.h - found
--- Looking for getline
--- Looking for getline - found
--- checking for thread-local storage - found
--- Could NOT find GeographicLib (missing: GeographicLib_LIBRARY_DIRS GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS) 
--- Building base
--- Building geometry
--- Building inference
--- Building symbolic
--- Building discrete
--- Building linear
--- Building nonlinear
--- Building sam
--- Building sfm
--- Building slam
--- Building smart
--- Building navigation
--- GTSAM Version: 4.0.2
--- Install prefix: /usr/local
--- Building GTSAM - shared: ON
--- Building base_unstable
--- Building geometry_unstable
--- Building linear_unstable
--- Building discrete_unstable
--- Building dynamics_unstable
--- Building nonlinear_unstable
--- Building slam_unstable
--- Building partition_unstable
--- GTSAM_UNSTABLE Version: 4.0.2
--- Install prefix: /usr/local
--- Wrote /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/build/GTSAMConfig.cmake
--- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
--- ===============================================================
--- ================  Configuration Options  ======================
---   CMAKE_CXX_COMPILER_ID type     : GNU
---   CMAKE_CXX_COMPILER_VERSION     : 7.5.0
---   CMake version                  : 3.10.2
---   CMake generator                : Unix Makefiles
---   CMake build tool               : /usr/bin/make
--- Build flags                                               
---   Build Tests                    : Disabled
---   Build examples with 'make all' : Disabled
---   Build timing scripts with 'make all': Disabled
---   Build shared GTSAM libraries   : Enabled
---   Put build type in library name : Enabled
---   Build libgtsam_unstable        : Enabled
---   Build for native architecture  : Disabled
---   Build type                     : Release
---   C compilation flags            :  -O3 -DNDEBUG
---   C++ compilation flags          :  -O3 -DNDEBUG
---  GTSAM_COMPILE_FEATURES_PUBLIC                    : cxx_std_11
---  GTSAM_COMPILE_OPTIONS_PRIVATE                    : -Wall;$<$<CONFIG:Debug>:-g;-fno-inline>;$<$<CONFIG:Release>:-O3>;$<$<CONFIG:Timing>:-g;-O3>;$<$<CONFIG:Profiling>:-O3>;$<$<CONFIG:RelWithDebInfo>:-g;-O3>;-Wno-unused-local-typedefs
---  GTSAM_COMPILE_OPTIONS_PUBLIC                     : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE                : $<$<CONFIG:Debug>:_DEBUG;EIGEN_INITIALIZE_MATRICES_BY_NAN>;$<$<CONFIG:Release>:NDEBUG>;$<$<CONFIG:Timing>:NDEBUG;ENABLE_TIMING>;$<$<CONFIG:Profiling>:NDEBUG>;$<$<CONFIG:RelWithDebInfo>:NDEBUG>
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC                 : BOOST_OPTIONAL_ALLOW_BINDING_TO_RVALUES;BOOST_OPTIONAL_CONFIG_ALLOW_BINDING_TO_RVALUES
---  GTSAM_COMPILE_OPTIONS_PRIVATE_DEBUG              : -g;-fno-inline
---  GTSAM_COMPILE_OPTIONS_PUBLIC_DEBUG               : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_DEBUG          : _DEBUG;EIGEN_INITIALIZE_MATRICES_BY_NAN
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_DEBUG           : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_RELEASE            : -O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_RELEASE             : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_RELEASE        : NDEBUG
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELEASE         : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_TIMING             : -g;-O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_TIMING              : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_TIMING         : NDEBUG;ENABLE_TIMING
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_TIMING          : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_PROFILING          : -O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_PROFILING           : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_PROFILING      : NDEBUG
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_PROFILING       : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_RELWITHDEBINFO     : -g;-O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_RELWITHDEBINFO      : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_RELWITHDEBINFO : NDEBUG
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELWITHDEBINFO  : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_MINSIZEREL         : 
---  GTSAM_COMPILE_OPTIONS_PUBLIC_MINSIZEREL          : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_MINSIZEREL     : 
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_MINSIZEREL      : 
---   Use System Eigen               : ON (Using version: 3.3.4)
---   Use Intel TBB                  : Yes
---   Eigen will use MKL             : MKL not found
---   Eigen will use MKL and OpenMP  : OpenMP found but GTSAM_WITH_EIGEN_MKL is disabled
---   Default allocator              : TBB
---   Build with ccache              : No
--- Packaging flags                                               
---   CPack Source Generator         : TGZ
---   CPack Generator                : TGZ
--- GTSAM flags                                               
---   Quaternions as default Rot3     : Disabled
---   Runtime consistency checking    : Disabled
---   Rot3 retract is full ExpMap     : Enabled
---   Pose3 retract is full ExpMap    : Enabled
---   Deprecated in GTSAM 4 allowed   : Enabled
---   Point3 is typedef to Vector3    : Disabled
---   Metis-based Nested Dissection   : Enabled
---   Use tangent-space preintegration: Enabled
---   Build Wrap                     : Enabled
--- MATLAB toolbox flags                                      
---   Install matlab toolbox         : Disabled
--- Cython toolbox flags                                      
---   Install Cython toolbox         : Disabled
--- ===============================================================
--- Configuring done
--- Generating done
--- Build files have been written to: /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/build
-+ make -j4
-Scanning dependencies of target CppUnitLite
-Scanning dependencies of target wrap_lib
-[  0%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/TestRegistry.cpp.o
-[  0%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/Test.cpp.o
-[  0%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Argument.cpp.o
-Scanning dependencies of target metis
-[  0%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/b64.c.o
-[  0%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/blas.c.o
-[  1%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/csr.c.o
-[  3%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/TestResult.cpp.o
-[  3%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/error.c.o
-[  3%] Linking CXX static library libCppUnitLite.a
-[  3%] Built target CppUnitLite
-[  3%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/evaluate.c.o
-[  3%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/fkvkselect.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/fs.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/getopt.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/gkregex.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/graph.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/htable.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/io.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/itemsets.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/mcore.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/memory.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/omp.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/pqueue.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/pdb.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/random.c.o
-[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/rw.c.o
-[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/seq.c.o
-[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/sort.c.o
-[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/string.c.o
-[ 11%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/timers.c.o
-[ 11%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/tokenizer.c.o
-[ 11%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/util.c.o
-[ 11%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/auxapi.c.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/balance.c.o
-[ 13%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Class.cpp.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/bucketsort.c.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/checkgraph.c.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/coarsen.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/compress.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/contig.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/debug.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/fm.c.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/fortran.c.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/frename.c.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/gklib.c.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/graph.c.o
-[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/initpart.c.o
-[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/kmetis.c.o
-[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/kwayfm.c.o
-[ 18%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/kwayrefine.c.o
-[ 18%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Constructor.cpp.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mcutil.c.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mesh.c.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/meshpart.c.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/minconn.c.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mincover.c.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mmd.c.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/ometis.c.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/options.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/parmetis.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/pmetis.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/refine.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/separator.c.o
-[ 25%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/sfm.c.o
-[ 25%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/srefine.c.o
-[ 25%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/stat.c.o
-[ 25%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/timing.c.o
-[ 26%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/util.c.o
-[ 26%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/wspace.c.o
-[ 28%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Deconstructor.cpp.o
-[ 28%] Linking C shared library libmetis.so
-[ 28%] Built target metis
-Scanning dependencies of target gtsam
-[ 28%] Building C object gtsam/CMakeFiles/gtsam.dir/3rdparty/CCOLAMD/Source/ccolamd.c.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/gtsam/3rdparty/CCOLAMD/Source/ccolamd.c: In function ‘ccolamd2’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/gtsam/3rdparty/CCOLAMD/Source/ccolamd.c:1563:9: warning: variable ‘cs’ set but not used [-Wunused-but-set-variable]
-     Int cs ;
-         ^~
-[ 28%] Building C object gtsam/CMakeFiles/gtsam.dir/3rdparty/SuiteSparse_config/SuiteSparse_config.c.o
-[ 30%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/DSFVector.cpp.o
-[ 30%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/FileWriter.cpp.o
-[ 30%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/FullyOverloadedFunction.cpp.o
-[ 30%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/Matrix.cpp.o
-[ 30%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Function.cpp.o
-[ 31%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/GlobalFunction.cpp.o
-[ 31%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Method.cpp.o
-[ 31%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/MethodBase.cpp.o
-[ 31%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Module.cpp.o
-[ 33%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Qualified.cpp.o
-[ 33%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/ReturnType.cpp.o
-[ 33%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/ReturnValue.cpp.o
-[ 33%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/StaticMethod.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/TemplateInstantiationTypedef.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/TemplateMethod.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/TypeAttributesTable.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/utilities.cpp.o
-[ 35%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/SymmetricBlockMatrix.cpp.o
-[ 35%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/Vector.cpp.o
-[ 36%] Linking CXX static library libwrap_lib.a
-[ 36%] Built target wrap_lib
-[ 38%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/VerticalBlockMatrix.cpp.o
-[ 38%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/cholesky.cpp.o
-[ 38%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/debug.cpp.o
-[ 38%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/timing.cpp.o
-[ 40%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3Bundler.cpp.o
-[ 40%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3DS2.cpp.o
-[ 40%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3DS2_Base.cpp.o
-[ 40%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3Unified.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3_S2.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3_S2Stereo.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/CalibratedCamera.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cyclic.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/EssentialMatrix.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/OrientedPlane3.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Point2.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Point3.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Pose2.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Pose3.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot2.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot3.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot3M.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SO3.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SimpleCamera.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/StereoCamera.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/StereoPoint2.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Unit3.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/triangulation.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/BayesTree.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Factor.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Key.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/LabeledSymbol.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Ordering.cpp.o
-Scanning dependencies of target wrap
-[ 50%] Building CXX object wrap/CMakeFiles/wrap.dir/wrap.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Symbol.cpp.o
-[ 51%] Linking CXX executable wrap
-[ 51%] Built target wrap
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/VariableIndex.cpp.o
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/VariableSlots.cpp.o
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicBayesNet.cpp.o
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicBayesTree.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicConditional.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicEliminationTree.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicFactor.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicFactorGraph.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicISAM.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicJunctionTree.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DecisionTreeFactor.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteBayesNet.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteBayesTree.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteConditional.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteEliminationTree.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteFactor.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteFactorGraph.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteJunctionTree.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteKey.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/Potentials.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/Signature.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/ConjugateGradientSolver.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Errors.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianBayesNet.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianBayesTree.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianConditional.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianDensity.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianEliminationTree.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianFactorGraph.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianISAM.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianJunctionTree.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/HessianFactor.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/IterativeSolver.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/JacobianFactor.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/KalmanFilter.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/NoiseModel.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/PCGSolver.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Preconditioner.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Sampler.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Scatter.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphBuilder.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphPreconditioner.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphSolver.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/VectorValues.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/iterative.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/linearExceptions.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/DoglegOptimizer.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/DoglegOptimizerImpl.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/GaussNewtonOptimizer.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2-impl.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2Clique.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2Params.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LevenbergMarquardtOptimizer.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LevenbergMarquardtParams.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LinearContainerFactor.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/Marginals.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearConjugateGradientOptimizer.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearFactor.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearFactorGraph.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearISAM.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearOptimizer.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearOptimizerParams.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/Values.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/EssentialMatrixConstraint.cpp.o
-[ 80%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/InitializePose3.cpp.o
-[ 80%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/OrientedPlane3Factor.cpp.o
-[ 80%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/dataset.cpp.o
-[ 80%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/lago.cpp.o
-[ 81%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/AHRSFactor.cpp.o
-[ 81%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/AttitudeFactor.cpp.o
-[ 81%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/CombinedImuFactor.cpp.o
-[ 81%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/GPSFactor.cpp.o
-[ 83%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ImuBias.cpp.o
-[ 83%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ImuFactor.cpp.o
-[ 83%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ManifoldPreintegration.cpp.o
-[ 83%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/NavState.cpp.o
-[ 85%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/PreintegratedRotation.cpp.o
-[ 85%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/PreintegrationBase.cpp.o
-[ 85%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/PreintegrationParams.cpp.o
-[ 85%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/ScenarioRunner.cpp.o
-[ 86%] Building CXX object gtsam/CMakeFiles/gtsam.dir/navigation/TangentPreintegration.cpp.o
-[ 86%] Linking CXX shared library libgtsam.so
-[ 86%] Built target gtsam
-Scanning dependencies of target gtsam_unstable
-[ 86%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/geometry/Pose3Upright.cpp.o
-[ 86%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/base/Dummy.cpp.o
-[ 88%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/geometry/Event.cpp.o
-[ 88%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/geometry/BearingS2.cpp.o
-[ 88%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/geometry/SimPolygon2D.cpp.o
-[ 88%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/geometry/SimWall2D.cpp.o
-[ 88%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/geometry/Similarity3.cpp.o
-[ 90%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/linear/LPInitSolver.cpp.o
-[ 90%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/linear/LPSolver.cpp.o
-[ 90%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/linear/QPSParser.cpp.o
-[ 90%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/linear/QPSolver.cpp.o
-[ 91%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/discrete/AllDiff.cpp.o
-[ 91%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/discrete/CSP.cpp.o
-[ 91%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/discrete/Domain.cpp.o
-[ 91%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/discrete/Scheduler.cpp.o
-[ 93%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/discrete/SingleValue.cpp.o
-[ 93%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/dynamics/PoseRTV.cpp.o
-[ 93%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/dynamics/SimpleHelicopter.cpp.o
-[ 93%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/BatchFixedLagSmoother.cpp.o
-[ 95%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/ConcurrentBatchSmoother.cpp.o
-[ 95%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/ConcurrentBatchFilter.cpp.o
-[ 95%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/ConcurrentFilteringAndSmoothing.cpp.o
-[ 95%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/ConcurrentIncrementalFilter.cpp.o
-[ 96%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/ConcurrentIncrementalSmoother.cpp.o
-[ 96%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/FixedLagSmoother.cpp.o
-[ 96%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/IncrementalFixedLagSmoother.cpp.o
-[ 96%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/nonlinear/LinearizedFactor.cpp.o
-[ 98%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/slam/AHRS.cpp.o
-[ 98%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/slam/DummyFactor.cpp.o
-[ 98%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/slam/Mechanization_bRn2.cpp.o
-[ 98%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/slam/RelativeElevationFactor.cpp.o
-[100%] Building CXX object gtsam_unstable/CMakeFiles/gtsam_unstable.dir/partition/GenericGraph.cpp.o
-[100%] Linking CXX shared library libgtsam_unstable.so
-[100%] Built target gtsam_unstable
-+ cd ../../cartographer_source/
-+ echo 'Configuring and building thirdparty/cartographer_source ...'
-Configuring and building thirdparty/cartographer_source ...
-+ mkdir build
-+ cd build
-+ cmake .. -DCMAKE_BUILD_TYPE=Release
--- The C compiler identification is GNU 7.5.0
--- The CXX compiler identification is GNU 7.5.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
-gtsam_include_path/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam/usr/local/include/
-gtsam_lib_path/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam/usr/local/lib/libgtsam.so
--- Build type: Release
-文件 /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/build/AllFiles.cmake 和 - 不同
--- Found PythonInterp: /usr/bin/python (found version "2.7.17") 
--- Looking for pthread.h
--- Looking for pthread.h - found
--- Looking for pthread_create
--- Looking for pthread_create - not found
--- Looking for pthread_create in pthreads
--- Looking for pthread_create in pthreads - not found
--- Looking for pthread_create in pthread
--- Looking for pthread_create in pthread - found
--- Found Threads: TRUE  
--- Found GMock: gmock_main;-lpthread  
--- Boost version: 1.65.1
--- Found the following Boost libraries:
---   iostreams
---   regex
--- Found installed version of Eigen: /usr/lib/cmake/eigen3
--- Found required Ceres dependency: Eigen version 3.3.4 in /usr/include/eigen3
--- Found required Ceres dependency: glog
--- Found installed version of gflags: /usr/lib/aarch64-linux-gnu/cmake/gflags
--- Detected gflags version: 2.2.1
--- Found required Ceres dependency: gflags
--- Found Ceres version: 1.13.0 installed in: /usr/local with components: [LAPACK, SuiteSparse, SparseLinearAlgebraLibrary, CXSparse, SchurSpecializations, OpenMP]
--- Found Lua: /usr/lib/aarch64-linux-gnu/liblua5.2.so;/usr/lib/aarch64-linux-gnu/libm.so (found version "5.2.4") 
--- Found Protobuf: /usr/local/lib/libprotobuf.a;-lpthread (found suitable version "3.4.0", minimum required is "3.0.0") 
--- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
--- Checking for one of the modules 'cairo>=1.12.16'
--- Could NOT find Sphinx (missing: SPHINX_EXECUTABLE) 
--- Configuring done
--- Generating done
--- Build files have been written to: /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/build
-+ make -j4
-Scanning dependencies of target cartographer_detect_changes
-[  0%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/common/proto/ceres_solver_options.proto
-[  0%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/transform/proto/transform.proto
-文件 /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/build/AllFiles.cmake 和 - 不同
-[  0%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/ground_truth/proto/relations.proto
-[  0%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/cell_limits.proto
-[  1%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/grid_2d.proto
-Scanning dependencies of target gmock_main
-[  1%] Built target cartographer_detect_changes
-[  1%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/grid_2d_options.proto
-[  1%] Building CXX object gmock/CMakeFiles/gmock_main.dir/usr/src/googletest/googletest/src/gtest-all.cc.o
-[  1%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/local_trajectory_builder_options_2d.proto
-[  2%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/map_limits.proto
-[  2%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/probability_grid.proto
-[  2%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/probability_grid_range_data_inserter_options_2d.proto
-[  3%] Building CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock-all.cc.o
-[  3%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/2d/submaps_options_2d.proto
-[  4%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/3d/hybrid_grid.proto
-[  4%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/3d/local_trajectory_builder_options_3d.proto
-[  4%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/3d/range_data_inserter_options_3d.proto
-[  5%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/3d/submaps_options_3d.proto
-[  5%] Building CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
-[  5%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/connected_components.proto
-[  5%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/internal/legacy_serialized_data.proto
-[  5%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/map_builder_options.proto
-[  6%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/motion_filter_options.proto
-[  6%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/pose_graph.proto
-[  6%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/pose_graph/constraint_builder_options.proto
-[  7%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/pose_graph/optimization_problem_options.proto
-[  7%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/pose_graph_options.proto
-[  7%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/range_data_inserter_options.proto
-[  7%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/scan_matching/ceres_scan_matcher_options_2d.proto
-[  8%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/scan_matching/ceres_scan_matcher_options_3d.proto
-[  8%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/scan_matching/fast_correlative_scan_matcher_options_2d.proto
-[  8%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/scan_matching/fast_correlative_scan_matcher_options_3d.proto
-[  9%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/scan_matching/real_time_correlative_scan_matcher_options.proto
-[  9%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/serialization.proto
-[  9%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/submap.proto
-[  9%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/submap_visualization.proto
-[ 10%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/trajectory.proto
-[ 10%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/trajectory_builder_options.proto
-[ 10%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/proto/trajectory_node_data.proto
-[ 11%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/sensor/proto/adaptive_voxel_filter_options.proto
-[ 11%] Running C++ protocol buffer compiler on /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/sensor/proto/sensor.proto
-Scanning dependencies of target cartographer
-[ 11%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/DataChecking.cc.o
-[ 12%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/ceres_solver_options.cc.o
-[ 12%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/configuration_file_resolver.cc.o
-[ 12%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/fixed_ratio_sampler.cc.o
-[ 13%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/histogram.cc.o
-[ 13%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/internal/testing/thread_pool_for_testing.cc.o
-[ 13%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/lua_parameter_dictionary.cc.o
-[ 13%] Linking CXX static library libgmock_main.a
-[ 13%] Built target gmock_main
-[ 13%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/setting.cc.o
-[ 14%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/task.cc.o
-[ 14%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/thread_pool.cc.o
-[ 14%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/time.cc.o
-[ 15%] Building CXX object CMakeFiles/cartographer.dir/cartographer/ground_truth/relations_text_file.cc.o
-[ 15%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/color.cc.o
-[ 15%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/coloring_points_processor.cc.o
-[ 15%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/counting_points_processor.cc.o
-[ 16%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/draw_trajectories.cc.o
-[ 16%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/file_writer.cc.o
-[ 16%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/fixed_ratio_sampling_points_processor.cc.o
-[ 17%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/frame_id_filtering_points_processor.cc.o
-[ 17%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/hybrid_grid_points_processor.cc.o
-[ 17%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/image.cc.o
-[ 17%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/intensity_to_color_points_processor.cc.o
-[ 18%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/internal/in_memory_proto_stream.cc.o
-[ 18%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/internal/mapping_state_serialization.cc.o
-[ 18%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/min_max_range_filtering_points_processor.cc.o
-[ 19%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/outlier_removing_points_processor.cc.o
-[ 19%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/pcd_writing_points_processor.cc.o
-[ 19%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/ply_writing_points_processor.cc.o
-[ 19%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/points_batch.cc.o
-[ 20%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/points_processor_pipeline_builder.cc.o
-[ 20%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/probability_grid_points_processor.cc.o
-[ 20%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/proto_stream.cc.o
-[ 21%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/proto_stream_deserializer.cc.o
-[ 21%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/serialization_format_migration.cc.o
-[ 21%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/submap_painter.cc.o
-[ 21%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/xray_points_processor.cc.o
-[ 22%] Building CXX object CMakeFiles/cartographer.dir/cartographer/io/xyz_writing_points_processor.cc.o
-[ 22%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/2d/grid_2d.cc.o
-[ 22%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/2d/probability_grid.cc.o
-[ 23%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/2d/probability_grid_range_data_inserter_2d.cc.o
-[ 23%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/2d/submap_2d.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/2d/probability_grid.cc:30:98: warning: extra ‘;’ [-Wpedantic]
- std::ofstream ofgrid_mapsize = std::ofstream(common::Setting::save_path + "/ofgrid_mapsize.txt");;
-                                                                                                  ^
-[ 23%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/3d/range_data_inserter_3d.cc.o
-[ 23%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/3d/submap_3d.cc.o
-[ 24%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/detect_floors.cc.o
-[ 24%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/imu_kalman.cc.o
-[ 24%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/imu_tracker.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/imu_kalman.cc: In member function ‘void cartographer::mapping::ImuKalman::CompOdmtrack()’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/imu_kalman.cc:278:37: warning: variable ‘pos_slam_tmp’ set but not used [-Wunused-but-set-variable]
-                     Eigen::Vector3d pos_slam_tmp = track_slam_pose.translation();
-                                     ^~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/imu_kalman.cc: In member function ‘void cartographer::mapping::ImuKalman::newkfCovUpdata(double)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/imu_kalman.cc:799:12: warning: unused variable ‘tao’ [-Wunused-variable]
-     double tao=300;
-            ^~~
-[ 25%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/local_slam_result_2d.cc.o
-[ 25%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc: In member function ‘std::unique_ptr<cartographer::mapping::LocalTrajectoryBuilder2D::MatchingResult> cartographer::mapping::LocalTrajectoryBuilder2D::AddRangeData(const string&, const cartographer::sensor::TimedPointCloudData&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:637:14: warning: unused variable ‘time_3’ [-Wunused-variable]
-     uint64_t time_3 = common::getTimeNow();
-              ^~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:671:15: warning: unused variable ‘time_4’ [-Wunused-variable]
-      uint64_t time_4 = common::getTimeNow();
-               ^~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:615:12: warning: unused variable ‘time_2’ [-Wunused-variable]
-   uint64_t time_2 = common::getTimeNow();
-            ^~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc: In member function ‘std::unique_ptr<cartographer::mapping::LocalTrajectoryBuilder2D::MatchingResult> cartographer::mapping::LocalTrajectoryBuilder2D::AddAccumulatedRangeData(cartographer::common::Time, const cartographer::sensor::RangeData&, const Rigid3d&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:965:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-         for(int i = 0; i < gravity_aligned_range_data.returns.size(); i ++)
-                        ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:887:11: warning: unused variable ‘flag_long_imu_loss’ [-Wunused-variable]
-     bool  flag_long_imu_loss =  extrapolator_->long_loss_imu_time;
-           ^~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc: In member function ‘std::unique_ptr<cartographer::mapping::LocalTrajectoryBuilder2D::MatchingResult> cartographer::mapping::LocalTrajectoryBuilder2D::AddAccumulatedRangeData(cartographer::common::Time, const cartographer::sensor::RangeData&, const cartographer::sensor::RangeData&, const Rigid3d&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:1080:14: warning: unused variable ‘time_4’ [-Wunused-variable]
-     uint64_t time_4 = common::getTimeNow();
-              ^~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc: In member function ‘std::unique_ptr<cartographer::mapping::LocalTrajectoryBuilder2D::InsertionResult> cartographer::mapping::LocalTrajectoryBuilder2D::InsertIntoSubmap(cartographer::common::Time, const cartographer::sensor::RangeData&, const cartographer::sensor::RangeData&, const Rigid3d&, const Quaterniond&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:1371:32: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-               for(int ii =0 ;ii<filtered_gravity_aligned_point_cloud.size();ii++)
-                              ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc: In member function ‘std::unique_ptr<cartographer::mapping::LocalTrajectoryBuilder2D::InsertionResult> cartographer::mapping::LocalTrajectoryBuilder2D::InsertIntoSubmap(cartographer::common::Time, const cartographer::sensor::RangeData&, const cartographer::sensor::RangeData&, const Rigid3d&, const Quaterniond&, double)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc:1437:32: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-               for(int ii =0 ;ii<filtered_gravity_aligned_point_cloud.size();ii++)
-                              ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[ 25%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/local_trajectory_builder_options_2d.cc.o
-[ 25%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/overlapping_submaps_trimmer_2d.cc.o
-[ 26%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/pose_graph_2d.cc.o
-[ 26%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/ray_casting.cc.o
-[ 26%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/scan_matching/ceres_scan_matcher_2d.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc: In member function ‘void cartographer::mapping::PoseGraph2D::ComputeConstraint(const cartographer::mapping::NodeId&, const cartographer::mapping::SubmapId&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc:363:22: warning: variable ‘last_connection_time’ set but not used [-Wunused-but-set-variable]
-   const common::Time last_connection_time =
-                      ^~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc: In member function ‘void cartographer::mapping::PoseGraph2D::ComputeConstraintsForNode(const cartographer::mapping::NodeId&, std::vector<std::shared_ptr<const cartographer::mapping::Submap2D> >, bool)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc:466:34: warning: suggest parentheses around ‘&&’ within ‘||’ [-Wparentheses]
-       !insertion_submaps.front() && common::Setting::open_debug_log > 1) {
-       ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc: In member function ‘std::set<cartographer::mapping::PoseGraphInterface::Constraint> cartographer::mapping::PoseGraph2D::CheckConstraints(const Result&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc:722:28: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-       if (checked_times[k] < (checked_times.size() + 1) / 2) continue;
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc: In member function ‘void cartographer::mapping::PoseGraph2D::AddVisualLoopClosures()’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc:796:15: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-       if (cnt == selected_constrains.size()) break; // 提前终止遍历
-           ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc: In member function ‘virtual void cartographer::mapping::PoseGraph2D::FinishTrajectory(int)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc:954:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     for (int i = 0; i < submaps_pose.size(); i++) {
-                     ~~^~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/pose_graph_2d.cc:970:12: warning: variable ‘submap_end’ set but not used [-Wunused-but-set-variable]
-       auto submap_end =
-            ^~~~~~~~~~
-[ 27%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/scan_matching/correlative_scan_matcher_2d.cc.o
-[ 27%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/scan_matching/fast_correlative_scan_matcher_2d.cc.o
-[ 27%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/fast_correlative_scan_matcher_2d.cc: In member function ‘bool cartographer::mapping::scan_matching::FastCorrelativeScanMatcher2D::MatchFullSubmapNew(const PointCloud&, float, float*, cartographer::transform::Rigid2d*, const Rigid2d&) const’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/fast_correlative_scan_matcher_2d.cc:240:28: warning: variable ‘center’ set but not used [-Wunused-but-set-variable]
-   const transform::Rigid2d center = transform::Rigid2d::Translation(
-                            ^~~~~~
-[ 27%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/local_slam_result_3d.cc.o
-[ 28%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/local_trajectory_builder_3d.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc: In member function ‘Eigen::Vector3d cartographer::mapping::scan_matching::RealTimeCorrelativeScanMatcher2D::Match(const Rigid2d&, const PointCloud&, const cartographer::mapping::ProbabilityGrid&, cartographer::transform::Rigid2d*, int) const’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:263:16: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i=0;i<candidates.size();i++)
-               ~^~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc: In member function ‘double cartographer::mapping::scan_matching::RealTimeCorrelativeScanMatcher2D::Match(const Rigid2d&, const PointCloud&, const cartographer::mapping::ProbabilityGrid&, cartographer::transform::Rigid2d*) const’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:375:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-    for(int i = 0 ; i < imu_candidates.size();i++)
-                    ~~^~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:394:21: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0 ; i < imu_candidates_noWeight.size();i++)
-                   ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:405:21: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0 ; i < candidates.size();i++)
-                   ~~^~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:411:21: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0 ; i < imu_candidates.size();i++)
-                   ~~^~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:418:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int gid = 0 ; gid < candidatesGroup.size();gid ++)
-                     ~~~~^~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:421:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-       for(int i = 0 ; i < candidatesGroup[gid].size();i++)
-                       ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:432:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int gid = 0 ; gid < candidatesGroup.size();gid ++)
-                     ~~~~^~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/2d/scan_matching/real_time_correlative_scan_matcher_2d.cc:443:10: warning: variable ‘bestCandidatesMeanScore’ set but not used [-Wunused-but-set-variable]
-   double bestCandidatesMeanScore;
-          ^~~~~~~~~~~~~~~~~~~~~~~
-[ 28%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/local_trajectory_builder_options_3d.cc.o
-[ 28%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/pose_graph_3d.cc.o
-[ 29%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/scan_matching/ceres_scan_matcher_3d.cc.o
-[ 29%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/scan_matching/fast_correlative_scan_matcher_3d.cc.o
-[ 29%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/scan_matching/low_resolution_matcher.cc.o
-[ 29%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/scan_matching/precomputation_grid_3d.cc.o
-[ 30%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/scan_matching/real_time_correlative_scan_matcher_3d.cc.o
-[ 30%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/3d/scan_matching/rotational_scan_matcher.cc.o
-[ 30%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/build_gridmap.cc.o
-[ 31%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/collated_trajectory_builder.cc.o
-[ 31%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/connected_components.cc.o
-[ 31%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/constraints/constraint_builder.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc: In member function ‘cartographer::mapping::SubMapBox cartographer::mapping::BuildGridMap::GetSubMapBox(const cartographer::mapping::SubmapId&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc:277:13: warning: unused variable ‘width’ [-Wunused-variable]
-         int width = cell_limits.num_x_cells;
-             ^~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc:278:13: warning: unused variable ‘height’ [-Wunused-variable]
-         int height = cell_limits.num_y_cells;
-             ^~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc: In member function ‘std::vector<cartographer::mapping::SubmapId> cartographer::mapping::BuildGridMap::GetSuitableSubMapId(std::set<cartographer::mapping::SubmapId>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc:367:61: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-         if (submap_id.first > 0 && suitableSubMapIds.size() < cartographer::common::Setting::num_unactivedsubmap_to_gridmap)
-                                    ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc: In member function ‘std::shared_ptr<cartographer::mapping::TrajectoryBuilderInterface::OccupancyGrid> cartographer::mapping::BuildGridMap::CreatGridMap()’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc:383:11: warning: unused variable ‘count_static_map’ [-Wunused-variable]
-       int count_static_map = 0;
-           ^~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/build_gridmap.cc:391:11: warning: unused variable ‘count_num_unactivedsubmap_to_gridmap’ [-Wunused-variable]
-       int count_num_unactivedsubmap_to_gridmap = 0;
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[ 31%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/constraints/constraint_builder_2d.cc.o
-[ 32%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/constraints/constraint_builder_3d.cc.o
-[ 32%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/global_trajectory_builder.cc.o
-[ 32%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/motion_filter.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/constraints/constraint_builder_2d.cc: In member function ‘void cartographer::mapping::constraints::ConstraintBuilder2D::MaybeAddConstraint(const cartographer::mapping::SubmapId&, const cartographer::mapping::Submap2D*, const cartographer::mapping::NodeId&, const cartographer::mapping::TrajectoryNode::Data*, const Rigid2d&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/constraints/constraint_builder_2d.cc:112:18: warning: unused variable ‘start’ [-Wunused-variable]
-         uint64_t start = common::getTimeNow();
-                  ^~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/constraints/constraint_builder_2d.cc: In member function ‘void cartographer::mapping::constraints::ConstraintBuilder2D::ComputeConstraint(const cartographer::mapping::SubmapId&, const cartographer::mapping::Submap2D*, const cartographer::mapping::NodeId&, bool, const cartographer::mapping::TrajectoryNode::Data*, const Rigid2d&, const cartographer::mapping::constraints::ConstraintBuilder2D::SubmapScanMatcher&, std::unique_ptr<cartographer::mapping::PoseGraphInterface::Constraint>*)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/constraints/constraint_builder_2d.cc:332:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-           for(int ii=0;ii<constant_data->filtered_gravity_aligned_point_cloud.size();ii++)
-                        ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/constraints/constraint_builder_2d.cc:371:24: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-           for(int i=0;i<constant_data->filtered_gravity_aligned_point_cloud.size();i++)
-                       ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/constraints/constraint_builder_2d.cc:521:18: warning: variable ‘check_pos’ set but not used [-Wunused-but-set-variable]
-           double check_pos=3.5;
-                  ^~~~~~~~~
-[ 34%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/optimization/ceres_pose.cc.o
-[ 34%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/optimization/cost_functions/spa_cost_function_2d.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc: In instantiation of ‘void cartographer::mapping::{anonymous}::GlobalTrajectoryBuilder<LocalTrajectoryBuilder, PoseGraph>::AddSensorData(const string&, const cartographer::sensor::TimedPointCloudData&) [with LocalTrajectoryBuilder = cartographer::mapping::LocalTrajectoryBuilder3D; PoseGraph = cartographer::mapping::PoseGraph3D; std::__cxx11::string = std::__cxx11::basic_string<char>]’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc:292:1:   required from here
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc:99:14: warning: unused variable ‘last_sys_time’ [-Wunused-variable]
-     uint64_t last_sys_time = cartographer::common::getTimeNow();
-              ^~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc:103:14: warning: unused variable ‘current_sys_time’ [-Wunused-variable]
-     uint64_t current_sys_time = cartographer::common::getTimeNow();
-              ^~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc: In instantiation of ‘void cartographer::mapping::{anonymous}::GlobalTrajectoryBuilder<LocalTrajectoryBuilder, PoseGraph>::AddSensorData(const string&, const cartographer::sensor::TimedPointCloudData&) [with LocalTrajectoryBuilder = cartographer::mapping::LocalTrajectoryBuilder2D; PoseGraph = cartographer::mapping::PoseGraph2D; std::__cxx11::string = std::__cxx11::basic_string<char>]’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc:292:1:   required from here
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc:99:14: warning: unused variable ‘last_sys_time’ [-Wunused-variable]
-     uint64_t last_sys_time = cartographer::common::getTimeNow();
-              ^~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/global_trajectory_builder.cc:103:14: warning: unused variable ‘current_sys_time’ [-Wunused-variable]
-     uint64_t current_sys_time = cartographer::common::getTimeNow();
-              ^~~~~~~~~~~~~~~~
-[ 34%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/optimization/graph_partition.cc.o
-[ 34%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/optimization/isam_problem_2d.cc.o
-[ 35%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/optimization/optimization_problem_2d.cc.o
-[ 35%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/optimization/optimization_problem_3d.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc: In member function ‘void cartographer::mapping::optimization::GraphPartition::AddInterWeights(const Result&, const cartographer::mapping::MapById<cartographer::mapping::NodeId, cartographer::mapping::optimization::NodeSpec2D>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc:36:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     if(selected_submap_indices_.size() >  AdjacencyMatrixSize())
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
-In file included from /usr/local/include/ceres/internal/fixed_array.h:39:0,
-                 from /usr/local/include/ceres/internal/autodiff.h:147,
-                 from /usr/local/include/ceres/autodiff_cost_function.h:132,
-                 from /usr/local/include/ceres/ceres.h:37,
-                 from /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/common/math.h:25,
-                 from /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/constraints/constraint_builder_2d.h:30,
-                 from /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.h:9,
-                 from /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc:1:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc:41:43: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     CHECK(selected_submap_indices_.size() <= AdjacencyMatrixSize())
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc: In member function ‘Eigen::MatrixXf cartographer::mapping::optimization::GraphPartition::GetSubAdjacencyMatrix()’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc:93:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   if (selected_submap_indices_.size() == AdjacencyMatrixSize()) return adjacency_matrix_; // 重新开始分割
-       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc: In member function ‘void cartographer::mapping::optimization::GraphPartition::Run()’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/graph_partition.cc:111:48: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-         while (selected_submap_indices_.size() > max_selected_submap_size_)
-                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
-[ 35%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/optimization/optimization_problem_options.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘virtual void cartographer::mapping::optimization::OptimizationProblem2D::TrimSubmap(const cartographer::mapping::SubmapId&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:246:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     for (int i = 0; i < submap_Nodes.at(submap_id).size(); i++) {
-                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolvePyramid(std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:419:26: warning: variable ‘old_global_pose’ set but not used [-Wunused-but-set-variable]
-       transform::Rigid2d old_global_pose =
-                          ^~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:337:8: warning: unused variable ‘freeze_landmarks’ [-Wunused-variable]
-   bool freeze_landmarks = !frozen_trajectories.empty();
-        ^~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolvePyramidFast(const std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:687:26: warning: variable ‘old_global_pose’ set but not used [-Wunused-but-set-variable]
-       transform::Rigid2d old_global_pose =
-                          ^~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:705:10: warning: unused variable ‘to_continue’ [-Wunused-variable]
-     bool to_continue = false;
-          ^~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:632:8: warning: unused variable ‘freeze_landmarks’ [-Wunused-variable]
-   bool freeze_landmarks = !frozen_trajectories.empty();
-        ^~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::CheckErrorConstraint(std::vector<std::vector<cartographer::transform::Rigid2<double> > >, int)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:873:21: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for (int i = 0; i < cons_pose.size(); i++) {
-                   ~~^~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:875:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     for (int j = 0; j < cons_pose.at(i).size(); j++) {
-                     ~~^~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:889:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-       for (int ii = 1; ii < id_nodes.size(); ii++) {
-                        ~~~^~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::ComputeReletivePose(cartographer::mapping::NodeId, cartographer::mapping::NodeId, cartographer::transform::Rigid2d, cartographer::transform::Rigid2d)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:960:22: warning: variable ‘check_result’ set but not used [-Wunused-but-set-variable]
-   transform::Rigid2d check_result =
-                      ^~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolveShort(const std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1026:36: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     if (node_id_data.id.node_index > node_data_.size() - 35 * 3) {
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1101:10: warning: unused variable ‘to_continue’ [-Wunused-variable]
-     bool to_continue = false;
-          ^~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolveSildWindows(std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&, std::vector<int>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1270:21: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for (int i = 0; i < cut_result.size(); i++) {
-                   ~~^~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1272:30: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     if (id_find.submap_index > submap_data_.size()) {
-         ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1294:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-         for (int i = 0; i < nodes.data.size(); i++) {
-                         ~~^~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1304:21: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for (int i = 0; i < common::Setting::corridor_lidars.size(); i++) {
-                   ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1259:8: warning: unused variable ‘first_submap’ [-Wunused-variable]
-   bool first_submap = true;
-        ^~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1261:7: warning: unused variable ‘CurrentTrajSubmapSize’ [-Wunused-variable]
-   int CurrentTrajSubmapSize = submap_data_.size();
-       ^~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolveNew(std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1516:48: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-       for (int i = submap_data_.size() - 20; i < submap_data_.size(); i++) {
-                                              ~~^~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1625:26: warning: variable ‘old_global_pose’ set but not used [-Wunused-but-set-variable]
-       transform::Rigid2d old_global_pose =
-                          ^~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1654:10: warning: unused variable ‘to_continue’ [-Wunused-variable]
-     bool to_continue = false;
-          ^~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::GetStartOptimizeNodeAndSubmap(std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, std::vector<cartographer::mapping::PoseGraphInterface::VisualLoopClosure>&, cartographer::mapping::SubmapId&, cartographer::mapping::NodeId&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1854:24: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-       for(int i = 0; i < visual_loop_closures.size(); i ++)
-                      ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolveLocal(std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:1912:10: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-        i < constraints.size(); ++i) {
-        ~~^~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolveGlobal(std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, std::vector<cartographer::mapping::PoseGraphInterface::VisualLoopClosure>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:2190:26: warning: variable ‘old_global_pose’ set but not used [-Wunused-but-set-variable]
-       transform::Rigid2d old_global_pose =
-                          ^~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:2219:10: warning: unused variable ‘to_continue’ [-Wunused-variable]
-     bool to_continue = false;
-          ^~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:2318:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; i < visual_loop_closures.size(); i ++)
-                  ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc: In member function ‘void cartographer::mapping::optimization::OptimizationProblem2D::SolveSelected(std::vector<cartographer::mapping::PoseGraphInterface::Constraint>&, std::vector<cartographer::mapping::PoseGraphInterface::VisualLoopClosure>&, const std::set<int>&, const std::map<std::__cxx11::basic_string<char>, cartographer::mapping::PoseGraphInterface::LandmarkNode>&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:2444:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-   for(int i = 0; i < visual_loop_closures.size(); i ++)
-                  ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:2638:28: warning: unused variable ‘second_node_data’ [-Wunused-variable]
-          const NodeSpec2D &second_node_data = node_data_.at(second_node_id.back_node_id);
-                            ^~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:2710:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-     for (int i = 0; i < node_struct.at(C_node_id_data.id).size(); i++) {
-                     ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/internal/optimization/optimization_problem_2d.cc:2498:8: warning: unused variable ‘freeze_landmarks’ [-Wunused-variable]
-   bool freeze_landmarks = !frozen_trajectories.empty();
-        ^~~~~~~~~~~~~~~~
-[ 36%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/range_data_collator.cc.o
-[ 36%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/scan_matching/real_time_correlative_scan_matcher.cc.o
-[ 36%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/submap_controller.cc.o
-[ 36%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/internal/trajectory_connectivity_state.cc.o
-[ 37%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/map_builder.cc.o
-[ 37%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/pose_extrapolator.cc.o
-[ 37%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/pose_graph.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/pose_extrapolator.cc: In member function ‘void cartographer::mapping::PoseExtrapolator::AddOdometryData(const cartographer::sensor::OdometryData&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/pose_extrapolator.cc:229:23: warning: variable ‘my_odm_pos’ set but not used [-Wunused-but-set-variable]
-       Eigen::Vector3d my_odm_pos = odometry_data.pose.translation();
-                       ^~~~~~~~~~
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/pose_extrapolator.cc: In member function ‘cartographer::transform::Rigid3d cartographer::mapping::PoseExtrapolator::ExtrapolateImuVel(cartographer::common::Time)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/mapping/pose_extrapolator.cc:535:23: warning: variable ‘input_start_vel’ set but not used [-Wunused-but-set-variable]
-       Eigen::Vector3d input_start_vel = start_vel;
-                       ^~~~~~~~~~~~~~~
-[ 38%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/pose_graph_trimmer.cc.o
-[ 38%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/probability_values.cc.o
-[ 38%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/range_data_inserter_interface.cc.o
-[ 38%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/trajectory_builder_interface.cc.o
-[ 39%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/trajectory_node.cc.o
-[ 39%] Building CXX object CMakeFiles/cartographer.dir/cartographer/metrics/counter.cc.o
-[ 39%] Building CXX object CMakeFiles/cartographer.dir/cartographer/metrics/gauge.cc.o
-[ 40%] Building CXX object CMakeFiles/cartographer.dir/cartographer/metrics/histogram.cc.o
-[ 40%] Building CXX object CMakeFiles/cartographer.dir/cartographer/metrics/register.cc.o
-[ 40%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/compressed_point_cloud.cc.o
-[ 40%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/fixed_frame_pose_data.cc.o
-[ 41%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/imu_data.cc.o
-[ 41%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/internal/collator.cc.o
-[ 41%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/internal/ordered_multi_queue.cc.o
-[ 42%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/internal/trajectory_collator.cc.o
-[ 42%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/internal/voxel_filter.cc.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/sensor/internal/voxel_filter.cc: In function ‘cartographer::sensor::PointCloud cartographer::sensor::{anonymous}::AdaptivelyVoxelFiltered(const cartographer::sensor::proto::AdaptiveVoxelFilterOptions&, const PointCloud&)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/cartographer_source/cartographer/sensor/internal/voxel_filter.cc:42:12: warning: unused variable ‘tmp_min_points’ [-Wunused-variable]
-     float  tmp_min_points = options.min_num_points();
-            ^~~~~~~~~~~~~~
-[ 42%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/landmark_data.cc.o
-[ 42%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/odometry_data.cc.o
-[ 43%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/point_cloud.cc.o
-[ 43%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/range_data.cc.o
-[ 43%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/timed_point_cloud_data.cc.o
-[ 44%] Building CXX object CMakeFiles/cartographer.dir/cartographer/transform/rigid_transform.cc.o
-[ 44%] Building CXX object CMakeFiles/cartographer.dir/cartographer/transform/timestamped_transform.cc.o
-[ 44%] Building CXX object CMakeFiles/cartographer.dir/cartographer/transform/transform.cc.o
-[ 44%] Building CXX object CMakeFiles/cartographer.dir/cartographer/transform/transform_interpolation_buffer.cc.o
-[ 45%] Building CXX object CMakeFiles/cartographer.dir/cartographer/common/proto/ceres_solver_options.pb.cc.o
-[ 45%] Building CXX object CMakeFiles/cartographer.dir/cartographer/ground_truth/proto/relations.pb.cc.o
-[ 45%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/cell_limits.pb.cc.o
-[ 46%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/grid_2d.pb.cc.o
-[ 46%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/grid_2d_options.pb.cc.o
-[ 46%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/local_trajectory_builder_options_2d.pb.cc.o
-[ 46%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/map_limits.pb.cc.o
-[ 47%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/probability_grid.pb.cc.o
-[ 47%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/probability_grid_range_data_inserter_options_2d.pb.cc.o
-[ 47%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/2d/submaps_options_2d.pb.cc.o
-[ 48%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/3d/hybrid_grid.pb.cc.o
-[ 48%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/3d/local_trajectory_builder_options_3d.pb.cc.o
-[ 48%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/3d/range_data_inserter_options_3d.pb.cc.o
-[ 48%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/3d/submaps_options_3d.pb.cc.o
-[ 49%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/connected_components.pb.cc.o
-[ 49%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/internal/legacy_serialized_data.pb.cc.o
-[ 49%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/map_builder_options.pb.cc.o
-[ 50%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/motion_filter_options.pb.cc.o
-[ 50%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/pose_graph.pb.cc.o
-[ 50%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/pose_graph/constraint_builder_options.pb.cc.o
-[ 50%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/pose_graph/optimization_problem_options.pb.cc.o
-[ 51%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/pose_graph_options.pb.cc.o
-[ 51%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/range_data_inserter_options.pb.cc.o
-[ 51%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/scan_matching/ceres_scan_matcher_options_2d.pb.cc.o
-[ 52%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/scan_matching/ceres_scan_matcher_options_3d.pb.cc.o
-[ 52%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/scan_matching/fast_correlative_scan_matcher_options_2d.pb.cc.o
-[ 52%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/scan_matching/fast_correlative_scan_matcher_options_3d.pb.cc.o
-[ 53%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/scan_matching/real_time_correlative_scan_matcher_options.pb.cc.o
-[ 53%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/serialization.pb.cc.o
-[ 53%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/submap.pb.cc.o
-[ 53%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/submap_visualization.pb.cc.o
-[ 54%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/trajectory.pb.cc.o
-[ 54%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/trajectory_builder_options.pb.cc.o
-[ 54%] Building CXX object CMakeFiles/cartographer.dir/cartographer/mapping/proto/trajectory_node_data.pb.cc.o
-[ 55%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/proto/adaptive_voxel_filter_options.pb.cc.o
-[ 55%] Building CXX object CMakeFiles/cartographer.dir/cartographer/sensor/proto/sensor.pb.cc.o
-make[2]: *** 没有规则可制作目标“/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam/usr/local/lib/libgtsam.so”，由“libcartographer.so.1.0.0” 需求。 停止。
-make[2]: *** 正在等待未完成的任务....
-[ 55%] Building CXX object CMakeFiles/cartographer.dir/cartographer/transform/proto/transform.pb.cc.o
-CMakeFiles/Makefile2:958: recipe for target 'CMakeFiles/cartographer.dir/all' failed
-make[1]: *** [CMakeFiles/cartographer.dir/all] Error 2
-Makefile:140: recipe for target 'all' failed
-make: *** [all] Error 2
-Build step 'Execute shell' marked build as failure
-Finished: FAILURE
