@@ -214,19 +214,30 @@ function ui_info(){
 
 function ui_job_build(){
     export PATH="$PATH:~/myscript/sh"
+    rm -f ~/tmp/logs/$JOB_NAME.log
     if ! [[ -z $1 ]];then
-	bash jc build $ui_job_name -p SOURCE_BRANCH=$1 -p TARGET_BRANCH= -s &
+	nohup bash jc build $ui_job_name -p SOURCE_BRANCH=$1 -p TARGET_BRANCH= -s &>~/tmp/logs/$JOB_NAME.log &
     else
 	if [[ $RELEASE == true ]];then
-	    bash jc build $ui_job_name -p RELEASE=r$version.$SWR_VERSION -s &
+	    bash jc build $ui_job_name -p RELEASE=r$version.$SWR_VERSION -s &>~/tmp/logs/$JOB_NAME.log &
 	else
-	    bash jc build $ui_job_name -s &
+	    bash jc build $ui_job_name -s &>~/tmp/logs/$JOB_NAME.log &
 	fi
     fi
 }
 
 function ui_update(){
-    fg || true
+    set +e
+    for (( n = 0; n < 30; n++ )); do
+	build_ret=`cat ~/tmp/logs/$JOB_NAME.log | grep ^Co`
+	echo $build_ret
+	if ! [[ -z "$build_ret" ]];then
+	    break
+	else	    
+	    sleep 20
+	fi
+    done
+
     mkdir -p $DESKTOP_DIR
     local client_name=`ls  -t  /mnt/ftp/release/INDEMINDAPP/product_tools/${appname}-${UI_BRANCH}-client* | head -1`
     if [[ ! -z $CONFIG_BRANCH ]];then

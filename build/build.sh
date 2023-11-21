@@ -30,11 +30,11 @@ init_project_env(){
     JENKINS_JOB_B="rbn"
     JENKINS_JOB_C="mark-check-tools"
     JENKINS_JOB_D="java"
-    JENKINS_JOB_E="nodejs"
-    JENKINS_JOB_F="_ui"
-    JENKINS_JOB_G="i12r"
     JENKINS_JOB_E="clean_recorder"
     JENKINS_JOB_F="i18r"
+    JENKINS_JOB_G="nodejs"
+    JENKINS_JOB_H="_ui"
+    JENKINS_JOB_L="i12r"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
 	nub=${build_version}_${BUILD_PLATFORM}
@@ -253,20 +253,18 @@ function project_build(){
     pushd $SOURCE_DIR
     project_init_remote || true
     sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT || true
-    if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ] || [ "$KEEP_BUILD" = true ];then
 	if ! [ -z $Modules_List ];then
 	    for m in `echo ${arr[@]}`;do
 		m=`echo $m | perl -npe 's;";;g'`
 		bash -ex $BUILD_SCRIPT -b $m
 	    done
+	elif [ "x${first_commit_id_now// /}" == "x${version// /}" ] && [[ "$JOB_NAME" =~ "$JENKINS_JOB_H" ]];then
+	    echo "code is not change"
+	    cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
+	    exit 0
 	else
 	    bash -ex $BUILD_SCRIPT $nub
 	fi
-    else
-	echo "code is not change"
-	cmdb_mysql "update prebuild set status='0' where build_url='$BUILD_URL';"
-	exit 0
-    fi
     popd
 }
 

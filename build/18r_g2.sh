@@ -4,7 +4,7 @@ project_path=$(cd `dirname $0`; pwd)
 . $project_path/../sh/cmdb
 . $project_path/../sh/version-update.sh
 
-set -ex
+set -x
 
 init_project_env(){
     if [ `whoami` = root ];then
