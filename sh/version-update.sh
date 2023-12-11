@@ -263,7 +263,7 @@ function ui_update(){
 
 function project_info_database(){
     #cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user,sdk_log,submodule_log,ui_branch,config_branch,sign,min_version) values ('${appname}','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME','$BUILD_USER_ID','$sdk_note','$submodule_note','$UI_BRANCH','$CONFIG_BRANCH','$SIGN','${MIN_VERSION:-$min_version}')";
-    cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user,ui_branch,config_branch,sign,min_version) values ('${appname}','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME','$BUILD_USER_ID','$UI_BRANCH','$CONFIG_BRANCH','$SIGN','${MIN_VERSION:-$min_version}')";
+    cmdb_mysql "insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user,ui_branch,config_branch,deb_branch,sign,min_version) values ('${appname}','${version}','${SWR_VERSION}','${submodule_version}',now(),'$note','${RELEASE}','${SDK_BRANCH}','$BUILD_URL','$NODE_NAME','$BUILD_USER_ID','$UI_BRANCH','$CONFIG_BRANCH','$DEB_BRANCH','$SIGN','${MIN_VERSION:-$min_version}')";
 }
 
 function ota_project_fetch(){
