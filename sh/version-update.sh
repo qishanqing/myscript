@@ -173,7 +173,7 @@ function tgz_type(){
 }
 
 function gz_type(){
-    tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_ALL_${version}.tar.gz
+    tgz_full_name=INDEMINDAPP_${appname}_${SWR_VERSION}_${tgz_release}_ALL_${version}.tar.gz
     pushd $APP_WORKSPACE$RELEASE_DIR
     echo "$tgz_full_name" | tee $WORK_DIR/version.txt
     tar cvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
