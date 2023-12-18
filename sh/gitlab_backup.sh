@@ -7,7 +7,7 @@ gitlab_backup_path_host=/data/backup/gitlab/backups
 ret=0
 
 gitlab_backup () {
-    docker exec -i gitlab /bin/bash <<EOF
+    docker exec -i gitlab2 /bin/bash <<EOF
     set -x
     (
 	cd $gitlab_backup_path
@@ -16,7 +16,7 @@ gitlab_backup () {
     which gitlab-rake && gitlab-rake gitlab:backup:create
     exit
 EOF
-    docker cp  gitlab:$gitlab_backup_path $gitlab_backup_path_host/../
+    docker cp  gitlab2:$gitlab_backup_path $gitlab_backup_path_host/../
 }
 
 clean_old_version () {
