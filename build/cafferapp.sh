@@ -37,8 +37,8 @@ init_project_env(){
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     CLONE_DEPTH="--depth=1"
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b caffer-dev $CLONE_DEPTH"
-    ENCRYPTION_TOOL=~/system/i18rconfig/upx_arm.out
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b caffer_dev $CLONE_DEPTH"
+    ENCRYPTION_TOOL=~/system/i18rconfig/encrypt
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
     is-trigger-job
@@ -55,6 +55,7 @@ function App_project_fetch(){
 	git clone ssh://git@192.168.50.191:222/abby/integration/abby_demo.git $sourcename -b ${SDK_BRANCH:-caffer} && (
 	    pushd $sourcename
 
+	    config_project_update
 	    if [[ $gitmodules == true ]];then
 		cp -ar /mnt/ftp/release/${appname}/sdk/gitmodules .gitmodules
 	    fi
@@ -73,6 +74,7 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule_all
+    is-sign-task
     if [[ $RELEASE = test ]];then
 	gz_type
 	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
