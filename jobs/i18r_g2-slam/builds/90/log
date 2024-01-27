@@ -1,767 +1,0 @@
-Started by user [8mha:////4NEJzf6Z0/myHxJ1fNgp0z1sSwi1yXxuxiy79e0qJwosAAAAlB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyOEgYO/dLi1CL9ilIAKZda8r0AAAA=[0mxuhaonan
-Rebuilds build #[8mha:////4GWk1T27b+5hVRgBNdJqBqryapMtrE0NmsWILtaONFa6AAAApx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAymEgY5/bLM1HL94pzEXP2s/CT9TEOLovh0I12wgIUlAKVX4sHTAAAA[0m89
-Running as SYSTEM
-Building remotely on [8mha:////4P1a+jSCm2+jQZ3VRdJij7cRjyhx4PB7el9tXnyqLu2zAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCITAOR6YlPKAAAA[0mkhadas-car4 (car4) in workspace /root/workspace/workspace/i18r_g2-slam
-[WS-CLEANUP] Deleting project workspace...
-[WS-CLEANUP] Deferred wipeout is used...
-[WS-CLEANUP] Done
-[i18r_g2-slam] $ /bin/sh -xe /tmp/jenkins3009620103827064534.sh
-+ bash /root/myscript/build/build.sh
-++ export MYSQL_PWD=123
-++ MYSQL_PWD=123
-++ export -f cmdb_mysql
-+ set -ex
-+ export -f public_project_update
-+ export -f project_build
-+ init_project_env
-++ date +%Y%m%d
-+ DT=20240124
-+ UserName=jenkins
-+ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
-+ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
-+ GIT_HOST=192.168.50.191
-++ echo repid_deploy/integration/slam_plugins
-++ awk -F/ '{print $1"%2F"$2}'
-+ CONVERT_TARGET_PROJECT=repid_deploy%2Fintegration
-++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
-++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/repid_deploy%2Fintegration
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    35  100    35    0     0    454      0 --:--:-- --:--:-- --:--:--   460
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-KeyError: 'id'
-+ SUB_PROJECT_ID=
-+ true
-+ '[' -z sm ']'
-+ SOURCE_DIR=/root/workspace/workspace/i18r_g2-slam/sm
-+ TARGET_DIR=/root/workspace/workspace/i18r_g2-slam/slam_plugins
-+ prepare_env
-++ uname -m
-+ system_platform=aarch64
-+ :
-++ cat /proc/cpuinfo
-++ grep processor
-++ sort
-++ uniq
-++ wc -l
-+ mt=-j4
-+ export COMMIT_ID_FILE=/root/workspace/workspace/i18r_g2-slam/_last_build_id
-+ COMMIT_ID_FILE=/root/workspace/workspace/i18r_g2-slam/_last_build_id
-+ export COMMIT_MSG_FILE=/root/workspace/workspace/i18r_g2-slam/_commit-msg
-+ COMMIT_MSG_FILE=/root/workspace/workspace/i18r_g2-slam/_commit-msg
-+ export COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_g2-slam/_commit-msg.tmp
-+ COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_g2-slam/_commit-msg.tmp
-+ rm -f /root/workspace/workspace/i18r_g2-slam/_last_build_id
-+ rm -f /root/workspace/workspace/i18r_g2-slam/_commit-msg
-+ rm -f /root/workspace/workspace/i18r_g2-slam/_commit-msg.tmp
-+ rm -f /root/workspace/workspace/i18r_g2-slam/result.log
-+ rm -f /root/workspace/workspace/i18r_g2-slam/no_code_change.log
-+ CLONE_DEPTH=--depth=1
-+ PUBLICBASETYPES_DIR=/root/system/I18RPublicBaseTypes
-+ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('\''i18r_g2-slam'\'','\''liuqiaojun/slam_g2'\'','\''develop'\'','\''repid_deploy/integration/slam_plugins'\'','\''i18r_g2'\'',now(),'\''http://192.168.50.191:8088/job/i18r_g2-slam/90/'\'','\''khadas-car4'\'','\''xu'\'')'
-+ set +x
-+ DOCKER_CONTAINER_I18=build-x64-18.04
-+ DOCKER_CONTAINER_RUBBY=c405
-+ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
-+ DOCKER_CONTAINER_JAVA=node
-+ JENKINS_JOB_A=mind
-+ JENKINS_JOB_B=rbn
-+ JENKINS_JOB_C=mark-check-tools
-+ JENKINS_JOB_D=java
-+ JENKINS_JOB_E=clean_recorder
-+ JENKINS_JOB_F=i18r
-+ JENKINS_JOB_G=nodejs
-+ JENKINS_JOB_H=_ui
-+ JENKINS_JOB_L=i12r
-+ [[ i18r_g2-slam =~ mind ]]
-+ '[' true = false ']'
-+ source_project_fetch
-+ git clone ssh://git@192.168.50.191:222/liuqiaojun/slam_g2 sm -b develop --depth=1
-正克隆到 'sm'...
-正在检出文件:   0% (40/15591)   正在检出文件:   1% (156/15591)   正在检出文件:   2% (312/15591)   正在检出文件:   3% (468/15591)   正在检出文件:   4% (624/15591)   正在检出文件:   5% (780/15591)   正在检出文件:   6% (936/15591)   正在检出文件:   7% (1092/15591)   正在检出文件:   8% (1248/15591)   正在检出文件:   8% (1379/15591)   正在检出文件:   9% (1404/15591)   正在检出文件:  10% (1560/15591)   正在检出文件:  11% (1716/15591)   正在检出文件:  12% (1871/15591)   正在检出文件:  13% (2027/15591)   正在检出文件:  14% (2183/15591)   正在检出文件:  15% (2339/15591)   正在检出文件:  16% (2495/15591)   正在检出文件:  17% (2651/15591)   正在检出文件:  18% (2807/15591)   正在检出文件:  19% (2963/15591)   正在检出文件:  20% (3119/15591)   正在检出文件:  21% (3275/15591)   正在检出文件:  22% (3431/15591)   正在检出文件:  23% (3586/15591)   正在检出文件:  24% (3742/15591)   正在检出文件:  25% (3898/15591)   正在检出文件:  26% (4054/15591)   正在检出文件:  27% (4210/15591)   正在检出文件:  28% (4366/15591)   正在检出文件:  29% (4522/15591)   正在检出文件:  30% (4678/15591)   正在检出文件:  31% (4834/15591)   正在检出文件:  32% (4990/15591)   正在检出文件:  33% (5146/15591)   正在检出文件:  34% (5301/15591)   正在检出文件:  35% (5457/15591)   正在检出文件:  36% (5613/15591)   正在检出文件:  37% (5769/15591)   正在检出文件:  38% (5925/15591)   正在检出文件:  39% (6081/15591)   正在检出文件:  40% (6237/15591)   正在检出文件:  41% (6393/15591)   正在检出文件:  42% (6549/15591)   正在检出文件:  43% (6705/15591)   正在检出文件:  44% (6861/15591)   正在检出文件:  45% (7016/15591)   正在检出文件:  46% (7172/15591)   正在检出文件:  47% (7328/15591)   正在检出文件:  48% (7484/15591)   正在检出文件:  49% (7640/15591)   正在检出文件:  50% (7796/15591)   正在检出文件:  51% (7952/15591)   正在检出文件:  52% (8108/15591)   正在检出文件:  53% (8264/15591)   正在检出文件:  54% (8420/15591)   正在检出文件:  55% (8576/15591)   正在检出文件:  56% (8731/15591)   正在检出文件:  57% (8887/15591)   正在检出文件:  58% (9043/15591)   正在检出文件:  59% (9199/15591)   正在检出文件:  60% (9355/15591)   正在检出文件:  61% (9511/15591)   正在检出文件:  62% (9667/15591)   正在检出文件:  63% (9823/15591)   正在检出文件:  64% (9979/15591)   正在检出文件:  65% (10135/15591)   正在检出文件:  66% (10291/15591)   正在检出文件:  67% (10446/15591)   正在检出文件:  68% (10602/15591)   正在检出文件:  69% (10758/15591)   正在检出文件:  70% (10914/15591)   正在检出文件:  71% (11070/15591)   正在检出文件:  71% (11071/15591)   正在检出文件:  72% (11226/15591)   正在检出文件:  73% (11382/15591)   正在检出文件:  74% (11538/15591)   正在检出文件:  75% (11694/15591)   正在检出文件:  76% (11850/15591)   正在检出文件:  77% (12006/15591)   正在检出文件:  78% (12161/15591)   正在检出文件:  79% (12317/15591)   正在检出文件:  80% (12473/15591)   正在检出文件:  81% (12629/15591)   正在检出文件:  82% (12785/15591)   正在检出文件:  83% (12941/15591)   正在检出文件:  84% (13097/15591)   正在检出文件:  85% (13253/15591)   正在检出文件:  86% (13409/15591)   正在检出文件:  87% (13565/15591)   正在检出文件:  88% (13721/15591)   正在检出文件:  89% (13876/15591)   正在检出文件:  90% (14032/15591)   正在检出文件:  91% (14188/15591)   正在检出文件:  92% (14344/15591)   正在检出文件:  93% (14500/15591)   正在检出文件:  94% (14656/15591)   正在检出文件:  95% (14812/15591)   正在检出文件:  96% (14968/15591)   正在检出文件:  97% (15124/15591)   正在检出文件:  98% (15280/15591)   正在检出文件:  99% (15436/15591)   正在检出文件: 100% (15591/15591)   正在检出文件: 100% (15591/15591), 完成.
-+ target_project_update
-+ rm -rf /root/workspace/workspace/i18r_g2-slam/slam_plugins
-+ target_project_fetch
-+ git clone ssh://git@192.168.50.191:222/repid_deploy/integration/slam_plugins -b i18r_g2 --depth=1
-正克隆到 'slam_plugins'...
-正在检出文件:   3% (30/920)   正在检出文件:   4% (37/920)   正在检出文件:   5% (46/920)   正在检出文件:   6% (56/920)   正在检出文件:   7% (65/920)   正在检出文件:   8% (74/920)   正在检出文件:   9% (83/920)   正在检出文件:  10% (92/920)   正在检出文件:  11% (102/920)   正在检出文件:  12% (111/920)   正在检出文件:  13% (120/920)   正在检出文件:  14% (129/920)   正在检出文件:  15% (138/920)   正在检出文件:  16% (148/920)   正在检出文件:  17% (157/920)   正在检出文件:  18% (166/920)   正在检出文件:  19% (175/920)   正在检出文件:  20% (184/920)   正在检出文件:  21% (194/920)   正在检出文件:  22% (203/920)   正在检出文件:  23% (212/920)   正在检出文件:  24% (221/920)   正在检出文件:  25% (230/920)   正在检出文件:  26% (240/920)   正在检出文件:  27% (249/920)   正在检出文件:  28% (258/920)   正在检出文件:  29% (267/920)   正在检出文件:  30% (276/920)   正在检出文件:  31% (286/920)   正在检出文件:  32% (295/920)   正在检出文件:  33% (304/920)   正在检出文件:  34% (313/920)   正在检出文件:  35% (322/920)   正在检出文件:  36% (332/920)   正在检出文件:  37% (341/920)   正在检出文件:  38% (350/920)   正在检出文件:  39% (359/920)   正在检出文件:  40% (368/920)   正在检出文件:  41% (378/920)   正在检出文件:  42% (387/920)   正在检出文件:  43% (396/920)   正在检出文件:  44% (405/920)   正在检出文件:  45% (414/920)   正在检出文件:  46% (424/920)   正在检出文件:  47% (433/920)   正在检出文件:  48% (442/920)   正在检出文件:  49% (451/920)   正在检出文件:  50% (460/920)   正在检出文件:  51% (470/920)   正在检出文件:  52% (479/920)   正在检出文件:  53% (488/920)   正在检出文件:  54% (497/920)   正在检出文件:  55% (506/920)   正在检出文件:  56% (516/920)   正在检出文件:  57% (525/920)   正在检出文件:  58% (534/920)   正在检出文件:  59% (543/920)   正在检出文件:  60% (552/920)   正在检出文件:  61% (562/920)   正在检出文件:  62% (571/920)   正在检出文件:  63% (580/920)   正在检出文件:  64% (589/920)   正在检出文件:  65% (598/920)   正在检出文件:  66% (608/920)   正在检出文件:  67% (617/920)   正在检出文件:  68% (626/920)   正在检出文件:  69% (635/920)   正在检出文件:  70% (644/920)   正在检出文件:  71% (654/920)   正在检出文件:  72% (663/920)   正在检出文件:  73% (672/920)   正在检出文件:  74% (681/920)   正在检出文件:  75% (690/920)   正在检出文件:  76% (700/920)   正在检出文件:  77% (709/920)   正在检出文件:  78% (718/920)   正在检出文件:  79% (727/920)   正在检出文件:  80% (736/920)   正在检出文件:  81% (746/920)   正在检出文件:  82% (755/920)   正在检出文件:  83% (764/920)   正在检出文件:  84% (773/920)   正在检出文件:  85% (782/920)   正在检出文件:  86% (792/920)   正在检出文件:  87% (801/920)   正在检出文件:  88% (810/920)   正在检出文件:  89% (819/920)   正在检出文件:  90% (828/920)   正在检出文件:  91% (838/920)   正在检出文件:  92% (847/920)   正在检出文件:  93% (856/920)   正在检出文件:  94% (865/920)   正在检出文件:  95% (874/920)   正在检出文件:  96% (884/920)   正在检出文件:  97% (893/920)   正在检出文件:  98% (902/920)   正在检出文件:  99% (911/920)   正在检出文件: 100% (920/920)   正在检出文件: 100% (920/920), 完成.
-+ insert_db
-+ pushd /root/workspace/workspace/i18r_g2-slam/sm
-~/workspace/workspace/i18r_g2-slam/sm ~/workspace/workspace/i18r_g2-slam
-++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''liuqiaojun/slam_g2'\'' and source_branch='\''develop'\'' and target_project='\''repid_deploy/integration/slam_plugins'\'' and target_branch='\''i18r_g2'\'' and status='\''0'\'' and job_name='\''i18r_g2-slam'\'' order by id desc limit 1;'
-++ set +x
-+ version=
-++ awk -F ' ' '{print $2}'
-++ echo
-+ version=
-++ git log -1 --pretty=format:%h
-+ first_commit_id_now=50dca01
-+ cmdb_mysql 'update prebuild set first_commit_id='\''50dca01'\'' where build_url='\''http://192.168.50.191:8088/job/i18r_g2-slam/90/'\'';'
-+ set +x
-+ popd
-~/workspace/workspace/i18r_g2-slam
-+ [[ aarch64 =~ x86_64 ]]
-+ [[ i18r_g2-slam =~ rbn ]]
-+ [[ i18r_g2-slam =~ mind ]]
-+ public_project_update
-+ rm -rf /root/system/I18RPublicBaseTypes
-+ [[ i18r_g2-slam =~ nodejs ]]
-+ [[ i18r_g2-slam =~ clean_recorder ]]
-+ [[ i18r_g2-slam =~ i18r ]]
-+ git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git /root/system/I18RPublicBaseTypes -b develop --depth=1
-正克隆到 '/root/system/I18RPublicBaseTypes'...
-+ public_project_todo
-+ pushd /root/system/I18RPublicBaseTypes
-~/system/I18RPublicBaseTypes ~/workspace/workspace/i18r_g2-slam
-+ ./install.sh
--- The C compiler identification is GNU 7.5.0
--- The CXX compiler identification is GNU 7.5.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- CMAKE_INSTALL_PREFIX: /usr/local.
--- I18R_INCLUDE_INSTALL_DIR: /usr/local/include/I18RPublicBaseTypes.
--- CMAKE_CURRENT_SOURCE_DIR: /root/system/I18RPublicBaseTypes.
--- Configuring done
--- Generating done
--- Build files have been written to: /root/system/I18RPublicBaseTypes/build
-sudo: 无法解析主机：car4
-Install the project...
--- Install configuration: "Release"
--- Installing: /usr/local/include/I18RPublicBaseTypes/base_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/cloud_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/marker_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/old_hmi_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/swr_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/Data.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorInfo.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/ErrorMessage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/FormatData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/InternalErrorCode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/Module.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/ThreadInfo.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/Time.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/base/WorkStatus.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Cameara2Camera.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Lidar.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Odometry.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Camera2Tof.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Imu2Odometry.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/calibr/Transform.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/cloud/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/PointCloud.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/autoClean_property.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/clean_path.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/current_type.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/drop_event.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/grass_boundary.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/pose.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_event.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/robot_status.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_mode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/control/work_runs.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/CalibrationImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthMatrix.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/DepthPointCloud.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/GrassBoundary.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/LightAdjustment.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/depth/SourceImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/DetectorResult.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/class.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detect_types.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/detector_param.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/error_code.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/instance.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/detector/map.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/EulerAngle.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Point.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/geometry/Quaternion.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/gen.sh
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.fbs
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response_generated.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/public.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/report.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/request.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/hmi/response.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeImu.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgHotplug.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgImu.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CImseeMsgParam.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameter.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/CameraParameterOld.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/IMUParameter.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/ModuleInfo.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/MoudleAllParam.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/Resolution.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SDebugSet.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/SlamParameter.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/imsee/StreamType.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/marker/MarkerState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/marker/state.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/AFI.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Basic.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Config.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Log.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Route.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/msg/Work.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/BumperEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CleanEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CliffEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/CtrlType.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/DropEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/EncoderData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/LaserScan.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/PointCloud2.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/RobotChassisEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/SonyCamera.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/StartStopSwitchEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofDepthImg.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofGrayImg.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/TofPointCloud.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UltraData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/UsbHotplug.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityCmd.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/sensor/VelocityData.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server/DataRateState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server/SystemState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/server/UserOperation.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/Pose.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/README.md
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamResult.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/slam/SlamState.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorCode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorEvent.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorMessage.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/ErrorTable.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/IceErrorCode.h
--- Installing: /usr/local/include/I18RPublicBaseTypes/error/error_maps.yaml
-sudo: 无法解析主机：car4
-+ popd
-~/workspace/workspace/i18r_g2-slam
-+ public_i18rutilitysubmodule_update
-+ pushd /root/system/i18rutilitysubmodule
-~/system/i18rutilitysubmodule ~/workspace/workspace/i18r_g2-slam
-+ git checkout ./
-+ git clean -xdf ./
-+ git pull origin develop
-来自 ssh://192.168.50.191:222/AroundI18RProject/i18rutilitysubmodule
- * branch            develop    -> FETCH_HEAD
-已经是最新的。
-+ ./install.sh
-sudo: 无法解析主机：car4
-+ popd
-~/workspace/workspace/i18r_g2-slam
-+ project_build
-+ pushd /root/workspace/workspace/i18r_g2-slam/sm
-~/workspace/workspace/i18r_g2-slam/sm ~/workspace/workspace/i18r_g2-slam
-+ project_init_remote
-++ find -type f -name sync_submodules.sh
-+ sf=
-+ '[' -z ']'
-+ git submodule update --init --recursive
-子模组 'thirdparty/messages'（http://192.168.50.191:85/repid_deploy/source/messages.git）未对路径 'thirdparty/messages' 注册
-正克隆到 '/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/messages'...
-子模组路径 'thirdparty/messages'：检出 '24a59e60dc28730ab66909919cede1b4ab032089'
-+ git submodule update --remote
-子模组路径 'thirdparty/messages'：检出 '7cc1257340a8a5cb47b91a498caaed3ddc9b4207'
-+ sed -i 's/make -j[0-9].*/make -j4/g' build_g2.sh
-+ '[' -z ']'
-+ '[' x50dca01 == x ']'
-+ bash -ex build_g2.sh
-+ git submodule update --init --recursive
-子模组路径 'thirdparty/messages'：检出 '24a59e60dc28730ab66909919cede1b4ab032089'
-+ git submodule update --remote
-子模组路径 'thirdparty/messages'：检出 '7cc1257340a8a5cb47b91a498caaed3ddc9b4207'
-+ echo 'Configuring and building Thirdparty/DBoW2 ...'
-Configuring and building Thirdparty/DBoW2 ...
-+ cd thirdparty/DBoW2
-+ mkdir build
-+ cd build
-+ cmake .. -DCMAKE_BUILD_TYPE=Release
--- The C compiler identification is GNU 7.5.0
--- The CXX compiler identification is GNU 7.5.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Use the imported target: /usr/include/eigen3
--- Configuring done
--- Generating done
--- Build files have been written to: /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DBoW2/build
-+ make -j4
-Scanning dependencies of target DBoW2
-[ 11%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FORB.cpp.o
-[ 22%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/BowVector.cpp.o
-[ 33%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/ScoringObject.cpp.o
-[ 44%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FeatureVector.cpp.o
-[ 55%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FSuperPoint256.cpp.o
-[ 66%] Building CXX object CMakeFiles/DBoW2.dir/DBoW2/FSuperPoint.cpp.o
-[ 77%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Random.cpp.o
-[ 88%] Building CXX object CMakeFiles/DBoW2.dir/DUtils/Timestamp.cpp.o
-[100%] Linking CXX shared library ../lib/libDBoW2.so
-[100%] Built target DBoW2
-+ cd ../../DLib
-+ echo 'Configuring and building thirdparty/DLib ...'
-Configuring and building thirdparty/DLib ...
-+ mkdir build
-+ cd build
-+ cmake .. -DCMAKE_BUILD_TYPE=Release
--- The C compiler identification is GNU 7.5.0
--- The CXX compiler identification is GNU 7.5.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Found OpenCV: /usr/local (found suitable version "3.4.3", minimum required is "3") 
--- Configuring done
--- Generating done
--- Build files have been written to: /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DLib/build
-+ make -j4
-Scanning dependencies of target DLib
-[  3%] Building CXX object CMakeFiles/DLib.dir/src/DVision/ImageFunctions.cpp.o
-[ 10%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BRIEF.cpp.o
-[ 10%] Building CXX object CMakeFiles/DLib.dir/src/DVision/FSolver.cpp.o
-[ 13%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PLYFile.cpp.o
-[ 17%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PatchFile.cpp.o
-[ 20%] Building CXX object CMakeFiles/DLib.dir/src/DVision/BundleCamera.cpp.o
-[ 24%] Building CXX object CMakeFiles/DLib.dir/src/DVision/HSolver.cpp.o
-[ 27%] Building CXX object CMakeFiles/DLib.dir/src/DVision/Matches.cpp.o
-[ 31%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PMVSCamera.cpp.o
-[ 34%] Building CXX object CMakeFiles/DLib.dir/src/DVision/PixelPointFile.cpp.o
-[ 37%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Drawing.cpp.o
-[ 41%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Geometry.cpp.o
-[ 44%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Mat.cpp.o
-[ 48%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Types.cpp.o
-[ 51%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/GUI.cpp.o
-[ 55%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/IO.cpp.o
-[ 58%] Building CXX object CMakeFiles/DLib.dir/src/DUtilsCV/Transformations.cpp.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DLib/src/DUtilsCV/GUI.cpp: In static member function ‘static int DUtilsCV::GUI::showImage(const cv::Mat&, bool, DUtilsCV::GUI::tWinHandler*, int)’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/DLib/src/DUtilsCV/GUI.cpp:56:10: warning: comparison is always false due to limited range of data type [-Wtype-limits]
-   if(key == -1) key = NO_KEY;
-      ~~~~^~~~~
-[ 62%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/BinaryFile.cpp.o
-[ 65%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/DebugFunctions.cpp.o
-[ 68%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LUT.cpp.o
-[ 72%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Profiler.cpp.o
-[ 75%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/StringFunctions.cpp.o
-[ 79%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Timestamp.cpp.o
-[ 82%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/ConfigFile.cpp.o
-[ 86%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/FileFunctions.cpp.o
-[ 89%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/LineFile.cpp.o
-[ 93%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/Random.cpp.o
-[ 96%] Building CXX object CMakeFiles/DLib.dir/src/DUtils/TimeManager.cpp.o
-[100%] Linking CXX shared library libDLib.so
-[100%] Built target DLib
-+ cd ../../gtsam_source
-+ echo 'Configuring and building Thirdparty/gtsam_source ...'
-Configuring and building Thirdparty/gtsam_source ...
-+ mkdir build
-+ cd build
-+ cmake -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF -DBUILD_SHARED_LIBS=ON -DGTSAM_USE_SYSTEM_EIGEN=ON -DGTSAM_BUILD_TESTS=OFF -DGTSAM_BUILD_EXAMPLES_ALWAYS=OFF -DGTSAM_POSE3_EXPMAP=ON -DGTSAM_ROT3_EXPMAP=ON -DCMAKE_BUILD_TYPE=Release ..
--- The CXX compiler identification is GNU 7.5.0
--- The C compiler identification is GNU 7.5.0
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- GTSAM_SOURCE_ROOT_DIR: [/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source]
--- Looking for pthread.h
--- Looking for pthread.h - found
--- Looking for pthread_create
--- Looking for pthread_create - not found
--- Looking for pthread_create in pthreads
--- Looking for pthread_create in pthreads - not found
--- Looking for pthread_create in pthread
--- Looking for pthread_create in pthread - found
--- Found Threads: TRUE  
--- Found Boost: /usr/include (found suitable version "1.65.1", minimum required is "1.43") found components:  serialization system filesystem thread program_options date_time timer chrono regex atomic 
-Ignoring Boost restriction on optional lvalue assignment from rvalues
--- Found TBB: /usr/include (found suitable version "2017.0", minimum required is "4.4") found components:  tbb tbbmalloc 
--- Could NOT find MKL (missing: MKL_INCLUDE_DIR MKL_LIBRARIES) 
--- Found OpenMP_C: -fopenmp (found version "4.5") 
--- Found OpenMP_CXX: -fopenmp (found version "4.5") 
--- Found OpenMP: TRUE (found version "4.5")  
--- Found Eigen3: /usr/include/eigen3 (Required is at least version "2.91.0") 
--- Found Eigen version: 3.3.4
--- Building 3rdparty
--- Looking for execinfo.h
--- Looking for execinfo.h - found
--- Looking for getline
--- Looking for getline - found
--- checking for thread-local storage - found
--- Could NOT find GeographicLib (missing: GeographicLib_LIBRARY_DIRS GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS) 
--- Building base
--- Building geometry
--- Building inference
--- Building symbolic
--- Building discrete
--- Building linear
--- Building nonlinear
--- Building sam
--- Building sfm
--- Building slam
--- Building smart
--- Building navigation
--- GTSAM Version: 4.0.2
--- Install prefix: /usr/local
--- Building GTSAM - shared: ON
--- Building base_unstable
--- Building geometry_unstable
--- Building linear_unstable
--- Building discrete_unstable
--- Building dynamics_unstable
--- Building nonlinear_unstable
--- Building slam_unstable
--- Building partition_unstable
--- GTSAM_UNSTABLE Version: 4.0.2
--- Install prefix: /usr/local
--- Wrote /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/build/GTSAMConfig.cmake
--- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
--- ===============================================================
--- ================  Configuration Options  ======================
---   CMAKE_CXX_COMPILER_ID type     : GNU
---   CMAKE_CXX_COMPILER_VERSION     : 7.5.0
---   CMake version                  : 3.10.2
---   CMake generator                : Unix Makefiles
---   CMake build tool               : /usr/bin/make
--- Build flags                                               
---   Build Tests                    : Disabled
---   Build examples with 'make all' : Disabled
---   Build timing scripts with 'make all': Disabled
---   Build shared GTSAM libraries   : Enabled
---   Put build type in library name : Enabled
---   Build libgtsam_unstable        : Enabled
---   Build for native architecture  : Disabled
---   Build type                     : Release
---   C compilation flags            :  -O3 -DNDEBUG
---   C++ compilation flags          :  -O3 -DNDEBUG
---  GTSAM_COMPILE_FEATURES_PUBLIC                    : cxx_std_11
---  GTSAM_COMPILE_OPTIONS_PRIVATE                    : -Wall;$<$<CONFIG:Debug>:-g;-fno-inline>;$<$<CONFIG:Release>:-O3>;$<$<CONFIG:Timing>:-g;-O3>;$<$<CONFIG:Profiling>:-O3>;$<$<CONFIG:RelWithDebInfo>:-g;-O3>;-Wno-unused-local-typedefs
---  GTSAM_COMPILE_OPTIONS_PUBLIC                     : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE                : $<$<CONFIG:Debug>:_DEBUG;EIGEN_INITIALIZE_MATRICES_BY_NAN>;$<$<CONFIG:Release>:NDEBUG>;$<$<CONFIG:Timing>:NDEBUG;ENABLE_TIMING>;$<$<CONFIG:Profiling>:NDEBUG>;$<$<CONFIG:RelWithDebInfo>:NDEBUG>
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC                 : BOOST_OPTIONAL_ALLOW_BINDING_TO_RVALUES;BOOST_OPTIONAL_CONFIG_ALLOW_BINDING_TO_RVALUES
---  GTSAM_COMPILE_OPTIONS_PRIVATE_DEBUG              : -g;-fno-inline
---  GTSAM_COMPILE_OPTIONS_PUBLIC_DEBUG               : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_DEBUG          : _DEBUG;EIGEN_INITIALIZE_MATRICES_BY_NAN
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_DEBUG           : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_RELEASE            : -O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_RELEASE             : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_RELEASE        : NDEBUG
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELEASE         : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_TIMING             : -g;-O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_TIMING              : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_TIMING         : NDEBUG;ENABLE_TIMING
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_TIMING          : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_PROFILING          : -O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_PROFILING           : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_PROFILING      : NDEBUG
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_PROFILING       : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_RELWITHDEBINFO     : -g;-O3
---  GTSAM_COMPILE_OPTIONS_PUBLIC_RELWITHDEBINFO      : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_RELWITHDEBINFO : NDEBUG
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELWITHDEBINFO  : 
---  GTSAM_COMPILE_OPTIONS_PRIVATE_MINSIZEREL         : 
---  GTSAM_COMPILE_OPTIONS_PUBLIC_MINSIZEREL          : 
---  GTSAM_COMPILE_DEFINITIONS_PRIVATE_MINSIZEREL     : 
---  GTSAM_COMPILE_DEFINITIONS_PUBLIC_MINSIZEREL      : 
---   Use System Eigen               : ON (Using version: 3.3.4)
---   Use Intel TBB                  : Yes
---   Eigen will use MKL             : MKL not found
---   Eigen will use MKL and OpenMP  : OpenMP found but GTSAM_WITH_EIGEN_MKL is disabled
---   Default allocator              : TBB
---   Build with ccache              : No
--- Packaging flags                                               
---   CPack Source Generator         : TGZ
---   CPack Generator                : TGZ
--- GTSAM flags                                               
---   Quaternions as default Rot3     : Disabled
---   Runtime consistency checking    : Disabled
---   Rot3 retract is full ExpMap     : Enabled
---   Pose3 retract is full ExpMap    : Enabled
---   Deprecated in GTSAM 4 allowed   : Enabled
---   Point3 is typedef to Vector3    : Disabled
---   Metis-based Nested Dissection   : Enabled
---   Use tangent-space preintegration: Enabled
---   Build Wrap                     : Enabled
--- MATLAB toolbox flags                                      
---   Install matlab toolbox         : Disabled
--- Cython toolbox flags                                      
---   Install Cython toolbox         : Disabled
--- ===============================================================
--- Configuring done
--- Generating done
--- Build files have been written to: /root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/build
-+ make -j4
-Scanning dependencies of target CppUnitLite
-Scanning dependencies of target wrap_lib
-[  0%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/Test.cpp.o
-[  0%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/TestRegistry.cpp.o
-[  0%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Argument.cpp.o
-Scanning dependencies of target metis
-[  0%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/b64.c.o
-[  0%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/blas.c.o
-[  1%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/csr.c.o
-[  3%] Building CXX object CppUnitLite/CMakeFiles/CppUnitLite.dir/TestResult.cpp.o
-[  3%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Class.cpp.o
-[  3%] Linking CXX static library libCppUnitLite.a
-[  3%] Built target CppUnitLite
-[  3%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Constructor.cpp.o
-[  3%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/error.c.o
-[  3%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/evaluate.c.o
-[  3%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/fkvkselect.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/fs.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/getopt.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/gkregex.c.o
-[  5%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/graph.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/htable.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/io.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/itemsets.c.o
-[  6%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/mcore.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/memory.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/omp.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/pdb.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/pqueue.c.o
-[  8%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/random.c.o
-[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/rw.c.o
-[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/seq.c.o
-[ 10%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/sort.c.o
-[ 11%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Deconstructor.cpp.o
-[ 11%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/string.c.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/timers.c.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/tokenizer.c.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/__/GKlib/util.c.o
-[ 13%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/auxapi.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/balance.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/bucketsort.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/checkgraph.c.o
-[ 15%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/coarsen.c.o
-[ 15%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/FileWriter.cpp.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/compress.c.o
-[ 16%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/FullyOverloadedFunction.cpp.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/contig.c.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/debug.c.o
-[ 16%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Function.cpp.o
-[ 16%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/fm.c.o
-[ 18%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/GlobalFunction.cpp.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/fortran.c.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/frename.c.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/gklib.c.o
-[ 20%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Method.cpp.o
-[ 20%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/graph.c.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/initpart.c.o
-[ 21%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/MethodBase.cpp.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/kmetis.c.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/kwayfm.c.o
-[ 21%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/kwayrefine.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mcutil.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mesh.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/meshpart.c.o
-[ 23%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/minconn.c.o
-[ 25%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mincover.c.o
-[ 25%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/mmd.c.o
-[ 25%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Module.cpp.o
-[ 25%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/ometis.c.o
-[ 26%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/Qualified.cpp.o
-[ 26%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/options.c.o
-[ 28%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/parmetis.c.o
-[ 28%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/ReturnType.cpp.o
-[ 28%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/pmetis.c.o
-[ 28%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/refine.c.o
-[ 28%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/separator.c.o
-[ 30%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/sfm.c.o
-[ 30%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/ReturnValue.cpp.o
-[ 30%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/srefine.c.o
-[ 30%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/stat.c.o
-[ 30%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/timing.c.o
-[ 31%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/util.c.o
-[ 31%] Building C object gtsam/3rdparty/metis/libmetis/CMakeFiles/metis.dir/wspace.c.o
-[ 31%] Linking C shared library libmetis.so
-[ 31%] Built target metis
-Scanning dependencies of target gtsam
-[ 31%] Building C object gtsam/CMakeFiles/gtsam.dir/3rdparty/CCOLAMD/Source/ccolamd.c.o
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/gtsam/3rdparty/CCOLAMD/Source/ccolamd.c: In function ‘ccolamd2’:
-/root/workspace/workspace/i18r_g2-slam/sm/thirdparty/gtsam_source/gtsam/3rdparty/CCOLAMD/Source/ccolamd.c:1563:9: warning: variable ‘cs’ set but not used [-Wunused-but-set-variable]
-     Int cs ;
-         ^~
-[ 31%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/StaticMethod.cpp.o
-[ 31%] Building C object gtsam/CMakeFiles/gtsam.dir/3rdparty/SuiteSparse_config/SuiteSparse_config.c.o
-[ 33%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/DSFVector.cpp.o
-[ 33%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/Matrix.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/TemplateInstantiationTypedef.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/TemplateMethod.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/TypeAttributesTable.cpp.o
-[ 35%] Building CXX object wrap/CMakeFiles/wrap_lib.dir/utilities.cpp.o
-[ 35%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/SymmetricBlockMatrix.cpp.o
-[ 35%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/Vector.cpp.o
-[ 36%] Linking CXX static library libwrap_lib.a
-[ 36%] Built target wrap_lib
-Scanning dependencies of target wrap
-[ 36%] Building CXX object wrap/CMakeFiles/wrap.dir/wrap.cpp.o
-[ 38%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/VerticalBlockMatrix.cpp.o
-[ 40%] Linking CXX executable wrap
-[ 40%] Built target wrap
-[ 40%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/cholesky.cpp.o
-[ 40%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/debug.cpp.o
-[ 40%] Building CXX object gtsam/CMakeFiles/gtsam.dir/base/timing.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3Bundler.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3DS2.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3DS2_Base.cpp.o
-[ 41%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3Unified.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3_S2.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cal3_S2Stereo.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/CalibratedCamera.cpp.o
-[ 43%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Cyclic.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/EssentialMatrix.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/OrientedPlane3.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Point2.cpp.o
-[ 45%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Point3.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Pose2.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Pose3.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot2.cpp.o
-[ 46%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot3.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Rot3M.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SO3.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/SimpleCamera.cpp.o
-[ 48%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/StereoCamera.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/StereoPoint2.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/Unit3.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/geometry/triangulation.cpp.o
-[ 50%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/BayesTree.cpp.o
-[ 51%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Factor.cpp.o
-[ 51%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Key.cpp.o
-[ 51%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/LabeledSymbol.cpp.o
-[ 51%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Ordering.cpp.o
-[ 51%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/Symbol.cpp.o
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/VariableIndex.cpp.o
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/inference/VariableSlots.cpp.o
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicBayesNet.cpp.o
-[ 53%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicBayesTree.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicConditional.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicEliminationTree.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicFactor.cpp.o
-[ 55%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicFactorGraph.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicISAM.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/symbolic/SymbolicJunctionTree.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DecisionTreeFactor.cpp.o
-[ 56%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteBayesNet.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteBayesTree.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteConditional.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteEliminationTree.cpp.o
-[ 58%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteFactor.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteFactorGraph.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteJunctionTree.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/DiscreteKey.cpp.o
-[ 60%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/Potentials.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/discrete/Signature.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/ConjugateGradientSolver.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Errors.cpp.o
-[ 61%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianBayesNet.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianBayesTree.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianConditional.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianDensity.cpp.o
-[ 63%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianEliminationTree.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianFactorGraph.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianISAM.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/GaussianJunctionTree.cpp.o
-[ 65%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/HessianFactor.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/IterativeSolver.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/JacobianFactor.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/KalmanFilter.cpp.o
-[ 66%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/NoiseModel.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/PCGSolver.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Preconditioner.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Sampler.cpp.o
-[ 68%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/Scatter.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphBuilder.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphPreconditioner.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/SubgraphSolver.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/VectorValues.cpp.o
-[ 70%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/iterative.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/linear/linearExceptions.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/DoglegOptimizer.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/DoglegOptimizerImpl.cpp.o
-[ 71%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/GaussNewtonOptimizer.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2-impl.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2Params.cpp.o
-[ 73%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/ISAM2Clique.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LevenbergMarquardtOptimizer.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LevenbergMarquardtParams.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/LinearContainerFactor.cpp.o
-[ 75%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/Marginals.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearConjugateGradientOptimizer.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearFactor.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearFactorGraph.cpp.o
-[ 76%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearISAM.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearOptimizer.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/NonlinearOptimizerParams.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/nonlinear/Values.cpp.o
-[ 78%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/EssentialMatrixConstraint.cpp.o
-[ 80%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/InitializePose3.cpp.o
-[ 80%] Building CXX object gtsam/CMakeFiles/gtsam.dir/slam/OrientedPlane3Factor.cpp.o
-Build was aborted
-Aborted by [8mha:////4NEJzf6Z0/myHxJ1fNgp0z1sSwi1yXxuxiy79e0qJwosAAAAlB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyOEgYO/dLi1CL9ilIAKZda8r0AAAA=[0mxuhaonan
-Finished: ABORTED
