@@ -79,13 +79,13 @@ function App_install(){
 	gz_type
 	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
 	    (
-		mv $TEST_DIR/${deb_name} ${trash_dir}
+		mv $TEST_DIR/${tgz_full_name} ${trash_dir}
 		mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 	gz_type
-	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
+	mv $BUILD_DIR/${tgz_full_name} $FTP_RELEASE_DIR
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 
