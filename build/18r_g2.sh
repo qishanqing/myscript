@@ -18,7 +18,7 @@ init_project_env(){
     fi
 
     BUILD_DIR=$RELEASE_DIR/workspace
-    appname=18R_G2
+    appname=i18R-G2
     PLATFORM=`uname -m`
     ui_job_name="i18r_g2_ui"
     CLONE_DEPTH="--depth=1"
@@ -43,6 +43,7 @@ init_project_env(){
     CLONE_DEPTH="--depth=1"
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig.git $CONFIG_DIR -b  $default_branch $CLONE_DEPTH"
     ENCRYPTION_TOOL=$CONFIG_DIR/upx_arm.out
+    x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
     is-trigger-job
@@ -82,16 +83,18 @@ function App_install(){
     Add_Tag
     Release_Version_Rule_all
     if [[ $RELEASE = test ]];then
-	deb_type
-	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
+	deb_type_g2
+	mv $BUILD_DIR/${deb_name} $TEST_DIR ||
 	    (
 		mv $TEST_DIR/${deb_name} ${trash_dir}
-		mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR
+		mv $BUILD_DIR/${deb_name} $TEST_DIR
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-	deb_type
-	mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
+	deb_type_g2
+	tgz_type_g2
+	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
+	mv $BUILD_DIR/${deb_name} $FTP_RELEASE_DIR
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 

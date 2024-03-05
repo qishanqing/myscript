@@ -188,11 +188,30 @@ function deb_type_18(){
     deb_md5=`cat $WORK_DIR/version.txt`
 }
 
+function deb_type_g2(){
+    deb_name=INDEMINDAPP_${appname}_${SWR_VERSION}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.deb
+    echo "$deb_name" | tee $WORK_DIR/version.txt
+    dpkg -b . $BUILD_DIR/$deb_name && md5sum $BUILD_DIR/$deb_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
+    deb_md5=`cat $WORK_DIR/version.txt`
+}
+
 function tgz_type_18(){
     tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
     pushd $APP_WORKSPACE$RELEASE_DIR
     echo "$tgz_full_name" | tee $WORK_DIR/version.txt
     tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
+    tgz_full_md5=`cat $WORK_DIR/version.txt`
+    popd
+}
+
+function tgz_type_g2(){
+    tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
+    release_name=${appname}_A311D_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
+    pushd $APP_WORKSPACE$RELEASE_DIR
+    echo "$tgz_full_name" | tee $WORK_DIR/version.txt
+    mkdir -p upgrade_package/A311D_PACKAGE
+    tar zcvf $release_name workspace && mv $release_name upgrade_package/A311D_PACKAGE
+    tar zcvf $BUILD_DIR/$tgz_full_name upgrade_package > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
     tgz_full_md5=`cat $WORK_DIR/version.txt`
     popd
 }
