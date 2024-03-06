@@ -41,11 +41,12 @@ init_project_env(){
 	CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b ${CONFIG_BRANCH:-dev} $CLONE_DEPTH"
     fi
 
-    TEST_DIR=/mnt/ftp/release/${upload_ftp_project:-INDEMINDAPP}/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/${upload_ftp_project:-INDEMINDAPP}/fresh_version
-    FTP_RELEASE_SIGN_DIR=${FTP_RELEASE_DIR%/*}/sign
-    FTP_RELEASE_OTA_DIR=${FTP_RELEASE_DIR%/*}/ota_full_version
-    FTP_RELEASE_OTA_DIFF_DIR=${FTP_RELEASE_DIR%/*}/ota
+    RELEASE_PROJECT_DIR=/mnt/ftp/release/${upload_ftp_project:-INDEMINDAPP}
+    TEST_DIR=${RELEASE_PROJECT_DIR}/test
+    FTP_RELEASE_DIR=${RELEASE_PROJECT_DIR}/fresh_version
+    FTP_RELEASE_SIGN_DIR=${RELEASE_PROJECT_DIR}/sign
+    FTP_RELEASE_OTA_DIR=${RELEASE_PROJECT_DIR}/ota_full_version
+    FTP_RELEASE_OTA_DIFF_DIR=${RELEASE_PROJECT_DIR}/ota
     function_list=/mnt/ftp/release/app_update_release
     ENCRYPTION_TOOL=$CONFIG_DIR/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
