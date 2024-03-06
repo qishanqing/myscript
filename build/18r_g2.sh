@@ -43,6 +43,7 @@ init_project_env(){
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     CLONE_DEPTH="--depth=1"
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig.git $CONFIG_DIR -b  $default_branch $CLONE_DEPTH"
+    UPDATER_REMOTE="git clone ssh://git@192.168.50.191:222/repid_deploy/integration/Updater.git -b $default_branch $CLONE_DEPTH updater"
     ENCRYPTION_TOOL=$CONFIG_DIR/upx_arm.out
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
@@ -84,18 +85,20 @@ function App_install(){
     Add_Tag
     Release_Version_Rule_all
     if [[ $RELEASE = test ]];then
-	deb_type_g2
-	mv $BUILD_DIR/${deb_name} $TEST_DIR ||
-	    (
-		mv $TEST_DIR/${deb_name} ${trash_dir}
-		mv $BUILD_DIR/${deb_name} $TEST_DIR
-	    )
+	tgz_type_g2
+	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
+#	deb_type_g2
+#	mv $BUILD_DIR/${deb_name} $TEST_DIR ||
+#	    (
+#		mv $TEST_DIR/${deb_name} ${trash_dir}
+#		mv $BUILD_DIR/${deb_name} $TEST_DIR
+#	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 	deb_type_g2
+	mv $BUILD_DIR/${deb_name} $FTP_RELEASE_DIR%/*
 	tgz_type_g2
 	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
-	mv $BUILD_DIR/${deb_name} $FTP_RELEASE_DIR
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 
