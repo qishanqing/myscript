@@ -22,6 +22,7 @@ init_project_env(){
     PLATFORM=`uname -m`
     ui_job_name="i18r_g2_ui"
     CLONE_DEPTH="--depth=1"
+    OTA_DIR=~/system/i18rota
     sourcename=18r_g2_server
     default_branch=i18r_g2
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
@@ -38,6 +39,8 @@ init_project_env(){
     CONFIG_DIR=~/system/i18rconfig
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
+    CHIP_CLASS=A311D
+    CHIP_VERSION=`echo ${CHIP_CLASS}_version.txt`
     RELEASE_BRANCH="${appname}-${SWR_VERSION}"
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
@@ -86,7 +89,6 @@ function App_install(){
     Release_Version_Rule_all
     if [[ $RELEASE = test ]];then
 	tgz_type_g2
-	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 #	deb_type_g2
 #	mv $BUILD_DIR/${deb_name} $TEST_DIR ||
 #	    (
@@ -95,14 +97,11 @@ function App_install(){
 #	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-	deb_type_g2
-	mv $BUILD_DIR/${deb_name} $FTP_RELEASE_DIR%/*
+#	deb_type_g2
 	tgz_type_g2
-	mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
+	ota_update_g2
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
-
-    mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
     popd
 }
 

@@ -170,6 +170,7 @@ function tgz_type(){
     tar zcvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
     tgz_full_md5=`cat $WORK_DIR/version.txt`
     popd
+    mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 }
 
 function gz_type(){
@@ -193,6 +194,7 @@ function deb_type_g2(){
     echo "$deb_name" | tee $WORK_DIR/version.txt
     dpkg -b . $BUILD_DIR/$deb_name && md5sum $BUILD_DIR/$deb_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
     deb_md5=`cat $WORK_DIR/version.txt`
+    mv $BUILD_DIR/${deb_name} $FTP_RELEASE_DIR%/*
 }
 
 function tgz_type_18(){
@@ -205,20 +207,22 @@ function tgz_type_18(){
 }
 
 function tgz_type_g2(){
-#    tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
-    tgz_full_name=${appname}_A311D_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
+    #    tgz_full_name=INDEMINDAPP_${appname}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
+    tgz_full_name=${appname}_${CHIP_CLASS}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tgz
     pushd $APP_WORKSPACE$RELEASE_DIR
-    echo "$tgz_full_name" | tee $WORK_DIR/version.txt
+    echo "$tgz_full_name" | tee $WORK_DIR/$CHIP_VERSION
 #    mkdir -p upgrade_package/A311D_PACKAGE
     #    tar zcvf $release_name workspace && mv $release_name upgrade_package/A311D_PACKAGE
     if [[ "$updater" = true ]];then
 	pushd workspace
 	$UPDATER_REMOTE
+	find -name .git | xargs -i rm -rf {}
 	popd
     fi
-    tar zcvf $BUILD_DIR/$tgz_full_name workspace  > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
-    tgz_full_md5=`cat $WORK_DIR/version.txt`
+    tar zcvf $BUILD_DIR/$tgz_full_name workspace  > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/$CHIP_VERSION
+    tgz_full_md5=`cat $WORK_DIR/$CHIP_VERSION`
     popd
+    mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
 }
 
 function ui_info(){
@@ -385,6 +389,69 @@ function ota_update_18(){
 		tar -zcvf $BUILD_DIR/$ota_update_release_name workspace/*
 	    )
 	    mv $BUILD_DIR/$ota_update_release_name $FTP_RELEASE_OTA_DIFF_DIR
+	)
+}
+
+function ota_update_g2(){
+    if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]] || [[ $gitmodules = true ]] || [[ ! -z $SDK_BRANCH ]];then
+	echo "ota is disabled"
+	return 0
+    else
+	local CLONE_DEPTH="--depth=10"
+	ota_project_fetch
+    fi
+
+    rsync -ar $WORK_DIR/* --exclude r[0-9]* --exclude -* --exclude updater $OTA_DIR/ &&
+	(
+	    cd $OTA_DIR/
+	    local path_work=~/tmp
+	    local path_workspace=$path_work/workspace
+	    rm -rf  $path_workspace || true
+	    mkdir -p  $path_workspace
+	    last_tag=`git tag --sort=taggerdate | tail -n 1`
+	    last_version=`echo ${last_tag%_*}`
+	    last_version=`echo $last_version | perl -npe 's.r..g'`
+	    git add --all .
+	    git commit -m "update $OTA_TAG"
+	    git tag -a $OTA_TAG -m "add $OTA_TAG tag release:$version" || (
+		git tag -d $OTA_TAG || true
+		git tag -a $OTA_TAG -m "add $OTA_TAG tag release:$version" || true
+	    )
+	    git push origin $OTA_TAG -f
+	    git push origin HEAD:${OTA_BRANCH}
+	    ota_update_release_name=${appname}_${CHIP_CLASS}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_${last_version}_${version}.tgz
+	    echo "$ota_update_release_name" | tee $CHIP_VERSION
+	    echo "" >> version.txt
+	    echo "" >> version.txt
+	    git diff $last_tag HEAD --name-status >> $CHIP_VERSION
+	    git diff $last_tag HEAD --name-only |
+		while read f;do
+		    cp --parents -av  $f $path_workspace
+		done
+	    (
+		cd $path_work
+		tar -zcvf $BUILD_DIR/$ota_update_release_name workspace/*
+	    ) && mv $BUILD_DIR/$ota_update_release_name $FTP_RELEASE_OTA_DIFF_DIR
+	    if  ! [[ -z "${OTA_VERSION_DIFF}" ]];then
+		MIN_VERSION=${OTA_VERSION_DIFF}
+		ota_diff_release_name=${appname}_${CHIP_CLASS}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_${OTA_VERSION_DIFF}_${version}.tgz
+		diff_tag="r${OTA_VERSION_DIFF}_${OTA_BRANCH}"
+		rm -rf  $path_workspace || true
+		mkdir -p  $path_workspace
+		echo "$ota_diff_release_name" | tee $CHIP_VERSION
+		echo "" >> version.txt
+		echo "" >> version.txt
+		git diff $diff_tag HEAD --name-status >> $CHIP_VERSION
+		git diff $diff_tag HEAD --name-only |
+		    while read f;do
+			cp --parents -av  $f $path_workspace
+		    done
+		(
+		    cd $path_work
+		    tar -zcvf $BUILD_DIR/$ota_diff_release_name workspace/*
+		)
+		mv $BUILD_DIR/$ota_diff_release_name $FTP_RELEASE_OTA_DIFF_DIR
+	    fi
 	)
 }
 
