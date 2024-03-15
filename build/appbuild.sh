@@ -113,7 +113,7 @@ function App_install(){
 	deb_type && mv $BUILD_DIR/$deb_name $FTP_RELEASE_DIR
 	tgz_type
 #	Plug-in_version
-	ota_update
+#	ota_update
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 
