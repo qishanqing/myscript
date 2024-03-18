@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>log-parser plugin page</title>
+		<link type="text/css" rel="stylesheet" href="http://192.168.50.191:8088/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="http://192.168.50.191:8088/css/color.css" />
+	</head>
+	<body>
+<style>
+  body {margin-left:.5em; }
+  pre {font-family: Consolas, "Courier New"; word-wrap: break-word; }
+  pre span {word-wrap: break-word; } 
+</style>
+<pre>Started by user yangwanying
+Running as SYSTEM
+Building remotely on khadas-car2 (car2) in workspace /root/workspace/workspace/caffer_app
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+No emails were triggered.
+[caffer_app] $ /bin/sh -xe /tmp/jenkins12267092165056736812.sh
++ bash /root/myscript/build/cafferapp.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ . /root/myscript/build/../sh/version-update.sh
+++ . /root/.bashrc
++++ '[' -z '' ']'
++++ return
++ set -ex
++ init_project_env
+++ whoami
++ '[' root = root ']'
++ ios=root
++ RELEASE_DIR=/root
++ DESKTOP_DIR=/root/workspace/i18rApplicationDeb/work/root/workspace
++ BUILD_DIR=/root/workspace
++ appname=RUBBY
++ sourcename=caffer_demo
++ APP_WORKSPACE=/root/workspace/i18rApplicationDeb/work
++ WORK_DIR=/root/workspace/i18rApplicationDeb/work/root/workspace
++ VERSION_FILE=/root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ UI_DIR=/mnt/ftp/release/RUBBY/client
++ TEST_DIR=/mnt/ftp/release/RUBBY/test
++ FTP_RELEASE_DIR=/mnt/ftp/release/RUBBY/fresh_version
++ FTP_RELEASE_SIGN_DIR=/mnt/ftp/release/RUBBY/fresh_version/sign
++ FTP_RELEASE_OTA_DIR=/mnt/ftp/release/RUBBY/fresh_version/ota_full_version
++ FTP_RELEASE_OTA_DIFF_DIR=/mnt/ftp/release/RUBBY/fresh_version/ota
++ function_list=/mnt/ftp/release/app_update_release
++ CONFIG_DIR=/root/system/i18rconfig
++ OTA_DIR=/root/system/i18rota
+++ uname -m
++ PLATFORM=aarch64
++ RELEASE_BRANCH=RUBBY-EVT1
++ RELEASE_TAG=r166_RUBBY-EVT1
+++ tail -n 1
+++ cmdb_mysql 'SELECT version FROM indemindapp where status='\''2'\'' and swr_version='\''EVT1'\'' and indemind_release='\''test'\'' and appname='\''RUBBY'\'' order by id desc limit 5;'
+++ set +x
++ min_version=
++ CLONE_DEPTH=--depth=1
++ CONFIG_REMOTE='git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig /root/system/i18rconfig -b caffer_dev --depth=1'
++ ENCRYPTION_TOOL=/root/system/i18rconfig/encrypt
++ tgz_release=INTG
++ trash_dir=/mnt/ftp/Trash
++ is-trigger-job
++ '[' xyangwanying = xtimer ']'
++ mount_ftp
++ '[' -d /mnt/ftp/release ']'
++ check_paremter_is_right
++ rx='^([0-9]+\.){3}([0-9]+)$'
++ [[ -z 166 ]]
+++ check 166
+++ local a=166
+++ printf %d 166
+++ echo integer
+++ return
++ [[ integer == vb ]]
+++ check 166
+++ local a=166
+++ printf %d 166
+++ echo integer
+++ return
++ [[ integer == integer ]]
++ [[ 166 =~ ^([0-9]+\.){3}([0-9]+)$ ]]
++ RELEASE=test
++ echo 'check paremter is done'
+check paremter is done
++ clean_workspace
++ pushd /root/workspace
+~/workspace ~/workspace/workspace/caffer_app
++ sudo rm -rf i18rApplicationDeb 'INDEMINDAPP*' caffer_demo client
+sudo: 无法解析主机：car2
++ popd
+~/workspace/workspace/caffer_app
++ App_project_fetch
++ pushd /root/workspace
+~/workspace ~/workspace/workspace/caffer_app
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rApplicationDeb.git -b master --depth=1
+正克隆到 'i18rApplicationDeb'...
++ mkdir -p /root/workspace/i18rApplicationDeb/work/root/workspace
++ pushd /root/workspace
+~/workspace ~/workspace ~/workspace/workspace/caffer_app
++ git clone ssh://git@192.168.50.191:222/abby/integration/abby_demo.git caffer_demo -b caffer
+正克隆到 'caffer_demo'...
++ pushd caffer_demo
+~/workspace/caffer_demo ~/workspace ~/workspace ~/workspace/workspace/caffer_app
++ config_project_update
++ [[ -d /root/system/i18rconfig ]]
++ rm -rf /root/system/i18rconfig
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig /root/system/i18rconfig -b caffer_dev --depth=1
+正克隆到 '/root/system/i18rconfig'...
++ [[ '' == true ]]
++ git submodule update --init --recursive
+子模组 'submodules/depth'（http://192.168.50.191:85/abby/integration/depth.git）未对路径 'submodules/depth' 注册
+子模组 'submodules/dirtdetect'（ssh://git@192.168.50.191:222/abby/integration/dirtdetect.git）未对路径 'submodules/dirtdetect' 注册
+子模组 'submodules/navigation'（http://192.168.50.191:85/abby/integration/navigation.git）未对路径 'submodules/navigation' 注册
+子模组 'submodules/perception'（http://192.168.50.191:85/abby/integration/perception.git）未对路径 'submodules/perception' 注册
+子模组 'submodules/sensor'（http://192.168.50.191:85/abby/integration/sensors.git）未对路径 'submodules/sensor' 注册
+子模组 'submodules/server'（http://192.168.50.191:85/abby/integration/sdk.git）未对路径 'submodules/server' 注册
+子模组 'submodules/slam'（http://192.168.50.191:85/abby/integration/slam.git）未对路径 'submodules/slam' 注册
+子模组 'submodules/slammaping'（http://192.168.50.191:85/abby/integration/slammapping.git）未对路径 'submodules/slammaping' 注册
+子模组 'submodules/stillness'（http://192.168.50.191:85/abby/integration/stillness.git）未对路径 'submodules/stillness' 注册
+正克隆到 '/root/workspace/caffer_demo/submodules/depth'...
+正克隆到 '/root/workspace/caffer_demo/submodules/dirtdetect'...
+正克隆到 '/root/workspace/caffer_demo/submodules/navigation'...
+正克隆到 '/root/workspace/caffer_demo/submodules/perception'...
+正克隆到 '/root/workspace/caffer_demo/submodules/sensor'...
+正克隆到 '/root/workspace/caffer_demo/submodules/server'...
+正克隆到 '/root/workspace/caffer_demo/submodules/slam'...
+正克隆到 '/root/workspace/caffer_demo/submodules/slammaping'...
+正克隆到 '/root/workspace/caffer_demo/submodules/stillness'...
+子模组路径 'submodules/depth'：检出 'f97c63987086e5740f1156ebc624306d66653167'
+子模组路径 'submodules/dirtdetect'：检出 '06126e1e6d9dbd3ee001a747a6e18a3aa8e57a7c'
+子模组路径 'submodules/navigation'：检出 '862cc58885bb0347e32549e2b516b4e90f8652b3'
+子模组路径 'submodules/perception'：检出 '213d7bb80444df7505cce50ea3d07b29a3b13cc3'
+子模组路径 'submodules/sensor'：检出 'c4ad4e7b40519f1719c5230d69f530369f7570d0'
+子模组路径 'submodules/server'：检出 '15ef149f1fc256618b3dd53c9fa06cf5d662f326'
+子模组路径 'submodules/slam'：检出 'c928c1101adc486317d0b8241e44fe9306fb7c3d'
+子模组路径 'submodules/slammaping'：检出 '6554e53f1115999affeb7744375ef6757170c995'
+子模组路径 'submodules/stillness'：检出 '0c362533004e60153645bdcb5cd65c46315c4b5a'
++ git submodule update --remote
+子模组路径 'submodules/depth'：检出 '09db1e23591d9b2a94adb2a2c9dcf0e032e3f2de'
+子模组路径 'submodules/dirtdetect'：检出 '2a62e868e4407d86aa77c6c097d4cb051082748e'
+子模组路径 'submodules/navigation'：检出 '1b7a90c09dcb8a5c58ee37b046d9d86b7912c17d'
+子模组路径 'submodules/perception'：检出 '1d2f2d43ffffeda19bda43c10e66b0d7e2a19f87'
+子模组路径 'submodules/sensor'：检出 'dc04627699ab3e7b01872ea90ae81d05f9efe3b8'
+子模组路径 'submodules/server'：检出 '94df1524aecad90f552e2df5e7de322811820e7e'
+子模组路径 'submodules/slam'：检出 '724e18e15e997d4ca3d6742856a11dc428cc7c42'
+子模组路径 'submodules/slammaping'：检出 'a49b804ef3adfb061b8a8a0c603c09f369a5d314'
+子模组路径 'submodules/stillness'：检出 'de38f0f14ae08f9da0a4cce44f065c49efb3fa5e'
++ submodule_version_check
++ [[ ! -z '' ]]
++ [[ ! -z '' ]]
++ release_note
++ [[ test = true ]]
++ '[' '' = true ']'
+<p><a name="INFO1"></a></p><span class="info" style="color: blue">+ project_info_database</span>
++ cmdb_mysql 'insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user,ui_branch,config_branch,deb_branch,sign,min_version) values ('\''RUBBY'\'','\''166'\'','\''EVT1'\'','\'''\'',now(),'\''脏污修复的非崩溃问题'\'','\''test'\'','\''caffer'\'','\''http://192.168.50.191:8088/job/caffer_app/176/'\'','\''khadas-car2'\'','\''yangwanying'\'','\'''\'','\'''\'','\''master'\'','\''true'\'','\'''\'')'
++ set +x
++ popd
+~/workspace/workspace/caffer_app
++ App_install
++ pushd /root/workspace/i18rApplicationDeb/work
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/caffer_app
++ Version_Update
++ mv /root/workspace/caffer_demo /root/workspace/i18rApplicationDeb/work/root/workspace
++ sed -i s/VERSION/166/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/appname/RUBBY/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/SWR_VERSION/EVT1/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/RELEASE/test/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ '[' aarch64 = aarch64 ']'
++ sed -i s/PLATFORM/arm64/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ [[ test = test ]]
++ sed -i s/INDEMINDAPP/TESTAPP/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ sudo chmod 755 DEBIAN root -R
+sudo: 无法解析主机：car2
++ Add_Tag
++ RELEASE_TAG=r166_RUBBY-EVT1
++ [[ ! -z '' ]]
++ [[ ! -z '' ]]
++ [[ test = test ]]
++ echo 'add tag disabled'
+add tag disabled
++ cmdb_mysql 'update indemindapp set tag_name='\''r166_RUBBY-EVT1'\'',client='\'''\'' where build_url='\''http://192.168.50.191:8088/job/caffer_app/176/'\'';'
++ set +x
++ Release_Version_Rule_all
++ pushd /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo
+~/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/caffer_app
++ [[ aarch64 = aarch64 ]]
++ xargs -i rm -rf '{}'
++ find -name x64
++ xargs -i rm -rf '{}'
++ find -name .git
++ popd
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/caffer_app
++ is-sign-task
++ '[' true = true ']'
++ SWR_VERSION=EVT1-SIGN
+++ perl -npe s,_,-,g
+++ echo EVT1-SIGN
++ x=EVT1-SIGN
++ encryption_project
+++ cat /root/system/i18rconfig/encryption.list
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libhmi_simulator_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libhmi_simulator_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   2030048 -&gt;   1039044   51.18%   linux/arm64   libhmi_simulator_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libhttp_server_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libhttp_server_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   3100456 -&gt;   1526516   49.24%   linux/arm64   libhttp_server_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libled_manager.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libled_manager.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    553200 -&gt;    285828   51.67%   linux/arm64   libled_manager.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmap_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmonitor_resource_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libmonitor_resource_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    220576 -&gt;    146948   66.62%   linux/arm64   libmonitor_resource_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmonitor_topic_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libmonitor_topic_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   1872096 -&gt;    998460   53.33%   linux/arm64   libmonitor_topic_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libros_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libros_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    232392 -&gt;    151204   65.06%   linux/arm64   libros_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsenmatic_convert_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libsenmatic_convert_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    900736 -&gt;    521516   57.90%   linux/arm64   libsenmatic_convert_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libstate_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsys_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libtask_plugin.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libwork_log_plugin.so
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libwork_log_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   1256568 -&gt;    675676   53.77%   linux/arm64   libwork_log_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libdepth.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libdepth_plugin.so
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/depth/lib/arm/libdepth_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   2204256 -&gt;   1120156   50.82%   linux/arm64   libdepth_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libnav_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/navigation/arm64/libnav_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+  13562152 -&gt;   6224524   45.90%   linux/arm64   libnav_plugin.so
+
+Packed 1 file.
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/navigation/lib/arm/libnav_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+  13562152 -&gt;   6224524   45.90%   linux/arm64   libnav_plugin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libPSL.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libperception.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libKeyBoard.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libemb_common.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libimsee.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmonitor_node.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/sensor/lib/arm/libmonitor_node.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   2362440 -&gt;    694772   29.41%   linux/arm64   libmonitor_node.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmultimodule.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsensorControl.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsensor_subscriber_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libMAP_DEVICE.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmapping_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libjudge_still_pligin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/stillness/arm64/lib/libjudge_still_pligin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    282688 -&gt;    189300   66.96%   linux/arm64   libjudge_still_pligin.so
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libdirt_detect.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libdirt_detect_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/dirtdetect/arm64/dirt_detect/lib/libdirt_detect_plugin.so
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    634600 -&gt;    330440   52.07%   linux/arm64   libdirt_detect_plugin.so
+
+Packed 1 file.
++ read so
+++ cat /root/system/i18rconfig/encryption.list
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libhmi_simulator_plugin.so
++ read so
++ xargs -i readlink -f '{}'
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libhttp_server_plugin.so
++ xargs -i readlink -f '{}'
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libled_manager.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmap_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libmap_plugin.so.0.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   8762184 -&gt;   4387396   50.07%   linux/arm64   libmap_plugin.so.0.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmonitor_resource_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmonitor_topic_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libros_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsenmatic_convert_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libstate_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libstate_plugin.so.0.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+  23538400 -&gt;  11523404   48.96%   linux/arm64   libstate_plugin.so.0.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsys_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libsys_plugin.so.0.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   1240128 -&gt;    662868   53.45%   linux/arm64   libsys_plugin.so.0.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libtask_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/server/lib/arm/libtask_plugin.so.0.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   3571760 -&gt;   1810924   50.70%   linux/arm64   libtask_plugin.so.0.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libwork_log_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libdepth.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/depth/lib/arm/libdepth.so.1.7.11
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   1089648 -&gt;    540800   49.63%   linux/arm64   libdepth.so.1.7.11
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libdepth_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libnav_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libPSL.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/perception/lib/arm/libPSL.so.1.11.9
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   2079992 -&gt;    915940   44.04%   linux/arm64   libPSL.so.1.11.9
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libperception.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/perception/lib/arm/libperception.so.1.4.7
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    747912 -&gt;    382692   51.17%   linux/arm64   libperception.so.1.4.7
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libKeyBoard.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/sensor/lib/arm/libKeyBoard.so.1.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   1709536 -&gt;    535924   31.35%   linux/arm64   libKeyBoard.so.1.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libemb_common.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/sensor/lib/arm/libemb_common.so.1.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   2463128 -&gt;    776428   31.52%   linux/arm64   libemb_common.so.1.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libimsee.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/sensor/lib/arm/libimsee.so.1.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   5148168 -&gt;   1746756   33.93%   linux/arm64   libimsee.so.1.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmonitor_node.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmultimodule.so
++ read so
++ xargs -i readlink -f '{}'
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/sensor/lib/arm/libmultimodule.so.1.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   2258824 -&gt;    758132   33.56%   linux/arm64   libmultimodule.so.1.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsensorControl.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/sensor/lib/arm/libsensorControl.so.1.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   1451064 -&gt;    436796   30.10%   linux/arm64   libsensorControl.so.1.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsensor_subscriber_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/sensor/lib/arm/libsensor_subscriber_plugin.so.1.0.2
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+   8654016 -&gt;   3022180   34.92%   linux/arm64   libsensor_subscriber_plugin.so.1.0.2
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libMAP_DEVICE.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmapping_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libjudge_still_pligin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libdirt_detect.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/caffer_demo/submodules/dirtdetect/arm64/dirt_detect/lib/libdirt_detect.so.2.0.6
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2023
+UPX 4.2.1       Markus Oberhumer, Laszlo Molnar & John Reiser    Nov 1st 2023
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+note: use --android-shlib if appropriate
+    270472 -&gt;    149560   55.30%   linux/arm64   libdirt_detect.so.2.0.6
+
+Packed 1 file.
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libdirt_detect_plugin.so
++ [[ test = test ]]
++ gz_type
++ tgz_full_name=INDEMINDAPP_RUBBY_EVT1-SIGN_INTG_ALL_166.tar.gz
++ pushd /root/workspace/i18rApplicationDeb/work/root
+~/workspace/i18rApplicationDeb/work/root ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/caffer_app
++ tee /root/workspace/i18rApplicationDeb/work/root/workspace/version.txt
++ echo INDEMINDAPP_RUBBY_EVT1-SIGN_INTG_ALL_166.tar.gz
+INDEMINDAPP_RUBBY_EVT1-SIGN_INTG_ALL_166.tar.gz
++ tar cvf /root/workspace/INDEMINDAPP_RUBBY_EVT1-SIGN_INTG_ALL_166.tar.gz workspace
++ awk -F ' ' '{print $1}'
++ md5sum /root/workspace/INDEMINDAPP_RUBBY_EVT1-SIGN_INTG_ALL_166.tar.gz
+++ cat /root/workspace/i18rApplicationDeb/work/root/workspace/version.txt
++ tgz_full_md5='INDEMINDAPP_RUBBY_EVT1-SIGN_INTG_ALL_166.tar.gz
+0f3f7e1bc15b35cff8cdc5390b9d794c'
++ popd
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/caffer_app
++ mv /root/workspace/INDEMINDAPP_RUBBY_EVT1-SIGN_INTG_ALL_166.tar.gz /mnt/ftp/release/RUBBY/test
++ cmdb_mysql 'update indemindapp set status='\''1'\'', deb_md5ck='\'''\'' where build_url='\''http://192.168.50.191:8088/job/caffer_app/176/'\'';'
++ set +x
++ mv '/root/workspace/INDEMINDAPP_*' /mnt/ftp/release/RUBBY/fresh_version
+<p><a name="ERROR1"></a></p><span class="error" style="color: red">mv: 无法获取'/root/workspace/INDEMINDAPP_*' 的文件状态(stat): 没有那个文件或目录</span>
++ true
++ popd
+~/workspace/workspace/caffer_app
+</pre>	</body>
+</html>
