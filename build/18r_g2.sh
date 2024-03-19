@@ -74,7 +74,7 @@ function App_project_fetch(){
 	    git submodule update --remote || true
 	    submodule_version_check
 #	    i18rproject_conf_update
-	    release_note
+#	    release_note
 	    project_info_database
 	)
     )
@@ -89,12 +89,6 @@ function App_install(){
     Release_Version_Rule_all
     if [[ $RELEASE = test ]];then
 	tgz_type_g2
-#	deb_type_g2
-#	mv $BUILD_DIR/${deb_name} $TEST_DIR ||
-#	    (
-#		mv $TEST_DIR/${deb_name} ${trash_dir}
-#		mv $BUILD_DIR/${deb_name} $TEST_DIR
-#	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 #	deb_type_g2
