@@ -1,112 +1,0 @@
-Started from command line by [8mha:////4EF9DdDrwyxcNApGRuzWsHuyUAbCUw6U0WH5M0utlyT9AAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL9rNS87My8YgDGtiJjwgAAAA==[0mjenkins
-Running as SYSTEM
-Building remotely on [8mha:////4J8M8M4pLAVsr5HsUCuoFBwpyiajxV9VrGbWj66EbYmPAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJjAEfvBs3KAAAA[0mkhadas-car3 (car3) in workspace /root/workspace/workspace/i18r_ui
-[WS-CLEANUP] Deleting project workspace...
-[WS-CLEANUP] Deferred wipeout is used...
-[WS-CLEANUP] Done
-[i18r_ui] $ /bin/sh -xe /tmp/jenkins14276768584758222141.sh
-+ bash /root/myscript/build/build.sh
-++ export MYSQL_PWD=123
-++ MYSQL_PWD=123
-++ export -f cmdb_mysql
-+ set -ex
-+ export -f public_project_update
-+ export -f project_build
-+ init_project_env
-++ date +%Y%m%d
-+ DT=20240320
-+ UserName=jenkins
-+ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
-+ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
-+ GIT_HOST=192.168.50.191
-++ echo AroundI18RProject/i18rconfig
-++ awk -F/ '{print $1"%2F"$2}'
-+ CONVERT_TARGET_PROJECT=AroundI18RProject%2Fi18rconfig
-++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/AroundI18RProject%2Fi18rconfig
-++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3335    0  3335    0     0  33686      0 --:--:-- --:--:-- --:--:-- 33686
-+ SUB_PROJECT_ID=409
-+ '[' -z ']'
-+ SOURCE_DIR=/root/workspace/workspace/i18r_ui/aroundi18r-client
-+ TARGET_DIR=/root/workspace/workspace/i18r_ui/i18rconfig
-+ prepare_env
-++ uname -m
-+ system_platform=aarch64
-+ :
-++ cat /proc/cpuinfo
-++ grep processor
-++ sort
-++ uniq
-++ wc -l
-+ mt=-j4
-+ export COMMIT_ID_FILE=/root/workspace/workspace/i18r_ui/_last_build_id
-+ COMMIT_ID_FILE=/root/workspace/workspace/i18r_ui/_last_build_id
-+ export COMMIT_MSG_FILE=/root/workspace/workspace/i18r_ui/_commit-msg
-+ COMMIT_MSG_FILE=/root/workspace/workspace/i18r_ui/_commit-msg
-+ export COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_ui/_commit-msg.tmp
-+ COMMIT_MSG_FILE_TMP=/root/workspace/workspace/i18r_ui/_commit-msg.tmp
-+ rm -f /root/workspace/workspace/i18r_ui/_last_build_id
-+ rm -f /root/workspace/workspace/i18r_ui/_commit-msg
-+ rm -f /root/workspace/workspace/i18r_ui/_commit-msg.tmp
-+ rm -f /root/workspace/workspace/i18r_ui/result.log
-+ rm -f /root/workspace/workspace/i18r_ui/no_code_change.log
-+ CLONE_DEPTH=--depth=1
-+ PUBLICBASETYPES_DIR=/root/system/I18RPublicBaseTypes
-+ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('\''i18r_ui'\'','\''zhiqiang/aroundi18r-client'\'','\''release'\'','\''AroundI18RProject/i18rconfig'\'','\''dev'\'',now(),'\''http://192.168.50.191:8088/job/i18r_ui/2552/'\'','\''khadas-car3'\'','\''jenkins'\'')'
-+ set +x
-+ DOCKER_CONTAINER_I18=build-x64-18.04
-+ DOCKER_CONTAINER_RUBBY=c405
-+ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
-+ DOCKER_CONTAINER_JAVA=node
-+ JENKINS_JOB_A=mind
-+ JENKINS_JOB_B=rbn
-+ JENKINS_JOB_C=mark-check-tools
-+ JENKINS_JOB_D=java
-+ JENKINS_JOB_E=clean_recorder
-+ JENKINS_JOB_F=i18r
-+ JENKINS_JOB_G=nodejs
-+ JENKINS_JOB_H=_ui
-+ JENKINS_JOB_L=i12r
-+ [[ i18r_ui =~ mind ]]
-+ '[' true = false ']'
-+ source_project_fetch
-+ git clone ssh://git@192.168.50.191:222/zhiqiang/aroundi18r-client -b release --depth=1
-正克隆到 'aroundi18r-client'...
-正在检出文件:  54% (1578/2903)   正在检出文件:  55% (1597/2903)   正在检出文件:  56% (1626/2903)   正在检出文件:  57% (1655/2903)   正在检出文件:  58% (1684/2903)   正在检出文件:  59% (1713/2903)   正在检出文件:  60% (1742/2903)   正在检出文件:  61% (1771/2903)   正在检出文件:  62% (1800/2903)   正在检出文件:  63% (1829/2903)   正在检出文件:  64% (1858/2903)   正在检出文件:  65% (1887/2903)   正在检出文件:  66% (1916/2903)   正在检出文件:  67% (1946/2903)   正在检出文件:  68% (1975/2903)   正在检出文件:  69% (2004/2903)   正在检出文件:  70% (2033/2903)   正在检出文件:  71% (2062/2903)   正在检出文件:  72% (2091/2903)   正在检出文件:  73% (2120/2903)   正在检出文件:  74% (2149/2903)   正在检出文件:  75% (2178/2903)   正在检出文件:  76% (2207/2903)   正在检出文件:  77% (2236/2903)   正在检出文件:  78% (2265/2903)   正在检出文件:  79% (2294/2903)   正在检出文件:  80% (2323/2903)   正在检出文件:  81% (2352/2903)   正在检出文件:  82% (2381/2903)   正在检出文件:  83% (2410/2903)   正在检出文件:  84% (2439/2903)   正在检出文件:  85% (2468/2903)   正在检出文件:  86% (2497/2903)   正在检出文件:  87% (2526/2903)   正在检出文件:  88% (2555/2903)   正在检出文件:  89% (2584/2903)   正在检出文件:  90% (2613/2903)   正在检出文件:  91% (2642/2903)   正在检出文件:  92% (2671/2903)   正在检出文件:  93% (2700/2903)   正在检出文件:  94% (2729/2903)   正在检出文件:  95% (2758/2903)   正在检出文件:  96% (2787/2903)   正在检出文件:  97% (2816/2903)   正在检出文件:  98% (2845/2903)   正在检出文件:  99% (2874/2903)   正在检出文件: 100% (2903/2903)   正在检出文件: 100% (2903/2903), 完成.
-+ target_project_update
-+ rm -rf /root/workspace/workspace/i18r_ui/i18rconfig
-+ target_project_fetch
-+ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig -b dev --depth=1
-正克隆到 'i18rconfig'...
-正在检出文件:  99% (2092/2107)   正在检出文件: 100% (2107/2107)   正在检出文件: 100% (2107/2107), 完成.
-+ insert_db
-+ pushd /root/workspace/workspace/i18r_ui/aroundi18r-client
-~/workspace/workspace/i18r_ui/aroundi18r-client ~/workspace/workspace/i18r_ui
-++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''zhiqiang/aroundi18r-client'\'' and source_branch='\''release'\'' and target_project='\''AroundI18RProject/i18rconfig'\'' and target_branch='\''dev'\'' and status='\''0'\'' and job_name='\''i18r_ui'\'' order by id desc limit 1;'
-++ set +x
-+ version='first_commit_id
-750e1f6'
-++ awk -F ' ' '{print $2}'
-++ echo first_commit_id 750e1f6
-+ version=750e1f6
-++ git log -1 --pretty=format:%h
-+ first_commit_id_now=e98b971
-+ cmdb_mysql 'update prebuild set first_commit_id='\''e98b971'\'' where build_url='\''http://192.168.50.191:8088/job/i18r_ui/2552/'\'';'
-+ set +x
-+ popd
-~/workspace/workspace/i18r_ui
-+ [[ aarch64 =~ x86_64 ]]
-+ [[ i18r_ui =~ rbn ]]
-+ [[ i18r_ui =~ mind ]]
-+ public_project_update
-+ rm -rf /root/system/I18RPublicBaseTypes
-+ [[ i18r_ui =~ nodejs ]]
-+ [[ i18r_ui =~ clean_recorder ]]
-+ [[ i18r_ui =~ i18r ]]
-+ git clone ssh://git@192.168.50.191:222/AroundI18RProject/I18RPublicBaseTypes.git /root/system/I18RPublicBaseTypes -b develop --depth=1
-正克隆到 '/root/system/I18RPublicBaseTypes'...
-Build was aborted
-Aborted by [8mha:////4EF9DdDrwyxcNApGRuzWsHuyUAbCUw6U0WH5M0utlyT9AAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL9rNS87My8YgDGtiJjwgAAAA==[0mJENKINS
-Finished: ABORTED
