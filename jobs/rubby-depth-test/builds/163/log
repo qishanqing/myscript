@@ -1,0 +1,294 @@
+Started by user [8mha:////4HSeVHkKJ5mgbZK4sWy8myCb9E5jTwXackQ/FiSdye3XAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL9wszSnMyiUgDL2Mr0wgAAAA==[0mQiuliru
+Rebuilds build #[8mha:////4BSj87MoaXfrJZhoc+Tjav/Q/tMHlkGq4JZSAJUTDgm1AAAArR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgYV/bLM1HL9lNSCkgz9rPwk/aLSpKRKXTBftyS1uETf0MwIALX0RZDZAAAA[0m162
+Running as SYSTEM
+Building remotely on [8mha:////4GJECaSXI5jaa88kGHMmbEkdCg31N4g4yVAlsCFwflHgAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzmEgZe/eT83ILSktQifUNLQwA4ziQnwgAAAA==[0m191 (192.168.50.191) in workspace /home/indemind/.jenkins_slave/workspace/rubby-depth-test
+[WS-CLEANUP] Clean-up disabled, skipping workspace deletion.
+No emails were triggered.
+[rubby-depth-test] $ /bin/sh -xe /tmp/jenkins5686306931255463269.sh
++ bash /home/indemind/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20240410
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ echo abby/integration/depth
+++ awk -F/ '{print $1"%2F"$2}'
++ CONVERT_TARGET_PROJECT=abby%2Fintegration
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/abby%2Fintegration
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0100    35  100    35    0     0     10      0  0:00:03  0:00:03 --:--:--    10
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+KeyError: 'id'
++ SUB_PROJECT_ID=
++ true
++ '[' -z ']'
++ SOURCE_DIR=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby
++ TARGET_DIR=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/depth
++ prepare_env
+++ uname -m
++ system_platform=x86_64
++ :
+++ cat /proc/cpuinfo
+++ grep processor
+++ sort
+++ uniq
+++ wc -l
++ mt=-j4
++ export COMMIT_ID_FILE=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/_last_build_id
++ COMMIT_ID_FILE=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/_last_build_id
++ export COMMIT_MSG_FILE=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg
++ COMMIT_MSG_FILE=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg.tmp
++ rm -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/_last_build_id
++ rm -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg
++ rm -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg.tmp
++ rm -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/result.log
++ rm -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/no_code_change.log
++ CLONE_DEPTH=--depth=1
++ PUBLICBASETYPES_DIR=/home/indemind/system/I18RPublicBaseTypes
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('\''rubby-depth-test'\'','\''qiuliru/DepthModuleForRubby'\'','\''dev_shending'\'','\''abby/integration/depth'\'','\''caffer'\'',now(),'\''http://192.168.50.191:8088/job/rubby-depth-test/163/'\'','\''191'\'','\''qiuliru'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ DOCKER_CONTAINER_JAVA=node
++ JENKINS_JOB_A=mind
++ JENKINS_JOB_B=rbn
++ JENKINS_JOB_C=mark-check-tools
++ JENKINS_JOB_D=java
++ JENKINS_JOB_E=clean_recorder
++ JENKINS_JOB_F=i18r
++ JENKINS_JOB_G=nodejs
++ JENKINS_JOB_H=_ui
++ JENKINS_JOB_L=i12r
++ [[ rubby-depth-test =~ mind ]]
++ '[' false = false ']'
++ source_project_update
++ '[' -d /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby ']'
++ pushd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby
+~/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby ~/.jenkins_slave/workspace/rubby-depth-test
++ git checkout ./
++ git pull --rebase
+Warning: Permanently added '[192.168.50.191]:222' (ECDSA) to the list of known hosts.
+来自 ssh://192.168.50.191:222/qiuliru/DepthModuleForRubby
+   759e45d..a8e0098  dev_shending -> origin/dev_shending
+首先，回退分支以便在上面重放您的工作...
+快进 dev_shending 至 a8e00986164873f2e7479dccdd290b840e557251。
++ popd
+~/.jenkins_slave/workspace/rubby-depth-test
++ target_project_update
++ rm -rf /home/indemind/.jenkins_slave/workspace/rubby-depth-test/depth
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/abby/integration/depth -b caffer --depth=1
+正克隆到 'depth'...
+Warning: Permanently added '[192.168.50.191]:222' (ECDSA) to the list of known hosts.
++ insert_db
++ pushd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby
+~/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby ~/.jenkins_slave/workspace/rubby-depth-test
+++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''qiuliru/DepthModuleForRubby'\'' and source_branch='\''dev_shending'\'' and target_project='\''abby/integration/depth'\'' and target_branch='\''caffer'\'' and status='\''0'\'' and job_name='\''rubby-depth-test'\'' order by id desc limit 1;'
+++ set +x
++ version='first_commit_id
+759e45d'
+++ echo first_commit_id 759e45d
+++ awk -F ' ' '{print $2}'
++ version=759e45d
+++ git log -1 --pretty=format:%h
++ first_commit_id_now=a8e0098
++ cmdb_mysql 'update prebuild set first_commit_id='\''a8e0098'\'' where build_url='\''http://192.168.50.191:8088/job/rubby-depth-test/163/'\'';'
++ set +x
++ popd
+~/.jenkins_slave/workspace/rubby-depth-test
++ [[ x86_64 =~ x86_64 ]]
++ docker exec -i c405 /bin/bash
++ [[ c405 == c405 ]]
+rubby project building in c405......
++ echo 'rubby project building in c405......'
++ pushd /root/system/abby_msg
+~/system/abby_msg /
++ git checkout ./
++ git clean -xdf ./
++ git pull origin master
+From ssh://192.168.50.191:222/abby/source/abby_msg
+ * branch            master     -> FETCH_HEAD
+Already up to date.
++ popd
+/
++ pushd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby
+/home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby /
++ git submodule update --init --recursive
+Submodule path 'source/submodules/abby_msg': checked out 'd1567adfab8b002112b3f9cc3bb50da2fbe1fe35'
++ git submodule update --remote
+Submodule path 'source/submodules/abby_msg': checked out 'b88d9865152c095d9060dbbb36e215de0f69643f'
++ sed -i 's/make -j[0-9].*/make -j4/g' compile.sh
++ '[' xa8e0098 == x759e45d ']'
++ source /opt/ros/melodic/setup.bash
++ bash -ex compile.sh
++ main
++ git submodule update --init --recursive
+Submodule path 'source/submodules/abby_msg': checked out 'd1567adfab8b002112b3f9cc3bb50da2fbe1fe35'
++ git submodule update --remote
+Submodule path 'source/submodules/abby_msg': checked out 'b88d9865152c095d9060dbbb36e215de0f69643f'
++++ dirname compile.sh
+++ cd .
+++ pwd
++ local projectPath=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby
++ local libPath=
+++ arch
++ '[' aarch64 = x86_64 ']'
++ libPath=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/lib/arm
++ echo 'libpath: /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/lib/arm'
+libpath: /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/lib/arm
++ cd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby
++ mkdir build
+/bin/mkdir: cannot create directory 'build': File exists
++ true
++ cd build
++ cmake ..
+Build type: Release
+Detected armv8  -D__ARM_PLATFORM__ -D__ARM_NEON__ -DENABLE_NEON -Ofast -std=c++17 -Wno-unused-result
+-- Using flag -std=c++17.
+-- CONFIG_BUILD_ROS=OFF
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   system
+--   filesystem
+CMake Warning at source/CMakeLists.txt:98 (message):
+  OpenMP found.
+
+
+-- CONFIG_BUILD_I18R=OFF
+-- CONFIG_BUILD_I26R=OFF
+-- CONFIG_BUILD_RUBBY=ON
+-- CONFIG_BUILD_TOF=ON
+-- CONFIG_BUILD_OPENCV_CONTRIB=OFF
+-- config path="/home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/source/../config/"
+-- BUILD_TEST_NODE=ON
+-- BUILD_TOF_CAM_TEST_NODE=OFF
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/build
++ make
+Scanning dependencies of target depth
+[  3%] Building CXX object source/CMakeFiles/depth.dir/modules/laser/laser_layers.cpp.o
+[  6%] Building CXX object source/CMakeFiles/depth.dir/modules/impl/sd_thread.cpp.o
+[  9%] Linking CXX shared library ../../source/lib/libdepth.so
+[ 84%] Built target depth
+[ 87%] Linking CXX executable ../../source/test/unittest
+[ 93%] Built target unittest
+[ 96%] Linking CXX shared library ../../lib/libdepth_plugin.so
+[100%] Built target depth_plugin
+Build plugin succeed.
++ echo 'Build plugin succeed.'
++ mkdir -p /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/lib/arm
++ cd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/lib/arm
++ rm -rf ./libdepth.so ./libdepth.so.1.7.11 ./libdepth_plugin.so
++ cp -a /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/lib/libdepth_plugin.so ./
++ cp -a /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/source/lib/libdepth.so /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/source/lib/libdepth.so.1.7.11 ./
++ local cfgpath=/home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/config
++ mkdir -p /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/config
++ cd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/config
++ cp /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/config/depth.yml ./
++ cp /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/config/hardware_param.yml ./
++ echo Done.
+Done.
++ popd
+/
++ exit
++ [[ -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/no_code_change.log ]]
++ check_status_code
++ test -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/result.log
++ [[ '' = false ]]
++ generate_message
++ [[ rubby-depth-test =~ mind ]]
++ cd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg.tmp ]]
++ cat /home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.191:8088/job/rubby-depth-test/163/'
++ echo 'Push x86_64 platform files'
++ generate_commits
++ pushd /home/indemind/.jenkins_slave/workspace/rubby-depth-test/depth
+~/.jenkins_slave/workspace/rubby-depth-test/depth ~/.jenkins_slave/workspace/rubby-depth-test
+++ find /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby -name install
+++ xargs -l ls
++ install_dir_list='config
+doc
+lib
+README.md
+scripts'
++ [[ true = true ]]
++ '[' -z '' ']'
++ for i in '$install_dir_list'
++ git rm -r config
+rm 'config/depth.yml'
+rm 'config/hardware_param.yml'
++ for i in '$install_dir_list'
++ git rm -r doc
+rm 'doc/README.md'
++ for i in '$install_dir_list'
++ git rm -r lib
+rm 'lib/arm/libdepth.so'
+rm 'lib/arm/libdepth.so.1.7.11'
+rm 'lib/arm/libdepth_plugin.so'
++ for i in '$install_dir_list'
++ git rm -r README.md
+rm 'README.md'
++ for i in '$install_dir_list'
++ git rm -r scripts
+rm 'scripts/env.sh'
++ [[ true = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ [[ true =~ mind ]]
++ [[ true =~ java ]]
++ [[ true =~ clean_recorder ]]
++ '[' -z ']'
++ [[ rubby-depth-test =~ i18r_g.*-sdk ]]
++ '[' -z '' ']'
++ cp -ar /home/indemind/.jenkins_slave/workspace/rubby-depth-test/DepthModuleForRubby/install/. .
++ git add --all .
+++ git status -s
++ add_file_list='M  lib/arm/libdepth.so.1.7.11'
++ '[' -z 'M  lib/arm/libdepth.so.1.7.11' ']'
++ git commit -s -F /home/indemind/.jenkins_slave/workspace/rubby-depth-test/_commit-msg
+[caffer 033c168] a8e0098 update filter
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+++ git config --local --get branch.caffer.remote
++ local remote=origin
+++ git config --local --get branch.caffer.merge
++ local branch=refs/heads/caffer
++ git push --no-verify origin HEAD:refs/heads/caffer
+Warning: Permanently added '[192.168.50.191]:222' (ECDSA) to the list of known hosts.
+remote: 
+remote: To create a merge request for caffer, visit:        
+remote:   http://192.168.50.191:85/abby/integration/depth/-/merge_requests/new?merge_request%5Bsource_branch%5D=caffer        
+remote: 
+To ssh://git@192.168.50.191:222/abby/integration/depth
+   b80796b..033c168  HEAD -> caffer
+++ echo rubby-depth-test
+++ grep 'i18r$'
++ j=
++ true
++ [[ rubby-depth-test =~ mind ]]
++ [[ '' != '' ]]
++ popd
+~/.jenkins_slave/workspace/rubby-depth-test
++ [[ -z a8e0098 ]]
++ cmdb_mysql 'update prebuild set status='\''0'\'' where build_url='\''http://192.168.50.191:8088/job/rubby-depth-test/163/'\'';'
++ set +x
++ :
+No emails were triggered.
+Finished: SUCCESS
