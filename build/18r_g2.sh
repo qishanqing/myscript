@@ -88,10 +88,11 @@ function App_install(){
     Add_Tag
     Release_Version_Rule_all
     if [[ $RELEASE = test ]];then
+	deb_type_g2
 	tgz_type_g2
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-#	deb_type_g2
+	deb_type_g2
 	tgz_type_g2
 	ota_update_g2
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"

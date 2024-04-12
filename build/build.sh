@@ -2,6 +2,7 @@
 
 project_path=$(cd `dirname $0`; pwd)
 . $project_path/../sh/cmdb
+. $project_path/../sh/version-update.sh
 
 set -ex
 init_project_env(){
@@ -19,6 +20,7 @@ init_project_env(){
     fi
     TARGET_DIR=$WORKSPACE/${TARGET_PROJECT##*/}
     prepare_env
+    sign_env
     CLONE_DEPTH="--depth=1"
     PUBLICBASETYPES_DIR=~/system/I18RPublicBaseTypes
     cmdb_mysql "insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('$JOB_NAME','$SOURCE_PROJECT','$SOURCE_BRANCH','$TARGET_PROJECT','$TARGET_BRANCH',now(),'$BUILD_URL','$NODE_NAME','$BUILD_USER_ID')";
@@ -41,6 +43,14 @@ init_project_env(){
     fi
 }
 
+function sign_env() {
+    CONFIG_DIR_SET=~/system
+    CONFIG_BRANCH=mind_os
+    CLONE_DEPTH="--depth=1"
+    CONFIG_DIR=$CONFIG_DIR_SET/i18rconfig
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b $CONFIG_BRANCH $CLONE_DEPTH"
+    ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
+}
 
 function prepare_env() {
     system_platform=`uname -m`
@@ -401,16 +411,24 @@ EOF
     exit
     fi
 else
-    if [[ $JOB_NAME =~ $JENKINS_JOB_B ]] || [[ $JOB_NAME =~ $JENKINS_JOB_A ]] ;then
+    if [[ $JOB_NAME =~ $JENKINS_JOB_F ]];then
+	public_project_update
+	public_i18rutilitysubmodule_update
 	project_build
     else
-    public_project_update
-    public_i18rutilitysubmodule_update
-    project_build
+	project_build
     fi
 fi
 
 check_status_code
+if [[ $JOB_NAME =~ $JENKINS_JOB_A ]];then
+    bash -ex  ${SOURCE_DIR}/${BUILD_OTHER} || true
+    if [ "$SIGN" = true ];then
+	config_project_update
+	encryption_project
+	bash -ex ${SOURCE_DIR}/${BUILD_OTHER}-sign || true
+    fi
+fi
 generate_message
 generate_commits
 
