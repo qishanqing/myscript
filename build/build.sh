@@ -49,7 +49,11 @@ function sign_env() {
     CLONE_DEPTH="--depth=1"
     CONFIG_DIR=$CONFIG_DIR_SET/i18rconfig
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b $CONFIG_BRANCH $CLONE_DEPTH"
-    ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
+    if [[ "${system_platform}" =~ "x86_64" ]];then
+	ENCRYPTION_TOOL=$CONFIG_DIR/encrypt_x64
+    else
+	ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
+    fi
 }
 
 function prepare_env() {
@@ -275,7 +279,16 @@ function project_build(){
 	else
 	    bash -ex $BUILD_SCRIPT $nub
 	fi
-    popd
+	if [[ $JOB_NAME =~ $JENKINS_JOB_A ]];then
+	    bash -ex  ${SOURCE_DIR}/${BUILD_OTHER} || true
+	    if [ "$SIGN" = true ];then
+		config_project_update
+		encryption_project
+		bash -ex ${SOURCE_DIR}/${BUILD_OTHER}-sign || true
+	    fi
+	fi
+	popd
+
 }
 
 function public_project_update(){
@@ -393,14 +406,24 @@ if [[ "${system_platform}" =~ "x86_64" ]];then
         git submodule update --remote
     ) || true
     sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT
-    if ! [ "x${first_commit_id_now// /}" == "x${version// /}" ];then
-       source /opt/ros/melodic/setup.bash &> /dev/null
-       bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
-    elif [ "$KEEP_BUILD" = true ];then
-       source /opt/ros/melodic/setup.bash &> /dev/null
-       bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
-    else
-	echo  > $WORKSPACE/no_code_change.log
+    source /opt/ros/melodic/setup.bash &> /dev/null
+    bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
+    if [[ $JOB_NAME =~ $JENKINS_JOB_A ]];then
+	bash -ex  ${SOURCE_DIR}/${BUILD_OTHER} || true
+	if [ "$SIGN" = true ];then
+	    if  [[ -d $CONFIG_DIR ]];then
+	        rm -rf $CONFIG_DIR
+	        $CONFIG_REMOTE
+            else
+	        $CONFIG_REMOTE
+            fi
+            echo c
+	    for file in `cat $CONFIG_DIR/encryption.list`;do find $SOURCE_DIR -type f -name "$file" | while read so; do $ENCRYPTION_TOOL $so;done;done
+            echo ${file}
+            for file in `cat $CONFIG_DIR/encryption.list`;do find $SOURCE_DIR -type l -name "$file" | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
+            echo cc
+	    bash -ex ${SOURCE_DIR}/${BUILD_OTHER}-sign || true
+	fi
     fi
     popd
     exit
@@ -421,14 +444,6 @@ else
 fi
 
 check_status_code
-if [[ $JOB_NAME =~ $JENKINS_JOB_A ]];then
-    bash -ex  ${SOURCE_DIR}/${BUILD_OTHER} || true
-    if [ "$SIGN" = true ];then
-	config_project_update
-	encryption_project
-	bash -ex ${SOURCE_DIR}/${BUILD_OTHER}-sign || true
-    fi
-fi
 generate_message
 generate_commits
 
