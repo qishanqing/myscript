@@ -13,7 +13,7 @@ gitlab_backup () {
 	cd $gitlab_backup_path
 	rm -f *.tar
     )
-    which gitlab-rake && gitlab-rake gitlab:backup:create
+    which gitlab-rake && timeout 150m gitlab-rake gitlab:backup:create
     exit
 EOF
     docker cp  gitlab2:$gitlab_backup_path $gitlab_backup_path_host/../
