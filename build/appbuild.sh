@@ -48,7 +48,7 @@ init_project_env(){
     FTP_RELEASE_OTA_DIR=${RELEASE_PROJECT_DIR}/ota_full_version
     FTP_RELEASE_OTA_DIFF_DIR=${RELEASE_PROJECT_DIR}/ota
     function_list=/mnt/ftp/release/app_update_release
-    ENCRYPTION_TOOL=$CONFIG_DIR/upx_arm.out
+    ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
