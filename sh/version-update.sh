@@ -177,6 +177,12 @@ function gz_type(){
     tgz_full_name=INDEMINDAPP_${appname}_${SWR_VERSION}_${tgz_release}_ALL_${version}.tar.gz
     pushd $APP_WORKSPACE$RELEASE_DIR
     echo "$tgz_full_name" | tee $WORK_DIR/version.txt
+    if [[ "$updater" = true ]];then
+	pushd workspace
+	$UPDATER_REMOTE
+	find -name .git | xargs -i rm -rf {}
+	popd
+    fi
     tar cvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
     tgz_full_md5=`cat $WORK_DIR/version.txt`
     popd

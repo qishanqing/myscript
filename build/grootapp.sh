@@ -20,6 +20,7 @@ init_project_env(){
     BUILD_DIR=$RELEASE_DIR/workspace
     appname=GROOT
     sourcename=groot
+    default_branch=groot
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
@@ -34,7 +35,8 @@ init_project_env(){
     OTA_DIR=~/system/i18rota
     PLATFORM=`uname -m`
     CLONE_DEPTH="--depth=1"
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b groot_dev $CLONE_DEPTH"
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b $default_branch $CLONE_DEPTH"
+    UPDATER_REMOTE="git clone ssh://git@192.168.50.191:222/groot/integration/updater.git -b $default_branch $CLONE_DEPTH updater"
     ENCRYPTION_TOOL=~/system/i18rconfig/encrypt
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
@@ -49,7 +51,7 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone ssh://git@192.168.50.191:222/ssh://git@192.168.50.191:222/groot/integration/application.git $sourcename -b ${SDK_BRANCH:-master} && (
+	git clone ssh://git@192.168.50.191:222/groot/integration/application.git $sourcename -b ${SDK_BRANCH:-groot} && (
 	    pushd $sourcename
 
 	    config_project_update
