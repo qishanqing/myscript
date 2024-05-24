@@ -127,6 +127,12 @@ function encryption_project(){
     for file in `cat $CONFIG_DIR/encryption.list`;do find $WORK_DIR -type l -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
 }
 
+function encryption_aes_project(){
+    if [[ -f  $CONFIG_DIR/encrypt_aes.list ]];then
+	for file in `cat $CONFIG_DIR/encrypt_aes.list`;do find $WORK_DIR -type f -name $file | while read so; do $ENCRYPTION_AES_TOOL $so;done;done
+    fi
+}
+
 function submodule_version_check(){
     if [[ ! -z $sdk_version ]];then
 	git checkout $sdk_version || true
@@ -534,6 +540,7 @@ function is-sign-task(){
 	SWR_VERSION=$SWR_VERSION-SIGN
 	x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
 	encryption_project
+	encryption_aes_project
     fi
 }
 
