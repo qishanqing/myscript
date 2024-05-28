@@ -206,7 +206,6 @@ function deb_type_g2(){
     echo "$deb_name" | tee $WORK_DIR/version.txt
     dpkg -b . $BUILD_DIR/$deb_name && md5sum $BUILD_DIR/$deb_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
     deb_md5=`cat $WORK_DIR/version.txt`
-    mv $BUILD_DIR/${deb_name} $FTP_RELEASE_DIR/
 }
 
 function tgz_type_18(){
