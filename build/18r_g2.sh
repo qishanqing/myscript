@@ -47,7 +47,7 @@ init_project_env(){
     CLONE_DEPTH="--depth=1"
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig.git $CONFIG_DIR -b  $default_branch $CLONE_DEPTH"
     UPDATER_REMOTE="git clone ssh://git@192.168.50.191:222/repid_deploy/integration/Updater.git -b $default_branch $CLONE_DEPTH updater"
-    ENCRYPTION_TOOL=$CONFIG_DIR/upx_arm.out
+    ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
@@ -87,6 +87,7 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule_all
+    is-sign-task
     if [[ $RELEASE = test ]];then
 	deb_type_g2
 	mv $BUILD_DIR/${deb_name} $TEST_DIR/
