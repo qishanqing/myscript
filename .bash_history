@@ -1,4 +1,3 @@
-ls
 cat known_hosts 
 cd /var/lib/jenkins/
 ls
@@ -498,3 +497,4 @@ exit
 ll
 ls
 exit
+ exit
