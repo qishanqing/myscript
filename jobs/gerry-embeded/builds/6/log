@@ -1,0 +1,1283 @@
+Started by user [8mha:////4MzersSP/9cKUovrzPMuoS/kLqxVF8zd8yb1BUJ8RGIAAAAAmh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgYB/dLi1CL9nMzSXKDZQJMAv/Rqu8UAAAA=[0mliumengyang
+Rebuilds build #[8mha:////4OhmRmZx6R3fWQD2LyIErE+vnbdCsGRlO9hFbPLNe0MrAAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBhH9rPwk/fTUoqJK3dTcpNSU1BR9UwAW+1OYyQAAAA==[0m5
+Running as SYSTEM
+Building remotely on [8mha:////4Mv+1wvIWl3OXIDGu6w3unSREX/fT0xpLFWon9eyySx4AAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJzAF4ra8rKAAAA[0mkhadas-car7 (car7) in workspace /root/workspace/workspace/gerry-embeded
+[WS-CLEANUP] Clean-up disabled, skipping workspace deletion.
+[gerry-embeded] $ /bin/sh -xe /tmp/jenkins13498027904740453814.sh
++ bash /root/myscript/build/build.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ . /root/myscript/build/../sh/version-update.sh
+++ . /root/.bashrc
++++ '[' -z '' ']'
++++ return
++ set -ex
++ export -f public_project_update
++ export -f project_build
++ init_project_env
+++ date +%Y%m%d
++ DT=20240627
++ UserName=jenkins
++ API_TOKEN=11b65309c9835de9579d9c9038853d9eb7
++ GIT_PRIVATE_TOKEN=emEDrsaJVjxKK5gSWrf-
++ GIT_HOST=192.168.50.191
+++ awk -F/ '{print $1"%2F"$2}'
+++ echo wukong/integration/embedded
++ CONVERT_TARGET_PROJECT=wukong%2Fintegration
+++ python -c 'import sys, json; print(json.load(sys.stdin)["id"])'
+/root/myscript/build/build.sh: line 15: python: command not found
+++ curl -XGET -H 'Content-Type: application/json' --header 'PRIVATE-TOKEN: emEDrsaJVjxKK5gSWrf-' http://192.168.50.191:85/api/v4/projects/wukong%2Fintegration
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    35  100    35    0     0    636      0 --:--:-- --:--:-- --:--:--   648
+(23) Failed writing body
++ SUB_PROJECT_ID=
++ true
++ '[' -z ']'
++ SOURCE_DIR=/root/workspace/workspace/gerry-embeded/gerry
++ TARGET_DIR=/root/workspace/workspace/gerry-embeded/embedded
++ prepare_env
+++ uname -m
++ system_platform=aarch64
++ :
+++ uniq
+++ wc -l
+++ sort
+++ grep processor
+++ cat /proc/cpuinfo
++ mt=-j4
++ export COMMIT_ID_FILE=/root/workspace/workspace/gerry-embeded/_last_build_id
++ COMMIT_ID_FILE=/root/workspace/workspace/gerry-embeded/_last_build_id
++ export COMMIT_MSG_FILE=/root/workspace/workspace/gerry-embeded/_commit-msg
++ COMMIT_MSG_FILE=/root/workspace/workspace/gerry-embeded/_commit-msg
++ export COMMIT_MSG_FILE_TMP=/root/workspace/workspace/gerry-embeded/_commit-msg.tmp
++ COMMIT_MSG_FILE_TMP=/root/workspace/workspace/gerry-embeded/_commit-msg.tmp
++ rm -f /root/workspace/workspace/gerry-embeded/_last_build_id
++ rm -f /root/workspace/workspace/gerry-embeded/_commit-msg
++ rm -f /root/workspace/workspace/gerry-embeded/_commit-msg.tmp
++ rm -f /root/workspace/workspace/gerry-embeded/result.log
++ rm -f /root/workspace/workspace/gerry-embeded/no_code_change.log
++ sign_env
++ CONFIG_DIR_SET=/root/system
++ CONFIG_BRANCH=mind_os
++ CLONE_DEPTH=--depth=1
++ CONFIG_DIR=/root/system/i18rconfig
++ CONFIG_REMOTE='git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig /root/system/i18rconfig -b mind_os --depth=1'
++ [[ aarch64 =~ x86_64 ]]
++ ENCRYPTION_TOOL=/root/system/i18rconfig/encrypt
++ CLONE_DEPTH=--depth=1
++ PUBLICBASETYPES_DIR=/root/system/I18RPublicBaseTypes
++ cmdb_mysql 'insert into prebuild(job_name,source_project,source_branch,target_project,target_branch,time,build_url,node_name,build_user) values ('\''gerry-embeded'\'','\''EmbeddedGroup/gerry/gerry'\'','\''master'\'','\''wukong/integration/embedded'\'','\''master'\'',now(),'\''http://192.168.50.191:8088/job/gerry-embeded/6/'\'','\''khadas-car7'\'','\''liumengang'\'')'
++ set +x
++ DOCKER_CONTAINER_I18=build-x64-18.04
++ DOCKER_CONTAINER_RUBBY=c405
++ DOCKER_CONTAINER_RUBBY_INSIDE=c3566
++ DOCKER_CONTAINER_JAVA=node
++ JENKINS_JOB_A=mind
++ JENKINS_JOB_B=rbn
++ JENKINS_JOB_C=mark-check-tools
++ JENKINS_JOB_D=java
++ JENKINS_JOB_E=clean_recorder
++ JENKINS_JOB_F=i18r
++ JENKINS_JOB_G=nodejs
++ JENKINS_JOB_H=_ui
++ JENKINS_JOB_L=i12r
++ [[ gerry-embeded =~ mind ]]
++ '[' false = false ']'
++ source_project_update
++ '[' -d /root/workspace/workspace/gerry-embeded/gerry ']'
++ pushd /root/workspace/workspace/gerry-embeded/gerry
+~/workspace/workspace/gerry-embeded/gerry ~/workspace/workspace/gerry-embeded
++ git checkout ./
+Updated 1 path from the index
++ git pull --rebase
+From ssh://192.168.50.191:222/EmbeddedGroup/gerry/gerry
+   d906433..f76ea7f  master     -> origin/master
+Updating d906433..f76ea7f
+Fast-forward
+ sensor/core/tof_module/third_lib/include/csvio.h   |    2 +-
+ .../tof_module/third_lib/include/opencv2/aruco.hpp |  604 +++
+ .../third_lib/include/opencv2/aruco/charuco.hpp    |  343 ++
+ .../third_lib/include/opencv2/aruco/dictionary.hpp |  212 +
+ .../third_lib/include/opencv2/bgsegm.hpp           |  380 ++
+ .../third_lib/include/opencv2/bioinspired.hpp      |   60 +
+ .../include/opencv2/bioinspired/bioinspired.hpp    |   48 +
+ .../include/opencv2/bioinspired/retina.hpp         |  454 ++
+ .../opencv2/bioinspired/retinafasttonemapping.hpp  |  138 +
+ .../transientareassegmentationmodule.hpp           |  204 +
+ .../third_lib/include/opencv2/calib3d.hpp          | 3335 ++++++++++++++
+ .../third_lib/include/opencv2/calib3d/calib3d.hpp  |   48 +
+ .../third_lib/include/opencv2/calib3d/calib3d_c.h  |  150 +
+ .../third_lib/include/opencv2/ccalib.hpp           |  157 +
+ .../include/opencv2/ccalib/multicalib.hpp          |  212 +
+ .../third_lib/include/opencv2/ccalib/omnidir.hpp   |  310 ++
+ .../include/opencv2/ccalib/randpattern.hpp         |  184 +
+ .../tof_module/third_lib/include/opencv2/core.hpp  | 3297 ++++++++++++++
+ .../third_lib/include/opencv2/core/affine.hpp      |  678 +++
+ .../third_lib/include/opencv2/core/async.hpp       |  105 +
+ .../third_lib/include/opencv2/core/base.hpp        |  654 +++
+ .../include/opencv2/core/bindings_utils.hpp        |   87 +
+ .../third_lib/include/opencv2/core/bufferpool.hpp  |   40 +
+ .../third_lib/include/opencv2/core/check.hpp       |  159 +
+ .../third_lib/include/opencv2/core/core.hpp        |   48 +
+ .../third_lib/include/opencv2/core/core_c.h        | 3125 +++++++++++++
+ .../third_lib/include/opencv2/core/cuda.hpp        | 1049 +++++
+ .../third_lib/include/opencv2/core/cuda.inl.hpp    |  631 +++
+ .../third_lib/include/opencv2/core/cuda/block.hpp  |  211 +
+ .../opencv2/core/cuda/border_interpolate.hpp       |  722 +++
+ .../third_lib/include/opencv2/core/cuda/color.hpp  |  309 ++
+ .../third_lib/include/opencv2/core/cuda/common.hpp |  109 +
+ .../include/opencv2/core/cuda/datamov_utils.hpp    |  113 +
+ .../opencv2/core/cuda/detail/color_detail.hpp      | 2018 +++++++++
+ .../include/opencv2/core/cuda/detail/reduce.hpp    |  365 ++
+ .../opencv2/core/cuda/detail/reduce_key_val.hpp    |  502 ++
+ .../opencv2/core/cuda/detail/transform_detail.hpp  |  392 ++
+ .../core/cuda/detail/type_traits_detail.hpp        |  191 +
+ .../core/cuda/detail/vec_distance_detail.hpp       |  121 +
+ .../include/opencv2/core/cuda/dynamic_smem.hpp     |   88 +
+ .../include/opencv2/core/cuda/emulation.hpp        |  269 ++
+ .../include/opencv2/core/cuda/filters.hpp          |  286 ++
+ .../include/opencv2/core/cuda/funcattrib.hpp       |   79 +
+ .../include/opencv2/core/cuda/functional.hpp       |  805 ++++
+ .../third_lib/include/opencv2/core/cuda/limits.hpp |  128 +
+ .../third_lib/include/opencv2/core/cuda/reduce.hpp |  209 +
+ .../include/opencv2/core/cuda/saturate_cast.hpp    |  292 ++
+ .../third_lib/include/opencv2/core/cuda/scan.hpp   |  258 ++
+ .../include/opencv2/core/cuda/simd_functions.hpp   |  869 ++++
+ .../include/opencv2/core/cuda/transform.hpp        |   75 +
+ .../include/opencv2/core/cuda/type_traits.hpp      |   90 +
+ .../include/opencv2/core/cuda/utility.hpp          |  230 +
+ .../include/opencv2/core/cuda/vec_distance.hpp     |  232 +
+ .../include/opencv2/core/cuda/vec_math.hpp         |  923 ++++
+ .../include/opencv2/core/cuda/vec_traits.hpp       |  288 ++
+ .../third_lib/include/opencv2/core/cuda/warp.hpp   |  139 +
+ .../include/opencv2/core/cuda/warp_reduce.hpp      |   76 +
+ .../include/opencv2/core/cuda/warp_shuffle.hpp     |  162 +
+ .../include/opencv2/core/cuda_stream_accessor.hpp  |   86 +
+ .../third_lib/include/opencv2/core/cuda_types.hpp  |  144 +
+ .../include/opencv2/core/cv_cpu_dispatch.h         |  345 ++
+ .../third_lib/include/opencv2/core/cv_cpu_helper.h |  487 ++
+ .../third_lib/include/opencv2/core/cvdef.h         |  896 ++++
+ .../third_lib/include/opencv2/core/cvstd.hpp       |  190 +
+ .../third_lib/include/opencv2/core/cvstd.inl.hpp   |  196 +
+ .../include/opencv2/core/cvstd_wrapper.hpp         |  154 +
+ .../include/opencv2/core/detail/async_promise.hpp  |   71 +
+ .../include/opencv2/core/detail/exception_ptr.hpp  |   27 +
+ .../third_lib/include/opencv2/core/directx.hpp     |  184 +
+ .../third_lib/include/opencv2/core/eigen.hpp       |  280 ++
+ .../third_lib/include/opencv2/core/fast_math.hpp   |  408 ++
+ .../third_lib/include/opencv2/core/hal/hal.hpp     |  256 ++
+ .../third_lib/include/opencv2/core/hal/interface.h |  190 +
+ .../third_lib/include/opencv2/core/hal/intrin.hpp  |  482 ++
+ .../include/opencv2/core/hal/intrin_avx.hpp        | 3125 +++++++++++++
+ .../include/opencv2/core/hal/intrin_avx512.hpp     | 3049 +++++++++++++
+ .../include/opencv2/core/hal/intrin_cpp.hpp        | 2557 +++++++++++
+ .../include/opencv2/core/hal/intrin_forward.hpp    |  191 +
+ .../include/opencv2/core/hal/intrin_msa.hpp        | 1856 ++++++++
+ .../include/opencv2/core/hal/intrin_neon.hpp       | 2330 ++++++++++
+ .../include/opencv2/core/hal/intrin_sse.hpp        | 3435 ++++++++++++++
+ .../include/opencv2/core/hal/intrin_sse_em.hpp     |  180 +
+ .../include/opencv2/core/hal/intrin_vsx.hpp        | 1649 +++++++
+ .../include/opencv2/core/hal/intrin_wasm.hpp       | 4260 +++++++++++++++++
+ .../include/opencv2/core/hal/msa_macros.h          | 1558 +++++++
+ .../include/opencv2/core/hal/simd_utils.impl.hpp   |  146 +
+ .../third_lib/include/opencv2/core/mat.hpp         | 3726 +++++++++++++++
+ .../third_lib/include/opencv2/core/mat.inl.hpp     | 3983 ++++++++++++++++
+ .../third_lib/include/opencv2/core/matx.hpp        | 1471 ++++++
+ .../third_lib/include/opencv2/core/neon_utils.hpp  |  128 +
+ .../third_lib/include/opencv2/core/ocl.hpp         |  710 +++
+ .../third_lib/include/opencv2/core/ocl_genbase.hpp |   69 +
+ .../include/opencv2/core/opencl/ocl_defs.hpp       |   82 +
+ .../include/opencv2/core/opencl/opencl_info.hpp    |  205 +
+ .../include/opencv2/core/opencl/opencl_svm.hpp     |   81 +
+ .../runtime/autogenerated/opencl_clamdblas.hpp     |  714 +++
+ .../runtime/autogenerated/opencl_clamdfft.hpp      |  142 +
+ .../opencl/runtime/autogenerated/opencl_core.hpp   |  371 ++
+ .../runtime/autogenerated/opencl_core_wrappers.hpp |  272 ++
+ .../opencl/runtime/autogenerated/opencl_gl.hpp     |   62 +
+ .../runtime/autogenerated/opencl_gl_wrappers.hpp   |   42 +
+ .../core/opencl/runtime/opencl_clamdblas.hpp       |   53 +
+ .../core/opencl/runtime/opencl_clamdfft.hpp        |   53 +
+ .../opencv2/core/opencl/runtime/opencl_core.hpp    |   84 +
+ .../core/opencl/runtime/opencl_core_wrappers.hpp   |   47 +
+ .../opencv2/core/opencl/runtime/opencl_gl.hpp      |   53 +
+ .../core/opencl/runtime/opencl_gl_wrappers.hpp     |   47 +
+ .../opencv2/core/opencl/runtime/opencl_svm_20.hpp  |   48 +
+ .../core/opencl/runtime/opencl_svm_definitions.hpp |   42 +
+ .../opencl/runtime/opencl_svm_hsa_extension.hpp    |  166 +
+ .../third_lib/include/opencv2/core/opengl.hpp      |  725 +++
+ .../third_lib/include/opencv2/core/operations.hpp  |  594 +++
+ .../third_lib/include/opencv2/core/optim.hpp       |  302 ++
+ .../third_lib/include/opencv2/core/ovx.hpp         |   28 +
+ .../third_lib/include/opencv2/core/persistence.hpp | 1337 ++++++
+ .../third_lib/include/opencv2/core/saturate.hpp    |  179 +
+ .../include/opencv2/core/simd_intrinsics.hpp       |   88 +
+ .../third_lib/include/opencv2/core/softfloat.hpp   |  514 +++
+ .../third_lib/include/opencv2/core/sse_utils.hpp   |  652 +++
+ .../third_lib/include/opencv2/core/traits.hpp      |  417 ++
+ .../third_lib/include/opencv2/core/types.hpp       | 2476 ++++++++++
+ .../third_lib/include/opencv2/core/types_c.h       | 2122 +++++++++
+ .../third_lib/include/opencv2/core/utility.hpp     | 1208 +++++
+ .../include/opencv2/core/utils/allocator_stats.hpp |   29 +
+ .../opencv2/core/utils/allocator_stats.impl.hpp    |  117 +
+ .../include/opencv2/core/utils/filesystem.hpp      |   82 +
+ .../include/opencv2/core/utils/instrumentation.hpp |  125 +
+ .../include/opencv2/core/utils/logger.defines.hpp  |   42 +
+ .../include/opencv2/core/utils/logger.hpp          |  153 +
+ .../include/opencv2/core/utils/logtag.hpp          |   28 +
+ .../third_lib/include/opencv2/core/utils/tls.hpp   |  233 +
+ .../third_lib/include/opencv2/core/utils/trace.hpp |  252 ++
+ .../third_lib/include/opencv2/core/va_intel.hpp    |   78 +
+ .../third_lib/include/opencv2/core/version.hpp     |   26 +
+ .../third_lib/include/opencv2/core/vsx_utils.hpp   | 1042 +++++
+ .../third_lib/include/opencv2/core_detect.hpp      |  149 +
+ .../third_lib/include/opencv2/cvconfig.h           |  167 +
+ .../third_lib/include/opencv2/datasets/ar_hmdb.hpp |   80 +
+ .../include/opencv2/datasets/ar_sports.hpp         |   79 +
+ .../third_lib/include/opencv2/datasets/dataset.hpp |  592 +++
+ .../include/opencv2/datasets/fr_adience.hpp        |   98 +
+ .../third_lib/include/opencv2/datasets/fr_lfw.hpp  |   79 +
+ .../include/opencv2/datasets/gr_chalearn.hpp       |   96 +
+ .../third_lib/include/opencv2/datasets/gr_skig.hpp |  118 +
+ .../include/opencv2/datasets/hpe_humaneva.hpp      |   90 +
+ .../include/opencv2/datasets/hpe_parse.hpp         |   78 +
+ .../include/opencv2/datasets/ir_affine.hpp         |   80 +
+ .../include/opencv2/datasets/ir_robot.hpp          |   89 +
+ .../third_lib/include/opencv2/datasets/is_bsds.hpp |   78 +
+ .../include/opencv2/datasets/is_weizmann.hpp       |   81 +
+ .../include/opencv2/datasets/msm_epfl.hpp          |   90 +
+ .../include/opencv2/datasets/msm_middlebury.hpp    |   81 +
+ .../include/opencv2/datasets/or_imagenet.hpp       |   79 +
+ .../include/opencv2/datasets/or_mnist.hpp          |   79 +
+ .../include/opencv2/datasets/or_pascal.hpp         |  102 +
+ .../third_lib/include/opencv2/datasets/or_sun.hpp  |   81 +
+ .../include/opencv2/datasets/pd_caltech.hpp        |   89 +
+ .../include/opencv2/datasets/pd_inria.hpp          |   96 +
+ .../include/opencv2/datasets/slam_kitti.hpp        |   87 +
+ .../include/opencv2/datasets/slam_tumindoor.hpp    |   87 +
+ .../third_lib/include/opencv2/datasets/sr_bsds.hpp |   41 +
+ .../include/opencv2/datasets/sr_div2k.hpp          |   41 +
+ .../include/opencv2/datasets/sr_general100.hpp     |   41 +
+ .../include/opencv2/datasets/tr_chars.hpp          |   79 +
+ .../include/opencv2/datasets/tr_icdar.hpp          |   87 +
+ .../third_lib/include/opencv2/datasets/tr_svt.hpp  |   86 +
+ .../include/opencv2/datasets/track_alov.hpp        |  107 +
+ .../include/opencv2/datasets/track_vot.hpp         |   96 +
+ .../third_lib/include/opencv2/datasets/util.hpp    |   74 +
+ .../tof_module/third_lib/include/opencv2/dnn.hpp   |   78 +
+ .../third_lib/include/opencv2/dnn/all_layers.hpp   |  655 +++
+ .../third_lib/include/opencv2/dnn/dict.hpp         |  160 +
+ .../third_lib/include/opencv2/dnn/dnn.hpp          | 1291 ++++++
+ .../third_lib/include/opencv2/dnn/dnn.inl.hpp      |  411 ++
+ .../include/opencv2/dnn/layer.details.hpp          |   78 +
+ .../third_lib/include/opencv2/dnn/layer.hpp        |   85 +
+ .../third_lib/include/opencv2/dnn/shape_utils.hpp  |  219 +
+ .../include/opencv2/dnn/utils/inference_engine.hpp |   64 +
+ .../third_lib/include/opencv2/dnn/version.hpp      |   21 +
+ .../third_lib/include/opencv2/dnn_superres.hpp     |  125 +
+ .../tof_module/third_lib/include/opencv2/dpm.hpp   |  153 +
+ .../tof_module/third_lib/include/opencv2/face.hpp  |  386 ++
+ .../third_lib/include/opencv2/face/bif.hpp         |   83 +
+ .../include/opencv2/face/face_alignment.hpp        |   60 +
+ .../third_lib/include/opencv2/face/facemark.hpp    |   95 +
+ .../third_lib/include/opencv2/face/facemarkAAM.hpp |  162 +
+ .../third_lib/include/opencv2/face/facemarkLBF.hpp |  120 +
+ .../include/opencv2/face/facemark_train.hpp        |  392 ++
+ .../third_lib/include/opencv2/face/facerec.hpp     |  191 +
+ .../third_lib/include/opencv2/face/mace.hpp        |  114 +
+ .../include/opencv2/face/predict_collector.hpp     |  127 +
+ .../third_lib/include/opencv2/features2d.hpp       | 1455 ++++++
+ .../include/opencv2/features2d/features2d.hpp      |   48 +
+ .../include/opencv2/features2d/hal/interface.h     |   33 +
+ .../tof_module/third_lib/include/opencv2/flann.hpp |  597 +++
+ .../third_lib/include/opencv2/flann/all_indices.h  |  159 +
+ .../third_lib/include/opencv2/flann/allocator.h    |  196 +
+ .../third_lib/include/opencv2/flann/any.h          |  334 ++
+ .../include/opencv2/flann/autotuned_index.h        |  595 +++
+ .../include/opencv2/flann/composite_index.h        |  198 +
+ .../third_lib/include/opencv2/flann/config.h       |   42 +
+ .../third_lib/include/opencv2/flann/defines.h      |  168 +
+ .../third_lib/include/opencv2/flann/dist.h         |  908 ++++
+ .../third_lib/include/opencv2/flann/dummy.h        |   16 +
+ .../include/opencv2/flann/dynamic_bitset.h         |  163 +
+ .../third_lib/include/opencv2/flann/flann.hpp      |   48 +
+ .../third_lib/include/opencv2/flann/flann_base.hpp |  300 ++
+ .../third_lib/include/opencv2/flann/general.h      |   53 +
+ .../third_lib/include/opencv2/flann/ground_truth.h |   98 +
+ .../third_lib/include/opencv2/flann/hdf5.h         |  235 +
+ .../third_lib/include/opencv2/flann/heap.h         |  169 +
+ .../opencv2/flann/hierarchical_clustering_index.h  |  852 ++++
+ .../include/opencv2/flann/index_testing.h          |  322 ++
+ .../third_lib/include/opencv2/flann/kdtree_index.h |  630 +++
+ .../include/opencv2/flann/kdtree_single_index.h    |  639 +++
+ .../third_lib/include/opencv2/flann/kmeans_index.h | 1176 +++++
+ .../third_lib/include/opencv2/flann/linear_index.h |  136 +
+ .../third_lib/include/opencv2/flann/logger.h       |  139 +
+ .../third_lib/include/opencv2/flann/lsh_index.h    |  396 ++
+ .../third_lib/include/opencv2/flann/lsh_table.h    |  517 +++
+ .../third_lib/include/opencv2/flann/matrix.h       |  120 +
+ .../third_lib/include/opencv2/flann/miniflann.hpp  |  181 +
+ .../third_lib/include/opencv2/flann/nn_index.h     |  181 +
+ .../include/opencv2/flann/object_factory.h         |   95 +
+ .../third_lib/include/opencv2/flann/params.h       |  102 +
+ .../third_lib/include/opencv2/flann/random.h       |  159 +
+ .../third_lib/include/opencv2/flann/result_set.h   |  547 +++
+ .../third_lib/include/opencv2/flann/sampling.h     |   84 +
+ .../third_lib/include/opencv2/flann/saving.h       |  191 +
+ .../include/opencv2/flann/simplex_downhill.h       |  190 +
+ .../third_lib/include/opencv2/flann/timer.h        |   98 +
+ .../third_lib/include/opencv2/freetype.hpp         |  190 +
+ .../tof_module/third_lib/include/opencv2/fuzzy.hpp |   71 +
+ .../include/opencv2/fuzzy/fuzzy_F0_math.hpp        |  121 +
+ .../include/opencv2/fuzzy/fuzzy_F1_math.hpp        |  124 +
+ .../include/opencv2/fuzzy/fuzzy_image.hpp          |  109 +
+ .../third_lib/include/opencv2/fuzzy/types.hpp      |   70 +
+ .../tof_module/third_lib/include/opencv2/hdf.hpp   |   57 +
+ .../third_lib/include/opencv2/hdf/hdf5.hpp         |  808 ++++
+ .../tof_module/third_lib/include/opencv2/hfs.hpp   |  153 +
+ .../third_lib/include/opencv2/highgui.hpp          |  842 ++++
+ .../third_lib/include/opencv2/highgui/highgui.hpp  |   48 +
+ .../third_lib/include/opencv2/highgui/highgui_c.h  |  256 ++
+ .../third_lib/include/opencv2/img_hash.hpp         |   78 +
+ .../include/opencv2/img_hash/average_hash.hpp      |   39 +
+ .../include/opencv2/img_hash/block_mean_hash.hpp   |   52 +
+ .../include/opencv2/img_hash/color_moment_hash.hpp |   41 +
+ .../include/opencv2/img_hash/img_hash_base.hpp     |   46 +
+ .../opencv2/img_hash/marr_hildreth_hash.hpp        |   64 +
+ .../third_lib/include/opencv2/img_hash/phash.hpp   |   41 +
+ .../opencv2/img_hash/radial_variance_hash.hpp      |   58 +
+ .../third_lib/include/opencv2/imgcodecs.hpp        |  277 ++
+ .../include/opencv2/imgcodecs/imgcodecs.hpp        |   48 +
+ .../include/opencv2/imgcodecs/imgcodecs_c.h        |    1 +
+ .../third_lib/include/opencv2/imgcodecs/ios.h      |   57 +
+ .../{ => opencv2/imgcodecs/legacy}/constants_c.h   |    2 +-
+ .../third_lib/include/opencv2/imgproc.hpp          | 4786 ++++++++++++++++++++
+ .../include/opencv2/imgproc/detail/gcgraph.hpp     |  393 ++
+ .../third_lib/include/opencv2/imgproc/hal/hal.hpp  |  241 +
+ .../include/opencv2/imgproc/hal/interface.h        |   46 +
+ .../third_lib/include/opencv2/imgproc/imgproc.hpp  |   48 +
+ .../third_lib/include/opencv2/imgproc/imgproc_c.h  | 1177 +++++
+ .../third_lib/include/opencv2/imgproc/types_c.h    |  659 +++
+ .../third_lib/include/opencv2/line_descriptor.hpp  |  119 +
+ .../include/opencv2/line_descriptor/descriptor.hpp | 1205 +++++
+ .../tof_module/third_lib/include/opencv2/ml.hpp    | 1947 ++++++++
+ .../tof_module/third_lib/include/opencv2/ml/ml.hpp |   48 +
+ .../third_lib/include/opencv2/ml/ml.inl.hpp        |   60 +
+ .../third_lib/include/opencv2/objdetect.hpp        |  720 +++
+ .../opencv2/objdetect/detection_based_tracker.hpp  |  222 +
+ .../include/opencv2/objdetect/objdetect.hpp        |   48 +
+ .../third_lib/include/opencv2/opencv.hpp           |  139 +
+ .../third_lib/include/opencv2/opencv_modules.hpp   |   62 +
+ .../third_lib/include/opencv2/optflow.hpp          |  309 ++
+ .../third_lib/include/opencv2/optflow/motempl.hpp  |  147 +
+ .../third_lib/include/opencv2/optflow/pcaflow.hpp  |  149 +
+ .../third_lib/include/opencv2/optflow/rlofflow.hpp |  544 +++
+ .../opencv2/optflow/sparse_matching_gpc.hpp        |  372 ++
+ .../third_lib/include/opencv2/phase_unwrapping.hpp |   61 +
+ .../phase_unwrapping/histogramphaseunwrapping.hpp  |  107 +
+ .../opencv2/phase_unwrapping/phase_unwrapping.hpp  |   74 +
+ .../tof_module/third_lib/include/opencv2/photo.hpp |  858 ++++
+ .../third_lib/include/opencv2/photo/cuda.hpp       |  132 +
+ .../include/opencv2/photo/legacy/constants_c.h     |   14 +
+ .../third_lib/include/opencv2/photo/photo.hpp      |   48 +
+ .../tof_module/third_lib/include/opencv2/plot.hpp  |  120 +
+ .../third_lib/include/opencv2/quality.hpp          |   15 +
+ .../include/opencv2/quality/quality_utils.hpp      |  109 +
+ .../include/opencv2/quality/qualitybase.hpp        |   63 +
+ .../include/opencv2/quality/qualitybrisque.hpp     |   82 +
+ .../include/opencv2/quality/qualitygmsd.hpp        |   92 +
+ .../include/opencv2/quality/qualitymse.hpp         |   64 +
+ .../include/opencv2/quality/qualitypsnr.hpp        |  120 +
+ .../include/opencv2/quality/qualityssim.hpp        |   97 +
+ .../third_lib/include/opencv2/reg/map.hpp          |  175 +
+ .../third_lib/include/opencv2/reg/mapaffine.hpp    |  113 +
+ .../third_lib/include/opencv2/reg/mapper.hpp       |  113 +
+ .../include/opencv2/reg/mappergradaffine.hpp       |   67 +
+ .../include/opencv2/reg/mappergradeuclid.hpp       |   67 +
+ .../include/opencv2/reg/mappergradproj.hpp         |   67 +
+ .../include/opencv2/reg/mappergradshift.hpp        |   67 +
+ .../include/opencv2/reg/mappergradsimilar.hpp      |   67 +
+ .../include/opencv2/reg/mapperpyramid.hpp          |  105 +
+ .../third_lib/include/opencv2/reg/mapprojec.hpp    |  109 +
+ .../third_lib/include/opencv2/reg/mapshift.hpp     |  101 +
+ .../tof_module/third_lib/include/opencv2/rgbd.hpp  |   23 +
+ .../third_lib/include/opencv2/rgbd/depth.hpp       | 1192 +++++
+ .../third_lib/include/opencv2/rgbd/dynafu.hpp      |  206 +
+ .../third_lib/include/opencv2/rgbd/kinfu.hpp       |  204 +
+ .../third_lib/include/opencv2/rgbd/linemod.hpp     |  435 ++
+ .../third_lib/include/opencv2/saliency.hpp         |   83 +
+ .../opencv2/saliency/saliencyBaseClasses.hpp       |  133 +
+ .../saliency/saliencySpecializedClasses.hpp        |  513 +++
+ .../tof_module/third_lib/include/opencv2/shape.hpp |   57 +
+ .../third_lib/include/opencv2/shape/emdL1.hpp      |   72 +
+ .../third_lib/include/opencv2/shape/hist_cost.hpp  |  111 +
+ .../third_lib/include/opencv2/shape/shape.hpp      |   48 +
+ .../include/opencv2/shape/shape_distance.hpp       |  227 +
+ .../include/opencv2/shape/shape_transformer.hpp    |  132 +
+ .../third_lib/include/opencv2/stereo.hpp           |  281 ++
+ .../include/opencv2/stereo/descriptor.hpp          |  452 ++
+ .../third_lib/include/opencv2/stereo/matching.hpp  |  621 +++
+ .../include/opencv2/stereo/quasi_dense_stereo.hpp  |  197 +
+ .../third_lib/include/opencv2/stereo/stereo.hpp    |   49 +
+ .../third_lib/include/opencv2/stitching.hpp        |  343 ++
+ .../include/opencv2/stitching/detail/autocalib.hpp |   86 +
+ .../include/opencv2/stitching/detail/blenders.hpp  |  184 +
+ .../include/opencv2/stitching/detail/camera.hpp    |   78 +
+ .../stitching/detail/exposure_compensate.hpp       |  230 +
+ .../include/opencv2/stitching/detail/matchers.hpp  |  253 ++
+ .../opencv2/stitching/detail/motion_estimators.hpp |  363 ++
+ .../opencv2/stitching/detail/seam_finders.hpp      |  291 ++
+ .../opencv2/stitching/detail/timelapsers.hpp       |   91 +
+ .../include/opencv2/stitching/detail/util.hpp      |  121 +
+ .../include/opencv2/stitching/detail/util_inl.hpp  |  131 +
+ .../include/opencv2/stitching/detail/warpers.hpp   |  651 +++
+ .../opencv2/stitching/detail/warpers_inl.hpp       |  774 ++++
+ .../include/opencv2/stitching/warpers.hpp          |  261 ++
+ .../third_lib/include/opencv2/structured_light.hpp |   68 +
+ .../opencv2/structured_light/graycodepattern.hpp   |  149 +
+ .../opencv2/structured_light/sinusoidalpattern.hpp |  151 +
+ .../opencv2/structured_light/structured_light.hpp  |   91 +
+ .../third_lib/include/opencv2/superres.hpp         |  207 +
+ .../include/opencv2/superres/optical_flow.hpp      |  203 +
+ .../third_lib/include/opencv2/surface_matching.hpp |  402 ++
+ .../include/opencv2/surface_matching/icp.hpp       |  170 +
+ .../include/opencv2/surface_matching/pose_3d.hpp   |  188 +
+ .../opencv2/surface_matching/ppf_helpers.hpp       |  153 +
+ .../opencv2/surface_matching/ppf_match_3d.hpp      |  179 +
+ .../opencv2/surface_matching/t_hash_int.hpp        |  113 +
+ .../tof_module/third_lib/include/opencv2/text.hpp  |  102 +
+ .../third_lib/include/opencv2/text/erfilter.hpp    |  375 ++
+ .../third_lib/include/opencv2/text/ocr.hpp         |  595 +++
+ .../include/opencv2/text/textDetector.hpp          |   73 +
+ .../third_lib/include/opencv2/tracking.hpp         |  284 ++
+ .../third_lib/include/opencv2/tracking/feature.hpp |  416 ++
+ .../include/opencv2/tracking/kalman_filters.hpp    |  228 +
+ .../include/opencv2/tracking/onlineBoosting.hpp    |  288 ++
+ .../include/opencv2/tracking/onlineMIL.hpp         |  118 +
+ .../include/opencv2/tracking/tldDataset.hpp        |   56 +
+ .../third_lib/include/opencv2/tracking/tracker.hpp | 1546 +++++++
+ .../include/opencv2/tracking/tracking.hpp          |   46 +
+ .../opencv2/tracking/tracking_by_matching.hpp      |  557 +++
+ .../tof_module/third_lib/include/opencv2/video.hpp |   59 +
+ .../include/opencv2/video/background_segm.hpp      |  317 ++
+ .../include/opencv2/video/legacy/constants_c.h     |   16 +
+ .../third_lib/include/opencv2/video/tracking.hpp   |  712 +++
+ .../third_lib/include/opencv2/video/video.hpp      |   48 +
+ .../third_lib/include/opencv2/videoio.hpp          |  987 ++++
+ .../third_lib/include/opencv2/videoio/cap_ios.h    |  150 +
+ .../include/opencv2/videoio/legacy/constants_c.h   |  434 ++
+ .../third_lib/include/opencv2/videoio/registry.hpp |   47 +
+ .../third_lib/include/opencv2/videoio/videoio.hpp  |   48 +
+ .../third_lib/include/opencv2/videoio/videoio_c.h  |  153 +
+ .../third_lib/include/opencv2/videostab.hpp        |   81 +
+ .../include/opencv2/videostab/deblurring.hpp       |  116 +
+ .../include/opencv2/videostab/fast_marching.hpp    |  121 +
+ .../opencv2/videostab/fast_marching_inl.hpp        |  165 +
+ .../include/opencv2/videostab/frame_source.hpp     |  116 +
+ .../include/opencv2/videostab/global_motion.hpp    |  311 ++
+ .../include/opencv2/videostab/inpainting.hpp       |  212 +
+ .../third_lib/include/opencv2/videostab/log.hpp    |   80 +
+ .../include/opencv2/videostab/motion_core.hpp      |  129 +
+ .../opencv2/videostab/motion_stabilizing.hpp       |  174 +
+ .../include/opencv2/videostab/optical_flow.hpp     |  150 +
+ .../opencv2/videostab/outlier_rejection.hpp        |  101 +
+ .../include/opencv2/videostab/ring_buffer.hpp      |   72 +
+ .../include/opencv2/videostab/stabilizer.hpp       |  204 +
+ .../opencv2/videostab/wobble_suppression.hpp       |  140 +
+ .../tof_module/third_lib/include/opencv2/viz.hpp   |   84 +
+ .../third_lib/include/opencv2/viz/types.hpp        |  389 ++
+ .../third_lib/include/opencv2/viz/viz3d.hpp        |  353 ++
+ .../third_lib/include/opencv2/viz/vizcore.hpp      |  226 +
+ .../include/opencv2/viz/widget_accessor.hpp        |   89 +
+ .../third_lib/include/opencv2/viz/widgets.hpp      |  850 ++++
+ .../third_lib/include/opencv2/ximgproc.hpp         |  200 +
+ .../include/opencv2/ximgproc/brightedges.hpp       |   50 +
+ .../include/opencv2/ximgproc/color_match.hpp       |   66 +
+ .../include/opencv2/ximgproc/deriche_filter.hpp    |   77 +
+ .../include/opencv2/ximgproc/disparity_filter.hpp  |  210 +
+ .../include/opencv2/ximgproc/edge_filter.hpp       |  528 +++
+ .../include/opencv2/ximgproc/edgeboxes.hpp         |  201 +
+ .../opencv2/ximgproc/edgepreserving_filter.hpp     |   33 +
+ .../opencv2/ximgproc/estimated_covariance.hpp      |   82 +
+ .../opencv2/ximgproc/fast_hough_transform.hpp      |  164 +
+ .../opencv2/ximgproc/fast_line_detector.hpp        |   81 +
+ .../opencv2/ximgproc/fourier_descriptors.hpp       |  119 +
+ .../third_lib/include/opencv2/ximgproc/lsc.hpp     |  157 +
+ .../include/opencv2/ximgproc/paillou_filter.hpp    |   67 +
+ .../third_lib/include/opencv2/ximgproc/peilin.hpp  |   32 +
+ .../include/opencv2/ximgproc/ridgefilter.hpp       |   53 +
+ .../opencv2/ximgproc/run_length_morphology.hpp     |  119 +
+ .../third_lib/include/opencv2/ximgproc/seeds.hpp   |  183 +
+ .../include/opencv2/ximgproc/segmentation.hpp      |  252 ++
+ .../third_lib/include/opencv2/ximgproc/slic.hpp    |  168 +
+ .../opencv2/ximgproc/sparse_match_interpolator.hpp |  270 ++
+ .../opencv2/ximgproc/structured_edge_detection.hpp |  148 +
+ .../opencv2/ximgproc/weighted_median_filter.hpp    |   96 +
+ .../third_lib/include/opencv2/xobjdetect.hpp       |  104 +
+ .../third_lib/include/opencv2/xphoto.hpp           |   56 +
+ .../opencv2/xphoto/bm3d_image_denoising.hpp        |  186 +
+ .../include/opencv2/xphoto/dct_image_denoising.hpp |   79 +
+ .../include/opencv2/xphoto/inpainting.hpp          |  120 +
+ .../include/opencv2/xphoto/oilpainting.hpp         |   41 +
+ .../third_lib/include/opencv2/xphoto/tonemap.hpp   |   56 +
+ .../include/opencv2/xphoto/white_balance.hpp       |  230 +
+ 426 files changed, 149826 insertions(+), 2 deletions(-)
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/aruco.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/aruco/charuco.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/aruco/dictionary.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/bgsegm.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/bioinspired.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/bioinspired/bioinspired.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/bioinspired/retina.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/bioinspired/retinafasttonemapping.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/bioinspired/transientareassegmentationmodule.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/calib3d.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/calib3d/calib3d.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/calib3d/calib3d_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ccalib.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ccalib/multicalib.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ccalib/omnidir.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ccalib/randpattern.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/affine.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/async.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/base.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/bindings_utils.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/bufferpool.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/check.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/core.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/core_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda.inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/block.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/border_interpolate.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/color.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/common.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/datamov_utils.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/detail/color_detail.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/detail/reduce.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/detail/reduce_key_val.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/detail/transform_detail.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/detail/type_traits_detail.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/detail/vec_distance_detail.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/dynamic_smem.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/emulation.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/filters.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/funcattrib.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/functional.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/limits.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/reduce.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/saturate_cast.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/scan.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/simd_functions.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/transform.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/type_traits.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/utility.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/vec_distance.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/vec_math.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/vec_traits.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/warp.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/warp_reduce.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda/warp_shuffle.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda_stream_accessor.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cuda_types.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cv_cpu_dispatch.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cv_cpu_helper.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cvdef.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cvstd.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cvstd.inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/cvstd_wrapper.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/detail/async_promise.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/detail/exception_ptr.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/directx.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/eigen.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/fast_math.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/hal.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/interface.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_avx.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_avx512.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_cpp.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_forward.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_msa.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_neon.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_sse.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_sse_em.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_vsx.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/intrin_wasm.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/msa_macros.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/hal/simd_utils.impl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/mat.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/mat.inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/matx.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/neon_utils.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/ocl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/ocl_genbase.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/ocl_defs.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/opencl_info.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/opencl_svm.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/autogenerated/opencl_clamdblas.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/autogenerated/opencl_clamdfft.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/autogenerated/opencl_core.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/autogenerated/opencl_core_wrappers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/autogenerated/opencl_gl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/autogenerated/opencl_gl_wrappers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_clamdblas.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_clamdfft.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_core.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_core_wrappers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_gl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_gl_wrappers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_svm_20.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_svm_definitions.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opencl/runtime/opencl_svm_hsa_extension.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/opengl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/operations.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/optim.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/ovx.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/persistence.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/saturate.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/simd_intrinsics.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/softfloat.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/sse_utils.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/traits.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/types.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/types_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utility.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/allocator_stats.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/allocator_stats.impl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/filesystem.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/instrumentation.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/logger.defines.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/logger.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/logtag.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/tls.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/utils/trace.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/va_intel.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/version.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core/vsx_utils.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/core_detect.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/cvconfig.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/ar_hmdb.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/ar_sports.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/dataset.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/fr_adience.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/fr_lfw.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/gr_chalearn.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/gr_skig.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/hpe_humaneva.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/hpe_parse.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/ir_affine.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/ir_robot.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/is_bsds.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/is_weizmann.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/msm_epfl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/msm_middlebury.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/or_imagenet.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/or_mnist.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/or_pascal.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/or_sun.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/pd_caltech.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/pd_inria.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/slam_kitti.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/slam_tumindoor.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/sr_bsds.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/sr_div2k.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/sr_general100.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/tr_chars.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/tr_icdar.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/tr_svt.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/track_alov.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/track_vot.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/datasets/util.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/all_layers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/dict.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/dnn.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/dnn.inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/layer.details.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/layer.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/shape_utils.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/utils/inference_engine.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn/version.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dnn_superres.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/dpm.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/bif.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/face_alignment.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/facemark.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/facemarkAAM.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/facemarkLBF.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/facemark_train.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/facerec.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/mace.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/face/predict_collector.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/features2d.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/features2d/features2d.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/features2d/hal/interface.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/all_indices.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/allocator.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/any.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/autotuned_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/composite_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/config.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/defines.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/dist.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/dummy.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/dynamic_bitset.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/flann.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/flann_base.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/general.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/ground_truth.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/hdf5.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/heap.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/hierarchical_clustering_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/index_testing.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/kdtree_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/kdtree_single_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/kmeans_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/linear_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/logger.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/lsh_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/lsh_table.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/matrix.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/miniflann.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/nn_index.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/object_factory.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/params.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/random.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/result_set.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/sampling.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/saving.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/simplex_downhill.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/flann/timer.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/freetype.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/fuzzy.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/fuzzy/fuzzy_F0_math.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/fuzzy/fuzzy_F1_math.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/fuzzy/fuzzy_image.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/fuzzy/types.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/hdf.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/hdf/hdf5.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/hfs.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/highgui.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/highgui/highgui.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/highgui/highgui_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash/average_hash.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash/block_mean_hash.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash/color_moment_hash.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash/img_hash_base.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash/marr_hildreth_hash.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash/phash.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/img_hash/radial_variance_hash.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgcodecs.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgcodecs/imgcodecs.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgcodecs/imgcodecs_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgcodecs/ios.h
+ rename sensor/core/tof_module/third_lib/include/{ => opencv2/imgcodecs/legacy}/constants_c.h (97%)
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgproc.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgproc/detail/gcgraph.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgproc/hal/hal.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgproc/hal/interface.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgproc/imgproc.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgproc/imgproc_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/imgproc/types_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/line_descriptor.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/line_descriptor/descriptor.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ml.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ml/ml.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ml/ml.inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/objdetect.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/objdetect/detection_based_tracker.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/objdetect/objdetect.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/opencv.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/opencv_modules.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/optflow.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/optflow/motempl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/optflow/pcaflow.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/optflow/rlofflow.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/optflow/sparse_matching_gpc.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/phase_unwrapping.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/phase_unwrapping/histogramphaseunwrapping.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/phase_unwrapping/phase_unwrapping.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/photo.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/photo/cuda.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/photo/legacy/constants_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/photo/photo.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/plot.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality/quality_utils.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality/qualitybase.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality/qualitybrisque.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality/qualitygmsd.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality/qualitymse.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality/qualitypsnr.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/quality/qualityssim.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/map.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mapaffine.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mapper.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mappergradaffine.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mappergradeuclid.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mappergradproj.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mappergradshift.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mappergradsimilar.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mapperpyramid.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mapprojec.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/reg/mapshift.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/rgbd.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/rgbd/depth.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/rgbd/dynafu.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/rgbd/kinfu.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/rgbd/linemod.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/saliency.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/saliency/saliencyBaseClasses.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/saliency/saliencySpecializedClasses.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/shape.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/shape/emdL1.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/shape/hist_cost.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/shape/shape.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/shape/shape_distance.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/shape/shape_transformer.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stereo.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stereo/descriptor.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stereo/matching.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stereo/quasi_dense_stereo.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stereo/stereo.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/autocalib.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/blenders.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/camera.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/exposure_compensate.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/matchers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/motion_estimators.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/seam_finders.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/timelapsers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/util.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/util_inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/warpers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/detail/warpers_inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/stitching/warpers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/structured_light.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/structured_light/graycodepattern.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/structured_light/sinusoidalpattern.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/structured_light/structured_light.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/superres.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/superres/optical_flow.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/surface_matching.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/surface_matching/icp.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/surface_matching/pose_3d.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/surface_matching/ppf_helpers.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/surface_matching/ppf_match_3d.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/surface_matching/t_hash_int.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/text.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/text/erfilter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/text/ocr.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/text/textDetector.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/feature.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/kalman_filters.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/onlineBoosting.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/onlineMIL.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/tldDataset.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/tracker.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/tracking.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/tracking/tracking_by_matching.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/video.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/video/background_segm.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/video/legacy/constants_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/video/tracking.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/video/video.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videoio.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videoio/cap_ios.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videoio/legacy/constants_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videoio/registry.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videoio/videoio.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videoio/videoio_c.h
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/deblurring.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/fast_marching.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/fast_marching_inl.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/frame_source.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/global_motion.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/inpainting.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/log.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/motion_core.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/motion_stabilizing.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/optical_flow.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/outlier_rejection.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/ring_buffer.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/stabilizer.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/videostab/wobble_suppression.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/viz.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/viz/types.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/viz/viz3d.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/viz/vizcore.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/viz/widget_accessor.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/viz/widgets.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/brightedges.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/color_match.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/deriche_filter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/disparity_filter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/edge_filter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/edgeboxes.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/edgepreserving_filter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/estimated_covariance.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/fast_hough_transform.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/fast_line_detector.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/fourier_descriptors.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/lsc.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/paillou_filter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/peilin.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/ridgefilter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/run_length_morphology.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/seeds.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/segmentation.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/slic.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/sparse_match_interpolator.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/structured_edge_detection.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/ximgproc/weighted_median_filter.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xobjdetect.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xphoto.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xphoto/bm3d_image_denoising.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xphoto/dct_image_denoising.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xphoto/inpainting.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xphoto/oilpainting.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xphoto/tonemap.hpp
+ create mode 100644 sensor/core/tof_module/third_lib/include/opencv2/xphoto/white_balance.hpp
+Current branch master is up to date.
++ popd
+~/workspace/workspace/gerry-embeded
++ target_project_update
++ rm -rf /root/workspace/workspace/gerry-embeded/embedded
++ target_project_fetch
++ git clone ssh://git@192.168.50.191:222/wukong/integration/embedded -b master --depth=1
+Cloning into 'embedded'...
++ insert_db
++ pushd /root/workspace/workspace/gerry-embeded/gerry
+~/workspace/workspace/gerry-embeded/gerry ~/workspace/workspace/gerry-embeded
+++ cmdb_mysql 'SELECT first_commit_id FROM prebuild where source_project='\''EmbeddedGroup/gerry/gerry'\'' and source_branch='\''master'\'' and target_project='\''wukong/integration/embedded'\'' and target_branch='\''master'\'' and status='\''0'\'' and job_name='\''gerry-embeded'\'' order by id desc limit 1;'
+++ set +x
++ version=
+++ awk -F ' ' '{print $2}'
+++ echo
++ version=
+++ git log -1 --pretty=format:%h
++ first_commit_id_now=f76ea7f
++ cmdb_mysql 'update prebuild set first_commit_id='\''f76ea7f'\'' where build_url='\''http://192.168.50.191:8088/job/gerry-embeded/6/'\'';'
++ set +x
++ popd
+~/workspace/workspace/gerry-embeded
++ [[ aarch64 =~ x86_64 ]]
++ [[ gerry-embeded =~ i18r ]]
++ project_build
++ pushd /root/workspace/workspace/gerry-embeded/gerry
+~/workspace/workspace/gerry-embeded/gerry ~/workspace/workspace/gerry-embeded
++ project_init_remote
+++ find -type f -name sync_submodules.sh
++ sf=
++ '[' -z ']'
++ git submodule update --init --recursive
+Submodule path 'messages': checked out '315d85c65a973127ac556c18f6733b9c70931a67'
++ git submodule update --remote
+Submodule path 'messages': checked out '49178dd4f1245a784a76dc667e0374d4ee2a9b91'
++ sed -i 's/make -j[0-9].*/make -j4/g' build.sh
++ '[' -z ']'
++ '[' xf76ea7f == x ']'
++ bash -ex build.sh
+++ wc -l
+++ grep processor
+++ cat /proc/cpuinfo
++ NR=6
+++ uname -m
++ PLATFORM=aarch64
++ echo 'now platform is aarch64 ...'
+now platform is aarch64 ...
++ [[ 0 -gt 0 ]]
++ '[' aarch64 = x86_64 ']'
++ '[' aarch64 = aarch64 ']'
++ arm64_compile_arm64
++ '[' '!' -d build_arm64 ']'
++ cd build_arm64
++ cmake -DCOMPILE_FOR_SDK=OFF -DCROSS_COMPILE_ENABLE=OFF ..
+LIBRARY_OUTPUT_PATH /root/workspace/workspace/gerry-embeded/gerry/install/lib/arm ..................
+EXECUTABLE_OUTPUT_PATH /root/workspace/workspace/gerry-embeded/gerry/install/bin/arm .....................
+-- BUILD_ROS_NODE=OFF
+-- emb_common version is 1.0.2
+-- imsee version is 1.0.2
+-- KeyBoard version is 1.0.2
+-- McuData version is 1.0.2
+-- multimodule version is 1.0.2
+-- sensorControl version is 1.0.2
+-- tof_module version is 1.0.2
+-- sensor_plugin version is 1.0.2
+-- test_plugin version is 1.0.2
+-- sensor_subscriber_plugin version is 1.0.2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/workspace/workspace/gerry-embeded/gerry/build_arm64
++ make -j6
+[ 21%] Built target emb_common
+[ 26%] Built target KeyBoard
+[ 29%] Built target sensorControl
+[ 33%] Built target monitor_node
+[ 36%] Built target sensor_subscriber_plugin
+[ 40%] Built target test_plugin
+[ 44%] Built target multi_main
+[ 81%] Built target imsee
+[ 84%] Built target multimodule
+[ 93%] Built target McuData
+Scanning dependencies of target tof_module
+[ 95%] Building CXX object sensor/core/tof_module/src/CMakeFiles/tof_module.dir/Tof.cpp.o
+[ 98%] Built target sensor_plugin
+/root/workspace/workspace/gerry-embeded/gerry/sensor/core/tof_module/src/Tof.cpp: In member function ‘void emb_node::lygtof::ReadTofData()’:
+/root/workspace/workspace/gerry-embeded/gerry/sensor/core/tof_module/src/Tof.cpp:118:23: warning: unused variable ‘framelen’ [-Wunused-variable]
+  118 |     unsigned long int framelen = frame->data_bytes;
+      |                       ^~~~~~~~
+/root/workspace/workspace/gerry-embeded/gerry/sensor/core/tof_module/src/Tof.cpp: In member function ‘virtual int emb_node::lygtof::Start()’:
+/root/workspace/workspace/gerry-embeded/gerry/sensor/core/tof_module/src/Tof.cpp:207:1: warning: label ‘format_failed’ defined but not used [-Wunused-label]
+  207 | format_failed:
+      | ^~~~~~~~~~~~~
+/root/workspace/workspace/gerry-embeded/gerry/sensor/core/tof_module/src/Tof.cpp:209:1: warning: label ‘open_failed’ defined but not used [-Wunused-label]
+  209 | open_failed:
+      | ^~~~~~~~~~~
+/root/workspace/workspace/gerry-embeded/gerry/sensor/core/tof_module/src/Tof.cpp:211:1: warning: label ‘find_failed’ defined but not used [-Wunused-label]
+  211 | find_failed:
+      | ^~~~~~~~~~~
+/root/workspace/workspace/gerry-embeded/gerry/sensor/core/tof_module/src/Tof.cpp:213:1: warning: label ‘init_failed’ defined but not used [-Wunused-label]
+  213 | init_failed:
+      | ^~~~~~~~~~~
+[100%] Linking CXX shared library ../../../../../install/lib/arm/libtof_module.so
+[100%] Built target tof_module
++ cd -
+/root/workspace/workspace/gerry-embeded/gerry
++ [[ gerry-embeded =~ mind ]]
++ popd
+~/workspace/workspace/gerry-embeded
++ check_status_code
++ test -f /root/workspace/workspace/gerry-embeded/result.log
++ [[ '' = false ]]
++ generate_message
++ [[ gerry-embeded =~ mind ]]
++ cd /root/workspace/workspace/gerry-embeded/gerry
++ git log -1 --oneline --decorate=
++ echo ''
++ echo ====================================
++ [[ -f /root/workspace/workspace/gerry-embeded/_commit-msg.tmp ]]
++ cat /root/workspace/workspace/gerry-embeded/_commit-msg.tmp
++ echo ''
++ echo 'build_num:      http://192.168.50.191:8088/job/gerry-embeded/6/'
++ echo 'Push aarch64 platform files'
++ generate_commits
++ pushd /root/workspace/workspace/gerry-embeded/embedded
+~/workspace/workspace/gerry-embeded/embedded ~/workspace/workspace/gerry-embeded
+++ xargs -l ls
+++ find /root/workspace/workspace/gerry-embeded/gerry -name install
++ install_dir_list='bin
+config
+doc
+lib
+run
+scripts'
++ [[ true = true ]]
++ '[' -z '' ']'
++ for i in $install_dir_list
++ git rm -r bin
+rm 'bin/x64/imsee_main'
+rm 'bin/x64/multi_main'
++ for i in $install_dir_list
++ git rm -r config
+rm 'config/MediaServer'
+rm 'config/abframe_on_24fps.json'
+rm 'config/abframe_on_24fps_9out.json'
+rm 'config/emb_config.yaml'
+rm 'config/emb_log.yaml'
+rm 'config/emb_sensor_config.yaml'
+rm 'config/emb_sensor_monitor.yaml'
+rm 'config/ndksrc_left_abon_dropb_tmpl_1280_800.json'
+rm 'config/speckle_filter.json'
++ for i in $install_dir_list
++ git rm -r doc
+rm 'doc/SensorNode.md'
++ for i in $install_dir_list
++ git rm -r lib
+rm 'lib/x64/libKeyBoard.so'
+rm 'lib/x64/libKeyBoard.so.1.0.2'
+rm 'lib/x64/libMcuData.so'
+rm 'lib/x64/libMcuData.so.1.0.2'
+rm 'lib/x64/libemb_common.so'
+rm 'lib/x64/libemb_common.so.1.0.2'
+rm 'lib/x64/libimsee.so'
+rm 'lib/x64/libimsee.so.1.0.2'
+rm 'lib/x64/libmonitor_node.so'
+rm 'lib/x64/libmultimodule.so'
+rm 'lib/x64/libmultimodule.so.1'
+rm 'lib/x64/libmultimodule.so.1.0.2'
+rm 'lib/x64/libsensorControl.so'
+rm 'lib/x64/libsensorControl.so.1.0.2'
+rm 'lib/x64/libsensor_plugin.so'
+rm 'lib/x64/libsensor_plugin.so.1.0.2'
+rm 'lib/x64/libsensor_subscriber_plugin.so'
+rm 'lib/x64/libsensor_subscriber_plugin.so.1.0.2'
+rm 'lib/x64/libtest_plugin.so'
+rm 'lib/x64/libtest_plugin.so.1.0.2'
++ for i in $install_dir_list
++ git rm -r run
+rm 'run/sensor_run.yaml'
+rm 'run/sensor_subscriber_run.yaml'
+rm 'run/sensor_test.yaml'
++ for i in $install_dir_list
++ git rm -r scripts
+rm 'scripts/cpu.sh'
+rm 'scripts/embsyslog.sh'
+rm 'scripts/env.sh'
+rm 'scripts/set_system_env.sh'
++ [[ true = \m\a\r\k\-\c\h\e\c\k\-\t\o\o\l\s ]]
++ [[ true =~ mind ]]
++ [[ true =~ java ]]
++ [[ true =~ clean_recorder ]]
++ '[' -z ']'
++ [[ gerry-embeded =~ i18r_g.*-sdk ]]
++ '[' -z '' ']'
++ cp -ar /root/workspace/workspace/gerry-embeded/gerry/install/. .
++ git add --all .
+++ git status -s
++ add_file_list='A  bin/arm/multi_main
+D  bin/x64/imsee_main
+D  bin/x64/multi_main
+M  config/emb_config.yaml
+A  lib/arm/libFusion.so
+A  lib/arm/libKY2_camera.so
+R  lib/x64/libKeyBoard.so -> lib/arm/libKeyBoard.so
+A  lib/arm/libKeyBoard.so.1.0.2
+R  lib/x64/libMcuData.so -> lib/arm/libMcuData.so
+A  lib/arm/libMcuData.so.1.0.2
+R  lib/x64/libemb_common.so -> lib/arm/libemb_common.so
+A  lib/arm/libemb_common.so.1.0.2
+R  lib/x64/libimsee.so -> lib/arm/libimsee.so
+A  lib/arm/libimsee.so.1.0.2
+A  lib/arm/libmonitor_node.so
+R  lib/x64/libmultimodule.so -> lib/arm/libmultimodule.so
+R  lib/x64/libmultimodule.so.1 -> lib/arm/libmultimodule.so.1
+A  lib/arm/libmultimodule.so.1.0.2
+R  lib/x64/libsensorControl.so -> lib/arm/libsensorControl.so
+A  lib/arm/libsensorControl.so.1.0.2
+R  lib/x64/libsensor_plugin.so -> lib/arm/libsensor_plugin.so
+R  lib/x64/libsensor_plugin.so.1.0.2 -> lib/arm/libsensor_plugin.so.1.0.2
+R  lib/x64/libsensor_subscriber_plugin.so -> lib/arm/libsensor_subscriber_plugin.so
+R  lib/x64/libsensor_subscriber_plugin.so.1.0.2 -> lib/arm/libsensor_subscriber_plugin.so.1.0.2
+R  lib/x64/libtest_plugin.so -> lib/arm/libtest_plugin.so
+A  lib/arm/libtest_plugin.so.1.0.2
+A  lib/arm/libtof_module.so
+A  lib/arm/libtof_module.so.1.0.2
+A  lib/arm/libuvc.so.0
+A  lib/arm/libuvc.so.0.0.7
+D  lib/x64/libKeyBoard.so.1.0.2
+D  lib/x64/libMcuData.so.1.0.2
+D  lib/x64/libemb_common.so.1.0.2
+D  lib/x64/libimsee.so.1.0.2
+D  lib/x64/libmonitor_node.so
+D  lib/x64/libmultimodule.so.1.0.2
+D  lib/x64/libsensorControl.so.1.0.2
+D  lib/x64/libtest_plugin.so.1.0.2'
++ '[' -z 'A  bin/arm/multi_main
+D  bin/x64/imsee_main
+D  bin/x64/multi_main
+M  config/emb_config.yaml
+A  lib/arm/libFusion.so
+A  lib/arm/libKY2_camera.so
+R  lib/x64/libKeyBoard.so -> lib/arm/libKeyBoard.so
+A  lib/arm/libKeyBoard.so.1.0.2
+R  lib/x64/libMcuData.so -> lib/arm/libMcuData.so
+A  lib/arm/libMcuData.so.1.0.2
+R  lib/x64/libemb_common.so -> lib/arm/libemb_common.so
+A  lib/arm/libemb_common.so.1.0.2
+R  lib/x64/libimsee.so -> lib/arm/libimsee.so
+A  lib/arm/libimsee.so.1.0.2
+A  lib/arm/libmonitor_node.so
+R  lib/x64/libmultimodule.so -> lib/arm/libmultimodule.so
+R  lib/x64/libmultimodule.so.1 -> lib/arm/libmultimodule.so.1
+A  lib/arm/libmultimodule.so.1.0.2
+R  lib/x64/libsensorControl.so -> lib/arm/libsensorControl.so
+A  lib/arm/libsensorControl.so.1.0.2
+R  lib/x64/libsensor_plugin.so -> lib/arm/libsensor_plugin.so
+R  lib/x64/libsensor_plugin.so.1.0.2 -> lib/arm/libsensor_plugin.so.1.0.2
+R  lib/x64/libsensor_subscriber_plugin.so -> lib/arm/libsensor_subscriber_plugin.so
+R  lib/x64/libsensor_subscriber_plugin.so.1.0.2 -> lib/arm/libsensor_subscriber_plugin.so.1.0.2
+R  lib/x64/libtest_plugin.so -> lib/arm/libtest_plugin.so
+A  lib/arm/libtest_plugin.so.1.0.2
+A  lib/arm/libtof_module.so
+A  lib/arm/libtof_module.so.1.0.2
+A  lib/arm/libuvc.so.0
+A  lib/arm/libuvc.so.0.0.7
+D  lib/x64/libKeyBoard.so.1.0.2
+D  lib/x64/libMcuData.so.1.0.2
+D  lib/x64/libemb_common.so.1.0.2
+D  lib/x64/libimsee.so.1.0.2
+D  lib/x64/libmonitor_node.so
+D  lib/x64/libmultimodule.so.1.0.2
+D  lib/x64/libsensorControl.so.1.0.2
+D  lib/x64/libtest_plugin.so.1.0.2' ']'
++ git commit -s -F /root/workspace/workspace/gerry-embeded/_commit-msg
+[master f10d056] f76ea7f add:opencv head file
+ 38 files changed, 3 insertions(+)
+ create mode 100755 bin/arm/multi_main
+ delete mode 100755 bin/x64/imsee_main
+ delete mode 100755 bin/x64/multi_main
+ create mode 100644 lib/arm/libFusion.so
+ create mode 100644 lib/arm/libKY2_camera.so
+ rename lib/{x64 => arm}/libKeyBoard.so (100%)
+ create mode 100755 lib/arm/libKeyBoard.so.1.0.2
+ rename lib/{x64 => arm}/libMcuData.so (100%)
+ create mode 100755 lib/arm/libMcuData.so.1.0.2
+ rename lib/{x64 => arm}/libemb_common.so (100%)
+ create mode 100755 lib/arm/libemb_common.so.1.0.2
+ rename lib/{x64 => arm}/libimsee.so (100%)
+ create mode 100755 lib/arm/libimsee.so.1.0.2
+ create mode 100755 lib/arm/libmonitor_node.so
+ rename lib/{x64 => arm}/libmultimodule.so (100%)
+ rename lib/{x64 => arm}/libmultimodule.so.1 (100%)
+ create mode 100755 lib/arm/libmultimodule.so.1.0.2
+ rename lib/{x64 => arm}/libsensorControl.so (100%)
+ create mode 100755 lib/arm/libsensorControl.so.1.0.2
+ rename lib/{x64 => arm}/libsensor_plugin.so (100%)
+ rename lib/{x64 => arm}/libsensor_plugin.so.1.0.2 (54%)
+ rename lib/{x64 => arm}/libsensor_subscriber_plugin.so (100%)
+ rename lib/{x64 => arm}/libsensor_subscriber_plugin.so.1.0.2 (52%)
+ rename lib/{x64 => arm}/libtest_plugin.so (100%)
+ create mode 100755 lib/arm/libtest_plugin.so.1.0.2
+ create mode 120000 lib/arm/libtof_module.so
+ create mode 100755 lib/arm/libtof_module.so.1.0.2
+ create mode 120000 lib/arm/libuvc.so.0
+ create mode 100644 lib/arm/libuvc.so.0.0.7
+ delete mode 100755 lib/x64/libKeyBoard.so.1.0.2
+ delete mode 100755 lib/x64/libMcuData.so.1.0.2
+ delete mode 100755 lib/x64/libemb_common.so.1.0.2
+ delete mode 100755 lib/x64/libimsee.so.1.0.2
+ delete mode 100755 lib/x64/libmonitor_node.so
+ delete mode 100755 lib/x64/libmultimodule.so.1.0.2
+ delete mode 100755 lib/x64/libsensorControl.so.1.0.2
+ delete mode 100755 lib/x64/libtest_plugin.so.1.0.2
+++ git config --local --get branch.master.remote
++ local remote=origin
+++ git config --local --get branch.master.merge
++ local branch=refs/heads/master
++ git push --no-verify origin HEAD:refs/heads/master
+To ssh://192.168.50.191:222/wukong/integration/embedded
+   c02975c..f10d056  HEAD -> master
+++ grep 'i18r$'
+++ echo gerry-embeded
++ j=
++ true
++ [[ gerry-embeded =~ mind ]]
++ [[ '' != '' ]]
++ popd
+~/workspace/workspace/gerry-embeded
++ [[ -z f76ea7f ]]
++ cmdb_mysql 'update prebuild set status='\''0'\'' where build_url='\''http://192.168.50.191:8088/job/gerry-embeded/6/'\'';'
++ set +x
++ :
+Finished: SUCCESS
