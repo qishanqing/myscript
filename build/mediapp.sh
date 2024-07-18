@@ -18,8 +18,8 @@ init_project_env(){
     fi
 
     BUILD_DIR=$RELEASE_DIR/workspace
-    appname=MEDIA
-    sourcename=media_demo
+    appname=Midea
+    sourcename=midea_demo
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
