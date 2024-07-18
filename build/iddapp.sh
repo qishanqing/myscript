@@ -18,8 +18,8 @@ init_project_env(){
     fi
 
     BUILD_DIR=$RELEASE_DIR/workspace
-    appname=CAFFER
-    sourcename=caffer_demo
+    appname=IDD
+    sourcename=independent_dirt_detecte_demo
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
@@ -53,7 +53,7 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	git clone ssh://git@192.168.50.191:222/abby/integration/abby_demo.git $sourcename -b ${SDK_BRANCH:-caffer} && (
+	git clone ssh://git@192.168.50.191:222/abby/integration/abby_demo.git $sourcename -b ${SDK_BRANCH:-independent_dirt_detecte} && (
 	    pushd $sourcename
 
 	    config_project_update
