@@ -19,7 +19,7 @@ init_project_env(){
 
     BUILD_DIR=$RELEASE_DIR/workspace
     appname=IDD
-    sourcename=independent_dirt_detecte_demo
+    sourcename=independent_dirt_detecte
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
