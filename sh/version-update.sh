@@ -59,28 +59,30 @@ check_paremter_is_right(){
 
 function Add_Tag(){
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
-    if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ $RELEASE = test ]] || [[ $gitmodules = true ]] || [[ ! -z $SDK_BRANCH ]];then
-	echo "add tag disabled"
-    else
-	pushd $WORK_DIR/$sourcename
-	git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
-	    git tag -d $RELEASE_TAG || true
-	    git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
-	)
-	git submodule foreach git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
-	    git submodule foreach git tag -d $RELEASE_TAG || true
-	    git submodule foreach git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
-	)
-	git push origin $RELEASE_TAG -f
-	git submodule foreach git push origin $RELEASE_TAG -f
-	popd
-	pushd $CONFIG_DIR
-	git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
-	    git tag -d $RELEASE_TAG || true
-	    git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
-	)
-	git push origin $RELEASE_TAG -f || true
-	popd
+    if [[ $RELEASE = true ]];then
+	if [[ ! -z $sdk_version ]] || [[ ! -z $submodule_version ]] || [[ ! -z $SDK_BRANCH ]];then
+	    echo "正式版本任何切换分支的行为是不被允许的" && exit 1
+	else
+	    pushd $WORK_DIR/$sourcename
+	    git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
+		git tag -d $RELEASE_TAG || true
+		git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
+	    )
+	    git submodule foreach git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
+		git submodule foreach git tag -d $RELEASE_TAG || true
+		git submodule foreach git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
+	    )
+	    git push origin $RELEASE_TAG -f
+	    git submodule foreach git push origin $RELEASE_TAG -f
+	    popd
+	    pushd $CONFIG_DIR
+	    git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || (
+		git tag -d $RELEASE_TAG || true
+		git tag -a $RELEASE_TAG -m "add $SWR_VERSION tag release:$version" || true
+	    )
+	    git push origin $RELEASE_TAG -f || true
+	    popd
+	fi
     fi
     cmdb_mysql "update indemindapp set tag_name='$RELEASE_TAG',client='$ui_version_now' where build_url='$BUILD_URL';"
 }
