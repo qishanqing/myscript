@@ -38,6 +38,7 @@ init_project_env(){
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     CLONE_DEPTH="--depth=1"
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b gerry_dev $CLONE_DEPTH"
+    UPDATER_REMOTE="git clone ssh://git@192.168.50.191:222/wukong/integration/upgrade.git -b wk $CLONE_DEPTH updater"
     ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
     ENCRYPTION_AES_TOOL=$CONFIG_DIR/encrypt_aes
     tgz_release=INTG
