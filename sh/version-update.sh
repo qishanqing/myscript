@@ -196,6 +196,22 @@ function gz_type(){
     popd
 }
 
+function gz_type_gerry(){
+    tgz_full_name=${appname}_${CHIP_CLASS}_${x}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.tar.gz
+    pushd $APP_WORKSPACE$RELEASE_DIR
+    echo "$tgz_full_name" | tee $WORK_DIR/version.txt
+    if [[ "$updater" = true ]];then
+	pushd workspace
+	$UPDATER_REMOTE
+	find -name .git | xargs -i rm -rf {}
+	popd
+    fi
+    tar cvf $BUILD_DIR/$tgz_full_name workspace > /dev/null && md5sum $BUILD_DIR/$tgz_full_name | awk -F ' ' '{print $1}' >> $WORK_DIR/version.txt
+    tgz_full_md5=`cat $WORK_DIR/version.txt`
+    popd
+    mv $BUILD_DIR/$tgz_full_name $FTP_RELEASE_OTA_DIR || true
+}
+
 function deb_type_18(){
     deb_name=INDEMINDAPP_${appname}_${SWR_VERSION}_${tgz_release}_${MIN_VERSION:-$min_version}_ALL_${version}.deb
     echo "$deb_name" | tee $WORK_DIR/version.txt
