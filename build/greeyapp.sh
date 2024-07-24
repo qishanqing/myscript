@@ -20,27 +20,31 @@ init_project_env(){
     BUILD_DIR=$RELEASE_DIR/workspace
     appname=GERRY
     sourcename=gerry
+    PLATFORM=`uname -m`
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
-    UI_DIR=/mnt/ftp/release/$appname/client
-    TEST_DIR=/mnt/ftp/release/$appname/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/$appname/fresh_version
-    FTP_RELEASE_SIGN_DIR=$FTP_RELEASE_DIR/sign
-    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/ota_full_version
-    FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
+    RELEASE_PROJECT_DIR=/mnt/ftp/release/$appname
+    UI_DIR=${RELEASE_PROJECT_DIR}/client
+    TEST_DIR=${RELEASE_PROJECT_DIR}/test
+    FTP_RELEASE_DIR=${RELEASE_PROJECT_DIR}/fresh_version
+    FTP_RELEASE_SIGN_DIR=${RELEASE_PROJECT_DIR}/sign
+    FTP_RELEASE_OTA_DIR=${RELEASE_PROJECT_DIR}/ota_full_version
+    FTP_RELEASE_OTA_DIFF_DIR=${RELEASE_PROJECT_DIR}/ota
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
     OTA_DIR=~/system/i18rota
-    PLATFORM=`uname -m`
+    CHIP_CLASS=A311D
+    CHIP_VERSION=`echo ${CHIP_CLASS}_version.txt`
     RELEASE_BRANCH="${appname}-${SWR_VERSION}"
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
-    min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
+    min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='0' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     CLONE_DEPTH="--depth=1"
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b gerry_dev $CLONE_DEPTH"
     UPDATER_REMOTE="git clone ssh://git@192.168.50.191:222/wukong/integration/upgrade.git -b wk $CLONE_DEPTH updater"
     ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
     ENCRYPTION_AES_TOOL=$CONFIG_DIR/encrypt_aes
+    x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
     is-trigger-job
@@ -78,16 +82,20 @@ function App_install(){
     Release_Version_Rule_all
 #    is-sign-task
     if [[ $RELEASE = test ]];then
-	gz_type
+#	deb_type_g2
+#	mv $BUILD_DIR/${deb_name} $TEST_DIR/
+	tgz_type_g2
 	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
 	    (
-		mv $TEST_DIR/${tgz_full_name} ${trash_dir}
-		mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR
+		mv $TEST_DIR/${deb_name} ${trash_dir}
+		mv $BUILD_DIR/${deb_name} $TEST_DIR/
 	    )
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
-	gz_type
-	mv $BUILD_DIR/${tgz_full_name} $FTP_RELEASE_DIR
+#	deb_type_g2
+#	mv $BUILD_DIR/${deb_name} $FTP_RELEASE_DIR/
+	tgz_type_g2
+#	ota_update_g2
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 

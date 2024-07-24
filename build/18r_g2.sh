@@ -21,8 +21,6 @@ init_project_env(){
     appname=i18R-G2
     PLATFORM=`uname -m`
     ui_job_name="i18r_g2_ui"
-    CLONE_DEPTH="--depth=1"
-    OTA_DIR=~/system/i18rota
     sourcename=18r_g2_server
     default_branch=i18r_g2
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
@@ -38,7 +36,6 @@ init_project_env(){
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
     OTA_DIR=~/system/i18rota
-    PLATFORM=`uname -m`
     CHIP_CLASS=A311D
     CHIP_VERSION=`echo ${CHIP_CLASS}_version.txt`
     RELEASE_BRANCH="${appname}-${SWR_VERSION}"
