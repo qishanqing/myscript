@@ -378,28 +378,6 @@ insert_db
 if [[ "${system_platform}" =~ "x86_64" ]];then
     docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash <<EOF
     set -x
-    if  [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_RUBBY_INSIDE ]];then
-        echo "rubby project building in ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18}......"
-	pushd ~/system/abby_msg
-    	git checkout ./ && git clean -xdf ./
-    	git pull origin master
-    	popd
-    elif [[ ${JOB_NAME} =~ "$JENKINS_JOB_A"  ]] || [[ ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} == $DOCKER_CONTAINER_JAVA ]];then
-        echo "-------------------------------------"
-    else
-    	pushd ~/system/I18RPublicBaseTypes
-    	git checkout ./ && git clean -xdf ./
-    	git pull origin develop
-    	./install.sh
-    	popd
-
-    	pushd ~/system/i18rutilitysubmodule
-    	git checkout ./ && git clean -xdf ./
-    	git pull origin develop
-   	./install.sh
-    	popd
-    fi
-
     pushd $SOURCE_DIR
     (
         git submodule update --init --recursive
