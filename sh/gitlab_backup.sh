@@ -35,7 +35,7 @@ gitlab_date_upload() {
     clean_old_version &&
 	(
 	    targes=`ls -lt $gitlab_backup_path_host | awk '{if ($9) printf("%s\n",$9)}'|head -n 1`
-	    timeout 180m rsync -avz -e 'ssh -p 222' $gitlab_backup_path_host/${targes}  root@192.168.50.158:/backup/gitlab/ && echo "gitlab data success" | mails_cm -i "gitlab data backup"
+	    timeout 180m rsync -avz -e 'ssh -p 222' $gitlab_backup_path_host/${targes}  root@192.168.50.158:/backup/gitlab/backups/ && echo "gitlab data success" | mails_cm -i "gitlab data backup"
 	)
 }
 
