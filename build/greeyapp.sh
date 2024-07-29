@@ -80,7 +80,7 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule_all
-#    is-sign-task
+    is-sign-task
     if [[ $RELEASE = test ]];then
 	gz_type_gerry
 	mv $BUILD_DIR/$tgz_full_name  $TEST_DIR || true
