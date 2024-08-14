@@ -442,3 +442,65 @@ qemu: Unsupported syscall: 235
 [ 86%] Building CXX object rubbynav/CMakeFiles/nav_plugin.dir/src/Navigation.cpp.o
 [ 87%] Linking CXX shared library /home/indemind/.jenkins/workspace/gerry-ros-melodic/TCLNAV/devel/lib/libnav_plugin.so
 [100%] Built target nav_plugin
+FATAL: command execution failed
+hudson.remoting.ProxyException: java.util.concurrent.TimeoutException: Ping started at 1723591702103 hasn't completed by 1723591942113
+Caused: Command Close created at
+	at hudson.remoting.Command.<init>(Command.java:70)
+	at hudson.remoting.Channel$CloseCommand.<init>(Channel.java:1306)
+	at hudson.remoting.Channel.close(Channel.java:1480)
+	at hudson.slaves.ChannelPinger$1.onDead(ChannelPinger.java:201)
+	at hudson.remoting.PingThread.ping(PingThread.java:132)
+	at hudson.remoting.PingThread.run(PingThread.java:88)
+Caused: hudson.remoting.Channel$OrderlyShutdown
+	at hudson.remoting.Channel$CloseCommand.execute(Channel.java:1313)
+	at hudson.remoting.Channel$1.handle(Channel.java:606)
+	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:81)
+Caused: java.io.IOException: Backing channel 'cloud-test' is disconnected.
+	at hudson.remoting.RemoteInvocationHandler.channelOrFail(RemoteInvocationHandler.java:215)
+	at hudson.remoting.RemoteInvocationHandler.invoke(RemoteInvocationHandler.java:285)
+	at com.sun.proxy.$Proxy119.isAlive(Unknown Source)
+	at hudson.Launcher$RemoteLauncher$ProcImpl.isAlive(Launcher.java:1215)
+	at hudson.Launcher$RemoteLauncher$ProcImpl.join(Launcher.java:1207)
+	at hudson.tasks.CommandInterpreter.join(CommandInterpreter.java:195)
+	at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:145)
+	at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:92)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:818)
+	at hudson.model.Build$BuildExecution.build(Build.java:199)
+	at hudson.model.Build$BuildExecution.doRun(Build.java:164)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:526)
+	at hudson.model.Run.execute(Run.java:1900)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:44)
+	at hudson.model.ResourceController.execute(ResourceController.java:101)
+	at hudson.model.Executor.run(Executor.java:442)
+FATAL: Unable to delete script file /tmp/jenkins16625691865200419722.sh
+hudson.remoting.ProxyException: java.util.concurrent.TimeoutException: Ping started at 1723591702103 hasn't completed by 1723591942113
+Caused: Command Close created at
+	at hudson.remoting.Command.<init>(Command.java:70)
+	at hudson.remoting.Channel$CloseCommand.<init>(Channel.java:1306)
+	at hudson.remoting.Channel.close(Channel.java:1480)
+	at hudson.slaves.ChannelPinger$1.onDead(ChannelPinger.java:201)
+	at hudson.remoting.PingThread.ping(PingThread.java:132)
+	at hudson.remoting.PingThread.run(PingThread.java:88)
+Caused: hudson.remoting.Channel$OrderlyShutdown
+	at hudson.remoting.Channel$CloseCommand.execute(Channel.java:1313)
+	at hudson.remoting.Channel$1.handle(Channel.java:606)
+	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:81)
+Caused: hudson.remoting.ChannelClosedException: Channel "hudson.remoting.Channel@2c1b0720:cloud-test": Remote call on cloud-test failed. The channel is closing down or has closed down
+	at hudson.remoting.Channel.call(Channel.java:993)
+	at hudson.FilePath.act(FilePath.java:1186)
+	at hudson.FilePath.act(FilePath.java:1175)
+	at hudson.FilePath.delete(FilePath.java:1722)
+	at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:163)
+	at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:92)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:818)
+	at hudson.model.Build$BuildExecution.build(Build.java:199)
+	at hudson.model.Build$BuildExecution.doRun(Build.java:164)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:526)
+	at hudson.model.Run.execute(Run.java:1900)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:44)
+	at hudson.model.ResourceController.execute(ResourceController.java:101)
+	at hudson.model.Executor.run(Executor.java:442)
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
