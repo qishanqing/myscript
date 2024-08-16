@@ -1,0 +1,782 @@
+Started by user [8mha:////4MA8pYuTCccQi+QzVMZ/3D7uQqU0IoNnax4eT3Uk3t4LAAAAnB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAweoBn6pcWpRfrlQDNS8vPSC4GGAAAzOs7sxwAAAA==[0mwangdongqing
+Running as SYSTEM
+Building remotely on [8mha:////4J8M8M4pLAVsr5HsUCuoFBwpyiajxV9VrGbWj66EbYmPAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJjAEfvBs3KAAAA[0mkhadas-car3 (car3) in workspace /root/workspace/workspace/gerry_app
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+[gerry_app] $ /bin/sh -xe /tmp/jenkins12393573016001543331.sh
++ bash /root/myscript/build/greeyapp.sh
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ . /root/myscript/build/../sh/version-update.sh
+++ . /root/.bashrc
++++ '[' -z '' ']'
++++ return
++ set -ex
++ init_project_env
+++ whoami
++ '[' root = root ']'
++ ios=root
++ RELEASE_DIR=/root
++ DESKTOP_DIR=/root/workspace/i18rApplicationDeb/work/root/workspace
++ BUILD_DIR=/root/workspace
++ appname=GERRY
++ sourcename=gerry
+++ uname -m
++ PLATFORM=aarch64
++ APP_WORKSPACE=/root/workspace/i18rApplicationDeb/work
++ WORK_DIR=/root/workspace/i18rApplicationDeb/work/root/workspace
++ VERSION_FILE=/root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ RELEASE_PROJECT_DIR=/mnt/ftp/release/GERRY
++ UI_DIR=/mnt/ftp/release/GERRY/client
++ TEST_DIR=/mnt/ftp/release/GERRY/test
++ FTP_RELEASE_DIR=/mnt/ftp/release/GERRY/fresh_version
++ FTP_RELEASE_SIGN_DIR=/mnt/ftp/release/GERRY/sign
++ FTP_RELEASE_OTA_DIR=/mnt/ftp/release/GERRY/ota_full_version
++ FTP_RELEASE_OTA_DIFF_DIR=/mnt/ftp/release/GERRY/ota
++ function_list=/mnt/ftp/release/app_update_release
++ CONFIG_DIR=/root/system/i18rconfig
++ OTA_DIR=/root/system/i18rota
++ CHIP_CLASS=A311D
+++ echo A311D_version.txt
++ CHIP_VERSION=A311D_version.txt
++ RELEASE_BRANCH=GERRY-EVT1
++ RELEASE_TAG=r1.0.0.22_GERRY-EVT1
+++ tail -n 1
+++ cmdb_mysql 'SELECT version FROM indemindapp where status='\''0'\'' and swr_version='\''EVT1'\'' and indemind_release='\''true'\'' and appname='\''GERRY'\'' order by id desc limit 5;'
+++ set +x
++ min_version=1.0.0.17
++ CLONE_DEPTH=--depth=1
++ CONFIG_REMOTE='git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig /root/system/i18rconfig -b gerry_dev --depth=1'
++ UPDATER_REMOTE='git clone ssh://git@192.168.50.191:222/wukong/integration/upgrade.git -b wk --depth=1 updater'
++ ENCRYPTION_TOOL=/root/system/i18rconfig/encrypt
++ ENCRYPTION_AES_TOOL=/root/system/i18rconfig/encrypt_aes
+++ perl -npe s,_,-,g
+++ echo EVT1
++ x=EVT1
++ tgz_release=INTG
++ trash_dir=/mnt/ftp/Trash
++ is-trigger-job
++ '[' xwangdongqing = xtimer ']'
++ mount_ftp
++ '[' -d /mnt/ftp/release ']'
++ check_paremter_is_right
++ rx='^([0-9]+\.){3}([0-9]+)$'
++ [[ -z 1.0.0.22 ]]
+++ check 1.0.0.22
+++ local a=1.0.0.22
+++ printf %d 1.0.0.22
++++ sed 's/^[+-]\?0\+//'
++++ echo 1.0.0.22
+++ printf %d 1.0.0.22
++++ sed 's/\.//g'
++++ echo 1.0.0.22
+++ printf %d 10022
+++ echo vb
+++ return
++ [[ vb == vb ]]
++ [[ 1.0.0.22 =~ ^([0-9]+\.){3}([0-9]+)$ ]]
++ echo 'check paremter is done'
+check paremter is done
++ clean_workspace
++ pushd /root/workspace
+~/workspace ~/workspace/workspace/gerry_app
++ sudo rm -rf i18rApplicationDeb 'INDEMINDAPP*' gerry client
++ popd
+~/workspace/workspace/gerry_app
++ App_project_fetch
++ pushd /root/workspace
+~/workspace ~/workspace/workspace/gerry_app
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rApplicationDeb.git -b master --depth=1
+正克隆到 'i18rApplicationDeb'...
++ mkdir -p /root/workspace/i18rApplicationDeb/work/root/workspace
++ pushd /root/workspace
+~/workspace ~/workspace ~/workspace/workspace/gerry_app
++ git clone ssh://git@192.168.50.191:222/wukong/integration/package.git gerry -b master
+正克隆到 'gerry'...
++ pushd gerry
+~/workspace/gerry ~/workspace ~/workspace ~/workspace/workspace/gerry_app
++ config_project_update
++ [[ -d /root/system/i18rconfig ]]
++ rm -rf /root/system/i18rconfig
++ git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig /root/system/i18rconfig -b gerry_dev --depth=1
+正克隆到 '/root/system/i18rconfig'...
++ [[ '' == true ]]
++ git submodule update --init --recursive
+子模组 'submodules/dds'（http://192.168.50.191:85/wukong/integration/dds.git）未对路径 'submodules/dds' 注册
+子模组 'submodules/depth'（http://192.168.50.191:85/wukong/integration/depth.git）未对路径 'submodules/depth' 注册
+子模组 'submodules/embedded'（http://192.168.50.191:85/wukong/integration/embedded.git）未对路径 'submodules/embedded' 注册
+子模组 'submodules/mindos'（http://192.168.50.191:85/wukong/integration/mindos.git）未对路径 'submodules/mindos' 注册
+子模组 'submodules/navigation'（http://192.168.50.191:85/wukong/integration/navigation.git）未对路径 'submodules/navigation' 注册
+子模组 'submodules/percetpion'（http://192.168.50.191:85/wukong/integration/percetpion）未对路径 'submodules/percetpion' 注册
+子模组 'submodules/semantic_map'（http://192.168.50.191:85/wukong/integration/semantic_map.git）未对路径 'submodules/semantic_map' 注册
+子模组 'submodules/server'（http://192.168.50.191:85/wukong/integration/server）未对路径 'submodules/server' 注册
+子模组 'submodules/slam'（http://192.168.50.191:85/wukong/integration/slam.git）未对路径 'submodules/slam' 注册
+正克隆到 '/root/workspace/gerry/submodules/dds'...
+正克隆到 '/root/workspace/gerry/submodules/depth'...
+正克隆到 '/root/workspace/gerry/submodules/embedded'...
+正克隆到 '/root/workspace/gerry/submodules/mindos'...
+正克隆到 '/root/workspace/gerry/submodules/navigation'...
+正克隆到 '/root/workspace/gerry/submodules/percetpion'...
+warning: 重定向到 http://192.168.50.191:85/wukong/integration/percetpion.git/
+正克隆到 '/root/workspace/gerry/submodules/semantic_map'...
+正克隆到 '/root/workspace/gerry/submodules/server'...
+warning: 重定向到 http://192.168.50.191:85/wukong/integration/server.git/
+正克隆到 '/root/workspace/gerry/submodules/slam'...
+子模组路径 'submodules/dds'：检出 '83528a36937dc71e2e1bc2f357864e66c0529724'
+子模组路径 'submodules/depth'：检出 '04d8edcbb41c0e9883f2605916e58a639bea3118'
+子模组路径 'submodules/embedded'：检出 'd4e4e0767237bc188d2113eba543989dd378e503'
+子模组路径 'submodules/mindos'：检出 '22bd80f77291be1c78964b8d9160a75aae6c6c7d'
+子模组路径 'submodules/navigation'：检出 'a6e0cab0a90f5afdd88d8ff5f3b3cfca266224ae'
+子模组路径 'submodules/percetpion'：检出 'a9945bc28901d808ed5689ca5c39d6f4a6d106f0'
+子模组路径 'submodules/semantic_map'：检出 '7720fae3de8887c710c1f3480b2cc0069bdcc267'
+子模组路径 'submodules/server'：检出 '19925d0ede69a07100212fa8c41026d3b5131233'
+子模组路径 'submodules/slam'：检出 'fc49aa2ee9535e2ffe0c6194ad40feb52372ae80'
++ git submodule update --remote
+子模组路径 'submodules/dds'：检出 'd721bfe6b81e28aec0b84a86f52a220ad68e16ae'
+子模组路径 'submodules/depth'：检出 '66b94079d3c3bbf29fc22a8ea4deabe7ca56ede0'
+子模组路径 'submodules/embedded'：检出 '4452a2a6f636435f4194a605d572e56fbf8a0766'
+子模组路径 'submodules/mindos'：检出 '6a0e6f2735cd2773bc20906dad14f12708514560'
+子模组路径 'submodules/navigation'：检出 'b97bca11f15020808e7772a1f753304460cf3a32'
+warning: 重定向到 http://192.168.50.191:85/wukong/integration/percetpion.git/
+子模组路径 'submodules/percetpion'：检出 'a8fcc3ce81238e9752ea172076f0de9a1991cf03'
+子模组路径 'submodules/semantic_map'：检出 'c771a6b6bd413b4b4a60c2a21020ad97bbc76054'
+warning: 重定向到 http://192.168.50.191:85/wukong/integration/server.git/
+子模组路径 'submodules/server'：检出 'f9ab13fda038285afe84a157db925174a178f0a2'
+子模组路径 'submodules/slam'：检出 '7600f09c17643b7813e00178575597b8121c466b'
++ submodule_version_check
++ [[ ! -z '' ]]
++ [[ ! -z '' ]]
++ release_note
++ [[ true = true ]]
+++ cmdb_mysql 'SELECT tag_name FROM indemindapp where status='\''0'\'' and swr_version='\''EVT1'\'' and indemind_release='\''true'\'' and appname='\''GERRY'\'' order by id desc limit 1;'
+++ set +x
++ point='tag_name
+r1.0.0.21_GERRY-EVT1'
+++ awk -F ' ' '{print $2}'
+++ echo tag_name r1.0.0.21_GERRY-EVT1
++ point=r1.0.0.21_GERRY-EVT1
++ release_log=r1.0.0.21_GERRY-EVT1-r1.0.0.22_GERRY-EVT1
++ mkdir -p /root/workspace/i18rApplicationDeb/work/root/workspace/r1.0.0.21_GERRY-EVT1-r1.0.0.22_GERRY-EVT1
++ git log r1.0.0.21_GERRY-EVT1.. .
++ git submodule foreach git log r1.0.0.21_GERRY-EVT1.. .
+++ cat /root/workspace/i18rApplicationDeb/work/root/workspace/r1.0.0.21_GERRY-EVT1-r1.0.0.22_GERRY-EVT1/sdk.log
++ sdk_note=
+++ cat /root/workspace/i18rApplicationDeb/work/root/workspace/r1.0.0.21_GERRY-EVT1-r1.0.0.22_GERRY-EVT1/submodule.log
++ submodule_note='正在进入 '\''submodules/dds'\''
+正在进入 '\''submodules/depth'\''
+正在进入 '\''submodules/embedded'\''
+commit 4452a2a6f636435f4194a605d572e56fbf8a0766
+Author: JENKINS <jenkins@indemind.cn>
+Date:   Fri Aug 16 01:45:51 2024 +0000
+
+    3cef4c2 fix:wifi check thread
+    
+    ====================================
+    
+    build_num:      http://192.168.50.191:8088/job/gerry-embeded/143/
+    Push aarch64 platform files
+    
+    Signed-off-by: JENKINS <jenkins@indemind.cn>
+
+commit 6b25ce365a64a589555b81da45c4a1bc007321fa
+Author: JENKINS <jenkins@indemind.cn>
+Date:   Thu Aug 15 12:47:41 2024 +0000
+
+    2726d94 fix:compile waring
+    
+    ====================================
+    
+    build_num:      http://192.168.50.191:8088/job/gerry-embeded/142/
+    Push aarch64 platform files
+    
+    Signed-off-by: JENKINS <jenkins@indemind.cn>
+
+commit 66c6ae2b5b7552a2ffcf637b04bfc03881c3b762
+Author: JENKINS <jenkins@indemind.cn>
+Date:   Thu Aug 15 12:45:36 2024 +0000
+
+    e289062 fix:compile error
+    
+    ====================================
+    
+    build_num:      http://192.168.50.191:8088/job/gerry-embeded/141/
+    Push aarch64 platform files
+    
+    Signed-off-by: JENKINS <jenkins@indemind.cn>
+正在进入 '\''submodules/mindos'\''
+正在进入 '\''submodules/navigation'\''
+正在进入 '\''submodules/percetpion'\''
+正在进入 '\''submodules/semantic_map'\''
+正在进入 '\''submodules/server'\''
+commit f9ab13fda038285afe84a157db925174a178f0a2
+Author: JENKINS <jenkins@indemind.cn>
+Date:   Fri Aug 16 02:48:06 2024 +0000
+
+    a8c6296 Merge branch '\''GER-33'\'' into '\''dev'\''
+    
+    ====================================
+    
+    build_num:      http://192.168.50.191:8088/job/gerry-sdk/162/
+    Push aarch64 platform files
+    
+    Signed-off-by: JENKINS <jenkins@indemind.cn>
+
+commit 1bc4d55323672caf4855ea19779c59a91eb9df7f
+Author: JENKINS <jenkins@indemind.cn>
+Date:   Thu Aug 15 11:27:44 2024 +0000
+
+    19522aa Merge branch '\''GER-33'\'' into '\''dev'\''
+    
+    ====================================
+    
+    build_num:      http://192.168.50.191:8088/job/gerry-sdk/161/
+    Push aarch64 platform files
+    
+    Signed-off-by: JENKINS <jenkins@indemind.cn>
+正在进入 '\''submodules/slam'\'''
++ '[' '' = true ']'
++ project_info_database
++ cmdb_mysql 'insert into indemindapp(appname,version,swr_version,submodule_version,time,note,indemind_release,sdk_branch,build_url,node_name,build_user,ui_branch,config_branch,deb_branch,sign,min_version) values ('\''GERRY'\'','\''1.0.0.22'\'','\''EVT1'\'','\'''\'',now(),'\'''\'','\''true'\'','\'''\'','\''http://192.168.50.191:8088/job/gerry_app/74/'\'','\''khadas-car3'\'','\''wangdongqing'\'','\'''\'','\'''\'','\''master'\'','\''true'\'','\''1.0.0.1'\'')'
++ set +x
++ popd
+~/workspace/workspace/gerry_app
++ App_install
++ pushd /root/workspace/i18rApplicationDeb/work
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ Version_Update
++ mv /root/workspace/gerry /root/workspace/i18rApplicationDeb/work/root/workspace
++ sed -i s/VERSION/1.0.0.22/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/appname/GERRY/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/SWR_VERSION/EVT1/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ sed -i s/RELEASE/true/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ '[' aarch64 = aarch64 ']'
++ sed -i s/PLATFORM/arm64/g /root/workspace/i18rApplicationDeb/work/DEBIAN/control
++ [[ true = test ]]
++ sudo chmod 755 DEBIAN root -R
++ Add_Tag
++ RELEASE_TAG=r1.0.0.22_GERRY-EVT1
++ [[ true = true ]]
++ [[ ! -z '' ]]
++ [[ ! -z '' ]]
++ [[ ! -z '' ]]
++ pushd /root/workspace/i18rApplicationDeb/work/root/workspace/gerry
+~/workspace/i18rApplicationDeb/work/root/workspace/gerry ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ git tag -a r1.0.0.22_GERRY-EVT1 -m 'add EVT1 tag release:1.0.0.22'
++ git submodule foreach git tag -a r1.0.0.22_GERRY-EVT1 -m 'add EVT1 tag release:1.0.0.22'
+正在进入 'submodules/dds'
+正在进入 'submodules/depth'
+正在进入 'submodules/embedded'
+正在进入 'submodules/mindos'
+正在进入 'submodules/navigation'
+正在进入 'submodules/percetpion'
+正在进入 'submodules/semantic_map'
+正在进入 'submodules/server'
+正在进入 'submodules/slam'
++ git push origin r1.0.0.22_GERRY-EVT1 -f
+To ssh://192.168.50.191:222/wukong/integration/package.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
++ git submodule foreach git push origin r1.0.0.22_GERRY-EVT1 -f
+正在进入 'submodules/dds'
+To http://192.168.50.191:85/wukong/integration/dds.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/depth'
+To http://192.168.50.191:85/wukong/integration/depth.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/embedded'
+To http://192.168.50.191:85/wukong/integration/embedded.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/mindos'
+To http://192.168.50.191:85/wukong/integration/mindos.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/navigation'
+To http://192.168.50.191:85/wukong/integration/navigation.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/percetpion'
+warning: 重定向到 http://192.168.50.191:85/wukong/integration/percetpion.git/
+To http://192.168.50.191:85/wukong/integration/percetpion
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/semantic_map'
+To http://192.168.50.191:85/wukong/integration/semantic_map.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/server'
+warning: 重定向到 http://192.168.50.191:85/wukong/integration/server.git/
+To http://192.168.50.191:85/wukong/integration/server
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
+正在进入 'submodules/slam'
+To http://192.168.50.191:85/wukong/integration/slam.git
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
++ popd
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ pushd /root/system/i18rconfig
+~/system/i18rconfig ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ git tag -a r1.0.0.22_GERRY-EVT1 -m 'add EVT1 tag release:1.0.0.22'
++ git push origin r1.0.0.22_GERRY-EVT1 -f
+To ssh://192.168.50.191:222/AroundI18RProject/i18rconfig
+ * [new tag]         r1.0.0.22_GERRY-EVT1 -> r1.0.0.22_GERRY-EVT1
++ popd
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ cmdb_mysql 'update indemindapp set tag_name='\''r1.0.0.22_GERRY-EVT1'\'',client='\'''\'' where build_url='\''http://192.168.50.191:8088/job/gerry_app/74/'\'';'
++ set +x
++ Release_Version_Rule_all
++ pushd /root/workspace/i18rApplicationDeb/work/root/workspace/gerry
+~/workspace/i18rApplicationDeb/work/root/workspace/gerry ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ [[ aarch64 = aarch64 ]]
++ xargs -i rm -rf '{}'
++ find -name x64
++ xargs -i rm -rf '{}'
++ find -name .git
++ popd
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ is-sign-task
++ '[' true = true ']'
++ SWR_VERSION=EVT1-SIGN
+++ perl -npe s,_,-,g
+++ echo EVT1-SIGN
++ x=EVT1-SIGN
++ encryption_project
+++ cat /root/system/i18rconfig/encryption.list
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libfastcdr.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libfastrtps.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libfoonathan_memory-0.7.3.so
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/dds/lib/arm/libfoonathan_memory-0.7.3.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libtinyxml2.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libemb_common.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libFusion.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libFusion.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libimsee.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libKeyBoard.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libKY2_camera.so
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libKY2_camera.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libMcuData.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmonitor_node.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libmonitor_node.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmultimodule.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsensorControl.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsensor_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsensor_subscriber_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libtest_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libtof_module.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libuvc.so.0
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmind_os.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/mindos/arm/lib/libmind_os.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libnav_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/navigation/lib/arm64/libnav_plugin.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libperception.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/percetpion/lib/arm/libperception.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libPSL.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/percetpion/lib/arm/libPSL.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libddsmsg_lib.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libddsmsg_lib.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libdds_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libexception_manager_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmap_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmonitor_topic_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libmonitor_topic_plugin.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libros_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libros_plugin.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libstate_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsys_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libtask_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libupdater_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libwork_log_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libwork_log_plugin.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libIM_SLAM.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/lib/libIM_SLAM.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libslam_plugin.so
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/lib/libslam_plugin.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libDBoW2.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/DBoW2/lib/libDBoW2.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libDLib.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/DLib/lib/libDLib.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libg2o.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/g2o/lib/libg2o.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libgtsam.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libgtsam_unstable.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libmetis-gtsam.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/gtsam/lib/lib/libmetis-gtsam.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libKimeraRPGO.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/Kimera-RPGO/lib/lib/libKimeraRPGO.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libsuperpoint.so
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/superpoint/lib/libsuperpoint.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libusac.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/usac/lib/libusac.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type f -name libupdate_module.so
+++ cat /root/system/i18rconfig/encryption.list
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libfastcdr.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/dds/lib/arm/libfastcdr.so.1.1.1
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libfastrtps.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/dds/lib/arm/libfastrtps.so.2.8.2
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libfoonathan_memory-0.7.3.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libtinyxml2.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/dds/lib/arm/libtinyxml2.so.6.0.0
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libemb_common.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libemb_common.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libFusion.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libimsee.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libimsee.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libKeyBoard.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libKeyBoard.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libKY2_camera.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libMcuData.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libMcuData.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmonitor_node.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmultimodule.so
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libmultimodule.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsensorControl.so
++ xargs -i readlink -f '{}'
++ read so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libsensorControl.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsensor_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libsensor_plugin.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsensor_subscriber_plugin.so
++ read so
++ xargs -i readlink -f '{}'
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libsensor_subscriber_plugin.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libtest_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libtest_plugin.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libtof_module.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libtof_module.so.1.0.3
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libuvc.so.0
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/embedded/lib/arm/libuvc.so.0.0.6
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmind_os.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libnav_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libperception.so
++ read so
++ xargs -i readlink -f '{}'
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libPSL.so
++ xargs -i readlink -f '{}'
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libddsmsg_lib.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libdds_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libdds_plugin.so.0.0.1
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libexception_manager_plugin.so
++ read so
++ xargs -i readlink -f '{}'
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libexception_manager_plugin.so.0.0.1
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmap_plugin.so
++ read so
++ xargs -i readlink -f '{}'
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libmap_plugin.so.0.0.1
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmonitor_topic_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libros_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libstate_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libstate_plugin.so.0.0.1
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsys_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libsys_plugin.so.0.0.1
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libtask_plugin.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/server/lib/arm/libtask_plugin.so.0.0.1
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libupdater_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libwork_log_plugin.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libIM_SLAM.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libslam_plugin.so
++ xargs -i readlink -f '{}'
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libDBoW2.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libDLib.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libg2o.so
++ read so
++ xargs -i readlink -f '{}'
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libgtsam.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/gtsam/lib/lib/libgtsam.so.4.1.0
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ read so
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libgtsam_unstable.so
++ /root/system/i18rconfig/encrypt /root/workspace/i18rApplicationDeb/work/root/workspace/gerry/submodules/slam/arm64/Thirdparty/gtsam/lib/lib/libgtsam_unstable.so.4.1.0
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libmetis-gtsam.so
++ read so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libKimeraRPGO.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libsuperpoint.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ read so
++ xargs -i readlink -f '{}'
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libusac.so
++ for file in `cat $CONFIG_DIR/encryption.list`
++ find /root/workspace/i18rApplicationDeb/work/root/workspace -type l -name libupdate_module.so
++ xargs -i readlink -f '{}'
++ read so
++ encryption_aes_project
++ [[ -f /root/system/i18rconfig/encrypt_aes.list ]]
++ [[ true = test ]]
++ [[ true = true ]]
++ gz_type_gerry
++ tgz_full_name=GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz
++ pushd /root/workspace/i18rApplicationDeb/work/root
+~/workspace/i18rApplicationDeb/work/root ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ tee /root/workspace/i18rApplicationDeb/work/root/workspace/version.txt
++ echo GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz
+GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz
++ [[ true = true ]]
++ pushd workspace
+~/workspace/i18rApplicationDeb/work/root/workspace ~/workspace/i18rApplicationDeb/work/root ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ git clone ssh://git@192.168.50.191:222/wukong/integration/upgrade.git -b wk --depth=1 updater
+正克隆到 'updater'...
++ xargs -i rm -rf '{}'
++ find -name .git
++ popd
+~/workspace/i18rApplicationDeb/work/root ~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ tar cvf /root/workspace/GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz workspace
++ md5sum /root/workspace/GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz
++ awk -F ' ' '{print $1}'
+++ cat /root/workspace/i18rApplicationDeb/work/root/workspace/version.txt
++ tgz_full_md5='GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz
+6bcddcd0f8e8cdcbc42daf534c55aa37'
++ popd
+~/workspace/i18rApplicationDeb/work ~/workspace/workspace/gerry_app
++ mv /root/workspace/GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz /mnt/ftp/release/GERRY/ota_full_version
++ mv /root/workspace/GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz /mnt/ftp/release/GERRY/ota_full_version
+mv: 无法获取'/root/workspace/GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz' 的文件状态(stat): 没有那个文件或目录
++ true
++ cmdb_mysql 'update indemindapp set status='\''0'\'', deb_md5ck='\'''\'', tgz_full_md5ck='\''GERRY_A311D_EVT1-SIGN_INTG_1.0.0.1_ALL_1.0.0.22.tar.gz
+6bcddcd0f8e8cdcbc42daf534c55aa37'\'' where build_url='\''http://192.168.50.191:8088/job/gerry_app/74/'\'';'
++ set +x
++ mv '/root/workspace/INDEMINDAPP_*' /mnt/ftp/release/GERRY/fresh_version
+mv: 无法获取'/root/workspace/INDEMINDAPP_*' 的文件状态(stat): 没有那个文件或目录
++ true
++ popd
+~/workspace/workspace/gerry_app
+Finished: SUCCESS
