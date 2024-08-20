@@ -7,3 +7,556 @@ Building remotely on [8mha:////4GJECaSXI5jaa88kGHMmbEkdCg31N4g4yVAlsCFwflHgAAAA
 [jenkins_config] $ /bin/sh -xe /tmp/jenkins12358459208866700314.sh
 + cd /home/jenkins/jenkins_home
 + git add . -f
++ git commit -m 'update config for daliy'
+[jenkins 11c3762] update config for daliy
+ 593 files changed, 39473 insertions(+), 35751 deletions(-)
+ create mode 100644 config-history/config/2024-08-19_15-02-23/config.xml
+ create mode 100644 config-history/config/2024-08-19_15-02-23/history.xml
+ create mode 100644 config-history/config/2024-08-19_15-03-29/config.xml
+ create mode 100644 config-history/config/2024-08-19_15-03-29/history.xml
+ rename config-history/jobs/{carmera-module_app => camera-module_app}/2024-08-15_10-48-49/config.xml (100%)
+ rename config-history/jobs/{carmera-module_app => camera-module_app}/2024-08-15_10-48-49/history.xml (100%)
+ rename config-history/jobs/{carmera-module_app/2024-08-15_10-48-53 => camera-module_app/2024-08-15_10-48-52}/config.xml (100%)
+ rename config-history/jobs/{carmera-module_app => camera-module_app}/2024-08-15_10-48-52/history.xml (100%)
+ rename config-history/jobs/{carmera-module_app/2024-08-15_10-48-52 => camera-module_app/2024-08-15_10-48-53}/config.xml (100%)
+ rename config-history/jobs/{carmera-module_app => camera-module_app}/2024-08-15_10-48-53/history.xml (100%)
+ rename {jobs/carmera-module_app => config-history/jobs/camera-module_app/2024-08-15_10-50-59}/config.xml (100%)
+ rename config-history/jobs/{carmera-module_app => camera-module_app}/2024-08-15_10-50-59/history.xml (100%)
+ rename config-history/jobs/{carmera-module_app/2024-08-15_10-50-59 => camera-module_app/2024-08-19_15-02-13}/config.xml (100%)
+ create mode 100644 config-history/jobs/camera-module_app/2024-08-19_15-02-13/history.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-03-27/config.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-03-27/history.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-03-28/config.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-03-28/history.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-03-29/config.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-03-29/history.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-11-04/config.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-11-04/history.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-12-46/config.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-12-46/history.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-13-28/config.xml
+ create mode 100644 config-history/jobs/camera-module_x-laster-slam-3566/2024-08-19_15-13-28/history.xml
+ create mode 100644 config-history/jobs/indemind_app/2024-08-19_08-05-58/config.xml
+ create mode 100644 config-history/jobs/indemind_app/2024-08-19_08-05-58/history.xml
+ delete mode 100644 jobs/caffer_app/builds/555/changelog.xml
+ delete mode 100644 jobs/caffer_app/builds/555/timestamper/timestamps
+ delete mode 100644 jobs/caffer_app/builds/555/timestamper/timestamps.SHA-1
+ rename jobs/caffer_app/builds/{555 => 556}/build.xml (82%)
+ rename jobs/{wiki-backup/builds/544 => caffer_app/builds/556}/changelog.xml (100%)
+ rename jobs/caffer_app/builds/{555 => 556}/log (92%)
+ create mode 100644 jobs/caffer_app/builds/556/timestamper/timestamps
+ create mode 100644 jobs/caffer_app/builds/556/timestamper/timestamps.SHA-1
+ rename jobs/{carmera-module_app => camera-module_app}/builds/21/build.xml (100%)
+ rename jobs/{test-3566/builds/4 => camera-module_app/builds/21}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/21/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/21/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/21/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/22/build.xml (100%)
+ rename jobs/{test-3566/builds/3 => camera-module_app/builds/22}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/22/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/22/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/22/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/23/build.xml (100%)
+ rename jobs/{test-3566/builds/2 => camera-module_app/builds/23}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/23/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/23/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/23/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/24/build.xml (100%)
+ rename jobs/{test-3566/builds/1 => camera-module_app/builds/24}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/24/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/24/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/24/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/25/build.xml (100%)
+ rename jobs/{rubby-slam-debug-3566/builds/193 => camera-module_app/builds/25}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/25/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/25/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/25/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/26/build.xml (100%)
+ rename jobs/{media_app/builds/40 => camera-module_app/builds/26}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/26/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/26/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/26/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/27/build.xml (100%)
+ rename jobs/{jira-backup/builds/1159 => camera-module_app/builds/27}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/27/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/27/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/27/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/28/build.xml (100%)
+ rename jobs/{jenkins_config/builds/507 => camera-module_app/builds/28}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/28/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/28/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/28/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/29/build.xml (100%)
+ rename jobs/{indemind_app/builds/2003 => camera-module_app/builds/29}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/29/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/29/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/29/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/30/build.xml (100%)
+ rename jobs/{i18r_ui/builds/2759 => camera-module_app/builds/30}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/30/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/30/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/30/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/31/build.xml (100%)
+ rename jobs/{i18r_ui/builds/2758 => camera-module_app/builds/31}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/31/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/31/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/31/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/32/build.xml (100%)
+ rename jobs/{i18r-slam-calibration/builds/329 => camera-module_app/builds/32}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/32/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/32/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/32/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/33/build.xml (100%)
+ rename jobs/{gitlab-backup/builds/1022 => camera-module_app/builds/33}/changelog.xml (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/33/log (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/33/timestamper/timestamps (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/33/timestamper/timestamps.SHA-1 (100%)
+ rename jobs/{carmera-module_app/builds/14 => camera-module_app/builds/34}/build.xml (91%)
+ rename jobs/{gerry_app/builds/78 => camera-module_app/builds/34}/changelog.xml (100%)
+ rename jobs/{carmera-module_app/builds/20 => camera-module_app/builds/34}/log (83%)
+ create mode 100644 jobs/camera-module_app/builds/34/timestamper/timestamps
+ create mode 100644 jobs/camera-module_app/builds/34/timestamper/timestamps.SHA-1
+ rename jobs/{carmera-module_app/builds/16 => camera-module_app/builds/35}/build.xml (90%)
+ rename jobs/{gerry_app/builds/77 => camera-module_app/builds/35}/changelog.xml (100%)
+ create mode 100644 jobs/camera-module_app/builds/35/log
+ create mode 100644 jobs/camera-module_app/builds/35/timestamper/timestamps
+ create mode 100644 jobs/camera-module_app/builds/35/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/camera-module_app/builds/36/build.xml
+ rename jobs/{gerry_app/builds/76 => camera-module_app/builds/36}/changelog.xml (100%)
+ rename jobs/{carmera-module_app/builds/17 => camera-module_app/builds/36}/log (70%)
+ create mode 100644 jobs/camera-module_app/builds/36/timestamper/timestamps
+ create mode 100644 jobs/camera-module_app/builds/36/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/camera-module_app/builds/37/build.xml
+ rename jobs/{gerry_app/builds/75 => camera-module_app/builds/37}/changelog.xml (100%)
+ create mode 100644 jobs/camera-module_app/builds/37/log
+ create mode 100644 jobs/camera-module_app/builds/37/timestamper/timestamps
+ create mode 100644 jobs/camera-module_app/builds/37/timestamper/timestamps.SHA-1
+ rename jobs/{carmera-module_app => camera-module_app}/builds/legacyIds (100%)
+ rename jobs/{carmera-module_app => camera-module_app}/builds/permalinks (50%)
+ create mode 100644 jobs/camera-module_app/config.xml
+ create mode 100644 jobs/camera-module_app/nextBuildNumber
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/24/build.xml
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/24/changelog.xml
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/24/log
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/24/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/24/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/25/build.xml
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/25/changelog.xml
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/25/log
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/25/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/25/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/26/changelog.xml
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/26/log
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/26/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/26/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/27/changelog.xml
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/27/log
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/27/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_dritdetect-slam-3566/builds/27/timestamper/timestamps.SHA-1
+ rename jobs/{camera-module_sdk-3566/builds/18 => camera-module_embeded/builds/8}/build.xml (53%)
+ rename jobs/{gerry_app/builds/74 => camera-module_embeded/builds/8}/changelog.xml (100%)
+ create mode 100644 jobs/camera-module_embeded/builds/8/log
+ create mode 100644 jobs/camera-module_embeded/builds/8/timestamper/timestamps
+ create mode 100644 jobs/camera-module_embeded/builds/8/timestamper/timestamps.SHA-1
+ rename jobs/{camera-module_sdk-3566/builds/17 => camera-module_embeded/builds/9}/build.xml (64%)
+ rename jobs/{gerry-sdk/builds/163 => camera-module_embeded/builds/9}/changelog.xml (100%)
+ create mode 100644 jobs/camera-module_embeded/builds/9/log
+ create mode 100644 jobs/camera-module_embeded/builds/9/timestamper/timestamps
+ create mode 100644 jobs/camera-module_embeded/builds/9/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/15/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/15/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/15/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/16/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/16/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/16/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/16/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/17/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/17/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/17/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/17/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/18/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/18/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/18/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/19/build.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/19/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/19/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/19/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/19/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/20/build.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/20/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/20/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/20/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/20/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/21/build.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/21/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/21/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/21/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/21/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/22/build.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/22/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/22/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/22/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/22/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/23/build.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/23/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/23/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/23/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/23/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/24/build.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/24/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/24/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/24/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/24/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/25/build.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/25/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/25/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/25/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/25/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/26/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/26/log
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/26/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/26/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/27/changelog.xml
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/27/timestamper/timestamps
+ delete mode 100644 jobs/camera-module_sdk-3566/builds/27/timestamper/timestamps.SHA-1
+ rename jobs/camera-module_sdk-3566/builds/{16 => 33}/build.xml (92%)
+ rename jobs/{gerry-sdk/builds/162 => camera-module_sdk-3566/builds/33}/changelog.xml (100%)
+ rename jobs/camera-module_sdk-3566/builds/{27 => 33}/log (91%)
+ create mode 100644 jobs/camera-module_sdk-3566/builds/33/timestamper/timestamps
+ create mode 100644 jobs/camera-module_sdk-3566/builds/33/timestamper/timestamps.SHA-1
+ rename jobs/camera-module_sdk-3566/builds/{26 => 34}/build.xml (91%)
+ rename jobs/{gerry-ros/builds/42 => camera-module_sdk-3566/builds/34}/changelog.xml (100%)
+ rename jobs/camera-module_sdk-3566/builds/{15 => 34}/log (78%)
+ create mode 100644 jobs/camera-module_sdk-3566/builds/34/timestamper/timestamps
+ create mode 100644 jobs/camera-module_sdk-3566/builds/34/timestamper/timestamps.SHA-1
+ rename jobs/camera-module_sdk-3566/builds/{27 => 35}/build.xml (91%)
+ rename jobs/{gerry-ros/builds/41 => camera-module_sdk-3566/builds/35}/changelog.xml (100%)
+ rename jobs/camera-module_sdk-3566/builds/{18 => 35}/log (78%)
+ create mode 100644 jobs/camera-module_sdk-3566/builds/35/timestamper/timestamps
+ create mode 100644 jobs/camera-module_sdk-3566/builds/35/timestamper/timestamps.SHA-1
+ rename jobs/{test-3566 => camera-module_x-laster-slam-3566}/builds/1/build.xml (77%)
+ rename jobs/{gerry-ros-melodic/builds/76 => camera-module_x-laster-slam-3566/builds/1}/changelog.xml (100%)
+ create mode 100644 jobs/camera-module_x-laster-slam-3566/builds/1/log
+ create mode 100644 jobs/camera-module_x-laster-slam-3566/builds/1/timestamper/timestamps
+ create mode 100644 jobs/camera-module_x-laster-slam-3566/builds/1/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/camera-module_x-laster-slam-3566/builds/legacyIds
+ create mode 100644 jobs/camera-module_x-laster-slam-3566/builds/permalinks
+ create mode 100644 jobs/camera-module_x-laster-slam-3566/config.xml
+ create mode 100644 jobs/camera-module_x-laster-slam-3566/nextBuildNumber
+ delete mode 100644 jobs/carmera-module_app/builds/13/build.xml
+ delete mode 100644 jobs/carmera-module_app/builds/13/log
+ delete mode 100644 jobs/carmera-module_app/builds/13/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/13/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/builds/14/log
+ delete mode 100644 jobs/carmera-module_app/builds/14/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/14/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/builds/15/build.xml
+ delete mode 100644 jobs/carmera-module_app/builds/15/log
+ delete mode 100644 jobs/carmera-module_app/builds/15/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/15/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/builds/16/log
+ delete mode 100644 jobs/carmera-module_app/builds/16/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/16/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/builds/17/build.xml
+ delete mode 100644 jobs/carmera-module_app/builds/17/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/17/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/builds/18/build.xml
+ delete mode 100644 jobs/carmera-module_app/builds/18/log
+ delete mode 100644 jobs/carmera-module_app/builds/18/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/18/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/builds/19/build.xml
+ delete mode 100644 jobs/carmera-module_app/builds/19/log
+ delete mode 100644 jobs/carmera-module_app/builds/19/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/19/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/builds/20/build.xml
+ delete mode 100644 jobs/carmera-module_app/builds/20/timestamper/timestamps
+ delete mode 100644 jobs/carmera-module_app/builds/20/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/carmera-module_app/nextBuildNumber
+ delete mode 100644 jobs/check_mount_ftp/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/builds/{7696 => 7701}/build.xml (77%)
+ rename jobs/{gerry-ros-melodic/builds/75 => check_mount_ftp/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/builds/{7696 => 7701}/log (72%)
+ create mode 100644 jobs/check_mount_ftp/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{7696 => 7701}/build.xml (77%)
+ rename jobs/{gerry-embeded/builds/146 => check_mount_ftp/configurations/axis-label/191/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/191/builds/{7696 => 7701}/log (80%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/191/builds/7701/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/c3566/builds/7701/build.xml
+ rename jobs/{gerry-embeded/builds/145 => check_mount_ftp/configurations/axis-label/c3566/builds/7701}/changelog.xml (100%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/c3566/builds/7701/log
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/c3566/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/c3566/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/cloud-test/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/cloud-test/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/cloud-test/builds/{7696 => 7701}/build.xml (83%)
+ rename jobs/{gerry-embeded/builds/144 => check_mount_ftp/configurations/axis-label/cloud-test/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/cloud-test/builds/{7696 => 7701}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/cloud-test/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/cloud-test/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{7696 => 7701}/build.xml (80%)
+ rename jobs/{gerry-embeded/builds/143 => check_mount_ftp/configurations/axis-label/khadas-car1/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/{7696 => 7701}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car1/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car4/builds/7696 => khadas-car2/builds/7701}/build.xml (77%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car6/builds/7696 => khadas-car2/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/{7696 => 7701}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car2/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{7696 => 7701}/build.xml (80%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car5/builds/7696 => khadas-car3/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/{7696 => 7701}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car3/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/7696 => khadas-car4/builds/7701}/build.xml (74%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{7696 => 7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/{7696 => 7701}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car4/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{7696 => 7701}/build.xml (77%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car3/builds/7696 => khadas-car5/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/{7696 => 7701}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car5/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/7696/timestamper/timestamps
+ delete mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/7696/timestamper/timestamps.SHA-1
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{7696 => 7701}/build.xml (80%)
+ rename jobs/check_mount_ftp/configurations/axis-label/{khadas-car2/builds/7696 => khadas-car6/builds/7701}/changelog.xml (100%)
+ rename jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/{7696 => 7701}/log (79%)
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/7701/timestamper/timestamps
+ create mode 100644 jobs/check_mount_ftp/configurations/axis-label/khadas-car6/builds/7701/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-embeded/builds/143/build.xml
+ delete mode 100644 jobs/gerry-embeded/builds/143/log
+ delete mode 100644 jobs/gerry-embeded/builds/143/timestamper/timestamps
+ delete mode 100644 jobs/gerry-embeded/builds/143/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-embeded/builds/144/build.xml
+ delete mode 100644 jobs/gerry-embeded/builds/144/log
+ delete mode 100644 jobs/gerry-embeded/builds/144/timestamper/timestamps
+ delete mode 100644 jobs/gerry-embeded/builds/144/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-embeded/builds/145/build.xml
+ delete mode 100644 jobs/gerry-embeded/builds/145/log
+ delete mode 100644 jobs/gerry-embeded/builds/145/timestamper/timestamps
+ delete mode 100644 jobs/gerry-embeded/builds/145/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-embeded/builds/146/build.xml
+ delete mode 100644 jobs/gerry-embeded/builds/146/log
+ delete mode 100644 jobs/gerry-embeded/builds/146/timestamper/timestamps
+ delete mode 100644 jobs/gerry-embeded/builds/146/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-ros-melodic/builds/75/timestamper/timestamps
+ delete mode 100644 jobs/gerry-ros-melodic/builds/75/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-ros-melodic/builds/76/timestamper/timestamps
+ delete mode 100644 jobs/gerry-ros-melodic/builds/76/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/gerry-ros-melodic/builds/79/build.xml
+ rename jobs/{check_mount_ftp/configurations/axis-label/khadas-car1/builds/7696 => gerry-ros-melodic/builds/79}/changelog.xml (100%)
+ create mode 100644 jobs/gerry-ros-melodic/builds/79/log
+ create mode 100644 jobs/gerry-ros-melodic/builds/79/timestamper/timestamps
+ create mode 100644 jobs/gerry-ros-melodic/builds/79/timestamper/timestamps.SHA-1
+ rename jobs/gerry-ros-melodic/builds/{76 => 80}/build.xml (93%)
+ rename jobs/{check_mount_ftp/configurations/axis-label/cloud-test/builds/7696 => gerry-ros-melodic/builds/80}/changelog.xml (100%)
+ rename jobs/gerry-ros-melodic/builds/{76 => 80}/log (93%)
+ create mode 100644 jobs/gerry-ros-melodic/builds/80/timestamper/timestamps
+ create mode 100644 jobs/gerry-ros-melodic/builds/80/timestamper/timestamps.SHA-1
+ rename jobs/gerry-ros-melodic/builds/{75 => 81}/build.xml (96%)
+ rename jobs/{check_mount_ftp/configurations/axis-label/191/builds/7696 => gerry-ros-melodic/builds/81}/changelog.xml (100%)
+ rename jobs/gerry-ros-melodic/builds/{75 => 81}/log (94%)
+ create mode 100644 jobs/gerry-ros-melodic/builds/81/timestamper/timestamps
+ create mode 100644 jobs/gerry-ros-melodic/builds/81/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-ros/builds/41/timestamper/timestamps
+ delete mode 100644 jobs/gerry-ros/builds/41/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-ros/builds/42/timestamper/timestamps
+ delete mode 100644 jobs/gerry-ros/builds/42/timestamper/timestamps.SHA-1
+ rename jobs/gerry-ros/builds/{41 => 45}/build.xml (92%)
+ rename jobs/{check_mount_ftp/builds/7696 => gerry-ros/builds/45}/changelog.xml (100%)
+ rename jobs/gerry-ros/builds/{42 => 45}/log (91%)
+ create mode 100644 jobs/gerry-ros/builds/45/timestamper/timestamps
+ create mode 100644 jobs/gerry-ros/builds/45/timestamper/timestamps.SHA-1
+ rename jobs/gerry-ros/builds/{42 => 46}/build.xml (94%)
+ rename jobs/{carmera-module_app/builds/33 => gerry-ros/builds/46}/changelog.xml (100%)
+ rename jobs/gerry-ros/builds/{41 => 46}/log (90%)
+ create mode 100644 jobs/gerry-ros/builds/46/timestamper/timestamps
+ create mode 100644 jobs/gerry-ros/builds/46/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-sdk/builds/162/timestamper/timestamps
+ delete mode 100644 jobs/gerry-sdk/builds/162/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry-sdk/builds/163/timestamper/timestamps
+ delete mode 100644 jobs/gerry-sdk/builds/163/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/gerry-sdk/builds/164/build.xml
+ rename jobs/{carmera-module_app/builds/32 => gerry-sdk/builds/164}/changelog.xml (100%)
+ rename jobs/gerry-sdk/builds/{162 => 164}/log (91%)
+ create mode 100644 jobs/gerry-sdk/builds/164/timestamper/timestamps
+ create mode 100644 jobs/gerry-sdk/builds/164/timestamper/timestamps.SHA-1
+ rename jobs/gerry-sdk/builds/{163 => 165}/build.xml (81%)
+ rename jobs/{carmera-module_app/builds/31 => gerry-sdk/builds/165}/changelog.xml (100%)
+ create mode 100644 jobs/gerry-sdk/builds/165/log
+ create mode 100644 jobs/gerry-sdk/builds/165/timestamper/timestamps
+ create mode 100644 jobs/gerry-sdk/builds/165/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/gerry-sdk/builds/166/build.xml
+ rename jobs/{carmera-module_app/builds/30 => gerry-sdk/builds/166}/changelog.xml (100%)
+ create mode 100644 jobs/gerry-sdk/builds/166/log
+ create mode 100644 jobs/gerry-sdk/builds/166/timestamper/timestamps
+ create mode 100644 jobs/gerry-sdk/builds/166/timestamper/timestamps.SHA-1
+ rename jobs/gerry-sdk/builds/{162 => 167}/build.xml (68%)
+ rename jobs/{carmera-module_app/builds/29 => gerry-sdk/builds/167}/changelog.xml (100%)
+ rename jobs/gerry-sdk/builds/{163 => 167}/log (91%)
+ create mode 100644 jobs/gerry-sdk/builds/167/timestamper/timestamps
+ create mode 100644 jobs/gerry-sdk/builds/167/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry_app/builds/74/build.xml
+ delete mode 100644 jobs/gerry_app/builds/74/log
+ delete mode 100644 jobs/gerry_app/builds/74/timestamper/timestamps
+ delete mode 100644 jobs/gerry_app/builds/74/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry_app/builds/75/log
+ delete mode 100644 jobs/gerry_app/builds/75/timestamper/timestamps
+ delete mode 100644 jobs/gerry_app/builds/75/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry_app/builds/76/build.xml
+ delete mode 100644 jobs/gerry_app/builds/76/log
+ delete mode 100644 jobs/gerry_app/builds/76/timestamper/timestamps
+ delete mode 100644 jobs/gerry_app/builds/76/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry_app/builds/77/build.xml
+ delete mode 100644 jobs/gerry_app/builds/77/log
+ delete mode 100644 jobs/gerry_app/builds/77/timestamper/timestamps
+ delete mode 100644 jobs/gerry_app/builds/77/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gerry_app/builds/78/build.xml
+ delete mode 100644 jobs/gerry_app/builds/78/log
+ delete mode 100644 jobs/gerry_app/builds/78/timestamper/timestamps
+ delete mode 100644 jobs/gerry_app/builds/78/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/gitlab-backup/builds/1022/timestamper/timestamps
+ delete mode 100644 jobs/gitlab-backup/builds/1022/timestamper/timestamps.SHA-1
+ rename jobs/gitlab-backup/builds/{1022 => 1025}/build.xml (72%)
+ rename jobs/{carmera-module_app/builds/28 => gitlab-backup/builds/1025}/changelog.xml (100%)
+ rename jobs/gitlab-backup/builds/{1022 => 1025}/log (99%)
+ create mode 100644 jobs/gitlab-backup/builds/1025/timestamper/timestamps
+ create mode 100644 jobs/gitlab-backup/builds/1025/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/i18r-slam-calibration/builds/329/timestamper/timestamps
+ delete mode 100644 jobs/i18r-slam-calibration/builds/329/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/i18r-slam-calibration/builds/330/build.xml
+ rename jobs/{carmera-module_app/builds/27 => i18r-slam-calibration/builds/330}/changelog.xml (100%)
+ create mode 100644 jobs/i18r-slam-calibration/builds/330/log
+ create mode 100644 jobs/i18r-slam-calibration/builds/330/timestamper/timestamps
+ create mode 100644 jobs/i18r-slam-calibration/builds/330/timestamper/timestamps.SHA-1
+ rename jobs/i18r-slam-calibration/builds/{329 => 331}/build.xml (92%)
+ rename jobs/{carmera-module_app/builds/26 => i18r-slam-calibration/builds/331}/changelog.xml (100%)
+ rename jobs/i18r-slam-calibration/builds/{329 => 331}/log (54%)
+ create mode 100644 jobs/i18r-slam-calibration/builds/331/timestamper/timestamps
+ create mode 100644 jobs/i18r-slam-calibration/builds/331/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/i18r_ui/builds/2758/log
+ delete mode 100644 jobs/i18r_ui/builds/2758/timestamper/timestamps
+ delete mode 100644 jobs/i18r_ui/builds/2758/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/i18r_ui/builds/2759/log
+ delete mode 100644 jobs/i18r_ui/builds/2759/timestamper/timestamps
+ delete mode 100644 jobs/i18r_ui/builds/2759/timestamper/timestamps.SHA-1
+ rename jobs/i18r_ui/builds/{2759 => 2760}/build.xml (72%)
+ rename jobs/{carmera-module_app/builds/25 => i18r_ui/builds/2760}/changelog.xml (100%)
+ create mode 100644 jobs/i18r_ui/builds/2760/log
+ create mode 100644 jobs/i18r_ui/builds/2760/timestamper/timestamps
+ create mode 100644 jobs/i18r_ui/builds/2760/timestamper/timestamps.SHA-1
+ rename jobs/i18r_ui/builds/{2758 => 2761}/build.xml (80%)
+ rename jobs/{carmera-module_app/builds/24 => i18r_ui/builds/2761}/changelog.xml (100%)
+ create mode 100644 jobs/i18r_ui/builds/2761/log
+ create mode 100644 jobs/i18r_ui/builds/2761/timestamper/timestamps
+ create mode 100644 jobs/i18r_ui/builds/2761/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/indemind_app/builds/2003/timestamper/timestamps
+ delete mode 100644 jobs/indemind_app/builds/2003/timestamper/timestamps.SHA-1
+ rename jobs/indemind_app/builds/{2003 => 2004}/build.xml (88%)
+ rename jobs/{carmera-module_app/builds/23 => indemind_app/builds/2004}/changelog.xml (100%)
+ create mode 100644 jobs/indemind_app/builds/2004/log
+ create mode 100644 jobs/indemind_app/builds/2004/timestamper/timestamps
+ create mode 100644 jobs/indemind_app/builds/2004/timestamper/timestamps.SHA-1
+ rename jobs/{gerry_app/builds/75 => indemind_app/builds/2005}/build.xml (61%)
+ rename jobs/{carmera-module_app/builds/22 => indemind_app/builds/2005}/changelog.xml (100%)
+ rename jobs/indemind_app/builds/{2003 => 2005}/log (93%)
+ create mode 100644 jobs/indemind_app/builds/2005/timestamper/timestamps
+ create mode 100644 jobs/indemind_app/builds/2005/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/jenkins_config/builds/507/log
+ delete mode 100644 jobs/jenkins_config/builds/507/timestamper/timestamps
+ delete mode 100644 jobs/jenkins_config/builds/507/timestamper/timestamps.SHA-1
+ rename jobs/jenkins_config/builds/{507 => 510}/build.xml (88%)
+ rewrite jobs/jenkins_config/builds/510/timestamper/timestamps (100%)
+ create mode 100644 jobs/jenkins_config/builds/510/timestamper/timestamps.SHA-1
+ rename jobs/{carmera-module_app/builds/21 => jenkins_config/builds/511}/changelog.xml (100%)
+ create mode 100644 jobs/jenkins_config/builds/511/log
+ create mode 100644 jobs/jenkins_config/builds/511/timestamper/timestamps
+ delete mode 100644 jobs/jira-backup/builds/1159/timestamper/timestamps
+ delete mode 100644 jobs/jira-backup/builds/1159/timestamper/timestamps.SHA-1
+ rename jobs/jira-backup/builds/{1159 => 1162}/build.xml (79%)
+ rename jobs/{carmera-module_app/builds/20 => jira-backup/builds/1162}/changelog.xml (100%)
+ rename jobs/jira-backup/builds/{1159 => 1162}/log (91%)
+ create mode 100644 jobs/jira-backup/builds/1162/timestamper/timestamps
+ create mode 100644 jobs/jira-backup/builds/1162/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/media_app/builds/40/timestamper/timestamps
+ delete mode 100644 jobs/media_app/builds/40/timestamper/timestamps.SHA-1
+ rename jobs/media_app/builds/{40 => 41}/build.xml (79%)
+ rename jobs/{carmera-module_app/builds/19 => media_app/builds/41}/changelog.xml (100%)
+ rename jobs/media_app/builds/{40 => 41}/log (78%)
+ create mode 100644 jobs/media_app/builds/41/timestamper/timestamps
+ create mode 100644 jobs/media_app/builds/41/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/rubby-slam-debug-3566/builds/193/timestamper/timestamps
+ delete mode 100644 jobs/rubby-slam-debug-3566/builds/193/timestamper/timestamps.SHA-1
+ rename jobs/{camera-module_dritdetect-slam-3566/builds/26 => rubby-slam-debug-3566/builds/194}/build.xml (68%)
+ rename jobs/{carmera-module_app/builds/18 => rubby-slam-debug-3566/builds/194}/changelog.xml (100%)
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/194/log
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/194/timestamper/timestamps
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/194/timestamper/timestamps.SHA-1
+ rename jobs/{camera-module_dritdetect-slam-3566/builds/27 => rubby-slam-debug-3566/builds/195}/build.xml (68%)
+ rename jobs/{carmera-module_app/builds/17 => rubby-slam-debug-3566/builds/195}/changelog.xml (100%)
+ rename jobs/rubby-slam-debug-3566/builds/{193 => 195}/log (96%)
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/195/timestamper/timestamps
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/195/timestamper/timestamps.SHA-1
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/196/build.xml
+ rename jobs/{carmera-module_app/builds/16 => rubby-slam-debug-3566/builds/196}/changelog.xml (100%)
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/196/log
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/196/timestamper/timestamps
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/196/timestamper/timestamps.SHA-1
+ rename jobs/rubby-slam-debug-3566/builds/{193 => 197}/build.xml (90%)
+ rename jobs/{carmera-module_app/builds/15 => rubby-slam-debug-3566/builds/197}/changelog.xml (100%)
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/197/log
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/197/timestamper/timestamps
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/197/timestamper/timestamps.SHA-1
+ rename jobs/{camera-module_sdk-3566/builds/15 => rubby-slam-debug-3566/builds/198}/build.xml (68%)
+ rename jobs/{carmera-module_app/builds/14 => rubby-slam-debug-3566/builds/198}/changelog.xml (100%)
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/198/log
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/198/timestamper/timestamps
+ create mode 100644 jobs/rubby-slam-debug-3566/builds/198/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test-3566/builds/1/log
+ delete mode 100644 jobs/test-3566/builds/1/timestamper/timestamps
+ delete mode 100644 jobs/test-3566/builds/1/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test-3566/builds/2/build.xml
+ delete mode 100644 jobs/test-3566/builds/2/log
+ delete mode 100644 jobs/test-3566/builds/2/timestamper/timestamps
+ delete mode 100644 jobs/test-3566/builds/2/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test-3566/builds/3/build.xml
+ delete mode 100644 jobs/test-3566/builds/3/log
+ delete mode 100644 jobs/test-3566/builds/3/timestamper/timestamps
+ delete mode 100644 jobs/test-3566/builds/3/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/test-3566/builds/4/build.xml
+ delete mode 100644 jobs/test-3566/builds/4/log
+ delete mode 100644 jobs/test-3566/builds/4/timestamper/timestamps
+ delete mode 100644 jobs/test-3566/builds/4/timestamper/timestamps.SHA-1
+ delete mode 100644 jobs/wiki-backup/builds/544/timestamper/timestamps
+ delete mode 100644 jobs/wiki-backup/builds/544/timestamper/timestamps.SHA-1
+ rename jobs/wiki-backup/builds/{544 => 547}/build.xml (77%)
+ rename jobs/{carmera-module_app/builds/13 => wiki-backup/builds/547}/changelog.xml (100%)
+ rename jobs/wiki-backup/builds/{544 => 547}/log (82%)
+ create mode 100644 jobs/wiki-backup/builds/547/timestamper/timestamps
+ create mode 100644 jobs/wiki-backup/builds/547/timestamper/timestamps.SHA-1
++ git push
+Warning: Permanently added 'github.com,20.205.243.166' (ECDSA) to the list of known hosts.
+remote:         
+remote: GitHub found 109 vulnerabilities on qishanqing/myscript's default branch (8 critical, 45 high, 45 moderate, 11 low). To find out more, visit:        
+remote:      https://github.com/qishanqing/myscript/security/dependabot        
+remote: 
+remote: To git@github.com:qishanqing/myscript.git
+   bcda56d..11c3762  jenkins -> jenkins
+Finished: SUCCESS
