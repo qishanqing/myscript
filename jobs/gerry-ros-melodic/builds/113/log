@@ -501,3 +501,37 @@ qemu: Unsupported syscall: 235
 [ 98%] Building CXX object rubbynav/CMakeFiles/nav_plugin.dir/src/Navigation.cpp.o
 [100%] Linking CXX shared library /home/indemind/.jenkins/workspace/gerry-ros-melodic/TCLNAV/devel/lib/libnav_plugin.so
 [100%] Built target nav_plugin
+/home/indemind/myscript/build/build.sh: line 422: 27507 Terminated              docker exec -i ${DOCKER_CONTAINER:-$DOCKER_CONTAINER_I18} /bin/bash  <<EOF
+    set -x
+    pushd $SOURCE_DIR
+    (
+        git submodule update --init --recursive
+        git submodule update --remote
+    ) || true
+    sed -i "s/make -j[0-9].*/make $mt/g" $BUILD_SCRIPT
+    source /opt/ros/melodic/setup.bash &> /dev/null
+    bash -ex  $BUILD_SCRIPT $nub || echo $? > $WORKSPACE/result.log
+    if [[ $JOB_NAME =~ $JENKINS_JOB_A ]];then
+	bash -ex  ${SOURCE_DIR}/${BUILD_OTHER} || true
+	if [ "$SIGN" = true ];then
+	    if  [[ -d $CONFIG_DIR ]];then
+	        rm -rf $CONFIG_DIR
+	        $CONFIG_REMOTE
+            else
+	        $CONFIG_REMOTE
+            fi
+            echo c
+	    for file in `cat $CONFIG_DIR/encryption.list`;do find $SOURCE_DIR -type f -name "$file" | while read so; do $ENCRYPTION_TOOL $so;done;done
+            echo ${file}
+            for file in `cat $CONFIG_DIR/encryption.list`;do find $SOURCE_DIR -type l -name "$file" | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so;done;done
+            echo cc
+	    bash -ex ${SOURCE_DIR}/${BUILD_OTHER}-sign || true
+	fi
+    fi
+    popd
+    exit
+EOF
+
+Build was aborted
+Aborted by [8mha:////4G3KmOFrqsX5aRcAT6nEzXAGwqa1Jo+iCjgH+iz2Va/fAAAAmh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzOEgY+/dLi1CL99NL8isz8vHQAdpeJlcMAAAA=[0mXiong Guo
+Finished: ABORTED

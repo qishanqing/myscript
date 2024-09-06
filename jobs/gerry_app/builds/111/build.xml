@@ -1,0 +1,132 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.ParametersAction>
+      <safeParameters class="sorted-set"/>
+      <parameters>
+        <hudson.model.StringParameterValue>
+          <name>version</name>
+          <description>必须填写数字-app version</description>
+          <value>1.0.0.54</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>OTA_VERSION_DIFF</name>
+          <description>ota升级基点版本</description>
+          <value></value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>MIN_VERSION</name>
+          <description>最低可升级版本</description>
+          <value></value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>SWR_VERSION</name>
+          <description>机器开发板型号</description>
+          <value>EVT1</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>submodule_version</name>
+          <description>所有统一子模块需要切换的tag，默认不用填写</description>
+          <value></value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>SDK_BRANCH</name>
+          <value></value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>DEB_BRANCH</name>
+          <description>自定义打包分支</description>
+          <value>master</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.StringParameterValue>
+          <name>RELEASE</name>
+          <description>开发自测请填写test（version随意填写数字）</description>
+          <value>test</value>
+        </hudson.model.StringParameterValue>
+        <hudson.model.TextParameterValue>
+          <name>note</name>
+          <description>文本信息，具体描述</description>
+          <value>SDK优化
+1.优化dds缓存  
+2.新增reboot接口 	
+3.增加在位检测状态接口
+4.增加寻人功能结果上报
+5.增加任务被拒绝时，返回原因
+6.优化pose上报改为200ms一次
+7.修复快速建图以后获取设备状态为0的bug
+8.增加运行轨迹上报接口	
+9.优化导航修改无任务回充逻辑
+10.优化寻人任务时修改给slam的一个参数取值（slam要求的）	
+11.修复清理日志的一个问题
+12.优化部分任务调用逻辑，使用event方式执行
+DL优化
+1、优化行人检测精度
+2、fix kpts missing
+3、行人跟踪功能运行速度优化、ID跳变优化、REID优化
+slam优化
+1. 增加内存问题打印
+2. 行人跟踪，自主寻人时候快速建消
+NAV优化
+1、回冲逻辑修改，任务中回冲，独立回冲，回到（0，0）点附近
+2、行人观测状态上报
+3、寻人任务流畅性优化
+4、脱困优化第一版
+5、碰撞检测实时性优化</value>
+        </hudson.model.TextParameterValue>
+        <hudson.model.BooleanParameterValue>
+          <name>updater</name>
+          <value>true</value>
+        </hudson.model.BooleanParameterValue>
+        <hudson.model.BooleanParameterValue>
+          <name>SIGN</name>
+          <description>是否加密</description>
+          <value>true</value>
+        </hudson.model.BooleanParameterValue>
+      </parameters>
+      <parameterDefinitionNames>
+        <string>version</string>
+        <string>OTA_VERSION_DIFF</string>
+        <string>MIN_VERSION</string>
+        <string>SWR_VERSION</string>
+        <string>submodule_version</string>
+        <string>SDK_BRANCH</string>
+        <string>DEB_BRANCH</string>
+        <string>RELEASE</string>
+        <string>note</string>
+        <string>updater</string>
+        <string>SIGN</string>
+      </parameterDefinitionNames>
+    </hudson.model.ParametersAction>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>chengjingya</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <jenkins.metrics.impl.TimeInQueueAction plugin="metrics@4.2.13-420.vea_2f17932dd6">
+      <queuingDurationMillis>265</queuingDurationMillis>
+      <blockedDurationMillis>0</blockedDurationMillis>
+      <buildableDurationMillis>1</buildableDurationMillis>
+      <waitingDurationMillis>0</waitingDurationMillis>
+    </jenkins.metrics.impl.TimeInQueueAction>
+    <com.sonyericsson.rebuild.RebuildAction plugin="rebuild@1.34"/>
+  </actions>
+  <queueId>10780</queueId>
+  <timestamp>1725598052062</timestamp>
+  <startTime>1725598052109</startTime>
+  <result>SUCCESS</result>
+  <duration>248592</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn>khadas-car3</builtOn>
+  <workspace>/root/workspace/workspace/gerry_app</workspace>
+  <hudsonVersion>2.392</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="java.util.Collections$UnmodifiableSet">
+    <c class="sorted-set"/>
+  </culprits>
+</build>
