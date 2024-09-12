@@ -13,9 +13,7 @@ confluence_sys_upload () {
 	    cd $wiki_backup_dir
 	    sudo chmod 755 * || true
 	    targes=`ls -lt | awk '{if ($9) printf("%s\n",$9)}'|head -n 1`
-	    timeout 180m rsync -avz -e 'ssh -p 222' ${targes}  root@192.168.50.158:/backup/confluence/backups/
-#	    scp -r -P222 `ls -t | head -1` root@192.168.50.158:/backup/confluence/backups/
-#	    echo "backup sys data success" | mails_cm -i "confluence sys data backup"
+	    upload-to-ftp -t -d  ${targes} ftp://guest:guest@192.168.50.158/wiki/
 	)
 }
 
@@ -28,8 +26,8 @@ confluence_data_upload () {
     confluence_data_backup &&
 	(
 	    cd $wiki_backup_mysql_path
-	    scp -r -P222 $wiki_backup_mysql_name  root@192.168.50.158:/backup/mysql/
-	    scp -r -P222 $indemind_backup_mysql_name  root@192.168.50.158:/backup/mysql/
+	    upload-to-ftp -t -d  $wiki_backup_mysql_name ftp://guest:guest@192.168.50.158/mysql/
+	    upload-to-ftp -t -d $indemind_backup_mysql_name ftp://guest:guest@192.168.50.158/mysql/
 	)
 }
 
