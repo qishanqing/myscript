@@ -37,7 +37,7 @@ init_project_env(){
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     CLONE_DEPTH="--depth=1"
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b caffer_dev $CLONE_DEPTH"
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b camera_module  $CLONE_DEPTH"
     ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
     ENCRYPTION_AES_TOOL=$CONFIG_DIR/encrypt_aes
     tgz_release=INTG
@@ -56,7 +56,7 @@ function App_project_fetch(){
 	git clone ssh://git@192.168.50.191:222/camera_module/package.git $sourcename -b ${SDK_BRANCH:-module_x_line_laser} && (
 	    pushd $sourcename
 
-#	    config_project_update
+	    config_project_update
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
@@ -72,7 +72,7 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule_all
-#    is-sign-task
+    is-sign-task
     if [[ $RELEASE = test ]];then
 	gz_type
 	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
