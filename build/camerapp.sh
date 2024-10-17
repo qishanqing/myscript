@@ -12,7 +12,7 @@ init_project_env(){
 	RELEASE_DIR=/root
 	DESKTOP_DIR=/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     else
-	ios=khadas
+	ios=`whoami`
 	RELEASE_DIR=/home/$ios
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     fi
@@ -32,7 +32,6 @@ init_project_env(){
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
     OTA_DIR=~/system/i18rota
-    PLATFORM=`uname -m`
     RELEASE_BRANCH="${appname}-${SWR_VERSION}"
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`

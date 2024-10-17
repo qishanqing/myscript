@@ -12,7 +12,7 @@ init_project_env(){
 	RELEASE_DIR=/root
 	DESKTOP_DIR=/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     else
-	ios=khadas
+	ios=`whoami`
 	RELEASE_DIR=/home/$ios
 	DESKTOP_DIR=/home/$ios/workspace/i18rApplicationDeb/work$RELEASE_DIR/workspace
     fi
