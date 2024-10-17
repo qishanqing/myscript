@@ -141,7 +141,7 @@ function encryption_virbox_project(){
 #    for file in `cat $CONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do echo $so;done;done
     for file in `cat $CONFIG_DIR/encryption.list`;do find $WORK_DIR -type f -name $file | while read so; do $ENCRYPTION_TOOL $so -o $so;done;done
     for file in `cat $CONFIG_DIR/encryption.list`;do find $WORK_DIR -type l -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so -o $so;done;done
-
+}
 
 function encryption_aes_project(){
     if [[ -f  $CONFIG_DIR/encrypt_aes.list ]];then
