@@ -578,12 +578,8 @@ function is-sign-task(){
 
 function Release_Version_Rule_all(){
     pushd $WORK_DIR/$sourcename
-	if [[ $PLATFORM = aarch64 ]];then
-            find -name x64 | xargs -i rm -rf {}
-	elif [[ $PLATFORM = x86_64 ]];then
-            find -name arm64 | xargs -i rm -rf {}
-	fi
-	find -name .git | xargs -i rm -rf {}
+    find -name x64 | xargs -i rm -rf {}
+    find -name .git | xargs -i rm -rf {}
     popd
 }
 
