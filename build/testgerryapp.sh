@@ -44,6 +44,7 @@ init_project_env(){
     UPDATER_REMOTE="git clone ssh://git@192.168.50.191:222/wukong/integration/upgrade.git -b wk $CLONE_DEPTH updater"
     ENCRYPTION_TOOL="virboxprotector_con"
     ENCRYPTION_DEAO_TOOL="dsprotector_con"
+    ENCRYPTION_TOOL_CONFIG="$CONFIG_DIR/indemind123.ssp"
     x=`echo $SWR_VERSION | perl -npe 's,_,-,g'`
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash

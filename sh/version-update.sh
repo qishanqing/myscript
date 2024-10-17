@@ -141,6 +141,7 @@ function encryption_virbox_project(){
 #    for file in `cat $CONFIG_DIR/encryption.list`;do find $WORK_DIR -name $file | xargs -i readlink -f {} | while read so; do echo $so;done;done
     for file in `cat $CONFIG_DIR/encryption.list`;do find $WORK_DIR -type f -name $file | while read so; do $ENCRYPTION_TOOL $so -o $so;done;done
     for file in `cat $CONFIG_DIR/encryption.list`;do find $WORK_DIR -type l -name $file | xargs -i readlink -f {} | while read so; do $ENCRYPTION_TOOL $so -o $so;done;done
+    find -name *.npu | while read so;do $ENCRYPTION_DEAO_TOOL $so -c $ENCRYPTION_TOOL_CONFIG -o $so.bak;rm -f $so;mv $so.bak $so;done
 }
 
 function encryption_aes_project(){
