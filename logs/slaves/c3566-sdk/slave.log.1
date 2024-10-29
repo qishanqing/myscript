@@ -1,0 +1,27 @@
+Remoting version: 3107.v665000b_51092
+Launcher: SSHLauncher
+Communication Protocol: Standard in/out
+This is a Unix agent
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by jenkins.slaves.StandardOutputSwapper$ChannelSwapper to constructor java.io.FileDescriptor(int)
+WARNING: Please consider reporting this to the maintainers of jenkins.slaves.StandardOutputSwapper$ChannelSwapper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Evacuated stdout
+Agent successfully connected and online
+The Agent is connected, disconnect it before to try to connect it again.
+Agent JVM has not reported exit code. Is it still running?
+[10/29/24 15:37:43] [SSH] Connection closed.
+ERROR: Connection terminated
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2911)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3406)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:932)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:375)
+	at hudson.remoting.ObjectInputStreamEx.<init>(ObjectInputStreamEx.java:49)
+	at hudson.remoting.Command.readFrom(Command.java:142)
+	at hudson.remoting.Command.readFrom(Command.java:128)
+	at hudson.remoting.AbstractSynchronousByteArrayCommandTransport.read(AbstractSynchronousByteArrayCommandTransport.java:35)
+	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:61)
+Caused: java.io.IOException: Unexpected termination of the channel
+	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:75)
