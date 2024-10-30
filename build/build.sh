@@ -37,6 +37,7 @@ init_project_env(){
     JENKINS_JOB_G="nodejs"
     JENKINS_JOB_H="_ui"
     JENKINS_JOB_L="i12r"
+    JENKINS_JOB_I="midea-module"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	BUILD_PLATFORM="${CLEAN_TARGET_PROJECT#*-}"
 	nub=${build_version}_${BUILD_PLATFORM}
@@ -222,6 +223,11 @@ function check_status_code(){
     elif  [[ $target_push = false ]];then
 	echo "code push is empty project"
 	exit 0
+    elif [[ $JOB_NAME =~ $JENKINS_JOB_I ]];then
+	if [[ $TARGET_BRANCH == master ]];then
+	    echo "请使用gitlab合并请求功能提交小组长进行review"
+	    exit 1
+	fi
     fi
 }
 
