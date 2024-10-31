@@ -61,13 +61,10 @@ function App_project_fetch(){
 	    pushd $sourcename
 
 	    config_project_update
-	    if  [[ $RELEASE = test ]];then
-		submodule_branch_update
-		git submodule update --init --recursive
-		git submodule update --remote
-	    else
-		git submodule update --init --recursive
-	    fi
+	    submodule_branch_update
+	    git submodule update --init --recursive
+	    git submodule update --remote
+	    submodule_version_check
 	    release_note
 	    project_info_database
 	)

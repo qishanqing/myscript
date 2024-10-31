@@ -105,10 +105,10 @@ function submodule_branch_update(){
     if ! [ -z $SUBMODULES_PROJECT ];then
 	arr=(${SUBMODULES_PROJECT//,/ })
 	cp ${CONFIG_DIR}/gitmodules .gitmodules
+	local pb="branch = ${TEST_BRANCH:-dev}"
 	for m in `echo ${arr[@]}`;do
 	    m=`echo $m | perl -npe 's;";;g'`
-	    ${m}_branch=dev
-	    sed -i s//"$version"/g .gitmodules
+	    sed -i s/"#${m}"/"$pb"/g .gitmodules
 	done
     fi
 }
