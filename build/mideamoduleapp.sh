@@ -39,6 +39,9 @@ init_project_env(){
     CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b midea_module  $CLONE_DEPTH"
     ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
     ENCRYPTION_AES_TOOL=$CONFIG_DIR/encrypt_aes
+#    ENCRYPTION_TOOL="virboxprotector_con"
+#    ENCRYPTION_DEAO_TOOL="dsprotector_con"
+#    ENCRYPTION_TOOL_CONFIG="$CONFIG_DIR/indemind123.ssp"
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
     if  [[ $RELEASE = true ]];then

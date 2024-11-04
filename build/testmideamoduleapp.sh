@@ -36,9 +36,12 @@ init_project_env(){
     RELEASE_TAG="r${version}_${RELEASE_BRANCH}"
     min_version=`cmdb_mysql "SELECT version FROM indemindapp where status='2' and swr_version='$SWR_VERSION' and indemind_release='$RELEASE' and appname='$appname' order by id desc limit 5;" | tail -n 1`
     CLONE_DEPTH="--depth=1"
-    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b midea_module  $CLONE_DEPTH"
-    ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
-    ENCRYPTION_AES_TOOL=$CONFIG_DIR/encrypt_aes
+    CONFIG_REMOTE="git clone ssh://git@192.168.50.191:222/AroundI18RProject/i18rconfig $CONFIG_DIR -b testmidea  $CLONE_DEPTH"
+#    ENCRYPTION_TOOL=$CONFIG_DIR/encrypt
+#    ENCRYPTION_AES_TOOL=$CONFIG_DIR/encrypt_aes
+    ENCRYPTION_TOOL="virboxprotector_con"
+    ENCRYPTION_DEAO_TOOL="dsprotector_con"
+    ENCRYPTION_TOOL_CONFIG="$CONFIG_DIR/indemind123.ssp"
     tgz_release=INTG
     trash_dir=/mnt/ftp/Trash
     if  [[ $RELEASE = true ]];then
@@ -61,7 +64,6 @@ function App_project_fetch(){
 	    pushd $sourcename
 
 	    config_project_update
-	    submodule_branch_update
 	    git submodule update --init --recursive
 	    git submodule update --remote
 	    submodule_version_check
@@ -77,7 +79,7 @@ function App_install(){
     Version_Update
     Add_Tag
     Release_Version_Rule_all
-    is-sign-task
+    is-sign-task-x86
     if [[ $RELEASE = test ]];then
 	gz_type
 	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
