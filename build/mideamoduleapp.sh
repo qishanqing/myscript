@@ -23,12 +23,12 @@ init_project_env(){
     APP_WORKSPACE=$RELEASE_DIR/workspace/i18rApplicationDeb/work
     WORK_DIR=$APP_WORKSPACE$RELEASE_DIR/workspace
     VERSION_FILE=$APP_WORKSPACE/DEBIAN/control
-    UI_DIR=/mnt/ftp/release/$appname/client
-    TEST_DIR=/mnt/ftp/release/$appname/test
-    FTP_RELEASE_DIR=/mnt/ftp/release/$appname/fresh_version
-    FTP_RELEASE_SIGN_DIR=$FTP_RELEASE_DIR/sign
-    FTP_RELEASE_OTA_DIR=$FTP_RELEASE_DIR/ota_full_version
-    FTP_RELEASE_OTA_DIFF_DIR=$FTP_RELEASE_DIR/ota
+    RELEASE_PROJECT_DIR=/mnt/ftp/release/${appname:-INDEMINDAPP}
+    TEST_DIR=${RELEASE_PROJECT_DIR}/test
+    FTP_RELEASE_DIR=${RELEASE_PROJECT_DIR}/fresh_version
+    FTP_RELEASE_SIGN_DIR=${RELEASE_PROJECT_DIR}/sign
+    FTP_RELEASE_OTA_DIR=${RELEASE_PROJECT_DIR}/ota_full_version
+    FTP_RELEASE_OTA_DIFF_DIR=${RELEASE_PROJECT_DIR}/ota
     function_list=/mnt/ftp/release/app_update_release
     CONFIG_DIR=~/system/i18rconfig
     OTA_DIR=~/system/i18rota
@@ -86,7 +86,7 @@ function App_install(){
     is-sign-task
     if [[ $RELEASE = test ]];then
 	gz_type
-	mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
+	cp $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR ||
 	    (
 		mv $TEST_DIR/${tgz_full_name} ${trash_dir}
 		mv $BUILD_DIR/INDEMINDAPP_${appname}_* $TEST_DIR
@@ -94,10 +94,11 @@ function App_install(){
 	cmdb_mysql "update indemindapp set status='1', deb_md5ck='$deb_md5' where build_url='$BUILD_URL';"
     elif [[ $RELEASE = true ]];then
 	gz_type
-	mv $BUILD_DIR/${tgz_full_name} $FTP_RELEASE_DIR
+	cp $BUILD_DIR/${tgz_full_name} $FTP_RELEASE_DIR
 	cmdb_mysql "update indemindapp set status='0', deb_md5ck='$deb_md5', tgz_full_md5ck='$tgz_full_md5' where build_url='$BUILD_URL';"
     fi
 
+    fsdk
     mv $BUILD_DIR/INDEMINDAPP_* $FTP_RELEASE_DIR || true
     popd
 }

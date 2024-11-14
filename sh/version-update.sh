@@ -88,7 +88,7 @@ function Add_Tag(){
 }
 
 function clean_workspace(){
-    pushd $BUILD_DIR && sudo rm -rf i18rApplicationDeb INDEMINDAPP* $sourcename client
+    pushd $BUILD_DIR && sudo rm -rf tmp i18rApplicationDeb INDEMIND* $sourcename client 
     popd
 }
 
@@ -353,6 +353,22 @@ function ui_update(){
 	cp -av $CONFIG_DIR/client . > /dev/null
     fi
     popd
+}
+
+function fsdk(){
+    if ! [[ -z "$FSDK" ]];then
+	local s=`find -name package_midea_module.sh`
+	if ! [[ -z "$s" ]];then
+	    (
+		mkdir -p $BUILD_DIR/tmp
+		cp $s $BUILD_DIR/tmp
+		cd $BUILD_DIR/tmp
+		mv $BUILD_DIR/$tgz_full_name .
+		bash -ex package_midea_module.sh $tgz_full_name
+		mv INDEMINDSDK* $RELEASE_PROJECT_DIR/SDK
+	    )
+	fi
+    fi
 }
 
 function project_info_database(){
