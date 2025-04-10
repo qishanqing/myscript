@@ -172,7 +172,8 @@ function generate_commits(){
     j=$(echo $JOB_NAME | grep "$JENKINS_JOB_F"$) || true
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
 	pushd $SOURCE_DIR
-	generate_tag
+	#	generate_tag
+	echo
 	popd
     elif [[ $j != "" ]] && [[ ! -z $RELEASE ]] ;then
 	build_version=$RELEASE
