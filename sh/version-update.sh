@@ -113,6 +113,18 @@ function submodule_branch_update(){
     fi
 }
 
+function test-submodule_branch_update(){
+    if ! [ -z $SUBMODULES_PROJECT ];then
+	arr=(${SUBMODULES_PROJECT//,/ })
+	cp ${CONFIG_DIR}/gitmodules .gitmodules
+	local pb="branch = ${TEST_BRANCH:-test}"
+	for m in `echo ${arr[@]}`;do
+	    m=`echo $m | perl -npe 's;";;g'`
+	    sed -i s/"#${m}"/"$pb"/g .gitmodules
+	done
+    fi
+}
+
 function mount_ftp(){
     if ! [ -d "/mnt/ftp/release" ];then
 	sudo curlftpfs -o rw,allow_other,nonempty ftp://guest:guest@192.168.50.191 /mnt/ftp/
