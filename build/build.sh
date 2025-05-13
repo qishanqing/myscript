@@ -3,6 +3,8 @@
 project_path=$(cd `dirname $0`; pwd)
 . $project_path/../sh/cmdb
 . $project_path/../sh/version-update.sh
+. ~/.bashrc
+source ~/.bashrc || true
 
 set -ex
 init_project_env(){
