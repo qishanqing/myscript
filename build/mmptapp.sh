@@ -55,7 +55,7 @@ function App_project_fetch(){
     (
 	mkdir -p $WORK_DIR
 	pushd $BUILD_DIR
-	ssh://git@192.168.50.191:222/midea_module_production_tool/integration/package.git $sourcename -b ${SDK_BRANCH:-module_laser_production_tool} && (
+	git clone ssh://git@192.168.50.191:222/midea_module_production_tool/integration/package.git $sourcename -b ${SDK_BRANCH:-module_laser_production_tool} && (
 	    pushd $sourcename
 
 	    config_project_update
