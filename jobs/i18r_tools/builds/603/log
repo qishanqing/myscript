@@ -1,0 +1,249 @@
+Started by GitLab push by JENKINS
+Running as SYSTEM
+Building remotely on [8mha:////4J8M8M4pLAVsr5HsUCuoFBwpyiajxV9VrGbWj66EbYmPAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzuEgZR/eT83ILSktQi/eyMxJTEYt3kxCJjAEfvBs3KAAAA[0mkhadas-car3 (car3) in workspace /root/workspace/workspace/i18r_tools
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+using credential add4e790-1baf-4d9e-81aa-2941949e9901
+Cloning the remote Git repository
+Using shallow clone with depth 1
+Cloning repository ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git
+ > /usr/bin/git init /root/workspace/workspace/i18r_tools # timeout=10
+Fetching upstream changes from ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+using GIT_ASKPASS to set credentials A133D 192.168.50.197
+ > /usr/bin/git fetch --tags --progress --depth=1 -- ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git config remote.origin.url ssh://git@192.168.50.191:222/i18r_product_tools/product_tools_group.git # timeout=10
+ > /usr/bin/git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > /usr/bin/git rev-parse remotes/origin/master^{commit} # timeout=10
+ > /usr/bin/git branch -a -v --no-abbrev --contains 23debbf83a99da921f43e12b0e9ef913b2be5d33 # timeout=10
+Checking out Revision 23debbf83a99da921f43e12b0e9ef913b2be5d33 (origin/master)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 23debbf83a99da921f43e12b0e9ef913b2be5d33 # timeout=10
+Commit message: "a311D-interface-testsuite_1.0.3-640_arm64.deb"
+ > /usr/bin/git rev-list --no-walk 27b021f424bea1f94e5300cc3467facfa08c8831 # timeout=10
+First time build. Skipping changelog.
+[i18r_tools] $ /bin/sh -xe /tmp/jenkins17825577298939052992.sh
++ bash /root/myscript/build/i18r_tools_version_update.sh
++++ dirname /root/myscript/build/i18r_tools_version_update.sh
+++ cd /root/myscript/build
+++ pwd
++ project_path=/root/myscript/build
++ . /root/myscript/build/../sh/version-update.sh
+++ . /root/.bashrc
++++ '[' -z '' ']'
++++ return
++ . /root/myscript/build/../sh/now.
+++ export LANG=zh_CN.UTF-8
+++ LANG=zh_CN.UTF-8
++ . /root/myscript/build/../sh/cmdb
+++ set -x
+++ export MYSQL_PWD=123
+++ MYSQL_PWD=123
+++ export -f cmdb_mysql
++ init_project_env
++ file=生产工具/config/AuthorizationInformation.xml
++ chmod a+x 生产工具/config/AuthorizationInformation.xml
+++ perl -npe 's,<.*?>,,g'
+++ grep -i '<version>' 生产工具/config/AuthorizationInformation.xml
++ version='        V1.1.22'
+++ sed 's/[[:space:]]//g'
+++ echo V1.1.22
++ version=V1.1.22
+++ find -name 'a*.deb'
++ hw_version=./factory_set_tools/接口测试/a311D-interface-testsuite_1.0.3-640_arm64.deb
++ hw_version=./factory_set_tools/接口测试/a311D-interface-testsuite_1.0.3
++ hw_version=1.0.3
++ ftp_upload_path=/mnt/ftp/release/INDEMINDAPP/product_tools/
++ increment_version V1.1.22
++ part=(${1//\./ })
++ declare -a part
++ declare new
++ declare -i carry=1
++ CNTR=3-1
++ len=2
++ new=23
++ part[CNTR]=23
++ new='V1 1 23'
+++ echo -e V1.1.23.0
++ trigger_version=V1.1.23.0
++ tgz_install
+++ date +%Y-%m-%d-%H-%M-%S
++ tgz_file_name=i18r-tools-14-V1.1.22_1.0.3-2025-05-27-15-42-51.tgz
++ tar zcvf i18r-tools-14-V1.1.22_1.0.3-2025-05-27-15-42-51.tgz factory_set_tools 生产工具
+factory_set_tools/
+factory_set_tools/量产程序/
+factory_set_tools/量产程序/Readme
+factory_set_tools/量产程序/setenv_SDK.sh
+factory_set_tools/量产程序/S50launcher_SDK
+factory_set_tools/量产程序/INDEMINDAPP_DVT_1.1.36.2.deb
+factory_set_tools/量产程序/autoset_SDK.sh
+factory_set_tools/量产程序/sshpass
+factory_set_tools/接口测试/
+factory_set_tools/接口测试/a311D-interface-testsuite_1.0.3-640_arm64.deb
+factory_set_tools/接口测试/Readme
+factory_set_tools/接口测试/autoset.sh
+factory_set_tools/接口测试/sdkstart/
+factory_set_tools/接口测试/sdkstart/new_service.sh
+factory_set_tools/接口测试/sdkstart/install.sh
+factory_set_tools/接口测试/ip.list
+factory_set_tools/接口测试/setenv.sh
+factory_set_tools/接口测试/ageing/
+factory_set_tools/接口测试/ageing/autoset.sh
+factory_set_tools/接口测试/ageing/cpucheck.sh
+factory_set_tools/接口测试/ageing/.ageing_start
+factory_set_tools/接口测试/ageing/ip.list
+factory_set_tools/接口测试/ageing/cpulimit
+factory_set_tools/接口测试/ageing/readme
+factory_set_tools/接口测试/ageing/ageing.sh
+factory_set_tools/接口测试/ageing/.ageing_end
+factory_set_tools/接口测试/ageing/ageing_setenv.sh
+factory_set_tools/接口测试/ageing/sshpass
+factory_set_tools/接口测试/ageing/.ip-uniq.list
+factory_set_tools/接口测试/rc.local
+factory_set_tools/接口测试/sshpass
+factory_set_tools/接口测试/.ip-uniq.list
+factory_set_tools/接口测试/S50launcher
+factory_set_tools/接口测试/netserver.sh
+factory_set_tools/Readme.txt
+生产工具/
+生产工具/双目摄像头/
+生产工具/双目摄像头/run.sh
+生产工具/双目烧录/
+生产工具/双目烧录/run.sh
+生产工具/UsbHub监测工具/
+生产工具/UsbHub监测工具/run.sh
+生产工具/lib/
+生产工具/lib/libdepthcomputation.so
+生产工具/lib/libtofburn.so.1
+生产工具/lib/libmonitor_node.so
+生产工具/lib/pkgconfig/
+生产工具/lib/pkgconfig/apriltag.pc
+生产工具/lib/libcameraParamsCheck.so
+生产工具/lib/libuvc.so.0.0.6
+生产工具/lib/libapriltag.so.3
+生产工具/lib/libusb-1.0.so.0
+生产工具/lib/libvision.so
+生产工具/lib/libusbtof_module.so
+生产工具/lib/libuvc.so.0
+生产工具/lib/libcrypto.a
+生产工具/lib/texture_quality_inspection.h
+生产工具/lib/libtof_quality_inspection.so.1.0.4
+生产工具/lib/libapriltag.so.3.1.1
+生产工具/lib/libtofburn.so.0.0.4
+生产工具/lib/libimsee_module.so.1
+生产工具/lib/libcameraParamsCheck.so.1.0.0
+生产工具/lib/libkalibr_apriltag2.so
+生产工具/lib/libmonitor_node.so.1.2.14
+生产工具/lib/libmonitor_node.so.1.2.15
+生产工具/lib/libccalib.so
+生产工具/lib/libuvc.a
+生产工具/lib/libTof.so
+生产工具/lib/libceres.so.1.11.0
+生产工具/lib/libbarcodescaner.so.1.1.0
+生产工具/lib/libcrypto.so.1.1
+生产工具/lib/libtexture_quality_inspection.so.1.0.6
+生产工具/lib/libinfrastructureCheck.so.1.1.1
+生产工具/lib/libapriltagsKaess.so
+生产工具/lib/libdepthmapwrapper.so
+生产工具/lib/libbarcodescaner.so.1
+生产工具/lib/libemb_common.so
+生产工具/lib/libbarcodescaner.so
+生产工具/lib/libuvc.so
+生产工具/lib/libcamera_imu_calibration.so
+生产工具/lib/libceres.so
+生产工具/lib/libmonitor_node.so.1
+生产工具/lib/libinfrastructureCheck.so
+生产工具/lib/libimsee.so.1
+生产工具/lib/libapriltag.so
+生产工具/lib/libusbtof_module.so.1
+生产工具/lib/libtof_quality_inspection.so
+生产工具/lib/libread_write_params.so
+生产工具/lib/libssl.so
+生产工具/lib/libemb_monitor.so.1.2.15
+生产工具/lib/libdepth_quality.so
+生产工具/lib/libimsee.so
+生产工具/lib/tof_quality_inspection.h
+生产工具/lib/libusb-1.0.la
+生产工具/lib/libemb_common.so.1
+生产工具/lib/libProClientSDK.so
+生产工具/lib/libimsee.so.1.0.1
+生产工具/lib/libopencv_plot.so
+生产工具/lib/libemb_common.so.1.2.15
+生产工具/lib/libusb-1.0.so.0.3.0
+生产工具/lib/libimsee_module.so.1.2.15
+生产工具/lib/libusbtof_module.so.1.2.15
+生产工具/lib/libemb_monitor.so
+生产工具/lib/libtexture_quality_inspection.so
+生产工具/lib/libcrypto.so
+生产工具/lib/libimsee_module.so
+生产工具/lib/libceres.so.1
+生产工具/lib/libssl.so.1.1
+生产工具/lib/libusb-1.0.so
+生产工具/lib/libopencv_plot.so.3.4.3
+生产工具/lib/libopencv_plot.so.3.4
+生产工具/lib/libtofburn.so
+生产工具/lib/libemb_monitor.so.1
+生产工具/lib/libssl.a
+生产工具/lib/libspectre.so
+生产工具/lib/libusb-1.0.a
+生产工具/lib/libdepthcomputation.so.1.7.0
+生产工具/bin/
+生产工具/bin/UsbHubRestart
+生产工具/bin/TofIQCTools
+生产工具/bin/TofBurnTools
+生产工具/bin/ToFCalibrate
+生产工具/bin/IMSEEBurnTools
+生产工具/bin/ScanQRTools
+生产工具/bin/CloudUpdateTools
+生产工具/bin/IMSEECalibrateTools
+生产工具/bin/A311D_Serial_Entry
+生产工具/bin/config/
+生产工具/bin/config/params.yaml
+生产工具/bin/IMSEEIQCTools
+生产工具/bin/IMSEECameraIQCTools
+生产工具/imgs/
+生产工具/imgs/IMSEE/
+生产工具/imgs/IMSEE/OV580SpecificFW_20220303_AB_10ms_crcFW.bin
+生产工具/imgs/IMSEE/Boot.bin
+生产工具/imgs/IMSEE/BootLoaderFW_0x0000.bin
+生产工具/imgs/IMToF/
+生产工具/imgs/IMToF/usb3dtof.img
+生产工具/imgs/IMToF/cyfxflashprog.img
+生产工具/3DToF烧录/
+生产工具/3DToF烧录/run.sh
+生产工具/log/
+生产工具/log/log
+生产工具/出货扫码/
+生产工具/出货扫码/run.sh
+生产工具/双目纹理/
+生产工具/双目纹理/run.sh
+生产工具/A311D录入/
+生产工具/A311D录入/run.sh
+生产工具/3DToF标定/
+生产工具/3DToF标定/run.sh
+生产工具/3DToF来料检/
+生产工具/3DToF来料检/run.sh
+生产工具/config/
+生产工具/config/params.yaml
+生产工具/config/AuthorizationInformation.xml
+生产工具/双目标定/
+生产工具/双目标定/run.sh
+生产工具/云端上传工具/
+生产工具/云端上传工具/run.sh
++ mv i18r-tools-14-V1.1.22_1.0.3-2025-05-27-15-42-51.tgz /mnt/ftp/release/INDEMINDAPP/product_tools/
+++ git log -1
++ git_log='commit 23debbf83a99da921f43e12b0e9ef913b2be5d33
+Author: JENKINS <jenkins@indemind.cn>
+Date:   Tue May 27 15:42:02 2025 +0800
+
+    a311D-interface-testsuite_1.0.3-640_arm64.deb'
++ cmdb_mysql 'insert into prebuild(job_name,status,first_commit_id,git_log,tgz_name,source_project,source_branch,time,build_url,node_name) values ('\''i18r_tools'\'','\''0'\'','\''23debbf83a99da921f43e12b0e9ef913b2be5d33'\'','\''Author: JENKINS <jenkins@indemind.cn>
+Date:   Tue May 27 15:42:02 2025 +0800
+
+    a311D-interface-testsuite_1.0.3-640_arm64.deb'\'','\''i18r-tools-14-V1.1.22_1.0.3-2025-05-27-15-42-51.tgz'\'','\''product_tools_group.git'\'','\''origin/master'\'',now(),'\''http://192.168.50.191:8088/job/i18r_tools/603/'\'','\''khadas-car3'\'')'
++ set +x
+Finished: SUCCESS
