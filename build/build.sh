@@ -35,7 +35,8 @@ init_project_env(){
     JENKINS_JOB_E="clean_recorder"
     JENKINS_JOB_F="i18r"
     JENKINS_JOB_G="nodejs"
-    JENKINS_JOB_H="_ui"
+#    JENKINS_JOB_H="_ui"
+    JENKINS_JOB_H="_iu"
     JENKINS_JOB_L="i12r"
     JENKINS_JOB_I="midea-module"
     if [[ $JOB_NAME =~ "$JENKINS_JOB_A" ]];then
