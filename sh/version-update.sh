@@ -624,6 +624,16 @@ function Release_Version_Rule_all(){
     popd
 }
 
+function Release_Version_Rule_Vort(){
+    pushd $WORK_DIR/$sourcename
+    find -name x64 | xargs -i rm -rf {}
+    find -name .git | xargs -i rm -rf {}
+    (
+	rm -rf submodules/MindOS/arm/include
+	rm -rf submodules/obs/include
+    )
+    popd
+}
 
 function Release_Version_Rule(){
     pushd $WORK_DIR/$sourcename

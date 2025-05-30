@@ -70,7 +70,7 @@ function App_install(){
     pushd $APP_WORKSPACE
     Version_Update
     Add_Tag
-    Release_Version_Rule_all
+    Release_Version_Rule_Vort
 #    is-sign-task
     if [[ $RELEASE = test ]];then
 	gz_type
