@@ -13,7 +13,7 @@ confluence_sys_upload () {
 	    cd $wiki_backup_dir
 	    sudo chmod 755 * || true
 	    targes=`ls -lt | awk '{if ($9) printf("%s\n",$9)}'|head -n 1`
-	    upload-to-ftp -t -d  ${targes} ftp://guest:guest@192.168.50.158/wiki/
+	    upload-to-ftp -t -d  ${targes} ftp://guest:guest@192.168.50.44/wiki/
 	)
 }
 
@@ -26,8 +26,8 @@ confluence_data_upload () {
     confluence_data_backup &&
 	(
 	    cd $wiki_backup_mysql_path
-	    upload-to-ftp -t -d  $wiki_backup_mysql_name ftp://guest:guest@192.168.50.158/mysql/
-	    upload-to-ftp -t -d $indemind_backup_mysql_name ftp://guest:guest@192.168.50.158/mysql/
+	    upload-to-ftp -t -d  $wiki_backup_mysql_name ftp://guest:guest@192.168.50.44/mysql/
+	    upload-to-ftp -t -d $indemind_backup_mysql_name ftp://guest:guest@192.168.50.44/mysql/
 	)
 }
 

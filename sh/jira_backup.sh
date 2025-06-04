@@ -15,7 +15,7 @@ jira_sys_upload () {
     jira_sys_backup &&
 	(
 	    cd $jira_backup_dir	    
-	    rsync -avz -e 'ssh -p 222' *  root@192.168.50.158:/backup/ftp/guest/jira/
+	    rsync -avz *  indmind@192.168.50.44:/backup/ftp/guest/jira/
 	) 
 }
 
@@ -27,7 +27,7 @@ jira_data_upload() {
     jira_data_backup &&
 	(
 	    cd $jira_backup_mysql_path
-	    upload-to-ftp -t -d $jira_backup_mysql_name ftp://guest:guest@192.168.50.158/mysql/ && echo "backup mysql data success" | mails_cm -i "jira mysql data backup"
+	    upload-to-ftp -t -d $jira_backup_mysql_name ftp://guest:guest@192.168.50.44/mysql/ && echo "backup mysql data success" | mails_cm -i "jira mysql data backup"
 	)
 	
 }

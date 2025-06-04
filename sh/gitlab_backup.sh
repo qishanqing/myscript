@@ -35,7 +35,7 @@ gitlab_date_upload() {
     clean_old_version &&
 	(
 	    targes=`ls -lt $gitlab_backup_path_host | awk '{if ($9) printf("%s\n",$9)}'|head -n 1`
-	    upload-to-ftp -t -d $gitlab_backup_path_host/${targes}  ftp://guest:guest@192.168.50.158/gitlab/
+	    upload-to-ftp -t -d $gitlab_backup_path_host/${targes}  ftp://guest:guest@192.168.50.44/gitlab/
 	)
 }
 
